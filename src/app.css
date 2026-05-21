@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 15 23 42;
+  --foreground: 241 245 249;
+  --primary: 6 182 212;
+  --primary-dark: 8 145 178;
+  --secondary: 30 41 59;
+  --secondary-light: 51 65 85;
+  --accent: 245 158 11;
+  --muted: 148 163 184;
+}
+
+* {
+  border-color: rgb(51 65 85);
+}
+
+html {
+  background-color: rgb(15 23 42);
+  color: rgb(241 245 249);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: rgb(15 23 42);
+  color: rgb(241 245 249);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  transition-property: background-color, border-color;
+  transition-duration: 200ms;
+}
+
+input, textarea, select {
+  background-color: rgb(51 65 85);
+  color: rgb(241 245 249);
+  border-color: rgb(51 65 85);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgb(148 163 184);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+#svelte {
+  color: rgb(241 245 249);
+}
