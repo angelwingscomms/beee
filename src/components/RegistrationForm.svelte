@@ -1,316 +1,330 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-  import LocationSelector from './LocationSelector.svelte';
-  import PlayerForm from './PlayerForm.svelte';
-  import ConfirmationModal from './ConfirmationModal.svelte';
-  import { z } from 'zod';
+	import LocationInput from './LocationInput.svelte';
+	import PlayerInput from './PlayerInput.svelte';
+	import ConfirmationModal from './ConfirmationModal.svelte';
 
-  interface Player {
-    name: string;
-    email: string;
-    chessRating: string;
-  }
+	interface Player {
+		name: string;
+		email: string;
+	}
 
-  interface FormData {
-    schoolName: string;
-    schoolEmail: string;
-    schoolPhone: string;
-    location: { lat: number; lng: number; address: string } | null;
-    players: Player[];
-  }
+	interface Location {
+		lat: number;
+		lng: number;
+		address: string;
+	}
 
-  let schoolName = '';
-  let schoolEmail = '';
-  let schoolPhone = '';
-  let players: Player[] = [
-    { name: '', email: '', chessRating: '' },
-    { name: '', email: '', chessRating: '' },
-    { name: '', email: '', chessRating: '' },
-    { name: '', email: '', chessRating: '' },
-  ];
-  let location: { lat: number; lng: number; address: string } | null = null;
-  let showConfirmation = false;
-  let isProcessing = false;
-  let errors: Record<string, string> = {};
+	let schoolName = '';
+	let schoolEmail = '';
+	let schoolPhone = '';
+	let players: Player[] = [
+		{ name: '', email: '' },
+		{ name: '', email: '' },
+		{ name: '', email: '' },
+		{ name: '', email: '' }
+	];
+	let location: Location | null = null;
+	let showConfirmation = false;
+	let isProcessing = false;
+	let errorMessage = '';
+	let registrationId = '';
 
-  const REGISTRATION_AMOUNT = 50000;
+	const REGISTRATION_AMOUNT = 50000;
 
-  const schoolSchema = z.object({
-    schoolName: z.string().min(2, 'School name must be at least 2 characters'),
-    schoolEmail: z.string().email('Invalid email address'),
-    schoolPhone: z.string().regex(/^[\d\s\-\+\(\)]+$/, 'Invalid phone number'),
-  });
+	function validateForm(): boolean {
+		errorMessage = '';
 
-  const playerSchema = z.object({
-    name: z.string().min(2, 'Player name must be at least 2 characters'),
-    email: z.string().email('Invalid email address'),
-    chessRating: z.string().min(1, 'Chess rating is required'),
-  });
+		if (!schoolName.trim()) {
+			errorMessage = 'School name is required';
+			return false;
+		}
+		if (!schoolEmail.trim()) {
+			errorMessage = 'School email is required';
+			return false;
+		}
+		if (!schoolPhone.trim()) {
+			errorMessage = 'Phone number is required';
+			return false;
+		}
+		if (!location) {
+			errorMessage = 'Location is required';
+			return false;
+		}
 
-  function validateForm() {
-    errors = {};
+		const validPlayers = players.filter(p => p.name.trim() && p.email.trim());
+		if (validPlayers.length < 4) {
+			errorMessage = 'All 4 players must have names and email addresses';
+			return false;
+		}
 
-    const schoolValidation = schoolSchema.safeParse({
-      schoolName,
-      schoolEmail,
-      schoolPhone,
-    });
+		return true;
+	}
 
-    if (!schoolValidation.success) {
-      schoolValidation.error.errors.forEach((error) => {
-        errors[error.path[0] as string] = error.message;
-      });
-    }
+	async function handleSubmit() {
+		if (!validateForm()) {
+			return;
+		}
 
-    if (!location) {
-      errors['location'] = 'Please select a location';
-    }
+		showConfirmation = true;
+	}
 
-    players.forEach((player, index) => {
-      const playerValidation = playerSchema.safeParse(player);
-      if (!playerValidation.success) {
-        playerValidation.error.errors.forEach((error) => {
-          errors[`player_${index}_${error.path[0]}`] = error.message;
-        });
-      }
-    });
+	async function confirmPayment() {
+		isProcessing = true;
+		errorMessage = '';
 
-    return Object.keys(errors).length === 0;
-  }
+		try {
+			// Register the team
+			const registerResponse = await fetch('/api/registration', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					schoolName,
+					schoolEmail,
+					schoolPhone,
+					location,
+					players
+				})
+			});
 
-  function handleLocationChange(event: CustomEvent) {
-    location = event.detail;
-  }
+			if (!registerResponse.ok) {
+				throw new Error('Registration failed');
+			}
 
-  function handlePlayerChange(index: number, field: keyof Player, value: string) {
-    players[index][field] = value;
-  }
+			const registerData = await registerResponse.json();
+			registrationId = registerData.registrationId;
 
-  async function handleSubmit() {
-    if (!validateForm()) {
-      return;
-    }
+			// Initialize payment
+			const paymentResponse = await fetch('/api/payment', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					registrationId,
+					email: schoolEmail,
+					amount: REGISTRATION_AMOUNT,
+					schoolName
+				})
+			});
 
-    showConfirmation = true;
-  }
+			if (!paymentResponse.ok) {
+				throw new Error('Payment initialization failed');
+			}
 
-  async function confirmPayment() {
-    isProcessing = true;
+			const paymentData = await paymentResponse.json();
 
-    try {
-      // Mock API call to register
-      const registerResponse = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          schoolName,
-          schoolEmail,
-          schoolPhone,
-          location,
-          players,
-        }),
-      });
+			// Simulate payment processing
+			await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const registerData = await registerResponse.json();
+			// Verify payment
+			const verifyResponse = await fetch('/api/verify-payment', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					registrationId,
+					reference: paymentData.reference
+				})
+			});
 
-      if (!registerResponse.ok) {
-        alert('Registration failed: ' + registerData.message);
-        isProcessing = false;
-        return;
-      }
+			if (!verifyResponse.ok) {
+				throw new Error('Payment verification failed');
+			}
 
-      // Initialize Paystack payment
-      const paymentResponse = await fetch('/api/payment/initialize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: REGISTRATION_AMOUNT,
-          email: schoolEmail,
-          schoolName,
-          registrationId: registerData.registrationId,
-        }),
-      });
+			// Send confirmation email
+			await fetch('/api/send-email', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					to: schoolEmail,
+					schoolName,
+					registrationId,
+					amount: REGISTRATION_AMOUNT,
+					players
+				})
+			});
 
-      const paymentData = await paymentResponse.json();
+			// Success - close modal and show success message
+			showConfirmation = false;
+			alert('Registration successful! A confirmation email has been sent to ' + schoolEmail);
 
-      if (!paymentResponse.ok) {
-        alert('Payment initialization failed: ' + paymentData.message);
-        isProcessing = false;
-        return;
-      }
+			// Reset form
+			schoolName = '';
+			schoolEmail = '';
+			schoolPhone = '';
+			location = null;
+			players = [
+				{ name: '', email: '' },
+				{ name: '', email: '' },
+				{ name: '', email: '' },
+				{ name: '', email: '' }
+			];
+		} catch (error) {
+			errorMessage = 'Payment processing error. Please try again.';
+			console.error('[v0] Error:', error);
+		} finally {
+			isProcessing = false;
+		}
+	}
 
-      // Redirect to Paystack (in a real app)
-      // For demo, we'll show success
-      console.log('[v0] Payment initialized:', paymentData);
-
-      // Mock payment success
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // Send confirmation email
-      await fetch('/api/email/confirm', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: schoolEmail,
-          schoolName,
-          registrationId: registerData.registrationId,
-          amount: REGISTRATION_AMOUNT,
-        }),
-      });
-
-      showConfirmation = false;
-      isProcessing = false;
-
-      // Show success message
-      alert(
-        'Registration successful! A confirmation email has been sent to ' + schoolEmail
-      );
-
-      // Reset form
-      schoolName = '';
-      schoolEmail = '';
-      schoolPhone = '';
-      location = null;
-      players = [
-        { name: '', email: '', chessRating: '' },
-        { name: '', email: '', chessRating: '' },
-        { name: '', email: '', chessRating: '' },
-        { name: '', email: '', chessRating: '' },
-      ];
-      errors = {};
-    } catch (error) {
-      console.error('[v0] Payment error:', error);
-      alert('An error occurred. Please try again.');
-      isProcessing = false;
-    }
-  }
+	function closeConfirmation() {
+		showConfirmation = false;
+	}
 </script>
 
-<div style="min-height: 100vh; background: linear-gradient(to bottom right, rgb(15,23,42), rgb(30,41,59), rgb(15,23,42)); padding: 3rem 1rem;">
-  <div style="max-width: 56rem; margin: 0 auto;">
-    <!-- Header -->
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <h1 style="font-size: 3rem; font-weight: bold; color: rgb(6, 182, 212); margin-bottom: 0.75rem;">BEEE TEAMUP</h1>
-      <p style="font-size: 1.5rem; color: rgb(241, 245, 249); font-weight: 600; margin-bottom: 0.5rem;">Chess Tournament Registration</p>
-      <p style="color: rgb(148, 163, 184); font-size: 1.125rem;">Register your 4-player team for ₦{REGISTRATION_AMOUNT.toLocaleString()}</p>
-    </div>
+<div class="w-full max-w-4xl mx-auto">
+	<div class="bg-white rounded-xl shadow-2xl p-8 md:p-10">
+		<!-- Header -->
+		<div class="text-center mb-8">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">BEEE TEAMUP</h1>
+			<p class="text-xl md:text-2xl text-gray-700 mb-1">Chess Tournament Registration</p>
+			<p class="text-gray-600">Register your 4-player team</p>
+		</div>
 
-    <form on:submit|preventDefault={handleSubmit} class="space-y-8">
-      <!-- School Information Section -->
-      <div class="bg-secondary rounded-lg p-8 border border-secondary-light">
-        <h2 class="text-2xl font-bold text-foreground mb-6">School Information</h2>
+		<!-- Pricing Banner -->
+		<div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg p-6 mb-8 text-white">
+			<div class="flex flex-col md:flex-row items-center justify-between">
+				<div>
+					<p class="text-sm font-semibold opacity-90">REGISTRATION FEE</p>
+					<p class="text-3xl md:text-4xl font-bold">₦50,000</p>
+				</div>
+				<div class="text-right mt-4 md:mt-0">
+					<p class="text-sm opacity-90">For Fixed</p>
+					<p class="text-2xl font-bold">4-Player Team</p>
+				</div>
+			</div>
+		</div>
 
-        <div class="space-y-4">
-          <div>
-            <label for="schoolName" class="block text-sm font-medium text-foreground mb-2">
-              School Name *
-            </label>
-            <input
-              type="text"
-              id="schoolName"
-              bind:value={schoolName}
-              placeholder="Enter your school name"
-              class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-primary"
-            />
-            {#if errors.schoolName}
-              <p class="text-red-500 text-sm mt-1">{errors.schoolName}</p>
-            {/if}
-          </div>
+		<!-- Form -->
+		<form on:submit|preventDefault={handleSubmit} class="space-y-8">
+			<!-- School Information -->
+			<div class="border-b pb-8">
+				<h2 class="text-2xl font-bold text-gray-900 mb-6">School Information</h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="schoolEmail" class="block text-sm font-medium text-foreground mb-2">
-                School Email *
-              </label>
-              <input
-                type="email"
-                id="schoolEmail"
-                bind:value={schoolEmail}
-                placeholder="school@example.com"
-                class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-primary"
-              />
-              {#if errors.schoolEmail}
-                <p class="text-red-500 text-sm mt-1">{errors.schoolEmail}</p>
-              {/if}
-            </div>
+				<div class="space-y-4">
+					<div>
+						<label for="schoolName" class="block text-sm font-semibold text-gray-700 mb-2">
+							School Name
+						</label>
+						<input
+							id="schoolName"
+							type="text"
+							placeholder="e.g., Federal University of Technology"
+							bind:value={schoolName}
+							class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+							required
+						/>
+					</div>
 
-            <div>
-              <label for="schoolPhone" class="block text-sm font-medium text-foreground mb-2">
-                Phone Number *
-              </label>
-              <input
-                type="tel"
-                id="schoolPhone"
-                bind:value={schoolPhone}
-                placeholder="+234 (0) XXX XXX XXXX"
-                class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-primary"
-              />
-              {#if errors.schoolPhone}
-                <p class="text-red-500 text-sm mt-1">{errors.schoolPhone}</p>
-              {/if}
-            </div>
-          </div>
-        </div>
-      </div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<div>
+							<label for="schoolEmail" class="block text-sm font-semibold text-gray-700 mb-2">
+								School Email
+							</label>
+							<input
+								id="schoolEmail"
+								type="email"
+								placeholder="contact@school.edu"
+								bind:value={schoolEmail}
+								class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+								required
+							/>
+						</div>
 
-      <!-- Location Section -->
-      <LocationSelector on:locationChange={handleLocationChange} bind:location />
-      {#if errors.location}
-        <p class="text-red-500 text-sm">{errors.location}</p>
-      {/if}
+						<div>
+							<label for="schoolPhone" class="block text-sm font-semibold text-gray-700 mb-2">
+								Phone Number
+							</label>
+							<input
+								id="schoolPhone"
+								type="tel"
+								placeholder="+234 (0) XXX-XXXX-XXX"
+								bind:value={schoolPhone}
+								class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+								required
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <!-- Players Section -->
-      <div class="bg-secondary rounded-lg p-8 border border-secondary-light">
-        <h2 class="text-2xl font-bold text-foreground mb-6">Team Players (4 Slots)</h2>
+			<!-- Location Selection -->
+			<div class="border-b pb-8">
+				<h2 class="text-2xl font-bold text-gray-900 mb-6">School Location</h2>
+				<LocationInput bind:location />
+				{#if !location && errorMessage.includes('Location')}
+					<p class="text-red-600 text-sm mt-2">{errorMessage}</p>
+				{/if}
+			</div>
 
-        <div class="space-y-6">
-          {#each players as player, index (index)}
-            <PlayerForm
-              {index}
-              {player}
-              {errors}
-              onChange={(field, value) => handlePlayerChange(index, field, value)}
-            />
-          {/each}
-        </div>
-      </div>
+			<!-- Players Information -->
+			<div class="border-b pb-8">
+				<h2 class="text-2xl font-bold text-gray-900 mb-6">4-Player Team Details</h2>
+				<div class="space-y-4">
+					{#each players as player, index (index)}
+						<PlayerInput
+							bind:name={player.name}
+							bind:email={player.email}
+							playerNumber={index + 1}
+						/>
+					{/each}
+				</div>
+			</div>
 
-      <!-- Price Summary -->
-      <div class="bg-primary bg-opacity-10 border-2 border-primary rounded-lg p-6">
-        <div class="flex justify-between items-center">
-          <div>
-            <p class="text-muted text-sm">Total Registration Fee</p>
-            <p class="text-3xl font-bold text-primary">₦{REGISTRATION_AMOUNT.toLocaleString()}</p>
-            <p class="text-muted text-sm mt-2">For 4-player team registration</p>
-          </div>
-          <div class="text-right">
-            <p class="text-sm text-muted">Amount per player</p>
-            <p class="text-2xl font-bold text-accent">₦{(REGISTRATION_AMOUNT / 4).toLocaleString()}</p>
-          </div>
-        </div>
-      </div>
+			<!-- Error Message -->
+			{#if errorMessage}
+				<div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm">
+					{errorMessage}
+				</div>
+			{/if}
 
-      <!-- Submit Button -->
-      <button
-        type="submit"
-        disabled={isProcessing}
-        class="w-full bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-background font-bold py-4 px-6 rounded-lg transition-colors duration-200 text-lg"
-      >
-        {isProcessing ? 'Processing...' : 'Proceed to Payment'}
-      </button>
-    </form>
-  </div>
+			<!-- Submit Button -->
+			<button
+				type="submit"
+				disabled={isProcessing}
+				class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold py-3 px-4 rounded-lg transition duration-200 text-lg"
+			>
+				{#if isProcessing}
+					<span class="flex items-center justify-center gap-2">
+						<svg
+							class="animate-spin h-5 w-5"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+						>
+							<circle
+								class="opacity-25"
+								cx="12"
+								cy="12"
+								r="10"
+								stroke="currentColor"
+								stroke-width="4"
+							></circle>
+							<path
+								class="opacity-75"
+								fill="currentColor"
+								d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+							></path>
+						</svg>
+						Processing...
+					</span>
+				{:else}
+					Sign Up & Pay ₦50,000
+				{/if}
+			</button>
 
-  {#if showConfirmation}
-    <ConfirmationModal
-      {schoolName}
-      {players}
-      amount={REGISTRATION_AMOUNT}
-      onConfirm={confirmPayment}
-      onCancel={() => {
-        showConfirmation = false;
-      }}
-      isProcessing={isProcessing}
-    />
-  {/if}
+			<p class="text-center text-sm text-gray-600">
+				By registering, you agree to the tournament rules and terms.
+			</p>
+		</form>
+	</div>
 </div>
+
+{#if showConfirmation}
+	<ConfirmationModal
+		schoolName={schoolName}
+		players={players}
+		amount={REGISTRATION_AMOUNT}
+		email={schoolEmail}
+		onConfirm={confirmPayment}
+		onCancel={closeConfirmation}
+		isProcessing={isProcessing}
+	/>
+{/if}
