@@ -1,6 +1,6 @@
 [[send_email]]
 name = "SEND_EMAIL"
-name = "i"
+name = "beee"
 main = "build/index.js"
 compatibility_date = "2024-09-22"
 
