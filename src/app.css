@@ -93,6 +93,33 @@ img {
   background: var(--canvas);
 }
 
+.simple-home {
+  display: grid;
+  align-items: center;
+  padding: 72px 0;
+}
+
+.simple-home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(380px, 0.7fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.event-intro {
+  padding-top: 24px;
+}
+
+.simple-price {
+  max-width: 360px;
+  margin-top: 32px;
+  margin-bottom: 0;
+}
+
+.field-grid-spaced {
+  margin-top: 16px;
+}
+
 .container {
   width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
@@ -579,7 +606,8 @@ img {
 .feature-card h3,
 .form-section h3,
 .location-result h3,
-.modal-card h2 {
+.modal-card h2,
+.modal-section h3 {
   margin: 0;
   color: var(--ink);
   font-size: 18px;
@@ -845,6 +873,21 @@ img {
   box-shadow: var(--shadow-soft);
 }
 
+.location-search {
+  position: relative;
+}
+
+.location-actions {
+  display: grid;
+  gap: 14px;
+}
+
+.coordinate-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
 .search-result {
   display: block;
   width: 100%;
@@ -977,6 +1020,17 @@ img {
 
 .submit-row .button-primary {
   width: 100%;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 999px;
+  animation: spin 700ms linear infinite;
 }
 
 .fine-print {
@@ -1145,6 +1199,12 @@ img {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1024px) {
   .nav-links,
   .nav-actions {
@@ -1174,6 +1234,7 @@ img {
 
   .hero-grid,
   .registration-grid,
+  .simple-home-grid,
   .section-header,
   .cta-card {
     grid-template-columns: 1fr;
@@ -1214,6 +1275,8 @@ img {
   .hero-metrics,
   .feature-grid,
   .field-grid,
+  .coordinate-buttons,
+  .simple-home-grid,
   .footer-grid,
   .modal-actions {
     grid-template-columns: 1fr;

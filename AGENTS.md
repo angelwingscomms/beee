@@ -15,10 +15,13 @@
 - src/routes/~/resource/+page.server.ts
 
 # General
-- always code with extreme simplicity
+
+- always code with extreme simplicity; be minimalist
 - always search the net when it might help
 - always follow the patterns in the example files perfectly
 - if a new pattern is decided, update the example files
+- speak extremely concisely; explain things like i'm 9 years old
+- code like an expert deep learning engineer with uncompromisable perfection
 
 # Code Style
 
@@ -30,6 +33,12 @@
 - always use all lowercase for all UI text
 - always write failing unit and e2e tests before implementing a feature/fix and then run tests after implementing
 - fonts go in static/fonts
+
+# Git Workflow
+
+- before every code change turn: `git add .; git commit -m"before AI agent {short_update_name} update. agent: {your name}"; git push`
+  - short update name ≤3 words; don't worry if push fails, the commit is what matters
+- after every edit turn: `git add .` and make a long commit exhaustively explaining every change in detail, then push
 
 # Svelte MCP
 

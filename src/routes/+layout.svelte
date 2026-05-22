@@ -9,6 +9,4 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-  {@render children()}
-</div>
+{@render children()}

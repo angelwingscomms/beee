@@ -1,17 +1,12 @@
+import { mount } from 'svelte';
 import App from './App.svelte';
 
-let app: any;
+const target = document.getElementById('svelte');
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    app = new App({
-      target: document.getElementById('svelte')!,
-    });
-  });
-} else {
-  app = new App({
-    target: document.getElementById('svelte')!,
-  });
+if (!target) {
+	throw new Error('Missing Svelte mount target');
 }
+
+const app = mount(App, { target });
 
 export default app;
