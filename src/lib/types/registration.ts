@@ -4,7 +4,6 @@ export interface Registration {
 	n: string; // school name
 	e: string; // school email
 	p: string; // school phone
-	l: { lat: number; lng: number; address: string }; // location
 	pl: Array<{ name: string; email: string; chessRating: string }>; // players
 	st: 'pending' | 'paid'; // payment status
 	d: number; // created timestamp (ms)

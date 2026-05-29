@@ -10,7 +10,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const data = await request.json();
 
-		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.location || !data.players) {
+		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.players) {
 			return json({ message: 'Missing required fields' }, { status: 400 });
 		}
 
@@ -24,7 +24,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			n: data.schoolName,
 			e: data.schoolEmail,
 			p: data.schoolPhone,
-			l: data.location,
 			pl: data.players,
 			st: 'pending',
 			amt: AMOUNT_KOBO,

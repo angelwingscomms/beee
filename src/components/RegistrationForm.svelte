@@ -1,17 +1,9 @@
 <script lang="ts">
-	import LocationInput from './LocationInput.svelte';
 	import ConfirmationModal from './ConfirmationModal.svelte';
-
-	interface Location {
-		lat: number;
-		lng: number;
-		address: string;
-	}
 
 	let schoolName = $state('');
 	let schoolEmail = $state('');
 	let schoolPhone = $state('');
-	let location = $state<Location | null>(null);
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let errorMessage = $state('');
@@ -40,10 +32,6 @@
 			errorMessage = 'Phone number is required';
 			return false;
 		}
-		if (!location) {
-			errorMessage = 'Location is required';
-			return false;
-		}
 
 		return true;
 	}
@@ -69,8 +57,7 @@
 				body: JSON.stringify({
 					schoolName,
 					schoolEmail,
-					schoolPhone,
-					location
+					schoolPhone
 				})
 			});
 
@@ -166,13 +153,6 @@
 						/>
 					</div>
 				</div>
-			</section>
-
-			<section class="form-section" aria-labelledby="location-section-title">
-				<div class="form-section-header">
-					<h3 id="location-section-title">School Location</h3>
-				</div>
-				<LocationInput bind:location />
 			</section>
 
 			{#if errorMessage}

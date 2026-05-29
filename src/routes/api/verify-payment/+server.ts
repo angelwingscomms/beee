@@ -58,7 +58,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			n: reg_data.n as string,
 			e: reg_data.e as string,
 			p: reg_data.p as string,
-			l: reg_data.l as { lat: number; lng: number; address: string },
 			pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
 			st: 'paid',
 			amt: expected_amt,

@@ -11,7 +11,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const data = await request.json();
 		console.log(`[POST /api/register-init-payment] Request body:`, JSON.stringify(data));
 
-		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.location) {
+		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone) {
 			console.warn(`[POST /api/register-init-payment] Missing required fields`);
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
@@ -23,7 +23,6 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			n: data.schoolName,
 			e: data.schoolEmail,
 			p: data.schoolPhone,
-			l: data.location,
 			pl: data.players || [],
 			amt: AMOUNT_KOBO
 		};
