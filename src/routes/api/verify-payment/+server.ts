@@ -1,8 +1,35 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { SERPER_API_KEY } from '$env/static/private';
 import { create, get } from '$lib/db';
 import { paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
+
+async function search_maps(q: string): Promise<boolean> {
+	try {
+		const res = await fetch('https://google.serper.dev/places', {
+			method: 'POST',
+			headers: {
+				'X-API-KEY': SERPER_API_KEY,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ q, gl: 'ng', hl: 'en' })
+		});
+		const data = await res.json();
+		if (data.places?.length > 0) {
+			for (const place of data.places) {
+				const types = [place.type, place.category, ...(place.types || [])].filter(Boolean);
+				if (types.some(t => typeof t === 'string' && t.toLowerCase().includes('school'))) {
+					return true;
+				}
+			}
+		}
+		return false;
+	} catch (e) {
+		console.error('[verify-payment] Serper API error:', e);
+		return false;
+	}
+}
 
 export const POST: RequestHandler = async ({ request }) => {
 	console.log(`[POST /api/verify-payment] Received payment verification request`);
@@ -51,6 +78,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			return json({ error: 'Amount mismatch' }, { status: 400 });
 		}
 
+		// Look up school on Google Maps via Serper to verify it's a school
+		const school_name = reg_data.n as string;
+		console.log(`[POST /api/verify-payment] Searching maps for school: "${school_name}"...`);
+		const is_school = await search_maps(school_name);
+		const v: 0 | 1 = is_school ? 1 : 0;
+		console.log(`[POST /api/verify-payment] Maps lookup result: is_school=${is_school}, v=${v}`);
+
 		// Write full registration to DB now that payment is confirmed
 		console.log(`[POST /api/verify-payment] Payment confirmed! Writing registration to DB for ID: ${reg_id}...`);
 		const payload: Registration = {
@@ -60,6 +94,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			p: reg_data.p as string,
 			pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
 			st: 'paid',
+			v,
 			amt: expected_amt,
 			d: Date.now(),
 			ref: verified.reference

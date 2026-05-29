@@ -26,6 +26,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			p: data.schoolPhone,
 			pl: data.players,
 			st: 'pending',
+			v: 0,
 			amt: AMOUNT_KOBO,
 			d: Date.now()
 		};

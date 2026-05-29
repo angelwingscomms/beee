@@ -22,6 +22,7 @@
                             <th>Phone</th>
                             <th>Players</th>
                             <th>Status</th>
+                            <th>Verified</th>
                             <th>Amount</th>
                             <th>Date</th>
                         </tr>
@@ -34,6 +35,7 @@
                                 <td>{reg.p}</td>
                                 <td>{reg.pl.length}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
+                                <td><span class="badge-pill" class:verified={reg.v === 1}>{reg.v === 1 ? 'Yes' : 'No'}</span></td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
                             </tr>
@@ -96,6 +98,11 @@
 
     .badge-pill.paid {
         background: var(--success) !important;
+        color: var(--on-primary) !important;
+    }
+
+    .badge-pill.verified {
+        background: var(--info) !important;
         color: var(--on-primary) !important;
     }
 </style>

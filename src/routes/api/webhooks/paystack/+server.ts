@@ -1,8 +1,35 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { SERPER_API_KEY } from '$env/static/private';
 import { create, get } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
+
+async function search_maps(q: string): Promise<boolean> {
+	try {
+		const res = await fetch('https://google.serper.dev/places', {
+			method: 'POST',
+			headers: {
+				'X-API-KEY': SERPER_API_KEY,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ q, gl: 'ng', hl: 'en' })
+		});
+		const data = await res.json();
+		if (data.places?.length > 0) {
+			for (const place of data.places) {
+				const types = [place.type, place.category, ...(place.types || [])].filter(Boolean);
+				if (types.some(t => typeof t === 'string' && t.toLowerCase().includes('school'))) {
+					return true;
+				}
+			}
+		}
+		return false;
+	} catch (e) {
+		console.error('[webhook] Serper API error:', e);
+		return false;
+	}
+}
 
 /**
  * Paystack webhook endpoint.
@@ -73,6 +100,12 @@ export const POST: RequestHandler = async ({ request }) => {
 					return;
 				}
 
+				// Look up school on Google Maps via Serper to verify it's a school
+				const school_name = reg_data.n as string;
+				const is_school = await search_maps(school_name);
+				const v: 0 | 1 = is_school ? 1 : 0;
+				console.log(`[webhook] Maps lookup for "${school_name}": is_school=${is_school}, v=${v}`);
+
 				// Write full registration to DB
 				const payload: Registration = {
 					s: 'reg',
@@ -81,6 +114,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					p: reg_data.p as string,
 					pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
 					st: 'paid',
+					v,
 					amt: expected_amt,
 					d: Date.now(),
 					ref: verified.reference
