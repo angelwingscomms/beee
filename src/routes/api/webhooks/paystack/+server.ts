@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { SERPAPI_KEY } from '$env/static/private';
@@ -16,18 +17,13 @@ async function search_maps(q: string): Promise<boolean> {
 		});
 		const res = await fetch(`https://serpapi.com/search.json?${p}&api_key=${SERPAPI_KEY}`);
 		const data = await res.json();
-		const places = data.local_results?.places || [];
-		if (places.length > 0) {
-			for (const place of places) {
-				const types = [place.type, place.category, ...(place.types || [])].filter(Boolean);
-				if (types.some(t => typeof t === 'string' && t.toLowerCase().includes('school'))) {
-					return true;
-				}
-			}
+		if (dev) console.log('[webhook] SerpAPI result:', JSON.stringify(data, null, 2));
+		const pr = data.place_results;
+		if (pr && Array.isArray(pr.type)) {
+			return pr.type.some(t => typeof t === 'string' && t.toLowerCase().includes('school'));
 		}
 		return false;
-	} catch (e) {
-		console.error('[webhook] SerpAPI error:', e);
+	} catch {
 		return false;
 	}
 }
