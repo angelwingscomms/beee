@@ -708,12 +708,12 @@ img {
   border-radius: 12px;
   background: var(--canvas);
   color: var(--body);
-  padding: 32px;
+  padding: 32px 0;
 }
 
 .form-section {
-  padding: 0 0 32px;
-  margin-bottom: 32px;
+  padding: 0 0 24px;
+  margin-bottom: 24px;
 }
 
 .form-section:last-of-type {
@@ -879,7 +879,7 @@ img {
 .submit-row {
   display: grid;
   gap: 14px;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .submit-row .button-primary {
@@ -1155,9 +1155,12 @@ img {
   }
 
   .artifact-stage,
-  .registration-form,
   .feature-card {
     padding: 24px;
+  }
+
+  .registration-form {
+    padding: 24px 0;
   }
 
   .price-band,

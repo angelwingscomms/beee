@@ -132,8 +132,8 @@
 				</div>
 			</section>
 
-			<section class="form-section" aria-labelledby="player-section-title">
-				<h2 id="player-section-title" class="section-label">Participant</h2>
+			<section class="form-section">
+				<h2 class="section-label">Participant</h2>
 				<PlayerForm
 					index={0}
 					player={{ name: playerName, email: playerEmail, phone: playerPhone }}
