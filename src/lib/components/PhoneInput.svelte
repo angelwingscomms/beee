@@ -48,13 +48,15 @@
 
 	let digitsOnly = $derived(phoneNumber.replace(/\D/g, ''));
 
+	let hasNonDigits = $derived(touched && phoneNumber.length > 0 && phoneNumber !== digitsOnly);
+
 	let lenRange = $derived(phone_len[selectedCountry.c] ?? null);
 	let warnLens = $derived(phone_warn[selectedCountry.c] ?? null);
 
 	let lenErr = $derived(
-		touched && digitsOnly.length > 0 && lenRange
+		hasNonDigits || (touched && digitsOnly.length > 0 && lenRange
 			? digitsOnly.length < lenRange[0] || digitsOnly.length > lenRange[1]
-			: false
+			: false)
 	);
 
 	let lenWarn = $derived(
@@ -64,13 +66,15 @@
 	);
 
 	let errMsg = $derived(
-		lenErr && lenRange
-			? lenRange[0] === lenRange[1]
-				? `Enter exactly ${lenRange[0]} digits`
-				: `Enter ${lenRange[0]}-${lenRange[1]} digits`
-			: lenWarn
-				? 'Landline format. Most Nigerian numbers are 10 digits.'
-				: ''
+		hasNonDigits
+			? 'Only digits allowed'
+			: lenErr && lenRange
+				? lenRange[0] === lenRange[1]
+					? `Enter exactly ${lenRange[0]} digits`
+					: `Enter ${lenRange[0]}-${lenRange[1]} digits`
+				: lenWarn
+					? 'Landline format. Most Nigerian numbers are 10 digits.'
+					: ''
 	);
 
 	$effect(() => {
