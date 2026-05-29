@@ -1,15 +1,13 @@
 // Shared Paystack utilities — server-side only
 // All amounts are in kobo (NGN × 100)
 
-import { PAYSTACK_SECRET_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+import { dev } from '$app/environment';
 import { createHmac } from 'crypto';
 
-const BASE = 'https://api.paystack.co';
+console.log('[paystack] module loaded');
 
-const headers = () => ({
-	Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
-	'Content-Type': 'application/json'
-});
+const BASE = 'https://api.paystack.co';
 
 export interface PaystackInitResult {
 	authorization_url: string;
@@ -25,6 +23,21 @@ export interface PaystackVerifyResult {
 	metadata: Record<string, unknown>;
 }
 
+/** Get secret key dynamically based on PAYSTACK_TEST config or SvelteKit environment */
+export function get_secret_key(): string {
+	const paystack_test = env.PAYSTACK_TEST;
+	const is_test = paystack_test !== undefined && paystack_test !== null
+		? paystack_test === '.'
+		: dev;
+	console.log(`[paystack] get_secret_key: PAYSTACK_TEST=${paystack_test}, dev=${dev}, is_test=${is_test}`);
+
+	const key = is_test
+		? (env.PAYSTACK_SECRET_KEY_TEST || env.PAYSTACK_SECRET_KEY)
+		: (env.PAYSTACK_SECRET_KEY_LIVE || env.PAYSTACK_SECRET_KEY);
+	console.log(`[paystack] get_secret_key: resolved key ${key ? key.substring(0, 10) + '...' : 'EMPTY'}`);
+	return key || '';
+}
+
 /** Initialize a Paystack transaction. Returns authorization_url to redirect user to. */
 export async function paystack_init(
 	email: string,
@@ -33,61 +46,112 @@ export async function paystack_init(
 	school_name: string,
 	callback_url: string
 ): Promise<PaystackInitResult> {
-	const res = await fetch(`${BASE}/transaction/initialize`, {
-		method: 'POST',
-		headers: headers(),
-		body: JSON.stringify({
-			email,
-			amount: amount_kobo,
-			// Use registration_id as reference so we can look up on callback/webhook
-			reference: registration_id,
-			callback_url,
-			metadata: JSON.stringify({
-				registration_id,
-				school_name,
-				custom_fields: [
-					{
-						display_name: 'School Name',
-						variable_name: 'school_name',
-						value: school_name
-					},
-					{
-						display_name: 'Registration ID',
-						variable_name: 'registration_id',
-						value: registration_id
-					}
-				]
-			})
-		})
+	const secret_key = get_secret_key();
+	console.log(`[paystack_init] Starting transaction initialize`, {
+		email,
+		amount_kobo,
+		registration_id,
+		school_name,
+		callback_url,
+		secret_key_preview: secret_key ? secret_key.substring(0, 10) + '...' : 'undefined'
 	});
 
-	if (!res.ok) {
-		const err = await res.text();
-		throw new Error(`Paystack init failed: ${err}`);
-	}
+	try {
+		const res = await fetch(`${BASE}/transaction/initialize`, {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${secret_key}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email,
+				amount: amount_kobo,
+				reference: registration_id,
+				callback_url,
+				metadata: JSON.stringify({
+					registration_id,
+					school_name,
+					custom_fields: [
+						{
+							display_name: 'School Name',
+							variable_name: 'school_name',
+							value: school_name
+						},
+						{
+							display_name: 'Registration ID',
+							variable_name: 'registration_id',
+							value: registration_id
+						}
+					]
+				})
+			})
+		});
 
-	const body = await res.json();
-	if (!body.status) throw new Error(`Paystack init error: ${body.message}`);
-	return body.data as PaystackInitResult;
+		console.log(`[paystack_init] Response status: ${res.status} ${res.statusText}`);
+
+		if (!res.ok) {
+			const err = await res.text();
+			console.error(`[paystack_init] Error response body:`, err);
+			throw new Error(`Paystack init failed: ${err}`);
+		}
+
+		const body = await res.json();
+		console.log(`[paystack_init] Success response body:`, JSON.stringify(body));
+
+		if (!body.status) {
+			console.error(`[paystack_init] status was false in response body:`, body.message);
+			throw new Error(`Paystack init error: ${body.message}`);
+		}
+
+		return body.data as PaystackInitResult;
+	} catch (error) {
+		console.error(`[paystack_init] Exception thrown:`, error);
+		throw error;
+	}
 }
 
 /** Verify a transaction by reference. Always verify server-side after callback. */
 export async function paystack_verify(
 	reference: string
 ): Promise<PaystackVerifyResult> {
-	const res = await fetch(
-		`${BASE}/transaction/verify/${encodeURIComponent(reference)}`,
-		{ headers: headers() }
-	);
+	const secret_key = get_secret_key();
+	console.log(`[paystack_verify] Starting transaction verification`, {
+		reference,
+		secret_key_preview: secret_key ? secret_key.substring(0, 10) + '...' : 'undefined'
+	});
 
-	if (!res.ok) {
-		const err = await res.text();
-		throw new Error(`Paystack verify failed: ${err}`);
+	try {
+		const res = await fetch(
+			`${BASE}/transaction/verify/${encodeURIComponent(reference)}`,
+			{
+				headers: {
+					Authorization: `Bearer ${secret_key}`,
+					'Content-Type': 'application/json'
+				}
+			}
+		);
+
+		console.log(`[paystack_verify] Response status: ${res.status} ${res.statusText}`);
+
+		if (!res.ok) {
+			const err = await res.text();
+			console.error(`[paystack_verify] Error response body:`, err);
+			throw new Error(`Paystack verify failed: ${err}`);
+		}
+
+		const body = await res.json();
+		console.log(`[paystack_verify] Success response body:`, JSON.stringify(body));
+
+		if (!body.status) {
+			console.error(`[paystack_verify] status was false in response body:`, body.message);
+			throw new Error(`Paystack verify error: ${body.message}`);
+		}
+
+		return body.data as PaystackVerifyResult;
+	} catch (error) {
+		console.error(`[paystack_verify] Exception thrown:`, error);
+		throw error;
 	}
-
-	const body = await res.json();
-	if (!body.status) throw new Error(`Paystack verify error: ${body.message}`);
-	return body.data as PaystackVerifyResult;
 }
 
 /**
@@ -98,8 +162,27 @@ export function verify_webhook_sig(
 	raw_body: string,
 	signature: string
 ): boolean {
-	const hash = createHmac('sha512', PAYSTACK_SECRET_KEY)
+	const secret_key = get_secret_key();
+	console.log(`[verify_webhook_sig] Starting signature check`, {
+		signature,
+		body_length: raw_body.length,
+		secret_key_preview: secret_key ? secret_key.substring(0, 10) + '...' : 'undefined'
+	});
+
+	if (!secret_key) {
+		console.error(`[verify_webhook_sig] Secret key is empty, cannot compute hash`);
+		return false;
+	}
+
+	const hash = createHmac('sha512', secret_key)
 		.update(raw_body)
 		.digest('hex');
-	return hash === signature;
+
+	const match = hash === signature;
+	console.log(`[verify_webhook_sig] Check completed`, {
+		match,
+		computed: hash.substring(0, 10) + '...'
+	});
+
+	return match;
 }

@@ -7,10 +7,18 @@ import type { Registration } from '$lib/types/registration';
 const AMOUNT_KOBO = 5_000_000;
 
 export const POST: RequestHandler = async ({ request }) => {
+	console.log(`[POST /api/registration] Received registration request`);
 	try {
 		const data = await request.json();
+		console.log(`[POST /api/registration] Request body:`, JSON.stringify(data));
 
 		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.location) {
+			console.warn(`[POST /api/registration] Missing required fields`, {
+				schoolName: data.schoolName,
+				schoolEmail: data.schoolEmail,
+				schoolPhone: data.schoolPhone,
+				location: data.location
+			});
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
 
@@ -27,11 +35,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			d: Date.now()
 		};
 
+		console.log(`[POST /api/registration] Storing registration in DB with ID: ${i}...`);
 		await create(payload, undefined, i);
+		console.log(`[POST /api/registration] Registration stored successfully in DB`);
 
 		return json({ success: true, registrationId: i, message: 'Registration created successfully' });
 	} catch (error) {
-		console.error('Registration error:', error);
+		console.error('[POST /api/registration] Exception caught:', error);
 		return json({ error: 'Failed to process registration' }, { status: 500 });
 	}
 };

@@ -95,8 +95,10 @@
 			// Paystack will redirect back to /payment/callback?reference=<reg_id>
 			window.location.href = authorization_url;
 		} catch (error) {
-			errorMessage = 'Payment processing error. Please try again.';
+			const msg = error instanceof Error ? error.message : 'Unknown error';
+			errorMessage = msg;
 			console.error('[registration]', error);
+			console.error('[registration] message:', msg);
 			isProcessing = false;
 		}
 		// Note: isProcessing stays true during redirect — intentional (page is leaving)

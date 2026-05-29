@@ -44,7 +44,9 @@ declare module '$env/static/private' {
 	export const GOOGLE_ID: string;
 	export const GOOGLE_SECRET: string;
 	export const GROQ: string;
-	export const PAYSTACK_SECRET_KEY: string;
+	export const PAYSTACK_SECRET_KEY_LIVE: string;
+	export const PAYSTACK_SECRET_KEY_TEST: string;
+	export const PAYSTACK_TEST: string;
 	export const QDRANT_KEY: string;
 	export const QDRANT_URL: string;
 	export const R2_S3: string;
@@ -52,25 +54,19 @@ declare module '$env/static/private' {
 	export const SECRET: string;
 	export const SENTRY_AUTH_TOKEN: string;
 	export const VAPID_PRIVATE_KEY: string;
-	export const AGY_BROWSER_ACTIVE_PORT_FILE: string;
-	export const AGY_BROWSER_WS_URL: string;
 	export const ALLUSERSPROFILE: string;
-	export const ANTIGRAVITY_AGENT: string;
-	export const ANTIGRAVITY_CSRF_TOKEN: string;
-	export const ANTIGRAVITY_LS_ADDRESS: string;
-	export const ANTIGRAVITY_PROJECT_ID: string;
-	export const ANTIGRAVITY_SOURCE_METADATA: string;
-	export const ANTIGRAVITY_TRAJECTORY_ID: string;
 	export const APPDATA: string;
+	export const BASE_URL: string;
 	export const ChocolateyInstall: string;
 	export const ChocolateyLastPathUpdate: string;
 	export const ChocolateyToolsLocation: string;
-	export const CHROME_DEVTOOLS_MCP_JS: string;
+	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLOR: string;
 	export const CommonProgramFiles: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const DEV: string;
 	export const DriverData: string;
 	export const EDITOR: string;
 	export const EFC_6540: string;
@@ -80,7 +76,10 @@ declare module '$env/static/private' {
 	export const INIT_CWD: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
+	export const MODE: string;
 	export const NODE: string;
+	export const NODE_ENV: string;
+	export const NO_PROXY: string;
 	export const npm_command: string;
 	export const npm_config_cache: string;
 	export const npm_config_globalconfig: string;
@@ -101,13 +100,20 @@ declare module '$env/static/private' {
 	export const npm_package_name: string;
 	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
+	export const OPENCODE_CLIENT: string;
+	export const OPENCODE_DISABLE_EMBEDDED_WEB_UI: string;
+	export const OPENCODE_EXPERIMENTAL_FILEWATCHER: string;
+	export const OPENCODE_EXPERIMENTAL_ICON_DISCOVERY: string;
+	export const OPENCODE_SERVER_PASSWORD: string;
+	export const OPENCODE_SERVER_USERNAME: string;
 	export const OS: string;
-	export const PATH: string;
+	export const Path: string;
 	export const PATHEXT: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
 	export const PROCESSOR_LEVEL: string;
 	export const PROCESSOR_REVISION: string;
+	export const PROD: string;
 	export const ProgramData: string;
 	export const ProgramFiles: string;
 	export const ProgramW6432: string;
@@ -118,12 +124,15 @@ declare module '$env/static/private' {
 	export const SystemDrive: string;
 	export const SystemRoot: string;
 	export const TEMP: string;
+	export const TEST: string;
 	export const TMP: string;
 	export const USERDOMAIN: string;
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
+	export const VITEST: string;
 	export const windir: string;
+	export const XDG_STATE_HOME: string;
 	export const ZES_ENABLE_SYSMAN: string;
 }
 
@@ -161,7 +170,8 @@ declare module '$env/static/private' {
  * The above values will be the same _even if_ different values for `ENVIRONMENT` or `PUBLIC_BASE_URL` are set at runtime, as they are statically replaced in your code with their build time values.
  */
 declare module '$env/static/public' {
-	export const PUBLIC_PAYSTACK_KEY: string;
+	export const PUBLIC_PAYSTACK_KEY_LIVE: string;
+	export const PUBLIC_PAYSTACK_KEY_TEST: string;
 	export const PUBLIC_VAPID_KEY: string;
 }
 
@@ -218,7 +228,9 @@ declare module '$env/dynamic/private' {
 		GOOGLE_ID: string;
 		GOOGLE_SECRET: string;
 		GROQ: string;
-		PAYSTACK_SECRET_KEY: string;
+		PAYSTACK_SECRET_KEY_LIVE: string;
+		PAYSTACK_SECRET_KEY_TEST: string;
+		PAYSTACK_TEST: string;
 		QDRANT_KEY: string;
 		QDRANT_URL: string;
 		R2_S3: string;
@@ -226,25 +238,19 @@ declare module '$env/dynamic/private' {
 		SECRET: string;
 		SENTRY_AUTH_TOKEN: string;
 		VAPID_PRIVATE_KEY: string;
-		AGY_BROWSER_ACTIVE_PORT_FILE: string;
-		AGY_BROWSER_WS_URL: string;
 		ALLUSERSPROFILE: string;
-		ANTIGRAVITY_AGENT: string;
-		ANTIGRAVITY_CSRF_TOKEN: string;
-		ANTIGRAVITY_LS_ADDRESS: string;
-		ANTIGRAVITY_PROJECT_ID: string;
-		ANTIGRAVITY_SOURCE_METADATA: string;
-		ANTIGRAVITY_TRAJECTORY_ID: string;
 		APPDATA: string;
+		BASE_URL: string;
 		ChocolateyInstall: string;
 		ChocolateyLastPathUpdate: string;
 		ChocolateyToolsLocation: string;
-		CHROME_DEVTOOLS_MCP_JS: string;
+		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLOR: string;
 		CommonProgramFiles: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		DEV: string;
 		DriverData: string;
 		EDITOR: string;
 		EFC_6540: string;
@@ -254,7 +260,10 @@ declare module '$env/dynamic/private' {
 		INIT_CWD: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
+		MODE: string;
 		NODE: string;
+		NODE_ENV: string;
+		NO_PROXY: string;
 		npm_command: string;
 		npm_config_cache: string;
 		npm_config_globalconfig: string;
@@ -275,13 +284,20 @@ declare module '$env/dynamic/private' {
 		npm_package_name: string;
 		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
+		OPENCODE_CLIENT: string;
+		OPENCODE_DISABLE_EMBEDDED_WEB_UI: string;
+		OPENCODE_EXPERIMENTAL_FILEWATCHER: string;
+		OPENCODE_EXPERIMENTAL_ICON_DISCOVERY: string;
+		OPENCODE_SERVER_PASSWORD: string;
+		OPENCODE_SERVER_USERNAME: string;
 		OS: string;
-		PATH: string;
+		Path: string;
 		PATHEXT: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
 		PROCESSOR_LEVEL: string;
 		PROCESSOR_REVISION: string;
+		PROD: string;
 		ProgramData: string;
 		ProgramFiles: string;
 		ProgramW6432: string;
@@ -292,12 +308,15 @@ declare module '$env/dynamic/private' {
 		SystemDrive: string;
 		SystemRoot: string;
 		TEMP: string;
+		TEST: string;
 		TMP: string;
 		USERDOMAIN: string;
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
+		VITEST: string;
 		windir: string;
+		XDG_STATE_HOME: string;
 		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
@@ -354,7 +373,8 @@ declare module '$env/dynamic/private' {
  */
 declare module '$env/dynamic/public' {
 	export const env: {
-		PUBLIC_PAYSTACK_KEY: string;
+		PUBLIC_PAYSTACK_KEY_LIVE: string;
+		PUBLIC_PAYSTACK_KEY_TEST: string;
 		PUBLIC_VAPID_KEY: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
