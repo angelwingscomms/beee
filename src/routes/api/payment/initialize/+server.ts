@@ -1,63 +1,44 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { get, set } from '$lib/db';
+import { paystack_init } from '$lib/paystack';
+import type { Registration } from '$lib/types/registration';
 
-interface PaymentInitRequest {
-  amount: number;
-  email: string;
-  schoolName: string;
-  registrationId: string;
-}
+export const POST: RequestHandler = async ({ request, url }) => {
+	try {
+		const data = await request.json();
 
-export const POST: RequestHandler = async ({ request }) => {
-  try {
-    const data: PaymentInitRequest = await request.json();
+		if (!data.registrationId) {
+			return json({ message: 'Missing registrationId' }, { status: 400 });
+		}
 
-    if (!data.amount || !data.email || !data.schoolName || !data.registrationId) {
-      return json(
-        { message: 'Missing required payment fields' },
-        { status: 400 }
-      );
-    }
+		const reg = await get<Registration>(data.registrationId);
+		if (!reg) {
+			return json({ message: 'Registration not found' }, { status: 404 });
+		}
 
-    // In a real app, you would call Paystack API here
-    // const paystackResponse = await fetch('https://api.paystack.co/transaction/initialize', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${PAYSTACK_SECRET_KEY}`
-    //   },
-    //   body: JSON.stringify({
-    //     amount: data.amount * 100, // Convert to kobo
-    //     email: data.email,
-    //     metadata: {
-    //       schoolName: data.schoolName,
-    //       registrationId: data.registrationId
-    //     }
-    //   })
-    // });
+		const amount_kobo = reg.amt;
+		const callback_url = `${url.origin}/payment/callback`;
 
-    const mockTransactionRef = `TXN-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+		const result = await paystack_init(
+			reg.e,
+			amount_kobo,
+			data.registrationId,
+			reg.n,
+			callback_url
+		);
 
-    console.log('[v0] Payment initialized:', {
-      amount: data.amount,
-      email: data.email,
-      schoolName: data.schoolName,
-      registrationId: data.registrationId,
-      transactionRef: mockTransactionRef,
-    });
+		await set(data.registrationId, { ref: result.reference });
 
-    return json({
-      success: true,
-      transactionRef: mockTransactionRef,
-      authorizationUrl: `https://checkout.paystack.com/${mockTransactionRef}`,
-      accessCode: `access_code_${mockTransactionRef}`,
-      message: 'Payment initialized. Redirecting to Paystack...',
-    });
-  } catch (error) {
-    console.error('[v0] Payment initialization error:', error);
-    return json(
-      { message: 'Payment initialization failed. Please try again.' },
-      { status: 500 }
-    );
-  }
+		return json({
+			success: true,
+			transactionRef: result.reference,
+			authorizationUrl: result.authorization_url,
+			accessCode: result.access_code,
+			message: 'Payment initialized. Redirecting to Paystack...'
+		});
+	} catch (error) {
+		console.error('Payment initialization error:', error);
+		return json({ message: 'Payment initialization failed. Please try again.' }, { status: 500 });
+	}
 };

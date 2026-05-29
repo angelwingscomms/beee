@@ -1,13 +1,14 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { get, set } from '$lib/db';
+import { paystack_init } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, url }) => {
 	try {
 		const data = await request.json();
 
-		if (!data.registrationId || !data.email || !data.amount) {
+		if (!data.registrationId || !data.email) {
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
 
@@ -16,13 +17,31 @@ export const POST: RequestHandler = async ({ request }) => {
 			return json({ error: 'Registration not found' }, { status: 404 });
 		}
 
-		const paymentReference = `PAY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+		// Use the stored amount — never trust the client-sent amount
+		const amount_kobo = reg.amt;
 
-		await set(data.registrationId, { r: paymentReference });
+		// Build callback URL: /payment/callback?reference=<registrationId>
+		const callback_url = `${url.origin}/payment/callback`;
 
-		return json({ success: true, reference: paymentReference, message: 'Payment initialized successfully' });
+		const result = await paystack_init(
+			reg.e,
+			amount_kobo,
+			data.registrationId,
+			reg.n,
+			callback_url
+		);
+
+		// Store the Paystack reference on the registration
+		await set(data.registrationId, { ref: result.reference });
+
+		return json({
+			success: true,
+			authorization_url: result.authorization_url,
+			access_code: result.access_code,
+			reference: result.reference
+		});
 	} catch (error) {
-		console.error('Payment error:', error);
+		console.error('Payment init error:', error);
 		return json({ error: 'Failed to initialize payment' }, { status: 500 });
 	}
 };

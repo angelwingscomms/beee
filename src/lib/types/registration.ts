@@ -6,7 +6,8 @@ export interface Registration {
 	p: string; // school phone
 	l: { lat: number; lng: number; address: string }; // location
 	pl: Array<{ name: string; email: string; chessRating: string }>; // players
-	st: 'pending' | 'paid'; // status
-	d: number; // created timestamp
-	r?: string; // payment reference
+	st: 'pending' | 'paid'; // payment status
+	d: number; // created timestamp (ms)
+	amt: number; // amount in kobo — stored for anti-fraud verification
+	ref?: string; // Paystack transaction reference
 }

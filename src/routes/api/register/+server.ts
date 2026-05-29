@@ -3,6 +3,9 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { create, new_id } from '$lib/db';
 import type { Registration } from '$lib/types/registration';
 
+// NGN 50,000 = 5,000,000 kobo
+const AMOUNT_KOBO = 5_000_000;
+
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const data = await request.json();
@@ -24,6 +27,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			l: data.location,
 			pl: data.players,
 			st: 'pending',
+			amt: AMOUNT_KOBO,
 			d: Date.now()
 		};
 

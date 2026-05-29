@@ -62,80 +62,44 @@
 		successMessage = '';
 
 		try {
+			// Step 1: Create registration in db
 			const registerResponse = await fetch('/api/registration', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					schoolName,
-					schoolEmail,
-					schoolPhone,
-					location
-				})
+				body: JSON.stringify({ schoolName, schoolEmail, schoolPhone, location })
 			});
 
 			if (!registerResponse.ok) {
-				throw new Error('Registration failed');
+				const err = await registerResponse.json().catch(() => ({}));
+				throw new Error(err.error || 'Registration failed');
 			}
 
-			const registerData = await registerResponse.json();
-			registrationId = registerData.registrationId;
+			const { registrationId: reg_id } = await registerResponse.json();
+			registrationId = reg_id;
 
+			// Step 2: Initialize Paystack transaction — server calls Paystack API
 			const paymentResponse = await fetch('/api/payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					registrationId,
-					email: schoolEmail,
-					amount: REGISTRATION_AMOUNT,
-					schoolName
-				})
+				body: JSON.stringify({ registrationId: reg_id, email: schoolEmail })
 			});
 
 			if (!paymentResponse.ok) {
-				throw new Error('Payment initialization failed');
+				const err = await paymentResponse.json().catch(() => ({}));
+				throw new Error(err.error || 'Payment initialization failed');
 			}
 
-			const paymentData = await paymentResponse.json();
+			const { authorization_url } = await paymentResponse.json();
 
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-
-			const verifyResponse = await fetch('/api/verify-payment', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					registrationId,
-					reference: paymentData.reference
-				})
-			});
-
-			if (!verifyResponse.ok) {
-				throw new Error('Payment verification failed');
-			}
-
-			await fetch('/api/send-email', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					to: schoolEmail,
-					schoolName,
-					registrationId,
-					amount: REGISTRATION_AMOUNT
-				})
-			});
-
-			showConfirmation = false;
-			successMessage = `Registration successful. Confirmation has been sent to ${schoolEmail}.`;
-
-			schoolName = '';
-			schoolEmail = '';
-			schoolPhone = '';
-			location = null;
+			// Step 3: Redirect browser to Paystack checkout page
+			// Paystack will redirect back to /payment/callback?reference=<reg_id>
+			window.location.href = authorization_url;
 		} catch (error) {
 			errorMessage = 'Payment processing error. Please try again.';
 			console.error('[registration]', error);
-		} finally {
 			isProcessing = false;
 		}
+		// Note: isProcessing stays true during redirect — intentional (page is leaving)
 	}
 
 	function closeConfirmation() {
