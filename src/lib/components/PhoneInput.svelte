@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { countries, type Country } from '$lib/data/countries';
+	import { phone_len } from '$lib/data/phone_lengths';
 
 	let {
 		value = '',
+		id,
 		onChange
 	}: {
 		value?: string;
+		id?: string;
 		onChange?: (v: string) => void;
 	} = $props();
 
@@ -18,6 +21,7 @@
 	let searchRef = $state<HTMLInputElement | null>(null);
 	let listRef = $state<HTMLUListElement | null>(null);
 	let activeIdx = $state(0);
+	let touched = $state(false);
 
 	$effect(() => {
 		if (value) {
@@ -42,6 +46,24 @@
 			: countries
 	);
 
+	let digitsOnly = $derived(phoneNumber.replace(/\D/g, ''));
+
+	let lenRange = $derived(phone_len[selectedCountry.c] ?? null);
+
+	let lenErr = $derived(
+		touched && digitsOnly.length > 0 && lenRange
+			? digitsOnly.length < lenRange[0] || digitsOnly.length > lenRange[1]
+			: false
+	);
+
+	let errMsg = $derived(
+		lenErr && lenRange
+			? lenRange[0] === lenRange[1]
+				? `Enter exactly ${lenRange[0]} digits`
+				: `Enter ${lenRange[0]}-${lenRange[1]} digits`
+			: ''
+	);
+
 	$effect(() => {
 		if (open) {
 			activeIdx = 0;
@@ -62,6 +84,7 @@
 
 	function handlePhoneInput(e: Event) {
 		phoneNumber = (e.target as HTMLInputElement).value;
+		touched = true;
 		emit();
 	}
 
@@ -89,15 +112,20 @@
 	function onBackdropClick() {
 		open = false;
 	}
+
+	function onPhoneBlur() {
+		touched = true;
+	}
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="phone-input-wrapper" onclick={(e) => e.stopPropagation()} onkeydown={handleKeydown}>
-	<div class="phone-field-row">
+	<div class="phone-field-row" class:invalid={lenErr}>
 		<div class="country-select">
 			<button
 				type="button"
 				class="country-trigger"
+				class:error={lenErr}
 				onclick={toggleOpen}
 				aria-expanded={open}
 				aria-haspopup="listbox"
@@ -153,13 +181,20 @@
 
 		<input
 			type="tel"
+			{id}
 			class="phone-input"
+			class:error={lenErr}
 			placeholder="Phone number"
 			value={phoneNumber}
 			oninput={handlePhoneInput}
+			onblur={onPhoneBlur}
 			aria-label="Phone number"
+			aria-invalid={lenErr}
 		/>
 	</div>
+	{#if errMsg}
+		<p class="field-error" role="alert">{errMsg}</p>
+	{/if}
 </div>
 
 <style>
@@ -200,6 +235,14 @@
 		border-color: var(--primary);
 		box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
 		z-index: 1;
+	}
+
+	.country-trigger.error {
+		border-color: var(--error);
+	}
+
+	.country-trigger.error:focus-visible {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
 	}
 
 	.country-flag {
@@ -344,7 +387,34 @@
 		z-index: 1;
 	}
 
+	.phone-input.error {
+		border-color: var(--error);
+	}
+
+	.phone-input.error:focus {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
+		border-color: var(--error);
+	}
+
+	.invalid .phone-input,
+	.invalid .country-trigger {
+		border-color: var(--error);
+	}
+
+	.invalid .phone-input:focus,
+	.invalid .country-trigger:focus-visible {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
+		border-color: var(--error);
+	}
+
 	.phone-input::placeholder {
 		color: var(--muted-soft);
+	}
+
+	.field-error {
+		margin: 6px 0 0;
+		color: var(--error);
+		font-size: 12px;
+		line-height: 1.4;
 	}
 </style>

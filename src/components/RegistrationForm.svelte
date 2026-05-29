@@ -145,6 +145,7 @@
 					<div class="field">
 						<label for="schoolPhone">Phone Number</label>
 						<PhoneInput
+							id="schoolPhone"
 							value={schoolPhone}
 							onChange={(v) => (schoolPhone = v)}
 						/>
