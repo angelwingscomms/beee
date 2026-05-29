@@ -11,6 +11,7 @@ __v0_jsx-dev-runtime.ts
 
 # SvelteKit generated types
 .svelte-kit/
+.wrangler/
 
 # Common ignores
 node_modules
