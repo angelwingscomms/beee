@@ -1,16 +1,22 @@
 <script lang="ts">
 	import { Chess } from 'svelte-chess';
-	import { LearnEngine, DIFFICULTY_PRESETS } from '$lib/util/chess/engine';
-	import type { Color } from '$lib/util/chess/engine';
+	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
+	import type { Color, Hint } from '$lib/util/chess/engine';
 
 	let level = $state(3);
 	let turn = $state<Color>('w');
 	let moveNum = $state(0);
+	let fen = $state('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
 	let inCheck = $state(false);
 	let gameOver = $state(false);
 	let resultMsg = $state('');
 	let ready = $state(false);
 	let chessRef = $state<Chess | null>(null);
+
+	let show_hints = $state(false);
+	let hints = $state<Hint[]>([]);
+	let hint_index = $state(0);
+	let hint_loading = $state(false);
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
@@ -21,6 +27,21 @@
 	}
 
 	let engine = $derived.by(() => buildEngine());
+
+	let hint_arrow = $derived.by(() => {
+		if (!show_hints || hints.length === 0) return [];
+		const h = hints[hint_index];
+		if (!h) return [];
+		return [{ orig: h.move.slice(0, 2), dest: h.move.slice(2, 4), brush: 'green' }];
+	});
+
+	let chess_config = $derived({ drawable: { autoShapes: hint_arrow } });
+
+	function fmtScore(s: number): string {
+		if (s >= 100000) return 'Mate';
+		if (s <= -100000) return '-Mate';
+		return (s / 100).toFixed(2);
+	}
 
 	function onReady() { ready = true; }
 
@@ -47,6 +68,7 @@
 		moveNum = 0;
 		turn = 'w';
 		inCheck = false;
+		hideHints();
 	}
 
 	function undoMove() {
@@ -63,6 +85,35 @@
 		gameOver = false;
 		resultMsg = '';
 	}
+
+	async function showHint() {
+		if (hint_loading) return;
+		if (gameOver) return;
+		hint_loading = true;
+		show_hints = true;
+		try {
+			hints = await getHints(fen, 5);
+			hint_index = 0;
+		} catch {
+			hints = [];
+		} finally {
+			hint_loading = false;
+		}
+	}
+
+	function nextHint() {
+		if (hint_index < hints.length - 1) hint_index++;
+	}
+
+	function prevHint() {
+		if (hint_index > 0) hint_index--;
+	}
+
+	function hideHints() {
+		show_hints = false;
+		hints = [];
+		hint_index = 0;
+	}
 </script>
 
 <main class="page-shell">
@@ -72,19 +123,21 @@
 			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 
 			<div class="w-full">
-				{#key level}
-					<Chess
-						bind:this={chessRef}
-						engine={engine as any}
-						bind:turn
-						bind:moveNumber={moveNum}
-						bind:inCheck
-						bind:isGameOver={gameOver}
-						on:ready={onReady}
-						on:move={onMove}
-						on:gameOver={onGameOver}
-					/>
-				{/key}
+			{#key level}
+				<Chess
+					bind:this={chessRef}
+					bind:fen
+					config={chess_config}
+					engine={engine as any}
+					bind:turn
+					bind:moveNumber={moveNum}
+					bind:inCheck
+					bind:isGameOver={gameOver}
+					on:ready={onReady}
+					on:move={onMove}
+					on:gameOver={onGameOver}
+				/>
+			{/key}
 			</div>
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
@@ -133,6 +186,31 @@
 					<button class="button-secondary" onclick={undoMove} disabled={!ready || moveNum === 0 || gameOver}>
 						Undo
 					</button>
+				</div>
+
+				<div class="flex gap-2">
+					{#if show_hints}
+						<button class="button-secondary" onclick={hideHints}>
+							Hide Hints
+						</button>
+						<button class="button-secondary-dark" onclick={prevHint} disabled={hint_index === 0}>
+							&lt; Prev
+						</button>
+						<button class="button-secondary-dark" onclick={nextHint} disabled={hint_index >= hints.length - 1}>
+							Next >
+						</button>
+						{#if hints.length > 0}
+							<span class="text-xs text-muted self-center ml-auto whitespace-nowrap">
+								Hint {hint_index + 1}/{hints.length}
+								· {fmtScore(hints[hint_index].score)}
+								· d{hints[hint_index].depth}
+							</span>
+						{/if}
+					{:else}
+						<button class="button-primary" onclick={showHint} disabled={!ready || gameOver || hint_loading}>
+							{hint_loading ? 'Thinking...' : 'Hint'}
+						</button>
+					{/if}
 				</div>
 			</div>
 		</div>

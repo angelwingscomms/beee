@@ -1,5 +1,48 @@
 export type Color = 'w' | 'b';
 
+export interface Hint {
+	move: string
+	score: number
+	depth: number
+}
+
+export function getHints(fen: string, count = 5, stockfishPath?: string): Promise<Hint[]> {
+	const sp = stockfishPath ?? '/stockfish.js';
+	let w: Worker | undefined;
+	try { w = new Worker(sp); } catch (e) { return Promise.reject(e); }
+	const ww = w!;
+	return new Promise((res, rej) => {
+		const hints: Hint[] = [];
+		const t = setTimeout(() => { ww.terminate(); rej(new Error('timeout')); }, 30000);
+		ww.addEventListener('message', ({ data }) => {
+			const u = data as string;
+			if (u === 'uciok') {
+				ww.postMessage('setoption name MultiPV value ' + count);
+				ww.postMessage('setoption name UCI_LimitStrength value false');
+				ww.postMessage('isready');
+			} else if (u === 'readyok') {
+				ww.postMessage('position fen ' + fen);
+				ww.postMessage('go depth 30');
+			} else if (u.startsWith('info') && u.includes('multipv')) {
+				const mpv = parseInt(u.match(/multipv\s+(\d+)/)?.[1] ?? '0');
+				const depth = parseInt(u.match(/depth\s+(\d+)/)?.[1] ?? '0');
+				const sc = u.match(/score\s+mate\s+([-\d]+)/);
+				const sc2 = u.match(/score\s+cp\s+([-\d]+)/);
+				let score = 0;
+				if (sc) score = parseInt(sc[1]) > 0 ? 100000 : -100000;
+				else if (sc2) score = parseInt(sc2[1]);
+				const move = u.match(/pv\s+(\S+)/)?.[1] ?? '';
+				if (move && mpv > 0 && mpv <= count) hints[mpv - 1] = { move, score, depth };
+			} else if (u.startsWith('bestmove')) {
+				clearTimeout(t);
+				ww.terminate();
+				res(hints.filter(Boolean));
+			}
+		});
+		ww.postMessage('uci');
+	});
+}
+
 export interface LearnEngineOpts {
 	elo?: number | null
 	depth?: number

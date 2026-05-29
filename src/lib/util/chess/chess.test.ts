@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { DIFFICULTY_PRESETS } from './engine';
+import { DIFFICULTY_PRESETS, getHints } from './engine';
+
+describe('getHints', () => {
+	it('should be a function', () => {
+		expect(typeof getHints).toBe('function');
+	});
+
+	it('should reject in node (no Worker)', async () => {
+		await expect(getHints('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 3)).rejects.toThrow();
+	});
+});
 
 describe('DIFFICULTY_PRESETS', () => {
 	it('should have 10 levels', () => {
