@@ -73,7 +73,7 @@
 					? `Enter exactly ${lenRange[0]} digits`
 					: `Enter ${lenRange[0]}-${lenRange[1]} digits`
 				: lenWarn
-					? 'Landline format. Most Nigerian numbers are 10 digits.'
+					? 'Landline format. Most Nigerian numbers are 10 digits'
 					: ''
 	);
 

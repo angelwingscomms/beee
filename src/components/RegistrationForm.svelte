@@ -92,7 +92,7 @@
 	<section class="container simple-home-grid">
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
-				<span class="logo-chip"><img src="/favicon.png" alt="" /></span>
+				<span class="logo-chip"><img src="/beee.png" alt="" /></span>
 				<span>BEEE T.E.A.M.U.P.</span>
 			</a>
 
