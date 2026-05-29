@@ -176,18 +176,17 @@ img {
 
 .logo-chip {
   display: grid;
-  width: 38px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   place-items: center;
-  overflow: hidden;
   border: 1px solid var(--hairline);
   border-radius: 8px;
   background: var(--canvas);
 }
 
 .logo-chip img {
-  width: 42px;
-  max-width: none;
+  width: 20px;
+  height: 20px;
 }
 
 .spike-mark {
@@ -715,7 +714,6 @@ img {
 
 .form-section {
   padding: 0 0 32px;
-  border-bottom: 1px solid var(--hairline);
   margin-bottom: 32px;
 }
 
