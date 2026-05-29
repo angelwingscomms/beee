@@ -28,14 +28,9 @@
 
 	let engine = $derived.by(() => buildEngine());
 
-	let hint_arrow = $derived.by(() => {
-		if (!show_hints || hints.length === 0) return [];
-		const h = hints[hint_index];
-		if (!h) return [];
-		return [{ orig: h.move.slice(0, 2), dest: h.move.slice(2, 4), brush: 'green' }];
-	});
-
-	let chess_config = $derived({ drawable: { autoShapes: hint_arrow } });
+	function fmtHintMove(m: string): string {
+		return m.slice(0, 2) + '\u2192' + m.slice(2, 4);
+	}
 
 	function fmtScore(s: number): string {
 		if (s >= 100000) return 'Mate';
@@ -127,7 +122,6 @@
 				<Chess
 					bind:this={chessRef}
 					bind:fen
-					config={chess_config}
 					engine={engine as any}
 					bind:turn
 					bind:moveNumber={moveNum}
@@ -200,7 +194,10 @@
 							Next >
 						</button>
 						{#if hints.length > 0}
-							<span class="text-xs text-muted self-center ml-auto whitespace-nowrap">
+							<span class="text-sm font-mono text-ink self-center ml-auto">
+								{fmtHintMove(hints[hint_index].move)}
+							</span>
+							<span class="text-xs text-muted self-center whitespace-nowrap">
 								Hint {hint_index + 1}/{hints.length}
 								· {fmtScore(hints[hint_index].score)}
 								· d{hints[hint_index].depth}
