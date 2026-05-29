@@ -1011,9 +1011,7 @@ img {
 
 .summary-item {
   display: grid;
-  grid-template-columns: 32px 1fr;
   gap: 12px;
-  align-items: center;
   border-radius: 12px;
   background: var(--surface-card);
   padding: 12px;
