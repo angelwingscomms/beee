@@ -5,8 +5,14 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	preprocess: vitePreprocess(),
 	compilerOptions: {
-		// Enable runes mode
 		runes: true
+	},
+	vitePlugin: {
+		dynamicCompileOptions({ filename }) {
+			if (filename.includes('node_modules')) {
+				return { runes: false };
+			}
+		}
 	},
 	kit: {
 		adapter: adapter(),
