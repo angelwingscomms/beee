@@ -35,7 +35,15 @@
                                 <td>{reg.p}</td>
                                 <td>{reg.pl.length}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
-                                <td><span class="badge-pill" class:verified={reg.v === 1}>{reg.v === 1 ? 'Yes' : 'No'}</span></td>
+                                <td>
+                                    {#if reg.v === 1}
+                                        <span class="badge-pill verified">Yes</span>
+                                    {:else if reg.v === 2}
+                                        <span class="badge-pill failed">Failed</span>
+                                    {:else}
+                                        <span class="badge-pill">No</span>
+                                    {/if}
+                                </td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
                             </tr>
@@ -103,6 +111,11 @@
 
     .badge-pill.verified {
         background: var(--info) !important;
+        color: var(--on-primary) !important;
+    }
+
+    .badge-pill.failed {
+        background: var(--danger) !important;
         color: var(--on-primary) !important;
     }
 </style>

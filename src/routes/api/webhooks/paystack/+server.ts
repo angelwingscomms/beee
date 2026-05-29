@@ -6,7 +6,7 @@ import { create, get } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
-async function search_maps(q: string): Promise<boolean> {
+async function search_maps(q: string): Promise<0 | 1 | 2> {
 	try {
 		const p = new URLSearchParams({
 			engine: 'google_maps',
@@ -20,11 +20,11 @@ async function search_maps(q: string): Promise<boolean> {
 		if (dev) console.log('[webhook] SerpAPI result:', JSON.stringify(data, null, 2));
 		const pr = data.place_results;
 		if (pr && Array.isArray(pr.type)) {
-			return pr.type.some(t => typeof t === 'string' && t.toLowerCase().includes('school'));
+			return pr.type.some(t => typeof t === 'string' && t.toLowerCase().includes('school')) ? 1 : 0;
 		}
-		return false;
+		return 0;
 	} catch {
-		return false;
+		return 2;
 	}
 }
 
@@ -99,9 +99,8 @@ export const POST: RequestHandler = async ({ request }) => {
 
 				// Look up school on Google Maps via Serper to verify it's a school
 				const school_name = reg_data.n as string;
-				const is_school = await search_maps(school_name);
-				const v: 0 | 1 = is_school ? 1 : 0;
-				console.log(`[webhook] Maps lookup for "${school_name}": is_school=${is_school}, v=${v}`);
+				const v = await search_maps(school_name);
+				console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
 
 				// Write full registration to DB
 				const payload: Registration = {

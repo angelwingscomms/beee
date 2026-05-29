@@ -6,7 +6,7 @@ export interface Registration {
 	p: string; // school phone
 	pl: Array<{ name: string; email: string; chessRating: string }>; // players
 	st: 'pending' | 'paid'; // payment status
-	v: 0 | 1; // verified (1 = school confirmed via maps, 0 = not confirmed)
+	v: 0 | 1 | 2; // verified (1=school, 0=not school, 2=lookup failed)
 	d: number; // created timestamp (ms)
 	amt: number; // amount in kobo — stored for anti-fraud verification
 	ref?: string; // Paystack transaction reference

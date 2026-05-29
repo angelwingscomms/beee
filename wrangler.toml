@@ -1,6 +1,7 @@
+name = "beee"
+
 [[send_email]]
 name = "SEND_EMAIL"
-name = "beee"
 main = "build/index.js"
 compatibility_date = "2024-09-22"
 
@@ -9,6 +10,3 @@ command = "npm run build"
 
 [[env.production]]
 cpu_mode = "unbounded"
-
-[[send_email]]
-name = "SEND_EMAIL"
