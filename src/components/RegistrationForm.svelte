@@ -1,10 +1,8 @@
 <script lang="ts">
 	import ConfirmationModal from './ConfirmationModal.svelte';
-	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import PlayerForm from './PlayerForm.svelte';
 
 	let schoolName = $state('');
-	let schoolPhone = $state('+234');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let errorMessage = $state('');
@@ -15,6 +13,7 @@
 
 	let playerName = $state('');
 	let playerEmail = $state('');
+	let playerPhone = $state('+234');
 
 	function formatCurrency(amount: number): string {
 		return `₦${amount.toLocaleString()}`;
@@ -28,16 +27,16 @@
 			errorMessage = 'School name is required';
 			return false;
 		}
-		if (!schoolPhone.trim()) {
-			errorMessage = 'Phone number is required';
-			return false;
-		}
 		if (!playerName.trim()) {
 			errorMessage = 'Player name is required';
 			return false;
 		}
 		if (!playerEmail.trim()) {
 			errorMessage = 'Player email is required';
+			return false;
+		}
+		if (!playerPhone.trim()) {
+			errorMessage = 'Player phone is required';
 			return false;
 		}
 
@@ -63,9 +62,9 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					schoolName,
-					schoolPhone,
 					playerName,
-					playerEmail
+					playerEmail,
+					playerPhone
 				})
 			});
 
@@ -131,25 +130,17 @@
 						required
 					/>
 				</div>
-
-				<div class="field">
-					<label for="schoolPhone">Phone Number</label>
-					<PhoneInput
-						id="schoolPhone"
-						value={schoolPhone}
-						onChange={(v) => (schoolPhone = v)}
-					/>
-				</div>
 			</section>
 
 			<section class="form-section" aria-labelledby="player-section-title">
 				<h2 id="player-section-title" class="section-label">Participant</h2>
 				<PlayerForm
 					index={0}
-					player={{ name: playerName, email: playerEmail }}
+					player={{ name: playerName, email: playerEmail, phone: playerPhone }}
 					onChange={(field, value) => {
 						if (field === 'name') playerName = value;
 						if (field === 'email') playerEmail = value;
+						if (field === 'phone') playerPhone = value;
 					}}
 				/>
 			</section>
@@ -182,6 +173,7 @@
 		amount={REGISTRATION_AMOUNT}
 		playerName={playerName}
 		playerEmail={playerEmail}
+		playerPhone={playerPhone}
 		onConfirm={confirmPayment}
 		onCancel={closeConfirmation}
 		isProcessing={isProcessing}

@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{reg.n}</td>
                                 <td>{reg.pl[0]?.name || ''}<br><span class="text-muted">{reg.pl[0]?.email || ''}</span></td>
-                                <td>{reg.p}</td>
+                                <td>{reg.pl[0]?.phone || ''}</td>
                                 <td>{reg.pl.length}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
                                 <td>

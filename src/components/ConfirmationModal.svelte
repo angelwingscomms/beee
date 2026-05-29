@@ -4,6 +4,7 @@
 		amount,
 		playerName,
 		playerEmail,
+		playerPhone,
 		onConfirm,
 		onCancel,
 		isProcessing = false
@@ -12,6 +13,7 @@
 		amount: number;
 		playerName: string;
 		playerEmail: string;
+		playerPhone: string;
 		onConfirm: () => void;
 		onCancel: () => void;
 		isProcessing?: boolean;
@@ -46,10 +48,10 @@
 				<h3 id="player-summary-title">Player</h3>
 				<div class="summary-list">
 					<div class="summary-item">
-						<div class="player-number">1</div>
 						<div>
 							<strong>{playerName}</strong>
 							<span>{playerEmail}</span>
+							<span>{playerPhone}</span>
 						</div>
 					</div>
 				</div>
