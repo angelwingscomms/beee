@@ -22,14 +22,14 @@
 
 <article class="player-card">
 	<div class="field-grid">
-		<div class="field">
-			<label for="player_{index}_name">Name</label>
+		<div class="field field-full">
+			<label for="player_{index}_name">Full Name</label>
 			<input
 				type="text"
 				id="player_{index}_name"
 				value={player.name}
 				oninput={(event) => onChange('name', event.currentTarget.value)}
-				placeholder="Enter player name"
+				placeholder="Enter full name"
 				class="text-input"
 			/>
 			{#if errors[`player_${index}_name`]}
@@ -37,7 +37,7 @@
 			{/if}
 		</div>
 
-		<div class="field">
+		<div class="field field-full">
 			<label for="player_{index}_email">Email</label>
 			<input
 				type="email"
@@ -52,7 +52,7 @@
 			{/if}
 		</div>
 
-		<div class="field">
+		<div class="field field-full">
 			<label for="player_{index}_phone">Phone Number</label>
 			<PhoneInput
 				id="player_{index}_phone"

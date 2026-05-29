@@ -745,6 +745,10 @@ img {
   gap: 8px;
 }
 
+.field-full {
+  grid-column: 1 / -1;
+}
+
 .field label,
 .field-label {
   color: var(--body-strong);
