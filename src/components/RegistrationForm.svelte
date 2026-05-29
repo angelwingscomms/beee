@@ -93,7 +93,6 @@
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
 				<span class="logo-chip"><img src="/beee.png" alt="" /></span>
-				<span>BEEE T.E.A.M.U.P.</span>
 			</a>
 
 			<h1 id="event-title" class="display-xl">BEEE T.E.A.M.U.P. Chess Championship Abuja 2026</h1>

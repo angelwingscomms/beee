@@ -176,17 +176,16 @@ img {
 
 .logo-chip {
   display: grid;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   place-items: center;
-  border: 1px solid var(--hairline);
   border-radius: 24px;
   background: var(--canvas);
 }
 
 .logo-chip img {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
 }
 
 .spike-mark {
@@ -1115,6 +1114,10 @@ img {
 }
 
 @media (max-width: 767px) {
+  .event-intro {
+    text-align: center;
+  }
+
   .container {
     width: min(100% - 32px, 1200px);
   }
