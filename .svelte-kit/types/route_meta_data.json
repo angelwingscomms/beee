@@ -1,0 +1,32 @@
+{
+	"/": [
+		"src/routes/+page.js"
+	],
+	"/api/email/confirm": [
+		"src/routes/api/email/confirm/+server.ts"
+	],
+	"/api/payment": [
+		"src/routes/api/payment/+server.ts"
+	],
+	"/api/payment/initialize": [
+		"src/routes/api/payment/initialize/+server.ts"
+	],
+	"/api/register": [
+		"src/routes/api/register/+server.ts"
+	],
+	"/api/registration": [
+		"src/routes/api/registration/+server.ts"
+	],
+	"/api/send-email": [
+		"src/routes/api/send-email/+server.ts"
+	],
+	"/api/verify-payment": [
+		"src/routes/api/verify-payment/+server.ts"
+	],
+	"/api/webhooks/paystack": [
+		"src/routes/api/webhooks/paystack/+server.ts"
+	],
+	"/payment/callback": [
+		"src/routes/payment/callback/+page.ts"
+	]
+}
