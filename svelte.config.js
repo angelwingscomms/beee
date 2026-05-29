@@ -9,7 +9,7 @@ const config = {
 	},
 	vitePlugin: {
 		dynamicCompileOptions({ filename }) {
-			if (filename.includes('node_modules')) {
+			if (filename.includes('/svelte-chess')) {
 				return { runes: false };
 			}
 		}
