@@ -22,7 +22,7 @@ export function getHints(fen: string, count = 5, stockfishPath?: string): Promis
 				ww.postMessage('isready');
 			} else if (u === 'readyok') {
 				ww.postMessage('position fen ' + fen);
-				ww.postMessage('go depth 30');
+				ww.postMessage('go movetime 8000');
 			} else if (u.startsWith('info') && u.includes('multipv')) {
 				const mpv = parseInt(u.match(/multipv\s+(\d+)/)?.[1] ?? '0');
 				const depth = parseInt(u.match(/depth\s+(\d+)/)?.[1] ?? '0');

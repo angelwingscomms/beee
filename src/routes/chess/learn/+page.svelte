@@ -89,7 +89,8 @@
 		try {
 			hints = await getHints(fen, 5);
 			hint_index = 0;
-		} catch {
+		} catch (e) {
+			console.error('getHints failed:', e);
 			hints = [];
 		} finally {
 			hint_loading = false;
@@ -187,13 +188,15 @@
 						<button class="button-secondary" onclick={hideHints}>
 							Hide Hints
 						</button>
-						<button class="button-secondary-dark" onclick={prevHint} disabled={hint_index === 0}>
+						<button class="button-secondary-dark" onclick={prevHint} disabled={hint_index === 0 || hint_loading}>
 							&lt; Prev
 						</button>
-						<button class="button-secondary-dark" onclick={nextHint} disabled={hint_index >= hints.length - 1}>
+						<button class="button-secondary-dark" onclick={nextHint} disabled={hint_loading || hint_index >= hints.length - 1}>
 							Next >
 						</button>
-						{#if hints.length > 0}
+						{#if hint_loading}
+							<span class="text-xs text-amber animate-pulse self-center ml-auto">Analyzing...</span>
+						{:else if hints.length > 0}
 							<span class="text-sm font-mono text-ink self-center ml-auto">
 								{fmtHintMove(hints[hint_index].move)}
 							</span>
