@@ -16,7 +16,7 @@
 
 # General
 
-- always search net before doing anything
+- always search net before doing anything, especially when there's an error in question
 - always code with extreme simplicity; be minimalist
 - always search the net when it might help
 - always follow the patterns in the example files perfectly
@@ -39,7 +39,7 @@
 
 - before every code change turn: `git add .; git commit -m"before AI agent {short_update_name} update. agent: {your name}"; git push`
   - short update name ≤3 words; don't worry if push fails, the commit is what matters
-- after every edit turn: `git add .` and make a long commit exhaustively explaining every change in detail, then push
+- after every edit turn: `git add .` and make a long commit exhaustively explaining every change in detail, then run `git push`
 
 # Svelte MCP
 
