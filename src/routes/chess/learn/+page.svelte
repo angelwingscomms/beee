@@ -18,6 +18,10 @@
 	let hint_index = $state(0);
 	let hint_loading = $state(false);
 
+	let analysis_text = $state('');
+	let analysis_loading = $state(false);
+	let analysis_abort = $state<AbortController | null>(null);
+
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
 
@@ -109,6 +113,55 @@
 		show_hints = false;
 		hints = [];
 		hint_index = 0;
+		dismissAnalysis();
+	}
+
+	async function explainHint() {
+		if (analysis_loading) return;
+		if (!hints[hint_index]) return;
+		analysis_loading = true;
+		analysis_text = '';
+		const ac = new AbortController();
+		analysis_abort = ac;
+		try {
+			const h = hints[hint_index];
+			const res = await fetch('/chess/learn/explain', {
+				method: 'POST',
+				body: JSON.stringify({ fen, move: h.move, score: h.score, depth: h.depth }),
+				signal: ac.signal,
+			});
+			if (!res.ok || !res.body) throw Error('Request failed');
+			const reader = res.body.getReader();
+			const dec = new TextDecoder();
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) break;
+				analysis_text += dec.decode(value, { stream: true });
+			}
+		} catch (e) {
+			if (e instanceof DOMException && e.name === 'AbortError') return;
+			analysis_text += '\n[Failed to load analysis]';
+		} finally {
+			analysis_loading = false;
+			analysis_abort = null;
+		}
+	}
+
+	function stopAnalysis() {
+		if (analysis_abort) {
+			analysis_abort.abort();
+			analysis_abort = null;
+			analysis_loading = false;
+		}
+	}
+
+	function dismissAnalysis() {
+		analysis_text = '';
+		analysis_loading = false;
+		if (analysis_abort) {
+			analysis_abort.abort();
+			analysis_abort = null;
+		}
 	}
 </script>
 
@@ -205,6 +258,9 @@
 								· {fmtScore(hints[hint_index].score)}
 								· d{hints[hint_index].depth}
 							</span>
+							<button class="button-secondary-dark" onclick={explainHint} disabled={analysis_loading}>
+								{analysis_loading ? 'Thinking...' : 'Explain Hint'}
+							</button>
 						{/if}
 					{:else}
 						<button class="button-primary" onclick={showHint} disabled={!ready || gameOver || hint_loading}>
@@ -212,6 +268,23 @@
 						</button>
 					{/if}
 				</div>
+
+				{#if analysis_loading || analysis_text}
+					<div class="w-full rounded-xl bg-surface-card border border-hairline p-4 space-y-2">
+						<div class="flex items-center justify-between">
+							<span class="text-sm font-medium text-ink">Analysis</span>
+							{#if analysis_loading}
+								<button class="text-xs text-error" onclick={stopAnalysis}>Stop</button>
+							{:else}
+								<button class="text-xs text-muted" onclick={dismissAnalysis}>Dismiss</button>
+							{/if}
+						</div>
+						<div class="text-sm text-muted whitespace-pre-wrap max-h-60 overflow-y-auto">
+							{analysis_text}
+							{#if analysis_loading}<span class="animate-pulse">▊</span>{/if}
+						</div>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
