@@ -6,21 +6,20 @@ import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 function build_prompt(fen: string, move: string, score: number, depth: number): string {
 	const score_str = score > 90000 ? 'Mate' : score < -90000 ? '-Mate' : (score / 100).toFixed(2);
 	return [
-		'You are a friendly chess coach explaining to a kid (age 9-12) who is learning chess.',
-		'Be encouraging and use simple words everyone can understand.',
+		'You are a chess coach analyzing a position for a student. Make your explanation easy to understand while still covering real chess concepts — openings, tactics, strategy, pawn structures, piece play, and endgame ideas when relevant.',
 		'',
 		`Position (FEN): ${fen}`,
 		`Stockfish recommends: ${move}`,
-		`Computer evaluation: ${score_str}`,
-		`How deep the computer looked: ${depth} moves ahead`,
+		`Evaluation: ${score_str}`,
+		`Depth searched: ${depth}`,
 		'',
-		'Write 3-4 short paragraphs (2-3 sentences each). Use **bold** for key ideas.',
-		'1. What does this move do? Why is it a good choice?',
-		'2. What is the big idea behind the move? (like attacking, defending, or bringing pieces out)',
-		'3. What are the good things about this move? Any risks?',
-		'4. What should happen next? What is the plan after this move?',
+		'Write 3-4 paragraphs. Use **bold** for key ideas. Cover:',
+		'1. **What the move does** — the concrete point: does it attack, defend, develop, gain space, threaten something, or improve piece position?',
+		'2. **The strategic or tactical idea** — name the pattern when relevant (fork, pin, discovered attack, prophylaxis, outpost, pawn break, etc.). Connect it to broader principles like center control, king safety, piece activity, development, or pawn structure.',
+		'3. **Pros and risks** — what the move achieves and what the opponent might counter with.',
+		'4. **Follow-up plan** — what comes next, what the player should be thinking about.',
 		'',
-		'Use simple language like talking to a friend who is learning. No long chess jargon. Be positive and fun!',
+		'Keep it clear and instructive. Explain jargon briefly when you use it. Focus on teaching the student to think about positions, not just memorize moves.',
 	].join('\n');
 }
 
