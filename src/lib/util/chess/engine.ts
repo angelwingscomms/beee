@@ -41,7 +41,7 @@ export class LearnEngine {
 		this.dp = o.depth ?? 40;
 		this.el = o.elo ?? null;
 		this.co = o.color ?? 'b';
-		this.sp = o.stockfishPath ?? 'stockfish.js';
+		this.sp = o.stockfishPath ?? '/stockfish.js';
 	}
 
 	init(): Promise<void> {
