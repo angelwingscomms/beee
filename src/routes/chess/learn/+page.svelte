@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { Chess } from 'svelte-chess';
 	import { LearnEngine, DIFFICULTY_PRESETS } from '$lib/util/chess/engine';
-	import type { Move } from 'svelte-chess';
+	import type { Color } from '$lib/util/chess/engine';
 
 	let level = $state(3);
-	let turn = $state('w');
+	let turn = $state<Color>('w');
 	let moveNum = $state(0);
 	let inCheck = $state(false);
 	let gameOver = $state(false);
 	let resultMsg = $state('');
 	let ready = $state(false);
-
-	let chessRef: Chess;
+	let chessRef = $state<Chess | null>(null);
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
@@ -21,15 +20,15 @@
 		return new LearnEngine({ elo: p.elo, depth: p.depth, moveTime: p.moveTime, color: 'b' });
 	}
 
-	let engine = $derived(buildEngine());
+	let engine = $derived.by(() => buildEngine());
 
 	function onReady() { ready = true; }
 
-	function onMove(e: CustomEvent<Move>) {
+	function onMove(e: CustomEvent<{ color: Color }>) {
 		const m = e.detail;
 		turn = m.color === 'w' ? 'b' : 'w';
 		moveNum++;
-		inCheck = m.check;
+		inCheck = (e.detail as any).check ?? false;
 	}
 
 	function onGameOver(e: CustomEvent<{ reason: string; result: number }>) {
@@ -41,7 +40,8 @@
 	}
 
 	function resetGame() {
-		chessRef?.reset();
+		if (!chessRef) return;
+		chessRef.reset();
 		resultMsg = '';
 		gameOver = false;
 		moveNum = 0;
@@ -50,12 +50,13 @@
 	}
 
 	function undoMove() {
+		if (!chessRef) return;
 		if (moveNum >= 2) {
-			chessRef?.undo();
-			chessRef?.undo();
+			chessRef.undo();
+			chessRef.undo();
 			moveNum = Math.max(0, moveNum - 2);
 		} else if (moveNum === 1) {
-			chessRef?.undo();
+			chessRef.undo();
 			moveNum = 0;
 			turn = 'w';
 		}
@@ -74,7 +75,7 @@
 				{#key level}
 					<Chess
 						bind:this={chessRef}
-						{engine}
+						engine={engine as any}
 						bind:turn
 						bind:moveNumber={moveNum}
 						bind:inCheck

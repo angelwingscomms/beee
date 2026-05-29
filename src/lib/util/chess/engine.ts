@@ -1,4 +1,4 @@
-import type { Color } from 'svelte-chess';
+export type Color = 'w' | 'b';
 
 export interface LearnEngineOpts {
 	elo?: number | null
@@ -7,8 +7,6 @@ export interface LearnEngineOpts {
 	color?: Color | 'both' | 'none'
 	stockfishPath?: string
 }
-
-export type { Color };
 
 const S = { Un: 'uninitialised', In: 'initialising', Wa: 'waiting', Se: 'searching' } as const;
 type St = (typeof S)[keyof typeof S];
