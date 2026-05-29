@@ -86,9 +86,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		const payload: Registration = {
 			s: 'reg',
 			n: reg_data.n as string,
-			e: reg_data.e as string,
 			p: reg_data.p as string,
-			pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
+			pl: (reg_data.pl || []) as Array<{ name: string; email: string }>,
 			st: 'paid',
 			v,
 			amt: expected_amt,

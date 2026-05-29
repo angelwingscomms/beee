@@ -2,7 +2,6 @@
 	interface Player {
 		name: string;
 		email: string;
-		chessRating: string;
 	}
 
 	let {
@@ -16,8 +15,6 @@
 		errors?: Record<string, string>;
 		onChange: (field: string, value: string) => void;
 	} = $props();
-
-	const ratingLevels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
 </script>
 
 <article class="player-card">
@@ -54,24 +51,6 @@
 			/>
 			{#if errors[`player_${index}_email`]}
 				<p class="error-message">{errors[`player_${index}_email`]}</p>
-			{/if}
-		</div>
-
-		<div class="field">
-			<label for="player_{index}_rating">Chess rating level</label>
-			<select
-				id="player_{index}_rating"
-				value={player.chessRating}
-				onchange={(event) => onChange('chessRating', event.currentTarget.value)}
-				class="text-input"
-			>
-				<option value="">Select a rating level</option>
-				{#each ratingLevels as level}
-					<option value={level}>{level}</option>
-				{/each}
-			</select>
-			{#if errors[`player_${index}_chessRating`]}
-				<p class="error-message">{errors[`player_${index}_chessRating`]}</p>
 			{/if}
 		</div>
 	</div>

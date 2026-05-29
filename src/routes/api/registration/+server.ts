@@ -3,8 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { create, new_id } from '$lib/db';
 import type { Registration } from '$lib/types/registration';
 
-// NGN 50,000 = 5,000,000 kobo
-const AMOUNT_KOBO = 5_000_000;
+const AMOUNT_KOBO = 1_250_000;
 
 export const POST: RequestHandler = async ({ request }) => {
 	console.log(`[POST /api/registration] Received registration request`);
@@ -12,11 +11,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		const data = await request.json();
 		console.log(`[POST /api/registration] Request body:`, JSON.stringify(data));
 
-		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone) {
+		if (!data.schoolName || !data.schoolPhone || !data.playerName || !data.playerEmail) {
 			console.warn(`[POST /api/registration] Missing required fields`, {
 				schoolName: data.schoolName,
-				schoolEmail: data.schoolEmail,
-				schoolPhone: data.schoolPhone
+				schoolPhone: data.schoolPhone,
+				playerName: data.playerName,
+				playerEmail: data.playerEmail
 			});
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
@@ -25,9 +25,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		const payload: Registration = {
 			s: 'reg',
 			n: data.schoolName,
-			e: data.schoolEmail,
 			p: data.schoolPhone,
-			pl: data.players || [],
+			pl: [{ name: data.playerName, email: data.playerEmail }],
 			st: 'pending',
 			v: 0,
 			amt: AMOUNT_KOBO,

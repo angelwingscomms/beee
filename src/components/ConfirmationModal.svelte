@@ -1,23 +1,17 @@
 <script lang="ts">
-	interface Player {
-		name: string;
-		email: string;
-		chessRating: string;
-	}
-
 	let {
 		schoolName,
 		amount,
-		email,
-		players = [],
+		playerName,
+		playerEmail,
 		onConfirm,
 		onCancel,
 		isProcessing = false
 	}: {
 		schoolName: string;
 		amount: number;
-		email: string;
-		players?: Player[];
+		playerName: string;
+		playerEmail: string;
 		onConfirm: () => void;
 		onCancel: () => void;
 		isProcessing?: boolean;
@@ -43,24 +37,21 @@
 						<div class="player-number">s</div>
 						<div>
 							<strong>{schoolName}</strong>
-							<span>{email}</span>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="modal-section" aria-labelledby="players-summary-title">
-				<h3 id="players-summary-title">Players</h3>
+			<section class="modal-section" aria-labelledby="player-summary-title">
+				<h3 id="player-summary-title">Player</h3>
 				<div class="summary-list">
-					{#each players as p, i}
-						<div class="summary-item">
-							<div class="player-number">{i + 1}</div>
-							<div>
-								<strong>{p.name || `Player ${i + 1}`}</strong>
-								<span>{p.email}</span>
-							</div>
+					<div class="summary-item">
+						<div class="player-number">1</div>
+						<div>
+							<strong>{playerName}</strong>
+							<span>{playerEmail}</span>
 						</div>
-					{/each}
+					</div>
 				</div>
 			</section>
 

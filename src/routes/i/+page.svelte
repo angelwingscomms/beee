@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>School</th>
-                            <th>Email</th>
+                            <th>Player</th>
                             <th>Phone</th>
                             <th>Players</th>
                             <th>Status</th>
@@ -31,7 +31,7 @@
                         {#each form.registrations as reg}
                             <tr>
                                 <td>{reg.n}</td>
-                                <td>{reg.e}</td>
+                                <td>{reg.pl[0]?.name || ''}<br><span class="text-muted">{reg.pl[0]?.email || ''}</span></td>
                                 <td>{reg.p}</td>
                                 <td>{reg.pl.length}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>

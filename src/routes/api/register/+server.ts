@@ -3,28 +3,22 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { create, new_id } from '$lib/db';
 import type { Registration } from '$lib/types/registration';
 
-// NGN 50,000 = 5,000,000 kobo
-const AMOUNT_KOBO = 5_000_000;
+const AMOUNT_KOBO = 1_250_000;
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const data = await request.json();
 
-		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.players) {
+		if (!data.schoolName || !data.schoolPhone || !data.playerName || !data.playerEmail) {
 			return json({ message: 'Missing required fields' }, { status: 400 });
-		}
-
-		if (data.players.length !== 4) {
-			return json({ message: 'Exactly 4 players are required' }, { status: 400 });
 		}
 
 		const i = new_id();
 		const payload: Registration = {
 			s: 'reg',
 			n: data.schoolName,
-			e: data.schoolEmail,
 			p: data.schoolPhone,
-			pl: data.players,
+			pl: [{ name: data.playerName, email: data.playerEmail }],
 			st: 'pending',
 			v: 0,
 			amt: AMOUNT_KOBO,

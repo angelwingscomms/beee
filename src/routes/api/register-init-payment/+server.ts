@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { new_id } from '$lib/db';
 import { paystack_init } from '$lib/paystack';
 
-const AMOUNT_KOBO = 5_000_000;
+const AMOUNT_KOBO = 1_250_000;
 
 export const POST: RequestHandler = async ({ request, url }) => {
 	console.log(`[POST /api/register-init-payment] Received request`);
@@ -11,7 +11,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const data = await request.json();
 		console.log(`[POST /api/register-init-payment] Request body:`, JSON.stringify(data));
 
-		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone) {
+		if (!data.schoolName || !data.schoolPhone || !data.playerName || !data.playerEmail) {
 			console.warn(`[POST /api/register-init-payment] Missing required fields`);
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
@@ -21,9 +21,8 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const reg_data = {
 			s: 'reg',
 			n: data.schoolName,
-			e: data.schoolEmail,
 			p: data.schoolPhone,
-			pl: data.players || [],
+			pl: [{ name: data.playerName, email: data.playerEmail }],
 			amt: AMOUNT_KOBO
 		};
 
@@ -31,7 +30,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const callback_url = `${url.origin}/payment/callback`;
 
 		const result = await paystack_init(
-			data.schoolEmail,
+			data.playerEmail,
 			AMOUNT_KOBO,
 			i,
 			data.schoolName,
