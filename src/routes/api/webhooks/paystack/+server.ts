@@ -1,23 +1,24 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { SERPER_API_KEY } from '$env/static/private';
+import { SERPAPI_KEY } from '$env/static/private';
 import { create, get } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
 async function search_maps(q: string): Promise<boolean> {
 	try {
-		const res = await fetch('https://google.serper.dev/places', {
-			method: 'POST',
-			headers: {
-				'X-API-KEY': SERPER_API_KEY,
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ q, gl: 'ng', hl: 'en' })
+		const p = new URLSearchParams({
+			engine: 'google_maps',
+			q,
+			ll: '@9.076,7.398,15z',
+			hl: 'en',
+			gl: 'ng'
 		});
+		const res = await fetch(`https://serpapi.com/search.json?${p}&api_key=${SERPAPI_KEY}`);
 		const data = await res.json();
-		if (data.places?.length > 0) {
-			for (const place of data.places) {
+		const places = data.local_results?.places || [];
+		if (places.length > 0) {
+			for (const place of places) {
 				const types = [place.type, place.category, ...(place.types || [])].filter(Boolean);
 				if (types.some(t => typeof t === 'string' && t.toLowerCase().includes('school'))) {
 					return true;
@@ -26,7 +27,7 @@ async function search_maps(q: string): Promise<boolean> {
 		}
 		return false;
 	} catch (e) {
-		console.error('[webhook] Serper API error:', e);
+		console.error('[webhook] SerpAPI error:', e);
 		return false;
 	}
 }
