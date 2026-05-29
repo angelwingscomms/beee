@@ -11,6 +11,9 @@
 	"/api/payment/initialize": [
 		"src/routes/api/payment/initialize/+server.ts"
 	],
+	"/api/register-init-payment": [
+		"src/routes/api/register-init-payment/+server.ts"
+	],
 	"/api/register": [
 		"src/routes/api/register/+server.ts"
 	],

@@ -62,37 +62,29 @@
 		successMessage = '';
 
 		try {
-			// Step 1: Create registration in db
-			const registerResponse = await fetch('/api/registration', {
+			// Step 1: Initialize Paystack with registration data (NO DB write yet)
+			const initResponse = await fetch('/api/register-init-payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ schoolName, schoolEmail, schoolPhone, location })
+				body: JSON.stringify({
+					schoolName,
+					schoolEmail,
+					schoolPhone,
+					location
+				})
 			});
 
-			if (!registerResponse.ok) {
-				const err = await registerResponse.json().catch(() => ({}));
-				throw new Error(err.error || 'Registration failed');
-			}
-
-			const { registrationId: reg_id } = await registerResponse.json();
-			registrationId = reg_id;
-
-			// Step 2: Initialize Paystack transaction — server calls Paystack API
-			const paymentResponse = await fetch('/api/payment', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ registrationId: reg_id, email: schoolEmail })
-			});
-
-			if (!paymentResponse.ok) {
-				const err = await paymentResponse.json().catch(() => ({}));
+			if (!initResponse.ok) {
+				const err = await initResponse.json().catch(() => ({}));
 				throw new Error(err.error || 'Payment initialization failed');
 			}
 
-			const { authorization_url } = await paymentResponse.json();
+			const { authorization_url, registrationId: reg_id } = await initResponse.json();
+			registrationId = reg_id;
 
-			// Step 3: Redirect browser to Paystack checkout page
+			// Step 2: Redirect browser to Paystack checkout page
 			// Paystack will redirect back to /payment/callback?reference=<reg_id>
+			// Registration is saved to DB only after successful payment confirmation
 			window.location.href = authorization_url;
 		} catch (error) {
 			const msg = error instanceof Error ? error.message : 'Unknown error';
@@ -101,7 +93,6 @@
 			console.error('[registration] message:', msg);
 			isProcessing = false;
 		}
-		// Note: isProcessing stays true during redirect — intentional (page is leaving)
 	}
 
 	function closeConfirmation() {

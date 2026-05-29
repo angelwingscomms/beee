@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { get, set } from '$lib/db';
+import { create, get } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
@@ -18,19 +18,16 @@ import type { Registration } from '$lib/types/registration';
  */
 export const POST: RequestHandler = async ({ request }) => {
 	console.log(`[POST /api/webhooks/paystack] Webhook event received`);
-	// Read RAW body — must not parse before verifying signature
 	const raw = await request.text();
 	const signature = request.headers.get('x-paystack-signature') ?? '';
 	console.log(`[POST /api/webhooks/paystack] Signature header: ${signature}`);
 
-	// Reject immediately if signature is missing or invalid
 	if (!signature || !verify_webhook_sig(raw, signature)) {
 		console.warn('[POST /api/webhooks/paystack] Paystack webhook: invalid or missing signature');
 		return new Response('Unauthorized', { status: 401 });
 	}
 	console.log(`[POST /api/webhooks/paystack] Signature verified successfully`);
 
-	// Parse after verification
 	let event: { event: string; data: Record<string, unknown> };
 	try {
 		event = JSON.parse(raw);
@@ -40,24 +37,15 @@ export const POST: RequestHandler = async ({ request }) => {
 		return new Response('Bad Request', { status: 400 });
 	}
 
-	// Respond 200 immediately so Paystack doesn't retry
-	// Process asynchronously (fire-and-forget after returning)
 	const process = async () => {
 		console.log(`[POST /api/webhooks/paystack] [async process] Starting process for event: ${event.event}`);
 		try {
 			if (event.event === 'charge.success') {
 				const ref = event.data.reference as string;
 
-				// The reference IS the registrationId (set during init)
-				const reg = await get<Registration>(ref);
-				console.log(`[POST /api/webhooks/paystack] [async process] DB registration retrieved:`, JSON.stringify(reg));
-				if (!reg) {
-					console.error(`Webhook charge.success: registration not found for ref ${ref}`);
-					return;
-				}
-
-				// Idempotent — skip if already marked paid
-				if (reg.st === 'paid') {
+				// Check if registration already exists (idempotent)
+				const existing = await get<Registration>(ref);
+				if (existing && existing.st === 'paid') {
 					console.log(`Webhook charge.success: ${ref} already paid, skipping`);
 					return;
 				}
@@ -69,23 +57,44 @@ export const POST: RequestHandler = async ({ request }) => {
 					return;
 				}
 
+				// Extract registration data from metadata
+				const reg_data = verified.metadata?.reg_data as Record<string, unknown> | undefined;
+				if (!reg_data) {
+					console.error(`Webhook charge.success: no reg_data in metadata for ${ref}`);
+					return;
+				}
+
 				// Anti-fraud: amount must match what we stored
-				if (verified.amount !== reg.amt) {
+				const expected_amt = reg_data.amt as number;
+				if (verified.amount !== expected_amt) {
 					console.error(
-						`Webhook amount mismatch for ${ref}: expected ${reg.amt}, got ${verified.amount}`
+						`Webhook amount mismatch for ${ref}: expected ${expected_amt}, got ${verified.amount}`
 					);
 					return;
 				}
 
-				await set(ref, { st: 'paid', ref: verified.reference });
-				console.log(`Webhook charge.success: marked ${ref} as paid`);
+				// Write full registration to DB
+				const payload: Registration = {
+					s: 'reg',
+					n: reg_data.n as string,
+					e: reg_data.e as string,
+					p: reg_data.p as string,
+					l: reg_data.l as { lat: number; lng: number; address: string },
+					pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
+					st: 'paid',
+					amt: expected_amt,
+					d: Date.now(),
+					ref: verified.reference
+				};
+
+				await create(payload, undefined, ref);
+				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);
 			}
 		} catch (err) {
 			console.error('Webhook processing error:', err);
 		}
 	};
 
-	// Non-blocking — respond before processing
 	process();
 
 	return new Response(null, { status: 200 });

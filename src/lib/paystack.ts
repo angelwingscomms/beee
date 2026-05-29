@@ -44,7 +44,8 @@ export async function paystack_init(
 	amount_kobo: number,
 	registration_id: string,
 	school_name: string,
-	callback_url: string
+	callback_url: string,
+	reg_data?: Record<string, unknown>
 ): Promise<PaystackInitResult> {
 	const secret_key = get_secret_key();
 	console.log(`[paystack_init] Starting transaction initialize`, {
@@ -53,10 +54,32 @@ export async function paystack_init(
 		registration_id,
 		school_name,
 		callback_url,
+		has_reg_data: !!reg_data,
 		secret_key_preview: secret_key ? secret_key.substring(0, 10) + '...' : 'undefined'
 	});
 
 	try {
+		const metadata: Record<string, unknown> = {
+			registration_id,
+			school_name,
+			custom_fields: [
+				{
+					display_name: 'School Name',
+					variable_name: 'school_name',
+					value: school_name
+				},
+				{
+					display_name: 'Registration ID',
+					variable_name: 'registration_id',
+					value: registration_id
+				}
+			]
+		};
+
+		if (reg_data) {
+			metadata.reg_data = reg_data;
+		}
+
 		const res = await fetch(`${BASE}/transaction/initialize`, {
 			method: 'POST',
 			headers: {
@@ -68,22 +91,7 @@ export async function paystack_init(
 				amount: amount_kobo,
 				reference: registration_id,
 				callback_url,
-				metadata: JSON.stringify({
-					registration_id,
-					school_name,
-					custom_fields: [
-						{
-							display_name: 'School Name',
-							variable_name: 'school_name',
-							value: school_name
-						},
-						{
-							display_name: 'Registration ID',
-							variable_name: 'registration_id',
-							value: registration_id
-						}
-					]
-				})
+				metadata: JSON.stringify(metadata)
 			})
 		});
 

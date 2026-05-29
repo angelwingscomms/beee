@@ -29,7 +29,7 @@ declare module "$app/types" {
 	type MatcherParam<M> = M extends (param : string) => param is (infer U extends string) ? U : string;
 
 	export interface AppTypes {
-		RouteId(): "/" | "/api" | "/api/email" | "/api/email/confirm" | "/api/payment" | "/api/payment/initialize" | "/api/register" | "/api/registration" | "/api/send-email" | "/api/verify-payment" | "/api/webhooks" | "/api/webhooks/paystack" | "/payment" | "/payment/callback" | "/resource";
+		RouteId(): "/" | "/api" | "/api/email" | "/api/email/confirm" | "/api/payment" | "/api/payment/initialize" | "/api/register-init-payment" | "/api/register" | "/api/registration" | "/api/send-email" | "/api/verify-payment" | "/api/webhooks" | "/api/webhooks/paystack" | "/payment" | "/payment/callback" | "/resource";
 		RouteParams(): {
 			
 		};
@@ -40,6 +40,7 @@ declare module "$app/types" {
 			"/api/email/confirm": Record<string, never>;
 			"/api/payment": Record<string, never>;
 			"/api/payment/initialize": Record<string, never>;
+			"/api/register-init-payment": Record<string, never>;
 			"/api/register": Record<string, never>;
 			"/api/registration": Record<string, never>;
 			"/api/send-email": Record<string, never>;
@@ -50,7 +51,7 @@ declare module "$app/types" {
 			"/payment/callback": Record<string, never>;
 			"/resource": Record<string, never>
 		};
-		Pathname(): "/" | "/api/email/confirm" | "/api/payment" | "/api/payment/initialize" | "/api/register" | "/api/registration" | "/api/send-email" | "/api/verify-payment" | "/api/webhooks/paystack" | "/payment/callback";
+		Pathname(): "/" | "/api/email/confirm" | "/api/payment" | "/api/payment/initialize" | "/api/register-init-payment" | "/api/register" | "/api/registration" | "/api/send-email" | "/api/verify-payment" | "/api/webhooks/paystack" | "/payment/callback";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/apple-icon.png" | "/icon-dark-32x32.png" | "/icon-light-32x32.png" | "/icon.svg" | "/ilogo.png" | "/placeholder-logo.png" | "/placeholder-logo.svg" | "/placeholder-user.jpg" | "/placeholder.jpg" | "/placeholder.svg" | string & {};
 	}
