@@ -1115,6 +1115,11 @@ img {
   .event-intro {
     text-align: center;
   }
+
+  .event-intro .lead,
+  .event-intro .simple-price {
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 767px) {
