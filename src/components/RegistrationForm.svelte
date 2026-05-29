@@ -133,7 +133,6 @@
 			</section>
 
 			<section class="form-section">
-				<h2 class="section-label">Participant</h2>
 				<PlayerForm
 					index={0}
 					player={{ name: playerName, email: playerEmail, phone: playerPhone }}
