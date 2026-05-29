@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
+	import PlayerForm from './PlayerForm.svelte';
 
 	let schoolName = $state('');
 	let schoolEmail = $state('');
@@ -12,6 +13,20 @@
 	let registrationId = $state('');
 
 	const REGISTRATION_AMOUNT = 50000;
+
+	interface Player {
+		name: string;
+		email: string;
+		chessRating: string;
+	}
+
+	let players = $state<Player[]>(
+		Array.from({ length: 4 }, () => ({ name: '', email: '', chessRating: '' }))
+	);
+
+	function updatePlayer(index: number, field: string, value: string) {
+		players[index] = { ...players[index], [field]: value };
+	}
 
 	function formatCurrency(amount: number): string {
 		return `₦${amount.toLocaleString()}`;
@@ -34,6 +49,13 @@
 			return false;
 		}
 
+		for (let i = 0; i < players.length; i++) {
+			if (!players[i].name.trim()) {
+				errorMessage = `Player ${i + 1} name is required`;
+				return false;
+			}
+		}
+
 		return true;
 	}
 
@@ -51,14 +73,14 @@
 		successMessage = '';
 
 		try {
-			// Step 1: Initialize Paystack with registration data (NO DB write yet)
 			const initResponse = await fetch('/api/register-init-payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					schoolName,
 					schoolEmail,
-					schoolPhone
+					schoolPhone,
+					players
 				})
 			});
 
@@ -70,9 +92,6 @@
 			const { authorization_url, registrationId: reg_id } = await initResponse.json();
 			registrationId = reg_id;
 
-			// Step 2: Redirect browser to Paystack checkout page
-			// Paystack will redirect back to /payment/callback?reference=<reg_id>
-			// Registration is saved to DB only after successful payment confirmation
 			window.location.href = authorization_url;
 		} catch (error) {
 			const msg = error instanceof Error ? error.message : 'Unknown error';
@@ -152,6 +171,19 @@
 				</div>
 			</section>
 
+			<section class="form-section" aria-labelledby="players-section-title">
+				<h2 id="players-section-title" class="section-label">Participants (4 players)</h2>
+				<div class="player-grid">
+					{#each players as player, i (i)}
+						<PlayerForm
+							index={i}
+							player={player}
+							onChange={(field, value) => updatePlayer(i, field, value)}
+						/>
+					{/each}
+				</div>
+			</section>
+
 			{#if errorMessage}
 				<div class="error-message" role="alert">{errorMessage}</div>
 			{/if}
@@ -179,6 +211,7 @@
 		schoolName={schoolName}
 		amount={REGISTRATION_AMOUNT}
 		email={schoolEmail}
+		players={players}
 		onConfirm={confirmPayment}
 		onCancel={closeConfirmation}
 		isProcessing={isProcessing}
