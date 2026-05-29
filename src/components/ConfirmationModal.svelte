@@ -36,7 +36,6 @@
 				<h3 id="school-summary-title">School</h3>
 				<div class="summary-list">
 					<div class="summary-item">
-						<div class="player-number">s</div>
 						<div>
 							<strong>{schoolName}</strong>
 						</div>
