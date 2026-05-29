@@ -375,8 +375,8 @@ img {
 .display-xl {
   max-width: 680px;
   margin-top: 22px;
-  font-size: 64px;
-  line-height: 1.05;
+  font-size: 48px;
+  line-height: 1.1;
 }
 
 .display-lg {
@@ -1137,8 +1137,8 @@ img {
   }
 
   .display-xl {
-    font-size: 40px;
-    line-height: 1.08;
+    font-size: 36px;
+    line-height: 1.1;
   }
 
   .display-lg {
