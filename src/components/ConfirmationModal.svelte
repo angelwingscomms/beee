@@ -16,20 +16,20 @@
 	} = $props();
 
 	function formatCurrency(value: number): string {
-		return `ngn ${value.toLocaleString()}`;
+		return `NGN ${value.toLocaleString()}`;
 	}
 </script>
 
 <div class="modal-backdrop" role="presentation">
 	<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
 		<div class="modal-header">
-			<h2 id="confirm-title">confirm registration</h2>
-			<p>review your details before payment.</p>
+			<h2 id="confirm-title">Confirm Registration</h2>
+			<p>Review your details before payment.</p>
 		</div>
 
 		<div class="modal-body">
 			<section class="modal-section" aria-labelledby="school-summary-title">
-				<h3 id="school-summary-title">details</h3>
+				<h3 id="school-summary-title">Details</h3>
 				<div class="summary-list">
 					<div class="summary-item">
 						<div class="player-number">s</div>
@@ -43,7 +43,7 @@
 
 			<div class="modal-total">
 				<div>
-					<p>registration fee</p>
+					<p>Registration fee</p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>
@@ -51,14 +51,14 @@
 
 		<div class="modal-actions">
 			<button type="button" onclick={onCancel} disabled={isProcessing} class="button-secondary">
-				cancel
+				Cancel
 			</button>
 			<button type="button" onclick={onConfirm} disabled={isProcessing} class="button-primary">
 				{#if isProcessing}
 					<span class="spinner" aria-hidden="true"></span>
-					processing
+					Processing
 				{:else}
-					confirm and pay
+					Confirm and Pay
 				{/if}
 			</button>
 		</div>

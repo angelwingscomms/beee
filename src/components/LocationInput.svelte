@@ -107,7 +107,7 @@
 			class="category-tab"
 			onclick={() => (activeTab = 'search')}
 		>
-			search
+			Search
 		</button>
 		<button
 			type="button"
@@ -115,7 +115,7 @@
 			class="category-tab"
 			onclick={() => (activeTab = 'map')}
 		>
-			map
+			Map
 		</button>
 		<button
 			type="button"
@@ -123,7 +123,7 @@
 			class="category-tab"
 			onclick={() => (activeTab = 'link')}
 		>
-			paste link
+			Paste Link
 		</button>
 	</div>
 
@@ -132,7 +132,7 @@
 			<input
 				type="text"
 				class="text-input"
-				placeholder="search for your school location"
+				placeholder="Search for your school location"
 				bind:value={searchQuery}
 				oninput={handleSearch}
 				onfocus={() => searchResults.length > 0 && (showSearchDropdown = true)}
@@ -155,7 +155,7 @@
 		<div class="map-panel">
 			<div class="map-pin"><span>B</span></div>
 			<div class="map-copy">
-				<strong>map focus</strong>
+				<strong>Map Focus</strong>
 				<span>{mapCoords.lat.toFixed(4)}, {mapCoords.lng.toFixed(4)}</span>
 			</div>
 		</div>
@@ -163,17 +163,17 @@
 		<div class="location-actions">
 			<div class="coordinate-buttons">
 				<button type="button" class="button-secondary" onclick={() => nudgeMap('north')}>
-					north
+					North
 				</button>
 				<button type="button" class="button-secondary" onclick={() => nudgeMap('south')}>
-					south
+					South
 				</button>
-				<button type="button" class="button-secondary" onclick={() => nudgeMap('west')}>west</button>
-				<button type="button" class="button-secondary" onclick={() => nudgeMap('east')}>east</button>
+				<button type="button" class="button-secondary" onclick={() => nudgeMap('west')}>West</button>
+				<button type="button" class="button-secondary" onclick={() => nudgeMap('east')}>East</button>
 			</div>
 
 			<button type="button" class="button-primary" onclick={confirmMapLocation}>
-				confirm location
+				Confirm Location
 			</button>
 		</div>
 	{/if}
@@ -182,18 +182,18 @@
 		<div class="location-actions">
 			<textarea
 				class="text-area"
-				placeholder="paste a google maps link or coordinates"
+				placeholder="Paste a Google Maps link or coordinates"
 				bind:value={mapLink}
 			></textarea>
 			<button type="button" class="button-primary" onclick={handleMapLink}>
-				extract location
+				Extract Location
 			</button>
 		</div>
 	{/if}
 
 	{#if location}
 		<div class="location-result">
-			<h3>selected location</h3>
+			<h3>Selected Location</h3>
 			<p>{location.address}</p>
 			<p>{location.lat.toFixed(4)}, {location.lng.toFixed(4)}</p>
 		</div>

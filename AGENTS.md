@@ -22,6 +22,7 @@
 - if a new pattern is decided, update the example files
 - speak extremely concisely; explain things like i'm 9 years old
 - code like an expert deep learning engineer with uncompromisable perfection
+- never run `npm run build`
 
 # Code Style
 
@@ -30,7 +31,6 @@
 - DB/Qdrant: Multi-tenancy, single collection 'i'; tenant-id on payload field `s`
 - Conciseness: no vars for single-use; code minimally
 - never start the dev server
-- always use all lowercase for all UI text
 - always write failing unit and e2e tests before implementing a feature/fix and then run tests after implementing
 - fonts go in static/fonts
 

@@ -21,7 +21,7 @@
 	const REGISTRATION_AMOUNT = 50000;
 
 	function formatCurrency(amount: number): string {
-		return `ngn ${amount.toLocaleString()}`;
+		return `NGN ${amount.toLocaleString()}`;
 	}
 
 	function validateForm(): boolean {
@@ -29,19 +29,19 @@
 		successMessage = '';
 
 		if (!schoolName.trim()) {
-			errorMessage = 'school name is required';
+			errorMessage = 'School name is required';
 			return false;
 		}
 		if (!schoolEmail.trim()) {
-			errorMessage = 'school email is required';
+			errorMessage = 'School email is required';
 			return false;
 		}
 		if (!schoolPhone.trim()) {
-			errorMessage = 'phone number is required';
+			errorMessage = 'Phone number is required';
 			return false;
 		}
 		if (!location) {
-			errorMessage = 'location is required';
+			errorMessage = 'Location is required';
 			return false;
 		}
 
@@ -74,7 +74,7 @@
 			});
 
 			if (!registerResponse.ok) {
-				throw new Error('registration failed');
+				throw new Error('Registration failed');
 			}
 
 			const registerData = await registerResponse.json();
@@ -92,7 +92,7 @@
 			});
 
 			if (!paymentResponse.ok) {
-				throw new Error('payment initialization failed');
+				throw new Error('Payment initialization failed');
 			}
 
 			const paymentData = await paymentResponse.json();
@@ -109,7 +109,7 @@
 			});
 
 			if (!verifyResponse.ok) {
-				throw new Error('payment verification failed');
+				throw new Error('Payment verification failed');
 			}
 
 			await fetch('/api/send-email', {
@@ -124,14 +124,14 @@
 			});
 
 			showConfirmation = false;
-			successMessage = `registration successful. confirmation has been sent to ${schoolEmail}.`;
+			successMessage = `Registration successful. Confirmation has been sent to ${schoolEmail}.`;
 
 			schoolName = '';
 			schoolEmail = '';
 			schoolPhone = '';
 			location = null;
 		} catch (error) {
-			errorMessage = 'payment processing error. please try again.';
+			errorMessage = 'Payment processing error. Please try again.';
 			console.error('[registration]', error);
 		} finally {
 			isProcessing = false;
@@ -146,20 +146,19 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="beee teamup home">
+			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
 				<span class="logo-chip"><img src="/ilogo.png" alt="" /></span>
-				<span>beee teamup</span>
+				<span>BEEE T.E.A.M.U.P.</span>
 			</a>
 
-			<h1 id="event-title" class="display-xl">beee teamup chess tournament</h1>
+			<h1 id="event-title" class="display-xl">BEEE T.E.A.M.U.P. Chess Championship Abuja 2026</h1>
 			<p class="lead">
-				register your school for the beee teamup chess tournament. complete the form and pay the
-				registration fee to confirm your entry.
+				Complete the form and pay the registration fee to confirm your entry for 4 players.
 			</p>
 
 			<div class="price-band simple-price">
 				<div>
-					<span>registration fee</span>
+					<span>Registration fee</span>
 					<strong>{formatCurrency(REGISTRATION_AMOUNT)}</strong>
 				</div>
 			</div>
@@ -173,17 +172,13 @@
 			}}
 		>
 			<section class="form-section" aria-labelledby="school-section-title">
-				<div class="form-section-header">
-					<h3 id="school-section-title">registration details</h3>
-				</div>
-
 				<div class="field">
-					<label for="schoolName">school name</label>
+					<label for="schoolName">School Name</label>
 					<input
 						id="schoolName"
 						class="text-input"
 						type="text"
-						placeholder="school name"
+						placeholder="School Name"
 						bind:value={schoolName}
 						required
 					/>
@@ -191,7 +186,7 @@
 
 				<div class="field-grid field-grid-spaced">
 					<div class="field">
-						<label for="schoolEmail">email</label>
+						<label for="schoolEmail">Email</label>
 						<input
 							id="schoolEmail"
 							class="text-input"
@@ -203,7 +198,7 @@
 					</div>
 
 					<div class="field">
-						<label for="schoolPhone">phone number</label>
+						<label for="schoolPhone">Phone Number</label>
 						<input
 							id="schoolPhone"
 							class="text-input"
@@ -218,7 +213,7 @@
 
 			<section class="form-section" aria-labelledby="location-section-title">
 				<div class="form-section-header">
-					<h3 id="location-section-title">location</h3>
+					<h3 id="location-section-title">School Location</h3>
 				</div>
 				<LocationInput bind:location />
 			</section>
@@ -235,9 +230,9 @@
 				<button type="submit" disabled={isProcessing} class="button-primary">
 					{#if isProcessing}
 						<span class="spinner" aria-hidden="true"></span>
-						processing
+						Processing
 					{:else}
-						pay {formatCurrency(REGISTRATION_AMOUNT)}
+						Pay {formatCurrency(REGISTRATION_AMOUNT)}
 					{/if}
 				</button>
 			</div>

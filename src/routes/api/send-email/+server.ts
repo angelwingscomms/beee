@@ -46,13 +46,13 @@ export const POST: RequestHandler = async ({ request }) => {
 <body>
   <div class="container">
     <div class="header">
-      <h1>beee teamup chess tournament</h1>
+      <h1>BEEE T.E.A.M.U.P. Chess Championship</h1>
       <p>registration confirmation</p>
     </div>
     <div class="content">
       <div class="section">
-        <h2>welcome to beee teamup</h2>
-        <p>thank you for registering for the beee teamup chess tournament. your registration has been successfully processed.</p>
+        <h2>welcome to BEEE T.E.A.M.U.P.</h2>
+        <p>thank you for registering for the BEEE T.E.A.M.U.P. Chess Championship. your registration has been successfully processed.</p>
       </div>
 
       <div class="section">
@@ -77,7 +77,7 @@ export const POST: RequestHandler = async ({ request }) => {
       </div>
 
       <div class="footer">
-        <p>&copy; 2024 beee teamup chess tournament. all rights reserved.</p>
+        <p>&copy; 2024 beee T.E.A.M.U.P. Chess Championship. all rights reserved.</p>
         <p>this is an automated message. please do not reply to this email.</p>
       </div>
     </div>
