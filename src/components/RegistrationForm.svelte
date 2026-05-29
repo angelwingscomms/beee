@@ -158,7 +158,7 @@
 						<span class="spinner" aria-hidden="true"></span>
 						Processing
 					{:else}
-						Pay {formatCurrency(REGISTRATION_AMOUNT)}
+						Register
 					{/if}
 				</button>
 			</div>
