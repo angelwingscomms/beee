@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Chess } from 'svelte-chess';
+	import { Chess as ChessJS } from 'chess.js';
+	import { marked } from 'marked';
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
 
@@ -32,14 +34,23 @@
 
 	let engine = $derived.by(() => buildEngine());
 
-	function fmtHintMove(m: string): string {
-		return m.slice(0, 2) + '\u2192' + m.slice(2, 4);
+	function uciToSan(fen: string, uci: string): string {
+		try {
+			const c = new ChessJS(fen);
+			const m = c.move(uci);
+			if (!m) return uci;
+			const sym: Record<string, string> = { k: '♔', q: '♕', r: '♖', b: '♗', n: '♘', p: '♙' };
+			return (sym[m.piece] || '') + m.san;
+		} catch {
+			return uci;
+		}
 	}
 
 	function fmtScore(s: number): string {
 		if (s >= 100000) return 'Mate';
 		if (s <= -100000) return '-Mate';
-		return (s / 100).toFixed(2);
+		const v = (s / 100).toFixed(2);
+		return s > 0 ? '+' + v : v;
 	}
 
 	function onReady() { ready = true; }
@@ -248,15 +259,13 @@
 							Next >
 						</button>
 						{#if hint_loading}
-							<span class="text-xs text-amber animate-pulse self-center ml-auto">Analyzing...</span>
+							<span class="text-xs text-amber animate-pulse self-center">Analyzing...</span>
 						{:else if hints.length > 0}
-							<span class="text-sm font-mono text-ink self-center ml-auto">
-								{fmtHintMove(hints[hint_index].move)}
-							</span>
-							<span class="text-xs text-muted self-center whitespace-nowrap">
-								Hint {hint_index + 1}/{hints.length}
-								· {fmtScore(hints[hint_index].score)}
-								· d{hints[hint_index].depth}
+							<span class="text-sm font-mono text-ink self-center whitespace-nowrap">
+								{uciToSan(fen, hints[hint_index].move)}
+								<span class="text-xs text-muted font-sans ml-1.5">
+									{fmtScore(hints[hint_index].score)} d{hints[hint_index].depth} [{hint_index + 1}/{hints.length}]
+								</span>
 							</span>
 							<button class="button-secondary-dark" onclick={explainHint} disabled={analysis_loading}>
 								{analysis_loading ? 'Thinking...' : 'Explain Hint'}
@@ -279,8 +288,8 @@
 								<button class="text-xs text-muted" onclick={dismissAnalysis}>Dismiss</button>
 							{/if}
 						</div>
-						<div class="text-sm text-muted whitespace-pre-wrap max-h-60 overflow-y-auto">
-							{analysis_text}
+						<div class="text-sm text-muted max-h-60 overflow-y-auto space-y-2 analysis-body">
+							{@html marked.parse(analysis_text)}
 							{#if analysis_loading}<span class="animate-pulse">▊</span>{/if}
 						</div>
 					</div>

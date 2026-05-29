@@ -15,6 +15,8 @@
     "@google/genai": "^2.7.0",
     "@qdrant/js-client-rest": "^1.18.0",
     "@sveltejs/kit": "^2.61.1",
+    "chess.js": "^1.4.0",
+    "marked": "^18.0.4",
     "svelte": "^5.55.10",
     "svelte-chess": "^0.11.1",
     "web-push": "^3.6.7",

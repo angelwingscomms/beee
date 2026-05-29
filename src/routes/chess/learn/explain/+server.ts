@@ -6,20 +6,21 @@ import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 function build_prompt(fen: string, move: string, score: number, depth: number): string {
 	const score_str = score > 90000 ? 'Mate' : score < -90000 ? '-Mate' : (score / 100).toFixed(2);
 	return [
-		'You are a chess coach. Analyze a position for a student who is learning chess.',
+		'You are a friendly chess coach explaining to a kid (age 9-12) who is learning chess.',
+		'Be encouraging and use simple words everyone can understand.',
 		'',
 		`Position (FEN): ${fen}`,
-		`Stockfish suggests: ${move}`,
-		`Evaluation: ${score_str}`,
-		`Depth searched: ${depth}`,
+		`Stockfish recommends: ${move}`,
+		`Computer evaluation: ${score_str}`,
+		`How deep the computer looked: ${depth} moves ahead`,
 		'',
-		'Explain in 3-4 paragraphs:',
-		'1. What this move accomplishes and why the engine likes it',
-		'2. The strategic or tactical idea behind it (development, attack, defense, positional play, etc.)',
-		'3. Potential upsides and any downsides or risks',
-		'4. What plan or follow-up moves this sets up',
+		'Write 3-4 short paragraphs (2-3 sentences each). Use **bold** for key ideas.',
+		'1. What does this move do? Why is it a good choice?',
+		'2. What is the big idea behind the move? (like attacking, defending, or bringing pieces out)',
+		'3. What are the good things about this move? Any risks?',
+		'4. What should happen next? What is the plan after this move?',
 		'',
-		'Keep the analysis educational and helpful for a learner. Avoid overly complex variations.',
+		'Use simple language like talking to a friend who is learning. No long chess jargon. Be positive and fun!',
 	].join('\n');
 }
 
