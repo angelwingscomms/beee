@@ -9,8 +9,11 @@ import { collection, default_user_fields } from '$lib/constants';
 import type { User } from '$lib/types';
 import { embed } from '$lib/util/embed';
 import { new_id } from '$lib/util/new_id';
-import { notif_debug } from '$lib/util/notif_debug';
 import type { PushSubscription } from 'web-push';
+
+export const notif_debug = (msg: string) => {
+	// console.debug(`[PUSH DEBUG] ${msg}`);
+};
 
 export type PayloadFilter = Record<string, unknown>;
 
@@ -84,7 +87,7 @@ export async function create<T extends { s: string }>(
 	let vector: number[] = [];
 
 	if (string_to_embed) {
-		vector = await embed(string_to_embed);
+		vector = await embed(string_to_embed, false);
 	} else {
 		vector = new Array(3072).fill(0);
 	}

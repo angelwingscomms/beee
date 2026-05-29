@@ -52,6 +52,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/api/email/confirm" | "/api/payment" | "/api/payment/initialize" | "/api/register" | "/api/registration" | "/api/send-email" | "/api/verify-payment" | "/api/webhooks/paystack" | "/payment/callback";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): string & {};
+		Asset(): "/apple-icon.png" | "/icon-dark-32x32.png" | "/icon-light-32x32.png" | "/icon.svg" | "/ilogo.png" | "/placeholder-logo.png" | "/placeholder-logo.svg" | "/placeholder-user.jpg" | "/placeholder.jpg" | "/placeholder.svg" | string & {};
 	}
 }

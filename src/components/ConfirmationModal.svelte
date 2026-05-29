@@ -16,7 +16,7 @@
 	} = $props();
 
 	function formatCurrency(value: number): string {
-		return `NGN ${value.toLocaleString()}`;
+		return `₦${value.toLocaleString()}`;
 	}
 </script>
 

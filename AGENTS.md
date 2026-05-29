@@ -16,6 +16,7 @@
 
 # General
 
+- always search net before doing anything
 - always code with extreme simplicity; be minimalist
 - always search the net when it might help
 - always follow the patterns in the example files perfectly

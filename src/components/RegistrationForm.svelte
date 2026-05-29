@@ -21,7 +21,7 @@
 	const REGISTRATION_AMOUNT = 50000;
 
 	function formatCurrency(amount: number): string {
-		return `NGN ${amount.toLocaleString()}`;
+		return `₦${amount.toLocaleString()}`;
 	}
 
 	function validateForm(): boolean {
