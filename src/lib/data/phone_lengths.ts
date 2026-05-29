@@ -146,7 +146,7 @@ export const phone_len: Record<string, [number, number]> = {
 	NZ: [8, 10],
 	NI: [7, 9],
 	NE: [8, 8],
-	NG: [8, 10],
+	NG: [9, 10],
 	NU: [4, 4],
 	NO: [8, 9],
 	OM: [8, 8],
@@ -219,4 +219,8 @@ export const phone_len: Record<string, [number, number]> = {
 	YE: [9, 9],
 	ZM: [8, 9],
 	ZW: [8, 8],
+};
+
+export const phone_warn: Record<string, number[]> = {
+	NG: [9], // legacy landline, uncommon
 };

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { countries, type Country } from '$lib/data/countries';
-	import { phone_len } from '$lib/data/phone_lengths';
+	import { phone_len, phone_warn } from '$lib/data/phone_lengths';
 
 	let {
 		value = '',
@@ -49,10 +49,17 @@
 	let digitsOnly = $derived(phoneNumber.replace(/\D/g, ''));
 
 	let lenRange = $derived(phone_len[selectedCountry.c] ?? null);
+	let warnLens = $derived(phone_warn[selectedCountry.c] ?? null);
 
 	let lenErr = $derived(
 		touched && digitsOnly.length > 0 && lenRange
 			? digitsOnly.length < lenRange[0] || digitsOnly.length > lenRange[1]
+			: false
+	);
+
+	let lenWarn = $derived(
+		!lenErr && touched && digitsOnly.length > 0 && warnLens
+			? warnLens.includes(digitsOnly.length)
 			: false
 	);
 
@@ -61,7 +68,9 @@
 			? lenRange[0] === lenRange[1]
 				? `Enter exactly ${lenRange[0]} digits`
 				: `Enter ${lenRange[0]}-${lenRange[1]} digits`
-			: ''
+			: lenWarn
+				? 'Landline format. Most Nigerian numbers are 10 digits.'
+				: ''
 	);
 
 	$effect(() => {
@@ -120,12 +129,13 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="phone-input-wrapper" onclick={(e) => e.stopPropagation()} onkeydown={handleKeydown}>
-	<div class="phone-field-row" class:invalid={lenErr}>
+	<div class="phone-field-row" class:invalid={lenErr} class:warn={lenWarn}>
 		<div class="country-select">
 			<button
 				type="button"
 				class="country-trigger"
 				class:error={lenErr}
+				class:warn={lenWarn}
 				onclick={toggleOpen}
 				aria-expanded={open}
 				aria-haspopup="listbox"
@@ -184,16 +194,17 @@
 			{id}
 			class="phone-input"
 			class:error={lenErr}
+			class:warn={lenWarn}
 			placeholder="Phone number"
 			value={phoneNumber}
 			oninput={handlePhoneInput}
 			onblur={onPhoneBlur}
 			aria-label="Phone number"
-			aria-invalid={lenErr}
+			aria-invalid={lenErr || lenWarn}
 		/>
 	</div>
 	{#if errMsg}
-		<p class="field-error" role="alert">{errMsg}</p>
+		<p class="field-msg" class:field-error={lenErr} class:field-warn={lenWarn} role="alert">{errMsg}</p>
 	{/if}
 </div>
 
@@ -407,14 +418,41 @@
 		border-color: var(--error);
 	}
 
+	.warn .phone-input,
+	.warn .country-trigger {
+		border-color: var(--amber);
+	}
+
+	.warn .phone-input:focus,
+	.warn .country-trigger:focus-visible {
+		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
+		border-color: var(--amber);
+	}
+
+	.phone-input.warn {
+		border-color: var(--amber);
+	}
+
+	.phone-input.warn:focus {
+		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
+		border-color: var(--amber);
+	}
+
 	.phone-input::placeholder {
 		color: var(--muted-soft);
 	}
 
-	.field-error {
+	.field-msg {
 		margin: 6px 0 0;
-		color: var(--error);
 		font-size: 12px;
 		line-height: 1.4;
+	}
+
+	.field-error {
+		color: var(--error);
+	}
+
+	.field-warn {
+		color: var(--amber);
 	}
 </style>
