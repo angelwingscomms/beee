@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ConfirmationModal from './ConfirmationModal.svelte';
+	import PhoneInput from '$lib/components/PhoneInput.svelte';
 
 	let schoolName = $state('');
 	let schoolEmail = $state('');
-	let schoolPhone = $state('');
+	let schoolPhone = $state('+234');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let errorMessage = $state('');
@@ -143,13 +144,9 @@
 
 					<div class="field">
 						<label for="schoolPhone">Phone Number</label>
-						<input
-							id="schoolPhone"
-							class="text-input"
-							type="tel"
-							placeholder="+234"
-							bind:value={schoolPhone}
-							required
+						<PhoneInput
+							value={schoolPhone}
+							onChange={(v) => (schoolPhone = v)}
 						/>
 					</div>
 				</div>
