@@ -261,6 +261,8 @@
 	}
 
 	.country-flag {
+		display: flex;
+		align-items: center;
 		font-size: 18px;
 		line-height: 1;
 	}
@@ -268,6 +270,7 @@
 	.country-code-label {
 		font-weight: 500;
 		font-size: 13px;
+		line-height: 1;
 		color: var(--body-strong);
 	}
 
