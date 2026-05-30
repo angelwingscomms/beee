@@ -314,12 +314,15 @@
 </script>
 
 <main class="page-shell">
-	<div class="container" style="padding-block:var(--xxl)48px">
-		<div class="flex flex-col items-center gap-6 max-w-[640px] mx-auto">
-			<h1 class="display-sm" style="margin:0">Chess — Learn</h1>
-			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
+	<div class="container py-12">
+		<div class="mx-auto flex w-full max-w-[1328px] flex-col gap-6">
+			<div class="mx-auto w-full max-w-[640px] space-y-2 text-center">
+				<h1 class="display-sm">Chess — Learn</h1>
+				<p class="text-muted text-sm">Play against Stockfish. Adjust difficulty to match your level.</p>
+			</div>
 
-			<div class="relative w-full">
+			<div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-[minmax(0,640px)_minmax(0,640px)] lg:items-start lg:justify-center">
+			<div class="relative mx-auto w-full max-w-[640px] lg:mx-0">
 			{#key level}
 				<Chess
 					class="cg-default-style board-themed"
@@ -351,7 +354,7 @@
 			{/if}
 			</div>
 
-			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
+			<div class="mx-auto w-full max-w-[640px] space-y-4 rounded-xl bg-surface-card p-6 lg:mx-0">
 				<div class="flex items-center gap-3">
 					<span class="text-sm font-medium text-muted w-20">Difficulty</span>
 					<input
@@ -493,6 +496,7 @@
 				</button>
 			</div>
 		</div>
+	</div>
 	</div>
 </main>
 
