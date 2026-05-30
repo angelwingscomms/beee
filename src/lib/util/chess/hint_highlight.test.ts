@@ -1,0 +1,31 @@
+import { describe, expect, it } from 'vitest';
+import { hint_squares } from './hint_highlight';
+
+describe('hint_squares', () => {
+	it('maps a white-view hint move to from and to board cells', () => {
+		expect(hint_squares('e2e4')).toEqual([
+			{ s: 'e2', k: 'f', r: 'row-start-7', c: 'col-start-5', l: 'from' },
+			{ s: 'e4', k: 't', r: 'row-start-5', c: 'col-start-5', l: 'to' },
+		]);
+	});
+
+	it('maps a black-view hint move to flipped board cells', () => {
+		expect(hint_squares('e2e4', 'b')).toEqual([
+			{ s: 'e2', k: 'f', r: 'row-start-2', c: 'col-start-4', l: 'from' },
+			{ s: 'e4', k: 't', r: 'row-start-4', c: 'col-start-4', l: 'to' },
+		]);
+	});
+
+	it('keeps promotion moves focused on from and to squares', () => {
+		expect(hint_squares('e7e8q')).toEqual([
+			{ s: 'e7', k: 'f', r: 'row-start-2', c: 'col-start-5', l: 'from' },
+			{ s: 'e8', k: 't', r: 'row-start-1', c: 'col-start-5', l: 'to' },
+		]);
+	});
+
+	it('ignores invalid move text', () => {
+		expect(hint_squares('')).toEqual([]);
+		expect(hint_squares('e2')).toEqual([]);
+		expect(hint_squares('e9e4')).toEqual([]);
+	});
+});

@@ -5,9 +5,11 @@
 	import { browser } from '$app/environment';
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
+	import { hint_squares } from '$lib/util/chess/hint_highlight';
 
 	let level = $state(3);
 	let turn = $state<Color>('w');
+	let orientation = $state<Color>('w');
 	let moveNum = $state(0);
 	let fen = $state('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
 	let inCheck = $state(false);
@@ -38,6 +40,7 @@
 	}
 
 	let engine = $derived.by(() => buildEngine());
+	let hint_highlights = $derived.by(() => hints[hint_index] ? hint_squares(hints[hint_index].move, orientation) : []);
 
 	function uciToSan(fen: string, uci: string): string {
 		try {
@@ -187,12 +190,13 @@
 			<h1 class="display-sm" style="margin:0">Chess — Learn</h1>
 			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 
-			<div class="w-full">
+			<div class="relative w-full">
 			{#key level}
 				<Chess
 					class="cg-default-style board-themed"
 					bind:this={chessRef}
 					bind:fen
+					bind:orientation
 					engine={engine as any}
 					bind:turn
 					bind:moveNumber={moveNum}
@@ -203,6 +207,18 @@
 					on:gameOver={onGameOver}
 				/>
 			{/key}
+			{#if show_hints && !hint_loading && hint_highlights.length}
+				<div class="pointer-events-none absolute inset-0 z-10 grid grid-cols-8 grid-rows-8">
+					{#each hint_highlights as square (square.k)}
+						<div
+							class={'pointer-events-none rounded-[6px] border-2 shadow-[inset_0_0_0_2px_rgba(20,20,19,0.22)] ' + square.r + ' ' + square.c + ' ' + (square.k === 'f' ? 'bg-amber/45 border-amber' : 'bg-teal/45 border-teal')}
+							data-testid={square.k === 'f' ? 'hint-square-from' : 'hint-square-to'}
+							role="img"
+							aria-label={`Hint ${square.l} square ${square.s}`}
+						></div>
+					{/each}
+				</div>
+			{/if}
 			</div>
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
