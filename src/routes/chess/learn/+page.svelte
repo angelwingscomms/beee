@@ -24,6 +24,10 @@
 	let analysis_loading = $state(false);
 	let analysis_abort = $state<AbortController | null>(null);
 
+	let model = $state(localStorage.getItem('explain_model') || 'gemini-3.5-flash');
+	let show_settings = $state(false);
+	$effect(() => localStorage.setItem('explain_model', model));
+
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
 
@@ -139,7 +143,7 @@
 			const h = hints[hint_index];
 			const res = await fetch('/chess/learn/explain', {
 				method: 'POST',
-				body: JSON.stringify({ fen, move: h.move, score: h.score, depth: h.depth }),
+				body: JSON.stringify({ fen, move: h.move, score: h.score, depth: h.depth, m: model }),
 				signal: ac.signal,
 			});
 			if (!res.ok || !res.body) throw Error('Request failed');
@@ -296,7 +300,30 @@
 						</div>
 					</div>
 				{/if}
+
+				<button class="button-secondary text-xs ml-auto" onclick={() => show_settings = true}>
+					Settings
+				</button>
 			</div>
 		</div>
 	</div>
 </main>
+
+{#if show_settings}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
+		<div class="bg-surface-card rounded-xl p-6 space-y-4 min-w-[280px]" role="dialog" aria-modal="true" tabindex="-1" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={(e) => e.stopPropagation()}>
+			<div class="flex items-center justify-between">
+				<h2 class="text-sm font-medium text-ink">Settings</h2>
+				<button class="text-xs text-muted" onclick={() => show_settings = false}>✕</button>
+			</div>
+			<label class="flex flex-col gap-1.5">
+				<span class="text-xs text-muted">Analysis Model</span>
+				<select bind:value={model} class="w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink">
+					<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
+					<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
+				</select>
+			</label>
+			<button class="button-primary text-sm w-full" onclick={() => show_settings = false}>Done</button>
+		</div>
+	</div>
+{/if}

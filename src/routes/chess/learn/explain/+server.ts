@@ -29,7 +29,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({ error: 'Missing fen or move' }, { status: 400 });
 	}
 
-	const { fen, move, score = 0, depth = 0 } = body;
+	const { fen, move, score = 0, depth = 0, m } = body;
 
 	const ai = new GoogleGenAI({ apiKey: GEMINI });
 
@@ -37,7 +37,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		async start(controller) {
 			try {
 				const response = await ai.models.generateContentStream({
-					model: 'gemini-3.5-flash',
+					model: m || 'gemini-3.5-flash',
 					contents: build_prompt(fen, move, score, depth),
 					config: {
 						thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
