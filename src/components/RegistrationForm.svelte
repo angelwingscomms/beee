@@ -168,8 +168,8 @@
 					<span
 						class={[
 							i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary',
-							i === 0 ? 'rounded-bl-lg' : '',
-							i === 7 ? 'rounded-br-lg' : ''
+							i === 0 ? 'rounded-bl-lg rounded-tl-lg' : '',
+							i === 7 ? 'rounded-br-lg rounded-tr-lg' : ''
 						]}
 					></span>
 				{/each}

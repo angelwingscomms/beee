@@ -13,6 +13,8 @@ describe('homepage registration chess squares', () => {
 		expect(form).toContain('mt-10 grid grid-cols-8');
 		expect(form).toContain('aspect-square');
 		expect(form).toContain("'aspect-square bg-primary'");
+		expect(form).toContain('rounded-tl-lg');
+		expect(form).toContain('rounded-tr-lg');
 		expect(form).toContain('rounded-bl-lg');
 		expect(form).toContain('rounded-br-lg');
 		expect(form).not.toContain('aspect-square bg-primary/45');
