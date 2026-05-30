@@ -319,9 +319,9 @@
 			<h1 class="display-sm text-center" style="margin:0">Chess — Learn</h1>
 			<p class="text-muted text-sm text-center" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 			<div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6 items-start">
-				<div class="min-w-0">
+				<div class="min-w-0 min-h-0">
 
-			<div class="relative w-full">
+			<div class="relative w-full aspect-square max-h-[calc(100dvh-14rem)]">
 			{#key level}
 				<Chess
 					class="cg-default-style board-themed"
@@ -353,7 +353,7 @@
 			{/if}
 			</div>
 				</div>
-				<div class="flex flex-col gap-4 min-w-0">
+				<div class="flex flex-col gap-4 min-w-0 min-h-0 overflow-y-auto max-h-[calc(100dvh-14rem)]">
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
 				<div class="flex items-center gap-3">
