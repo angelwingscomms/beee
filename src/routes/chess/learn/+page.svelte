@@ -373,7 +373,6 @@
 			chat_loading = false;
 			chat_abort = null;
 			if (clear) chat_input = '';
-			requestAnimationFrame(() => chat_input_ref?.focus());
 		}
 	}
 

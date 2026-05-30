@@ -3,7 +3,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { qdrant } from '$lib/db';
 
-export const POST: RequestHandler = async () => {
+export const DELETE: RequestHandler = async () => {
 	if (!dev) {
 		return json({ message: 'Not allowed' }, { status: 403 });
 	}
