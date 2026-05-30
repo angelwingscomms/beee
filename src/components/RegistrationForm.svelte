@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chess_board_cells } from '$lib/util/home/chess_visual';
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PlayerForm from './PlayerForm.svelte';
 
@@ -14,10 +15,7 @@
 	let playerName = $state('');
 	let playerEmail = $state('');
 	let playerPhone = $state('+234');
-
-	function formatCurrency(amount: number): string {
-		return `₦${amount.toLocaleString()}`;
-	}
+	const board_cells = chess_board_cells();
 
 	function validateForm(): boolean {
 		errorMessage = '';
@@ -91,8 +89,28 @@
 	}
 </script>
 
-<main class="page-shell simple-home" aria-labelledby="event-title">
-	<section class="container simple-home-grid">
+<main class="page-shell simple-home relative isolate" aria-labelledby="event-title">
+	<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+		<div
+			class="absolute left-[-92px] top-[9%] grid w-[280px] rotate-[-14deg] grid-cols-8 overflow-hidden rounded-lg border border-hairline/70 bg-canvas/60 opacity-45 shadow-[0_30px_90px_rgba(20,20,19,0.10)] md:w-[430px] lg:w-[560px]"
+		>
+			{#each board_cells as c (c.i)}
+				<span class={c.d ? 'aspect-square bg-primary/25' : 'aspect-square bg-surface-card/75'}></span>
+			{/each}
+		</div>
+
+		<div
+			class="absolute bottom-[-116px] right-[-104px] grid w-[270px] rotate-[8deg] grid-cols-8 overflow-hidden rounded-lg border border-hairline/80 bg-canvas/70 opacity-55 shadow-[0_30px_90px_rgba(20,20,19,0.10)] md:w-[420px] lg:w-[520px]"
+		>
+			{#each board_cells as c (c.i)}
+				<span class={c.d ? 'aspect-square bg-surface-dark/15' : 'aspect-square bg-primary/20'}></span>
+			{/each}
+		</div>
+
+		<div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-canvas to-transparent"></div>
+	</div>
+
+	<section class="container simple-home-grid relative z-10">
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
 				<span class="logo-chip"><img src="/beee.png" alt="" /></span>
@@ -106,18 +124,24 @@
 			<div class="price-band simple-price">
 				<div>
 					<span>Registration fee</span>
-					<strong>{formatCurrency(REGISTRATION_AMOUNT)}</strong>
+					<strong>NGN {REGISTRATION_AMOUNT.toLocaleString()}</strong>
 				</div>
 			</div>
 		</div>
 
 		<form
-			class="registration-form"
+			class="registration-form relative overflow-hidden border border-hairline/80 shadow-[0_24px_80px_rgba(20,20,19,0.08)] backdrop-blur"
 			onsubmit={(event) => {
 				event.preventDefault();
 				handleSubmit();
 			}}
 		>
+			<div class="pointer-events-none absolute inset-x-0 top-0 grid h-2 grid-cols-8" aria-hidden="true">
+				{#each board_cells.slice(0, 8) as c (c.i)}
+					<span class={c.d ? 'bg-primary/45' : 'bg-surface-card'}></span>
+				{/each}
+			</div>
+
 			<section class="form-section" aria-labelledby="school-section-title">
 				<div class="field">
 					<label for="schoolName">School Name</label>
