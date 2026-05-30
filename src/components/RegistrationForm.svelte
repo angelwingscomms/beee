@@ -103,7 +103,9 @@
 				Register now to confirm your entry
 			</p>
 
-			<div class="price-band simple-price">
+			<div
+				class="price-band simple-price transition duration-500 ease-out hover:-translate-y-1 hover:bg-[#F7EDE4] hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+			>
 				<div>
 					<span>Registration fee</span>
 					<strong>{formatCurrency(REGISTRATION_AMOUNT)}</strong>
@@ -153,7 +155,11 @@
 			{/if}
 
 			<div class="submit-row">
-				<button type="submit" disabled={isProcessing} class="button-primary">
+				<button
+					type="submit"
+					disabled={isProcessing}
+					class="button-primary !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
+				>
 					{#if isProcessing}
 						<span class="spinner" aria-hidden="true"></span>
 						Processing

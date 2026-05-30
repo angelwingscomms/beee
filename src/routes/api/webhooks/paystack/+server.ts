@@ -1,32 +1,30 @@
-import { dev } from '$app/environment';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { SERPAPI_KEY } from '$env/static/private';
 import { create, get } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
-async function search_maps(q: string): Promise<0 | 1 | 2> {
-	try {
-		const p = new URLSearchParams({
-			engine: 'google_maps',
-			q,
-			ll: '@9.076,7.398,15z',
-			hl: 'en',
-			gl: 'ng'
-		});
-		const res = await fetch(`https://serpapi.com/search.json?${p}&api_key=${SERPAPI_KEY}`);
-		const data = await res.json();
-		if (dev) console.log('[webhook] SerpAPI result:', JSON.stringify(data, null, 2));
-		const pr = data.place_results;
-		if (pr && Array.isArray(pr.type)) {
-			return pr.type.some(t => typeof t === 'string' && t.toLowerCase().includes('school')) ? 1 : 0;
-		}
-		return 0;
-	} catch {
-		return 2;
-	}
-}
+// async function search_maps(q: string): Promise<0 | 1 | 2> {
+// 	try {
+// 		const p = new URLSearchParams({
+// 			engine: 'google_maps',
+// 			q,
+// 			ll: '@9.076,7.398,15z',
+// 			hl: 'en',
+// 			gl: 'ng'
+// 		});
+// 		const res = await fetch(`https://serpapi.com/search.json?${p}&api_key=${SERPAPI_KEY}`);
+// 		const data = await res.json();
+// 		if (dev) console.log('[webhook] SerpAPI result:', JSON.stringify(data, null, 2));
+// 		const pr = data.place_results;
+// 		if (pr && Array.isArray(pr.type)) {
+// 			return pr.type.some(t => typeof t === 'string' && t.toLowerCase().includes('school')) ? 1 : 0;
+// 		}
+// 		return 0;
+// 	} catch {
+// 		return 2;
+// 	}
+// }
 
 /**
  * Paystack webhook endpoint.

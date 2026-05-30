@@ -27,4 +27,13 @@ describe('homepage registration chess squares', () => {
 		expect(page).toContain('FloatingNav');
 		expect(page).not.toContain('bg-primary px-3 py-1.5');
 	});
+
+	it('adds dreamy hover motion to the fee card and registration button', () => {
+		expect(form).toContain('hover:-translate-y-1');
+		expect(form).toContain('hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)]');
+		expect(form).toContain('hover:bg-[#F7EDE4]');
+		expect(form).toContain('hover:-translate-y-0.5');
+		expect(form).toContain('hover:scale-[1.01]');
+		expect(form).toContain('hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)]');
+	});
 });
