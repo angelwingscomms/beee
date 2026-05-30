@@ -507,28 +507,41 @@
 <FloatingNav href="/">home</FloatingNav>
 
 {#if show_settings}
-	<div class="modal-backdrop" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
-		<div class="modal-card max-w-sm" role="dialog" aria-modal="true" tabindex="-1" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={(e) => e.stopPropagation()}>
-			<div class="modal-header">
-				<h2 id="settings-title" class="text-sm font-medium text-ink">Settings</h2>
-				<p>Analysis preferences</p>
+	<div class="fixed inset-0 z-[60] grid place-items-center overflow-y-auto bg-ink/60 px-4 py-6 backdrop-blur-sm" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
+		<div
+			data-testid="learn-settings-modal"
+			class="w-full max-w-md overflow-hidden rounded-2xl border border-hairline bg-canvas text-body shadow-[0_24px_80px_rgba(20,20,19,0.22)]"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="settings-title"
+			tabindex="-1"
+			onkeydown={(e) => e.key === 'Escape' && (show_settings = false)}
+			onclick={(e) => e.stopPropagation()}
+		>
+			<div class="border-b border-hairline bg-surface-soft px-6 py-5">
+				<p class="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-primary">Preferences</p>
+				<h2 id="settings-title" class="font-display text-2xl font-medium text-ink">Settings</h2>
+				<p class="mt-2 text-sm leading-6 text-muted">Choose how hint explanations behave.</p>
 			</div>
-			<div class="modal-body">
-				<section class="modal-section">
-					<h3 class="field-label">Analysis Model</h3>
-					<select bind:value={model} class="w-full min-h-[40px] rounded-lg border border-hairline bg-canvas text-ink px-3.5 py-2.5 text-sm outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] appearance-none">
+			<div class="grid gap-3 p-6">
+				<section class="grid gap-2 rounded-lg bg-surface-card p-4">
+					<h3 class="text-sm font-medium text-ink">Analysis model</h3>
+					<select bind:value={model} class="min-h-[40px] w-full appearance-none rounded-lg border border-hairline bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]">
 						<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
 						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
 					</select>
 				</section>
-				<section class="modal-section">
-					<label class="flex items-center gap-3 cursor-pointer">
-						<input type="checkbox" bind:checked={autoexplain} class="accent-primary w-4 h-4" />
-						<span class="field-label !mb-0">Auto-explain hint</span>
+				<section class="rounded-lg border border-hairline bg-canvas p-4">
+					<label class="flex cursor-pointer items-center justify-between gap-4">
+						<span>
+							<span class="block text-sm font-medium text-ink">Auto-explain hint</span>
+							<span class="mt-1 block text-xs leading-5 text-muted">Start analysis when a hint appears.</span>
+						</span>
+						<input type="checkbox" bind:checked={autoexplain} class="h-4 w-4 accent-primary" />
 					</label>
 				</section>
 			</div>
-			<div class="modal-actions">
+			<div class="grid grid-cols-2 gap-3 border-t border-hairline bg-surface-soft px-6 py-4">
 				<button class="button-secondary" onclick={() => show_settings = false}>Cancel</button>
 				<button class="button-primary" onclick={() => show_settings = false}>Done</button>
 			</div>

@@ -70,3 +70,14 @@ describe('/chess/learn chat', () => {
 		expect(page).not.toContain('{msg.d');
 	});
 });
+
+describe('/chess/learn settings modal', () => {
+	it('uses the warm product design system instead of the shared checkout modal shell', () => {
+		expect(page).toContain('data-testid="learn-settings-modal"');
+		expect(page).toContain('bg-canvas text-body shadow-[0_24px_80px_rgba(20,20,19,0.22)]');
+		expect(page).toContain('font-display text-2xl font-medium text-ink');
+		expect(page).toContain('bg-surface-card p-4');
+		expect(page).toContain('rounded-lg border border-hairline bg-canvas');
+		expect(page).not.toContain('modal-card max-w-sm');
+	});
+});
