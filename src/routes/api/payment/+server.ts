@@ -35,7 +35,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			reg.e,
 			amount_kobo,
 			data.registrationId,
-			reg.n,
+			reg.sn,
 			callback_url
 		);
 		console.log(`[POST /api/payment] paystack_init succeeded:`, JSON.stringify(result));

@@ -98,17 +98,17 @@ export const POST: RequestHandler = async ({ request }) => {
 				}
 
 				// Look up school on Google Maps via Serper to verify it's a school
-				const school_name = reg_data.n as string;
+				const school_name = reg_data.sn as string;
 				const v = await search_maps(school_name);
 				console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
 
 				// Write full registration to DB
 				const payload: Registration = {
 					s: 'reg',
+					sn: reg_data.sn as string,
 					n: reg_data.n as string,
 					e: reg_data.e as string,
 					p: reg_data.p as string,
-					pl: (reg_data.pl || []) as Array<{ name: string; email: string; chessRating: string }>,
 					st: 'paid',
 					v,
 					amt: expected_amt,

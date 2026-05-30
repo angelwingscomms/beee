@@ -20,7 +20,6 @@
                             <th>School</th>
                             <th>Player</th>
                             <th>Phone</th>
-                            <th>Players</th>
                             <th>Status</th>
                             <th>Verified</th>
                             <th>Amount</th>
@@ -30,10 +29,9 @@
                     <tbody>
                         {#each form.registrations as reg}
                             <tr>
-                                <td>{reg.n}</td>
-                                <td>{reg.pl[0]?.name || ''}<br><span class="text-muted">{reg.pl[0]?.email || ''}</span></td>
-                                <td>{reg.pl[0]?.phone || ''}</td>
-                                <td>{reg.pl.length}</td>
+                                <td>{reg.sn}</td>
+                                <td>{reg.n}<br><span class="text-muted">{reg.e}</span></td>
+                                <td>{reg.p}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
                                 <td>
                                     {#if reg.v === 1}

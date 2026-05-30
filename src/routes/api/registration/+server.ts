@@ -24,8 +24,10 @@ export const POST: RequestHandler = async ({ request }) => {
 		const i = new_id();
 		const payload: Registration = {
 			s: 'reg',
-			n: data.schoolName,
-			pl: [{ name: data.playerName, email: data.playerEmail, phone: data.playerPhone }],
+			sn: data.schoolName,
+			n: data.playerName,
+			e: data.playerEmail,
+			p: data.playerPhone,
 			st: 'pending',
 			v: 0,
 			amt: AMOUNT_KOBO,

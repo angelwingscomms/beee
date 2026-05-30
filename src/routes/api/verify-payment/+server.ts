@@ -76,7 +76,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		// Look up school on Google Maps via Serper to verify it's a school
-		const school_name = reg_data.n as string;
+		const school_name = reg_data.sn as string;
 		console.log(`[POST /api/verify-payment] Searching maps for school: "${school_name}"...`);
 		const v = await search_maps(school_name);
 		console.log(`[POST /api/verify-payment] Maps lookup result for "${school_name}": v=${v}`);
@@ -85,9 +85,10 @@ export const POST: RequestHandler = async ({ request }) => {
 		console.log(`[POST /api/verify-payment] Payment confirmed! Writing registration to DB for ID: ${reg_id}...`);
 		const payload: Registration = {
 			s: 'reg',
+			sn: reg_data.sn as string,
 			n: reg_data.n as string,
+			e: reg_data.e as string,
 			p: reg_data.p as string,
-			pl: (reg_data.pl || []) as Array<{ name: string; email: string; phone: string }>,
 			st: 'paid',
 			v,
 			amt: expected_amt,
