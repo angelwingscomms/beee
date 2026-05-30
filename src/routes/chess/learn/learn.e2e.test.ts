@@ -158,7 +158,7 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('max-h-[calc(100dvh-2rem)]');
 		expect(page).toContain('flex max-h-[calc(100dvh-2rem)]');
 		expect(page).toContain('flex-col overflow-hidden');
-		expect(page).toContain('min-h-0 overflow-y-auto');
+		expect(page).toContain('grid min-h-0 gap-3 overflow-y-auto');
 		expect(page).toContain('shrink-0 border-b border-hairline');
 		expect(page).toContain('shrink-0 grid grid-cols-2');
 	});
