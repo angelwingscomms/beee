@@ -42,7 +42,7 @@
 	function uciToSan(fen: string, uci: string): string {
 		try {
 			const c = new ChessJS(fen);
-			const m = c.move(uci);
+			const m = c.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] });
 			return m?.san ?? uci;
 		} catch {
 			return uci;
@@ -266,15 +266,24 @@
 						{#if hint_loading}
 							<span class="text-xs text-amber animate-pulse self-center">Analyzing...</span>
 						{:else if hints.length > 0}
-							<span class="text-sm font-mono text-ink self-center sm:whitespace-nowrap">
-								{uciToSan(fen, hints[hint_index].move)}
-								<span class="text-xs text-muted font-sans ml-1.5">
-									{fmtScore(hints[hint_index].score)} d{hints[hint_index].depth} [{hint_index + 1}/{hints.length}]
-								</span>
-							</span>
-							<button class="button-secondary-dark" onclick={explainHint} disabled={analysis_loading}>
-								{analysis_loading ? 'Thinking...' : 'Explain Hint'}
-							</button>
+							<div class="w-full rounded-lg bg-surface-card border border-hairline p-3">
+								<div class="flex items-center gap-3">
+									<div class="flex-1 min-w-0">
+										<div class="flex items-baseline gap-2">
+											<span class="text-xl font-bold font-mono text-ink truncate">{uciToSan(fen, hints[hint_index].move)}</span>
+											<span class="text-sm font-mono text-muted">{fmtScore(hints[hint_index].score)}</span>
+										</div>
+										<div class="flex items-center gap-2 text-xs text-muted mt-0.5">
+											<span>d{hints[hint_index].depth}</span>
+											<span>·</span>
+											<span>{hint_index + 1}/{hints.length}</span>
+										</div>
+									</div>
+									<button class="button-secondary-dark shrink-0" onclick={explainHint} disabled={analysis_loading}>
+										{analysis_loading ? 'Thinking...' : 'Explain'}
+									</button>
+								</div>
+							</div>
 						{/if}
 					{:else}
 						<button class="button-primary" onclick={showHint} disabled={!ready || gameOver || hint_loading}>
