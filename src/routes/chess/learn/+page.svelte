@@ -29,22 +29,6 @@
 	let show_settings = $state(false);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
 
-	let highlight = $state<string[]>([]);
-	let highlight_raf = 0;
-
-	function setHighlights(sq: string[]) {
-		highlight = sq;
-		cancelAnimationFrame(highlight_raf);
-		highlight_raf = requestAnimationFrame(() => {
-			const els = document.querySelectorAll('cg-board square');
-			for (let i = 0; i < els.length; i++) {
-				const e = els[i] as HTMLElement;
-				const k = e.dataset.key;
-				e.style.background = k && sq.includes(k) ? 'rgba(204,120,92,0.35)' : '';
-			}
-		});
-	}
-
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
 
@@ -123,8 +107,8 @@
 		show_hints = true;
 		try {
 			hints = await getHints(fen, 5);
+			console.log('hints:', hints);
 			hint_index = 0;
-			if (hints[0]) setHighlights([hints[0].move.slice(0, 2), hints[0].move.slice(2, 4)]);
 		} catch (e) {
 			console.error('getHints failed:', e);
 			hints = [];
@@ -134,16 +118,11 @@
 	}
 
 	function nextHint() {
-		if (hint_index < hints.length - 1) { hint_index++; doHighlight(); }
+		if (hint_index < hints.length - 1) hint_index++;
 	}
 
 	function prevHint() {
-		if (hint_index > 0) { hint_index--; doHighlight(); }
-	}
-
-	function doHighlight() {
-		const h = hints[hint_index];
-		if (h) setHighlights([h.move.slice(0, 2), h.move.slice(2, 4)]);
+		if (hint_index > 0) hint_index--;
 	}
 
 	function hideHints() {
@@ -151,7 +130,6 @@
 		hints = [];
 		hint_index = 0;
 		dismissAnalysis();
-		setHighlights([]);
 	}
 
 	async function explainHint() {
