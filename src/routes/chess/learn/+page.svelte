@@ -315,11 +315,9 @@
 
 <main class="page-shell">
 	<div class="container" style="padding-block:var(--xxl)48px">
-		<div class="flex flex-col gap-6">
-			<h1 class="display-sm text-center" style="margin:0">Chess — Learn</h1>
-			<p class="text-muted text-sm text-center" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
-			<div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6 items-start">
-				<div class="min-w-0">
+		<div class="flex flex-col items-center gap-6 max-w-[640px] mx-auto">
+			<h1 class="display-sm" style="margin:0">Chess — Learn</h1>
+			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 
 			<div class="relative w-full">
 			{#key level}
@@ -352,8 +350,6 @@
 				</div>
 			{/if}
 			</div>
-				</div>
-				<div class="flex flex-col gap-4 min-w-0">
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
 				<div class="flex items-center gap-3">
@@ -442,7 +438,6 @@
 						</button>
 					{/if}
 				</div>
-			</div>
 
 				<div class="w-full rounded-xl bg-surface-card border border-hairline overflow-hidden">
 					<div class="flex items-center justify-between px-4 py-3 border-b border-hairline">
@@ -496,10 +491,9 @@
 				<button class="button-secondary text-xs ml-auto" onclick={() => show_settings = true}>
 					Settings
 				</button>
+			</div>
 		</div>
 	</div>
-	</div>
-</div>
 </main>
 
 {#if show_settings}
