@@ -2,7 +2,8 @@
 	let {
 		schoolName,
 		amount,
-		playerName,
+		playerFirstName,
+		playerLastName,
 		playerEmail,
 		playerPhone,
 		onConfirm,
@@ -11,7 +12,8 @@
 	}: {
 		schoolName: string;
 		amount: number;
-		playerName: string;
+		playerFirstName: string;
+		playerLastName: string;
 		playerEmail: string;
 		playerPhone: string;
 		onConfirm: () => void;
@@ -48,7 +50,7 @@
 				<div class="summary-list">
 					<div class="summary-item">
 						<div>
-							<strong>{playerName}</strong>
+							<strong>{playerFirstName} {playerLastName}</strong>
 							<span>{playerEmail}</span>
 							<span>{playerPhone}</span>
 						</div>

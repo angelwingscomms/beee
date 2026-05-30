@@ -11,10 +11,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		const data = await request.json();
 		console.log(`[POST /api/registration] Request body:`, JSON.stringify(data));
 
-		if (!data.schoolName || !data.playerName || !data.playerEmail || !data.playerPhone) {
+		if (!data.schoolName || !data.playerFirstName || !data.playerLastName || !data.playerEmail || !data.playerPhone) {
 			console.warn(`[POST /api/registration] Missing required fields`, {
 				schoolName: data.schoolName,
-				playerName: data.playerName,
+				playerFirstName: data.playerFirstName,
+				playerLastName: data.playerLastName,
 				playerEmail: data.playerEmail,
 				playerPhone: data.playerPhone
 			});
@@ -25,7 +26,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		const payload: Registration = {
 			s: 'reg',
 			sn: data.schoolName,
-			n: data.playerName,
+			fn: data.playerFirstName,
+			ln: data.playerLastName,
 			e: data.playerEmail,
 			p: data.playerPhone,
 			st: 'pending',

@@ -19,9 +19,9 @@
                         <tr>
                             <th>School</th>
                             <th>Player</th>
+                            <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
-                            <th>Verified</th>
                             <th>Amount</th>
                             <th>Date</th>
                         </tr>
@@ -30,18 +30,10 @@
                         {#each form.registrations as reg}
                             <tr>
                                 <td>{reg.sn}</td>
-                                <td>{reg.n}<br><span class="text-muted">{reg.e}</span></td>
+                                <td>{reg.fn} {reg.ln}</td>
+                                <td>{reg.e}</td>
                                 <td>{reg.p}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
-                                <td>
-                                    {#if reg.v === 1}
-                                        <span class="badge-pill verified">Yes</span>
-                                    {:else if reg.v === 2}
-                                        <span class="badge-pill failed">Failed</span>
-                                    {:else}
-                                        <span class="badge-pill">No</span>
-                                    {/if}
-                                </td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
                             </tr>
@@ -104,16 +96,6 @@
 
     .badge-pill.paid {
         background: var(--success) !important;
-        color: var(--on-primary) !important;
-    }
-
-    .badge-pill.verified {
-        background: var(--info) !important;
-        color: var(--on-primary) !important;
-    }
-
-    .badge-pill.failed {
-        background: var(--danger) !important;
         color: var(--on-primary) !important;
     }
 </style>

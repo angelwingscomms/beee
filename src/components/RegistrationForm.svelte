@@ -11,7 +11,8 @@
 
 	const REGISTRATION_AMOUNT = 12500;
 
-	let playerName = $state('');
+	let playerFirstName = $state('');
+	let playerLastName = $state('');
 	let playerEmail = $state('');
 	let playerPhone = $state('+234');
 
@@ -27,8 +28,12 @@
 			errorMessage = 'School name is required';
 			return false;
 		}
-		if (!playerName.trim()) {
-			errorMessage = 'Player name is required';
+		if (!playerFirstName.trim()) {
+			errorMessage = 'First name is required';
+			return false;
+		}
+		if (!playerLastName.trim()) {
+			errorMessage = 'Surname is required';
 			return false;
 		}
 		if (!playerEmail.trim()) {
@@ -62,7 +67,8 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					schoolName,
-					playerName,
+					playerFirstName,
+					playerLastName,
 					playerEmail,
 					playerPhone
 				})
@@ -127,7 +133,6 @@
 						id="schoolName"
 						class="text-input"
 						type="text"
-						placeholder="School Name"
 						bind:value={schoolName}
 						required
 					/>
@@ -137,9 +142,10 @@
 			<section class="form-section">
 				<PlayerForm
 					index={0}
-					player={{ name: playerName, email: playerEmail, phone: playerPhone }}
+					player={{ first_name: playerFirstName, last_name: playerLastName, email: playerEmail, phone: playerPhone }}
 					onChange={(field, value) => {
-						if (field === 'name') playerName = value;
+						if (field === 'first_name') playerFirstName = value;
+						if (field === 'last_name') playerLastName = value;
 						if (field === 'email') playerEmail = value;
 						if (field === 'phone') playerPhone = value;
 					}}
@@ -181,7 +187,7 @@
 							i === 23 ? 'rounded-br-lg' : '',
 							i === 9 ? 'bg-cover bg-center' : ''
 						]}
-						style={i === 9 ? 'background-image: url(/pieces/gioco/bQ.svg)' : ''}
+						style={i === 9 ? 'background-image: url(/pieces/gioco/bK.svg)' : ''}
 					></span>
 				{/each}
 			</div>
@@ -193,7 +199,8 @@
 	<ConfirmationModal
 		schoolName={schoolName}
 		amount={REGISTRATION_AMOUNT}
-		playerName={playerName}
+		playerFirstName={playerFirstName}
+		playerLastName={playerLastName}
 		playerEmail={playerEmail}
 		playerPhone={playerPhone}
 		onConfirm={confirmPayment}

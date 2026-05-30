@@ -2,7 +2,8 @@
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 
 	interface Player {
-		name: string;
+		first_name: string;
+		last_name: string;
 		email: string;
 		phone: string;
 	}
@@ -22,18 +23,31 @@
 
 <article class="player-card">
 	<div class="field-grid">
-		<div class="field field-full">
-			<label for="player_{index}_name">Full Name</label>
+		<div class="field">
+			<label for="player_{index}_first_name">First Name</label>
 			<input
 				type="text"
-				id="player_{index}_name"
-				value={player.name}
-				oninput={(event) => onChange('name', event.currentTarget.value)}
-				placeholder="Enter full name"
+				id="player_{index}_first_name"
+				value={player.first_name}
+				oninput={(event) => onChange('first_name', event.currentTarget.value)}
 				class="text-input"
 			/>
-			{#if errors[`player_${index}_name`]}
-				<p class="error-message">{errors[`player_${index}_name`]}</p>
+			{#if errors[`player_${index}_first_name`]}
+				<p class="error-message">{errors[`player_${index}_first_name`]}</p>
+			{/if}
+		</div>
+
+		<div class="field">
+			<label for="player_{index}_last_name">Surname</label>
+			<input
+				type="text"
+				id="player_{index}_last_name"
+				value={player.last_name}
+				oninput={(event) => onChange('last_name', event.currentTarget.value)}
+				class="text-input"
+			/>
+			{#if errors[`player_${index}_last_name`]}
+				<p class="error-message">{errors[`player_${index}_last_name`]}</p>
 			{/if}
 		</div>
 
@@ -44,7 +58,6 @@
 				id="player_{index}_email"
 				value={player.email}
 				oninput={(event) => onChange('email', event.currentTarget.value)}
-				placeholder="player@example.com"
 				class="text-input"
 			/>
 			{#if errors[`player_${index}_email`]}

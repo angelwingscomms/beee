@@ -1,7 +1,8 @@
 export interface Registration {
 	s: 'reg';
 	sn: string; // school name
-	n: string;  // player name
+	fn: string; // player first name
+	ln: string; // player last name
 	e: string;  // player email
 	p: string;  // player phone
 	st: 'pending' | 'paid';

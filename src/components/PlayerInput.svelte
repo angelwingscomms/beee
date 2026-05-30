@@ -23,7 +23,6 @@
 				id="player-{playerNumber}-name"
 				class="text-input"
 				type="text"
-				placeholder="Full name"
 				bind:value={name}
 				required
 			/>
@@ -35,7 +34,6 @@
 				id="player-{playerNumber}-email"
 				class="text-input"
 				type="email"
-				placeholder="player@email.com"
 				bind:value={email}
 				required
 			/>

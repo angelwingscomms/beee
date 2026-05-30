@@ -199,9 +199,9 @@
 			class="phone-input"
 			class:error={lenErr}
 			class:warn={lenWarn}
-			placeholder="Phone number"
 			value={phoneNumber}
 			oninput={handlePhoneInput}
+			required
 			onblur={onPhoneBlur}
 			aria-label="Phone number"
 			aria-invalid={lenErr || lenWarn}
