@@ -521,10 +521,10 @@ img {
   content: '';
 }
 
-.board-themed cg-board {
-  background-color: var(--surface-soft);
-  background-image: repeating-conic-gradient(var(--primary) 0% 25%, transparent 0% 50%);
-  background-size: 25% 25%;
+.cg-wrap.cg-default-style.board-themed cg-board {
+  background-color: var(--surface-soft) !important;
+  background-image: repeating-conic-gradient(var(--primary) 0% 25%, transparent 0% 50%) !important;
+  background-size: 25% 25% !important;
 }
 
 .logo-gate {
