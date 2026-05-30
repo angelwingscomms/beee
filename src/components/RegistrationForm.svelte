@@ -112,18 +112,12 @@
 		</div>
 
 		<form
-			class="registration-form relative overflow-hidden"
+			class="registration-form"
 			onsubmit={(event) => {
 				event.preventDefault();
 				handleSubmit();
 			}}
 		>
-			<div class="pointer-events-none absolute inset-x-0 top-0 grid h-2 grid-cols-8" aria-hidden="true">
-				{#each Array(8) as _, i}
-					<span class={i % 2 === 0 ? 'bg-surface-card' : 'bg-primary/45'}></span>
-				{/each}
-			</div>
-
 			<section class="form-section" aria-labelledby="school-section-title">
 				<div class="field">
 					<label for="schoolName">School Name</label>
@@ -167,6 +161,12 @@
 						Register
 					{/if}
 				</button>
+			</div>
+
+			<div class="registration-checker-squares mt-6 grid grid-cols-8 overflow-hidden" aria-hidden="true">
+				{#each Array(8) as _, i}
+					<span class={i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary/45'}></span>
+				{/each}
 			</div>
 		</form>
 	</section>
