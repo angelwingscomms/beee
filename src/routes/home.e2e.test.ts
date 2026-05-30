@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 const page = readFileSync(resolve(process.cwd(), 'src/routes/+page.svelte'), 'utf8');
 const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
+const nav = readFileSync(resolve(process.cwd(), 'src/lib/components/FloatingNav.svelte'), 'utf8');
 
 describe('homepage registration chess squares', () => {
 	it('uses full-width square cells at the bottom of the form instead of the page strip', () => {
@@ -22,7 +23,8 @@ describe('homepage registration chess squares', () => {
 	});
 
 	it('uses the same primary button color class for the learn link', () => {
-		expect(page).toContain('button-primary');
+		expect(nav).toContain('button-primary');
+		expect(page).toContain('FloatingNav');
 		expect(page).not.toContain('bg-primary px-3 py-1.5');
 	});
 });

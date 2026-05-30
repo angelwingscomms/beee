@@ -6,6 +6,7 @@
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
 	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
+	import FloatingNav from '$lib/components/FloatingNav.svelte';
 
 	type ChatContext = { f: string; p: string; u: string; a: string };
 	type ChatData = Partial<ChatContext> & { h?: string };
@@ -499,6 +500,8 @@
 	</div>
 	</div>
 </main>
+
+<FloatingNav href="/">home</FloatingNav>
 
 {#if show_settings}
 	<div class="modal-backdrop" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
