@@ -13,13 +13,12 @@ function build_prompt(fen: string, move: string, score: number, depth: number): 
 		`Evaluation: ${score_str}`,
 		`Depth searched: ${depth}`,
 		'',
-		'Write 3-4 paragraphs. Use **bold** for key ideas. Cover:',
-		'1. **What the move does** — the concrete point: does it attack, defend, develop, gain space, threaten something, or improve piece position?',
-		'2. **The strategic or tactical idea** — name the pattern when relevant (fork, pin, discovered attack, prophylaxis, outpost, pawn break, etc.). Connect it to broader principles like center control, king safety, piece activity, development, or pawn structure.',
-		'3. **Pros and risks** — what the move achieves and what the opponent might counter with.',
-		'4. **Follow-up plan** — what comes next, what the player should be thinking about.',
+		'Write a short analysis. 2-3 **concise bullet points**. Each bullet is one dense insight — no fluff, no filler paragraphs:',
+		'• **Concrete point** — what does the move actually do? (attack, defend, develop, gain space, threaten, improve piece).',
+		'• **Core concept** — name the pattern or principle (fork, pin, outpost, prophylaxis, pawn break, center control, king safety, etc.). Connect it to bigger strategic ideas.',
+		'• **Follow-up** — what to watch for next or what the opponent might try.',
 		'',
-		'Keep it clear and instructive. Explain jargon briefly when you use it. Focus on teaching the student to think about positions, not just memorize moves.',
+		'Maximum 4 lines total. Be brief but deep. Assume the student knows basic rules but wants to think like an advanced player. Use **bold** for key terms.',
 	].join('\n');
 }
 
