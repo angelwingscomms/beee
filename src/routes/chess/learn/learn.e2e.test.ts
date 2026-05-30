@@ -10,5 +10,9 @@ describe('/chess/learn hint highlights', () => {
 		expect(page).toContain('hint_squares(');
 		expect(page).toContain('data-testid={square.k === \'f\' ? \'hint-square-from\' : \'hint-square-to\'}');
 		expect(page).toContain('aria-label={`Hint ${square.l} square ${square.s}`}');
+		expect(page).toContain('const hint_nudge_x = \'-translate-x-1\'');
+		expect(page).toContain('const hint_nudge_y = \'-translate-y-1\'');
+		expect(page).toContain('bg-amber/45 border-amber ring-ink/25');
+		expect(page).toContain('bg-teal/45 border-teal ring-ink/25');
 	});
 });

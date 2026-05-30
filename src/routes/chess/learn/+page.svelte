@@ -33,6 +33,10 @@
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
+	const hint_nudge_x = '-translate-x-1';
+	const hint_nudge_y = '-translate-y-1';
+	const hint_from_class = 'bg-amber/45 border-amber ring-ink/25';
+	const hint_to_class = 'bg-teal/45 border-teal ring-ink/25';
 
 	function buildEngine() {
 		const p = presets[level - 1];
@@ -211,7 +215,7 @@
 				<div class="pointer-events-none absolute inset-0 z-10 grid grid-cols-8 grid-rows-8">
 					{#each hint_highlights as square (square.k)}
 						<div
-							class={'pointer-events-none rounded-[6px] border-2 shadow-[inset_0_0_0_2px_rgba(20,20,19,0.22)] ' + square.r + ' ' + square.c + ' ' + (square.k === 'f' ? 'bg-amber/45 border-amber' : 'bg-teal/45 border-teal')}
+							class={'pointer-events-none box-border rounded-[6px] border-2 ring-2 ring-inset ' + hint_nudge_x + ' ' + hint_nudge_y + ' ' + square.r + ' ' + square.c + ' ' + (square.k === 'f' ? hint_from_class : hint_to_class)}
 							data-testid={square.k === 'f' ? 'hint-square-from' : 'hint-square-to'}
 							role="img"
 							aria-label={`Hint ${square.l} square ${square.s}`}
