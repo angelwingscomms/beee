@@ -245,7 +245,7 @@
 					{/if}
 				</div>
 
-				<div class="flex gap-2">
+				<div class="flex gap-2 flex-wrap">
 					<button class="button-primary" onclick={resetGame} disabled={!ready}>
 						New Game
 					</button>
@@ -254,7 +254,7 @@
 					</button>
 				</div>
 
-				<div class="flex gap-2">
+				<div class="flex gap-2 flex-wrap">
 					{#if show_hints}
 						<button class="button-secondary" onclick={hideHints}>
 							Hide Hints
@@ -268,7 +268,7 @@
 						{#if hint_loading}
 							<span class="text-xs text-amber animate-pulse self-center">Analyzing...</span>
 						{:else if hints.length > 0}
-							<span class="text-sm font-mono text-ink self-center whitespace-nowrap">
+							<span class="text-sm font-mono text-ink self-center sm:whitespace-nowrap">
 								{uciToSan(fen, hints[hint_index].move)}
 								<span class="text-xs text-muted font-sans ml-1.5">
 									{fmtScore(hints[hint_index].score)} d{hints[hint_index].depth} [{hint_index + 1}/{hints.length}]
