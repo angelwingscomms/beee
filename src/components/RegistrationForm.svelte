@@ -163,9 +163,15 @@
 				</button>
 			</div>
 
-			<div class="registration-checker-squares mt-6 grid grid-cols-8 overflow-hidden" aria-hidden="true">
+			<div class="registration-checker-squares mt-10 grid grid-cols-8 overflow-hidden" aria-hidden="true">
 				{#each Array(8) as _, i}
-					<span class={i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary'}></span>
+					<span
+						class={[
+							i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary',
+							i === 0 ? 'rounded-bl-lg' : '',
+							i === 7 ? 'rounded-br-lg' : ''
+						]}
+					></span>
 				{/each}
 			</div>
 		</form>
