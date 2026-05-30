@@ -5,7 +5,7 @@
 	import { browser } from '$app/environment';
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
-	import { hint_squares } from '$lib/util/chess/hint_highlight';
+	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
 
 	let level = $state(3);
 	let turn = $state<Color>('w');
@@ -20,6 +20,7 @@
 
 	let show_hints = $state(false);
 	let hints = $state<Hint[]>([]);
+	let hint_fen = $state('');
 	let hint_index = $state(0);
 	let hint_loading = $state(false);
 
@@ -70,7 +71,7 @@
 		turn = m.color === 'w' ? 'b' : 'w';
 		moveNum++;
 		inCheck = (e.detail as any).check ?? false;
-		if (show_hints) hideHints();
+		hideHints(true);
 	}
 
 	function onGameOver(e: CustomEvent<{ reason: string; result: number }>) {
@@ -89,7 +90,7 @@
 		moveNum = 0;
 		turn = 'w';
 		inCheck = false;
-		hideHints();
+		hideHints(true);
 	}
 
 	function undoMove() {
@@ -105,20 +106,27 @@
 		}
 		gameOver = false;
 		resultMsg = '';
+		hideHints(true);
 	}
 
 	async function showHint() {
 		if (hint_loading) return;
 		if (gameOver) return;
+		if (can_reuse_hints(hints, hint_fen, fen)) {
+			show_hints = true;
+			return;
+		}
 		hint_loading = true;
 		show_hints = true;
 		try {
 			hints = await getHints(fen, 5);
+			hint_fen = fen;
 			console.log('hints:', hints);
 			hint_index = 0;
 		} catch (e) {
 			console.error('getHints failed:', e);
 			hints = [];
+			hint_fen = '';
 		} finally {
 			hint_loading = false;
 		}
@@ -132,10 +140,13 @@
 		if (hint_index > 0) hint_index--;
 	}
 
-	function hideHints() {
+	function hideHints(clear = false) {
 		show_hints = false;
-		hints = [];
-		hint_index = 0;
+		if (clear) {
+			hints = [];
+			hint_fen = '';
+			hint_index = 0;
+		}
 		dismissAnalysis();
 	}
 
@@ -275,7 +286,7 @@
 
 				<div class="flex gap-2 flex-wrap">
 					{#if show_hints}
-						<button class="button-secondary" onclick={hideHints}>
+						<button class="button-secondary" onclick={() => hideHints()}>
 							Hide Hints
 						</button>
 						<button class="button-secondary-dark" onclick={prevHint} disabled={hint_index === 0 || hint_loading}>

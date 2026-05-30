@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { hint_squares } from './hint_highlight';
+import { can_reuse_hints, hint_squares } from './hint_highlight';
 
 describe('hint_squares', () => {
 	it('maps a white-view hint move to from and to board cells', () => {
@@ -27,5 +27,13 @@ describe('hint_squares', () => {
 		expect(hint_squares('')).toEqual([]);
 		expect(hint_squares('e2')).toEqual([]);
 		expect(hint_squares('e9e4')).toEqual([]);
+	});
+});
+
+describe('can_reuse_hints', () => {
+	it('reuses cached hints only for the same position', () => {
+		expect(can_reuse_hints([{ move: 'e2e4' }], 'fen-a', 'fen-a')).toBe(true);
+		expect(can_reuse_hints([], 'fen-a', 'fen-a')).toBe(false);
+		expect(can_reuse_hints([{ move: 'e2e4' }], 'fen-a', 'fen-b')).toBe(false);
 	});
 });

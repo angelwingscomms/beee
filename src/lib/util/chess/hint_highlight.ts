@@ -49,3 +49,7 @@ export function hint_squares(move: string, orientation: Orientation = 'w'): Hint
 	if (!is_square(from) || !is_square(to)) return [];
 	return [hint_square(from, 'f', orientation), hint_square(to, 't', orientation)];
 }
+
+export function can_reuse_hints<T>(hints: T[], hint_fen: string, fen: string) {
+	return hints.length > 0 && hint_fen === fen;
+}

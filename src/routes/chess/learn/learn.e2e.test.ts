@@ -14,5 +14,9 @@ describe('/chess/learn hint highlights', () => {
 		expect(page).toContain('const hint_nudge_y = \'-translate-y-1\'');
 		expect(page).toContain('bg-amber/45 border-amber ring-ink/25');
 		expect(page).toContain('bg-teal/45 border-teal ring-ink/25');
+		expect(page).toContain('can_reuse_hints(hints, hint_fen, fen)');
+		expect(page).toContain('onclick={() => hideHints()}');
+		expect(page).toContain('hideHints(true)');
+		expect(page).toContain('hint_fen = fen;');
 	});
 });
