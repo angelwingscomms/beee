@@ -37,7 +37,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		async start(controller) {
 			try {
 				const response = await ai.models.generateContentStream({
-					model: 'gemma-4-26b-a4b-it',
+					model: 'gemini-3.5-flash',
 					contents: build_prompt(fen, move, score, depth),
 					config: {
 						thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
