@@ -33,4 +33,17 @@ describe('/chess/learn chat', () => {
 		expect(page).toContain('Chat');
 		expect(page).toContain('Ask about the position');
 	});
+
+	it('keeps board context hidden while sending interaction state', () => {
+		expect(page).toContain('interaction_id');
+		expect(page).toContain('successful_context');
+		expect(page).toContain('build_chat_data(');
+		expect(page).toContain('apply_chat_event(');
+		expect(page).toContain('bind:history');
+		expect(page).toContain('i: interaction_id');
+		expect(page).toContain('d: build_chat_data(');
+		expect(page).toContain('interaction_id = msg.i');
+		expect(page).toContain('msg.content');
+		expect(page).not.toContain('{msg.d');
+	});
 });

@@ -7,10 +7,15 @@
 	import type { Color, Hint } from '$lib/util/chess/engine';
 	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
 
+	type ChatContext = { f: string; p: string; u: string; a: string };
+	type ChatData = Partial<ChatContext> & { h?: string };
+	type ChatMsg = { role: 'user' | 'assistant'; content: string; d?: ChatData };
+
 	let level = $state(3);
 	let turn = $state<Color>('w');
 	let orientation = $state<Color>('w');
 	let moveNum = $state(0);
+	let history = $state<string[]>([]);
 	let fen = $state('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
 	let inCheck = $state(false);
 	let gameOver = $state(false);
@@ -24,10 +29,14 @@
 	let hint_index = $state(0);
 	let hint_loading = $state(false);
 
-	let chat_messages = $state<{role:'user'|'assistant', content:string}[]>([]);
+	let chat_messages = $state<ChatMsg[]>([]);
 	let chat_loading = $state(false);
 	let chat_abort = $state<AbortController | null>(null);
 	let chat_input = $state('');
+	let interaction_id = $state('');
+	let last_user_move = $state('');
+	let last_ai_move = $state('');
+	let successful_context = $state<Partial<ChatContext>>({});
 
 	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
 	let show_settings = $state(false);
@@ -73,6 +82,73 @@
 		return s > 0 ? '+' + v : v;
 	}
 
+	function move_text(m: any): string {
+		const uci = (m?.from ?? '') + (m?.to ?? '') + (m?.promotion ?? '');
+		return m?.san && uci ? `${m.san} (${uci})` : m?.san ?? uci;
+	}
+
+	function current_chat_context(): ChatContext {
+		return { f: fen, p: history.join(' '), u: last_user_move, a: last_ai_move };
+	}
+
+	function build_chat_data(h = ''): ChatData {
+		const c = current_chat_context();
+		const d: ChatData = {};
+		if (c.f !== successful_context.f) d.f = c.f;
+		if (c.p && c.p !== successful_context.p) d.p = c.p;
+		if (c.u && c.u !== successful_context.u) d.u = c.u;
+		if (c.a && c.a !== successful_context.a) d.a = c.a;
+		if (h) d.h = h;
+		return d;
+	}
+
+	function apply_chat_event(raw: string) {
+		const lines = raw.split(/\r?\n/);
+		const name = lines.find((line) => line.startsWith('event: '))?.slice(7).trim();
+		const data = lines.filter((line) => line.startsWith('data: ')).map((line) => line.slice(6)).join('\n');
+		const msg = data ? JSON.parse(data) : {};
+		if (name === 'text' && typeof msg.t === 'string') {
+			const last = chat_messages[chat_messages.length - 1];
+			if (last?.role === 'assistant') {
+				chat_messages[chat_messages.length - 1] = { ...last, content: last.content + msg.t };
+				chat_messages = chat_messages;
+			}
+			return true;
+		}
+		if (name === 'interaction' && typeof msg.i === 'string') {
+			interaction_id = msg.i;
+			return true;
+		}
+		if (name === 'error') throw Error(msg.e || 'Request failed');
+		return false;
+	}
+
+	async function read_chat_stream(res: Response) {
+		if (!res.body) throw Error('Request failed');
+		const reader = res.body.getReader();
+		const dec = new TextDecoder();
+		let buf = '';
+		let ok = false;
+		while (true) {
+			const { done, value } = await reader.read();
+			if (done) break;
+			buf += dec.decode(value, { stream: true });
+			const parts = buf.split('\n\n');
+			buf = parts.pop() ?? '';
+			for (const part of parts) if (part.trim()) ok = apply_chat_event(part) || ok;
+		}
+		if (buf.trim()) ok = apply_chat_event(buf) || ok;
+		return ok;
+	}
+
+	function sync_chat_moves() {
+		const moves = chessRef?.getHistory({ verbose: true }) as any[] | undefined;
+		if (!moves) return;
+		history = moves.map((m) => m.san);
+		last_user_move = move_text([...moves].reverse().find((m) => m.color === 'w'));
+		last_ai_move = move_text([...moves].reverse().find((m) => m.color === 'b'));
+	}
+
 	function onReady() { ready = true; }
 
 	function onMove(e: CustomEvent<{ color: Color }>) {
@@ -80,6 +156,8 @@
 		turn = m.color === 'w' ? 'b' : 'w';
 		moveNum++;
 		inCheck = (e.detail as any).check ?? false;
+		if (m.color === 'w') last_user_move = move_text(m);
+		else last_ai_move = move_text(m);
 		hideHints(true);
 	}
 
@@ -100,6 +178,10 @@
 		turn = 'w';
 		inCheck = false;
 		hideHints(true);
+		history = [];
+		last_user_move = '';
+		last_ai_move = '';
+		clearChat();
 	}
 
 	function undoMove() {
@@ -115,6 +197,7 @@
 		}
 		gameOver = false;
 		resultMsg = '';
+		sync_chat_moves();
 		hideHints(true);
 	}
 
@@ -156,17 +239,12 @@
 			hint_fen = '';
 			hint_index = 0;
 		}
-		clearChat();
 	}
 
-	async function explainHint() {
-		if (chat_loading) return;
-		if (!hints[hint_index]) return;
-		const h = hints[hint_index];
-		const san = uciToSan(fen, h.move);
-		const score_str = fmtScore(h.score);
-		const user_msg = `Explain **${san}** (${score_str}, depth ${h.depth})`;
-		chat_messages = [...chat_messages, { role: 'user', content: user_msg }];
+	async function send_chess_chat(user_msg: string, h = '', clear = false) {
+		const sent_context = current_chat_context();
+		const request_messages: ChatMsg[] = [...chat_messages, { role: 'user', content: user_msg, d: build_chat_data(h) }];
+		chat_messages = request_messages;
 		chat_loading = true;
 		const ac = new AbortController();
 		chat_abort = ac;
@@ -175,34 +253,39 @@
 			const res = await fetch('/chess/learn/chat', {
 				method: 'POST',
 				body: JSON.stringify({
-					messages: [{ role: 'user', content: user_msg }],
-					fen, move: h.move, score: h.score, depth: h.depth, m: model
+					x: request_messages.map((msg) => ({ r: msg.role, c: msg.content, d: msg.d })),
+					i: interaction_id,
+					m: model,
 				}),
 				signal: ac.signal,
 			});
-			if (!res.ok || !res.body) throw Error('Request failed');
-			const reader = res.body.getReader();
-			const dec = new TextDecoder();
-			let ai_text = '';
-			while (true) {
-				const { done, value } = await reader.read();
-				if (done) break;
-				ai_text += dec.decode(value, { stream: true });
-				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: ai_text };
-				chat_messages = chat_messages;
-			}
+			if (!res.ok || !(await read_chat_stream(res))) throw Error('Request failed');
+			successful_context = sent_context;
 		} catch (e) {
 			if (e instanceof DOMException && e.name === 'AbortError') return;
 			const last = chat_messages[chat_messages.length - 1];
 			if (last?.role === 'assistant') {
-				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: last.content + '\n[Failed to load analysis]' };
+				chat_messages[chat_messages.length - 1] = { ...last, content: last.content + '\n[Failed to load analysis]' };
 				chat_messages = chat_messages;
 			}
 		} finally {
 			chat_loading = false;
 			chat_abort = null;
+			if (clear) chat_input = '';
 			requestAnimationFrame(() => chat_input_ref?.focus());
 		}
+	}
+
+	async function explainHint() {
+		if (chat_loading) return;
+		if (!hints[hint_index]) return;
+		const h = hints[hint_index];
+		const san = uciToSan(fen, h.move);
+		const score_str = fmtScore(h.score);
+		await send_chess_chat(
+			`Explain **${san}** (${score_str}, depth ${h.depth})`,
+			`${san} (${h.move}), eval ${score_str}, depth ${h.depth}`,
+		);
 	}
 
 	function stopChat() {
@@ -216,6 +299,8 @@
 	function clearChat() {
 		chat_messages = [];
 		chat_loading = false;
+		interaction_id = '';
+		successful_context = {};
 		if (chat_abort) {
 			chat_abort.abort();
 			chat_abort = null;
@@ -224,45 +309,7 @@
 
 	async function sendChatMessage(text: string) {
 		if (!text.trim() || chat_loading) return;
-		const user_msg = text.trim();
-		chat_messages = [...chat_messages, { role: 'user', content: user_msg }];
-		chat_loading = true;
-		const ac = new AbortController();
-		chat_abort = ac;
-		chat_messages = [...chat_messages, { role: 'assistant', content: '' }];
-		try {
-			const res = await fetch('/chess/learn/chat', {
-				method: 'POST',
-				body: JSON.stringify({
-					messages: chat_messages.map(m => ({ role: m.role, content: m.content })),
-					fen, m: model
-				}),
-				signal: ac.signal,
-			});
-			if (!res.ok || !res.body) throw Error('Request failed');
-			const reader = res.body.getReader();
-			const dec = new TextDecoder();
-			let ai_text = '';
-			while (true) {
-				const { done, value } = await reader.read();
-				if (done) break;
-				ai_text += dec.decode(value, { stream: true });
-				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: ai_text };
-				chat_messages = chat_messages;
-			}
-		} catch (e) {
-			if (e instanceof DOMException && e.name === 'AbortError') return;
-			const last = chat_messages[chat_messages.length - 1];
-			if (last?.role === 'assistant') {
-				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: last.content + '\n[Failed to load analysis]' };
-				chat_messages = chat_messages;
-			}
-		} finally {
-			chat_loading = false;
-			chat_abort = null;
-			chat_input = '';
-			requestAnimationFrame(() => chat_input_ref?.focus());
-		}
+		await send_chess_chat(text.trim(), '', true);
 	}
 </script>
 
@@ -282,6 +329,7 @@
 					engine={engine as any}
 					bind:turn
 					bind:moveNumber={moveNum}
+					bind:history
 					bind:inCheck
 					bind:isGameOver={gameOver}
 					on:ready={onReady}
