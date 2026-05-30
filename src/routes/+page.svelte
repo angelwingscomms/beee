@@ -3,12 +3,13 @@
   import ChessboardPulse from '$lib/components/ChessboardPulse.svelte';
 </script>
 
-<div class="relative">
-  <a href="/chess/learn" class="absolute top-2 right-2 text-xs text-sky-500 hover:text-sky-300 transition-colors underline decoration-dotted underline-offset-2">
-    learn chess with AI
-  </a>
-  <RegistrationForm />
-  <div class="py-12">
-    <ChessboardPulse />
-  </div>
+<RegistrationForm />
+<div class="py-12">
+  <ChessboardPulse />
 </div>
+
+<a
+  href="/chess/learn"
+  class="fixed right-5 top-5 z-40 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-active">
+  learn chess with AI
+</a>
