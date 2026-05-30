@@ -6,16 +6,14 @@ import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 function build_prompt(fen: string, move: string, score: number, depth: number): string {
 	const score_str = score > 90000 ? 'Mate' : score < -90000 ? '-Mate' : (score / 100).toFixed(2);
 	return [
-		'Output exactly 3 bullet points analyzing why Stockfish recommends this move. No paragraphs, no intro, no conclusion — just 3 bullets. Max 4 lines total.',
+		'You are a chess coach analyzing a position. Write a concise analysis (2-3 short sentences). Use **bold** for key ideas.',
 		'',
-		`FEN: ${fen}  Move: ${move}  Eval: ${score_str}  Depth: ${depth}`,
+		`Position (FEN): ${fen}`,
+		`Stockfish recommends: ${move}`,
+		`Evaluation: ${score_str}`,
+		`Depth searched: ${depth}`,
 		'',
-		'Each bullet covers ONE of these (in order):',
-		'• **What** — concrete point of the move (attack, defend, develop, gain space, threaten, improve piece)',
-		'• **Why** — named pattern or principle (fork, pin, outpost, prophylaxis, pawn break, center control, king safety, etc.)',
-		'• **Next** — what to watch for or opponent counterplay',
-		'',
-		'Rules: No filler words. Use **bold** for key terms. Assume the student knows basics but wants advanced insight.',
+		'Cover: what the move does concretely, the pattern or principle at play, and a follow-up thought. Keep it brief but instructive.',
 	].join('\n');
 }
 
@@ -32,9 +30,11 @@ export const POST: RequestHandler = async ({ request }) => {
 	const stream = new ReadableStream({
 		async start(controller) {
 			try {
+				const prompt = build_prompt(fen, move, score, depth);
+				console.log('[explain] prompt:', prompt);
 				const response = await ai.models.generateContentStream({
 					model: m || 'gemini-3.5-flash',
-					contents: build_prompt(fen, move, score, depth),
+					contents: prompt,
 					config: {
 						thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
 					},
