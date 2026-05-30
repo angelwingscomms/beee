@@ -72,18 +72,29 @@ export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json().catch(() => null);
 	const raw = Array.isArray(body?.x) ? body.x : Array.isArray(body?.messages) ? body.messages : [];
 	const messages = raw.map(normalize_msg).filter(Boolean) as Msg[];
-	if (!messages.length) return json({ error: 'Missing messages array' }, { status: 400 });
+	if (!messages.length) {
+		console.log('[chat] no messages in request');
+		return json({ error: 'Missing messages array' }, { status: 400 });
+	}
 
 	const i = text(body?.i);
 	const m = text(body?.m) || 'gemini-3.5-flash';
+	console.log(`[chat] request: messages=${messages.length} model=${m} interaction_id=${i ? i.slice(0, 16) + '…' : 'none'}`);
+
 	const last = messages.findLast((msg) => msg.r === 'user');
-	if (!last) return json({ error: 'Missing user message' }, { status: 400 });
+	if (!last) {
+		console.log('[chat] no user message found');
+		return json({ error: 'Missing user message' }, { status: 400 });
+	}
 
 	const ai = new GoogleGenAI({ apiKey: GEMINI });
+	console.log(`[chat] last user msg: ${last.c.slice(0, 80)}`);
 	const stream = new ReadableStream({
 		async start(controller) {
 			let wrote = false;
 			try {
+				const input_type = i ? 'single (last user msg)' : 'steps (full history)';
+				console.log(`[chat] calling ai.interactions.create: model=${m} input_type=${input_type} prev_id=${i ? i.slice(0, 16) + '…' : 'none'}`);
 				const response = await ai.interactions.create({
 					model: m,
 					input: i ? build_input(last) : build_steps(messages) as any,
@@ -95,20 +106,27 @@ export const POST: RequestHandler = async ({ request }) => {
 				for await (const chunk of response) {
 					if (request.signal.aborted) break;
 					const event_type = chunk.event_type ?? chunk.type;
+					console.log(`[chat] gemini event: ${event_type}`);
 					if (event_type === 'step.delta' && chunk.delta.type === 'text') {
 						wrote = true;
 						controller.enqueue(event('text', { t: chunk.delta.text }));
 					}
 					if (event_type === 'interaction.completed' || event_type === 'interaction.complete') {
-						controller.enqueue(event('interaction', { i: chunk.interaction.id }));
+						const id = chunk.interaction?.id;
+						console.log(`[chat] interaction completed: id=${id ? id.slice(0, 16) + '…' : 'unknown'}`);
+						controller.enqueue(event('interaction', { i: id }));
 					}
 				}
 			} catch (e) {
+				console.log(`[chat] interactions api error: ${e instanceof Error ? e.message : e}`);
 				if (!request.signal.aborted) {
 					if (!wrote) {
+						console.log('[chat] falling back to generateContentStream');
 						try {
 							await stream_fallback(controller, request, ai, messages, m);
+							console.log('[chat] fallback succeeded');
 						} catch (fallback) {
+							console.log(`[chat] fallback error: ${fallback instanceof Error ? fallback.message : fallback}`);
 							controller.enqueue(event('error', { e: fallback instanceof Error ? fallback.message : 'Unknown error' }));
 						}
 					} else {
@@ -116,7 +134,9 @@ export const POST: RequestHandler = async ({ request }) => {
 					}
 				}
 			} finally {
-				if (!request.signal.aborted) controller.close();
+				const aborted = request.signal.aborted;
+				console.log(`[chat] stream closed: wrote=${wrote} aborted=${aborted}`);
+				if (!aborted) controller.close();
 			}
 		},
 	});

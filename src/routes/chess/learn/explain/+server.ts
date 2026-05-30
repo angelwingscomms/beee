@@ -20,10 +20,12 @@ function build_prompt(fen: string, move: string, score: number, depth: number): 
 export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json().catch(() => null);
 	if (!body || !body.fen || !body.move) {
+		console.log('[explain] missing fen or move');
 		return json({ error: 'Missing fen or move' }, { status: 400 });
 	}
 
 	const { fen, move, score = 0, depth = 0, m } = body;
+	console.log(`[explain] request: fen=${fen} move=${move} score=${score} depth=${depth} model=${m || 'gemini-3.5-flash'}`);
 
 	const ai = new GoogleGenAI({ apiKey: GEMINI });
 
@@ -31,7 +33,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		async start(controller) {
 			try {
 				const prompt = build_prompt(fen, move, score, depth);
-				console.log('[explain] prompt:', prompt);
+				console.log('[explain] calling generateContentStream');
 				const response = await ai.models.generateContentStream({
 					model: m || 'gemini-3.5-flash',
 					contents: prompt,
@@ -39,15 +41,19 @@ export const POST: RequestHandler = async ({ request }) => {
 						thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
 					},
 				});
+				let chunks = 0;
 				for await (const chunk of response) {
 					if (request.signal.aborted) break;
 					if (chunk.text) {
+						chunks++;
 						controller.enqueue(new TextEncoder().encode(chunk.text));
 					}
 				}
+				console.log(`[explain] stream done: chunks=${chunks} aborted=${request.signal.aborted}`);
 			} catch (e) {
+				const msg = e instanceof Error ? e.message : 'Unknown error';
+				console.log(`[explain] error: ${msg}`);
 				if (!request.signal.aborted) {
-					const msg = e instanceof Error ? e.message : 'Unknown error';
 					controller.enqueue(new TextEncoder().encode('\n[Analysis error: ' + msg + ']'));
 				}
 			} finally {
