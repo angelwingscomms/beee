@@ -567,7 +567,7 @@
 	<div class="fixed inset-0 z-[60] grid place-items-center overflow-y-auto bg-ink/60 px-4 py-6 backdrop-blur-sm" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
 		<div
 			data-testid="learn-settings-modal"
-			class="w-full max-w-md overflow-hidden rounded-2xl border border-hairline bg-canvas text-body shadow-[0_24px_80px_rgba(20,20,19,0.22)]"
+			class="flex max-h-[calc(100dvh-2rem)] w-full max-w-md flex-col overflow-hidden rounded-2xl border border-hairline bg-canvas text-body shadow-[0_24px_80px_rgba(20,20,19,0.22)]"
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="settings-title"
@@ -575,12 +575,12 @@
 			onkeydown={(e) => e.key === 'Escape' && (show_settings = false)}
 			onclick={(e) => e.stopPropagation()}
 		>
-			<div class="border-b border-hairline bg-surface-soft px-6 py-5">
+			<div class="shrink-0 border-b border-hairline bg-surface-soft px-6 py-5">
 				<p class="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-primary">Preferences</p>
 				<h2 id="settings-title" class="font-display text-2xl font-medium text-ink">Settings</h2>
 				<p class="mt-2 text-sm leading-6 text-muted">Choose how hint explanations behave.</p>
 			</div>
-			<div class="grid gap-3 p-6">
+			<div class="grid min-h-0 gap-3 overflow-y-auto p-6">
 				<section class="grid gap-3 rounded-lg bg-surface-card p-4" data-testid="settings-difficulty">
 					<div class="flex items-center justify-between gap-3">
 						<h3 class="text-sm font-medium text-ink">Difficulty</h3>
@@ -686,7 +686,7 @@
 					</label>
 				</section>
 			</div>
-			<div class="grid grid-cols-2 gap-3 border-t border-hairline bg-surface-soft px-6 py-4">
+			<div class="shrink-0 grid grid-cols-2 gap-3 border-t border-hairline bg-surface-soft px-6 py-4">
 				<button class="button-secondary" onclick={() => show_settings = false}>Cancel</button>
 				<button class="button-primary" onclick={() => show_settings = false}>Done</button>
 			</div>

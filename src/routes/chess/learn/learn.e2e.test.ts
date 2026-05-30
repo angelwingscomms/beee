@@ -153,4 +153,13 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('rounded-lg border border-hairline bg-canvas');
 		expect(page).not.toContain('<select bind:value={model}');
 	});
+
+	it('keeps the settings modal inside the viewport with only the body scrolling', () => {
+		expect(page).toContain('max-h-[calc(100dvh-2rem)]');
+		expect(page).toContain('flex max-h-[calc(100dvh-2rem)]');
+		expect(page).toContain('flex-col overflow-hidden');
+		expect(page).toContain('min-h-0 overflow-y-auto');
+		expect(page).toContain('shrink-0 border-b border-hairline');
+		expect(page).toContain('shrink-0 grid grid-cols-2');
+	});
 });
