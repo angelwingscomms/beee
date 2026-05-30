@@ -49,6 +49,7 @@
 	let gemini_api_key = $state(browser && localStorage.getItem('gemini_api_key') || '');
 	let start_hint_done = $state(false);
 	let show_settings = $state(false);
+	let show_model_menu = $state(false);
 	let chat_body = $state<HTMLDivElement | null>(null);
 	let chat_input_ref = $state<HTMLInputElement | null>(null);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
@@ -69,6 +70,10 @@
 	const hint_nudge_y = '-translate-y-1';
 	const hint_from_class = 'bg-amber/45 border-amber ring-ink/25';
 	const hint_to_class = 'bg-teal/45 border-teal ring-ink/25';
+	const model_options = [
+		{ v: 'gemini-3.5-flash', l: 'Gemini 3.5 Flash', d: 'Fast coach' },
+		{ v: 'gemma-4-26b-a4b-it', l: 'Gemma 4', d: 'Small open model' },
+	];
 
 	function buildEngine() {
 		const p = presets[level - 1];
@@ -594,12 +599,41 @@
 						<span>Hard</span>
 					</div>
 				</section>
-				<section class="grid gap-2 rounded-lg bg-surface-card p-4">
-					<h3 class="text-sm font-medium text-ink">Analysis model</h3>
-					<select bind:value={model} class="min-h-[40px] w-full appearance-none rounded-lg border border-hairline bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]">
-						<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
-						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
-					</select>
+				<section class="relative grid gap-2 rounded-lg bg-surface-card p-4">
+					<h3 class="text-sm font-medium text-ink" id="model-label">Analysis model</h3>
+					<button
+						type="button"
+						class="flex min-h-[40px] w-full items-center justify-between gap-3 rounded-lg border border-hairline bg-canvas px-3.5 py-2.5 text-left text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]"
+						role="combobox"
+						aria-labelledby="model-label"
+						aria-haspopup="listbox"
+						aria-controls="model-listbox"
+						aria-expanded={show_model_menu}
+						onclick={() => show_model_menu = !show_model_menu}
+						onkeydown={(e) => { if (e.key === 'Escape') show_model_menu = false; }}
+					>
+						<span>
+							<span class="block font-medium">{model_options.find((o) => o.v === model)?.l ?? model}</span>
+							<span class="mt-0.5 block text-xs text-muted">{model_options.find((o) => o.v === model)?.d ?? 'Custom model'}</span>
+						</span>
+						<span class="text-primary">⌄</span>
+					</button>
+					{#if show_model_menu}
+						<div id="model-listbox" class="absolute left-4 right-4 top-[calc(100%-10px)] z-10 overflow-hidden rounded-lg border border-hairline bg-canvas shadow-[0_16px_48px_rgba(20,20,19,0.16)]" role="listbox" aria-labelledby="model-label">
+							{#each model_options as option (option.v)}
+								<button
+									type="button"
+									class={option.v === model ? 'grid w-full gap-0.5 bg-surface-soft px-3.5 py-2.5 text-left text-sm text-ink' : 'grid w-full gap-0.5 px-3.5 py-2.5 text-left text-sm text-muted hover:bg-surface-soft hover:text-ink'}
+									role="option"
+									aria-selected={option.v === model}
+									onclick={() => { model = option.v; show_model_menu = false; }}
+								>
+									<span class="font-medium">{option.l}</span>
+									<span class="text-xs text-muted">{option.d}</span>
+								</button>
+							{/each}
+						</div>
+					{/if}
 				</section>
 				<section class="grid gap-2 rounded-lg bg-surface-card p-4">
 					<label class="text-sm font-medium text-ink" for="gemini-api-key">Gemini API key</label>

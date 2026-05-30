@@ -141,4 +141,16 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('href="https://aistudio.google.com/api-keys"');
 		expect(page).toContain('target="_blank"');
 	});
+
+	it('uses a styled select-only model combobox instead of a native select', () => {
+		expect(page).toContain('let show_model_menu = $state(false);');
+		expect(page).toContain('const model_options =');
+		expect(page).toContain('role="combobox"');
+		expect(page).toContain('aria-haspopup="listbox"');
+		expect(page).toContain('aria-expanded={show_model_menu}');
+		expect(page).toContain('role="listbox"');
+		expect(page).toContain('role="option"');
+		expect(page).toContain('rounded-lg border border-hairline bg-canvas');
+		expect(page).not.toContain('<select bind:value={model}');
+	});
 });
