@@ -521,6 +521,12 @@ img {
   content: '';
 }
 
+.board-themed cg-board {
+  background-color: var(--surface-soft);
+  background-image: repeating-conic-gradient(var(--primary) 0% 25%, transparent 0% 50%);
+  background-size: 25% 25%;
+}
+
 .logo-gate {
   position: relative;
   display: grid;

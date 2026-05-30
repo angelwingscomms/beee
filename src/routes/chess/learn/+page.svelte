@@ -185,6 +185,7 @@
 			<div class="w-full">
 			{#key level}
 				<Chess
+					class="board-themed"
 					bind:this={chessRef}
 					bind:fen
 					engine={engine as any}
