@@ -107,6 +107,7 @@
 		show_hints = true;
 		try {
 			hints = await getHints(fen, 5);
+			console.log('hints:', hints);
 			hint_index = 0;
 		} catch (e) {
 			console.error('getHints failed:', e);
