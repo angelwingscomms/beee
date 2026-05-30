@@ -41,11 +41,17 @@
 
 	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
 	let autoexplain = $state(browser && localStorage.getItem('autoexplain') !== 'false');
+	let autohint = $state(browser && localStorage.getItem('autohint') === 'true');
+	let autohint_start = $state(browser && localStorage.getItem('autohint_start') === 'true');
+	let auto_started = $state(false);
 	let show_settings = $state(false);
 	let chat_body = $state<HTMLDivElement | null>(null);
 	let chat_input_ref = $state<HTMLInputElement | null>(null);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
 	$effect(() => { if (browser) localStorage.setItem('autoexplain', String(autoexplain)); });
+	$effect(() => { if (browser) localStorage.setItem('autohint', String(autohint)); });
+	$effect(() => { if (browser) localStorage.setItem('autohint_start', String(autohint_start)); });
+	$effect(() => { if (browser && ready && autohint_start && !auto_started) { auto_started = true; showHint(); } });
 	$effect(() => {
 		const el = chat_body;
 		if (!el || chat_messages.length === 0) return;
@@ -162,6 +168,7 @@
 		if (m.color === 'w') last_user_move = move_text(m);
 		else last_ai_move = move_text(m);
 		hideHints(true);
+		if (autohint && m.color === 'b' && !gameOver) showHint();
 	}
 
 	function onGameOver(e: CustomEvent<{ reason: string; result: number }>) {
@@ -521,10 +528,18 @@
 						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
 					</select>
 				</section>
-				<section class="modal-section">
+				<section class="modal-section space-y-3">
 					<label class="flex items-center gap-3 cursor-pointer">
 						<input type="checkbox" bind:checked={autoexplain} class="accent-primary w-4 h-4" />
 						<span class="field-label !mb-0">Auto-explain hint</span>
+					</label>
+					<label class="flex items-center gap-3 cursor-pointer">
+						<input type="checkbox" bind:checked={autohint} class="accent-primary w-4 h-4" />
+						<span class="field-label !mb-0">Auto-hint after opponent moves</span>
+					</label>
+					<label class="flex items-center gap-3 cursor-pointer">
+						<input type="checkbox" bind:checked={autohint_start} disabled={!autohint} class="accent-primary w-4 h-4" />
+						<span class="field-label !mb-0 {!autohint ? 'opacity-50' : ''}">Auto-hint on start</span>
 					</label>
 				</section>
 			</div>
