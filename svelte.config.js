@@ -1,6 +1,11 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
+const legacy_svelte_dep = (filename = '') => {
+	const path = filename.replaceAll('\\', '/');
+	return path.includes('/svelte-chess/') || path.includes('/svelte-chessground/');
+};
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess(),
@@ -9,7 +14,7 @@ const config = {
 	},
 	vitePlugin: {
 		dynamicCompileOptions({ filename }) {
-			if (filename.includes('/svelte-chess')) {
+			if (legacy_svelte_dep(filename)) {
 				return { runes: false };
 			}
 		}
