@@ -21,13 +21,7 @@ describe('/chess/learn hint highlights', () => {
 	});
 });
 
-describe('/chess/learn nav', () => {
-	it('shows a home button via FloatingNav', () => {
-		expect(page).toContain('FloatingNav');
-		expect(page).toContain('href="/"');
-		expect(page).toContain('home');
-	});
-});
+
 
 describe('/chess/learn chat', () => {
 	it('uses side by side desktop layout without widening the board or controls', () => {
