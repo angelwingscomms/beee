@@ -31,7 +31,7 @@ export function getHints(fen: string, count = 5, stockfishPath?: string): Promis
 				let score = 0;
 				if (sc) score = parseInt(sc[1]) > 0 ? 100000 : -100000;
 				else if (sc2) score = parseInt(sc2[1]);
-				const move = u.match(/pv\s+(\S+)/)?.[1] ?? '';
+				const move = u.match(/\bpv\s+(\S+)/)?.[1] ?? '';
 				if (move && mpv > 0 && mpv <= count) hints[mpv - 1] = { move, score, depth };
 			} else if (u.startsWith('bestmove')) {
 				clearTimeout(t);
