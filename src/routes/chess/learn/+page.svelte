@@ -60,6 +60,7 @@
 		turn = m.color === 'w' ? 'b' : 'w';
 		moveNum++;
 		inCheck = (e.detail as any).check ?? false;
+		if (show_hints) hideHints();
 	}
 
 	function onGameOver(e: CustomEvent<{ reason: string; result: number }>) {

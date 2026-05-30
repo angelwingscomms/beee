@@ -92,7 +92,7 @@
 	}
 
 	function emit() {
-		onChange?.(selectedCountry.d + phoneNumber);
+		onChange?.(selectedCountry.d + phoneNumber.replace(/^0+/, ''));
 	}
 
 	function handlePhoneInput(e: Event) {
