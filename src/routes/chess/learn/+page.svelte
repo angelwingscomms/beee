@@ -42,11 +42,16 @@
 
 	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
 	let autoexplain = $state(browser && localStorage.getItem('autoexplain') !== 'false');
+	let auto_hint = $state(browser && localStorage.getItem('auto_hint') === 'true');
+	let hint_on_start = $state(browser && localStorage.getItem('hint_on_start') === 'true');
+	let start_hint_done = $state(false);
 	let show_settings = $state(false);
 	let chat_body = $state<HTMLDivElement | null>(null);
 	let chat_input_ref = $state<HTMLInputElement | null>(null);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
 	$effect(() => { if (browser) localStorage.setItem('autoexplain', String(autoexplain)); });
+	$effect(() => { if (browser) localStorage.setItem('auto_hint', String(auto_hint)); });
+	$effect(() => { if (browser) localStorage.setItem('hint_on_start', String(hint_on_start)); });
 	$effect(() => {
 		const el = chat_body;
 		if (!el || chat_messages.length === 0) return;
@@ -153,7 +158,17 @@
 		last_ai_move = move_text([...moves].reverse().find((m) => m.color === 'b'));
 	}
 
-	function onReady() { ready = true; }
+	function request_hint() {
+		requestAnimationFrame(() => { void showHint(); });
+	}
+
+	function onReady() {
+		ready = true;
+		if (hint_on_start && !start_hint_done) {
+			start_hint_done = true;
+			request_hint();
+		}
+	}
 
 	function onMove(e: CustomEvent<{ color: Color }>) {
 		const m = e.detail;
@@ -163,6 +178,7 @@
 		if (m.color === 'w') last_user_move = move_text(m);
 		else last_ai_move = move_text(m);
 		hideHints(true);
+		if (m.color === 'b' && auto_hint) request_hint();
 	}
 
 	function onGameOver(e: CustomEvent<{ reason: string; result: number }>) {
@@ -527,6 +543,30 @@
 						<span class="grid size-5 place-items-center rounded-full border border-primary">
 							<input type="checkbox" bind:checked={autoexplain} class="sr-only" aria-label="Auto-explain hint" />
 							<span class={autoexplain ? 'size-3 rounded-full bg-primary' : 'size-3 rounded-full bg-transparent'}></span>
+						</span>
+					</label>
+				</section>
+				<section class="rounded-lg border border-hairline bg-canvas p-4">
+					<label class="flex cursor-pointer items-center justify-between gap-4">
+						<span>
+							<span class="block text-sm font-medium text-ink">Auto hint</span>
+							<span class="mt-1 block text-xs leading-5 text-muted">Get a hint after the computer moves.</span>
+						</span>
+						<span class="grid size-5 place-items-center rounded-full border border-primary">
+							<input type="checkbox" bind:checked={auto_hint} class="sr-only" aria-label="Auto hint" />
+							<span class={auto_hint ? 'size-3 rounded-full bg-primary' : 'size-3 rounded-full bg-transparent'}></span>
+						</span>
+					</label>
+				</section>
+				<section class="rounded-lg border border-hairline bg-canvas p-4">
+					<label class="flex cursor-pointer items-center justify-between gap-4">
+						<span>
+							<span class="block text-sm font-medium text-ink">Hint on start</span>
+							<span class="mt-1 block text-xs leading-5 text-muted">Get a hint when this page opens.</span>
+						</span>
+						<span class="grid size-5 place-items-center rounded-full border border-primary">
+							<input type="checkbox" bind:checked={hint_on_start} class="sr-only" aria-label="Hint on start" />
+							<span class={hint_on_start ? 'size-3 rounded-full bg-primary' : 'size-3 rounded-full bg-transparent'}></span>
 						</span>
 					</label>
 				</section>

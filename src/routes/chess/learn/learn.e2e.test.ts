@@ -103,4 +103,16 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('bg-primary');
 		expect(page).not.toContain('type="checkbox" bind:checked={autoexplain} class="h-4 w-4 accent-primary"');
 	});
+
+	it('can request hints automatically after load and after the computer moves', () => {
+		expect(page).toContain("let auto_hint = $state(browser && localStorage.getItem('auto_hint') === 'true');");
+		expect(page).toContain("let hint_on_start = $state(browser && localStorage.getItem('hint_on_start') === 'true');");
+		expect(page).toContain("localStorage.setItem('auto_hint', String(auto_hint))");
+		expect(page).toContain("localStorage.setItem('hint_on_start', String(hint_on_start))");
+		expect(page).toContain('function request_hint()');
+		expect(page).toContain('if (hint_on_start && !start_hint_done)');
+		expect(page).toContain("if (m.color === 'b' && auto_hint) request_hint();");
+		expect(page).toContain('Auto hint');
+		expect(page).toContain('Hint on start');
+	});
 });
