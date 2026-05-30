@@ -24,6 +24,17 @@
 	let analysis_loading = $state(false);
 	let analysis_abort = $state<AbortController | null>(null);
 
+	let hint_sq = $derived.by(() => {
+		if (!show_hints || !hints[hint_index]) return null;
+		const m = hints[hint_index].move;
+		return {
+			fx: m.charCodeAt(0) - 97,
+			fy: 8 - parseInt(m[1]),
+			tx: m.charCodeAt(2) - 97,
+			ty: 8 - parseInt(m[3]),
+		};
+	});
+
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
 
@@ -199,11 +210,10 @@
 					on:gameOver={onGameOver}
 				/>
 			{/key}
-			{#if show_hints && hints[hint_index]}
-				{@const m = hints[hint_index].move}
-				<svg class="absolute inset-0 pointer-events-none" viewBox="0 0 8 8" preserveAspectRatio="xMidYMid meet">
-					<rect x={m.charCodeAt(0) - 97} y={8 - parseInt(m[1])} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
-					<rect x={m.charCodeAt(2) - 97} y={8 - parseInt(m[3])} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
+			{#if hint_sq}
+				<svg class="absolute top-0 left-0 w-full h-full pointer-events-none z-[1]" viewBox="0 0 8 8" preserveAspectRatio="xMidYMid meet">
+					<rect x={hint_sq.fx} y={hint_sq.fy} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
+					<rect x={hint_sq.tx} y={hint_sq.ty} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
 				</svg>
 			{/if}
 			</div>
