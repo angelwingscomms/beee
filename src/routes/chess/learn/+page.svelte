@@ -43,9 +43,7 @@
 		try {
 			const c = new ChessJS(fen);
 			const m = c.move(uci);
-			if (!m) return uci;
-			const sym: Record<string, string> = { k: '♔', q: '♕', r: '♖', b: '♗', n: '♘', p: '♙' };
-			return (sym[m.piece] || '') + m.san;
+			return m?.san ?? uci;
 		} catch {
 			return uci;
 		}
