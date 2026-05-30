@@ -29,6 +29,14 @@ describe('/chess/learn chat', () => {
 		expect(page).toContain('max-w-[640px]');
 	});
 
+	it('keeps desktop vertical chrome tight around the board', () => {
+		expect(page).toContain('container py-4');
+		expect(page).toContain('flex w-full max-w-[1328px] flex-col gap-4');
+		expect(page).toContain('grid w-full grid-cols-1 gap-4');
+		expect(page).not.toContain('container py-12');
+		expect(page).not.toContain('flex w-full max-w-[1328px] flex-col gap-6');
+	});
+
 	it('replaces analysis panel with chat interface', () => {
 		expect(page).toContain('chat_messages');
 		expect(page).toContain('chat_loading');
