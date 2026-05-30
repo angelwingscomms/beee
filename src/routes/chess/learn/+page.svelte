@@ -24,13 +24,24 @@
 	let hint_index = $state(0);
 	let hint_loading = $state(false);
 
-	let analysis_text = $state('');
-	let analysis_loading = $state(false);
-	let analysis_abort = $state<AbortController | null>(null);
+	let chat_messages = $state<{role:'user'|'assistant', content:string}[]>([]);
+	let chat_loading = $state(false);
+	let chat_abort = $state<AbortController | null>(null);
+	let chat_input = $state('');
 
 	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
 	let show_settings = $state(false);
+	let chat_body = $state<HTMLDivElement | null>(null);
+	let chat_input_ref = $state<HTMLInputElement | null>(null);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
+	$effect(() => {
+		const el = chat_body;
+		if (!el || chat_messages.length === 0) return;
+		requestAnimationFrame(() => { el.scrollTop = el.scrollHeight; });
+	});
+	$effect(() => {
+		if (!chat_loading && chat_input_ref) chat_input_ref.focus();
+	});
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
@@ -147,54 +158,110 @@
 			hint_fen = '';
 			hint_index = 0;
 		}
-		dismissAnalysis();
+		clearChat();
 	}
 
 	async function explainHint() {
-		if (analysis_loading) return;
+		if (chat_loading) return;
 		if (!hints[hint_index]) return;
-		analysis_loading = true;
-		analysis_text = '';
+		const h = hints[hint_index];
+		const san = uciToSan(fen, h.move);
+		const score_str = fmtScore(h.score);
+		const user_msg = `Explain **${san}** (${score_str}, depth ${h.depth})`;
+		chat_messages = [...chat_messages, { role: 'user', content: user_msg }];
+		chat_loading = true;
 		const ac = new AbortController();
-		analysis_abort = ac;
+		chat_abort = ac;
+		chat_messages = [...chat_messages, { role: 'assistant', content: '' }];
 		try {
-			const h = hints[hint_index];
-			const res = await fetch('/chess/learn/explain', {
+			const res = await fetch('/chess/learn/chat', {
 				method: 'POST',
-				body: JSON.stringify({ fen, move: h.move, score: h.score, depth: h.depth, m: model }),
+				body: JSON.stringify({
+					messages: [{ role: 'user', content: user_msg }],
+					fen, move: h.move, score: h.score, depth: h.depth, m: model
+				}),
 				signal: ac.signal,
 			});
 			if (!res.ok || !res.body) throw Error('Request failed');
 			const reader = res.body.getReader();
 			const dec = new TextDecoder();
+			let ai_text = '';
 			while (true) {
 				const { done, value } = await reader.read();
 				if (done) break;
-				analysis_text += dec.decode(value, { stream: true });
+				ai_text += dec.decode(value, { stream: true });
+				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: ai_text };
+				chat_messages = chat_messages;
 			}
 		} catch (e) {
 			if (e instanceof DOMException && e.name === 'AbortError') return;
-			analysis_text += '\n[Failed to load analysis]';
+			const last = chat_messages[chat_messages.length - 1];
+			if (last?.role === 'assistant') {
+				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: last.content + '\n[Failed to load analysis]' };
+				chat_messages = chat_messages;
+			}
 		} finally {
-			analysis_loading = false;
-			analysis_abort = null;
+			chat_loading = false;
+			chat_abort = null;
 		}
 	}
 
-	function stopAnalysis() {
-		if (analysis_abort) {
-			analysis_abort.abort();
-			analysis_abort = null;
-			analysis_loading = false;
+	function stopChat() {
+		if (chat_abort) {
+			chat_abort.abort();
+			chat_abort = null;
+			chat_loading = false;
 		}
 	}
 
-	function dismissAnalysis() {
-		analysis_text = '';
-		analysis_loading = false;
-		if (analysis_abort) {
-			analysis_abort.abort();
-			analysis_abort = null;
+	function clearChat() {
+		chat_messages = [];
+		chat_loading = false;
+		if (chat_abort) {
+			chat_abort.abort();
+			chat_abort = null;
+		}
+	}
+
+	async function sendChatMessage(text: string) {
+		if (!text.trim() || chat_loading) return;
+		const user_msg = text.trim();
+		chat_messages = [...chat_messages, { role: 'user', content: user_msg }];
+		chat_loading = true;
+		const ac = new AbortController();
+		chat_abort = ac;
+		chat_messages = [...chat_messages, { role: 'assistant', content: '' }];
+		try {
+			const res = await fetch('/chess/learn/chat', {
+				method: 'POST',
+				body: JSON.stringify({
+					messages: chat_messages.map(m => ({ role: m.role, content: m.content })),
+					fen, m: model
+				}),
+				signal: ac.signal,
+			});
+			if (!res.ok || !res.body) throw Error('Request failed');
+			const reader = res.body.getReader();
+			const dec = new TextDecoder();
+			let ai_text = '';
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) break;
+				ai_text += dec.decode(value, { stream: true });
+				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: ai_text };
+				chat_messages = chat_messages;
+			}
+		} catch (e) {
+			if (e instanceof DOMException && e.name === 'AbortError') return;
+			const last = chat_messages[chat_messages.length - 1];
+			if (last?.role === 'assistant') {
+				chat_messages[chat_messages.length - 1] = { role: 'assistant', content: last.content + '\n[Failed to load analysis]' };
+				chat_messages = chat_messages;
+			}
+		} finally {
+			chat_loading = false;
+			chat_abort = null;
+			chat_input = '';
 		}
 	}
 </script>
@@ -311,8 +378,8 @@
 											<span>{hint_index + 1}/{hints.length}</span>
 										</div>
 									</div>
-									<button class="button-secondary-dark shrink-0" onclick={explainHint} disabled={analysis_loading}>
-										{analysis_loading ? 'Thinking...' : 'Explain'}
+									<button class="button-secondary-dark shrink-0" onclick={explainHint} disabled={chat_loading}>
+										{chat_loading ? 'Thinking...' : 'Explain'}
 									</button>
 								</div>
 							</div>
@@ -324,22 +391,54 @@
 					{/if}
 				</div>
 
-				{#if analysis_loading || analysis_text}
-					<div class="w-full rounded-xl bg-surface-card border border-hairline p-4 space-y-2">
-						<div class="flex items-center justify-between">
-							<span class="text-sm font-medium text-ink">Analysis</span>
-							{#if analysis_loading}
-								<button class="text-xs text-error" onclick={stopAnalysis}>Stop</button>
-							{:else}
-								<button class="text-xs text-muted" onclick={dismissAnalysis}>Dismiss</button>
-							{/if}
-						</div>
-						<div class="text-sm text-muted max-h-60 overflow-y-auto space-y-2 analysis-body">
-							{@html marked.parse(analysis_text)}
-							{#if analysis_loading}<span class="animate-pulse">▊</span>{/if}
-						</div>
+				<div class="w-full rounded-xl bg-surface-card border border-hairline overflow-hidden">
+					<div class="flex items-center justify-between px-4 py-3 border-b border-hairline">
+						<span class="text-sm font-medium text-ink">Chat</span>
+						{#if chat_messages.length > 0}
+							<button class="text-xs text-muted" onclick={clearChat}>Clear</button>
+						{/if}
 					</div>
-				{/if}
+					<div bind:this={chat_body} class="max-h-80 overflow-y-auto px-4 py-3 space-y-3">
+						{#if chat_messages.length === 0}
+							<p class="text-sm text-muted text-center py-6">No messages yet. Click <strong class="text-ink">Explain</strong> on a hint to start.</p>
+						{/if}
+						{#each chat_messages as msg, i (i)}
+							<div class="flex {msg.role === 'user' ? 'justify-end' : 'justify-start'}">
+								{#if msg.role === 'assistant'}
+									<div class="max-w-[85%] bg-canvas border border-hairline text-body rounded-[4px_16px_16px_16px] px-3.5 py-2.5 text-sm leading-relaxed">
+										{@html marked.parse(msg.content)}
+										{#if chat_loading && i === chat_messages.length - 1}<span class="animate-pulse text-body">▊</span>{/if}
+									</div>
+								{:else}
+									<div class="max-w-[85%] bg-primary text-white rounded-[16px_4px_16px_16px] px-3.5 py-2.5 text-sm leading-relaxed">
+										{msg.content}
+									</div>
+								{/if}
+							</div>
+						{/each}
+					</div>
+					{#if chat_loading}
+						<div class="px-4 pb-2">
+							<button class="text-xs text-error" onclick={stopChat}>Stop generating</button>
+						</div>
+					{/if}
+					<div class="flex items-center gap-2 p-3 border-t border-hairline">
+						<input
+							bind:this={chat_input_ref}
+							bind:value={chat_input}
+							onkeydown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(chat_input); } }}
+							placeholder="Ask about the position..."
+							class="flex-1 min-h-[40px] rounded-lg border border-hairline bg-canvas text-ink px-3.5 py-2.5 text-sm outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]"
+							disabled={chat_loading}
+						/>
+						<button
+							onclick={() => sendChatMessage(chat_input)}
+							disabled={!chat_input.trim() || chat_loading}
+							class="button-primary !px-3 !min-h-[40px] !rounded-lg shrink-0"
+							aria-label="Send"
+						>→</button>
+					</div>
+				</div>
 
 				<button class="button-secondary text-xs ml-auto" onclick={() => show_settings = true}>
 					Settings

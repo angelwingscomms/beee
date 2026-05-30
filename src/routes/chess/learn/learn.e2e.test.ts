@@ -20,3 +20,17 @@ describe('/chess/learn hint highlights', () => {
 		expect(page).toContain('hint_fen = fen;');
 	});
 });
+
+describe('/chess/learn chat', () => {
+	it('replaces analysis panel with chat interface', () => {
+		expect(page).toContain('chat_messages');
+		expect(page).toContain('chat_loading');
+		expect(page).toContain('chat_abort');
+		expect(page).toContain('sendChatMessage');
+		expect(page).toContain('stopChat');
+		expect(page).toContain('clearChat');
+		expect(page).toContain('/chess/learn/chat');
+		expect(page).toContain('Chat');
+		expect(page).toContain('Ask about the position');
+	});
+});
