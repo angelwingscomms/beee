@@ -73,11 +73,11 @@ export const POST: RequestHandler = async ({ request }) => {
 			return json({ error: 'Amount mismatch' }, { status: 400 });
 		}
 
-		// Look up school on Google Maps via Serper to verify it's a school
-		const school_name = reg_data.sn as string;
-		console.log(`[POST /api/verify-payment] Searching maps for school: "${school_name}"...`);
-		const v = await search_maps(school_name);
-		console.log(`[POST /api/verify-payment] Maps lookup result for "${school_name}": v=${v}`);
+		// // Look up school on Google Maps via Serper to verify it's a school
+		// const school_name = reg_data.sn as string;
+		// console.log(`[POST /api/verify-payment] Searching maps for school: "${school_name}"...`);
+		// const v = await search_maps(school_name);
+		// console.log(`[POST /api/verify-payment] Maps lookup result for "${school_name}": v=${v}`);
 
 		// Write full registration to DB now that payment is confirmed
 		console.log(`[POST /api/verify-payment] Payment confirmed! Writing registration to DB for ID: ${reg_id}...`);
@@ -88,7 +88,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			e: reg_data.e as string,
 			p: reg_data.p as string,
 			st: 'paid',
-			v,
+			v: 0,
 			amt: expected_amt,
 			d: Date.now(),
 			ref: verified.reference

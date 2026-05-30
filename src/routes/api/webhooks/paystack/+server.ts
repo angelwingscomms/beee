@@ -95,10 +95,10 @@ export const POST: RequestHandler = async ({ request }) => {
 					return;
 				}
 
-				// Look up school on Google Maps via Serper to verify it's a school
-				const school_name = reg_data.sn as string;
-				const v = await search_maps(school_name);
-				console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
+				// // Look up school on Google Maps via Serper to verify it's a school
+				// const school_name = reg_data.sn as string;
+				// const v = await search_maps(school_name);
+				// console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
 
 				// Write full registration to DB
 				const payload: Registration = {
@@ -108,7 +108,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					e: reg_data.e as string,
 					p: reg_data.p as string,
 					st: 'paid',
-					v,
+					v: 0,
 					amt: expected_amt,
 					d: Date.now(),
 					ref: verified.reference
