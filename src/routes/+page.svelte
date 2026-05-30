@@ -5,4 +5,4 @@
 
 <RegistrationForm />
 
-<FloatingNav href="/chess/learn">learn chess with AI</FloatingNav>
+<!-- <FloatingNav href="/chess/learn">learn chess with AI</FloatingNav> -->

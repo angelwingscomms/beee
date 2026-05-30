@@ -40,10 +40,12 @@
 	let successful_context = $state<Partial<ChatContext>>({});
 
 	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
+	let autoexplain = $state(browser && localStorage.getItem('autoexplain') !== 'false');
 	let show_settings = $state(false);
 	let chat_body = $state<HTMLDivElement | null>(null);
 	let chat_input_ref = $state<HTMLInputElement | null>(null);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
+	$effect(() => { if (browser) localStorage.setItem('autoexplain', String(autoexplain)); });
 	$effect(() => {
 		const el = chat_body;
 		if (!el || chat_messages.length === 0) return;
@@ -216,6 +218,7 @@
 			hint_fen = fen;
 			console.log('hints:', hints);
 			hint_index = 0;
+			if (autoexplain) explainHint();
 		} catch (e) {
 			console.error('getHints failed:', e);
 			hints = [];
@@ -517,6 +520,12 @@
 						<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
 						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
 					</select>
+				</section>
+				<section class="modal-section">
+					<label class="flex items-center gap-3 cursor-pointer">
+						<input type="checkbox" bind:checked={autoexplain} class="accent-primary w-4 h-4" />
+						<span class="field-label !mb-0">Auto-explain hint</span>
+					</label>
 				</section>
 			</div>
 			<div class="modal-actions">

@@ -164,13 +164,18 @@
 			</div>
 
 			<div class="registration-checker-squares mt-10 grid grid-cols-8 overflow-hidden" aria-hidden="true">
-				{#each Array(8) as _, i}
+				{#each Array(24) as _, i}
 					<span
 						class={[
-							i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary',
-							i === 0 ? 'rounded-bl-lg rounded-tl-lg' : '',
-							i === 7 ? 'rounded-br-lg rounded-tr-lg' : ''
+							(Math.floor(i / 8) + i) % 2 === 0 ? 'aspect-square bg-[#F5EDE0]' : 'aspect-square bg-[#DFD0BE]',
+							// original-registration-checker-squares-colors: even=bg-surface-card (#efe9de), odd=bg-primary (#cc785c)
+							i === 0 ? 'rounded-tl-lg' : '',
+							i === 7 ? 'rounded-tr-lg' : '',
+							i === 16 ? 'rounded-bl-lg' : '',
+							i === 23 ? 'rounded-br-lg' : '',
+							i === 9 ? 'bg-cover bg-center' : ''
 						]}
+						style={i === 9 ? 'background-image: url(/pieces/gioco/bQ.svg)' : ''}
 					></span>
 				{/each}
 			</div>
