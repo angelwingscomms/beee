@@ -183,7 +183,7 @@
 			<h1 class="display-sm" style="margin:0">Chess — Learn</h1>
 			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 
-			<div class="w-full">
+			<div class="w-full relative">
 			{#key level}
 				<Chess
 					class="cg-default-style board-themed"
@@ -199,6 +199,13 @@
 					on:gameOver={onGameOver}
 				/>
 			{/key}
+			{#if show_hints && hints[hint_index]}
+				{@const m = hints[hint_index].move}
+				<svg class="absolute inset-0 pointer-events-none" viewBox="0 0 8 8" preserveAspectRatio="xMidYMid meet">
+					<rect x={m.charCodeAt(0) - 97} y={8 - parseInt(m[1])} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
+					<rect x={m.charCodeAt(2) - 97} y={8 - parseInt(m[3])} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
+				</svg>
+			{/if}
 			</div>
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
