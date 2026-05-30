@@ -100,7 +100,7 @@
 
 			<h1 id="event-title" class="display-xl">BEEE T.E.A.M.U.P. Spectacular Chess Championship Abuja 2026</h1>
 			<p class="lead">
-				Complete the form and pay the registration fee to confirm your entry.
+				Register now to confirm your entry
 			</p>
 
 			<div class="price-band simple-price">
