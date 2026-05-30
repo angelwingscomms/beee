@@ -29,22 +29,25 @@
 	let show_settings = $state(false);
 	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
 
-	function setHighlights(squares: string[]) {
-		document.querySelectorAll('cg-board square').forEach(el => {
-			const sq = (el as HTMLElement).dataset.key;
-			(el as HTMLElement).style.backgroundColor = sq && squares.includes(sq)
-				? 'rgba(204, 120, 92, 0.45)'
-				: '';
-		});
-	}
+	let hint_squares = $derived(
+		show_hints && hints.length > 0 && hint_index >= 0 && hints[hint_index]
+			? [hints[hint_index].move.slice(0, 2), hints[hint_index].move.slice(2, 4)]
+			: []
+	);
 
 	$effect(() => {
-		if (show_hints && hints.length > 0 && hints[hint_index]) {
-			const m = hints[hint_index].move;
-			setHighlights([m.slice(0, 2), m.slice(2, 4)]);
-		} else {
-			setHighlights([]);
-		}
+		if (!browser) return;
+		const sq = hint_squares;
+		const raf = requestAnimationFrame(() => {
+			document.querySelectorAll('cg-board square').forEach(el => {
+				const e = el as HTMLElement;
+				const k = e.dataset.key;
+				e.style.background = k && sq.includes(k)
+					? 'color-mix(in srgb, var(--color-primary) 35%, transparent)'
+					: '';
+			});
+		});
+		return () => cancelAnimationFrame(raf);
 	});
 
 	const presets = DIFFICULTY_PRESETS;
