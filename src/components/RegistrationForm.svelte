@@ -165,7 +165,7 @@
 
 			<div class="registration-checker-squares mt-6 grid grid-cols-8 overflow-hidden" aria-hidden="true">
 				{#each Array(8) as _, i}
-					<span class={i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary/45'}></span>
+					<span class={i % 2 === 0 ? 'aspect-square bg-surface-card' : 'aspect-square bg-primary'}></span>
 				{/each}
 			</div>
 		</form>

@@ -12,6 +12,8 @@ describe('homepage registration chess squares', () => {
 		expect(form).toContain('registration-checker-squares');
 		expect(form).toContain('grid grid-cols-8');
 		expect(form).toContain('aspect-square');
+		expect(form).toContain("'aspect-square bg-primary'");
+		expect(form).not.toContain('aspect-square bg-primary/45');
 		expect(form.indexOf('submit-row')).toBeLessThan(form.indexOf('registration-checker-squares'));
 	});
 });
