@@ -32,7 +32,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		parts: [{ text: msg.content }],
 	}));
 
-	const sys = fen && move ? build_prompt(fen, move, score, depth) : 'You are a chess coach. Answer concisely and instructively. Use **bold** for key ideas.';
+	const sys = fen && move
+		? build_prompt(fen, move, score, depth)
+		: fen
+			? `You are a chess coach analyzing a position. Keep answers concise and instructive. Use **bold** for key ideas.\n\nPosition (FEN): ${fen}\n\nAnswer the user's questions about this position.`
+			: 'You are a chess coach. Answer concisely and instructively. Use **bold** for key ideas.';
 
 	const stream = new ReadableStream({
 		async start(controller) {

@@ -39,9 +39,7 @@
 		if (!el || chat_messages.length === 0) return;
 		requestAnimationFrame(() => { el.scrollTop = el.scrollHeight; });
 	});
-	$effect(() => {
-		if (!chat_loading && chat_input_ref) chat_input_ref.focus();
-	});
+
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
@@ -203,6 +201,7 @@
 		} finally {
 			chat_loading = false;
 			chat_abort = null;
+			requestAnimationFrame(() => chat_input_ref?.focus());
 		}
 	}
 
@@ -262,6 +261,7 @@
 			chat_loading = false;
 			chat_abort = null;
 			chat_input = '';
+			requestAnimationFrame(() => chat_input_ref?.focus());
 		}
 	}
 </script>
