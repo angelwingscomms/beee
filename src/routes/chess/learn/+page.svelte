@@ -311,20 +311,25 @@
 </main>
 
 {#if show_settings}
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
-		<div class="bg-surface-card rounded-xl p-6 space-y-4 min-w-[280px]" role="dialog" aria-modal="true" tabindex="-1" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={(e) => e.stopPropagation()}>
-			<div class="flex items-center justify-between">
-				<h2 class="text-sm font-medium text-ink">Settings</h2>
-				<button class="text-xs text-muted" onclick={() => show_settings = false}>✕</button>
+	<div class="modal-backdrop" role="presentation" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={() => show_settings = false}>
+		<div class="modal-card max-w-sm" role="dialog" aria-modal="true" tabindex="-1" onkeydown={(e) => e.key === 'Escape' && (show_settings = false)} onclick={(e) => e.stopPropagation()}>
+			<div class="modal-header">
+				<h2 id="settings-title" class="text-sm font-medium text-ink">Settings</h2>
+				<p>Analysis preferences</p>
 			</div>
-			<label class="flex flex-col gap-1.5">
-				<span class="text-xs text-muted">Analysis Model</span>
-				<select bind:value={model} class="w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink">
-					<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
-					<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
-				</select>
-			</label>
-			<button class="button-primary text-sm w-full" onclick={() => show_settings = false}>Done</button>
+			<div class="modal-body">
+				<section class="modal-section">
+					<h3 class="field-label">Analysis Model</h3>
+					<select bind:value={model} class="w-full min-h-[40px] rounded-lg border border-hairline bg-canvas text-ink px-3.5 py-2.5 text-sm outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] appearance-none">
+						<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
+						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
+					</select>
+				</section>
+			</div>
+			<div class="modal-actions">
+				<button class="button-secondary" onclick={() => show_settings = false}>Cancel</button>
+				<button class="button-primary" onclick={() => show_settings = false}>Done</button>
+			</div>
 		</div>
 	</div>
 {/if}
