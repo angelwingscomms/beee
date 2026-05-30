@@ -80,4 +80,27 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('rounded-lg border border-hairline bg-canvas');
 		expect(page).not.toContain('modal-card max-w-sm');
 	});
+
+	it('moves difficulty into settings and uses compact icon controls above chat', () => {
+		expect(page).toContain("import { Lightbulb, RotateCcw, Settings, Undo2 } from '@lucide/svelte';");
+		expect(page).toContain('data-testid="learn-icon-toolbar"');
+		expect(page).toContain('aria-label="New game"');
+		expect(page).toContain('<RotateCcw');
+		expect(page).toContain('aria-label="Undo move"');
+		expect(page).toContain('<Undo2');
+		expect(page).toContain('aria-label="Show hint"');
+		expect(page).toContain('<Lightbulb');
+		expect(page).toContain('aria-label="Settings"');
+		expect(page).toContain('<Settings');
+		expect(page).toContain('data-testid="settings-difficulty"');
+		expect(page).not.toContain('<span class="text-muted">Move:</span>');
+		expect(page).not.toContain('<button class="button-secondary text-xs ml-auto"');
+	});
+
+	it('uses a tiny coral round control for auto explain', () => {
+		expect(page).toContain('sr-only');
+		expect(page).toContain('rounded-full border border-primary');
+		expect(page).toContain('bg-primary');
+		expect(page).not.toContain('type="checkbox" bind:checked={autoexplain} class="h-4 w-4 accent-primary"');
+	});
 });

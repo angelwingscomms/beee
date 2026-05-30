@@ -7,6 +7,7 @@
 	import type { Color, Hint } from '$lib/util/chess/engine';
 	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
 	import FloatingNav from '$lib/components/FloatingNav.svelte';
+	import { Lightbulb, RotateCcw, Settings, Undo2 } from '@lucide/svelte';
 
 	type ChatContext = { f: string; p: string; u: string; a: string };
 	type ChatData = Partial<ChatContext> & { h?: string };
@@ -358,34 +359,10 @@
 			{/if}
 			</div>
 
-			<div class="mx-auto w-full max-w-[640px] space-y-4 rounded-xl bg-surface-card p-6 lg:mx-0">
-				<div class="flex items-center gap-3">
-					<span class="text-sm font-medium text-muted w-20">Difficulty</span>
-					<input
-						type="range"
-						min="1"
-						max="10"
-						bind:value={level}
-						class="flex-1 accent-primary"
-					/>
-					<span class="text-sm font-medium text-ink w-20 text-right">{labels[level - 1]}</span>
-				</div>
-
-				<div class="flex items-center gap-3 text-sm text-muted justify-between">
-					<span>Easy</span>
-					<span class="text-xs">
-						Elo: {presets[level - 1].elo ?? '∞'} · Depth: {presets[level - 1].depth} · Time: {presets[level - 1].moveTime}ms
-					</span>
-					<span>Hard</span>
-				</div>
-
-				<hr class="border-hairline" />
-
-				<div class="flex items-center gap-4 text-sm">
-					<span class="text-muted">Turn:</span>
-					<span class="font-medium text-ink">{turn === 'w' ? 'White' : 'Black'}</span>
-					<span class="text-muted">Move:</span>
-					<span class="font-medium text-ink">{moveNum}</span>
+			<div class="mx-auto w-full max-w-[640px] space-y-2 rounded-xl bg-surface-card p-3 lg:mx-0">
+				<div class="flex items-center gap-2 text-xs">
+					<span class="text-muted">Turn</span>
+					<span class="rounded-full bg-canvas px-2 py-1 font-medium text-ink">{turn === 'w' ? 'White' : 'Black'}</span>
 					{#if inCheck}
 						<span class="text-error font-medium">Check!</span>
 					{/if}
@@ -397,54 +374,49 @@
 					{/if}
 				</div>
 
-				<div class="flex gap-2 flex-wrap">
-					<button class="button-primary" onclick={resetGame} disabled={!ready}>
-						New Game
+				<div class="flex items-center gap-1.5" data-testid="learn-icon-toolbar">
+					<button class="grid size-8 place-items-center rounded-full border border-hairline bg-canvas text-ink transition-colors hover:text-primary disabled:text-muted" onclick={resetGame} disabled={!ready} aria-label="New game">
+						<RotateCcw size={15} strokeWidth={1.8} />
 					</button>
-					<button class="button-secondary" onclick={undoMove} disabled={!ready || moveNum === 0 || gameOver}>
-						Undo
+					<button class="grid size-8 place-items-center rounded-full border border-hairline bg-canvas text-ink transition-colors hover:text-primary disabled:text-muted" onclick={undoMove} disabled={!ready || moveNum === 0 || gameOver} aria-label="Undo move">
+						<Undo2 size={15} strokeWidth={1.8} />
+					</button>
+					{#if show_hints}
+						<button class="grid size-8 place-items-center rounded-full border border-hairline bg-primary text-white disabled:bg-primary-disabled disabled:text-muted" onclick={() => hideHints()} aria-label="Hide hints">
+							<Lightbulb size={15} strokeWidth={1.8} />
+						</button>
+					{:else}
+						<button class="grid size-8 place-items-center rounded-full border border-hairline bg-canvas text-ink transition-colors hover:text-primary disabled:text-muted" onclick={showHint} disabled={!ready || gameOver || hint_loading} aria-label="Show hint">
+							<Lightbulb size={15} strokeWidth={1.8} />
+						</button>
+					{/if}
+					<button class="ml-auto grid size-8 place-items-center rounded-full border border-hairline bg-canvas text-ink transition-colors hover:text-primary" onclick={() => show_settings = true} aria-label="Settings">
+						<Settings size={15} strokeWidth={1.8} />
 					</button>
 				</div>
 
-				<div class="flex gap-2 flex-wrap">
-					{#if show_hints}
-						<button class="button-secondary" onclick={() => hideHints()}>
-							Hide Hints
-						</button>
-						<button class="button-secondary-dark" onclick={prevHint} disabled={hint_index === 0 || hint_loading}>
-							&lt; Prev
-						</button>
-						<button class="button-secondary-dark" onclick={nextHint} disabled={hint_loading || hint_index >= hints.length - 1}>
-							Next >
-						</button>
-						{#if hint_loading}
-							<span class="text-xs text-amber animate-pulse self-center">Analyzing...</span>
-						{:else if hints.length > 0}
-							<div class="w-full rounded-lg bg-surface-card border border-hairline p-3">
-								<div class="flex items-center gap-3">
-									<div class="flex-1 min-w-0">
-										<div class="flex items-baseline gap-2">
-											<span class="text-xl font-bold font-mono text-ink truncate">{uciToSan(fen, hints[hint_index].move)}</span>
-											<span class="text-sm font-mono text-muted">{fmtScore(hints[hint_index].score)}</span>
-										</div>
-										<div class="flex items-center gap-2 text-xs text-muted mt-0.5">
-											<span>d{hints[hint_index].depth}</span>
-											<span>·</span>
-											<span>{hint_index + 1}/{hints.length}</span>
-										</div>
-									</div>
-									<button class="button-secondary-dark shrink-0" onclick={explainHint} disabled={chat_loading}>
-										{chat_loading ? 'Thinking...' : 'Explain'}
-									</button>
+				{#if show_hints && !hint_loading && hints.length > 0}
+					<div class="rounded-lg border border-hairline bg-canvas p-2">
+						<div class="flex items-center gap-2">
+							<div class="min-w-0 flex-1">
+								<div class="flex items-baseline gap-2">
+									<span class="truncate font-mono text-base font-bold text-ink">{uciToSan(fen, hints[hint_index].move)}</span>
+									<span class="font-mono text-xs text-muted">{fmtScore(hints[hint_index].score)}</span>
+								</div>
+								<div class="mt-0.5 flex items-center gap-1.5 text-[11px] text-muted">
+									<span>d{hints[hint_index].depth}</span>
+									<span>·</span>
+									<span>{hint_index + 1}/{hints.length}</span>
 								</div>
 							</div>
-						{/if}
-					{:else}
-						<button class="button-primary" onclick={showHint} disabled={!ready || gameOver || hint_loading}>
-							{hint_loading ? 'Thinking...' : 'Hint'}
-						</button>
-					{/if}
-				</div>
+							<button class="button-secondary-dark !min-h-8 !px-3 !py-2 text-xs" onclick={explainHint} disabled={chat_loading}>
+								{chat_loading ? 'Thinking...' : 'Explain'}
+							</button>
+						</div>
+					</div>
+				{:else if hint_loading}
+					<span class="self-center text-xs text-amber animate-pulse">Analyzing...</span>
+				{/if}
 
 				<div class="w-full rounded-xl bg-surface-card border border-hairline overflow-hidden">
 					<div class="flex items-center justify-between px-4 py-3 border-b border-hairline">
@@ -495,9 +467,6 @@
 					</div>
 				</div>
 
-				<button class="button-secondary text-xs ml-auto" onclick={() => show_settings = true}>
-					Settings
-				</button>
 			</div>
 		</div>
 	</div>
@@ -524,6 +493,24 @@
 				<p class="mt-2 text-sm leading-6 text-muted">Choose how hint explanations behave.</p>
 			</div>
 			<div class="grid gap-3 p-6">
+				<section class="grid gap-3 rounded-lg bg-surface-card p-4" data-testid="settings-difficulty">
+					<div class="flex items-center justify-between gap-3">
+						<h3 class="text-sm font-medium text-ink">Difficulty</h3>
+						<span class="text-sm font-medium text-primary">{labels[level - 1]}</span>
+					</div>
+					<input
+						type="range"
+						min="1"
+						max="10"
+						bind:value={level}
+						class="w-full accent-primary"
+					/>
+					<div class="flex items-center justify-between gap-3 text-xs text-muted">
+						<span>Easy</span>
+						<span>Elo: {presets[level - 1].elo ?? '∞'} · Depth: {presets[level - 1].depth} · Time: {presets[level - 1].moveTime}ms</span>
+						<span>Hard</span>
+					</div>
+				</section>
 				<section class="grid gap-2 rounded-lg bg-surface-card p-4">
 					<h3 class="text-sm font-medium text-ink">Analysis model</h3>
 					<select bind:value={model} class="min-h-[40px] w-full appearance-none rounded-lg border border-hairline bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]">
@@ -537,7 +524,10 @@
 							<span class="block text-sm font-medium text-ink">Auto-explain hint</span>
 							<span class="mt-1 block text-xs leading-5 text-muted">Start analysis when a hint appears.</span>
 						</span>
-						<input type="checkbox" bind:checked={autoexplain} class="h-4 w-4 accent-primary" />
+						<span class="grid size-5 place-items-center rounded-full border border-primary">
+							<input type="checkbox" bind:checked={autoexplain} class="sr-only" aria-label="Auto-explain hint" />
+							<span class={autoexplain ? 'size-3 rounded-full bg-primary' : 'size-3 rounded-full bg-transparent'}></span>
+						</span>
 					</label>
 				</section>
 			</div>
