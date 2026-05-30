@@ -6,19 +6,16 @@ import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 function build_prompt(fen: string, move: string, score: number, depth: number): string {
 	const score_str = score > 90000 ? 'Mate' : score < -90000 ? '-Mate' : (score / 100).toFixed(2);
 	return [
-		'You are a chess coach analyzing a position for a student. Make your explanation easy to understand while still covering real chess concepts — openings, tactics, strategy, pawn structures, piece play, and endgame ideas when relevant.',
+		'Output exactly 3 bullet points analyzing why Stockfish recommends this move. No paragraphs, no intro, no conclusion — just 3 bullets. Max 4 lines total.',
 		'',
-		`Position (FEN): ${fen}`,
-		`Stockfish recommends: ${move}`,
-		`Evaluation: ${score_str}`,
-		`Depth searched: ${depth}`,
+		`FEN: ${fen}  Move: ${move}  Eval: ${score_str}  Depth: ${depth}`,
 		'',
-		'Write a short analysis. 2-3 **concise bullet points**. Each bullet is one dense insight — no fluff, no filler paragraphs:',
-		'• **Concrete point** — what does the move actually do? (attack, defend, develop, gain space, threaten, improve piece).',
-		'• **Core concept** — name the pattern or principle (fork, pin, outpost, prophylaxis, pawn break, center control, king safety, etc.). Connect it to bigger strategic ideas.',
-		'• **Follow-up** — what to watch for next or what the opponent might try.',
+		'Each bullet covers ONE of these (in order):',
+		'• **What** — concrete point of the move (attack, defend, develop, gain space, threaten, improve piece)',
+		'• **Why** — named pattern or principle (fork, pin, outpost, prophylaxis, pawn break, center control, king safety, etc.)',
+		'• **Next** — what to watch for or opponent counterplay',
 		'',
-		'Maximum 4 lines total. Be brief but deep. Assume the student knows basic rules but wants to think like an advanced player. Use **bold** for key terms.',
+		'Rules: No filler words. Use **bold** for key terms. Assume the student knows basics but wants advanced insight.',
 	].join('\n');
 }
 
