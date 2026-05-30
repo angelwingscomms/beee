@@ -24,17 +24,6 @@
 	let analysis_loading = $state(false);
 	let analysis_abort = $state<AbortController | null>(null);
 
-	let hint_sq = $derived.by(() => {
-		if (!show_hints || !hints[hint_index]) return null;
-		const m = hints[hint_index].move;
-		return {
-			fx: m.charCodeAt(0) - 97,
-			fy: 8 - parseInt(m[1]),
-			tx: m.charCodeAt(2) - 97,
-			ty: 8 - parseInt(m[3]),
-		};
-	});
-
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
 
@@ -194,7 +183,7 @@
 			<h1 class="display-sm" style="margin:0">Chess — Learn</h1>
 			<p class="text-muted text-sm" style="margin:0">Play against Stockfish. Adjust difficulty to match your level.</p>
 
-			<div class="w-full relative">
+			<div class="w-full">
 			{#key level}
 				<Chess
 					class="cg-default-style board-themed"
@@ -210,12 +199,6 @@
 					on:gameOver={onGameOver}
 				/>
 			{/key}
-			{#if hint_sq}
-				<svg class="absolute top-0 left-0 w-full h-full pointer-events-none z-[1]" viewBox="0 0 8 8" preserveAspectRatio="xMidYMid meet">
-					<rect x={hint_sq.fx} y={hint_sq.fy} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
-					<rect x={hint_sq.tx} y={hint_sq.ty} width="1" height="1" fill="rgba(155,199,0,0.41)"/>
-				</svg>
-			{/if}
 			</div>
 
 			<div class="w-full rounded-xl bg-surface-card p-6 space-y-4">
