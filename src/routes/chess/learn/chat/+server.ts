@@ -94,11 +94,12 @@ export const POST: RequestHandler = async ({ request }) => {
 				}, { signal: request.signal });
 				for await (const chunk of response) {
 					if (request.signal.aborted) break;
-					if (chunk.event_type === 'step.delta' && chunk.delta.type === 'text') {
+					const event_type = chunk.event_type ?? chunk.type;
+					if (event_type === 'step.delta' && chunk.delta.type === 'text') {
 						wrote = true;
 						controller.enqueue(event('text', { t: chunk.delta.text }));
 					}
-					if (chunk.event_type === 'interaction.completed') {
+					if (event_type === 'interaction.completed' || event_type === 'interaction.complete') {
 						controller.enqueue(event('interaction', { i: chunk.interaction.id }));
 					}
 				}

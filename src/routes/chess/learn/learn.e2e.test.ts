@@ -142,6 +142,14 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain('target="_blank"');
 	});
 
+	it('reads direct Gemini text from every supported Interactions response shape', () => {
+		expect(page).toContain('function direct_parts(');
+		expect(page).toContain('v?.output_text');
+		expect(page).toContain('v?.steps');
+		expect(page).toContain('v?.outputs');
+		expect(page).toContain('typeof part.text === \'string\'');
+	});
+
 	it('uses a styled select-only model combobox instead of a native select', () => {
 		expect(page).toContain('let show_model_menu = $state(false);');
 		expect(page).toContain('const model_options =');

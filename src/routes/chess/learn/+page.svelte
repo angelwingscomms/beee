@@ -142,9 +142,16 @@
 		}));
 	}
 
+	function direct_parts(v: any): any[] {
+		return [
+			...(v?.steps ?? []),
+			...(v?.outputs ?? []),
+		].flatMap((step: any) => step?.content ?? step?.parts ?? []);
+	}
+
 	function direct_text(v: any): string {
 		return v?.output_text
-			?? v?.steps?.flatMap((step: any) => step?.content ?? [])
+			?? direct_parts(v)
 				.filter((part: any) => part?.type === 'text' && typeof part.text === 'string')
 				.map((part: any) => part.text)
 				.join('')

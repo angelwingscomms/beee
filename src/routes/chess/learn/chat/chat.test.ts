@@ -10,6 +10,8 @@ describe('/chess/learn/chat route', () => {
 		expect(route).toContain('ai.interactions.create');
 		expect(route).toContain('previous_interaction_id');
 		expect(route).toContain('interaction.completed');
+		expect(route).toContain('interaction.complete');
+		expect(route).toContain('chunk.type');
 		expect(route).toContain("event('interaction'");
 		expect(route).toContain('system_instruction: sys');
 		expect(route).toContain('thinking_level: \'high\'');
