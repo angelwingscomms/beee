@@ -22,6 +22,13 @@ describe('/chess/learn hint highlights', () => {
 });
 
 describe('/chess/learn chat', () => {
+	it('uses side by side desktop layout without widening the board or controls', () => {
+		expect(page).toContain('max-w-[1328px]');
+		expect(page).toContain('lg:grid-cols-[minmax(0,640px)_minmax(0,640px)]');
+		expect(page).toContain('lg:items-start');
+		expect(page).toContain('max-w-[640px]');
+	});
+
 	it('replaces analysis panel with chat interface', () => {
 		expect(page).toContain('chat_messages');
 		expect(page).toContain('chat_loading');
