@@ -2,6 +2,7 @@
 	import { Chess } from 'svelte-chess';
 	import { Chess as ChessJS } from 'chess.js';
 	import { marked } from 'marked';
+	import { browser } from '$app/environment';
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
 
@@ -24,9 +25,9 @@
 	let analysis_loading = $state(false);
 	let analysis_abort = $state<AbortController | null>(null);
 
-	let model = $state(localStorage.getItem('explain_model') || 'gemini-3.5-flash');
+	let model = $state(browser && localStorage.getItem('explain_model') || 'gemini-3.5-flash');
 	let show_settings = $state(false);
-	$effect(() => localStorage.setItem('explain_model', model));
+	$effect(() => { if (browser) localStorage.setItem('explain_model', model); });
 
 	const presets = DIFFICULTY_PRESETS;
 	const labels = ['Bgnr', 'Nov', 'Cas', 'Int', 'Int+', 'Adv', 'Str', 'Exp', 'Mst', 'GM'];
