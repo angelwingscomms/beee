@@ -82,8 +82,8 @@ describe('/chess/learn settings modal', () => {
 	});
 
 	it('moves difficulty into settings and uses compact icon controls above chat', () => {
-		expect(page).toContain("import { Lightbulb, RotateCcw, Settings, Undo2 } from '@lucide/svelte';");
-		expect(page).toContain('data-testid="learn-icon-toolbar"');
+		expect(page).toContain("import { Lightbulb, RotateCcw, Settings, Undo2, X } from '@lucide/svelte';");
+		expect(page).toContain('data-testid="learn-status-toolbar"');
 		expect(page).toContain('aria-label="New game"');
 		expect(page).toContain('<RotateCcw');
 		expect(page).toContain('aria-label="Undo move"');
@@ -114,5 +114,31 @@ describe('/chess/learn settings modal', () => {
 		expect(page).toContain("if (m.color === 'b' && auto_hint) request_hint();");
 		expect(page).toContain('Auto hint');
 		expect(page).toContain('Hint on start');
+	});
+
+	it('keeps chat chrome compact and icon-only', () => {
+		expect(page).toContain('data-testid="learn-status-toolbar"');
+		expect(page).toContain('aria-label="Clear chat"');
+		expect(page).toContain('<X size={13}');
+		expect(page).toContain('font-mono text-sm font-medium text-ink');
+		expect(page).toContain('font-mono text-[11px] text-muted');
+		expect(page).not.toContain('<span class="text-sm font-medium text-ink">Chat</span>');
+		expect(page).not.toContain('<button class="text-xs text-muted" onclick={clearChat}>Clear</button>');
+	});
+
+	it('lets users bring a Gemini key and sends keyed chat directly to Interactions API', () => {
+		expect(page).toContain("let gemini_api_key = $state(browser && localStorage.getItem('gemini_api_key') || '');");
+		expect(page).toContain("localStorage.setItem('gemini_api_key', gemini_api_key)");
+		expect(page).toContain('async function send_direct_interaction(');
+		expect(page).toContain('https://generativelanguage.googleapis.com/v1beta/interactions');
+		expect(page).toContain("'x-goog-api-key': gemini_api_key.trim()");
+		expect(page).toContain("'Api-Revision': '2026-05-20'");
+		expect(page).toContain('store: false');
+		expect(page).toContain('if (gemini_api_key.trim())');
+		expect(page).toContain('Gemini API key');
+		expect(page).toContain('type="password"');
+		expect(page).toContain('Get your Gemini API key @');
+		expect(page).toContain('href="https://aistudio.google.com/api-keys"');
+		expect(page).toContain('target="_blank"');
 	});
 });

@@ -7,11 +7,13 @@
 	import type { Color, Hint } from '$lib/util/chess/engine';
 	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
 	import FloatingNav from '$lib/components/FloatingNav.svelte';
-	import { Lightbulb, RotateCcw, Settings, Undo2 } from '@lucide/svelte';
+	import { Lightbulb, RotateCcw, Settings, Undo2, X } from '@lucide/svelte';
 
 	type ChatContext = { f: string; p: string; u: string; a: string };
 	type ChatData = Partial<ChatContext> & { h?: string };
 	type ChatMsg = { role: 'user' | 'assistant'; content: string; d?: ChatData };
+
+	const sys = 'You are a concise chess coach. Use the supplied board context when present. Use **bold** for key ideas.';
 
 	let level = $state(3);
 	let turn = $state<Color>('w');
@@ -44,6 +46,7 @@
 	let autoexplain = $state(browser && localStorage.getItem('autoexplain') !== 'false');
 	let auto_hint = $state(browser && localStorage.getItem('auto_hint') === 'true');
 	let hint_on_start = $state(browser && localStorage.getItem('hint_on_start') === 'true');
+	let gemini_api_key = $state(browser && localStorage.getItem('gemini_api_key') || '');
 	let start_hint_done = $state(false);
 	let show_settings = $state(false);
 	let chat_body = $state<HTMLDivElement | null>(null);
@@ -52,6 +55,7 @@
 	$effect(() => { if (browser) localStorage.setItem('autoexplain', String(autoexplain)); });
 	$effect(() => { if (browser) localStorage.setItem('auto_hint', String(auto_hint)); });
 	$effect(() => { if (browser) localStorage.setItem('hint_on_start', String(hint_on_start)); });
+	$effect(() => { if (browser) localStorage.setItem('gemini_api_key', gemini_api_key); });
 	$effect(() => {
 		const el = chat_body;
 		if (!el || chat_messages.length === 0) return;
@@ -111,6 +115,37 @@
 		return d;
 	}
 
+	function build_direct_input(msg: ChatMsg) {
+		const d = msg.d ?? {};
+		const rows = [
+			d.f && `fen: ${d.f}`,
+			d.p && `move_history: ${d.p}`,
+			d.u && `last_user_move: ${d.u}`,
+			d.a && `last_ai_move: ${d.a}`,
+			d.h && `hint: ${d.h}`,
+		].filter(Boolean);
+
+		return rows.length
+			? `${msg.content}\n\n[board_context]\n${rows.join('\n')}\n[/board_context]`
+			: msg.content;
+	}
+
+	function build_direct_steps(messages: ChatMsg[]) {
+		return messages.map((msg) => ({
+			type: msg.role === 'assistant' ? 'model_output' : 'user_input',
+			content: [{ type: 'text', text: msg.role === 'user' ? build_direct_input(msg) : msg.content }],
+		}));
+	}
+
+	function direct_text(v: any): string {
+		return v?.output_text
+			?? v?.steps?.flatMap((step: any) => step?.content ?? [])
+				.filter((part: any) => part?.type === 'text' && typeof part.text === 'string')
+				.map((part: any) => part.text)
+				.join('')
+			?? '';
+	}
+
 	function apply_chat_event(raw: string) {
 		const lines = raw.split(/\r?\n/);
 		const name = lines.find((line) => line.startsWith('event: '))?.slice(7).trim();
@@ -148,6 +183,34 @@
 		}
 		if (buf.trim()) ok = apply_chat_event(buf) || ok;
 		return ok;
+	}
+
+	async function send_direct_interaction(ac: AbortController, request_messages: ChatMsg[], m: string) {
+		const res = await fetch('https://generativelanguage.googleapis.com/v1beta/interactions', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-goog-api-key': gemini_api_key.trim(),
+				'Api-Revision': '2026-05-20',
+			},
+			body: JSON.stringify({
+				model: m,
+				input: build_direct_steps(request_messages),
+				store: false,
+				system_instruction: sys,
+				generation_config: { thinking_level: 'high' },
+			}),
+			signal: ac.signal,
+		});
+		const body = await res.json().catch(() => null);
+		if (!res.ok) throw Error(body?.error?.message || 'Request failed');
+		const t = direct_text(body).trim();
+		if (!t) throw Error('Request failed');
+		const last = chat_messages[chat_messages.length - 1];
+		if (last?.role === 'assistant') {
+			chat_messages[chat_messages.length - 1] = { ...last, content: t };
+			chat_messages = chat_messages;
+		}
 	}
 
 	function sync_chat_moves() {
@@ -271,16 +334,21 @@
 		chat_abort = ac;
 		chat_messages = [...chat_messages, { role: 'assistant', content: '' }];
 		try {
-			const res = await fetch('/chess/learn/chat', {
-				method: 'POST',
-				body: JSON.stringify({
-					x: request_messages.map((msg) => ({ r: msg.role, c: msg.content, d: msg.d })),
-					i: interaction_id,
-					m: model,
-				}),
-				signal: ac.signal,
-			});
-			if (!res.ok || !(await read_chat_stream(res))) throw Error('Request failed');
+			if (gemini_api_key.trim()) {
+				await send_direct_interaction(ac, request_messages, model);
+				interaction_id = '';
+			} else {
+				const res = await fetch('/chess/learn/chat', {
+					method: 'POST',
+					body: JSON.stringify({
+						x: request_messages.map((msg) => ({ r: msg.role, c: msg.content, d: msg.d })),
+						i: interaction_id,
+						m: model,
+					}),
+					signal: ac.signal,
+				});
+				if (!res.ok || !(await read_chat_stream(res))) throw Error('Request failed');
+			}
 			successful_context = sent_context;
 		} catch (e) {
 			if (e instanceof DOMException && e.name === 'AbortError') return;
@@ -376,21 +444,19 @@
 			</div>
 
 			<div class="mx-auto w-full max-w-[640px] space-y-2 rounded-xl bg-surface-card p-3 lg:mx-0">
-				<div class="flex items-center gap-2 text-xs">
-					<span class="text-muted">Turn</span>
-					<span class="rounded-full bg-canvas px-2 py-1 font-medium text-ink">{turn === 'w' ? 'White' : 'Black'}</span>
+				<div class="flex items-center gap-1.5" data-testid="learn-status-toolbar">
+					<span class="mr-1 rounded-full bg-canvas px-2 py-1 text-[11px] font-medium text-muted">
+						{turn === 'w' ? 'White' : 'Black'}
+					</span>
 					{#if inCheck}
-						<span class="text-error font-medium">Check!</span>
+						<span class="mr-1 text-[11px] font-medium text-error">Check!</span>
 					{/if}
 					{#if gameOver}
-						<span class="font-medium text-primary">{resultMsg}</span>
+						<span class="mr-1 text-[11px] font-medium text-primary">{resultMsg}</span>
 					{/if}
 					{#if !ready}
-						<span class="text-amber font-medium animate-pulse">Loading engine...</span>
+						<span class="mr-1 text-[11px] font-medium text-amber animate-pulse">Loading...</span>
 					{/if}
-				</div>
-
-				<div class="flex items-center gap-1.5" data-testid="learn-icon-toolbar">
 					<button class="grid size-8 place-items-center rounded-full border border-hairline bg-canvas text-ink transition-colors hover:text-primary disabled:text-muted" onclick={resetGame} disabled={!ready} aria-label="New game">
 						<RotateCcw size={15} strokeWidth={1.8} />
 					</button>
@@ -416,8 +482,8 @@
 						<div class="flex items-center gap-2">
 							<div class="min-w-0 flex-1">
 								<div class="flex items-baseline gap-2">
-									<span class="truncate font-mono text-base font-bold text-ink">{uciToSan(fen, hints[hint_index].move)}</span>
-									<span class="font-mono text-xs text-muted">{fmtScore(hints[hint_index].score)}</span>
+									<span class="truncate font-mono text-sm font-medium text-ink">{uciToSan(fen, hints[hint_index].move)}</span>
+									<span class="font-mono text-[11px] text-muted">{fmtScore(hints[hint_index].score)}</span>
 								</div>
 								<div class="mt-0.5 flex items-center gap-1.5 text-[11px] text-muted">
 									<span>d{hints[hint_index].depth}</span>
@@ -435,10 +501,11 @@
 				{/if}
 
 				<div class="w-full rounded-xl bg-surface-card border border-hairline overflow-hidden">
-					<div class="flex items-center justify-between px-4 py-3 border-b border-hairline">
-						<span class="text-sm font-medium text-ink">Chat</span>
+					<div class="flex min-h-9 items-center justify-end px-3 py-1.5 border-b border-hairline">
 						{#if chat_messages.length > 0}
-							<button class="text-xs text-muted" onclick={clearChat}>Clear</button>
+							<button class="grid size-7 place-items-center rounded-full border border-hairline bg-canvas text-muted transition-colors hover:text-primary" onclick={clearChat} aria-label="Clear chat">
+								<X size={13} strokeWidth={1.8} />
+							</button>
 						{/if}
 					</div>
 					<div bind:this={chat_body} class="max-h-80 overflow-y-auto px-4 py-3 space-y-3">
@@ -533,6 +600,20 @@
 						<option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
 						<option value="gemma-4-26b-a4b-it">Gemma 4 (26B)</option>
 					</select>
+				</section>
+				<section class="grid gap-2 rounded-lg bg-surface-card p-4">
+					<label class="text-sm font-medium text-ink" for="gemini-api-key">Gemini API key</label>
+					<input
+						id="gemini-api-key"
+						type="password"
+						bind:value={gemini_api_key}
+						placeholder="AIza..."
+						class="min-h-[40px] w-full rounded-lg border border-hairline bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]"
+					/>
+					<p class="text-xs leading-5 text-muted">
+						Get your Gemini API key @
+						<a class="text-primary underline-offset-2 hover:underline" href="https://aistudio.google.com/api-keys" target="_blank" rel="noreferrer">https://aistudio.google.com/api-keys</a>
+					</p>
 				</section>
 				<section class="rounded-lg border border-hairline bg-canvas p-4">
 					<label class="flex cursor-pointer items-center justify-between gap-4">
