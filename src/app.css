@@ -794,6 +794,7 @@ img {
 .text-area {
   width: 100%;
   min-height: 40px;
+  font-size: 14px;
   border: 1px solid var(--hairline);
   border-radius: 8px;
   background: var(--canvas);
