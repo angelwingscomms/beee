@@ -11,7 +11,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const data = await request.json();
 		console.log(`[POST /api/register-init-payment] Request body:`, JSON.stringify(data));
 
-		if (!data.schoolName || !data.playerFirstName || !data.playerLastName || !data.playerEmail || !data.playerPhone) {
+		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.players || data.players.length !== 4) {
 			console.warn(`[POST /api/register-init-payment] Missing required fields`);
 			return json({ error: 'Missing required fields' }, { status: 400 });
 		}
@@ -21,10 +21,9 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const reg_data = {
 			s: 'reg',
 			sn: data.schoolName,
-			fn: data.playerFirstName,
-			ln: data.playerLastName,
-			e: data.playerEmail,
-			p: data.playerPhone,
+			e: data.schoolEmail,
+			p: data.schoolPhone,
+			ps: data.players,
 			amt: AMOUNT_KOBO
 		};
 
@@ -32,7 +31,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		const callback_url = `${url.origin}/payment/callback`;
 
 		const result = await paystack_init(
-			data.playerEmail,
+			data.schoolEmail,
 			AMOUNT_KOBO,
 			i,
 			data.schoolName,

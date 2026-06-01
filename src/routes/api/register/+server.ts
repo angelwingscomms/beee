@@ -9,7 +9,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const data = await request.json();
 
-		if (!data.schoolName || !data.playerFirstName || !data.playerLastName || !data.playerEmail || !data.playerPhone) {
+		if (!data.schoolName || !data.schoolEmail || !data.schoolPhone || !data.players || data.players.length !== 4) {
 			return json({ message: 'Missing required fields' }, { status: 400 });
 		}
 
@@ -17,10 +17,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		const payload: Registration = {
 			s: 'reg',
 			sn: data.schoolName,
-			fn: data.playerFirstName,
-			ln: data.playerLastName,
-			e: data.playerEmail,
-			p: data.playerPhone,
+			e: data.schoolEmail,
+			p: data.schoolPhone,
+			ps: data.players,
 			st: 'pending',
 			v: 0,
 			amt: AMOUNT_KOBO,

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PlayerForm from './PlayerForm.svelte';
+	import PhoneInput from '$lib/components/PhoneInput.svelte';
 
 	let schoolName = $state('');
+	let schoolEmail = $state('');
+	let schoolPhone = $state('+234');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let errorMessage = $state('');
@@ -10,11 +13,11 @@
 	let registrationId = $state('');
 
 	const REGISTRATION_AMOUNT = 50000;
+	const NUM_PLAYERS = 4;
 
-	let playerFirstName = $state('');
-	let playerLastName = $state('');
-	let playerEmail = $state('');
-	let playerPhone = $state('+234');
+	let players = $state(
+		Array.from({ length: NUM_PLAYERS }, () => ({ first_name: '', last_name: '' }))
+	);
 
 	function formatCurrency(amount: number): string {
 		return `₦${amount.toLocaleString()}`;
@@ -28,21 +31,23 @@
 			errorMessage = 'School name is required';
 			return false;
 		}
-		if (!playerFirstName.trim()) {
-			errorMessage = 'First name is required';
+		if (!schoolEmail.trim()) {
+			errorMessage = 'School email is required';
 			return false;
 		}
-		if (!playerLastName.trim()) {
-			errorMessage = 'Surname is required';
+		if (!schoolPhone.trim() || schoolPhone.trim() === '+234') {
+			errorMessage = 'School phone is required';
 			return false;
 		}
-		if (!playerEmail.trim()) {
-			errorMessage = 'Player email is required';
-			return false;
-		}
-		if (!playerPhone.trim()) {
-			errorMessage = 'Player phone is required';
-			return false;
+		for (let i = 0; i < NUM_PLAYERS; i++) {
+			if (!players[i].first_name.trim()) {
+				errorMessage = `Player ${i + 1} first name is required`;
+				return false;
+			}
+			if (!players[i].last_name.trim()) {
+				errorMessage = `Player ${i + 1} last name is required`;
+				return false;
+			}
 		}
 
 		return true;
@@ -67,10 +72,9 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					schoolName,
-					playerFirstName,
-					playerLastName,
-					playerEmail,
-					playerPhone
+					schoolEmail,
+					schoolPhone,
+					players: players.map(p => [p.first_name.trim(), p.last_name.trim()])
 				})
 			});
 
@@ -94,6 +98,11 @@
 
 	function closeConfirmation() {
 		showConfirmation = false;
+	}
+
+	function updatePlayer(i: number, field: string, value: string) {
+		if (field === 'first_name') players[i].first_name = value;
+		if (field === 'last_name') players[i].last_name = value;
 	}
 </script>
 
@@ -135,6 +144,7 @@
 			}}
 		>
 			<section class="form-section" aria-labelledby="school-section-title">
+				<h2 id="school-section-title" class="form-section-title">School Details</h2>
 				<div class="field">
 					<label for="schoolName">School Name</label>
 					<input
@@ -145,19 +155,36 @@
 						required
 					/>
 				</div>
+				<div class="field">
+					<label for="schoolEmail">School Email</label>
+					<input
+						id="schoolEmail"
+						class="text-input"
+						type="email"
+						bind:value={schoolEmail}
+						required
+					/>
+				</div>
+				<div class="field field-full">
+					<label for="schoolPhone">School Phone</label>
+					<PhoneInput
+						id="schoolPhone"
+						value={schoolPhone}
+						onChange={(v) => schoolPhone = v}
+					/>
+				</div>
 			</section>
 
-			<section class="form-section">
-				<PlayerForm
-					index={0}
-					player={{ first_name: playerFirstName, last_name: playerLastName, email: playerEmail, phone: playerPhone }}
-					onChange={(field, value) => {
-						if (field === 'first_name') playerFirstName = value;
-						if (field === 'last_name') playerLastName = value;
-						if (field === 'email') playerEmail = value;
-						if (field === 'phone') playerPhone = value;
-					}}
-				/>
+			<section class="form-section" aria-labelledby="players-section-title">
+				<h2 id="players-section-title" class="form-section-title">Players</h2>
+				{#each players as player, i}
+					<PlayerForm
+						index={i}
+						first_name={player.first_name}
+						last_name={player.last_name}
+						onChange={(field, value) => updatePlayer(i, field, value)}
+					/>
+				{/each}
 			</section>
 
 			{#if errorMessage}
@@ -188,7 +215,6 @@
 					<span
 						class={[
 							(Math.floor(i / 8) + i) % 2 === 0 ? 'aspect-square bg-[#F5EDE0]' : 'aspect-square bg-[#DFD0BE]',
-							// original-registration-checker-squares-colors: even=bg-surface-card (#efe9de), odd=bg-primary (#cc785c)
 							i === 0 ? 'rounded-tl-lg' : '',
 							i === 7 ? 'rounded-tr-lg' : '',
 							i === 16 ? 'rounded-bl-lg' : '',
@@ -206,11 +232,10 @@
 {#if showConfirmation}
 	<ConfirmationModal
 		schoolName={schoolName}
+		schoolEmail={schoolEmail}
+		schoolPhone={schoolPhone}
+		players={players.map(p => [p.first_name.trim(), p.last_name.trim()])}
 		amount={REGISTRATION_AMOUNT}
-		playerFirstName={playerFirstName}
-		playerLastName={playerLastName}
-		playerEmail={playerEmail}
-		playerPhone={playerPhone}
 		onConfirm={confirmPayment}
 		onCancel={closeConfirmation}
 		isProcessing={isProcessing}

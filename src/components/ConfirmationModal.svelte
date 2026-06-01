@@ -1,21 +1,19 @@
 <script lang="ts">
 	let {
 		schoolName,
+		schoolEmail,
+		schoolPhone,
+		players,
 		amount,
-		playerFirstName,
-		playerLastName,
-		playerEmail,
-		playerPhone,
 		onConfirm,
 		onCancel,
 		isProcessing = false
 	}: {
 		schoolName: string;
+		schoolEmail: string;
+		schoolPhone: string;
+		players: string[][];
 		amount: number;
-		playerFirstName: string;
-		playerLastName: string;
-		playerEmail: string;
-		playerPhone: string;
 		onConfirm: () => void;
 		onCancel: () => void;
 		isProcessing?: boolean;
@@ -40,21 +38,23 @@
 					<div class="summary-item">
 						<div>
 							<strong>{schoolName}</strong>
+							<span>{schoolEmail}</span>
+							<span>{schoolPhone}</span>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="modal-section" aria-labelledby="player-summary-title">
-				<h3 id="player-summary-title">Player</h3>
+			<section class="modal-section" aria-labelledby="players-summary-title">
+				<h3 id="players-summary-title">Players</h3>
 				<div class="summary-list">
-					<div class="summary-item">
-						<div>
-							<strong>{playerFirstName} {playerLastName}</strong>
-							<span>{playerEmail}</span>
-							<span>{playerPhone}</span>
+					{#each players as [first, last], i}
+						<div class="summary-item">
+							<div>
+								<strong>{first} {last}</strong>
+							</div>
 						</div>
-					</div>
+					{/each}
 				</div>
 			</section>
 

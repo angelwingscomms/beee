@@ -36,4 +36,14 @@ describe('homepage registration chess squares', () => {
 		expect(form).toContain('hover:scale-[1.01]');
 		expect(form).toContain('hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)]');
 	});
+
+	it('shows school email and phone fields', () => {
+		expect(form).toContain('schoolEmail');
+		expect(form).toContain('schoolPhone');
+	});
+
+	it('shows 4 player entries', () => {
+		expect(form).toContain('NUM_PLAYERS = 4');
+		expect(form).toContain('{#each players as player, i}');
+	});
 });
