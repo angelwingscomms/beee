@@ -117,6 +117,14 @@
 					<strong>{formatCurrency(REGISTRATION_AMOUNT)}</strong>
 				</div>
 			</div>
+
+			<ul class="mt-2 space-y-0.5 text-sm text-stone-500 list-disc pl-4">
+				<li>Players must be 10 to 14 years old</li>
+				<li>Only schools in Abuja may register</li>
+				<li>A school must register four (4) participants</li>
+				<li>Only the first thirty-two (32) schools qualify</li>
+				<li>Registration deadline: June 15, 2026</li>
+			</ul>
 		</div>
 
 		<form

@@ -61,6 +61,7 @@
 			<div class="modal-total">
 				<div>
 					<p>Registration fee</p>
+					<p class="summary-item-desc">Registration criteria: 10 to 14 years of age</p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>
