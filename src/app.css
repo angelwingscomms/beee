@@ -740,12 +740,18 @@ img {
 }
 
 .form-section {
-  padding: 0 0 24px;
-  margin-bottom: 24px;
+  padding: 0 0 12px;
+  margin-bottom: 12px;
 }
 
 .form-section:last-of-type {
   margin-bottom: 0;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .form-section-header {
