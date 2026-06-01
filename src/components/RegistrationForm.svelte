@@ -177,16 +177,14 @@
 
 			<section class="form-section" aria-labelledby="players-section-title">
 				<h2 id="players-section-title" class="form-section-title">Players</h2>
-				<div class="player-grid">
-					{#each players as player, i}
-						<PlayerForm
-							index={i}
-							first_name={player.first_name}
-							last_name={player.last_name}
-							onChange={(field, value) => updatePlayer(i, field, value)}
-						/>
-					{/each}
-				</div>
+				{#each players as player, i}
+					<PlayerForm
+						index={i}
+						first_name={player.first_name}
+						last_name={player.last_name}
+						onChange={(field, value) => updatePlayer(i, field, value)}
+					/>
+				{/each}
 			</section>
 
 			{#if errorMessage}
