@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { create, new_id } from '$lib/db';
 import type { Registration } from '$lib/types/registration';
 
-const AMOUNT_KOBO = 1_250_000;
+const AMOUNT_KOBO = 5_000_000;
 
 export const POST: RequestHandler = async ({ request }) => {
 	console.log(`[POST /api/registration] Received registration request`);

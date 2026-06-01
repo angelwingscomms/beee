@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { new_id } from '$lib/db';
 import { paystack_init } from '$lib/paystack';
 
-const AMOUNT_KOBO = 1_250_000;
+const AMOUNT_KOBO = 5_000_000;
 
 export const POST: RequestHandler = async ({ request, url }) => {
 	console.log(`[POST /api/register-init-payment] Received request`);

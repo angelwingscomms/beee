@@ -9,7 +9,7 @@
 	let successMessage = $state('');
 	let registrationId = $state('');
 
-	const REGISTRATION_AMOUNT = 12500;
+	const REGISTRATION_AMOUNT = 50000;
 
 	let playerFirstName = $state('');
 	let playerLastName = $state('');
