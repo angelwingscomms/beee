@@ -143,8 +143,7 @@
 				handleSubmit();
 			}}
 		>
-			<section class="form-section" aria-labelledby="school-section-title">
-				<h2 id="school-section-title" class="form-section-title">School Details</h2>
+			<section class="form-section">
 				<div class="field">
 					<label for="schoolName">School Name</label>
 					<input
