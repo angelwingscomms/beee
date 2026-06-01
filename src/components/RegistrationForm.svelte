@@ -127,7 +127,7 @@
 				</div>
 			</div>
 
-			<ul class="mt-2 space-y-0.5 text-sm text-stone-500 list-disc pl-4">
+			<ul class="mt-2 space-y-0.5 text-sm text-stone-500 list-none pl-0">
 				<li>Players must be 10 to 14 years old</li>
 				<li>Only schools in Abuja may register</li>
 				<li>A school must register four (4) participants</li>
@@ -242,3 +242,11 @@
 		isProcessing={isProcessing}
 	/>
 {/if}
+
+<style>
+	@media (max-width: 1023px) {
+		.event-intro {
+			text-align: left;
+		}
+	}
+</style>
