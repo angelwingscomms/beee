@@ -751,7 +751,12 @@ img {
 .players-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+
+.players-list > * + * {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+  margin-top: 16px;
 }
 
 .form-section-header {
@@ -1189,6 +1194,10 @@ img {
   .footer-grid,
   .modal-actions {
     grid-template-columns: 1fr;
+  }
+
+  .field-grid {
+    gap: 8px;
   }
 
   .hero-artifact,
