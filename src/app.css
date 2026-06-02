@@ -212,16 +212,16 @@ img {
 
 .logo-chip {
   display: grid;
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   place-items: center;
   border-radius: 24px;
   background: var(--canvas);
 }
 
 .logo-chip img {
-  width: 180px;
-  height: 180px;
+  width: 126px;
+  height: 126px;
 }
 
 .spike-mark {
