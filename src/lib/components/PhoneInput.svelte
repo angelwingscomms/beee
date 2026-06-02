@@ -5,10 +5,12 @@
 	let {
 		value = '',
 		id,
+		placeholder = '',
 		onChange
 	}: {
 		value?: string;
 		id?: string;
+		placeholder?: string;
 		onChange?: (v: string) => void;
 	} = $props();
 
@@ -203,6 +205,7 @@
 			oninput={handlePhoneInput}
 			required
 			onblur={onPhoneBlur}
+			{placeholder}
 			aria-label="Phone number"
 			aria-invalid={lenErr || lenWarn}
 		/>

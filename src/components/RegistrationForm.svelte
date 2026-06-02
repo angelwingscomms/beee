@@ -147,13 +147,13 @@
 		>
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[#d99b8a] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#d99b8a] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
 						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal !text-[#c7beb4] cursor-pointer select-none">School Name</label>
 						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="text" bind:value={schoolName} required />
 					</div>
 				</div>
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[#d99b8a] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#d99b8a] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
 						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal !text-[#c7beb4] cursor-pointer select-none">School Email</label>
 						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="email" bind:value={schoolEmail} required />
 					</div>
@@ -162,6 +162,7 @@
 					<PhoneInput
 						id="schoolPhone"
 						value={schoolPhone}
+						placeholder="School phone"
 						onChange={(v) => schoolPhone = v}
 					/>
 				</div>
