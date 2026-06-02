@@ -157,7 +157,6 @@
 					</div>
 				</div>
 				<div class="field field-full">
-					<label for="schoolPhone">School Phone</label>
 					<PhoneInput
 						id="schoolPhone"
 						value={schoolPhone}
