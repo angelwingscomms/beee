@@ -48,12 +48,11 @@ describe('Player Registration', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
 		expect(form).toContain('Registration is through participating schools within the FCT.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
-		expect(form).toContain('To qualify, a school must register four (4) participants.');
-		expect(form).toContain('Registration fee: 12,500 per player (Total of 50,000 per school team).');
-		expect(form).toContain('Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.');
-		expect(form).toContain('Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.');
-		expect(form).toContain('Registration deadline: 15 June 2026.');
+		expect(form).toContain('Each participating school must register four (4) players.');
+		expect(form).toContain('Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).');
+		expect(form).toContain('Sponsorship of participants may be undertaken by parents or other interested sponsors.');
+		expect(form).toContain('Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled');
 		expect(form).toContain('space-y-1');
-		expect(form).toContain('list-disc');
+		expect(form).toContain('font-display');
 	});
 });
