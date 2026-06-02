@@ -127,7 +127,7 @@
 			>
 				<span>Register now</span>
 				<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
-				<span class="block text-[14px] font-bold !text-black" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
+				<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 			</div>
 
 			<ul class="space-y-1 text-[13px] leading-snug text-black font-registration">
@@ -150,13 +150,13 @@
 			<section class="form-section space-y-1.5">
 				<div class="field">
 					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
-						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal !text-[#a09890] cursor-pointer select-none">School Name</label>
+						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal !text-[#000] cursor-pointer select-none">School Name*</label>
 						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="text" bind:value={schoolName} required />
 					</div>
 				</div>
 				<div class="field">
 					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
-						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal !text-[#a09890] cursor-pointer select-none">School Email</label>
+						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal !text-[#000] cursor-pointer select-none">School Email*</label>
 						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="email" bind:value={schoolEmail} required />
 					</div>
 				</div>
@@ -164,14 +164,14 @@
 					<PhoneInput
 						id="schoolPhone"
 						value={schoolPhone}
-						placeholder="School phone"
+						placeholder="School phone*"
 						onChange={(v) => schoolPhone = v}
 					/>
 				</div>
 			</section>
 
 			<section class="form-section" aria-labelledby="players-section-title">
-				<h2 id="players-section-title" class="form-section-title">Players</h2>
+				<h2 id="players-section-title" class="form-section-title">Enter 4 players*</h2>
 				<div class="players-list">
 					{#each players as player, i}
 						<PlayerForm
