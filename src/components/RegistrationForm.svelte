@@ -145,26 +145,16 @@
 		>
 			<section class="form-section">
 				<div class="field">
-					<label for="schoolName" class="sr-only">School Name</label>
-					<input
-						id="schoolName"
-						class="text-input"
-						type="text"
-						placeholder="School Name"
-						bind:value={schoolName}
-						required
-					/>
+					<div class="flex items-center w-full min-h-[40px] text-xs border border-[#e6dfd8] rounded-lg bg-[#faf9f5] px-3.5 py-2.5 gap-2 focus-within:border-[#cc785c] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+						<label for="schoolName" class="shrink-0 text-[#8e8b82] cursor-pointer select-none">School Name:</label>
+						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none text-[#141413]" type="text" bind:value={schoolName} required />
+					</div>
 				</div>
 				<div class="field">
-					<label for="schoolEmail" class="sr-only">School Email</label>
-					<input
-						id="schoolEmail"
-						class="text-input"
-						type="email"
-						placeholder="School Email"
-						bind:value={schoolEmail}
-						required
-					/>
+					<div class="flex items-center w-full min-h-[40px] text-xs border border-[#e6dfd8] rounded-lg bg-[#faf9f5] px-3.5 py-2.5 gap-2 focus-within:border-[#cc785c] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+						<label for="schoolEmail" class="shrink-0 text-[#8e8b82] cursor-pointer select-none">School Email:</label>
+						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none text-[#141413]" type="email" bind:value={schoolEmail} required />
+					</div>
 				</div>
 				<div class="field field-full">
 					<label for="schoolPhone">School Phone</label>
