@@ -123,8 +123,8 @@
 				class="price-band simple-price"
 			>
 				<div>
-					<span>Registration fee</span>
-					<strong>₦12,500 <span class="block pt-2 text-[13px] font-normal">per player (Total: ₦50,000 per school team)</span></strong>
+					<span>Register now</span>
+					<strong>₦12,500 <span class="text-[13px] font-normal">per player · Total ₦50,000 per school team</span></strong>
 				</div>
 			</div>
 
@@ -132,7 +132,7 @@
 				<li class="border-l-2 border-[#d99b8a] pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Each participating school must register four (4) players.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player · Total ₦50,000 per school team.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
 			</ul>

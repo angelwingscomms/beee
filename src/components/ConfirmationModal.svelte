@@ -60,8 +60,8 @@
 
 			<div class="modal-total">
 				<div>
-					<p>Registration fee</p>
-					<p class="summary-item-desc">N50,000</p>
+					<p>Register now</p>
+					<p class="summary-item-desc">₦12,500 per player · Total ₦50,000 per school team</p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>
