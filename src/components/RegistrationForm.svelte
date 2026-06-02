@@ -129,12 +129,12 @@
 			</div>
 
 			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-registration">
-				<li>Registration is through participating schools within the FCT.</li>
-				<li>Participants must be between 10 and 14 years of age.</li>
-				<li>Each participating school must register four (4) players.</li>
-				<li>Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).</li>
-				<li>Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
-				<li>Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Registration is through participating schools within the FCT.</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Participants must be between 10 and 14 years of age.</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Each participating school must register four (4) players.</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3">Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
 			</ul>
 		</div>
 
@@ -147,13 +147,13 @@
 		>
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[#e6dfd8] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#cc785c] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+					<div class="flex items-center w-full min-h-[40px] border border-[#d99b8a] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#d99b8a] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
 						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal !text-[#c7beb4] cursor-pointer select-none">School Name</label>
 						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="text" bind:value={schoolName} required />
 					</div>
 				</div>
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[#e6dfd8] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#cc785c] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
+					<div class="flex items-center w-full min-h-[40px] border border-[#d99b8a] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#d99b8a] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
 						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal !text-[#c7beb4] cursor-pointer select-none">School Email</label>
 						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="email" bind:value={schoolEmail} required />
 					</div>
