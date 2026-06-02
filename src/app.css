@@ -1134,12 +1134,12 @@ img {
   0%,
   100% {
     color: #57534e;
-    border-color: #d99b8a;
+    border-color: #57534e;
   }
 
   50% {
     color: #d99b8a;
-    border-color: #57534e;
+    border-color: #d99b8a;
   }
 }
 
