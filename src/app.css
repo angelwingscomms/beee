@@ -56,6 +56,8 @@
   --font-display: 'Cormorant Garamond', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-registration: 'SN Pro', sans-serif;
+
+  --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
 }
 
 :root {
@@ -1126,6 +1128,17 @@ img {
   border-top: 1px solid var(--hairline);
   background: var(--surface-soft);
   padding: 20px 32px;
+}
+
+@keyframes deadline-pulse {
+  0%,
+  100% {
+    color: #57534e;
+  }
+
+  50% {
+    color: #d99b8a;
+  }
 }
 
 @keyframes drift {

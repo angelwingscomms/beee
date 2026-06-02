@@ -134,7 +134,7 @@
 				<li class="border-l-2 border-[#d99b8a] pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
+				<li class="border-l-2 border-[#d99b8a] pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
 			</ul>
 		</div>
 
