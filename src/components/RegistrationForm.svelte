@@ -145,21 +145,23 @@
 		>
 			<section class="form-section">
 				<div class="field">
-					<label for="schoolName">School Name</label>
+					<label for="schoolName" class="sr-only">School Name</label>
 					<input
 						id="schoolName"
 						class="text-input"
 						type="text"
+						placeholder="School Name"
 						bind:value={schoolName}
 						required
 					/>
 				</div>
 				<div class="field">
-					<label for="schoolEmail">School Email</label>
+					<label for="schoolEmail" class="sr-only">School Email</label>
 					<input
 						id="schoolEmail"
 						class="text-input"
 						type="email"
+						placeholder="School Email"
 						bind:value={schoolEmail}
 						required
 					/>
