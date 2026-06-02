@@ -128,17 +128,32 @@
 				</div>
 			</div>
 
-			<div class="registration-details-note mt-3 rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-				The championship is school-based, and all participant registrations shall be processed through their respective schools. Registration fees may be sponsored by parents, guardians, or other approved sponsors on behalf of participating students.
+			<div class="mt-3 space-y-2">
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Registration is through participating schools.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Participants must be between 10 and 14 years of age.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Participants must be enrolled in a school within the FCT.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					To qualify, a school must register four (4) participants.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Registration fee: 12,500 per participant (Total of 50,000 per school team).
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.
+				</div>
+				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
+					Registration deadline: 15 June 2026.
+				</div>
 			</div>
-			<ul class="mt-2 space-y-0.5 text-sm text-stone-500 list-none pl-0">
-				<li>Players must be 10 to 14 years old</li>
-				<li>Players must be enrolled in a school in Abuja</li>
-				<li>To qualify, a school must register four (4) participants</li>
-				<li>Registration fee is {formatCurrency(REGISTRATION_AMOUNT_PER_PLAYER)} per participant (Total fee: {formatCurrency(REGISTRATION_AMOUNT)} per school)</li>
-				<li>Only the first thirty-two (32) schools to register would qualify</li>
-				<li>Registration deadline: June 15, 2026</li>
-			</ul>
 		</div>
 
 		<form

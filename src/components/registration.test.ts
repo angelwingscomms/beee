@@ -46,7 +46,14 @@ describe('Player Registration', () => {
 
 	it('shows the exact school-based registration details in a compact styled note', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
-		expect(form).toContain('The championship is school-based, and all participant registrations shall be processed through their respective schools. Registration fees may be sponsored by parents, guardians, or other approved sponsors on behalf of participating students.');
+		expect(form).toContain('Registration is through participating schools.');
+		expect(form).toContain('Participants must be between 10 and 14 years of age.');
+		expect(form).toContain('Participants must be enrolled in a school within the FCT.');
+		expect(form).toContain('To qualify, a school must register four (4) participants.');
+		expect(form).toContain('Registration fee: 12,500 per participant (Total of 50,000 per school team).');
+		expect(form).toContain('Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.');
+		expect(form).toContain('Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.');
+		expect(form).toContain('Registration deadline: 15 June 2026.');
 		expect(form).toContain('registration-details-note');
 		expect(form).toContain('leading-relaxed');
 	});
