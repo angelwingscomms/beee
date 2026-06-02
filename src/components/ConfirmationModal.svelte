@@ -61,7 +61,7 @@
 			<div class="modal-total">
 				<div>
 					<p>Registration fee</p>
-					<p class="summary-item-desc">₦12,500 per participant × 4 players</p>
+					<p class="summary-item-desc">N50,000</p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>
