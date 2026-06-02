@@ -123,15 +123,13 @@
 				class="price-band simple-price transition duration-500 ease-out hover:-translate-y-1 hover:bg-[#F7EDE4] hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
 			>
 				<div>
-					<span>Registration fee</span>
-					<strong>{formatCurrency(REGISTRATION_AMOUNT_PER_PLAYER)} per participant (Total: {formatCurrency(REGISTRATION_AMOUNT)} per school)</strong>
+					<strong>₦50,000</strong>
 				</div>
 			</div>
 
 			<ul class="mt-3 list-disc space-y-1 pl-5 text-[13px] leading-snug text-stone-600">
-				<li>Registration is through participating schools.</li>
+				<li>Registration is through participating schools within the FCT.</li>
 				<li>Participants must be between 10 and 14 years of age.</li>
-				<li>Participants must be enrolled in a school within the FCT.</li>
 				<li>To qualify, a school must register four (4) participants.</li>
 				<li>Registration fee: 12,500 per participant (Total of 50,000 per school team).</li>
 				<li>Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.</li>
