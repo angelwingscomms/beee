@@ -116,7 +116,7 @@
 
 			<h1 id="event-title" class="display-xl">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
 			<p class="lead">
-				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span><br>Development Stage and the Championship Grand Finale in October 2026.
+				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span><br>Development Stage and the Championship Grand Finale in October 2026.<br>Through Technology, Enterprise, Art, Mentorship and Upskill, participants will be exposed to innovation, creativity, strategic thinking, and advanced chess development.
 			</p>
 			<div
 				class="price-band simple-price"
@@ -132,8 +132,7 @@
 				<li class="border-l-2 border-black pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-black pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-black pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
-				<li class="border-l-2 border-black pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
-				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Registration will close once available placement slots have been filled.</li>
+				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 			</ul>
 		</div>
 

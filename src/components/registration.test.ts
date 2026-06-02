@@ -52,7 +52,6 @@ describe('Player Registration', () => {
 		expect(form).toContain('Total: ₦50,000 per school team');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
-		expect(form).toContain('Qualification slots are limited and will be allocated on a first-completed-registration basis.');
-		expect(form).toContain('Registration will close once available placement slots have been filled.');
+		expect(form).toContain('class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
 	});
 });
