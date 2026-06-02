@@ -42,6 +42,12 @@ describe('homepage registration chess squares', () => {
 		expect(form).toContain('schoolPhone');
 	});
 
+	it('removes the inner focus ring from school text fields', () => {
+		expect(form).toContain('focus:ring-0');
+		expect(form).toContain('focus-visible:ring-0');
+		expect(form).toContain('focus:border-transparent');
+	});
+
 	it('shows 4 player entries', () => {
 		expect(form).toContain('NUM_PLAYERS = 4');
 		expect(form).toContain('{#each players as player, i}');
