@@ -143,7 +143,7 @@
 				handleSubmit();
 			}}
 		>
-			<section class="form-section">
+			<section class="form-section space-y-1.5">
 				<div class="field">
 					<div class="flex items-center w-full min-h-[40px] border border-[#e6dfd8] rounded-lg bg-[#faf9f5] px-3.5 focus-within:border-[#cc785c] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
 						<label for="schoolName" class="shrink-0 text-[12px] text-[#8e8b82] cursor-pointer select-none">School Name:</label>
