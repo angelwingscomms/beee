@@ -50,7 +50,9 @@ describe('Player Registration', () => {
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
 		expect(form).toContain('Each participating school must register four (4) players.');
 		expect(form).toContain('Registration fee: ₦12,500 per player · Total ₦50,000 per school team.');
-		expect(form).toContain('Sponsorship of participants may be undertaken by parents or other interested sponsors.');
-		expect(form).toContain('Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.');
+		expect(form).toContain('Sponsorship of participants would be undertaken by parents or other interested sponsors.');
+		expect(form).toContain('Registration deadline is June 18, 2026.');
+		expect(form).toContain('Qualification slots are limited and will be allocated on a first-completed-registration basis.');
+		expect(form).toContain('Registration will close once available placement slots have been filled.');
 	});
 });

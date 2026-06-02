@@ -1131,16 +1131,16 @@ img {
 }
 
 @keyframes deadline-pulse {
-  0%,
-  100% {
-    color: #57534e;
-    border-color: #cc785c;
-  }
+	0%,
+	100% {
+		color: #57534e;
+		border-color: #c03528;
+	}
 
-  50% {
-    color: #cc785c;
-    border-color: #57534e;
-  }
+	50% {
+		color: #c03528;
+		border-color: #57534e;
+	}
 }
 
 @keyframes drift {

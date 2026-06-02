@@ -123,17 +123,19 @@
 			>
 				<div>
 					<span>Register now</span>
-					<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span> <span class="block text-[13px] font-normal mt-1.5">Total ₦50,000 per school team</span></strong>
+					<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span> <span class="block text-[15px] font-medium mt-1.5">Total ₦50,000 per school team</span></strong>
 				</div>
 			</div>
 
 			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-registration">
+				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026.</li>
 				<li class="border-l-2 border-primary pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-primary pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-primary pl-3">Registration fee: ₦12,500 per player · Total ₦50,000 per school team.</li>
-				<li class="border-l-2 border-primary pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
-			<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.</li>
+				<li class="border-l-2 border-primary pl-3">Sponsorship of participants would be undertaken by parents or other interested sponsors.</li>
+				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
+				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Registration will close once available placement slots have been filled.</li>
 			</ul>
 		</div>
 
