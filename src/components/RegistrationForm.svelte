@@ -115,9 +115,13 @@
 			</a>
 
 			<h1 id="event-title" class="display-xl">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
-			<p class="lead">
-				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span><br>Development Stage and the Championship Grand Finale in October 2026.<br>Through Technology, Enterprise, Art, Mentorship and Upskill, participants will be exposed to innovation, creativity, strategic thinking, and advanced chess development.
-			</p>
+			<div class="flex flex-col gap-1.5">
+				<p class="text-sm leading-snug">
+					Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span><br>Development Stage and the Championship Grand Finale in October 2026.
+				</p>
+				<p class="text-sm leading-snug">
+					Through Technology, Enterprise, Art, Mentorship and Upskilling, qualifying<br>participants will be exposed to innovation, teamwork, creativity, strategic<br>thinking, and advanced chess development</p>
+			</div>
 			<div
 				class="price-band simple-price"
 			>
@@ -126,7 +130,7 @@
 				<span class="block text-[14px] font-bold !text-black" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 			</div>
 
-			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-black font-registration">
+			<ul class="space-y-1 text-[13px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-black pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
 				<li class="border-l-2 border-black pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-black pl-3">Participants must be between 10 and 14 years of age.</li>

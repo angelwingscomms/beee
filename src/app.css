@@ -165,7 +165,14 @@ img {
 }
 
 .event-intro {
-  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 0;
+}
+
+.event-intro .simple-price {
+  margin-top: 0;
 }
 
 .simple-price {
