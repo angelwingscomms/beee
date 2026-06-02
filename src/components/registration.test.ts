@@ -51,7 +51,7 @@ describe('Player Registration', () => {
 		expect(form).toContain('Each participating school must register four (4) players.');
 		expect(form).toContain('Total: ₦50,000 per school team');
 		expect(form).toContain('Sponsorship of participants would be undertaken by parents or other interested sponsors.');
-		expect(form).toContain('Registration deadline is June 18, 2026, or earlier if available placement slots are filled.');
+		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
 		expect(form).toContain('Qualification slots are limited and will be allocated on a first-completed-registration basis.');
 		expect(form).toContain('Registration will close once available placement slots have been filled.');
 	});
