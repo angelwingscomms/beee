@@ -245,9 +245,8 @@
 		.event-intro {
 			text-align: left;
 		}
-		.event-intro :global(.display-xl),
 		.event-intro :global(.lead) {
-			text-align: left;
+			margin-inline: 0;
 		}
 	}
 </style>
