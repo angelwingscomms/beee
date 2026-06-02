@@ -223,7 +223,11 @@
 
     .detail-label {
         color: var(--muted);
-        font-weight: 500;
+        font-weight: 400;
+    }
+
+    .detail-row span:last-child {
+        font-weight: 400;
     }
 
     .players-heading {

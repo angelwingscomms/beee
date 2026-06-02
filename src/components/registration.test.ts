@@ -49,7 +49,7 @@ describe('Player Registration', () => {
 		expect(form).toContain('Registration is through participating schools within the FCT.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
 		expect(form).toContain('To qualify, a school must register four (4) participants.');
-		expect(form).toContain('Registration fee: 12,500 per participant (Total of 50,000 per school team).');
+		expect(form).toContain('Registration fee: 12,500 per player (Total of 50,000 per school team).');
 		expect(form).toContain('Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.');
 		expect(form).toContain('Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.');
 		expect(form).toContain('Registration deadline: 15 June 2026.');

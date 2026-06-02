@@ -736,7 +736,7 @@ img {
   border-radius: 12px;
   background: var(--canvas);
   color: var(--body);
-  padding: 32px 0;
+  padding: 108px 0 32px;
 }
 
 .form-section {

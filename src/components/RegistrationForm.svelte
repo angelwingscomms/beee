@@ -114,7 +114,7 @@
 				<span class="logo-chip"><img src="/beee.png" alt="" /></span>
 			</a>
 
-			<h1 id="event-title" class="display-xl">BEEE T.E.A.M.U.P. Spectacular Chess Championship Abuja 2026</h1>
+			<h1 id="event-title" class="display-xl">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
 			<p class="lead">
 				Register now to confirm your entry
 			</p>
@@ -123,18 +123,18 @@
 				class="price-band simple-price transition duration-500 ease-out hover:-translate-y-1 hover:bg-[#F7EDE4] hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
 			>
 				<div>
-					<strong>₦50,000</strong>
+					<span>Registration fee</span>
+					<strong>₦12,500 <span class="text-[13px] font-normal">per player (Total: ₦50,000 per school team)</span></strong>
 				</div>
 			</div>
 
-			<ul class="mt-3 list-disc space-y-1 pl-5 text-[13px] leading-snug text-stone-600">
+			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-display">
 				<li>Registration is through participating schools within the FCT.</li>
 				<li>Participants must be between 10 and 14 years of age.</li>
-				<li>To qualify, a school must register four (4) participants.</li>
-				<li>Registration fee: 12,500 per participant (Total of 50,000 per school team).</li>
-				<li>Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.</li>
-				<li>Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.</li>
-				<li>Registration deadline: 15 June 2026.</li>
+				<li>Each participating school must register four (4) players.</li>
+				<li>Registration fee: ₦12,500 per player (Total: ₦50,000 per school team).</li>
+				<li>Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
+				<li>Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
 			</ul>
 		</div>
 
