@@ -61,7 +61,7 @@
 			<div class="modal-total">
 				<div>
 					<p>Register now</p>
-					<p class="summary-item-desc">₦12,500 per player<br><span class="text-[15px] font-medium">Total ₦50,000 per school team</span></p>
+					<p class="summary-item-desc">₦12,500 per player<br><span class="text-[18px] font-medium text-black">Total: ₦50,000 per school team</span></p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>
