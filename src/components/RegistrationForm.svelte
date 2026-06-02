@@ -120,15 +120,15 @@
 			</p>
 
 			<div
-				class="price-band simple-price transition duration-500 ease-out hover:-translate-y-1 hover:bg-[#F7EDE4] hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+				class="price-band simple-price"
 			>
 				<div>
 					<span>Registration fee</span>
-					<strong>₦12,500 <span class="text-[13px] font-normal">per player (Total: ₦50,000 per school team)</span></strong>
+					<strong>₦12,500 <span class="block pt-2 text-[13px] font-normal">per player (Total: ₦50,000 per school team)</span></strong>
 				</div>
 			</div>
 
-			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-display">
+			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-registration">
 				<li>Registration is through participating schools within the FCT.</li>
 				<li>Participants must be between 10 and 14 years of age.</li>
 				<li>Each participating school must register four (4) players.</li>
@@ -139,7 +139,7 @@
 		</div>
 
 		<form
-			class="registration-form"
+			class="registration-form font-registration"
 			onsubmit={(event) => {
 				event.preventDefault();
 				handleSubmit();
