@@ -48,6 +48,14 @@ describe('homepage registration chess squares', () => {
 		expect(form).toContain('focus:border-transparent');
 	});
 
+	it('shows school labels like faint placeholders without colons', () => {
+		expect(form).toContain('text-[#c7beb4]');
+		expect(form).toContain('>School Name</label>');
+		expect(form).toContain('>School Email</label>');
+		expect(form).not.toContain('School Name:');
+		expect(form).not.toContain('School Email:');
+	});
+
 	it('shows 4 player entries', () => {
 		expect(form).toContain('NUM_PLAYERS = 4');
 		expect(form).toContain('{#each players as player, i}');
