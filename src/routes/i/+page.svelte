@@ -212,8 +212,7 @@
     .detail-row {
         display: flex;
         justify-content: space-between;
-        padding: 8px 0 8px 10px;
-        border-left: 2px solid var(--hairline-soft);
+        padding: 8px 0;
         border-bottom: 1px solid var(--hairline-soft);
         font-size: 14px;
     }

@@ -1086,9 +1086,10 @@ img {
 .summary-item {
   display: grid;
   gap: 12px;
-  border-radius: 12px;
+  border-radius: 0 12px 12px 0;
   background: var(--surface-card);
   padding: 12px;
+  border-left: 2px solid var(--hairline-soft);
 }
 
 .summary-item strong {
