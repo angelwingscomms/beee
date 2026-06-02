@@ -145,7 +145,7 @@
 				aria-haspopup="listbox"
 				aria-label="Select country code"
 			>
-				<span class="country-flag">{selectedCountry.f}</span>
+				<span class="country-abbr">{selectedCountry.c}</span>
 				<span class="country-code-label">{selectedCountry.d}</span>
 				<svg class="chevron {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -232,8 +232,8 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		min-height: 40px;
-		padding: 10px 10px;
+		height: 40px;
+		padding: 0 10px;
 		border: 1px solid var(--hairline);
 		border-right: none;
 		border-radius: 8px 0 0 8px;
@@ -241,6 +241,7 @@
 		color: var(--ink);
 		cursor: pointer;
 		font-size: 14px;
+		line-height: 40px;
 		outline: none;
 		transition: border-color 160ms ease, box-shadow 160ms ease;
 		white-space: nowrap;
@@ -260,14 +261,16 @@
 		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
 	}
 
-	.country-flag {
-		font-size: 18px;
-		line-height: 1;
+	.country-abbr {
+		font-weight: 500;
+		font-size: 13px;
+		line-height: 40px;
 	}
 
 	.country-code-label {
 		font-weight: 500;
 		font-size: 13px;
+		line-height: 40px;
 		color: var(--body-strong);
 	}
 
@@ -384,13 +387,14 @@
 	.phone-input {
 		flex: 1;
 		min-width: 0;
-		min-height: 40px;
-		padding: 10px 14px;
+		height: 40px;
+		padding: 0 14px;
 		border: 1px solid var(--hairline);
 		border-radius: 0 8px 8px 0;
 		background: var(--canvas);
 		color: var(--ink);
 		font-size: 14px;
+		line-height: 40px;
 		outline: none;
 		transition: border-color 160ms ease, box-shadow 160ms ease;
 	}
