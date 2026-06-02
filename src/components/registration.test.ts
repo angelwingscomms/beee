@@ -44,7 +44,7 @@ describe('Player Registration', () => {
 		expect(validate_player_last_name(player)).toBeNull();
 	});
 
-	it('shows the exact school-based registration details in a compact styled note', () => {
+	it('shows the exact school-based registration details in a compact list', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
 		expect(form).toContain('Registration is through participating schools.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
@@ -54,7 +54,7 @@ describe('Player Registration', () => {
 		expect(form).toContain('Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.');
 		expect(form).toContain('Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.');
 		expect(form).toContain('Registration deadline: 15 June 2026.');
-		expect(form).toContain('registration-details-note');
-		expect(form).toContain('leading-relaxed');
+		expect(form).toContain('space-y-1');
+		expect(form).toContain('list-disc');
 	});
 });

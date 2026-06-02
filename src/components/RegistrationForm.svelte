@@ -128,32 +128,16 @@
 				</div>
 			</div>
 
-			<div class="mt-3 space-y-2">
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Registration is through participating schools.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Participants must be between 10 and 14 years of age.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Participants must be enrolled in a school within the FCT.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					To qualify, a school must register four (4) participants.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Registration fee: 12,500 per participant (Total of 50,000 per school team).
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.
-				</div>
-				<div class="registration-details-note rounded-lg border border-[#eadfd5] bg-[#fffaf4] px-3 py-2 text-[13px] leading-relaxed text-stone-600 shadow-[0_10px_30px_rgba(120,90,60,0.08)]">
-					Registration deadline: 15 June 2026.
-				</div>
-			</div>
+			<ul class="mt-3 list-disc space-y-1 pl-5 text-[13px] leading-snug text-stone-600">
+				<li>Registration is through participating schools.</li>
+				<li>Participants must be between 10 and 14 years of age.</li>
+				<li>Participants must be enrolled in a school within the FCT.</li>
+				<li>To qualify, a school must register four (4) participants.</li>
+				<li>Registration fee: 12,500 per participant (Total of 50,000 per school team).</li>
+				<li>Sponsorship of participants may be undertaken by parents, guardians, or other interested sponsors,  supporters.</li>
+				<li>Qualification slots will be allocated to the first thirty-two (32) schools to complete registration.</li>
+				<li>Registration deadline: 15 June 2026.</li>
+			</ul>
 		</div>
 
 		<form
