@@ -116,9 +116,8 @@
 
 			<h1 id="event-title" class="display-xl">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
 			<p class="lead">
-				Register now to confirm your entry
+				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span> Stage (Technology, Enterprise, Art Mentorship and Upskill Project) and the Championship Grand Finale in October 2026.
 			</p>
-
 			<div
 				class="price-band simple-price"
 			>
@@ -134,7 +133,7 @@
 				<li class="border-l-2 border-[#d99b8a] pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player · Total ₦50,000 per school team.</li>
 				<li class="border-l-2 border-[#d99b8a] pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled</li>
+			<li class="border-l-2 border-[#d99b8a] pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.</li>
 			</ul>
 		</div>
 
@@ -238,8 +237,16 @@
 {/if}
 
 <style>
+	.teamup-font {
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
 	@media (max-width: 1023px) {
 		.event-intro {
+			text-align: left;
+		}
+		.event-intro :global(.display-xl),
+		.event-intro :global(.lead) {
 			text-align: left;
 		}
 	}

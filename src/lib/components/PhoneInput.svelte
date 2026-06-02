@@ -396,7 +396,7 @@
 		border-radius: 0 8px 8px 0;
 		background: var(--canvas);
 		color: var(--ink);
-		font-size: 14px;
+		font-size: 12px;
 		line-height: 40px;
 		outline: none;
 		transition: border-color 160ms ease, box-shadow 160ms ease;

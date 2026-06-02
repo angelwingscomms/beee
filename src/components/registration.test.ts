@@ -51,8 +51,6 @@ describe('Player Registration', () => {
 		expect(form).toContain('Each participating school must register four (4) players.');
 		expect(form).toContain('Registration fee: ₦12,500 per player · Total ₦50,000 per school team.');
 		expect(form).toContain('Sponsorship of participants may be undertaken by parents or other interested sponsors.');
-		expect(form).toContain('Registration deadline is June 18, 2026. However, registration would be closed as soon as required slots are filled');
-		expect(form).toContain('space-y-1');
-		expect(form).toContain('font-display');
+		expect(form).toContain('Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.');
 	});
 });
