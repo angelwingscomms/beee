@@ -755,8 +755,8 @@ img {
 
 .players-list > * + * {
   border-top: 1px solid #e5e7eb;
-  padding-top: 20px;
-  margin-top: 16px;
+  padding-top: 4px;
+  margin-top: 4px;
 }
 
 .form-section-header {
