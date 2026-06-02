@@ -128,12 +128,12 @@
 			</div>
 
 			<ul class="mt-3 space-y-1 text-[13px] leading-snug text-stone-600 font-registration">
-				<li class="border-l-2 border-[#d99b8a] pl-3">Registration is through participating schools within the FCT.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Participants must be between 10 and 14 years of age.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Each participating school must register four (4) players.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Registration fee: ₦12,500 per player · Total ₦50,000 per school team.</li>
-				<li class="border-l-2 border-[#d99b8a] pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
-			<li class="border-l-2 border-[#d99b8a] pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.</li>
+				<li class="border-l-2 border-primary pl-3">Registration is through participating schools within the FCT.</li>
+				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
+				<li class="border-l-2 border-primary pl-3">Each participating school must register four (4) players.</li>
+				<li class="border-l-2 border-primary pl-3">Registration fee: ₦12,500 per player · Total ₦50,000 per school team.</li>
+				<li class="border-l-2 border-primary pl-3">Sponsorship of participants may be undertaken by parents or other interested sponsors.</li>
+			<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Registration deadline is June 18, 2026. Qualification slots are limited and will be allocated on a first-completed-registration basis. Registration will close once available placement slots have been filled.</li>
 			</ul>
 		</div>
 
@@ -240,6 +240,7 @@
 	.teamup-font {
 		font-family: var(--font-display);
 		font-weight: 700;
+		font-size: 1.15em;
 	}
 	@media (max-width: 1023px) {
 		.event-intro {
