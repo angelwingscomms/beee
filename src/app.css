@@ -154,7 +154,7 @@ img {
 .simple-home {
   display: grid;
   align-items: center;
-  padding: 32px 0;
+  padding: 20px 0;
 }
 
 .simple-home-grid {
@@ -1134,11 +1134,11 @@ img {
 	0%,
 	100% {
 		color: #57534e;
-		border-color: #c03528;
+		border-color: #ec9a7a;
 	}
 
 	50% {
-		color: #c03528;
+		color: #ec9a7a;
 		border-color: #57534e;
 	}
 }
