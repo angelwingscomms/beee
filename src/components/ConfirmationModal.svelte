@@ -61,7 +61,7 @@
 			<div class="modal-total">
 				<div>
 					<p>Registration fee</p>
-					<p class="summary-item-desc">Registration criteria: 10 to 14 years of age</p>
+					<p class="summary-item-desc">₦12,500 per participant × 4 players</p>
 				</div>
 				<strong>{formatCurrency(amount)}</strong>
 			</div>

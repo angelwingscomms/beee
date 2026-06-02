@@ -13,6 +13,7 @@
 	let registrationId = $state('');
 
 	const REGISTRATION_AMOUNT = 50000;
+	const REGISTRATION_AMOUNT_PER_PLAYER = 12500;
 	const NUM_PLAYERS = 4;
 
 	let players = $state(
@@ -123,15 +124,18 @@
 			>
 				<div>
 					<span>Registration fee</span>
-					<strong>{formatCurrency(REGISTRATION_AMOUNT)}</strong>
+					<strong>{formatCurrency(REGISTRATION_AMOUNT_PER_PLAYER)} per participant (Total: {formatCurrency(REGISTRATION_AMOUNT)} per school)</strong>
 				</div>
 			</div>
 
 			<ul class="mt-2 space-y-0.5 text-sm text-stone-500 list-none pl-0">
+				<li>Registration is school-based</li>
 				<li>Players must be 10 to 14 years old</li>
-				<li>Only schools in Abuja may register</li>
-				<li>A school must register four (4) participants</li>
-				<li>Only the first thirty-two (32) schools qualify</li>
+				<li>Players must be enrolled in a school in Abuja</li>
+				<li>To qualify, a school must register four (4) participants</li>
+				<li>Registration fee is {formatCurrency(REGISTRATION_AMOUNT_PER_PLAYER)} per participant (Total fee: {formatCurrency(REGISTRATION_AMOUNT)} per school)</li>
+				<li>Sponsorship of participants may be by parents or any other source</li>
+				<li>Only the first thirty-two (32) schools to register would qualify</li>
 				<li>Registration deadline: June 15, 2026</li>
 			</ul>
 		</div>
