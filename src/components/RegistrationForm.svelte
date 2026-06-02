@@ -245,12 +245,10 @@
 		font-weight: 700;
 		font-size: 1.15em;
 	}
-	@media (max-width: 1023px) {
-		.event-intro {
-			text-align: left;
-		}
-		.event-intro :global(.lead) {
-			margin-inline: 0;
-		}
+	.event-intro {
+		text-align: left;
+	}
+	.event-intro :global(.lead) {
+		margin-inline: 0;
 	}
 </style>
