@@ -126,8 +126,10 @@ body {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
+  outline: none !important;
 }
 
 button {
@@ -907,10 +909,6 @@ img {
   color: var(--muted-soft);
 }
 
-.text-input:focus,
-.text-area:focus {
-  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
-}
 
 .text-area {
   min-height: 96px;
