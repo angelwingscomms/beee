@@ -339,8 +339,8 @@
 	}
 	.teamup-icon {
 		display: inline;
-		width: 24px;
-		height: 24px;
+		width: 28px;
+		height: 28px;
 		vertical-align: baseline;
 		position: relative;
 		top: 1px;
