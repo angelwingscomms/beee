@@ -129,38 +129,45 @@
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
 			<div class="cards-row">
-				<div class="journey-card">
-					<h3 class="journey-card-title">The Championship Journey</h3>
-					<div class="journey-steps">
-						<div class="journey-step">
-							<div class="journey-marker">
-								<span class="journey-dot"></span>
-								<div class="journey-line"></div>
+				<div class="flex flex-col gap-4">
+					<div class="journey-card">
+						<h3 class="journey-card-title">The Championship Journey</h3>
+						<div class="journey-steps">
+							<div class="journey-step">
+								<div class="journey-marker">
+									<span class="journey-dot"></span>
+									<div class="journey-line"></div>
+								</div>
+								<div class="journey-body">
+									<span class="journey-date">June 2026</span>
+									<span class="journey-name">Preliminary Rounds</span>
+								</div>
 							</div>
-							<div class="journey-body">
-								<span class="journey-date">June 2026</span>
-								<span class="journey-name">Preliminary Rounds</span>
+							<div class="journey-step">
+								<div class="journey-marker">
+									<span class="journey-dot"></span>
+									<div class="journey-line"></div>
+								</div>
+								<div class="journey-body">
+									<span class="journey-date">July — August 2026</span>
+									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+								</div>
+							</div>
+							<div class="journey-step">
+								<div class="journey-marker">
+									<span class="journey-dot"></span>
+								</div>
+								<div class="journey-body">
+									<span class="journey-date">October 2026</span>
+									<span class="journey-name">Championship Grand Finale</span>
+								</div>
 							</div>
 						</div>
-						<div class="journey-step">
-							<div class="journey-marker">
-								<span class="journey-dot"></span>
-								<div class="journey-line"></div>
-							</div>
-							<div class="journey-body">
-								<span class="journey-date">July — August 2026</span>
-								<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
-							</div>
-						</div>
-						<div class="journey-step">
-							<div class="journey-marker">
-								<span class="journey-dot"></span>
-							</div>
-							<div class="journey-body">
-								<span class="journey-date">October 2026</span>
-								<span class="journey-name">Championship Grand Finale</span>
-							</div>
-						</div>
+					</div>
+					<div class="price-band simple-price">
+						<span>Registration fee</span>
+						<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
+						<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 					</div>
 				</div>
 				<div class="teamup-card">
@@ -177,12 +184,6 @@
 					</ul>
 					<p class="teamup-outro">as they prepare for the Championship Grand Finale.</p>
 				</div>
-			</div>
-
-			<div class="price-band simple-price">
-				<span>Registration fee</span>
-				<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
-				<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 			</div>
 
 			<ul class="space-y-1 text-[13px] leading-snug text-black font-registration">
