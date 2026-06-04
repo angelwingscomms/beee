@@ -409,7 +409,7 @@
 		gap: 14px;
 	}
 	.journey-arrow {
-		width: 8px;
+		width: 10px;
 		height: 3px;
 		background: var(--primary);
 		position: relative;
