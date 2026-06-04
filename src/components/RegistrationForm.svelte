@@ -164,7 +164,7 @@
 					<div class="price-band simple-price flex-1">
 						<span>Registration fee</span>
 						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px]">₦12,500<span class="text-[13px] font-normal">per player</span></strong>
-						<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
+						<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000<br>per school team</span>
 					</div>
 				</div>
 				<div class="teamup-card">
@@ -321,7 +321,7 @@
 	.journey-card {
 		border-radius: 12px;
 		background: var(--surface-card);
-		padding: 22px 26px 11px;
+		padding: 22px 26px;
 	}
 	.teamup-card {
 		border-radius: 12px;
@@ -424,7 +424,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1px;
-		padding-bottom: 14px;
 	}
 	.journey-date {
 		font-family: var(--font-registration);
