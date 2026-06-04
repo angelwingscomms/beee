@@ -121,9 +121,7 @@
 				<span class="logo-chip"><img src="/beee.png" alt="BEEE" /></span>
 			</a>
 
-			<h1 id="event-title" class="beee-heading">BEEE</h1>
-			<p class="beee-tagline">T.E.A.M.U.P. Development Program &amp; Championship</p>
-			<h2 class="championship-title">Spectacular Chess Championship<br>Abuja 2026</h2>
+			<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
 
 			<p class="welcome-text">
 				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span> Development Stage and the Championship Grand Finale in October 2026.
