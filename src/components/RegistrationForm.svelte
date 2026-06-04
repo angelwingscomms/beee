@@ -451,7 +451,6 @@
 	.journey-name {
 		font-family: var(--font-registration);
 		font-size: 13px;
-		font-weight: 500;
 		color: var(--body-strong);
 		line-height: 1.3;
 	}
