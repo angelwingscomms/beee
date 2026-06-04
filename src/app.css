@@ -485,7 +485,7 @@ img {
 .form-header h2 {
   margin: 0;
   font-family: var(--font-championship);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 22px;
   line-height: 1.2;
   color: var(--primary);

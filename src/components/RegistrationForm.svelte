@@ -106,12 +106,12 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
-	const sA = '!bg-secondary !border-secondary/60 focus-within:!border-secondary/80';
+	const sA = '!bg-[#EFE9DE] !border-[#EFE9DE]/80 focus-within:!border-[#EFE9DE]';
 	const sB = '!bg-white !border-secondary focus-within:!border-secondary';
-	const sALabel = '!text-primary/80';
-	const sBLabel = '!text-primary';
-	const sAInput = '!text-primary placeholder:!text-primary/60';
-	const sBInput = '!text-primary placeholder:!text-primary/60';
+	const sALabel = '!text-white';
+	const sBLabel = '!text-[#EFE9DE]';
+	const sAInput = '!text-primary placeholder:!text-white/50';
+	const sBInput = '!text-primary placeholder:!text-[#EFE9DE]/70';
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
@@ -256,7 +256,7 @@
 				<button
 					type="submit"
 					disabled={isProcessing}
-					class="button-primary !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
+					class="button-primary w-full !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
 				>
 					{#if isProcessing}
 						<span class="spinner" aria-hidden="true"></span>
