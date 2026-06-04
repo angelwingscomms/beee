@@ -125,7 +125,7 @@
 				</a>
 
 				<h1 id="event-title" class="championship-title flex flex-col">
-  <span class="flex items-baseline gap-2"><span class="text-[52px]">BEEE</span><span class="text-[32px]">Spectacular</span><span class="text-[32px]">Chess Championship</span></span>
+  <span class="flex items-baseline gap-2"><span class="text-[52px] font-['Montserrat'] font-black">BEEE</span><span class="text-[32px]">Spectacular</span><span class="text-[32px]">Chess Championship</span></span>
   <span class="text-[32px]">Abuja 2026</span>
 </h1>
 			</div>
