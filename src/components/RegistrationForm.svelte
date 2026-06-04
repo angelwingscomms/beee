@@ -177,6 +177,7 @@
 						id="schoolPhone"
 						value={schoolPhone}
 						placeholder="School phone"
+						theme
 						onChange={(v) => schoolPhone = v}
 					/>
 			</section>
