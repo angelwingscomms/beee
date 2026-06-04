@@ -437,9 +437,9 @@
 		margin-top: 4px;
 	}
 	.journey-line {
-		width: 1px;
+		width: 2px;
 		flex: 1;
-		background: var(--hairline);
+		background: #000;
 		min-height: 26px;
 	}
 	.journey-body {
