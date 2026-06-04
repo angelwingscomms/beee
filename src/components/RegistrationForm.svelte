@@ -121,7 +121,7 @@
 				</a>
 
 				<h1 id="event-title" class="championship-title flex flex-col">
-  <span class="text-[52px] font-['Montserrat']">BEEE</span>
+  <span class="text-[52px] font-['Montserrat'] tracking-[0.08em]"><span style="color:var(--ink)">B</span><span style="color:var(--primary)">E</span><span style="color:var(--ink)">E</span><span style="color:var(--primary)">E</span></span>
   <span class="text-[20px] font-['Montserrat'] mb-4">Be Everything Excellent Everyday</span>
   <span class="text-[32px] font-championship font-bold mb-2">Spectacular Chess Championship</span>
   <span class="text-[20px] font-championship">Abuja 2026</span>
