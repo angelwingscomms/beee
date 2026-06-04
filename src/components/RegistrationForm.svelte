@@ -118,7 +118,10 @@
 	<section class="container simple-home-grid">
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
-				<span class="logo-chip"><img src="/beee.png" alt="BEEE" /></span>
+				<span class="logo-chip">
+				<img src="/beee.png" alt="BEEE" />
+				<!-- <img src="/logo.svg" alt="BEEE" /> -->
+			</span>
 			</a>
 
 			<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
