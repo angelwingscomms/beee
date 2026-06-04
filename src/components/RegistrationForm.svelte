@@ -105,11 +105,6 @@
 		if (field === 'first_name') players[i].first_name = value;
 		if (field === 'last_name') players[i].last_name = value;
 	}
-
-	function scrollToForm() {
-		const el = document.getElementById('registration-form');
-		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-	}
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
@@ -130,10 +125,6 @@
 				Through Technology, Enterprise, Art, Mentorship and Upskilling, qualifying participants will be exposed to innovation, teamwork, creativity, strategic thinking, and advanced chess development.
 			</p>
 
-			<div class="hero-cta">
-				<button type="button" class="register-hero-btn" onclick={scrollToForm}>Register Your School</button>
-			</div>
-
 			<div class="price-band simple-price">
 				<span>Registration fee</span>
 				<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
@@ -151,13 +142,16 @@
 		</div>
 
 		<form
-			id="registration-form"
 			class="registration-form font-registration"
 			onsubmit={(event) => {
 				event.preventDefault();
 				handleSubmit();
 			}}
 		>
+			<header class="form-header">
+				<h2>Register Your School</h2>
+			</header>
+
 			<section class="form-section space-y-1.5">
 				<div class="field">
 					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
