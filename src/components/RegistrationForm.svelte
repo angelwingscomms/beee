@@ -415,12 +415,23 @@
 		gap: 14px;
 	}
 	.journey-arrow {
+		width: 8px;
+		height: 3px;
+		background: var(--primary);
+		position: relative;
+		margin: 0 auto;
+	}
+	.journey-arrow::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		translate: -50%;
 		width: 0;
 		height: 0;
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 6px solid var(--primary);
-		margin: 2px auto;
 	}
 	.journey-body {
 		display: flex;
