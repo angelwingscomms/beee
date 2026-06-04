@@ -168,7 +168,10 @@
 					</div>
 				</div>
 				<div class="teamup-card">
-					<h3 class="teamup-heading">What is T.E.A.M.U.P.? <img src="/flower-gear.png" alt="" class="teamup-icon" /></h3>
+					<div class="flex items-center gap-x-2">
+					<h3 class="teamup-heading">What is T.E.A.M.U.P.?</h3>
+					<img src="/flower-gear.png" alt="" class="teamup-icon" />
+				</div>
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
 					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
@@ -340,13 +343,9 @@
 		color: var(--ink);
 	}
 	.teamup-icon {
-		display: inline;
 		width: 28px;
 		height: 28px;
-		vertical-align: baseline;
-		position: relative;
-		top: 1px;
-		margin-left: 10px;
+		flex-shrink: 0;
 	}
 	.teamup-tagline {
 		margin: 0;
