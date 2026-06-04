@@ -125,38 +125,54 @@
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
-			<div class="journey-card">
-				<h3 class="journey-card-title">The Championship Journey</h3>
-				<div class="journey-steps">
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-							<div class="journey-line"></div>
+			<div class="cards-row">
+				<div class="journey-card">
+					<h3 class="journey-card-title">The Championship Journey</h3>
+					<div class="journey-steps">
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+								<div class="journey-line"></div>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">June 2026</span>
+								<span class="journey-name">Preliminary Rounds</span>
+							</div>
 						</div>
-						<div class="journey-body">
-							<span class="journey-date">June 2026</span>
-							<span class="journey-name">Preliminary Rounds</span>
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+								<div class="journey-line"></div>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">July — August 2026</span>
+								<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+							</div>
+						</div>
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">October 2026</span>
+								<span class="journey-name">Championship Grand Finale</span>
+							</div>
 						</div>
 					</div>
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-							<div class="journey-line"></div>
-						</div>
-						<div class="journey-body">
-							<span class="journey-date">July — August 2026</span>
-							<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
-						</div>
-					</div>
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-						</div>
-						<div class="journey-body">
-							<span class="journey-date">October 2026</span>
-							<span class="journey-name">Championship Grand Finale</span>
-						</div>
-					</div>
+				</div>
+				<div class="teamup-card">
+					<h3 class="teamup-heading">What is T.E.A.M.U.P.?</h3>
+					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
+					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
+					<ul class="teamup-list">
+						<li>Advanced Chess Development</li>
+						<li>Innovation &amp; Creativity</li>
+						<li>Strategic Thinking</li>
+						<li>Teamwork &amp; Collaboration</li>
+						<li>Leadership Development</li>
+						<li>Personal Growth &amp; Upskilling</li>
+					</ul>
+					<p class="teamup-outro">as they prepare for the Championship Grand Finale.</p>
 				</div>
 			</div>
 
@@ -291,10 +307,79 @@
 	.event-intro :global(.lead) {
 		margin-inline: 0;
 	}
+	.cards-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
 	.journey-card {
 		border-radius: 12px;
 		background: var(--surface-card);
 		padding: 22px 26px 11px;
+	}
+	.teamup-card {
+		border-radius: 12px;
+		background: var(--surface-card);
+		padding: 22px 26px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.teamup-heading {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 1.2;
+		color: var(--ink);
+	}
+	.teamup-tagline {
+		margin: 0;
+		font-family: var(--font-registration);
+		font-size: 10.5px;
+		font-weight: 600;
+		color: var(--primary);
+		letter-spacing: 0.03em;
+	}
+	.teamup-text {
+		margin: 0;
+		font-family: var(--font-registration);
+		font-size: 12px;
+		line-height: 1.5;
+		color: var(--body);
+	}
+	.teamup-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3px 24px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.teamup-list li {
+		padding: 0 0 0 14px;
+		position: relative;
+		font-family: var(--font-registration);
+		font-size: 12px;
+		line-height: 1.65;
+		color: var(--body-strong);
+	}
+	.teamup-list li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 7px;
+		width: 4px;
+		height: 4px;
+		border-radius: 999px;
+		background: var(--primary);
+	}
+	.teamup-outro {
+		margin: 0;
+		font-family: var(--font-registration);
+		font-size: 12px;
+		line-height: 1.5;
+		color: var(--muted);
 	}
 	.journey-card-title {
 		margin: 0 0 16px;
@@ -353,5 +438,10 @@
 		font-weight: 500;
 		color: var(--body-strong);
 		line-height: 1.3;
+	}
+	@media (max-width: 640px) {
+		.teamup-list {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

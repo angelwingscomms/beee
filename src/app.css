@@ -1310,6 +1310,7 @@ img {
   .feature-grid,
   .field-grid,
   .simple-home-grid,
+  .cards-row,
   .footer-grid,
   .modal-actions {
     grid-template-columns: 1fr;
