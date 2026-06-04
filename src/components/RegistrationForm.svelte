@@ -140,29 +140,18 @@
 						<h3 class="journey-card-title">The Championship Journey</h3>
 						<div class="journey-steps">
 							<div class="journey-step">
-								<div class="journey-marker">
-									<span class="journey-dot"></span>
-									<div class="journey-line"></div>
-								</div>
 								<div class="journey-body">
 									<span class="journey-date">June 2026</span>
 									<span class="journey-name">Preliminary Rounds</span>
 								</div>
 							</div>
 							<div class="journey-step">
-								<div class="journey-marker">
-									<span class="journey-dot"></span>
-									<div class="journey-line"></div>
-								</div>
 								<div class="journey-body">
 									<span class="journey-date">July — August 2026</span>
 									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
 								</div>
 							</div>
 							<div class="journey-step">
-								<div class="journey-marker">
-									<span class="journey-dot"></span>
-								</div>
 								<div class="journey-body">
 									<span class="journey-date">October 2026</span>
 									<span class="journey-name">Championship Grand Finale</span>
@@ -420,27 +409,6 @@
 	.journey-step {
 		display: flex;
 		gap: 14px;
-	}
-	.journey-marker {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 10px;
-		flex-shrink: 0;
-	}
-	.journey-dot {
-		width: 8px;
-		height: 8px;
-		border-radius: 999px;
-		background: var(--primary);
-		flex-shrink: 0;
-		margin-top: 4px;
-	}
-	.journey-line {
-		width: 1px;
-		flex: 1;
-		background: #000;
-		min-height: 26px;
 	}
 	.journey-body {
 		display: flex;
