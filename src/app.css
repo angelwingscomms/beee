@@ -448,10 +448,14 @@ img {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 38px;
+  font-size: 48px;
   line-height: 1.15;
   color: var(--ink);
   letter-spacing: -0.01em;
+}
+
+#event-title {
+  font-size: 56px;
 }
 
 .welcome-text {
@@ -485,7 +489,7 @@ img {
 .form-header h2 {
   margin: 0;
   font-family: var(--font-championship);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 22px;
   line-height: 1.2;
   color: var(--primary);
@@ -1295,7 +1299,11 @@ img {
   }
 
   .championship-title {
-    font-size: 28px;
+    font-size: 32px;
+  }
+
+  #event-title {
+    font-size: 36px;
   }
 
   .welcome-text {
