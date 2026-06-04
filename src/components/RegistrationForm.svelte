@@ -407,6 +407,7 @@
 	.journey-steps {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 	}
 	.journey-step {
 		display: flex;
