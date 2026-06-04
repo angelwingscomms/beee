@@ -125,38 +125,54 @@
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
-			<div class="journey-card">
-				<h3 class="journey-card-title">The Championship Journey</h3>
-				<div class="journey-steps">
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-							<div class="journey-line"></div>
+			<div class="card-row">
+				<div class="journey-card">
+					<h3 class="journey-card-title">The Championship Journey</h3>
+					<div class="journey-steps">
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+								<div class="journey-line"></div>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">June 2026</span>
+								<span class="journey-name">Preliminary Rounds</span>
+							</div>
 						</div>
-						<div class="journey-body">
-							<span class="journey-date">June 2026</span>
-							<span class="journey-name">Preliminary Rounds</span>
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+								<div class="journey-line"></div>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">July — August 2026</span>
+								<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+							</div>
+						</div>
+						<div class="journey-step">
+							<div class="journey-marker">
+								<span class="journey-dot"></span>
+							</div>
+							<div class="journey-body">
+								<span class="journey-date">October 2026</span>
+								<span class="journey-name">Championship Grand Finale</span>
+							</div>
 						</div>
 					</div>
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-							<div class="journey-line"></div>
-						</div>
-						<div class="journey-body">
-							<span class="journey-date">July — August 2026</span>
-							<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
-						</div>
-					</div>
-					<div class="journey-step">
-						<div class="journey-marker">
-							<span class="journey-dot"></span>
-						</div>
-						<div class="journey-body">
-							<span class="journey-date">October 2026</span>
-							<span class="journey-name">Championship Grand Finale</span>
-						</div>
-					</div>
+				</div>
+				<div class="teamup-card">
+					<h3 class="teamup-title">What is T.E.A.M.U.P.?</h3>
+					<p class="teamup-acronym">Technology &bull; Enterprise &bull; Art &bull; Mentorship &bull; Upskill Project</p>
+					<p class="teamup-desc">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
+					<ul class="teamup-list">
+						<li><span>&#x1F9E0;</span> Advanced Chess Development</li>
+						<li><span>&#x1F4A1;</span> Innovation &amp; Creativity</li>
+						<li><span>&#x1F3AF;</span> Strategic Thinking</li>
+						<li><span>&#x1F91D;</span> Teamwork &amp; Collaboration</li>
+						<li><span>&#x1F3C6;</span> Leadership Development</li>
+						<li><span>&#x1F680;</span> Personal Growth &amp; Upskilling</li>
+					</ul>
+					<p class="teamup-footer">as they prepare for the Championship Grand Finale.</p>
 				</div>
 			</div>
 
@@ -291,10 +307,18 @@
 	.event-intro :global(.lead) {
 		margin-inline: 0;
 	}
+	.card-row {
+		display: flex;
+		gap: 14px;
+	}
+	.card-row > * {
+		flex: 1;
+		min-width: 0;
+	}
 	.journey-card {
 		border-radius: 12px;
 		background: var(--surface-card);
-		padding: 22px 26px 11px;
+		padding: 22px 20px 11px;
 	}
 	.journey-card-title {
 		margin: 0 0 16px;
@@ -353,5 +377,67 @@
 		font-weight: 500;
 		color: var(--body-strong);
 		line-height: 1.3;
+	}
+	.teamup-card {
+		border-radius: 12px;
+		background: var(--surface-soft);
+		padding: 22px 20px;
+	}
+	.teamup-title {
+		margin: 0 0 8px;
+		font-family: var(--font-display);
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 1.2;
+		color: var(--ink);
+	}
+	.teamup-acronym {
+		margin: 0 0 10px;
+		font-family: var(--font-registration);
+		font-size: 9.5px;
+		font-weight: 600;
+		color: var(--primary);
+		letter-spacing: 0.03em;
+		word-spacing: 1px;
+	}
+	.teamup-desc {
+		margin: 0 0 10px;
+		font-family: var(--font-registration);
+		font-size: 11.5px;
+		line-height: 1.4;
+		color: var(--body);
+	}
+	.teamup-list {
+		list-style: none;
+		margin: 0 0 6px;
+		padding: 0;
+		display: grid;
+		gap: 3px;
+	}
+	.teamup-list li {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-family: var(--font-registration);
+		font-size: 11.5px;
+		line-height: 1.35;
+		color: var(--body-strong);
+	}
+	.teamup-list li span {
+		flex-shrink: 0;
+		font-size: 13px;
+	}
+	.teamup-footer {
+		margin: 0;
+		font-family: var(--font-registration);
+		font-size: 10.5px;
+		line-height: 1.4;
+		color: var(--muted);
+		font-style: italic;
+	}
+	@media (max-width: 766px) {
+		.card-row {
+			flex-direction: column;
+		}
 	}
 </style>
