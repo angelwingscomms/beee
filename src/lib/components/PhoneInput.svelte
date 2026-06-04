@@ -141,7 +141,7 @@
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger {theme ? '!bg-white !text-primary !border-primary !rounded-l-lg' : ''}"
+				class="country-trigger {theme ? '!bg-white !text-primary !border-secondary !rounded-l-lg' : ''}"
 				class:error={lenErr}
 				class:warn={lenWarn}
 				onclick={toggleOpen}
@@ -200,7 +200,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-primary !rounded-r-lg' : ''}"
+			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-secondary !rounded-r-lg' : ''}"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
@@ -253,8 +253,8 @@
 	}
 
 	.country-trigger:focus-visible {
-		border-color: var(--primary);
-		box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
+		border-color: var(--secondary);
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
 		z-index: 1;
 	}
 
@@ -330,8 +330,8 @@
 	}
 
 	.search-input:focus {
-		border-color: var(--primary);
-		box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
+		border-color: var(--secondary);
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
 	}
 
 	.country-list {
@@ -405,8 +405,8 @@
 	}
 
 	.phone-input:focus {
-		border-color: var(--primary);
-		box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
+		border-color: var(--secondary);
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
 		position: relative;
 		z-index: 1;
 	}

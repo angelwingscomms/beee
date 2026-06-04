@@ -107,7 +107,7 @@
 	}
 
 	const sA = '!bg-secondary !border-secondary/60 focus-within:!border-secondary/80';
-	const sB = '!bg-white !border-primary focus-within:!border-primary';
+	const sB = '!bg-white !border-secondary focus-within:!border-secondary';
 	const sALabel = '!text-primary/80';
 	const sBLabel = '!text-primary';
 	const sAInput = '!text-primary placeholder:!text-primary/60';
@@ -189,13 +189,13 @@
 
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150 {sB}">
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--secondary)] focus-within:shadow-[0_0_0_3px_rgba(239,233,222,0.3)] transition-all duration-150 {sB}">
 						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal {sBLabel} cursor-pointer select-none">School Name</label>
 						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sBInput}" type="text" bind:value={schoolName} required />
 					</div>
 				</div>
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150 {sA}">
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--secondary)] focus-within:shadow-[0_0_0_3px_rgba(239,233,222,0.3)] transition-all duration-150 {sA}">
 						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal {sALabel} cursor-pointer select-none">School Email</label>
 						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sAInput}" type="email" bind:value={schoolEmail} required />
 					</div>

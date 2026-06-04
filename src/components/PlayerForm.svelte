@@ -16,9 +16,9 @@
 	// odd player (1,3):  first=white bg/theme text, last=theme bg/white text
 	// mobile (≤766px): all first=theme bg/white text, all last=white bg/theme text
 	const a = '!bg-secondary !text-primary placeholder:!text-primary/70 !border-secondary/60';
-	const b = '!bg-white !text-primary placeholder:!text-primary/70 !border-primary';
+	const b = '!bg-white !text-primary placeholder:!text-primary/70 !border-secondary';
 	const mFirst = 'max-md:!bg-secondary max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-secondary/60';
-	const mLast = 'max-md:!bg-white max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-primary';
+	const mLast = 'max-md:!bg-white max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-secondary';
 	const firstClass = `${index % 2 === 0 ? a : b} ${mFirst}`;
 	const lastClass = `${index % 2 === 0 ? b : a} ${mLast}`;
 </script>
