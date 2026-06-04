@@ -106,11 +106,11 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
-	const sA = '!bg-primary/30 !border-primary/40 focus-within:!border-primary/60';
+	const sA = '!bg-primary !border-primary/60 focus-within:!border-primary/80';
 	const sB = '!bg-white !border-primary focus-within:!border-primary';
-	const sALabel = '!text-primary';
+	const sALabel = '!text-white/80';
 	const sBLabel = '!text-primary';
-	const sAInput = '!text-primary placeholder:!text-primary/50';
+	const sAInput = '!text-white placeholder:!text-white/60';
 	const sBInput = '!text-primary placeholder:!text-primary/60';
 </script>
 

@@ -12,9 +12,9 @@
 	} = $props();
 
 	// Alternating input styles:
-	// even player (0,2): first=light theme bg/theme text, last=white bg/theme text
-	// odd player (1,3):  first=white bg/theme text, last=light theme bg/theme text
-	const a = '!bg-primary/30 !text-primary placeholder:!text-primary/50 !border-primary/40';
+	// even player (0,2): first=theme bg/white text, last=white bg/theme text
+	// odd player (1,3):  first=white bg/theme text, last=theme bg/white text
+	const a = '!bg-primary !text-white placeholder:!text-white/70 !border-primary/60';
 	const b = '!bg-white !text-primary placeholder:!text-primary/70 !border-primary';
 	const firstClass = index % 2 === 0 ? a : b;
 	const lastClass = index % 2 === 0 ? b : a;

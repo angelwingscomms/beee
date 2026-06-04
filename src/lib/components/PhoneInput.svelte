@@ -17,14 +17,14 @@
 	} = $props();
 
 	const isA = variant === 'a';
-	const wrClass = isA ? '!bg-primary/30 !border-primary/40' : '!bg-white !border-primary';
+	const wrClass = isA ? '!bg-primary !border-primary/60' : '!bg-white !border-primary';
 	const tgClass = isA
-		? '!bg-transparent !text-primary !border-primary/40'
+		? '!bg-transparent !text-white !border-primary/60'
 		: '!bg-white !text-primary !border-primary';
 	const piClass = isA
-		? '!bg-transparent !text-primary placeholder:!text-primary/50 !border-primary/40'
+		? '!bg-transparent !text-white placeholder:!text-white/60 !border-primary/60'
 		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary';
-	const cvClass = isA ? '!text-primary/60' : '!text-primary/70';
+	const cvClass = isA ? '!text-white/70' : '!text-primary/70';
 
 	const defaultCountry = countries.find(c => c.c === 'NG')!;
 
@@ -160,7 +160,7 @@
 				aria-label="Select country code"
 			>
 				<span class="country-abbr">{selectedCountry.c}</span>
-				<span class="country-code-label {isA ? '!text-primary/60' : '!text-primary/70'}">{selectedCountry.d}</span>
+				<span class="country-code-label {isA ? '!text-white/70' : '!text-primary/70'}">{selectedCountry.d}</span>
 				<svg class="chevron {cvClass} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
