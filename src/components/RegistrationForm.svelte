@@ -349,9 +349,9 @@
 		color: var(--body);
 	}
 	.teamup-list {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3px 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -438,10 +438,5 @@
 		font-weight: 500;
 		color: var(--body-strong);
 		line-height: 1.3;
-	}
-	@media (max-width: 640px) {
-		.teamup-list {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>
