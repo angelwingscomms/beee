@@ -299,6 +299,10 @@
 {/if}
 
 <style>
+	.form-section-title {
+		font-family: var(--font-display);
+		margin-bottom: 8px;
+	}
 	.teamup-font {
 		font-family: var(--font-display);
 		font-weight: 700;
