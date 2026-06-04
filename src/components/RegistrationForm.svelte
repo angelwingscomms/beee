@@ -167,7 +167,7 @@
 					</div>
 					<div class="price-band simple-price flex-1">
 						<span>Registration fee</span>
-						<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
+						<strong class="inline-flex flex-wrap items-baseline gap-x-[3px]">₦12,500<span class="text-[13px] font-normal">per player</span></strong>
 						<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 					</div>
 				</div>
