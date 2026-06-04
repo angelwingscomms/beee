@@ -311,6 +311,11 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 20px;
 	}
+	@media (max-width: 640px) {
+		.cards-row {
+			grid-template-columns: 1fr;
+		}
+	}
 	.journey-card {
 		border-radius: 12px;
 		background: var(--surface-card);
