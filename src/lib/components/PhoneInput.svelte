@@ -6,24 +6,13 @@
 		value = '',
 		id,
 		placeholder = '',
-		variant = '',
 		onChange
 	}: {
 		value?: string;
 		id?: string;
 		placeholder?: string;
-		variant?: string;
 		onChange?: (v: string) => void;
 	} = $props();
-
-	const isA = variant === 'a';
-	const tgClass = isA
-		? '!bg-primary !text-white !border-primary/60 !rounded-l-lg'
-		: '!bg-white !text-primary !border-primary !rounded-l-lg';
-	const piClass = isA
-		? '!bg-primary !text-white placeholder:!text-white/60 !border-primary/60 !rounded-r-lg'
-		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary !rounded-r-lg';
-	const cvClass = isA ? '!text-white/70' : '!text-primary/70';
 
 	const defaultCountry = countries.find(c => c.c === 'NG')!;
 
@@ -150,7 +139,7 @@
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger {tgClass}"
+				class="country-trigger"
 				class:error={lenErr}
 				class:warn={lenWarn}
 				onclick={toggleOpen}
@@ -159,8 +148,8 @@
 				aria-label="Select country code"
 			>
 				<span class="country-abbr">{selectedCountry.c}</span>
-				<span class="country-code-label {isA ? '!text-white/70' : '!text-primary/70'}">{selectedCountry.d}</span>
-				<svg class="chevron {cvClass} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+				<span class="country-code-label">{selectedCountry.d}</span>
+				<svg class="chevron {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</button>
@@ -209,7 +198,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {piClass}"
+			class="phone-input"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
