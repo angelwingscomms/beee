@@ -125,6 +125,41 @@
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
+			<div class="journey-card">
+				<h3 class="journey-card-title">The Championship Journey</h3>
+				<div class="journey-steps">
+					<div class="journey-step">
+						<div class="journey-marker">
+							<span class="journey-dot"></span>
+							<div class="journey-line"></div>
+						</div>
+						<div class="journey-body">
+							<span class="journey-date">June 2026</span>
+							<span class="journey-name">Preliminary Rounds</span>
+						</div>
+					</div>
+					<div class="journey-step">
+						<div class="journey-marker">
+							<span class="journey-dot"></span>
+							<div class="journey-line"></div>
+						</div>
+						<div class="journey-body">
+							<span class="journey-date">July — August 2026</span>
+							<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+						</div>
+					</div>
+					<div class="journey-step">
+						<div class="journey-marker">
+							<span class="journey-dot"></span>
+						</div>
+						<div class="journey-body">
+							<span class="journey-date">October 2026</span>
+							<span class="journey-name">Championship Grand Finale</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="price-band simple-price">
 				<span>Registration fee</span>
 				<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
@@ -255,5 +290,68 @@
 	}
 	.event-intro :global(.lead) {
 		margin-inline: 0;
+	}
+	.journey-card {
+		border-radius: 12px;
+		background: var(--surface-card);
+		padding: 22px 26px;
+	}
+	.journey-card-title {
+		margin: 0 0 16px;
+		font-family: var(--font-display);
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 1.2;
+		color: var(--ink);
+	}
+	.journey-steps {
+		display: flex;
+		flex-direction: column;
+	}
+	.journey-step {
+		display: flex;
+		gap: 14px;
+	}
+	.journey-marker {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 10px;
+		flex-shrink: 0;
+	}
+	.journey-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 999px;
+		background: var(--primary);
+		flex-shrink: 0;
+		margin-top: 4px;
+	}
+	.journey-line {
+		width: 1px;
+		flex: 1;
+		background: var(--hairline);
+		min-height: 26px;
+	}
+	.journey-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		padding-bottom: 14px;
+	}
+	.journey-date {
+		font-family: var(--font-registration);
+		font-size: 11px;
+		font-weight: 600;
+		color: var(--primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+	.journey-name {
+		font-family: var(--font-registration);
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--body-strong);
+		line-height: 1.3;
 	}
 </style>
