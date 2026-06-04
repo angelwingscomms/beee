@@ -117,13 +117,15 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
-				<span class="logo-chip">
-				<img src="/logo.svg" alt="BEEE" />
-			</span>
-			</a>
+			<div class="flex flex-col gap-1">
+				<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
+					<span class="logo-chip">
+					<img src="/logo.svg" alt="BEEE" />
+				</span>
+				</a>
 
-			<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
+				<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
+			</div>
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
