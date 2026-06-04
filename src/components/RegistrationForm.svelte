@@ -124,7 +124,10 @@
 				</span>
 				</a>
 
-				<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
+				<h1 id="event-title" class="championship-title flex flex-col">
+  <span class="flex items-baseline gap-2"><span class="text-[52px]">BEEE</span><span class="text-[32px]">Spectacular</span><span class="text-[32px]">Chess Championship</span></span>
+  <span class="text-[32px]">Abuja 2026</span>
+</h1>
 			</div>
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
