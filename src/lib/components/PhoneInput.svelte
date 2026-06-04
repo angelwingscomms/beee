@@ -17,12 +17,11 @@
 	} = $props();
 
 	const isA = variant === 'a';
-	const wrClass = isA ? '!bg-primary !border-primary/60' : '!bg-white !border-primary';
 	const tgClass = isA
-		? '!bg-transparent !text-white !border-primary/60'
+		? '!bg-primary !text-white !border-primary/60'
 		: '!bg-white !text-primary !border-primary';
 	const piClass = isA
-		? '!bg-transparent !text-white placeholder:!text-white/60 !border-primary/60'
+		? '!bg-primary !text-white placeholder:!text-white/60 !border-primary/60'
 		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary';
 	const cvClass = isA ? '!text-white/70' : '!text-primary/70';
 
@@ -147,7 +146,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="phone-input-wrapper" onclick={(e) => e.stopPropagation()} onkeydown={handleKeydown}>
-	<div class="phone-field-row {wrClass}" class:invalid={lenErr} class:warn={lenWarn}>
+	<div class="phone-field-row" class:invalid={lenErr} class:warn={lenWarn}>
 		<div class="country-select">
 			<button
 				type="button"
