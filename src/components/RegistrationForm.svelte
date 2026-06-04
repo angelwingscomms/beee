@@ -105,27 +105,37 @@
 		if (field === 'first_name') players[i].first_name = value;
 		if (field === 'last_name') players[i].last_name = value;
 	}
+
+	function scrollToForm() {
+		const el = document.getElementById('registration-form');
+		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
-				<span class="logo-chip"><img src="/beee.png" alt="" /></span>
+				<span class="logo-chip"><img src="/beee.png" alt="BEEE" /></span>
 			</a>
 
-			<h1 id="event-title" class="display-xl">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
-			<div class="flex flex-col gap-1.5">
-				<p class="text-sm leading-snug">
-					Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span><br>Development Stage and the Championship Grand Finale in October 2026.
-				</p>
-				<p class="text-sm leading-snug">
-					Through Technology, Enterprise, Art, Mentorship and Upskilling, qualifying<br>participants will be exposed to innovation, teamwork, creativity, strategic<br>thinking, and advanced chess development</p>
+			<h1 id="event-title" class="beee-heading">BEEE</h1>
+			<p class="beee-tagline">T.E.A.M.U.P. Development Program &amp; Championship</p>
+			<h2 class="championship-title">Spectacular Chess Championship<br>Abuja 2026</h2>
+
+			<p class="welcome-text">
+				Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span> Development Stage and the Championship Grand Finale in October 2026.
+			</p>
+			<p class="welcome-text">
+				Through Technology, Enterprise, Art, Mentorship and Upskilling, qualifying participants will be exposed to innovation, teamwork, creativity, strategic thinking, and advanced chess development.
+			</p>
+
+			<div class="hero-cta">
+				<button type="button" class="register-hero-btn" onclick={scrollToForm}>Register Your School</button>
 			</div>
-			<div
-				class="price-band simple-price"
-			>
-				<span>Register now</span>
+
+			<div class="price-band simple-price">
+				<span>Registration fee</span>
 				<strong>₦12,500<span class="text-[13px] font-normal !inline ml-[3px]">per player</span></strong>
 				<span class="block text-[14px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000 per school team</span>
 			</div>
@@ -141,6 +151,7 @@
 		</div>
 
 		<form
+			id="registration-form"
 			class="registration-form font-registration"
 			onsubmit={(event) => {
 				event.preventDefault();
