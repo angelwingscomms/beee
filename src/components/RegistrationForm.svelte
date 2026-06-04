@@ -419,7 +419,7 @@
 		height: 3px;
 		background: var(--primary);
 		position: relative;
-		margin: 0 auto;
+		margin: 10px auto;
 	}
 	.journey-arrow::after {
 		content: '';
