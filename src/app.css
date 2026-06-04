@@ -488,8 +488,7 @@ img {
 
 .form-header h2 {
   margin: 0;
-  font-family: var(--font-championship);
-  font-weight: 300;
+  font-family: var(--font-display);
   font-size: 22px;
   line-height: 1.2;
   color: var(--primary);
@@ -740,13 +739,20 @@ img {
 
 .feature-card h3,
 .form-section h3,
-.modal-card h2,
 .modal-section h3 {
   margin: 0;
   color: var(--ink);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.4;
+}
+
+.modal-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--ink);
 }
 
 .feature-card p {

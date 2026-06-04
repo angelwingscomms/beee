@@ -186,7 +186,6 @@
 
     .modal-header h2 {
         font-size: 18px;
-        font-weight: 600;
         color: var(--ink);
         margin: 0;
     }
