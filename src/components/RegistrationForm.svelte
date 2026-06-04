@@ -2,6 +2,7 @@
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PlayerForm from './PlayerForm.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
+	import TextInput from '$lib/components/TextInput.svelte';
 
 	let schoolName = $state('');
 	let schoolEmail = $state('');
@@ -106,12 +107,7 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
-	const sA = '!bg-[#EFE9DE] !border-transparent';
-	const sB = '!bg-white !border-transparent';
-	const sALabel = '!text-primary';
-	const sBLabel = '!text-primary';
-	const sAInput = '!text-primary placeholder:!text-primary/60';
-	const sBInput = '!text-primary placeholder:!text-primary/60';
+
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
@@ -209,16 +205,10 @@
 
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-transparent transition-all duration-150 {sB}">
-						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal {sBLabel} cursor-pointer select-none">School Name</label>
-						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sBInput}" type="text" bind:value={schoolName} required />
-					</div>
+					<TextInput id="schoolName" label="School Name" bind:value={schoolName} required wrapperClass="!bg-white !border-transparent" />
 				</div>
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-transparent transition-all duration-150 {sA}">
-						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal {sALabel} cursor-pointer select-none">School Email</label>
-						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sAInput}" type="email" bind:value={schoolEmail} required />
-					</div>
+					<TextInput id="schoolEmail" label="School Email" type="email" bind:value={schoolEmail} required wrapperClass="!bg-[#EFE9DE] !border-transparent" />
 				</div>
 				<div class="field field-full">
 					<PhoneInput
