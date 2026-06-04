@@ -457,7 +457,7 @@ img {
   margin: 14px 0 0;
   font-family: var(--font-welcome);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.55;
   color: var(--body-strong);
 }
@@ -1306,7 +1306,7 @@ img {
   }
 
   .welcome-text {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .form-header h2 {
