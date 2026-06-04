@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import Hex3 from '$lib/components/loaders/hex/hex-3.svelte';
 
 	let { data }: PageProps = $props();
 
@@ -42,7 +43,7 @@
 <main class="callback-shell">
 	<div class="callback-card">
 		{#if state === 'verifying'}
-			<div class="status-icon spin" aria-hidden="true">⟳</div>
+			<Hex3 size={32} dotSize={4} speed={1.2} bloom />
 			<h1>Verifying payment…</h1>
 			<p>Please wait while we confirm your payment with Paystack.</p>
 		{:else if state === 'success'}
@@ -79,13 +80,8 @@
 		display: block;
 		margin-bottom: 1rem;
 	}
-	.status-icon.spin {
-		display: inline-block;
-		animation: spin 1s linear infinite;
-	}
 	.status-icon.success { color: #5db872; }
 	.status-icon.failed  { color: #e05c5c; }
-	@keyframes spin { to { transform: rotate(360deg); } }
 	.ref {
 		margin-top: 1rem;
 		font-size: 0.85rem;
