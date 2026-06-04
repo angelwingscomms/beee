@@ -344,7 +344,7 @@
 		vertical-align: baseline;
 		position: relative;
 		top: 1px;
-		margin-left: 2px;
+		margin-left: 10px;
 	}
 	.teamup-tagline {
 		margin: 0;
