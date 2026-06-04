@@ -6,6 +6,7 @@
 		placeholder = '',
 		required = false,
 		value = $bindable(''),
+		oninput,
 		wrapperClass = '!bg-white !border-transparent',
 		labelClass = '!text-primary',
 		inputClass = '!text-primary placeholder:!text-primary/60',
@@ -16,6 +17,7 @@
 		placeholder?: string;
 		required?: boolean;
 		value?: string;
+		oninput?: (e: Event) => void;
 		wrapperClass?: string;
 		labelClass?: string;
 		inputClass?: string;
@@ -33,5 +35,6 @@
 		{placeholder}
 		{required}
 		bind:value
+		{oninput}
 	/>
 </div>
