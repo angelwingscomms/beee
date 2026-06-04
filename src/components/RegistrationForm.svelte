@@ -106,6 +106,12 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
+	const pieceAt: Record<number, string> = {
+		3: '/pieces/gioco/wB.svg',
+		9: '/pieces/gioco/bK.svg',
+		19: '/pieces/gioco/wQ.svg'
+	};
+
 	const sA = '!bg-[#EFE9DE] !border-[#EFE9DE]/80 focus-within:!border-[#EFE9DE]';
 	const sB = '!bg-white !border-secondary focus-within:!border-secondary';
 	const sALabel = '!text-primary';
@@ -282,9 +288,9 @@
 							i === 7 ? 'rounded-tr-lg' : '',
 							i === 16 ? 'rounded-bl-lg' : '',
 							i === 23 ? 'rounded-br-lg' : '',
-							i === 9 ? 'bg-cover bg-center' : ''
+							pieceAt[i] ? 'bg-cover bg-center' : ''
 						]}
-						style={i === 9 ? 'background-image: url(/pieces/gioco/bK.svg)' : ''}
+						style={pieceAt[i] ? `background-image: url(${pieceAt[i]})` : ''}
 					></span>
 				{/each}
 			</div>
