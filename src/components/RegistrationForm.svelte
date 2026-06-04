@@ -403,6 +403,7 @@
 		font-size: 20px;
 		line-height: 1.2;
 		color: var(--ink);
+		text-align: center;
 	}
 	.journey-steps {
 		display: flex;
