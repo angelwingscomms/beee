@@ -301,6 +301,7 @@
 <style>
 	.form-section-title {
 		font-family: var(--font-display);
+		color: var(--primary);
 		margin-bottom: 8px;
 	}
 	.teamup-font {
