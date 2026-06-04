@@ -907,6 +907,11 @@ img {
   color: var(--muted-soft);
 }
 
+.text-input:focus,
+.text-area:focus {
+  box-shadow: 0 0 0 3px rgba(204, 120, 92, 0.15);
+}
+
 .text-area {
   min-height: 96px;
   resize: vertical;

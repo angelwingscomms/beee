@@ -249,8 +249,17 @@
 		white-space: nowrap;
 	}
 
+	.country-trigger:focus-visible {
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
+		z-index: 1;
+	}
+
 	.country-trigger.error {
 		background: rgba(198, 69, 69, 0.08);
+	}
+
+	.country-trigger.error:focus-visible {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
 	}
 
 	.country-abbr {
@@ -313,6 +322,10 @@
 		color: var(--ink);
 		font-size: 13px;
 		outline: none;
+	}
+
+	.search-input:focus {
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
 	}
 
 	.country-list {
@@ -383,14 +396,38 @@
 		outline: none;
 	}
 
+	.phone-input:focus {
+		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
+		position: relative;
+		z-index: 1;
+	}
+
+	.phone-input.error:focus {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
+	}
+
 	.invalid .phone-input,
 	.invalid .country-trigger {
 		background: rgba(198, 69, 69, 0.08);
 	}
 
+	.invalid .phone-input:focus,
+	.invalid .country-trigger:focus-visible {
+		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
+	}
+
 	.warn .phone-input,
 	.warn .country-trigger {
 		background: rgba(232, 165, 90, 0.08);
+	}
+
+	.warn .phone-input:focus,
+	.warn .country-trigger:focus-visible {
+		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
+	}
+
+	.phone-input.warn:focus {
+		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
 	}
 
 	.phone-input::placeholder {
