@@ -913,7 +913,7 @@ img {
 	gap: 6px;
 	border-radius: 12px;
 	background: var(--surface-card);
-	padding: 28px 28px 14px;
+	padding: 14px 28px;
 }
 
 .price-band span {
