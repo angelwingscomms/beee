@@ -171,7 +171,7 @@
 					</div>
 				</div>
 				<div class="teamup-card">
-					<h3 class="teamup-heading">What is T.E.A.M.U.P.?</h3>
+					<h3 class="teamup-heading">What is T.E.A.M.U.P.? <img src="/flower-gear.png" alt="" class="teamup-icon" /></h3>
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
 					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
@@ -336,6 +336,13 @@
 		font-size: 20px;
 		line-height: 1.2;
 		color: var(--ink);
+	}
+	.teamup-icon {
+		display: inline;
+		width: 20px;
+		height: 20px;
+		vertical-align: middle;
+		margin-left: 2px;
 	}
 	.teamup-tagline {
 		margin: 0;
