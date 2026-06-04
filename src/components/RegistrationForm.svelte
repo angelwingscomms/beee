@@ -257,7 +257,7 @@
 				<button
 					type="submit"
 					disabled={isProcessing}
-					class="button-primary w-fit !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
+					class="button-primary w-fit motion-safe:animate-button-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
 				>
 					{#if isProcessing}
 						<span class="spinner" aria-hidden="true"></span>

@@ -61,11 +61,13 @@
   --font-welcome: 'Open Sans', sans-serif;
 
   --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
+  --animate-button-pulse: button-pulse 3.8s ease-in-out infinite;
 }
 
 :root {
   --primary: #cc785c;
   --primary-active: #a9583e;
+  --primary-light: #d6896e;
   --primary-disabled: #e6dfd8;
   --ink: #141413;
   --body: #3d3d3a;
@@ -1192,6 +1194,19 @@ img {
 	50% {
 		color: #dd8a6a;
 		border-color: #57534e;
+	}
+}
+
+@keyframes button-pulse {
+	0%,
+	100% {
+		background-color: var(--primary);
+		border-color: var(--primary);
+	}
+
+	50% {
+		background-color: var(--primary-light);
+		border-color: var(--primary-light);
 	}
 }
 
