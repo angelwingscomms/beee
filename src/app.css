@@ -490,7 +490,7 @@ img {
 }
 
 .form-header h2 {
-  margin: 12px 0 0;
+  margin: 0;
   font-family: var(--font-championship);
   font-weight: 700;
   font-size: 22px;
