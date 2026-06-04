@@ -105,6 +105,13 @@
 		if (field === 'first_name') players[i].first_name = value;
 		if (field === 'last_name') players[i].last_name = value;
 	}
+
+	const sA = '!bg-primary !border-primary/60 focus-within:!border-primary/80';
+	const sB = '!bg-white !border-primary focus-within:!border-primary';
+	const sALabel = '!text-white/80';
+	const sBLabel = '!text-primary';
+	const sAInput = '!text-white placeholder:!text-white/60';
+	const sBInput = '!text-primary placeholder:!text-primary/60';
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
@@ -154,15 +161,15 @@
 
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
-						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal !text-[#000] cursor-pointer select-none">School Name</label>
-						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="text" bind:value={schoolName} required />
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150 {sA}">
+						<label for="schoolName" class="shrink-0 !text-[12px] !font-normal {sALabel} cursor-pointer select-none">School Name</label>
+						<input id="schoolName" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sAInput}" type="text" bind:value={schoolName} required />
 					</div>
 				</div>
 				<div class="field">
-					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150">
-						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal !text-[#000] cursor-pointer select-none">School Email</label>
-						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] text-[#141413]" type="email" bind:value={schoolEmail} required />
+					<div class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(204,120,92,0.15)] transition-all duration-150 {sB}">
+						<label for="schoolEmail" class="shrink-0 !text-[12px] !font-normal {sBLabel} cursor-pointer select-none">School Email</label>
+						<input id="schoolEmail" class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 text-[12px] {sBInput}" type="email" bind:value={schoolEmail} required />
 					</div>
 				</div>
 				<div class="field field-full">
@@ -170,9 +177,9 @@
 						id="schoolPhone"
 						value={schoolPhone}
 						placeholder="School phone"
+						variant="a"
 						onChange={(v) => schoolPhone = v}
 					/>
-				</div>
 			</section>
 
 			<section class="form-section" aria-labelledby="players-section-title">

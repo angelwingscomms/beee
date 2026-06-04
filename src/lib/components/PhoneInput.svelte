@@ -6,13 +6,25 @@
 		value = '',
 		id,
 		placeholder = '',
+		variant = '',
 		onChange
 	}: {
 		value?: string;
 		id?: string;
 		placeholder?: string;
+		variant?: string;
 		onChange?: (v: string) => void;
 	} = $props();
+
+	const isA = variant === 'a';
+	const wrClass = isA ? '!bg-primary !border-primary/60' : '!bg-white !border-primary';
+	const tgClass = isA
+		? '!bg-transparent !text-white !border-primary/60'
+		: '!bg-white !text-primary !border-primary';
+	const piClass = isA
+		? '!bg-transparent !text-white placeholder:!text-white/60 !border-primary/60'
+		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary';
+	const cvClass = isA ? '!text-white/70' : '!text-primary/70';
 
 	const defaultCountry = countries.find(c => c.c === 'NG')!;
 
@@ -135,11 +147,11 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="phone-input-wrapper" onclick={(e) => e.stopPropagation()} onkeydown={handleKeydown}>
-	<div class="phone-field-row" class:invalid={lenErr} class:warn={lenWarn}>
+	<div class="phone-field-row {wrClass}" class:invalid={lenErr} class:warn={lenWarn}>
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger"
+				class="country-trigger {tgClass}"
 				class:error={lenErr}
 				class:warn={lenWarn}
 				onclick={toggleOpen}
@@ -148,8 +160,8 @@
 				aria-label="Select country code"
 			>
 				<span class="country-abbr">{selectedCountry.c}</span>
-				<span class="country-code-label">{selectedCountry.d}</span>
-				<svg class="chevron {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+				<span class="country-code-label {isA ? '!text-white/70' : '!text-primary/70'}">{selectedCountry.d}</span>
+				<svg class="chevron {cvClass} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</button>
@@ -198,7 +210,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input"
+			class="phone-input {piClass}"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
