@@ -468,11 +468,12 @@ img {
 
 .championship-title {
   margin: 16px 0 0;
-  font-family: var(--font-championship);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: 34px;
   line-height: 1.15;
   color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
 .welcome-text {
