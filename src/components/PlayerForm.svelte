@@ -15,10 +15,10 @@
 	// even player (0,2): first=theme bg/white text, last=white bg/theme text
 	// odd player (1,3):  first=white bg/theme text, last=theme bg/white text
 	// mobile (≤766px): all first=theme bg/white text, all last=white bg/theme text
-	const a = '!bg-secondary !text-primary placeholder:!text-primary/70 !border-secondary/60';
-	const b = '!bg-white !text-primary placeholder:!text-primary/70 !border-secondary';
-	const mFirst = 'max-md:!bg-secondary max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-secondary/60';
-	const mLast = 'max-md:!bg-white max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-secondary';
+	const a = '!bg-secondary !text-primary placeholder:!text-primary/70 !border-transparent focus:!border-secondary/60';
+	const b = '!bg-white !text-primary placeholder:!text-primary/70 !border-transparent focus:!border-secondary';
+	const mFirst = 'max-md:!bg-secondary max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-transparent max-md:focus:!border-secondary/60';
+	const mLast = 'max-md:!bg-white max-md:!text-primary max-md:placeholder:!text-primary/70 max-md:!border-transparent max-md:focus:!border-secondary';
 	const firstClass = `${index % 2 === 0 ? a : b} ${mFirst}`;
 	const lastClass = `${index % 2 === 0 ? b : a} ${mLast}`;
 </script>

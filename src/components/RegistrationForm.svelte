@@ -106,8 +106,8 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
-	const sA = '!bg-[#EFE9DE] !border-[#EFE9DE]/80 focus-within:!border-[#EFE9DE]';
-	const sB = '!bg-white !border-secondary focus-within:!border-secondary';
+	const sA = '!bg-[#EFE9DE] !border-transparent focus-within:!border-[#EFE9DE]';
+	const sB = '!bg-white !border-transparent focus-within:!border-secondary';
 	const sALabel = '!text-primary';
 	const sBLabel = '!text-primary';
 	const sAInput = '!text-primary placeholder:!text-primary/60';

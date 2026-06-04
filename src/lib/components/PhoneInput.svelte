@@ -141,7 +141,7 @@
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger {theme ? '!bg-white !text-primary !border-secondary !rounded-l-lg' : ''}"
+				class="country-trigger {theme ? '!bg-white !text-primary !border-transparent focus-visible:!border-secondary !rounded-l-lg' : ''}"
 				class:error={lenErr}
 				class:warn={lenWarn}
 				onclick={toggleOpen}
@@ -200,7 +200,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-secondary !rounded-r-lg' : ''}"
+			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-transparent focus:!border-secondary !rounded-r-lg' : ''}"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
