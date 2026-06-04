@@ -417,15 +417,19 @@
 	.teamup-list li {
 		display: flex;
 		align-items: center;
-		gap: 6px;
+		gap: 8px;
 		font-family: var(--font-registration);
 		font-size: 11.5px;
 		line-height: 1.35;
 		color: var(--body-strong);
 	}
-	.teamup-list li span {
+	.teamup-list li::before {
+		content: '';
+		width: 5px;
+		height: 5px;
+		border-radius: 999px;
+		background: var(--primary);
 		flex-shrink: 0;
-		font-size: 13px;
 	}
 	.teamup-footer {
 		margin: 0;
@@ -433,7 +437,6 @@
 		font-size: 10.5px;
 		line-height: 1.4;
 		color: var(--muted);
-		font-style: italic;
 	}
 	@media (max-width: 766px) {
 		.card-row {
