@@ -444,7 +444,7 @@ img {
 }
 
 .championship-title {
-  margin: 16px 0 0;
+  margin: 0;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 38px;
@@ -454,7 +454,7 @@ img {
 }
 
 .welcome-text {
-  margin: 14px 0 0;
+  margin: 0;
   font-family: var(--font-welcome);
   font-weight: 400;
   font-size: 16px;
