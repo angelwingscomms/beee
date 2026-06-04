@@ -239,8 +239,6 @@
 		gap: 6px;
 		height: 40px;
 		padding: 0 10px;
-		border: 1px solid var(--hairline);
-		border-right: none;
 		border-radius: 8px 0 0 8px;
 		background: var(--surface-soft);
 		color: var(--ink);
@@ -248,22 +246,11 @@
 		font-size: 14px;
 		line-height: 40px;
 		outline: none;
-		transition: border-color 160ms ease, box-shadow 160ms ease;
 		white-space: nowrap;
 	}
 
-	.country-trigger:focus-visible {
-		border-color: var(--secondary);
-		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
-		z-index: 1;
-	}
-
 	.country-trigger.error {
-		border-color: var(--error);
-	}
-
-	.country-trigger.error:focus-visible {
-		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
+		background: rgba(198, 69, 69, 0.08);
 	}
 
 	.country-abbr {
@@ -321,17 +308,11 @@
 		width: 100%;
 		min-height: 36px;
 		padding: 8px 12px;
-		border: 1px solid var(--hairline);
 		border-radius: 6px;
 		background: var(--canvas);
 		color: var(--ink);
 		font-size: 13px;
 		outline: none;
-	}
-
-	.search-input:focus {
-		border-color: var(--secondary);
-		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
 	}
 
 	.country-list {
@@ -394,61 +375,22 @@
 		min-width: 0;
 		height: 40px;
 		padding: 0 14px;
-		border: 1px solid var(--hairline);
 		border-radius: 0 8px 8px 0;
 		background: var(--canvas);
 		color: var(--ink);
 		font-size: 12px;
 		line-height: 40px;
 		outline: none;
-		transition: border-color 160ms ease, box-shadow 160ms ease;
-	}
-
-	.phone-input:focus {
-		border-color: var(--secondary);
-		box-shadow: 0 0 0 3px rgba(239, 233, 222, 0.3);
-		position: relative;
-		z-index: 1;
-	}
-
-	.phone-input.error {
-		border-color: var(--error);
-	}
-
-	.phone-input.error:focus {
-		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
-		border-color: var(--error);
 	}
 
 	.invalid .phone-input,
 	.invalid .country-trigger {
-		border-color: var(--error);
-	}
-
-	.invalid .phone-input:focus,
-	.invalid .country-trigger:focus-visible {
-		box-shadow: 0 0 0 3px rgba(198, 69, 69, 0.15);
-		border-color: var(--error);
+		background: rgba(198, 69, 69, 0.08);
 	}
 
 	.warn .phone-input,
 	.warn .country-trigger {
-		border-color: var(--amber);
-	}
-
-	.warn .phone-input:focus,
-	.warn .country-trigger:focus-visible {
-		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
-		border-color: var(--amber);
-	}
-
-	.phone-input.warn {
-		border-color: var(--amber);
-	}
-
-	.phone-input.warn:focus {
-		box-shadow: 0 0 0 3px rgba(232, 165, 90, 0.2);
-		border-color: var(--amber);
+		background: rgba(232, 165, 90, 0.08);
 	}
 
 	.phone-input::placeholder {
