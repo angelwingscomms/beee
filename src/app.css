@@ -908,12 +908,12 @@ img {
 }
 
 .price-band {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  border-radius: 12px;
-  background: var(--surface-card);
-  padding: 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	border-radius: 12px;
+	background: var(--surface-card);
+	padding: 28px 28px 14px;
 }
 
 .price-band span {
