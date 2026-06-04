@@ -49,7 +49,7 @@ describe('Player Registration', () => {
 		expect(form).toContain('Registration is through participating schools within the FCT.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
 		expect(form).toContain('Each participating school must register four (4) players.');
-		expect(form).toContain('per school team');
+		expect(form).toContain('Total: ₦50,000<br>per school team');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
 		expect(form).toContain('class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
