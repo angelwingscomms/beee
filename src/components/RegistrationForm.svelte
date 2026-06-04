@@ -294,7 +294,7 @@
 	.journey-card {
 		border-radius: 12px;
 		background: var(--surface-card);
-		padding: 22px 26px;
+		padding: 22px 26px 11px;
 	}
 	.journey-card-title {
 		margin: 0 0 16px;
