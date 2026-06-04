@@ -119,8 +119,7 @@
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
 				<span class="logo-chip">
-				<img src="/beee.png" alt="BEEE" />
-				<!-- <img src="/logo.svg" alt="BEEE" /> -->
+				<img src="/logo.svg" alt="BEEE" />
 			</span>
 			</a>
 
