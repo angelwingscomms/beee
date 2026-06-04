@@ -926,7 +926,6 @@ img {
 .price-band span {
   display: block;
   color: var(--muted);
-  font-size: 18px;
   font-weight: 500;
 }
 
