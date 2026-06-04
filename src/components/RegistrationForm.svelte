@@ -437,7 +437,7 @@
 		margin-top: 4px;
 	}
 	.journey-line {
-		width: 2px;
+		width: 1px;
 		flex: 1;
 		background: #000;
 		min-height: 26px;
