@@ -462,14 +462,6 @@ img {
   color: var(--body-strong);
 }
 
-.welcome-text p {
-  margin: 0;
-}
-
-.welcome-text p + p {
-  margin-top: 6px;
-}
-
 .lead {
   max-width: 580px;
   margin: 24px 0 0;

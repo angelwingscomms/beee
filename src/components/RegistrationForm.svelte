@@ -123,11 +123,7 @@
 
 			<h1 id="event-title" class="championship-title">BEEE Spectacular<br>Chess Championship<br>Abuja 2026</h1>
 
-			<div class="welcome-text">
-				<p>Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
-				<p>Qualifying participants will advance to the <span class="teamup-font">T.E.A.M.U.P.</span> Development Stage and the Championship Grand Finale in October 2026.</p>
-				<p>Through Technology, Enterprise, Art, Mentorship and Upskilling, qualifying participants will be exposed to innovation, teamwork, creativity, strategic thinking, and advanced chess development.</p>
-			</div>
+			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
 			<div class="price-band simple-price">
 				<span>Registration fee</span>
