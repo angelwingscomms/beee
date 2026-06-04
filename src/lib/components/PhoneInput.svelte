@@ -141,7 +141,7 @@
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger {theme ? '!bg-primary !text-white !border-primary/60 !rounded-l-lg' : ''}"
+				class="country-trigger {theme ? '!bg-white !text-primary !border-primary !rounded-l-lg' : ''}"
 				class:error={lenErr}
 				class:warn={lenWarn}
 				onclick={toggleOpen}
@@ -150,8 +150,8 @@
 				aria-label="Select country code"
 			>
 				<span class="country-abbr">{selectedCountry.c}</span>
-				<span class="country-code-label {theme ? '!text-white/70' : ''}">{selectedCountry.d}</span>
-				<svg class="chevron {theme ? '!text-white/70' : ''} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+				<span class="country-code-label {theme ? '!text-primary/70' : ''}">{selectedCountry.d}</span>
+				<svg class="chevron {theme ? '!text-primary/70' : ''} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</button>
@@ -200,7 +200,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {theme ? '!bg-primary !text-white placeholder:!text-white/60 !border-primary/60 !rounded-r-lg' : ''}"
+			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-primary !rounded-r-lg' : ''}"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
