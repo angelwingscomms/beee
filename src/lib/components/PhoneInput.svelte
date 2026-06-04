@@ -200,7 +200,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-[#EFE9DE] !border-secondary !rounded-r-lg' : ''}"
+			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-secondary !rounded-r-lg' : ''}"
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}

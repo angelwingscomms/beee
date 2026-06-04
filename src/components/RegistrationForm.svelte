@@ -108,10 +108,10 @@
 
 	const sA = '!bg-[#EFE9DE] !border-[#EFE9DE]/80 focus-within:!border-[#EFE9DE]';
 	const sB = '!bg-white !border-secondary focus-within:!border-secondary';
-	const sALabel = '!text-white';
-	const sBLabel = '!text-[#EFE9DE]';
-	const sAInput = '!text-primary placeholder:!text-white/50';
-	const sBInput = '!text-primary placeholder:!text-[#EFE9DE]/70';
+	const sALabel = '!text-primary';
+	const sBLabel = '!text-primary';
+	const sAInput = '!text-primary placeholder:!text-primary/60';
+	const sBInput = '!text-primary placeholder:!text-primary/60';
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
