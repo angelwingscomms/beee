@@ -145,12 +145,14 @@
 									<span class="journey-name">Preliminary Rounds</span>
 								</div>
 							</div>
+							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
 									<span class="journey-date">July — August 2026</span>
 									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
 								</div>
 							</div>
+							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
 									<span class="journey-date">October 2026</span>
@@ -409,6 +411,14 @@
 	.journey-step {
 		display: flex;
 		gap: 14px;
+	}
+	.journey-arrow {
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 6px solid var(--primary);
+		margin: 2px auto;
 	}
 	.journey-body {
 		display: flex;
