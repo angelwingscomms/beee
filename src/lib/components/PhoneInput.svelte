@@ -18,11 +18,11 @@
 
 	const isA = variant === 'a';
 	const tgClass = isA
-		? '!bg-primary !text-white !border-primary/60'
-		: '!bg-white !text-primary !border-primary';
+		? '!bg-primary !text-white !border-primary/60 !rounded-l-lg'
+		: '!bg-white !text-primary !border-primary !rounded-l-lg';
 	const piClass = isA
-		? '!bg-primary !text-white placeholder:!text-white/60 !border-primary/60'
-		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary';
+		? '!bg-primary !text-white placeholder:!text-white/60 !border-primary/60 !rounded-r-lg'
+		: '!bg-white !text-primary placeholder:!text-primary/60 !border-primary !rounded-r-lg';
 	const cvClass = isA ? '!text-white/70' : '!text-primary/70';
 
 	const defaultCountry = countries.find(c => c.c === 'NG')!;
