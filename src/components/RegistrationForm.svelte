@@ -424,6 +424,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1px;
+		align-items: center;
+		text-align: center;
 	}
 	.journey-date {
 		font-family: var(--font-registration);
