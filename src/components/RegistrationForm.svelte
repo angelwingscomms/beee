@@ -185,7 +185,7 @@
 				</div>
 			</div>
 
-			<ul class="space-y-1 text-[13px] leading-snug text-black font-registration">
+			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-black pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-black pl-3">Participants must be between 10 and 14 years of age.</li>
