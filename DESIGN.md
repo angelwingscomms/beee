@@ -4,8 +4,8 @@ name: Claude-design-analysis
 description: A warm-canvas editorial interface for Anthropic's Claude product. The system anchors on a tinted cream canvas with serif display headlines, warm coral CTAs, and dark navy product surfaces (code editor mockups, model showcase cards). Brand voltage comes from the cream/coral pairing — deliberately warm and humanist where most AI brands use cool blue + slate. Type voice runs a slab-serif display ("Copernicus" / Tiempos Headline) for h1/h2 and a humanist sans for body. The signature Anthropic black-radial-spike mark anchors the wordmark.
 
 colors:
-  primary: "#cc785c"
-  primary-active: "#a9583e"
+  primary: "#ff6600"
+  primary-active: "#ff3900"
   primary-disabled: "#e6dfd8"
   ink: "#141413"
   body: "#3d3d3a"
@@ -25,10 +25,10 @@ colors:
   on-dark: "#faf9f5"
   on-dark-soft: "#a09d96"
   accent-teal: "#5db8a6"
-  accent-amber: "#e8a55a"
+  accent-amber: "#ffb200"
   success: "#5db872"
   warning: "#d4a017"
-  error: "#c64545"
+  error: "#ff372d"
 
 typography:
   display-xl:
@@ -302,7 +302,7 @@ components:
 
 Claude.com is the warmest, most editorial interface in the AI-product category. The base atmosphere is a **tinted cream canvas** (`{colors.canvas}` — #faf9f5) — distinctly warm, deliberately not the cool gray-white that every other AI brand uses. Headlines run a **slab-serif display** ("Copernicus" / Tiempos Headline) at weight 400 with negative letter-spacing, paired with **StyreneB / Inter** body sans. The combination feels like a literary publication, not a SaaS marketing page.
 
-Brand voltage comes from the **cream + coral pairing** — coral (`{colors.primary}` — #cc785c) is the signature Anthropic accent, used on every primary CTA, on the brand wordmark, and on full-bleed callout cards. The coral is warm, slightly muted, never cyan/blue — a deliberate counter-positioning against OpenAI's cool slate, Google's saturated blue, and Microsoft's corporate cyan.
+Brand voltage comes from the **cream + orange pairing** — orange (`{colors.primary}` — #ff6600) is the signature beee accent, used on every primary CTA, on the brand wordmark, and on full-bleed callout cards.
 
 The system has three surface modes that alternate page-by-page:
 1. **Cream canvas** (`{colors.canvas}`) — default body floor
@@ -313,7 +313,7 @@ The dark surfaces are where Claude shows its product chrome — code blocks, ter
 
 **Key Characteristics:**
 - Warm cream canvas (`{colors.canvas}` — #faf9f5) with dark warm-ink text (`{colors.ink}` — #141413). The brand's defining color choice.
-- Coral primary CTA (`{colors.primary}` — #cc785c). Used scarcely on individual buttons, generously on full-bleed coral callout cards.
+- Orange primary CTA (`{colors.primary}` — #ff6600). Used scarcely on individual buttons, generously on full-bleed orange callout cards.
 - Slab-serif display headlines via Copernicus / Tiempos Headline at weight 400 with negative letter-spacing. Pairs with humanist sans body for a literary editorial voice.
 - Dark navy product mockup cards (`{colors.surface-dark}` — #181715) carrying code blocks, terminal panels, model comparison data — the brand shows the product chrome at scale rather than abstract marketing illustrations.
 - Light cream feature cards (`{colors.surface-card}` — #efe9de) — slightly darker than canvas, used for content-driven feature explanations.
@@ -324,11 +324,10 @@ The dark surfaces are where Claude shows its product chrome — code blocks, ter
 ## Colors
 
 ### Brand & Accent
-- **Coral / Primary** (`{colors.primary}` — #cc785c): The signature Anthropic warm coral. Used on every primary CTA background, on full-bleed coral callout cards, on the brand wordmark accent. The most-recognized Anthropic color outside of the spike-mark logo.
-- **Coral Active** (`{colors.primary-active}` — #a9583e): The press / hover-darker variant.
-- **Coral Disabled** (`{colors.primary-disabled}` — #e6dfd8): A desaturated cream-tinted disabled state.
-- **Accent Teal** (`{colors.accent-teal}` — #5db8a6): Used sparingly on secondary product surfaces (terminal status indicators, "active connection" dots in connectors page).
-- **Accent Amber** (`{colors.accent-amber}` — #e8a55a): A small companion warm-tone used on category badges and inline highlights.
+- **Orange / Primary** (`{colors.primary}` — #ff6600): The signature beee warm orange. Used on every primary CTA background, on full-bleed orange callout cards, on the brand wordmark accent.
+- **Orange Active** (`{colors.primary-active}` — #ff3900): The press / hover-darker variant (deep red-orange).
+- **Orange Light** (`{colors.primary-disabled}` — #e6dfd8): A desaturated cream-tinted disabled state; the lighter variant `{colors.primary-light}` — #ff9300 is used for hover highlights.
+- **Accent Amber** (`{colors.accent-amber}` — #ffb200): A warm amber companion used on category badges and inline highlights.
 
 ### Surface
 - **Canvas** (`{colors.canvas}` — #faf9f5): The default page floor. Tinted cream — warm, deliberately not pure white.
@@ -354,7 +353,7 @@ The dark surfaces are where Claude shows its product chrome — code blocks, ter
 ### Semantic
 - **Success** (`{colors.success}` — #5db872): Green status dots, "available" indicators.
 - **Warning** (`{colors.warning}` — #d4a017): Warning callouts (rare on marketing surfaces).
-- **Error** (`{colors.error}` — #c64545): Validation errors.
+- **Error** (`{colors.error}` — #ff372d): Validation errors — a coral-red for alerts.
 
 ## Typography
 
@@ -460,7 +459,7 @@ When photography is used (rare — mostly testimonials), avatars crop to perfect
 
 ### Buttons
 
-**`button-primary`** — The signature coral CTA. Background `{colors.primary}` (#cc785c), text `{colors.on-primary}` (white), type `{typography.button}` (StyreneB 14px / 500), padding 12px × 20px, height 40px, rounded `{rounded.md}` (8px). Active state `button-primary-active` darkens to `{colors.primary-active}` (#a9583e).
+**`button-primary`** — The signature orange CTA. Background `{colors.primary}` (#ff6600), text `{colors.on-primary}` (white), type `{typography.button}` (StyreneB 14px / 500), padding 12px × 20px, height 40px, rounded `{rounded.md}` (8px). Active state `button-primary-active` darkens to `{colors.primary-active}` (#ff3900).
 
 **`button-secondary`** — Cream button with hairline outline. Background `{colors.canvas}`, text `{colors.ink}`, 1px hairline border, same padding + height + radius as primary.
 
@@ -490,7 +489,7 @@ When photography is used (rare — mostly testimonials), avatars crop to perfect
 
 **`pricing-tier-card-featured`** — The featured tier (typically "Pro" or "Team"). Background flips to `{colors.surface-dark}`, text inverts to `{colors.on-dark}`. The dark surface IS the featured-tier signal.
 
-**`callout-card-coral`** — A full-bleed coral card carrying a major call-to-action. Background `{colors.primary}` (#cc785c), text `{colors.on-primary}` (white), rounded `{rounded.lg}`, padding `{spacing.xxl}` (48px). The coral surface IS the voltage; the CTA inside uses an inverted button style (cream/canvas button on coral).
+**`callout-card-coral`** — A full-bleed orange card carrying a major call-to-action. Background `{colors.primary}` (#ff6600), text `{colors.on-primary}` (white), rounded `{rounded.lg}`, padding `{spacing.xxl}` (48px). The orange surface IS the voltage; the CTA inside uses an inverted button style (cream/canvas button on orange).
 
 **`connector-tile`** — Used on the connectors page's integration grid. Background `{colors.canvas}` with hairline border, rounded `{rounded.lg}`, padding 20px. Each tile carries a logo at top, a `{typography.title-sm}` connector name, and a short description.
 

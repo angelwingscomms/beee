@@ -37,9 +37,9 @@ export const POST: RequestHandler = async ({ request }) => {
     .header { background: #181715; color: #faf9f5; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
     .content { background: #faf9f5; padding: 30px; border: 1px solid #e6dfd8; border-top: 0; border-radius: 0 0 8px 8px; }
     .section { margin-bottom: 30px; }
-    .section h2 { color: #141413; border-bottom: 2px solid #cc785c; padding-bottom: 10px; }
-    .details { background: #efe9de; padding: 15px; border-left: 4px solid #cc785c; margin: 15px 0; }
-    .price { font-size: 28px; font-weight: bold; color: #cc785c; }
+    .section h2 { color: #141413; border-bottom: 2px solid #ff6600; padding-bottom: 10px; }
+    .details { background: #efe9de; padding: 15px; border-left: 4px solid #ff6600; margin: 15px 0; }
+    .price { font-size: 28px; font-weight: bold; color: #ff6600; }
     .footer { text-align: center; color: #6c6a64; font-size: 12px; margin-top: 30px; border-top: 1px solid #e6dfd8; padding-top: 20px; }
   </style>
 </head>

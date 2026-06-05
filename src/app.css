@@ -39,9 +39,9 @@
   --color-canvas: #faf9f5;
   --color-ink: #141413;
   --color-body: #3d3d3a;
-  --color-primary: #cc785c;
+  --color-primary: #ff6600;
   --color-secondary: #efe9de;
-  --color-primary-active: #a9583e;
+  --color-primary-active: #ff3900;
   --color-hairline: #e6dfd8;
   --color-surface-soft: #f5f0e8;
   --color-surface-card: #efe9de;
@@ -51,7 +51,7 @@
   --color-on-dark: #faf9f5;
   --color-muted: #6c6a64;
   --color-teal: #5db8a6;
-  --color-amber: #e8a55a;
+  --color-amber: #ffb200;
 
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Cormorant Garamond', serif;
@@ -67,9 +67,9 @@
 }
 
 :root {
-  --primary: #cc785c;
-  --primary-active: #a9583e;
-  --primary-light: #d6896e;
+  --primary: #ff6600;
+  --primary-active: #ff3900;
+  --primary-light: #ff9300;
   --primary-disabled: #e6dfd8;
   --ink: #141413;
   --body: #3d3d3a;
@@ -89,11 +89,11 @@
   --on-dark: #faf9f5;
   --on-dark-soft: #a09d96;
   --accent-teal: #5db8a6;
-  --accent-amber: #e8a55a;
+  --accent-amber: #ffb200;
   --info: #4a8ecf;
   --success: #5db872;
   --warning: #d4a017;
-  --error: #c64545;
+  --error: #ff372d;
   --font-display: 'Cormorant Garamond', 'EB Garamond', Garamond, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-code: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -561,8 +561,8 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(115deg, rgba(204, 120, 92, 0.18), transparent 36%),
-    radial-gradient(circle at 78% 12%, rgba(232, 165, 90, 0.22), transparent 24%),
+    linear-gradient(115deg, rgba(255, 102, 0, 0.18), transparent 36%),
+    radial-gradient(circle at 78% 12%, rgba(255, 178, 0, 0.22), transparent 24%),
     linear-gradient(180deg, rgba(250, 249, 245, 0.06), transparent 48%);
   content: '';
 }
@@ -612,7 +612,7 @@ img {
   background:
     linear-gradient(90deg, rgba(250, 249, 245, 0.06) 1px, transparent 1px),
     linear-gradient(rgba(250, 249, 245, 0.06) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(204, 120, 92, 0.22), rgba(37, 35, 32, 0.86));
+    linear-gradient(135deg, rgba(255, 102, 0, 0.22), rgba(37, 35, 32, 0.86));
   background-size: 12.5% 12.5%, 12.5% 12.5%, 100% 100%;
   box-shadow: 0 34px 80px rgba(0, 0, 0, 0.32);
 }
@@ -620,7 +620,7 @@ img {
 .board-plane::after {
   position: absolute;
   inset: 11%;
-  border: 1px solid rgba(232, 165, 90, 0.35);
+  border: 1px solid rgba(255, 178, 0, 0.35);
   content: '';
 }
 
@@ -1000,9 +1000,9 @@ img {
 
 .error-message {
   margin: 24px 0 0;
-  border: 1px solid rgba(198, 69, 69, 0.35);
+  border: 1px solid rgba(255, 55, 45, 0.35);
   border-radius: 12px;
-  background: rgba(198, 69, 69, 0.08);
+  background: rgba(255, 55, 45, 0.08);
   color: var(--error);
   padding: 14px 16px;
   font-size: 14px;
