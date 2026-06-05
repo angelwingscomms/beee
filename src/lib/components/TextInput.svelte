@@ -8,7 +8,7 @@
 		value = $bindable(''),
 		oninput,
 		wrapperClass = '!bg-white !border-transparent',
-		labelClass = '!text-primary',
+		labelClass = '!text-primary/70',
 		inputClass = '!text-primary placeholder:!text-primary/60',
 	}: {
 		id: string;
