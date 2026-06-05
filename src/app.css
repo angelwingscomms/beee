@@ -464,7 +464,7 @@ img {
 .welcome-text {
   margin: 0;
   font-family: var(--font-welcome);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   line-height: 1.55;
   color: var(--body-strong);
