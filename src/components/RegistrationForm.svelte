@@ -160,7 +160,7 @@
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
 						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px]">₦12,500<span class="text-[13px] font-normal">per player</span></strong>
 						<span class="block text-[15px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000<br>per school team</span>
-						<button type="button" onclick={handleSubmit} class="button-primary w-fit motion-safe:animate-button-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register</button>
+						<button type="button" onclick={handleSubmit} class="button-primary w-fit motion-safe:animate-button-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
 					</div>
 				</div>
 				<div class="teamup-card">
