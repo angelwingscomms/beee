@@ -107,7 +107,9 @@
 		if (field === 'last_name') players[i].last_name = value;
 	}
 
-
+	function focusSchoolName() {
+		document.getElementById('schoolName')?.focus();
+	}
 </script>
 
 <main class="page-shell simple-home" aria-labelledby="event-title">
@@ -162,6 +164,7 @@
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
 						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px]">₦12,500<span class="text-[13px] font-normal">per player</span></strong>
 						<span class="block text-[15px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000<br>per school team</span>
+						<button onclick={focusSchoolName} class="text-xs px-4 py-1.5 border border-primary/40 text-primary rounded-lg hover:border-primary hover:bg-primary/5 transition-colors font-medium cursor-pointer self-start mt-1">Register Now</button>
 					</div>
 				</div>
 				<div class="teamup-card">
