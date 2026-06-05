@@ -159,7 +159,7 @@
 					<div class="price-band simple-price flex-1">
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
 						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px]">₦12,500<span class="text-[18px] font-normal">per player</span></strong>
-						<span class="block text-[15px] font-bold !text-[#000]" style="font-family:var(--font-display)">Total: <span class="text-[18px]">₦50,000</span> per school team</span>
+						<span class="block text-[15px] font-bold !text-[#000] whitespace-nowrap" style="font-family:var(--font-display)">Total: <span class="text-[18px]">₦50,000</span> per school team</span>
 						<button type="button" onclick={() => document.getElementById('schoolName')?.focus()} class="button-primary text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-button-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
 					</div>
 				</div>
