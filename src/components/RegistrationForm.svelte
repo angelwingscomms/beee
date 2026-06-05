@@ -163,7 +163,7 @@
 							<span class="text-[18px] font-bold">Total: ₦50,000</span>
 							<span class="text-[16px] font-bold">per school team</span>
 						</div>
-						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-button-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
+						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary text-xs px-3 py-1.5 min-h-0 w-fit animate-pulse !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
 					</div>
 				</div>
 				<div class="teamup-card">
