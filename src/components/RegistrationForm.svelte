@@ -158,7 +158,7 @@
 					</div>
 					<div class="price-band simple-price flex-1">
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
-						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[3px]">₦12,500<span class="text-[18px] font-normal">per player</span></strong>
+						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[9px]">₦12,500<span class="text-[18px] font-normal">per player</span></strong>
 						<div class="flex flex-wrap items-baseline gap-x-1 !text-[#000]" style="font-family:var(--font-display)">
 							<span class="text-[18px] font-bold">Total: ₦50,000</span>
 							<span class="text-[16px] font-bold">per school team</span>
