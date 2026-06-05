@@ -43,7 +43,7 @@
 <main class="callback-shell">
 	<div class="callback-card">
 		{#if state === 'verifying'}
-			<Hex3 size={32} dotSize={4} speed={1.2} bloom />
+			<Hex3 size={32} dotSize={4} speed={1.2} bloom color="var(--primary)" />
 			<h1>Verifying payment…</h1>
 			<p>Please wait while we confirm your payment with Paystack.</p>
 		{:else if state === 'success'}
