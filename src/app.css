@@ -62,7 +62,7 @@
 
   --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
   --animate-button-pulse: button-pulse 3.8s ease-in-out infinite;
-  --animate-hint-loading: hint-loading 3.2s ease-in-out infinite;
+  --animate-hint-loading: hint-loading 8s ease-in-out infinite;
   --animate-chat-loading: chat-loading 2s ease-in-out infinite;
 }
 
@@ -1222,7 +1222,7 @@ img {
 		color: #fff;
 	}
 	50% {
-		background-color: #fff;
+		background-color: transparent;
 		color: var(--primary);
 	}
 }
