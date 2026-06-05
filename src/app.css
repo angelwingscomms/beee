@@ -1206,11 +1206,13 @@ img {
 	100% {
 		background-color: var(--primary);
 		border-color: var(--primary);
+		color: #fff;
 	}
 
 	50% {
 		background-color: var(--primary-light);
 		border-color: var(--primary-light);
+		color: #000;
 	}
 }
 
