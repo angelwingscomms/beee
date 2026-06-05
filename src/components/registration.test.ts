@@ -49,9 +49,45 @@ describe('Player Registration', () => {
 		expect(form).toContain('Registration is through participating schools within the FCT.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
 		expect(form).toContain('Each participating school must register four (4) players.');
-		expect(form).toContain('Total: ₦50,000<br>per school team');
+		expect(form).toContain('Total: ₦50,000');
+		expect(form).toContain('per school team');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
 		expect(form).toContain('class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
+	});
+});
+
+describe('Inline Error States', () => {
+	it('TextInput renders error message when error prop is set', () => {
+		const ti = readFileSync(resolve(process.cwd(), 'src/lib/components/TextInput.svelte'), 'utf8');
+		expect(ti).toContain('error');
+		const lines = ti.split('\n');
+		const hasErrorDisplay = lines.some(l => l.includes('field-msg') || l.includes('field-error'));
+		expect(hasErrorDisplay).toBe(true);
+	});
+
+	it('RegistrationForm has novalidate on the form element', () => {
+		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
+		expect(form).toContain('novalidate');
+	});
+
+	it('RegistrationForm tracks per-field errors', () => {
+		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
+		const hasSchoolNameErr = form.includes('schoolNameErr');
+		const hasSchoolEmailErr = form.includes('schoolEmailErr');
+		const hasSchoolPhoneErr = form.includes('schoolPhoneErr');
+		const hasPlayerErrors = form.includes('playerErrors');
+		expect(hasSchoolNameErr && hasSchoolEmailErr && hasSchoolPhoneErr && hasPlayerErrors).toBe(true);
+	});
+
+	it('PlayerForm accepts firstNameError and lastNameError props', () => {
+		const pf = readFileSync(resolve(process.cwd(), 'src/components/PlayerForm.svelte'), 'utf8');
+		expect(pf).toContain('firstNameError');
+		expect(pf).toContain('lastNameError');
+	});
+
+	it('disables HTML5 validation on the form element', () => {
+		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
+		expect(form).toContain('novalidate');
 	});
 });

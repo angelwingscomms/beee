@@ -9,9 +9,16 @@
 	let schoolPhone = $state('+234');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
-	let errorMessage = $state('');
+	let apiError = $state('');
 	let successMessage = $state('');
 	let registrationId = $state('');
+
+	let schoolNameErr = $state('');
+	let schoolEmailErr = $state('');
+	let schoolPhoneErr = $state('');
+	let playerErrors = $state(
+		Array.from({ length: 4 }, () => ({ first_name: '', last_name: '' }))
+	);
 
 	const REGISTRATION_AMOUNT = 50000;
 	const REGISTRATION_AMOUNT_PER_PLAYER = 12500;
@@ -25,34 +32,49 @@
 		return `₦${amount.toLocaleString()}`;
 	}
 
+	function clearErrors() {
+		schoolNameErr = '';
+		schoolEmailErr = '';
+		schoolPhoneErr = '';
+		for (let i = 0; i < NUM_PLAYERS; i++) {
+			playerErrors[i].first_name = '';
+			playerErrors[i].last_name = '';
+		}
+	}
+
 	function validateForm(): boolean {
-		errorMessage = '';
+		clearErrors();
+		apiError = '';
 		successMessage = '';
+		let valid = true;
 
 		if (!schoolName.trim()) {
-			errorMessage = 'School name is required';
-			return false;
+			schoolNameErr = 'School name is required';
+			valid = false;
 		}
 		if (!schoolEmail.trim()) {
-			errorMessage = 'School email is required';
-			return false;
+			schoolEmailErr = 'School email is required';
+			valid = false;
+		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(schoolEmail.trim())) {
+			schoolEmailErr = 'Enter a valid email address';
+			valid = false;
 		}
 		if (!schoolPhone.trim() || schoolPhone.trim() === '+234') {
-			errorMessage = 'School phone is required';
-			return false;
+			schoolPhoneErr = 'School phone is required';
+			valid = false;
 		}
 		for (let i = 0; i < NUM_PLAYERS; i++) {
 			if (!players[i].first_name.trim()) {
-				errorMessage = `Player ${i + 1} first name is required`;
-				return false;
+				playerErrors[i].first_name = 'First name is required';
+				valid = false;
 			}
 			if (!players[i].last_name.trim()) {
-				errorMessage = `Player ${i + 1} last name is required`;
-				return false;
+				playerErrors[i].last_name = 'Last name is required';
+				valid = false;
 			}
 		}
 
-		return true;
+		return valid;
 	}
 
 	async function handleSubmit() {
@@ -65,7 +87,7 @@
 
 	async function confirmPayment() {
 		isProcessing = true;
-		errorMessage = '';
+		apiError = '';
 		successMessage = '';
 
 		try {
@@ -91,7 +113,7 @@
 			window.location.href = authorization_url;
 		} catch (error) {
 			const msg = error instanceof Error ? error.message : 'Unknown error';
-			errorMessage = msg;
+			apiError = msg;
 			console.error('[registration]', error);
 			console.error('[registration] message:', msg);
 			isProcessing = false;
@@ -103,8 +125,14 @@
 	}
 
 	function updatePlayer(i: number, field: string, value: string) {
-		if (field === 'first_name') players[i].first_name = value;
-		if (field === 'last_name') players[i].last_name = value;
+		if (field === 'first_name') {
+			players[i].first_name = value;
+			playerErrors[i].first_name = '';
+		}
+		if (field === 'last_name') {
+			players[i].last_name = value;
+			playerErrors[i].last_name = '';
+		}
 	}
 </script>
 
@@ -197,6 +225,7 @@
 
 		<form
 			class="registration-form font-registration"
+			novalidate
 			onsubmit={(event) => {
 				event.preventDefault();
 				handleSubmit();
@@ -208,10 +237,10 @@
 
 			<section class="form-section space-y-1.5">
 				<div class="field">
-					<TextInput id="schoolName" label="School Name" bind:value={schoolName} required wrapperClass="!bg-white !border-transparent" />
+					<TextInput id="schoolName" label="School Name" bind:value={schoolName} required wrapperClass="!bg-white !border-transparent" error={schoolNameErr} oninput={() => schoolNameErr = ''} />
 				</div>
 				<div class="field">
-					<TextInput id="schoolEmail" label="School Email" type="email" bind:value={schoolEmail} required wrapperClass="!bg-[#EFE9DE] !border-transparent" />
+					<TextInput id="schoolEmail" label="School Email" type="email" bind:value={schoolEmail} required wrapperClass="!bg-[#EFE9DE] !border-transparent" error={schoolEmailErr} oninput={() => schoolEmailErr = ''} />
 				</div>
 				<div class="field field-full">
 					<PhoneInput
@@ -219,7 +248,7 @@
 						value={schoolPhone}
 						placeholder="School phone"
 						theme
-						onChange={(v) => schoolPhone = v}
+						onChange={(v) => { schoolPhone = v; schoolPhoneErr = ''; }}
 					/>
 			</section>
 
@@ -232,13 +261,15 @@
 							first_name={player.first_name}
 							last_name={player.last_name}
 							onChange={(field, value) => updatePlayer(i, field, value)}
+							firstNameError={playerErrors[i].first_name}
+							lastNameError={playerErrors[i].last_name}
 						/>
 					{/each}
 				</div>
 			</section>
 
-			{#if errorMessage}
-				<div class="error-message" role="alert">{errorMessage}</div>
+			{#if apiError}
+				<div class="error-message" role="alert">{apiError}</div>
 			{/if}
 
 			{#if successMessage}

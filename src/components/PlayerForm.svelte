@@ -5,12 +5,16 @@
 		index,
 		first_name = '',
 		last_name = '',
-		onChange
+		onChange,
+		firstNameError = '',
+		lastNameError = '',
 	}: {
 		index: number;
 		first_name?: string;
 		last_name?: string;
 		onChange: (field: string, value: string) => void;
+		firstNameError?: string;
+		lastNameError?: string;
 	} = $props();
 
 	// Alternating input styles:
@@ -40,6 +44,7 @@
 		wrapperClass={firstWrapClass}
 		inputClass={firstInputClass}
 		required
+		error={firstNameError}
 	/>
 	<TextInput
 		id="player_{index}_last_name"
@@ -49,5 +54,6 @@
 		wrapperClass={lastWrapClass}
 		inputClass={lastInputClass}
 		required
+		error={lastNameError}
 	/>
 </div>
