@@ -372,7 +372,7 @@
 		padding: 0 0 0 14px;
 		position: relative;
 		font-family: var(--font-registration);
-		font-size: 12px;
+		font-size: 14px;
 		line-height: 1.65;
 		color: var(--body-strong);
 	}
