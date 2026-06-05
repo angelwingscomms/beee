@@ -186,12 +186,12 @@
 			</div>
 
 			<ul class="space-y-1 text-[13px] leading-snug text-black font-registration">
-				<li class="border-l-2 border-black pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
+				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-black pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-black pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-black pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-black pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
-				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
+				<li class="border-l-2 border-black pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
 			</ul>
 		</div>
 
