@@ -35,6 +35,13 @@
 }
 @plugin "@tailwindcss/forms";
 
+/* OLD COLOR DESIGN SYSTEM — commented for easy revert
+   primary:        #cc785c
+   primary-active: #a9583e
+   primary-light:  #d6896e
+   accent-amber:   #e8a55a
+   error:          #c64545
+*/
 @theme {
   --color-canvas: #faf9f5;
   --color-ink: #141413;
@@ -67,6 +74,7 @@
 }
 
 :root {
+  /* OLD COLOR DESIGN SYSTEM — primary: #cc785c / primary-active: #a9583e / primary-light: #d6896e / accent-amber: #e8a55a / error: #c64545 */
   --primary: #ff6600;
   --primary-active: #ff3900;
   --primary-light: #ff9300;

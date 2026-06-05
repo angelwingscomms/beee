@@ -4,6 +4,7 @@ name: Claude-design-analysis
 description: A warm-canvas editorial interface for Anthropic's Claude product. The system anchors on a tinted cream canvas with serif display headlines, warm coral CTAs, and dark navy product surfaces (code editor mockups, model showcase cards). Brand voltage comes from the cream/coral pairing — deliberately warm and humanist where most AI brands use cool blue + slate. Type voice runs a slab-serif display ("Copernicus" / Tiempos Headline) for h1/h2 and a humanist sans for body. The signature Anthropic black-radial-spike mark anchors the wordmark.
 
 colors:
+  # OLD COLOR DESIGN SYSTEM — primary: "#cc785c" / primary-active: "#a9583e" / accent-amber: "#e8a55a" / error: "#c64545"
   primary: "#ff6600"
   primary-active: "#ff3900"
   primary-disabled: "#e6dfd8"
