@@ -62,7 +62,7 @@
 
   --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
   --animate-button-pulse: button-pulse 3.8s ease-in-out infinite;
-  --animate-hint-loading: hint-loading 9s ease-in-out infinite;
+  --animate-hint-loading: hint-loading 18s ease-in-out infinite;
   --animate-chat-loading: chat-loading 2s ease-in-out infinite;
 }
 
