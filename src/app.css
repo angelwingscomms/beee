@@ -928,7 +928,7 @@ img {
 .price-band {
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
+	gap: 9px;
 	border-radius: 12px;
 	background: var(--surface-card);
 	padding: 14px 28px;
