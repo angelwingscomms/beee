@@ -16,28 +16,28 @@
      transform="translate(-365.58023,-71.855395)">
      <path
         id="text1"
-        style="fill:#ff6600"
+        style="fill:#F27830"
         transform="translate(407.50665,275.4852)"
         d="M23.87-18.14C23.46-18.3 23.46-18.45 23.87-18.71 26.79-20.33 28.36-22.93 28.36-26.38 28.36-32.32 23.3-35.97 15.17-35.97L5.63-35.97C3.02-35.97 1.56-34.35 1.56-31.43L1.56-4.53C1.56-1.62 3.02 0 5.63 0L15.79 0C24.39 0 29.55-3.65 29.55-9.8 29.55-13.66 27.52-16.52 23.87-18.14ZM10.95-7.98C10.11-7.98 9.75-8.34 9.75-9.17L9.75-13.6C9.75-14.39 10.11-14.8 10.95-14.8L15.9-14.8C19.39-14.8 21.21-13.55 21.21-11.36 21.21-9.23 19.39-7.98 15.9-7.98ZM10.95-21.53C10.11-21.53 9.75-21.94 9.75-22.78L9.75-26.79C9.75-27.63 10.11-27.99 10.95-27.99L15.27-27.99C18.24-27.99 19.96-26.74 19.96-24.76 19.96-22.67 18.45-21.53 15.27-21.53ZM41.75-21.68C40.92-21.68 40.5-22.05 40.5-22.88L40.5-26.79C40.5-27.63 40.92-27.99 41.75-27.99L53.06-27.99C55.93-27.99 57.49-29.4 57.49-32 57.49-34.56 55.93-35.97 53.06-35.97L36.8-35.97C34.19-35.97 32.68-34.35 32.68-31.43L32.68-4.53C32.68-1.62 34.19 0 36.8 0L53.12 0C55.98 0 57.55-1.41 57.55-4.01 57.55-6.57 55.98-7.98 53.12-7.98L41.75-7.98C40.92-7.98 40.5-8.34 40.5-9.17L40.5-13.08C40.5-13.92 40.92-14.28 41.75-14.28L50.25-14.28C53.01-14.28 54.52-15.64 54.52-17.98 54.52-20.33 53.01-21.68 50.25-21.68ZM69.74-21.68C68.91-21.68 68.49-22.05 68.49-22.88L68.49-26.79C68.49-27.63 68.91-27.99 69.74-27.99L81.05-27.99C83.92-27.99 85.48-29.4 85.48-32 85.48-34.56 83.92-35.97 81.05-35.97L64.79-35.97C62.19-35.97 60.67-34.35 60.67-31.43L60.67-4.53C60.67-1.62 62.19 0 64.79 0L81.11 0C83.97 0 85.54-1.41 85.54-4.01 85.54-6.57 83.97-7.98 81.11-7.98L69.74-7.98C68.91-7.98 68.49-8.34 68.49-9.17L68.49-13.08C68.49-13.92 68.91-14.28 69.74-14.28L78.24-14.28C81-14.28 82.51-15.64 82.51-17.98 82.51-20.33 81-21.68 78.24-21.68ZM97.73-21.68C96.9-21.68 96.48-22.05 96.48-22.88L96.48-26.79C96.48-27.63 96.9-27.99 97.73-27.99L109.05-27.99C111.91-27.99 113.48-29.4 113.48-32 113.48-34.56 111.91-35.97 109.05-35.97L92.78-35.97C90.18-35.97 88.66-34.35 88.66-31.43L88.66-4.53C88.66-1.62 90.18 0 92.78 0L109.1 0C111.96 0 113.53-1.41 113.53-4.01 113.53-6.57 111.96-7.98 109.1-7.98L97.73-7.98C96.9-7.98 96.48-8.34 96.48-9.17L96.48-13.08C96.48-13.92 96.9-14.28 97.73-14.28L106.23-14.28C108.99-14.28 110.5-15.64 110.5-17.98 110.5-20.33 108.99-21.68 106.23-21.68Z" />
     <path
        id="path6"
-       style="opacity:1;fill:#ff6600;stroke-width:0.265;paint-order:stroke fill markers"
+       style="opacity:1;fill:#F27830;stroke-width:0.265;paint-order:stroke fill markers"
        d="m 449.15241,149.53131 -20.89308,-36.18787 20.89307,-36.187865 41.78616,-2e-6 20.89308,36.187867 -20.89307,36.18787 z" />
     <path
        id="path7"
-       style="opacity:1;fill:#ff6600;stroke:#ff7f2a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       style="opacity:1;fill:#F27830;stroke:#F27830;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        d="m 511.83131,113.34296 c -15.95344,9.55934 -19.76386,22.50029 -20.89278,36.18797 l 10.44639,18.09347 v 5.2e-4 c -4.95837,8.5769 -1.4771,14.60844 10.44639,18.09398 h 41.78608 5.2e-4 l 10.44691,-18.0945 h -5.2e-4 l 10.44639,-18.09347 -20.8933,-36.18797 z m 2.32234,4.02198 h 37.14192 l 18.57096,32.16599 -10.44588,18.09347 -8.12508,14.07253 h -37.14192 l -8.12509,-14.07253 -10.44639,-18.09347 z" />
     <path
        id="path8"
-       style="opacity:1;fill:#ff6600;stroke:#ff7f2a;stroke-width:0"
+       style="opacity:1;fill:#F27830;stroke:#F27830;stroke-width:0"
        d="m 386.47307,113.34348 -20.8933,36.18745 10.44639,18.09347 10.44691,18.0945 h 41.78608 l 5.2e-4,-5.1e-4 c 7.90332,-4.02157 11.38556,-10.0531 10.44639,-18.09399 l 10.44587,-18.09347 c 0.0469,-14.62061 -6.91734,-26.6831 -20.89278,-36.18745 z m 2.32182,4.02146 h 37.14192 l 18.57148,32.16599 -10.44639,18.09347 -8.12509,14.07253 h -37.14192 l -8.12457,-14.07253 -10.44639,-18.09347 z" />
     <path
        d="m 501.38491,203.81323 h -62.67885 l 10.44639,18.09398 h 41.78607 z"
-       style="opacity:1;fill:#ff6600;fill-opacity:1;stroke-width:0.264583"
+       style="opacity:1;fill:#F27830;fill-opacity:1;stroke-width:0.264583"
        id="path10" />
     <path
        d="m 438.70606,167.62525 -10.44691,18.09399 h 83.57215 l -10.44639,-18.09399 z"
-       style="opacity:1;fill:#ff6600;fill-opacity:1;stroke-width:0.264583"
+       style="opacity:1;fill:#F27830;fill-opacity:1;stroke-width:0.264583"
        id="path11" />
     <g
        id="g30"
@@ -45,20 +45,20 @@
        transform="translate(81.860209,1.1369474)">
       <path
          id="path29"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#F27830;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
          d="m 378.53432,141.58602 18.57104,-32.16599 h 4.64408 l -20.89308,36.18788 z" />
       <path
          id="path30"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#F27830;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
          d="m 466.75073,141.58596 -18.57104,-32.16598 h -4.64408 l 20.89308,36.18788 z" />
     </g>
     <path
        id="path33"
-       style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       style="opacity:1;fill:#F27830;fill-opacity:1;stroke:#F27830;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        d="m 449.1526,221.90717 -20.89308,-36.18788 c 1.20203,-1.54332 2.75005,-1.54332 4.64408,0 l 20.8997,36.18788 z" />
     <path
        id="path34"
-       style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff7f2a;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       style="opacity:1;fill:#F27830;fill-opacity:1;stroke:#F27830;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        d="m 490.93837,221.90717 20.89308,-36.18788 c 1.54783,-2.04336 -2e-4,-2.04336 -4.64409,0 l -20.89969,36.18788 z" />
   </g>
 </svg>
