@@ -221,6 +221,8 @@
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 				<li class="border-l-2 border-primary pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
 			</ul>
+
+			<p class="mt-4 text-[13px] font-registration text-muted">Questions? Email <a href="mailto:beee@apexlinks.org" class="text-primary underline-offset-2 hover:underline">beee@apexlinks.org</a> or call <span class="text-primary">+234 800 BEEE</span></p>
 		</div>
 
 		<form
