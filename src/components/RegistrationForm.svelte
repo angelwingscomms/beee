@@ -192,9 +192,9 @@
 					</div>
 				</div>
 				<div class="teamup-card">
-					<div class="flex items-center gap-x-2">
+					<div class="flex items-baseline gap-x-2">
 					<h3 class="teamup-heading">About BEEE T.E.A.M.U.P.</h3>
-					<span class="relative inline-flex shrink-0">
+					<span class="relative inline-flex items-end shrink-0">
 						<img src="/flower-gear.png" alt="" class="teamup-icon" />
 						<sup class="absolute top-0 -right-2.5 text-[6.5px] leading-none font-semibold" style="color:var(--primary)">TM</sup>
 					</span>
