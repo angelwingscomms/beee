@@ -144,7 +144,7 @@
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
 			</span>
-			<span class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
+			<span class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Every Day</span></span>
 			</a>
 
 			<h1 id="event-title" class="championship-title flex flex-col">
