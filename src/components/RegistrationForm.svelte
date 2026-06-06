@@ -148,8 +148,7 @@
 				</a>
 
 				<h1 id="event-title" class="championship-title flex flex-col">
-  <span class="text-[52px] font-['Montserrat'] tracking-[0.08em]" style="color:var(--primary)">BEEE</span>
-  <span class="text-[20px] font-['Montserrat'] mb-4"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;font-weight:900;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
+  <span class="text-[20px] mb-4" style="font-family:'GC Bumble',sans-serif"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
   <span class="text-[32px] font-championship font-bold mb-2">Spectacular Chess Championship</span>
   <span class="text-[20px] font-championship" style="color:var(--primary)">Abuja 2026</span>
 </h1>
@@ -191,7 +190,7 @@
 							<span class="text-[18px] font-bold">Total: ₦50,000</span>
 							<span class="text-[16px] font-bold">per school team</span>
 						</div>
-						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-hint-loading !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
+						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-hint-loading !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
 					</div>
 				</div>
 				<div class="teamup-card">

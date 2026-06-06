@@ -33,6 +33,31 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'GC Bumble';
+  src: url('/fonts/bumble-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GC Bumble';
+  src: url('/fonts/bumble-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GC Bumble';
+  src: url('/fonts/bumble-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @plugin "@tailwindcss/forms";
 
 /* OLD COLOR DESIGN SYSTEM — commented for easy revert
