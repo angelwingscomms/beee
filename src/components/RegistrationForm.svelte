@@ -168,7 +168,7 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">July — August 2026</span>
+									<span class="journey-date">July/August 2026</span>
 									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
 								</div>
 							</div>
@@ -442,7 +442,7 @@
 		gap: 14px;
 	}
 	.journey-arrow {
-		width: 10px;
+		width: 7px;
 		height: 6px;
 		background: var(--primary);
 		position: relative;
@@ -456,8 +456,8 @@
 		translate: -50%;
 		width: 0;
 		height: 0;
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
+		border-left: 3.5px solid transparent;
+		border-right: 3.5px solid transparent;
 		border-top: 6px solid var(--primary);
 	}
 	.journey-body {
