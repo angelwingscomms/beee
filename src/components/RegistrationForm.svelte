@@ -139,16 +139,16 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
+			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:column;gap:4px;align-items:flex-start">
 				<span class="logo-chip">
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
 			</span>
+			<span class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
 			</a>
 
 			<h1 id="event-title" class="championship-title flex flex-col">
-  <span class="text-[20px] mb-4" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
-  <span class="text-[32px] font-championship font-bold mb-2">Spectacular Chess Championship</span>
+  <span class="text-[32px] font-championship font-bold mb-2">BEEE Spectacular Chess Championship</span>
   <span class="text-[20px] font-championship" style="color:var(--primary)">Abuja 2026</span>
 </h1>
 
@@ -188,13 +188,16 @@
 							<span class="text-[18px] font-bold">Total: ₦50,000</span>
 							<span class="text-[16px] font-bold">per school team</span>
 						</div>
-						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-hint-loading !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Now</button>
+						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-hint-loading !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Your School</button>
 					</div>
 				</div>
 				<div class="teamup-card">
 					<div class="flex items-center gap-x-2">
-					<h3 class="teamup-heading">What is T.E.A.M.U.P.?</h3>
-					<img src="/flower-gear.png" alt="" class="teamup-icon" />
+					<h3 class="teamup-heading">About BEEE T.E.A.M.U.P.</h3>
+					<span class="relative inline-flex shrink-0">
+						<img src="/flower-gear.png" alt="" class="teamup-icon" />
+						<sup class="absolute top-0 -right-2.5 text-[6.5px] leading-none font-semibold" style="color:var(--primary)">TM</sup>
+					</span>
 				</div>
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
 					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
@@ -428,12 +431,11 @@
 		font-size: 20px;
 		line-height: 1.2;
 		color: var(--ink);
-		text-align: center;
 	}
 	.journey-steps {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 	}
 	.journey-step {
 		display: flex;
@@ -441,10 +443,10 @@
 	}
 	.journey-arrow {
 		width: 10px;
-		height: 3px;
+		height: 6px;
 		background: var(--primary);
 		position: relative;
-		margin: 10px auto;
+		margin: 10px 0;
 	}
 	.journey-arrow::after {
 		content: '';
@@ -462,12 +464,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1px;
-		align-items: center;
-		text-align: center;
 	}
 	.journey-date {
 		font-family: var(--font-registration);
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 600;
 		color: var(--primary);
 		text-transform: uppercase;
