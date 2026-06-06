@@ -53,7 +53,7 @@ describe('Player Registration', () => {
 		expect(form).toContain('per school team');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
-		expect(form).toContain('class="border-l-2 border-black pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
+		expect(form).toContain('class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
 	});
 });
 
