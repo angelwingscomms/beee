@@ -1255,7 +1255,7 @@ img {
 		color: #fff;
 	}
 	50% {
-		background-color: transparent;
+		background-color: #fff;
 		color: var(--primary);
 	}
 }
