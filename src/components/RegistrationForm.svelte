@@ -139,20 +139,18 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<div class="flex flex-col gap-1">
-				<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
-					<span class="logo-chip">
-					<img src="/logo.svg" alt="BEEE" />
-					<span class="logo-tm">TM</span>
-				</span>
-				</a>
+			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home">
+				<span class="logo-chip">
+				<img src="/logo.svg" alt="BEEE" />
+				<span class="logo-tm">TM</span>
+			</span>
+			</a>
 
-				<h1 id="event-title" class="championship-title flex flex-col">
-  <span class="text-[20px] mb-4" style="font-family:'GC Bumble',sans-serif"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
+			<h1 id="event-title" class="championship-title flex flex-col">
+  <span class="text-[20px] mb-4" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Everyday</span></span>
   <span class="text-[32px] font-championship font-bold mb-2">Spectacular Chess Championship</span>
   <span class="text-[20px] font-championship" style="color:var(--primary)">Abuja 2026</span>
 </h1>
-			</div>
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
 
@@ -213,7 +211,7 @@
 			</div>
 
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
-				<li class="border-l-2 border-primary pl-3 motion-safe:animate-deadline-pulse">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
+				<li class="border-l-2 border-black pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-black pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-black pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-black pl-3">Each participating school must register four (4) players.</li>

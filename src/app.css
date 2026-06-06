@@ -61,29 +61,26 @@
 @plugin "@tailwindcss/forms";
 
 /* OLD COLOR DESIGN SYSTEM — commented for easy revert
-   primary:        #cc785c
-   primary-active: #a9583e
-   primary-light:  #d6896e
-   accent-amber:   #e8a55a
-   error:          #c64545
+   Version 1 (coral):       primary:#cc785c  active:#a9583e  light:#d6896e  amber:#e8a55a  error:#c64545
+   Version 2 (orange):      primary:#ff6600  active:#ff3900  light:#ff9300  amber:#ffb200  error:#ff372d
 */
 @theme {
-  --color-canvas: #faf9f5;
-  --color-ink: #141413;
-  --color-body: #3d3d3a;
-  --color-primary: #ff6600;
-  --color-secondary: #efe9de;
-  --color-primary-active: #ff3900;
-  --color-hairline: #e6dfd8;
-  --color-surface-soft: #f5f0e8;
-  --color-surface-card: #efe9de;
-  --color-surface-dark: #181715;
-  --color-surface-dark-elevated: #252320;
-  --color-surface-dark-soft: #1f1e1b;
-  --color-on-dark: #faf9f5;
-  --color-muted: #6c6a64;
-  --color-teal: #5db8a6;
-  --color-amber: #ffb200;
+  --color-canvas: #fcf9f2;
+  --color-ink: #0d0d0d;
+  --color-body: #2a2a2a;
+  --color-primary: #f2e205;
+  --color-secondary: #f0ebe0;
+  --color-primary-active: #f2c12e;
+  --color-hairline: #e8e0d0;
+  --color-surface-soft: #f8f4ee;
+  --color-surface-card: #f0ebe0;
+  --color-surface-dark: #0d0d0d;
+  --color-surface-dark-elevated: #1f1f1f;
+  --color-surface-dark-soft: #161616;
+  --color-on-dark: #fcf9f2;
+  --color-muted: #6b6b6b;
+  --color-teal: #2ec4b6;
+  --color-amber: #f27830;
 
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Cormorant Garamond', serif;
@@ -99,41 +96,41 @@
 }
 
 :root {
-  /* OLD COLOR DESIGN SYSTEM — primary: #cc785c / primary-active: #a9583e / primary-light: #d6896e / accent-amber: #e8a55a / error: #c64545 */
-  --primary: #ff6600;
-  --primary-active: #ff3900;
-  --primary-light: #ff9300;
-  --primary-disabled: #e6dfd8;
-  --ink: #141413;
-  --body: #3d3d3a;
-  --body-strong: #252523;
-  --muted: #6c6a64;
-  --muted-soft: #8e8b82;
-  --hairline: #e6dfd8;
-  --hairline-soft: #ebe6df;
-  --canvas: #faf9f5;
-  --surface-soft: #f5f0e8;
-  --surface-card: #efe9de;
-  --surface-cream-strong: #e8e0d2;
-  --surface-dark: #181715;
-  --surface-dark-elevated: #252320;
-  --surface-dark-soft: #1f1e1b;
-  --on-primary: #ffffff;
-  --on-dark: #faf9f5;
-  --on-dark-soft: #a09d96;
-  --accent-teal: #5db8a6;
-  --accent-amber: #ffb200;
-  --info: #4a8ecf;
-  --success: #5db872;
-  --warning: #d4a017;
-  --error: #ff372d;
-  --font-display: 'Cormorant Garamond', 'EB Garamond', Garamond, 'Times New Roman', serif;
+  /* OLD — V1 coral: primary:#cc785c active:#a9583e light:#d6896e amber:#e8a55a error:#c64545 / V2 orange: primary:#ff6600 active:#ff3900 light:#ff9300 amber:#ffb200 error:#ff372d */
+  --primary: #f2e205;
+  --primary-active: #f2c12e;
+  --primary-light: #fff176;
+  --primary-disabled: #d9d4b8;
+  --ink: #0d0d0d;
+  --body: #2a2a2a;
+  --body-strong: #1a1a1a;
+  --muted: #6b6b6b;
+  --muted-soft: #999999;
+  --hairline: #e8e0d0;
+  --hairline-soft: #f0ebe0;
+  --canvas: #fcf9f2;
+  --surface-soft: #f8f4ee;
+  --surface-card: #f0ebe0;
+  --surface-cream-strong: #e0d6c2;
+  --surface-dark: #0d0d0d;
+  --surface-dark-elevated: #1f1f1f;
+  --surface-dark-soft: #161616;
+  --on-primary: #0d0d0d;
+  --on-dark: #fcf9f2;
+  --on-dark-soft: #a0a0a0;
+  --accent-teal: #2ec4b6;
+  --accent-amber: #f27830;
+  --info: #54b4d3;
+  --success: #7ec866;
+  --warning: #f27830;
+  --error: #f20505;
+  --font-display: 'GC Bumble', 'Cormorant Garamond', 'EB Garamond', Garamond, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-code: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-registration: 'SN Pro', sans-serif;
   --font-championship: 'Poppins', sans-serif;
   --font-welcome: 'Open Sans', sans-serif;
-  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+  --shadow-soft: 0 1px 3px rgba(13, 13, 13, 0.08);
 }
 
 * {
@@ -152,7 +149,7 @@ body {
   min-width: 320px;
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(245, 240, 232, 0.72), rgba(250, 249, 245, 0) 34rem),
+    linear-gradient(180deg, rgba(248, 244, 238, 0.72), rgba(252, 249, 242, 0) 34rem),
     var(--canvas);
   color: var(--body);
   -webkit-font-smoothing: antialiased;
@@ -239,7 +236,7 @@ img {
   z-index: 30;
   height: 64px;
   border-bottom: 1px solid var(--hairline-soft);
-  background: rgba(250, 249, 245, 0.92);
+  background: rgba(252, 249, 242, 0.92);
   backdrop-filter: blur(18px);
 }
 
@@ -276,7 +273,7 @@ img {
   top: 6px;
   right: 6px;
   font-weight: 900;
-  font-size: 10px;
+  font-size: 8px;
   line-height: 1;
   color: var(--primary);
   letter-spacing: 0;
@@ -594,9 +591,9 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(115deg, rgba(255, 102, 0, 0.18), transparent 36%),
-    radial-gradient(circle at 78% 12%, rgba(255, 178, 0, 0.22), transparent 24%),
-    linear-gradient(180deg, rgba(250, 249, 245, 0.06), transparent 48%);
+    linear-gradient(115deg, rgba(242, 226, 5, 0.18), transparent 36%),
+    radial-gradient(circle at 78% 12%, rgba(242, 193, 46, 0.22), transparent 24%),
+    linear-gradient(180deg, rgba(252, 249, 242, 0.06), transparent 48%);
   content: '';
 }
 
@@ -641,11 +638,11 @@ img {
   aspect-ratio: 1;
   transform: rotateX(62deg) rotateZ(-38deg) translateY(24px);
   transform-style: preserve-3d;
-  border: 1px solid rgba(250, 249, 245, 0.12);
+  border: 1px solid rgba(252, 249, 242, 0.12);
   background:
-    linear-gradient(90deg, rgba(250, 249, 245, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(250, 249, 245, 0.06) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(255, 102, 0, 0.22), rgba(37, 35, 32, 0.86));
+    linear-gradient(90deg, rgba(252, 249, 242, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(252, 249, 242, 0.06) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(242, 226, 5, 0.22), rgba(31, 31, 31, 0.86));
   background-size: 12.5% 12.5%, 12.5% 12.5%, 100% 100%;
   box-shadow: 0 34px 80px rgba(0, 0, 0, 0.32);
 }
@@ -653,7 +650,7 @@ img {
 .board-plane::after {
   position: absolute;
   inset: 11%;
-  border: 1px solid rgba(255, 178, 0, 0.35);
+  border: 1px solid rgba(242, 193, 46, 0.35);
   content: '';
 }
 
@@ -692,7 +689,7 @@ img {
   aspect-ratio: 1.86;
   place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(250, 249, 245, 0.18);
+  border: 1px solid rgba(252, 249, 242, 0.18);
   border-radius: 16px;
   background: var(--canvas);
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42);
@@ -710,9 +707,9 @@ img {
   width: 54px;
   height: 54px;
   place-items: center;
-  border: 1px solid rgba(250, 249, 245, 0.16);
+  border: 1px solid rgba(252, 249, 242, 0.16);
   border-radius: 12px;
-  background: rgba(37, 35, 32, 0.76);
+  background: rgba(31, 31, 31, 0.76);
   color: var(--on-dark);
   font-family: var(--font-display);
   font-size: 28px;
@@ -733,7 +730,7 @@ img {
 
 .artifact-footer {
   padding-top: 20px;
-  border-top: 1px solid rgba(250, 249, 245, 0.12);
+  border-top: 1px solid rgba(252, 249, 242, 0.12);
 }
 
 .section-band {
@@ -852,7 +849,7 @@ img {
   justify-content: space-between;
   gap: 16px;
   padding: 14px 16px;
-  border-bottom: 1px solid rgba(250, 249, 245, 0.08);
+  border-bottom: 1px solid rgba(252, 249, 242, 0.08);
   color: var(--on-dark-soft);
 }
 
@@ -1033,9 +1030,9 @@ img {
 
 .error-message {
   margin: 24px 0 0;
-  border: 1px solid rgba(255, 55, 45, 0.35);
+  border: 1px solid rgba(242, 5, 5, 0.35);
   border-radius: 12px;
-  background: rgba(255, 55, 45, 0.08);
+  background: rgba(242, 5, 5, 0.08);
   color: var(--error);
   padding: 14px 16px;
   font-size: 14px;
@@ -1043,9 +1040,9 @@ img {
 
 .success-message {
   margin: 24px 0 0;
-  border: 1px solid rgba(93, 184, 114, 0.38);
+  border: 1px solid rgba(126, 200, 102, 0.38);
   border-radius: 12px;
-  background: rgba(93, 184, 114, 0.1);
+  background: rgba(126, 200, 102, 0.1);
   color: var(--body-strong);
   padding: 14px 16px;
   font-size: 14px;
@@ -1096,7 +1093,7 @@ img {
 .cta-card p {
   max-width: 620px;
   margin: 14px 0 0;
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(13, 13, 13, 0.84);
   line-height: 1.55;
 }
 
@@ -1134,7 +1131,7 @@ img {
   display: grid;
   place-items: center;
   overflow-y: auto;
-  background: rgba(20, 20, 19, 0.62);
+  background: rgba(13, 13, 13, 0.62);
   padding: 24px;
 }
 

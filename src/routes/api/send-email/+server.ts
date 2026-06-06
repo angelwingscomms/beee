@@ -32,15 +32,15 @@ export const POST: RequestHandler = async ({ request }) => {
 <html>
 <head>
   <style>
-    body { font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #3d3d3a; background: #faf9f5; }
+    body { font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #2a2a2a; background: #fcf9f2; }
     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #181715; color: #faf9f5; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
-    .content { background: #faf9f5; padding: 30px; border: 1px solid #e6dfd8; border-top: 0; border-radius: 0 0 8px 8px; }
+    .header { background: #0d0d0d; color: #fcf9f2; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+    .content { background: #fcf9f2; padding: 30px; border: 1px solid #e8e0d0; border-top: 0; border-radius: 0 0 8px 8px; }
     .section { margin-bottom: 30px; }
-    .section h2 { color: #141413; border-bottom: 2px solid #ff6600; padding-bottom: 10px; }
-    .details { background: #efe9de; padding: 15px; border-left: 4px solid #ff6600; margin: 15px 0; }
-    .price { font-size: 28px; font-weight: bold; color: #ff6600; }
-    .footer { text-align: center; color: #6c6a64; font-size: 12px; margin-top: 30px; border-top: 1px solid #e6dfd8; padding-top: 20px; }
+    .section h2 { color: #0d0d0d; border-bottom: 2px solid #f2e205; padding-bottom: 10px; }
+    .details { background: #f0ebe0; padding: 15px; border-left: 4px solid #f2e205; margin: 15px 0; }
+    .price { font-size: 28px; font-weight: bold; color: #f2e205; }
+    .footer { text-align: center; color: #6b6b6b; font-size: 12px; margin-top: 30px; border-top: 1px solid #e8e0d0; padding-top: 20px; }
   </style>
 </head>
 <body>
