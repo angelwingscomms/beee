@@ -263,11 +263,11 @@ img {
 .logo-chip {
   position: relative;
   display: grid;
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
   place-items: center;
-  border-radius: 24px;
-  background: var(--canvas);
+  border-radius: 20px;
+  line-height: 0;
   transition: width 200ms ease, height 200ms ease, border-radius 200ms ease;
 }
 
@@ -283,6 +283,7 @@ img {
 }
 
 .logo-chip img {
+  display: block;
   width: 128px;
   height: 128px;
   object-fit: contain;
@@ -1362,9 +1363,9 @@ img {
   }
 
   .logo-chip {
-    width: 100px;
-    height: 100px;
-    border-radius: 18px;
+    width: 88px;
+    height: 88px;
+    border-radius: 14px;
   }
 
   .logo-chip img {

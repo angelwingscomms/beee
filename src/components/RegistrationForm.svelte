@@ -139,8 +139,8 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:column;gap:4px;align-items:flex-start">
-				<span class="logo-chip">
+			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
+				<span class="logo-chip" style="margin-bottom:-46px">
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
 			</span>
