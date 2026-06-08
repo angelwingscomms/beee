@@ -428,7 +428,7 @@
 	.journey-card-title {
 		margin: 0 0 16px;
 		font-family: var(--font-display);
-		font-weight: 500;
+		font-weight: 700;
 		font-size: 20px;
 		line-height: 1.2;
 		color: var(--ink);
