@@ -272,9 +272,6 @@ img {
 }
 
 .logo-tm {
-  position: absolute;
-  top: 6px;
-  right: 6px;
   font-weight: 900;
   font-size: 8px;
   line-height: 1;

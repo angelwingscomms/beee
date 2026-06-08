@@ -140,11 +140,11 @@
 	<section class="container simple-home-grid">
 		<div class="event-intro">
 			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
-				<span class="logo-chip" style="margin-bottom:-46px">
+				<span class="logo-chip" style="display:flex;flex-direction:row;align-items:flex-start">
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
 			</span>
-			<span class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<span style="margin-right:-0.144em;-webkit-text-stroke:0.5px currentColor">✔</span>cellent</span> <span style="color:var(--primary)">Every Day</span></span>
+			<span id="brand-tagline" class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700;display:block;line-height:1"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<img src="/tick.png" alt="" style="display:inline-block;width:1.1em;height:auto;vertical-align:baseline;line-height:0;margin:0 -0.54em 0 0">cellent</span> <span style="color:var(--primary)">Every Day</span></span>
 			</a>
 
 			<h1 id="event-title" class="championship-title flex flex-col">
