@@ -188,7 +188,7 @@
 							<span class="text-[18px] font-bold">Total: ₦50,000</span>
 							<span class="text-[16px] font-bold">per school team</span>
 						</div>
-						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit motion-safe:animate-hint-loading !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Your School</button>
+						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Your School</button>
 					</div>
 				</div>
 				<div class="teamup-card">
@@ -214,13 +214,12 @@
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-primary pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
-				<li class="border-l-2 border-primary pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
+				<li class="border-l-2 border-primary pl-3">Registration is through participating schools within the FCT.</li>
 				<li class="border-l-2 border-primary pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>
 
-			<p class="mt-4 text-[13px] font-registration text-muted">Questions? Email <a href="mailto:beee@apexlinks.org" class="text-primary underline-offset-2 hover:underline">beee@apexlinks.org</a> or call <span class="text-primary">+234 800 BEEE</span></p>
 		</div>
 
 		<form
@@ -307,6 +306,8 @@
 				{/each}
 			</div>
 		</form>
+
+		<p class="text-[14px] font-registration text-muted">Questions? Email <a href="mailto:beee@apexlinks.org" class="text-primary underline-offset-2 hover:underline">beee@apexlinks.org</a> or call <span class="text-primary">+234 802 092 0872</span></p>
 	</section>
 </main>
 
