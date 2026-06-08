@@ -202,12 +202,10 @@
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
 					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
-						<li>Advanced Chess Development</li>
 						<li>Innovation &amp; Creativity</li>
 						<li>Strategic Thinking</li>
 						<li>Teamwork &amp; Collaboration</li>
-						<li>Leadership Development</li>
-						<li>Personal Growth &amp; Upskilling</li>
+						<li>Advanced Chess Development</li>
 					</ul>
 					<p class="teamup-outro">as they prepare for the Championship Grand Finale.</p>
 				</div>
