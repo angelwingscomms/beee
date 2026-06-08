@@ -202,10 +202,10 @@
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
 					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
-						<li>Innovation &amp; Creativity</li>
-						<li>Strategic Thinking</li>
-						<li>Teamwork &amp; Collaboration</li>
 						<li>Advanced Chess Development</li>
+						<li>Creativity &amp; Innovation</li>
+						<li>Strategic Thinking and Leadership</li>
+						<li>Teamwork &amp; Collaboration</li>
 					</ul>
 					<p class="teamup-outro">as they prepare for the Championship Grand Finale.</p>
 				</div>
@@ -380,7 +380,7 @@
 	.teamup-tagline {
 		margin: 0;
 		font-family: var(--font-registration);
-		font-size: 10.5px;
+		font-size: 13px;
 		font-weight: 600;
 		color: var(--primary);
 		letter-spacing: 0.03em;
