@@ -5,10 +5,11 @@ import { resolve } from 'node:path';
 interface Player {
 	first_name: string;
 	last_name: string;
+	email: string;
 }
 
-function create_player(first_name = '', last_name = ''): Player {
-	return { first_name, last_name };
+function create_player(first_name = '', last_name = '', email = ''): Player {
+	return { first_name, last_name, email };
 }
 
 function validate_player_first_name(p: Player): string | null {
@@ -18,6 +19,12 @@ function validate_player_first_name(p: Player): string | null {
 
 function validate_player_last_name(p: Player): string | null {
 	if (!p.last_name.trim()) return 'Last name is required';
+	return null;
+}
+
+function validate_player_email(p: Player): string | null {
+	if (!p.email.trim()) return 'Email is required';
+	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email.trim())) return 'Enter a valid email address';
 	return null;
 }
 
@@ -39,9 +46,20 @@ describe('Player Registration', () => {
 	});
 
 	it('should accept valid player data', () => {
-		const player = create_player('John', 'Doe');
+		const player = create_player('John', 'Doe', 'john@example.com');
 		expect(validate_player_first_name(player)).toBeNull();
 		expect(validate_player_last_name(player)).toBeNull();
+		expect(validate_player_email(player)).toBeNull();
+	});
+
+	it('should require player email', () => {
+		const player = create_player('John', 'Doe', '');
+		expect(validate_player_email(player)).toBe('Email is required');
+	});
+
+	it('should validate player email format', () => {
+		const player = create_player('John', 'Doe', 'not-an-email');
+		expect(validate_player_email(player)).toBe('Enter a valid email address');
 	});
 
 	it('shows the exact school-based registration details in a compact list', () => {

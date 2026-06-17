@@ -17,7 +17,7 @@
 	let schoolEmailErr = $state('');
 	let schoolPhoneErr = $state('');
 	let playerErrors = $state(
-		Array.from({ length: 4 }, () => ({ first_name: '', last_name: '' }))
+		Array.from({ length: 4 }, () => ({ first_name: '', last_name: '', email: '' }))
 	);
 
 	const REGISTRATION_AMOUNT = 50000;
@@ -25,7 +25,7 @@
 	const NUM_PLAYERS = 4;
 
 	let players = $state(
-		Array.from({ length: NUM_PLAYERS }, () => ({ first_name: '', last_name: '' }))
+		Array.from({ length: NUM_PLAYERS }, () => ({ first_name: '', last_name: '', email: '' }))
 	);
 
 	function formatCurrency(amount: number): string {
@@ -39,6 +39,7 @@
 		for (let i = 0; i < NUM_PLAYERS; i++) {
 			playerErrors[i].first_name = '';
 			playerErrors[i].last_name = '';
+			playerErrors[i].email = '';
 		}
 	}
 
@@ -72,6 +73,13 @@
 				playerErrors[i].last_name = 'Last name is required';
 				valid = false;
 			}
+			if (!players[i].email.trim()) {
+				playerErrors[i].email = 'Email is required';
+				valid = false;
+			} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(players[i].email.trim())) {
+				playerErrors[i].email = 'Enter a valid email address';
+				valid = false;
+			}
 		}
 
 		return valid;
@@ -98,7 +106,7 @@
 					schoolName,
 					schoolEmail,
 					schoolPhone,
-					players: players.map(p => [p.first_name.trim(), p.last_name.trim()])
+					players: players.map(p => [p.first_name.trim(), p.last_name.trim(), p.email.trim()])
 				})
 			});
 
@@ -132,6 +140,10 @@
 		if (field === 'last_name') {
 			players[i].last_name = value;
 			playerErrors[i].last_name = '';
+		}
+		if (field === 'email') {
+			players[i].email = value;
+			playerErrors[i].email = '';
 		}
 	}
 </script>
@@ -259,9 +271,11 @@
 							index={i}
 							first_name={player.first_name}
 							last_name={player.last_name}
+							email={player.email}
 							onChange={(field, value) => updatePlayer(i, field, value)}
 							firstNameError={playerErrors[i].first_name}
 							lastNameError={playerErrors[i].last_name}
+							emailError={playerErrors[i].email}
 						/>
 					{/each}
 				</div>
@@ -316,7 +330,7 @@
 		schoolName={schoolName}
 		schoolEmail={schoolEmail}
 		schoolPhone={schoolPhone}
-		players={players.map(p => [p.first_name.trim(), p.last_name.trim()])}
+		players={players.map(p => [p.first_name.trim(), p.last_name.trim(), p.email.trim()])}
 		amount={REGISTRATION_AMOUNT}
 		onConfirm={confirmPayment}
 		onCancel={closeConfirmation}

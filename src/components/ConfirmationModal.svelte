@@ -48,10 +48,11 @@
 			<section class="modal-section" aria-labelledby="players-summary-title">
 				<h3 id="players-summary-title">Players</h3>
 				<div class="summary-list">
-					{#each players as [first, last], i}
+					{#each players as [first, last, email], i}
 						<div class="summary-item">
 							<div>
 								<strong>{first} {last}</strong>
+								<span>{email}</span>
 							</div>
 						</div>
 					{/each}

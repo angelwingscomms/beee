@@ -5,16 +5,20 @@
 		index,
 		first_name = '',
 		last_name = '',
+		email = '',
 		onChange,
 		firstNameError = '',
 		lastNameError = '',
+		emailError = '',
 	}: {
 		index: number;
 		first_name?: string;
 		last_name?: string;
+		email?: string;
 		onChange: (field: string, value: string) => void;
 		firstNameError?: string;
 		lastNameError?: string;
+		emailError?: string;
 	} = $props();
 
 	// Alternating input styles:
@@ -55,5 +59,16 @@
 		inputClass={lastInputClass}
 		required
 		error={lastNameError}
+	/>
+	<TextInput
+		id="player_{index}_email"
+		label="Email address"
+		type="email"
+		value={email}
+		oninput={(e) => onChange('email', e.currentTarget.value)}
+		wrapperClass="!bg-white !border-[#DFD0BE] field-full"
+		inputClass="!text-primary placeholder:!text-primary/70"
+		required
+		error={emailError}
 	/>
 </div>

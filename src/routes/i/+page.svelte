@@ -96,13 +96,15 @@
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {#each selectedReg.ps as [first, last]}
+                        {#each selectedReg.ps as [first, last, email]}
                             <tr>
                                 <td>{first}</td>
                                 <td>{last}</td>
+                                <td>{email}</td>
                             </tr>
                         {/each}
                     </tbody>

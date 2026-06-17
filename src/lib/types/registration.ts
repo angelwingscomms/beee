@@ -3,7 +3,7 @@ export interface Registration {
 	sn: string; // school name
 	e: string;  // school email
 	p: string;  // school phone
-	ps: string[][]; // [[first, last], ...]
+	ps: [string, string, string][]; // [[first, last, email], ...]
 	st: 'pending' | 'paid';
 	v: 0 | 1 | 2;
 	d: number;
