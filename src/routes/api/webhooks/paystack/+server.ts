@@ -103,10 +103,10 @@ export const POST: RequestHandler = async ({ request }) => {
 				// Write full registration to DB
 				const payload: Registration = {
 					s: 'reg',
-					sn: reg_data.sn as string,
+					fn: reg_data.fn as string,
+					ln: reg_data.ln as string,
 					e: reg_data.e as string,
 					p: reg_data.p as string,
-					ps: reg_data.ps as string[][],
 					st: 'paid',
 					v: 0,
 					amt: expected_amt,

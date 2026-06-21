@@ -19,7 +19,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>School</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
@@ -30,7 +30,7 @@
                     <tbody>
                         {#each form.registrations as reg}
                             <tr class="clickable" onclick={() => selectedReg = reg}>
-                                <td>{reg.sn}</td>
+                                <td>{reg.fn} {reg.ln}</td>
                                 <td>{reg.e}</td>
                                 <td>{reg.p}</td>
                                 <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
@@ -65,10 +65,18 @@
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reg-detail-title" onclick={(e) => e.stopPropagation()}>
             <div class="modal-header">
-                <h2 id="reg-detail-title">{selectedReg.sn}</h2>
+                <h2 id="reg-detail-title">{selectedReg.fn} {selectedReg.ln}</h2>
                 <button class="modal-close" onclick={() => selectedReg = null} aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="detail-row">
+                    <span class="detail-label">First Name</span>
+                    <span>{selectedReg.fn}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Last Name</span>
+                    <span>{selectedReg.ln}</span>
+                </div>
                 <div class="detail-row">
                     <span class="detail-label">Email</span>
                     <span>{selectedReg.e}</span>
@@ -89,26 +97,6 @@
                     <span class="detail-label">Date</span>
                     <span>{new Date(selectedReg.d).toLocaleDateString()}</span>
                 </div>
-
-                <h3 class="players-heading">Players</h3>
-                <table class="players-table">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {#each selectedReg.ps as [first, last, email]}
-                            <tr>
-                                <td>{first}</td>
-                                <td>{last}</td>
-                                <td>{email}</td>
-                            </tr>
-                        {/each}
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -229,37 +217,5 @@
 
     .detail-row span:last-child {
         font-weight: 400;
-    }
-
-    .players-heading {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--ink);
-        margin: 20px 0 12px;
-    }
-
-    .players-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-    }
-
-    .players-table th {
-        text-align: left;
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--hairline);
-        color: var(--muted);
-        font-weight: 500;
-        font-size: 13px;
-    }
-
-    .players-table td {
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--hairline-soft);
-        color: var(--body);
-    }
-
-    .players-table tbody tr:last-child td {
-        border-bottom: none;
     }
 </style>

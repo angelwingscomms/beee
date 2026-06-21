@@ -43,7 +43,7 @@ export async function paystack_init(
 	email: string,
 	amount_kobo: number,
 	registration_id: string,
-	school_name: string,
+	p_name: string,
 	callback_url: string,
 	reg_data?: Record<string, unknown>
 ): Promise<PaystackInitResult> {
@@ -52,7 +52,7 @@ export async function paystack_init(
 		email,
 		amount_kobo,
 		registration_id,
-		school_name,
+		p_name,
 		callback_url,
 		has_reg_data: !!reg_data,
 		secret_key_preview: secret_key ? secret_key.substring(0, 10) + '...' : 'undefined'
@@ -61,12 +61,12 @@ export async function paystack_init(
 	try {
 		const metadata: Record<string, unknown> = {
 			registration_id,
-			school_name,
+			p_name,
 			custom_fields: [
 				{
-					display_name: 'School Name',
-					variable_name: 'school_name',
-					value: school_name
+					display_name: 'Participant Name',
+					variable_name: 'p_name',
+					value: p_name
 				},
 				{
 					display_name: 'Registration ID',

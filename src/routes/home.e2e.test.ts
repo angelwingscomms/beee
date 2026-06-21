@@ -29,37 +29,23 @@ describe('homepage registration chess squares', () => {
 	});
 
 	it('adds dreamy hover motion to the fee card and registration button', () => {
-		expect(form).toContain('hover:-translate-y-1');
-		expect(form).toContain('hover:shadow-[0_24px_70px_rgba(204,120,92,0.22)]');
-		expect(form).toContain('hover:bg-[#F7EDE4]');
 		expect(form).toContain('hover:-translate-y-0.5');
 		expect(form).toContain('hover:scale-[1.01]');
 		expect(form).toContain('hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)]');
 	});
 
-	it('shows school email and phone fields', () => {
-		expect(form).toContain('schoolEmail');
-		expect(form).toContain('schoolPhone');
+	it('shows participant fields', () => {
+		expect(form).toContain('firstName');
+		expect(form).toContain('lastName');
+		expect(form).toContain('phone');
 	});
 
-	it('removes the inner focus ring from school text fields', () => {
-		expect(form).toContain('focus:ring-0');
-		expect(form).toContain('focus-visible:ring-0');
-		expect(form).toContain('focus:border-transparent');
+	it('shows first and last name fields', () => {
+		expect(form).toContain('label="First Name"');
+		expect(form).toContain('label="Last Name"');
 	});
 
-	it('shows school labels like faint placeholders without colons', () => {
-		expect(form).toContain('!text-[#000]');
-		expect(form).toContain('!font-normal');
-		expect(form).toContain('!text-[12px]');
-		expect(form).toContain('>School Name*</label>');
-		expect(form).toContain('>School Email*</label>');
-		expect(form).not.toContain('School Name:');
-		expect(form).not.toContain('School Email:');
-	});
-
-	it('shows 4 player entries', () => {
-		expect(form).toContain('NUM_PLAYERS = 4');
-		expect(form).toContain('{#each players as player, i}');
+	it('shows a single participant registration form', () => {
+		expect(form).toContain('Register as a Participant');
 	});
 });

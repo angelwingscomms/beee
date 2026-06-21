@@ -1,9 +1,9 @@
 export interface Registration {
 	s: 'reg';
-	sn: string; // school name
-	e: string;  // school email
-	p: string;  // school phone
-	ps: [string, string, string][]; // [[first, last, email], ...]
+	fn: string; // first name
+	ln: string; // last name
+	e: string;  // email
+	p: string;  // phone
 	st: 'pending' | 'paid';
 	v: 0 | 1 | 2;
 	d: number;

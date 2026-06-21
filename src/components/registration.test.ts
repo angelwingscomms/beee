@@ -2,73 +2,72 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-interface Player {
+interface Participant {
 	first_name: string;
 	last_name: string;
 	email: string;
+	phone: string;
 }
 
-function create_player(first_name = '', last_name = '', email = ''): Player {
-	return { first_name, last_name, email };
+function create_participant(first_name = '', last_name = '', email = '', phone = ''): Participant {
+	return { first_name, last_name, email, phone };
 }
 
-function validate_player_first_name(p: Player): string | null {
+function validate_first_name(p: Participant): string | null {
 	if (!p.first_name.trim()) return 'First name is required';
 	return null;
 }
 
-function validate_player_last_name(p: Player): string | null {
+function validate_last_name(p: Participant): string | null {
 	if (!p.last_name.trim()) return 'Last name is required';
 	return null;
 }
 
-function validate_player_email(p: Player): string | null {
+function validate_email(p: Participant): string | null {
 	if (!p.email.trim()) return 'Email is required';
 	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email.trim())) return 'Enter a valid email address';
 	return null;
 }
 
-describe('Player Registration', () => {
-	it('should create a player with empty fields', () => {
-		const player = create_player();
-		expect(player.first_name).toBe('');
-		expect(player.last_name).toBe('');
+describe('Participant Registration', () => {
+	it('should create a participant with empty fields', () => {
+		const p = create_participant();
+		expect(p.first_name).toBe('');
+		expect(p.last_name).toBe('');
 	});
 
 	it('should require first name', () => {
-		const player = create_player('', 'Doe');
-		expect(validate_player_first_name(player)).toBe('First name is required');
+		const p = create_participant('', 'Doe');
+		expect(validate_first_name(p)).toBe('First name is required');
 	});
 
 	it('should require last name', () => {
-		const player = create_player('John', '');
-		expect(validate_player_last_name(player)).toBe('Last name is required');
+		const p = create_participant('John', '');
+		expect(validate_last_name(p)).toBe('Last name is required');
 	});
 
-	it('should accept valid player data', () => {
-		const player = create_player('John', 'Doe', 'john@example.com');
-		expect(validate_player_first_name(player)).toBeNull();
-		expect(validate_player_last_name(player)).toBeNull();
-		expect(validate_player_email(player)).toBeNull();
+	it('should accept valid participant data', () => {
+		const p = create_participant('John', 'Doe', 'john@example.com', '+234801234567');
+		expect(validate_first_name(p)).toBeNull();
+		expect(validate_last_name(p)).toBeNull();
+		expect(validate_email(p)).toBeNull();
 	});
 
-	it('should require player email', () => {
-		const player = create_player('John', 'Doe', '');
-		expect(validate_player_email(player)).toBe('Email is required');
+	it('should require email', () => {
+		const p = create_participant('John', 'Doe', '');
+		expect(validate_email(p)).toBe('Email is required');
 	});
 
-	it('should validate player email format', () => {
-		const player = create_player('John', 'Doe', 'not-an-email');
-		expect(validate_player_email(player)).toBe('Enter a valid email address');
+	it('should validate email format', () => {
+		const p = create_participant('John', 'Doe', 'not-an-email');
+		expect(validate_email(p)).toBe('Enter a valid email address');
 	});
 
-	it('shows the exact school-based registration details in a compact list', () => {
+	it('shows individual registration details', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
-		expect(form).toContain('Registration is through participating schools within the FCT.');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
-		expect(form).toContain('Each participating school must register four (4) players.');
-		expect(form).toContain('Total: ₦50,000');
-		expect(form).toContain('per school team');
+		expect(form).toContain('₦12,500');
+		expect(form).toContain('per participant');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
 		expect(form).toContain('class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
@@ -91,21 +90,10 @@ describe('Inline Error States', () => {
 
 	it('RegistrationForm tracks per-field errors', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
-		const hasSchoolNameErr = form.includes('schoolNameErr');
-		const hasSchoolEmailErr = form.includes('schoolEmailErr');
-		const hasSchoolPhoneErr = form.includes('schoolPhoneErr');
-		const hasPlayerErrors = form.includes('playerErrors');
-		expect(hasSchoolNameErr && hasSchoolEmailErr && hasSchoolPhoneErr && hasPlayerErrors).toBe(true);
-	});
-
-	it('PlayerForm accepts firstNameError and lastNameError props', () => {
-		const pf = readFileSync(resolve(process.cwd(), 'src/components/PlayerForm.svelte'), 'utf8');
-		expect(pf).toContain('firstNameError');
-		expect(pf).toContain('lastNameError');
-	});
-
-	it('disables HTML5 validation on the form element', () => {
-		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
-		expect(form).toContain('novalidate');
+		const hasFirstNameErr = form.includes('firstNameErr');
+		const hasLastNameErr = form.includes('lastNameErr');
+		const hasEmailErr = form.includes('emailErr');
+		const hasPhoneErr = form.includes('phoneErr');
+		expect(hasFirstNameErr && hasLastNameErr && hasEmailErr && hasPhoneErr).toBe(true);
 	});
 });

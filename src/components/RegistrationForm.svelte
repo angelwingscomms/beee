@@ -1,85 +1,54 @@
 <script lang="ts">
 	import ConfirmationModal from './ConfirmationModal.svelte';
-	import PlayerForm from './PlayerForm.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 
-	let schoolName = $state('');
-	let schoolEmail = $state('');
-	let schoolPhone = $state('+234');
+	let firstName = $state('');
+	let lastName = $state('');
+	let email = $state('');
+	let phone = $state('+234');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let apiError = $state('');
-	let successMessage = $state('');
 	let registrationId = $state('');
 
-	let schoolNameErr = $state('');
-	let schoolEmailErr = $state('');
-	let schoolPhoneErr = $state('');
-	let playerErrors = $state(
-		Array.from({ length: 4 }, () => ({ first_name: '', last_name: '', email: '' }))
-	);
+	let firstNameErr = $state('');
+	let lastNameErr = $state('');
+	let emailErr = $state('');
+	let phoneErr = $state('');
 
-	const REGISTRATION_AMOUNT = 50000;
-	const REGISTRATION_AMOUNT_PER_PLAYER = 12500;
-	const NUM_PLAYERS = 4;
-
-	let players = $state(
-		Array.from({ length: NUM_PLAYERS }, () => ({ first_name: '', last_name: '', email: '' }))
-	);
-
-	function formatCurrency(amount: number): string {
-		return `₦${amount.toLocaleString()}`;
-	}
+	const AMOUNT = 12500;
 
 	function clearErrors() {
-		schoolNameErr = '';
-		schoolEmailErr = '';
-		schoolPhoneErr = '';
-		for (let i = 0; i < NUM_PLAYERS; i++) {
-			playerErrors[i].first_name = '';
-			playerErrors[i].last_name = '';
-			playerErrors[i].email = '';
-		}
+		firstNameErr = '';
+		lastNameErr = '';
+		emailErr = '';
+		phoneErr = '';
 	}
 
 	function validateForm(): boolean {
 		clearErrors();
 		apiError = '';
-		successMessage = '';
 		let valid = true;
 
-		if (!schoolName.trim()) {
-			schoolNameErr = 'School name is required';
+		if (!firstName.trim()) {
+			firstNameErr = 'First name is required';
 			valid = false;
 		}
-		if (!schoolEmail.trim()) {
-			schoolEmailErr = 'School email is required';
-			valid = false;
-		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(schoolEmail.trim())) {
-			schoolEmailErr = 'Enter a valid email address';
+		if (!lastName.trim()) {
+			lastNameErr = 'Last name is required';
 			valid = false;
 		}
-		if (!schoolPhone.trim() || schoolPhone.trim() === '+234') {
-			schoolPhoneErr = 'School phone is required';
+		if (!email.trim()) {
+			emailErr = 'Email is required';
+			valid = false;
+		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+			emailErr = 'Enter a valid email address';
 			valid = false;
 		}
-		for (let i = 0; i < NUM_PLAYERS; i++) {
-			if (!players[i].first_name.trim()) {
-				playerErrors[i].first_name = 'First name is required';
-				valid = false;
-			}
-			if (!players[i].last_name.trim()) {
-				playerErrors[i].last_name = 'Last name is required';
-				valid = false;
-			}
-			if (!players[i].email.trim()) {
-				playerErrors[i].email = 'Email is required';
-				valid = false;
-			} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(players[i].email.trim())) {
-				playerErrors[i].email = 'Enter a valid email address';
-				valid = false;
-			}
+		if (!phone.trim() || phone.trim() === '+234') {
+			phoneErr = 'Phone is required';
+			valid = false;
 		}
 
 		return valid;
@@ -89,24 +58,22 @@
 		if (!validateForm()) {
 			return;
 		}
-
 		showConfirmation = true;
 	}
 
 	async function confirmPayment() {
 		isProcessing = true;
 		apiError = '';
-		successMessage = '';
 
 		try {
 			const initResponse = await fetch('/api/register-init-payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					schoolName,
-					schoolEmail,
-					schoolPhone,
-					players: players.map(p => [p.first_name.trim(), p.last_name.trim(), p.email.trim()])
+					firstName: firstName.trim(),
+					lastName: lastName.trim(),
+					email: email.trim(),
+					phone: phone.trim()
 				})
 			});
 
@@ -123,28 +90,12 @@
 			const msg = error instanceof Error ? error.message : 'Unknown error';
 			apiError = msg;
 			console.error('[registration]', error);
-			console.error('[registration] message:', msg);
 			isProcessing = false;
 		}
 	}
 
 	function closeConfirmation() {
 		showConfirmation = false;
-	}
-
-	function updatePlayer(i: number, field: string, value: string) {
-		if (field === 'first_name') {
-			players[i].first_name = value;
-			playerErrors[i].first_name = '';
-		}
-		if (field === 'last_name') {
-			players[i].last_name = value;
-			playerErrors[i].last_name = '';
-		}
-		if (field === 'email') {
-			players[i].email = value;
-			playerErrors[i].email = '';
-		}
 	}
 </script>
 
@@ -164,7 +115,7 @@
   <span class="text-[20px] font-championship" style="color:var(--primary)">Abuja 2026</span>
 </h1>
 
-			<p class="welcome-text">Welcome to a unique championship experience that redefines inter-school engagement among young minds.</p>
+			<p class="welcome-text">Welcome to a unique championship experience that redefines engagement among young minds.</p>
 
 			<div class="cards-row">
 				<div class="flex flex-col gap-4">
@@ -195,12 +146,7 @@
 					</div>
 					<div class="price-band simple-price flex-1">
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
-						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[9px]">₦12,500<span class="text-[18px] font-normal">per player</span></strong>
-						<div class="flex flex-wrap items-baseline gap-x-1 !text-[#000]" style="font-family:var(--font-display)">
-							<span class="text-[18px] font-bold">Total: ₦50,000</span>
-							<span class="text-[16px] font-bold">per school team</span>
-						</div>
-						<button type="button" onclick={() => { const el = document.getElementById('schoolName'); el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); el?.focus(); }} class="button-primary !border-0 text-xs px-3 py-1.5 min-h-0 w-fit !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(204,120,92,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">Register Your School</button>
+						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[9px]">₦12,500<span class="text-[18px] font-normal">per participant</span></strong>
 					</div>
 				</div>
 				<div class="teamup-card">
@@ -227,8 +173,6 @@
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-primary pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
-				<li class="border-l-2 border-primary pl-3">Registration is through participating schools within the FCT.</li>
-				<li class="border-l-2 border-primary pl-3">Each participating school must register four (4) players.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>
 
@@ -243,50 +187,33 @@
 			}}
 		>
 			<header class="form-header">
-				<h2>Register Your School</h2>
+				<h2>Register as a Participant</h2>
 			</header>
 
 			<section class="form-section space-y-1.5">
-				<div class="field">
-					<TextInput id="schoolName" label="School Name" bind:value={schoolName} required wrapperClass="!bg-white !border-transparent" error={schoolNameErr} oninput={() => schoolNameErr = ''} />
+				<div class="field-grid">
+					<div class="field">
+						<TextInput id="firstName" label="First Name" bind:value={firstName} required wrapperClass="!bg-secondary !border-transparent" error={firstNameErr} oninput={() => firstNameErr = ''} />
+					</div>
+					<div class="field">
+						<TextInput id="lastName" label="Last Name" bind:value={lastName} required wrapperClass="!bg-white !border-transparent" error={lastNameErr} oninput={() => lastNameErr = ''} />
+					</div>
 				</div>
 				<div class="field">
-					<TextInput id="schoolEmail" label="School Email" type="email" bind:value={schoolEmail} required wrapperClass="!bg-[#EFE9DE] !border-transparent" error={schoolEmailErr} oninput={() => schoolEmailErr = ''} />
+					<TextInput id="email" label="Email Address" type="email" bind:value={email} required wrapperClass="!bg-white !border-[#DFD0BE]" error={emailErr} oninput={() => emailErr = ''} />
 				</div>
 				<div class="field field-full">
 					<PhoneInput
-						id="schoolPhone"
-						value={schoolPhone}
-						placeholder="School phone"
+						id="phone"
+						value={phone}
+						placeholder="Phone number"
 						theme
-						onChange={(v) => { schoolPhone = v; schoolPhoneErr = ''; }}
+						onChange={(v) => { phone = v; phoneErr = ''; }}
 					/>
-			</section>
-
-			<section class="form-section" aria-labelledby="players-section-title">
-				<h2 id="players-section-title" class="form-section-title">Enter 4 players</h2>
-				<div class="players-list">
-					{#each players as player, i}
-						<PlayerForm
-							index={i}
-							first_name={player.first_name}
-							last_name={player.last_name}
-							email={player.email}
-							onChange={(field, value) => updatePlayer(i, field, value)}
-							firstNameError={playerErrors[i].first_name}
-							lastNameError={playerErrors[i].last_name}
-							emailError={playerErrors[i].email}
-						/>
-					{/each}
-				</div>
 			</section>
 
 			{#if apiError}
 				<div class="error-message" role="alert">{apiError}</div>
-			{/if}
-
-			{#if successMessage}
-				<div class="success-message" role="status">{successMessage}</div>
 			{/if}
 
 			<div class="submit-row">
@@ -321,20 +248,20 @@
 			</div>
 		</form>
 
-		<p class="text-[14px] font-registration text-muted">Questions? Email <a href="mailto:beee@apexlinks.org" class="text-primary underline-offset-2 hover:underline">beee@apexlinks.org</a> or call <span class="text-primary">+234 802 092 0872</span></p>
+		<p class="text-[14px] font-registration text-muted">Questions? Email <a href="mailto:info@beeeproject.com" class="text-primary underline-offset-2 hover:underline">info@beeeproject.com</a> or call <span class="text-primary">+234 802 092 0872</span></p>
 	</section>
 </main>
 
 {#if showConfirmation}
 	<ConfirmationModal
-		schoolName={schoolName}
-		schoolEmail={schoolEmail}
-		schoolPhone={schoolPhone}
-		players={players.map(p => [p.first_name.trim(), p.last_name.trim(), p.email.trim()])}
-		amount={REGISTRATION_AMOUNT}
+		{firstName}
+		{lastName}
+		{email}
+		{phone}
+		{AMOUNT}
 		onConfirm={confirmPayment}
 		onCancel={closeConfirmation}
-		isProcessing={isProcessing}
+		{isProcessing}
 	/>
 {/if}
 

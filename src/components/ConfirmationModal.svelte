@@ -1,19 +1,19 @@
 <script lang="ts">
 	let {
-		schoolName,
-		schoolEmail,
-		schoolPhone,
-		players,
-		amount,
+		firstName,
+		lastName,
+		email,
+		phone,
+		AMOUNT,
 		onConfirm,
 		onCancel,
 		isProcessing = false
 	}: {
-		schoolName: string;
-		schoolEmail: string;
-		schoolPhone: string;
-		players: string[][];
-		amount: number;
+		firstName: string;
+		lastName: string;
+		email: string;
+		phone: string;
+		AMOUNT: number;
 		onConfirm: () => void;
 		onCancel: () => void;
 		isProcessing?: boolean;
@@ -32,39 +32,25 @@
 		</div>
 
 		<div class="modal-body">
-			<section class="modal-section" aria-labelledby="school-summary-title">
-				<h3 id="school-summary-title">School</h3>
+			<section class="modal-section" aria-labelledby="participant-summary-title">
+				<h3 id="participant-summary-title">Participant</h3>
 				<div class="summary-list">
 					<div class="summary-item">
 						<div>
-							<strong>{schoolName}</strong>
-							<span>{schoolEmail}</span>
-							<span>{schoolPhone}</span>
+							<strong>{firstName} {lastName}</strong>
+							<span>{email}</span>
+							<span>{phone}</span>
 						</div>
 					</div>
-				</div>
-			</section>
-
-			<section class="modal-section" aria-labelledby="players-summary-title">
-				<h3 id="players-summary-title">Players</h3>
-				<div class="summary-list">
-					{#each players as [first, last, email], i}
-						<div class="summary-item">
-							<div>
-								<strong>{first} {last}</strong>
-								<span>{email}</span>
-							</div>
-						</div>
-					{/each}
 				</div>
 			</section>
 
 			<div class="modal-total">
 				<div>
 					<p>Register now</p>
-					<p class="summary-item-desc">₦12,500 per player<br><span class="text-[15px] !text-[#000]" style="font-family:var(--font-display)">Total: ₦50,000<br>per school team</span></p>
+					<p class="summary-item-desc">₦12,500 per participant</p>
 				</div>
-				<strong>{formatCurrency(amount)}</strong>
+				<strong>{formatCurrency(AMOUNT)}</strong>
 			</div>
 		</div>
 
