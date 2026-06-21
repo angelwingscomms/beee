@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { createTimeline, onScroll, animate, stagger } from 'animejs';
+  import Lenis from 'lenis';
 
   let hero_tl: ReturnType<typeof createTimeline> | null = null;
   let passport_tl: ReturnType<typeof createTimeline> | null = null;
@@ -8,9 +9,36 @@
   let hero_ref: HTMLElement;
   let passport_ref: HTMLElement;
   let timeline_ref: HTMLElement;
+  let lenis_instance: Lenis | null = null;
+
+  function init_lenis() {
+    if (window.innerWidth >= 768 && !lenis_instance) {
+      lenis_instance = new Lenis({ autoRaf: true, lerp: 0.1 });
+    }
+  }
+
+  function destroy_lenis() {
+    lenis_instance?.destroy();
+    lenis_instance = null;
+  }
+
+  let resize_raf: number | null = null;
 
   onMount(() => {
     if (typeof window === 'undefined') return;
+
+    init_lenis();
+
+    function on_resize() {
+      if (resize_raf) cancelAnimationFrame(resize_raf);
+      resize_raf = requestAnimationFrame(() => {
+        const should = window.innerWidth >= 768;
+        if (should && !lenis_instance) init_lenis();
+        if (!should && lenis_instance) destroy_lenis();
+        resize_raf = null;
+      });
+    }
+    window.addEventListener('resize', on_resize);
 
     // ——— Hero sticky chapter ———
     hero_tl = createTimeline({
@@ -143,6 +171,9 @@
     });
 
     return () => {
+      destroy_lenis();
+      window.removeEventListener('resize', on_resize);
+      if (resize_raf) cancelAnimationFrame(resize_raf);
       hero_tl?.revert();
       passport_tl?.revert();
       timeline_tl?.revert();
@@ -178,7 +209,7 @@
      S2: HERO (sticky)
      ════════════════════════════════════ -->
 <div class="sticky-section" bind:this={hero_ref} style="height: 300vh">
-  <div class="sticky-inner">
+  <div class="sticky-inner" data-lenis-prevent>
     <section class="hero-band hero-section">
       <div class="container hero-grid">
         <div>
@@ -242,7 +273,7 @@
      S4: WHY BEEE EXISTS (sticky)
      ════════════════════════════════════ -->
 <div class="sticky-section" style="height: 200vh; background: var(--surface-soft)">
-  <div class="sticky-inner">
+  <div class="sticky-inner" data-lenis-prevent>
     <section class="why-section" id="about">
       <div class="container why-grid">
         <div class="why-text appear-on-scroll">
@@ -341,7 +372,7 @@
      S6: DEVELOPMENT PASSPORT (sticky)
      ════════════════════════════════════ -->
 <div class="sticky-section section-dark" style="height: 300vh" bind:this={passport_ref}>
-  <div class="sticky-inner">
+  <div class="sticky-inner" data-lenis-prevent>
     <section class="passport-section">
       <div class="container passport-grid">
         <div class="passport-steps">
@@ -408,7 +439,7 @@
      S7: CHAMPIONSHIP JOURNEY TIMELINE (sticky)
      ════════════════════════════════════ -->
 <div class="sticky-section section-soft" style="height: 300vh" bind:this={timeline_ref}>
-  <div class="sticky-inner">
+  <div class="sticky-inner" data-lenis-prevent>
     <section class="timeline-section" id="journey">
       <div class="container">
         <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">From First Move to Championship</h2>
