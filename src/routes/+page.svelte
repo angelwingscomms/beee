@@ -790,6 +790,11 @@
   .sticky-inner > section {
     width: 100%;
   }
+  @media (max-width: 767px) {
+    .sticky-inner {
+      align-items: flex-start;
+    }
+  }
 
   /* ══════════════════════════════════
      S2: HERO
