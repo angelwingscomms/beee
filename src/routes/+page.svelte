@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { createTimeline, onScroll, animate, stagger, createDrawable } from 'animejs';
   import Lenis from 'lenis';
+  import confetti from 'canvas-confetti';
 
   let hero_tl: ReturnType<typeof createTimeline> | null = null;
   let passport_tl: ReturnType<typeof createTimeline> | null = null;
@@ -12,9 +13,10 @@
   let lenis_instance: Lenis | null = null;
 
   function init_lenis() {
-    if (window.innerWidth >= 768 && !lenis_instance) {
-      lenis_instance = new Lenis({ autoRaf: true, lerp: 0.1 });
-    }
+    if (window.innerWidth < 768) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (lenis_instance) return;
+    lenis_instance = new Lenis({ autoRaf: true, lerp: 0.1, anchors: true });
   }
 
   function destroy_lenis() {
@@ -69,7 +71,7 @@
       opacity: [0, 1],
       translateY: [60, 0],
       scale: [.85, 1],
-      ease: 'outBack',
+      ease: 'outCubic',
       duration: 900,
       delay: stagger(100, { from: 'center' }),
       autoplay: onScroll({ target: '.pillars-grid', threshold: [0, .2] })
@@ -121,6 +123,25 @@
       duration: 1500,
       autoplay: onScroll({ target: '.mystery-section', threshold: [0, .4] })
     });
+
+    // ——— Mystery confetti (once on reveal) ———
+    const mystery_el = document.querySelector('.mystery-section');
+    if (mystery_el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let confetti_fired = false;
+      const mo = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !confetti_fired) {
+          confetti_fired = true;
+          confetti({
+            particleCount: window.innerWidth < 640 ? 80 : 150,
+            spread: 80,
+            origin: { y: 0.6 },
+            disableForReducedMotion: true
+          });
+          mo.disconnect();
+        }
+      }, { threshold: 0.5 });
+      mo.observe(mystery_el);
+    }
 
     // ——— Parent section fade ———
     animate('.parent-card', {
@@ -209,7 +230,7 @@
 <!-- ════════════════════════════════════
      S1: STICKY HEADER
      ════════════════════════════════════ -->
-<header class="site-header">
+<header class="site-header" role="banner">
   <div class="container header-inner">
     <div class="brand-lockup">
       <span class="spike-mark" style="color: var(--primary)"></span>
@@ -220,7 +241,7 @@
       <a href="#journey">Journey</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="/register" class="button-primary header-cta">Register Now</a>
+    <a href="/register" class="button-primary header-cta cta-entrance">Register Now</a>
   </div>
 </header>
 
@@ -242,7 +263,7 @@
             upskilling, and personal development.
           </p>
           <div class="hero-actions">
-            <a href="/register" class="button-primary">Start the Journey</a>
+            <a href="/register" class="button-primary cta-entrance">Start the Journey</a>
             <a href="#about" class="button-secondary">Explore the Programme</a>
           </div>
           <p class="hero-scroll-hint" style="margin-top: 48px; color: var(--muted); font-size: 13px; font-weight: 500">
@@ -645,7 +666,7 @@
       <p class="body-md" style="color: var(--on-dark-soft); margin: 0 auto 32px; max-width: 480px">
         Register your child for the BEEE Spectacular Chess Championship 2026 and start their transformation today.
       </p>
-      <a href="/register" class="button-primary" style="font-size: 16px; padding: 16px 32px">Register Your Child</a>
+      <a href="/register" class="button-primary cta-entrance" style="font-size: 16px; padding: 16px 32px">Register Your Child</a>
     </div>
   </div>
 </section>
@@ -653,7 +674,7 @@
 <!-- ════════════════════════════════════
      S14: FOOTER
      ════════════════════════════════════ -->
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
   <div class="container footer-grid">
     <div class="footer-brand">
       <span class="spike-mark" style="color: var(--on-dark); margin-bottom: 12px"></span>

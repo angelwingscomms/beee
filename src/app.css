@@ -140,6 +140,52 @@
   box-sizing: border-box;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: none;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sticky-section {
+    height: auto !important;
+  }
+  .sticky-inner {
+    position: static !important;
+    height: auto !important;
+  }
+  .hero-scroll-hint {
+    display: none;
+  }
+}
+
 html {
   background: var(--canvas);
   color: var(--ink);
@@ -382,7 +428,7 @@ img {
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .button-primary {
@@ -391,15 +437,21 @@ img {
   color: var(--on-primary);
 }
 
+.button-primary:hover {
+  transform: scale(1.02);
+}
+
 .button-primary:active {
   background: var(--primary-active);
   border-color: var(--primary-active);
+  transform: scale(.98);
 }
 
 .button-primary:disabled {
   border-color: var(--primary-disabled);
   background: var(--primary-disabled);
   color: var(--muted);
+  transform: none;
 }
 
 .button-secondary {
@@ -1277,6 +1329,22 @@ img {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes cta-entrance {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.cta-entrance {
+  animation: cta-entrance 600ms ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-entrance {
+    animation: none;
   }
 }
 

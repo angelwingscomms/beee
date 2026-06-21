@@ -10,4 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 
-{@render children()}
+<a href="#main-content" class="skip-link" tabindex="1">Skip to main content</a>
+<main id="main-content" tabindex="-1" role="main">
+  {@render children()}
+</main>
