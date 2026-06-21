@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { createTimeline, onScroll, animate, stagger } from 'animejs';
+  import { createTimeline, onScroll, animate, stagger, createDrawable } from 'animejs';
   import Lenis from 'lenis';
 
   let hero_tl: ReturnType<typeof createTimeline> | null = null;
@@ -67,24 +67,42 @@
     // ——— TEAMUP staggered cards ———
     animate('.pillar-card', {
       opacity: [0, 1],
-      translateY: [50, 0],
-      scale: [.95, 1],
-      ease: 'outCubic',
-      duration: 800,
-      delay: stagger(120, { from: 'center' }),
+      translateY: [60, 0],
+      scale: [.85, 1],
+      ease: 'outBack',
+      duration: 900,
+      delay: stagger(100, { from: 'center' }),
       autoplay: onScroll({ target: '.pillars-grid', threshold: [0, .2] })
     });
 
     // ——— Passport sticky chapter ———
+    createDrawable('.badge-ring-1');
+    createDrawable('.badge-ring-2');
+    createDrawable('.badge-ring-3');
+    createDrawable('.badge-ring-4');
+    createDrawable('.badge-ring-5');
+    createDrawable('.badge-ring-6');
+
     passport_tl = createTimeline({
       autoplay: onScroll({ container: passport_ref, sync: .5 }),
       defaults: { ease: 'outCubic' }
     });
-    passport_tl.add('.passport-step-1', { opacity: [0, 1], x: [-30, 0] }, 0)
-      .add('.passport-badge-1', { scale: [0, 1], opacity: [0, 1] }, 200)
+    passport_tl.add('.passport-cover', { opacity: [0, 1], y: [-10, 0] }, 0)
+      .add('.progress-fill', { width: ['0%', '100%'] }, 0)
+      .add('.passport-step-1', { opacity: [0, 1], x: [-30, 0] }, 0)
+      .add('.badge-ring-1', { draw: ['0%', '100%'] }, 200)
+      .add('.passport-badge-1 text', { opacity: [0, 1], scale: [0, 1] }, 300)
       .add('.passport-step-2', { opacity: [0, 1], x: [-30, 0] }, 500)
-      .add('.passport-badge-2', { scale: [0, 1], opacity: [0, 1] }, 700)
-      .add('.passport-step-3', { opacity: [0, 1], x: [-30, 0] }, 1000);
+      .add('.badge-ring-2', { draw: ['0%', '100%'] }, 700)
+      .add('.passport-badge-2 text', { opacity: [0, 1], scale: [0, 1] }, 800)
+      .add('.passport-step-3', { opacity: [0, 1], x: [-30, 0] }, 1000)
+      .add('.badge-ring-3', { draw: ['0%', '100%'] }, 1200)
+      .add('.passport-badge-3 text', { opacity: [0, 1], scale: [0, 1] }, 1300)
+      .add('.passport-step-4', { opacity: [0, 1], x: [-30, 0] }, 1500)
+      .add('.badge-ring-4', { draw: ['0%', '100%'] }, 1700)
+      .add('.badge-ring-5', { draw: ['0%', '100%'] }, 1900)
+      .add('.badge-ring-6', { draw: ['0%', '100%'] }, 2100)
+      .add('.passport-progress', { opacity: [0, 1] }, 2200);
 
     // ——— Benefits staggered entrance ———
     animate('.benefit-card', {
@@ -127,7 +145,8 @@
       autoplay: onScroll({ container: timeline_ref, sync: .5 }),
       defaults: { ease: 'outCubic' }
     });
-    timeline_tl.add('.milestone-1', { opacity: [0, 1], x: [-40, 0] }, 0)
+    timeline_tl.add('.timeline-line', { width: ['0%', '100%'] }, 0)
+      .add('.milestone-1', { opacity: [0, 1], x: [-40, 0] }, 0)
       .add('.milestone-2', { opacity: [0, 1], x: [-40, 0] }, 200)
       .add('.milestone-3', { opacity: [0, 1], x: [-40, 0] }, 400)
       .add('.milestone-4', { opacity: [0, 1], x: [-40, 0] }, 600)
@@ -417,17 +436,35 @@
               <span>BEEE PASSPORT</span>
             </div>
             <div class="passport-badges">
-              <div class="passport-badge passport-badge-1" style="--badge-color: var(--primary)">T</div>
-              <div class="passport-badge passport-badge-2" style="--badge-color: var(--accent-amber)">E</div>
-              <div class="passport-badge" style="--badge-color: #8b5cf6">A</div>
-              <div class="passport-badge" style="--badge-color: #3b82f6">M</div>
-              <div class="passport-badge" style="--badge-color: #5db8a6">U</div>
-              <div class="passport-badge" style="--badge-color: var(--primary)">P</div>
+              <svg class="passport-badge passport-badge-1" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--primary)">
+                <path class="badge-ring-1" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">T</text>
+              </svg>
+              <svg class="passport-badge passport-badge-2" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--accent-amber)">
+                <path class="badge-ring-2" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">E</text>
+              </svg>
+              <svg class="passport-badge passport-badge-3" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #8b5cf6">
+                <path class="badge-ring-3" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="#8b5cf6" font-weight="700" font-size="18" font-family="var(--font-display)">A</text>
+              </svg>
+              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #3b82f6">
+                <path class="badge-ring-4" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="#3b82f6" font-weight="700" font-size="18" font-family="var(--font-display)">M</text>
+              </svg>
+              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #5db8a6">
+                <path class="badge-ring-5" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#5db8a6" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="#5db8a6" font-weight="700" font-size="18" font-family="var(--font-display)">U</text>
+              </svg>
+              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--primary)">
+                <path class="badge-ring-6" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
+                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">P</text>
+              </svg>
             </div>
-            <div class="passport-progress">
-              <div class="progress-bar"><div class="progress-fill" style="width: 45%"></div></div>
-              <span>Overall Progress</span>
-            </div>
+              <div class="passport-progress">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <span>Overall Progress</span>
+              </div>
           </div>
         </div>
       </div>
@@ -443,6 +480,7 @@
     <section class="timeline-section" id="journey">
       <div class="container">
         <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">From First Move to Championship</h2>
+        <div class="timeline-track"><div class="timeline-line"></div></div>
         <div class="timeline-strip">
           <div class="milestone milestone-1">
             <span class="milestone-icon">♟</span>
@@ -899,11 +937,14 @@
     border-radius: 12px;
     background: var(--surface-card);
     border-top: 3px solid var(--card-color);
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    transition: transform 300ms cubic-bezier(.34,1.56,.64,1), box-shadow 300ms ease;
   }
   .pillar-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(20, 20, 19, 0.08);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.1);
+  }
+  .pillar-card:hover .pillar-name {
+    color: var(--card-color);
   }
   .pillar-icon {
     font-size: 32px;
@@ -944,7 +985,7 @@
   .passport-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 60px;
     align-items: start;
   }
   @media (max-width: 767px) {
@@ -952,12 +993,25 @@
       grid-template-columns: 1fr;
     }
   }
+  .passport-steps {
+    position: relative;
+    z-index: 2;
+  }
   .passport-step {
     display: flex;
     gap: 16px;
-    align-items: flex-start;
     padding: 16px 0;
     border-bottom: 1px solid rgba(250, 249, 245, 0.1);
+    opacity: 0;
+  }
+  .passport-cover {
+    opacity: 0;
+  }
+  .passport-progress {
+    opacity: 0;
+  }
+  .progress-fill {
+    width: 0%;
   }
   .passport-step strong {
     display: block;
@@ -1005,15 +1059,12 @@
     margin-bottom: 24px;
   }
   .passport-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 56px;
-    border-radius: 12px;
-    background: var(--badge-color);
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
+    width: 100%;
+    height: auto;
+    max-height: 56px;
+  }
+  .passport-badge text {
+    opacity: 0;
   }
   .passport-progress {
     display: flex;
@@ -1043,6 +1094,18 @@
   .timeline-section {
     padding: 96px 0;
   }
+  .timeline-track {
+    position: relative;
+    height: 4px;
+    background: var(--hairline);
+    border-radius: 2px;
+    margin: 0 110px 48px;
+  }
+  .timeline-line {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent-amber));
+  }
   .timeline-strip {
     display: flex;
     gap: 24px;
@@ -1057,11 +1120,21 @@
     background: var(--canvas);
     scroll-snap-align: start;
     text-align: center;
+    opacity: 0;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  .milestone:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(242, 120, 48, 0.15);
   }
   .milestone-icon {
     font-size: 36px;
     display: block;
     margin-bottom: 12px;
+    transition: transform 300ms ease;
+  }
+  .milestone:hover .milestone-icon {
+    transform: scale(1.15);
   }
   .milestone strong {
     display: block;
