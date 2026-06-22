@@ -1,171 +1,209 @@
 <script lang="ts">
-  import Navbar from '../components/home/Navbar.svelte';
-  import Hero from '../components/home/Hero.svelte';
-  import TrustBar from '../components/home/TrustBar.svelte';
-  import WhyBeee from '../components/home/WhyBeee.svelte';
-  import Journey from '../components/home/Journey.svelte';
-  import TeamUp from '../components/home/TeamUp.svelte';
-  import Passport from '../components/home/Passport.svelte';
-  import Benefits from '../components/home/Benefits.svelte';
-  import ProgressTracking from '../components/home/ProgressTracking.svelte';
-  import Parents from '../components/home/Parents.svelte';
-  import Awards from '../components/home/Awards.svelte';
-  import FAQ from '../components/home/FAQ.svelte';
-  import FinalCTA from '../components/home/FinalCTA.svelte';
-  import Footer from '../components/home/Footer.svelte';
-  import MobileStickyCTA from '../components/home/MobileStickyCTA.svelte';
+	import { onMount } from 'svelte';
+	import FloatingNav from '$lib/components/FloatingNav.svelte';
+	import Navbar from '$lib/components/home/Navbar.svelte';
+	import Hero from '$lib/components/home/Hero.svelte';
+	import TrustBar from '$lib/components/home/TrustBar.svelte';
+	import WhyBeee from '$lib/components/home/WhyBeee.svelte';
+	import Journey from '$lib/components/home/Journey.svelte';
+	import TeamUp from '$lib/components/home/TeamUp.svelte';
+	import Passport from '$lib/components/home/Passport.svelte';
+	import ProgressTracking from '$lib/components/home/ProgressTracking.svelte';
+	import Benefits from '$lib/components/home/Benefits.svelte';
+	import Parents from '$lib/components/home/Parents.svelte';
+	import Awards from '$lib/components/home/Awards.svelte';
+	import FAQ from '$lib/components/home/FAQ.svelte';
+	import FinalCTA from '$lib/components/home/FinalCTA.svelte';
+	import Footer from '$lib/components/home/Footer.svelte';
 
-  let menu_open = $state(false);
-  function menu_toggle() { menu_open = !menu_open; }
-
-  const journey = [
-    { code: '01', title: 'Register', detail: 'Complete the simple registration form to begin your child\'s championship journey.' },
-    { code: '02', title: 'T.E.A.M.U.P.', detail: 'Participants gain access to the T.E.A.M.U.P. development framework combining chess with life skills.' },
-    { code: '03', title: 'Development Passport', detail: 'Every child receives a digital passport tracking attendance, achievements, badges and mentorship records.' },
-    { code: '04', title: 'Preliminary Rounds', detail: 'Structured preliminary rounds allow participants to gain confidence and demonstrate growth.' },
-    { code: '05', title: 'Advanced Stages', detail: 'Top performers advance through increasingly challenging stages of competition and skill demonstration.' },
-    { code: '06', title: 'Grand Finale', detail: 'The championship concludes with a Grand Finale celebrating every participant\'s developmental journey.' },
-  ];
-
-  const teamup = [
-    {
-      name: 'Technology',
-      detail: 'Digital literacy, problem solving and innovation mindset for the modern world.',
-      points: ['Problem Solving', 'Digital Literacy', 'Innovation Mindset'],
-    },
-    {
-      name: 'Enterprise',
-      detail: 'Entrepreneurial thinking, project management and real-world application.',
-      points: ['Entrepreneurial Thinking', 'Project Management', 'Real-World Application'],
-    },
-    {
-      name: 'Art',
-      detail: 'Creative expression, design thinking and visual communication skills.',
-      points: ['Creative Expression', 'Design Thinking', 'Visual Communication'],
-    },
-    {
-      name: 'Mentorship',
-      detail: 'Guided growth through experienced mentors who inspire and challenge.',
-      points: ['Guided Growth', 'Peer Learning', 'Leadership Development'],
-    },
-    {
-      name: 'Upskill',
-      detail: 'Continuous improvement through structured skill acquisition and practice.',
-      points: ['Continuous Improvement', 'Structured Practice', 'Skill Mastery'],
-    },
-  ];
-
-  const benefits = [
-    ['Strategic Thinking', 'Develop the ability to plan ahead, anticipate outcomes and make calculated decisions under pressure.'],
-    ['Leadership', 'Build confidence to lead teams, communicate effectively and inspire others through example.'],
-    ['Communication', 'Learn to articulate ideas clearly, listen actively and present with conviction.'],
-    ['Creativity', 'Unlock creative problem-solving approaches that extend beyond the chessboard into everyday life.'],
-    ['Confidence', 'Grow self-assurance through achievement, constructive feedback and public performance.'],
-    ['Problem Solving', 'Master structured approaches to breaking down complex challenges into manageable steps.'],
-  ];
-
-  const awards = [
-    'Championship Trophy',
-    'Medals',
-    'Certificates',
-    'Achievement Badges',
-    'Leadership Awards',
-    'Innovation Awards',
-    'Special Recognition Awards',
-  ];
-
-  const faqs = [
-    ['Who can participate?', 'The BEEE Spectacular Chess Championship is open to children and young people of all skill levels. Age categories are designed to ensure fair and enjoyable competition for everyone.'],
-    ['Do I need prior chess experience?', 'No prior chess experience is required. The programme includes development sessions designed to help every participant learn, grow and compete at their own pace.'],
-    ['What is T.E.A.M.U.P.?', 'T.E.A.M.U.P. is our flagship youth development framework that stands for Technology, Enterprise, Art, Mentorship and Upskill. It combines chess with life skills development for a holistic growth experience.'],
-    ['How is progress tracked?', 'Every participant receives a Development Passport that tracks attendance, achievements, badges, mentorship records and certificates. Parents have access to view real-time progress.'],
-    ['What is the Development Passport?', 'The Development Passport is a digital record of each participant\'s journey. It includes attendance logs, achievement badges, leadership activities, projects, mentorship records and certificates.'],
-    ['Can parents monitor progress?', 'Yes. Parents receive access to their child\'s Development Passport, allowing them to monitor progress, view achievements, track attendance, celebrate milestones and access certificates.'],
-    ['What happens after registration?', 'After registration, you will receive a confirmation with next steps, including access to the T.E.A.M.U.P. portal, your child\'s Development Passport and information about preliminary rounds.'],
-    ['How do I register?', 'Registration is simple and can be completed online via the Register button. You will need to provide your child\'s name, age and contact information.'],
-  ];
+	onMount(() => {
+		if (typeof window === 'undefined') return;
+		if (window.CSS?.supports('animation-timeline: scroll()') && window.CSS.supports('animation-range: cover 0% cover 100%')) {
+			document.documentElement.classList.add('supports-scroll-animation');
+		}
+	});
 </script>
 
 <svelte:head>
-  <title>BEEE Spectacular Chess Championship Abuja 2026 — Where Young Minds Compete, Develop, Excel</title>
-  <meta name="description" content="A premium youth development programme culminating in a championship. Register your child for the BEEE Spectacular Chess Championship Abuja 2026 — a transformational journey in leadership, strategy and personal growth." />
-  <meta property="og:title" content="BEEE Spectacular Chess Championship Abuja 2026" />
-  <meta property="og:description" content="A transformational journey in leadership, strategy, innovation and personal growth. Register your child today." />
-  <meta property="og:type" content="website" />
-  <meta name="keywords" content="chess championship, Abuja, youth development, children chess, Nigeria, BEEE, TEAMUP" />
+	<title>BEEE Spectacular Chess Championship — Every Move Builds a Future</title>
+	<meta name="description" content="The BEEE T.E.A.M.U.P. youth development journey culminates in the Spectacular Chess Championship. Register your child for an elite program blending chess, technology, enterprise, art, mentorship, upskilling, and personal growth." />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 
-<Navbar menuOpen={menu_open} onMenuToggle={menu_toggle} />
-<Hero />
+<Navbar />
+
+<!-- HERO (sticky with scroll-driven animation) -->
+<div class="sticky-section hero-scroll" style="height: 300vh">
+	<div class="sticky-inner">
+		<Hero />
+	</div>
+</div>
+
 <TrustBar />
 <WhyBeee />
-<Journey journey={journey} />
-<TeamUp teamup={teamup} />
+<TeamUp />
 
-<!-- Mid-page CTA after TeamUp -->
-<section class="mid-cta section-soft">
-  <div class="container mid-cta-inner">
-    <p>Ready to begin the pathway?</p>
-    <a class="button-primary" href="/register">Register Child</a>
-  </div>
-</section>
-
-<Passport />
-<Benefits benefits={benefits} />
-
-<!-- Mid-page CTA after Benefits -->
-<section class="mid-cta section-soft">
-  <div class="container mid-cta-inner">
-    <p>Give your child the opportunity to learn, compete and excel.</p>
-    <a class="button-primary" href="/register">Register Now</a>
-  </div>
-</section>
+<!-- PASSPORT (sticky with scroll-driven animation) -->
+<div class="sticky-section section-dark passport-scroll" style="height: 300vh">
+	<div class="sticky-inner">
+		<Passport />
+	</div>
+</div>
 
 <ProgressTracking />
+
+<!-- JOURNEY / TIMELINE (sticky with scroll-driven animation) -->
+<div class="sticky-section section-soft timeline-scroll" style="height: 300vh">
+	<div class="sticky-inner">
+		<Journey />
+	</div>
+</div>
+
+<Benefits />
 <Parents />
-
-<!-- Mid-page CTA after Parents -->
-<section class="mid-cta section-soft">
-  <div class="container mid-cta-inner">
-    <p>Join BEEE and give your child a transformative experience.</p>
-    <a class="button-primary" href="/register">Register Now</a>
-  </div>
-</section>
-
-<Awards awards={awards} />
-<FAQ faqs={faqs} />
+<Awards />
+<FAQ />
 <FinalCTA />
 <Footer />
-<MobileStickyCTA />
+
+<FloatingNav href="/register">Register Now</FloatingNav>
 
 <style>
-  .mid-cta {
-    padding: 32px 0;
-  }
+	/* ── Container ── */
+	.container {
+		width: min(1200px, calc(100% - 48px));
+		margin: 0 auto;
+	}
 
-  .mid-cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+	/* ── Sticky chapter system ── */
+	.sticky-section {
+		position: relative;
+		width: 100%;
+	}
+	.sticky-inner {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+	}
+	.sticky-inner > section {
+		width: 100%;
+	}
+	:global(html:not(.supports-scroll-animation)) .sticky-section {
+		height: auto !important;
+	}
+	:global(html:not(.supports-scroll-animation)) .sticky-inner {
+		position: static;
+		height: auto;
+	}
+	@media (max-width: 1023px) {
+		.sticky-inner {
+			align-items: flex-start;
+		}
+	}
 
-  .mid-cta-inner p {
-    margin: 0;
-    color: var(--body-strong);
-    font-weight: 600;
-    font-size: 17px;
-  }
+	/* ── Keyframes ── */
+	@keyframes fade-up { from { opacity: 0; translate: 0 25px; } to { opacity: 1; translate: 0 0; } }
+	@keyframes fade-up-lg { from { opacity: 0; translate: 0 40px; } to { opacity: 1; translate: 0 0; } }
+	@keyframes fade-left { from { opacity: 0; translate: -30px 0; } to { opacity: 1; translate: 0 0; } }
+	@keyframes scale-in { from { opacity: 0; scale: 0; } to { opacity: 1; scale: 1; } }
+	@keyframes grow-x { from { width: 0%; } to { width: 100%; } }
+	@keyframes draw-ring { from { stroke-dashoffset: 138.23; } to { stroke-dashoffset: 0; } }
+	@keyframes blur-out { from { filter: blur(16px); } to { filter: blur(0px); } }
+	@keyframes hint-out { from { opacity: 1; } to { opacity: 0; } }
 
-  .container {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-  }
+	:global(.badge-ring-1),
+	:global(.badge-ring-2),
+	:global(.badge-ring-3),
+	:global(.badge-ring-4),
+	:global(.badge-ring-5),
+	:global(.badge-ring-6) {
+		stroke-dasharray: 138.23;
+		stroke-dashoffset: 0;
+	}
 
-  @media (max-width: 700px) {
-    .mid-cta-inner {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
+	@supports (animation-timeline: scroll()) {
+		.hero-scroll { view-timeline-name: --hero; view-timeline-axis: block; }
+		.passport-scroll { view-timeline-name: --passport; view-timeline-axis: block; }
+		.timeline-scroll { view-timeline-name: --timeline; view-timeline-axis: block; }
+
+		:global(.supports-scroll-animation) :global(.passport-step),
+		:global(.supports-scroll-animation) :global(.passport-cover),
+		:global(.supports-scroll-animation) :global(.passport-progress),
+		:global(.supports-scroll-animation) :global(.milestone),
+		:global(.supports-scroll-animation) :global(.passport-badge) text,
+		:global(.supports-scroll-animation) :global(.appear-on-scroll) > * {
+			opacity: 0;
+		}
+		:global(.supports-scroll-animation) :global(.progress-fill) { width: 0%; }
+		:global(.supports-scroll-animation) :global(.badge-ring-1),
+		:global(.supports-scroll-animation) :global(.badge-ring-2),
+		:global(.supports-scroll-animation) :global(.badge-ring-3),
+		:global(.supports-scroll-animation) :global(.badge-ring-4),
+		:global(.supports-scroll-animation) :global(.badge-ring-5),
+		:global(.supports-scroll-animation) :global(.badge-ring-6) {
+			stroke-dashoffset: 138.23;
+		}
+
+		:global(.hero-title) { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 25%; }
+		:global(.hero-subtitle) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 15% cover 40%; }
+		:global(.hero-actions) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 30% cover 55%; }
+
+		:global(.passport-cover) { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 10%; }
+		:global(.progress-fill) { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 70%; }
+		:global(.passport-step-1) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
+		:global(.badge-ring-1) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 10% cover 25%; }
+		:global(.passport-badge-1) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 15% cover 30%; }
+		:global(.passport-step-2) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
+		:global(.badge-ring-2) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 30% cover 45%; }
+		:global(.passport-badge-2) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 35% cover 50%; }
+		:global(.passport-step-3) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
+		:global(.badge-ring-3) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 50% cover 65%; }
+		:global(.passport-badge-3) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 55% cover 70%; }
+		:global(.passport-step-4) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
+		:global(.badge-ring-4) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 70% cover 85%; }
+		:global(.badge-ring-5) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 75% cover 90%; }
+		:global(.badge-ring-6) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 80% cover 95%; }
+		:global(.passport-progress) { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 85% cover 100%; }
+
+		:global(.timeline-line) { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: cover 0% cover 60%; }
+		:global(.milestone-1) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 5% cover 25%; }
+		:global(.milestone-2) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 20% cover 40%; }
+		:global(.milestone-3) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 35% cover 55%; }
+		:global(.milestone-4) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 50% cover 70%; }
+		:global(.milestone-5) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 65% cover 85%; }
+		:global(.milestone-6) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 80% cover 100%; }
+
+		:global(.passport-step):nth-child(1) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
+		:global(.passport-step):nth-child(2) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
+		:global(.passport-step):nth-child(3) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
+		:global(.passport-step):nth-child(4) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(.hero-title), :global(.hero-subtitle), :global(.hero-actions),
+		:global(.passport-cover), :global(.progress-fill), :global(.passport-step),
+		:global(.badge-ring-1), :global(.badge-ring-2),
+		:global(.badge-ring-3), :global(.badge-ring-4), :global(.badge-ring-5), :global(.badge-ring-6),
+		:global(.passport-badge-1) text, :global(.passport-badge-2) text, :global(.passport-badge-3) text,
+		:global(.passport-progress), :global(.timeline-line), :global(.milestone),
+		:global(.appear-on-scroll) > * {
+			animation: none !important;
+			opacity: 1 !important;
+			translate: none !important;
+			scale: none !important;
+			filter: none !important;
+			width: auto !important;
+		}
+		:global(.progress-fill) { width: 100% !important; }
+		:global(.badge-ring-1),
+		:global(.badge-ring-2),
+		:global(.badge-ring-3),
+		:global(.badge-ring-4),
+		:global(.badge-ring-5),
+		:global(.badge-ring-6) {
+			stroke-dashoffset: 0 !important;
+		}
+	}
 </style>
