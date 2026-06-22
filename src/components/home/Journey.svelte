@@ -1,6 +1,16 @@
 <script lang="ts">
+  import { animate, inView } from 'motion';
   import { motionFadeUp } from '$lib/actions/motion';
   let { journey }: { journey: { code: string; title: string; detail: string }[] } = $props();
+  let journey_line: SVGPathElement;
+
+  $effect(() => {
+    if (!journey_line) return;
+    const cleanup = inView(journey_line, () => {
+      animate(journey_line, { pathLength: [0, 1] }, { duration: 1.2, ease: 'ease-in-out' });
+      return () => cleanup?.();
+    });
+  });
 </script>
 
 <section class="section journey-section" id="journey">
@@ -11,7 +21,15 @@
       <p>Each step gives parents a clear view of what happens after registration.</p>
     </div>
     <div class="journey-map">
-      <div class="journey-line" aria-hidden="true"></div>
+      <svg class="journey-svg" aria-hidden="true" viewBox="0 0 1000 4" preserveAspectRatio="none">
+        <path ref={journey_line} d="M 10 2 L 990 2" stroke="url(#journey-grad)" strokeWidth="3" fill="none" pathLength="1" />
+        <defs>
+          <linearGradient id="journey-grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="var(--gold)" />
+            <stop offset="100%" stop-color="var(--green)" />
+          </linearGradient>
+        </defs>
+      </svg>
       {#each journey as item}
         <article class="journey-step" use:motionFadeUp tabindex="0">
           <span>{item.code}</span>
@@ -51,10 +69,9 @@
     position: relative; display: grid; grid-template-columns: repeat(6, minmax(190px, 1fr));
     gap: 16px; overflow-x: auto; padding: 34px 0 18px;
   }
-  .journey-line {
-    position: absolute; top: 58px; left: 8%; width: 84%; height: 2px;
-    background: linear-gradient(90deg, var(--gold), var(--green));
-    transform-origin: left;
+  .journey-svg {
+    position: absolute; top: 53px; left: 6%; width: 88%; height: 12px;
+    pointer-events: none;
   }
   .journey-step {
     position: relative; min-width: 190px; padding: 26px 22px;
@@ -89,7 +106,7 @@
   @media (max-width: 700px) {
     .section { padding: 72px 0; }
     .journey-map { grid-template-columns: 1fr; overflow: visible; }
-    .journey-line { display: none; }
+    .journey-svg { display: none; }
     .inline-cta { align-items: stretch; flex-direction: column; }
   }
 </style>
