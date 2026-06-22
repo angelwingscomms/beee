@@ -1,1346 +1,1621 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import confetti from 'canvas-confetti';
+  import {
+    Award,
+    BadgeCheck,
+    BookOpenCheck,
+    Brain,
+    BriefcaseBusiness,
+    CalendarDays,
+    ChartNoAxesCombined,
+    ChevronDown,
+    CircleCheck,
+    Crown,
+    FileBadge,
+    GraduationCap,
+    Handshake,
+    Lightbulb,
+    MapPin,
+    Medal,
+    Menu,
+    Palette,
+    ShieldCheck,
+    Sparkles,
+    Trophy,
+    Users,
+    X
+  } from '@lucide/svelte';
 
-  onMount(() => {
-    if (typeof window === 'undefined') return;
+  let menuOpen = false;
+  let activeTeamup = 'Technology';
+  let openFaq = 0;
 
-    if (window.CSS?.supports('animation-timeline: scroll()') && window.CSS.supports('animation-range: cover 0% cover 100%')) {
-      document.documentElement.classList.add('supports-scroll-animation');
+  const journey = [
+    {
+      title: 'Register',
+      detail: 'Parent registration opens the child profile and confirms the programme pathway.',
+      code: '01'
+    },
+    {
+      title: 'T.E.A.M.U.P.',
+      detail: 'Children begin structured growth across technology, enterprise, art, mentorship and upskilling.',
+      code: '02'
+    },
+    {
+      title: 'Development Passport',
+      detail: 'Attendance, achievements, badges and milestones are tracked in one visible record.',
+      code: '03'
+    },
+    {
+      title: 'Preliminary Rounds',
+      detail: 'Participants test discipline, strategy and confidence in guided competitive settings.',
+      code: '04'
+    },
+    {
+      title: 'Advanced Stages',
+      detail: 'Top performers receive deeper mentoring, reports and readiness support.',
+      code: '05'
+    },
+    {
+      title: 'Grand Finale',
+      detail: 'The journey culminates in Abuja with recognition for growth, excellence and leadership.',
+      code: '06'
     }
+  ];
 
-    // ——— Trust bar counters (one-shot via IO) ———
-    const trust_bar = document.querySelector('.trust-bar');
-    if (trust_bar) {
-      const io = new IntersectionObserver(([e]) => {
-        if (!e.isIntersecting) return;
-        io.disconnect();
-        document.querySelectorAll('.trust-stat').forEach(el => {
-          const target = +((el as HTMLElement).dataset.count ?? '0');
-          const strong = el.querySelector('strong')!;
-          let val = 0;
-          const step = Math.max(1, Math.ceil(target / 60));
-          const t = setInterval(() => {
-            val = Math.min(val + step, target);
-            strong.textContent = String(val);
-            if (val >= target) clearInterval(t);
-          }, 16);
-        });
-      }, { threshold: 0.3 });
-      io.observe(trust_bar);
+  const teamup = [
+    {
+      name: 'Technology',
+      points: ['Problem Solving', 'Digital Literacy', 'Innovation Mindset'],
+      detail: 'Children learn to approach problems with curiosity, structure and practical digital confidence.'
+    },
+    {
+      name: 'Enterprise',
+      points: ['Financial Awareness', 'Initiative', 'Value Creation'],
+      detail: 'Participants connect strategy to responsibility, enterprise thinking and useful real-world action.'
+    },
+    {
+      name: 'Art',
+      points: ['Creative Thinking', 'Expression', 'Design Confidence'],
+      detail: 'Creativity becomes part of the development journey, not an optional side activity.'
+    },
+    {
+      name: 'Mentorship',
+      points: ['Guidance', 'Character', 'Leadership Habits'],
+      detail: 'Young minds receive direction from adults who model discipline, focus and excellence.'
+    },
+    {
+      name: 'Upskill',
+      points: ['Practical Projects', 'Communication', 'Applied Learning'],
+      detail: 'Every child builds useful skills that can be seen, discussed, improved and celebrated.'
     }
+  ];
 
-    // ——— FAQ accordion ———
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        (q.parentElement!)!.classList.toggle('is-open');
-      });
-    });
+  const benefits = [
+    ['Strategic Thinking', 'Make stronger decisions with patience, planning and foresight.'],
+    ['Leadership', 'Learn responsibility, initiative and positive influence.'],
+    ['Communication', 'Explain ideas clearly and listen with discipline.'],
+    ['Creativity', 'Use imagination to solve problems beyond the board.'],
+    ['Confidence', 'Build calm self-belief through visible progress.'],
+    ['Problem Solving', 'Practice analysis, resilience and smart adjustment.']
+  ];
 
-    // ——— Mystery confetti (once on reveal) ———
-    const mystery_el = document.querySelector('.mystery-section');
-    if (mystery_el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      let confetti_fired = false;
-      const mo = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting && !confetti_fired) {
-          confetti_fired = true;
-          confetti({
-            particleCount: window.innerWidth < 640 ? 80 : 150,
-            spread: 80,
-            origin: { y: 0.6 },
-            disableForReducedMotion: true
-          });
-          mo.disconnect();
-        }
-      }, { threshold: 0.5 });
-      mo.observe(mystery_el);
-    }
-  });
+  const awards = [
+    'Championship Trophy',
+    'Medals',
+    'Certificates',
+    'Achievement Badges',
+    'Leadership Awards',
+    'Innovation Awards',
+    'Special Recognition Awards'
+  ];
+
+  const faqs = [
+    ['Who can participate?', 'School-age children and young people can participate. Registration captures age and experience so each child can be placed appropriately.'],
+    ['Do I need prior chess experience?', 'No. BEEE is designed as a developmental journey. Beginners can start with the foundations while experienced players continue into more advanced stages.'],
+    ['What is T.E.A.M.U.P.?', 'T.E.A.M.U.P. is the programme layer covering Technology, Enterprise, Art, Mentorship and Upskill activities before the championship finale.'],
+    ['How is progress tracked?', 'Progress is tracked through attendance, milestones, badges, certificates, reports and parent-visible development records.'],
+    ['What is the Development Passport?', 'It is a structured record of each participant\'s activities, achievements, badges, leadership moments, projects and certificates.'],
+    ['Can parents monitor progress?', 'Yes. Parent access is included so families can follow attendance, achievements, milestones and certificates.'],
+    ['What happens after registration?', 'The team confirms your child\'s details, shares next steps and begins the participant profile for the development journey.'],
+    ['How do I register?', 'Use any Register Child button on this page. Registration is always one click away from the homepage.']
+  ];
+
+  function closeMenu() {
+    menuOpen = false;
+  }
 </script>
 
 <svelte:head>
-  <title>BEEE Spectacular Chess Championship — Every Move Builds a Future</title>
-  <meta name="description" content="The BEEE T.E.A.M.U.P. youth development journey culminates in the Spectacular Chess Championship. Register your child for an elite program blending chess, technology, enterprise, art, mentorship, upskilling, and personal growth." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BEEE Spectacular Chess Championship Abuja 2026</title>
+  <meta
+    name="description"
+    content="Register your child for the BEEE T.E.A.M.U.P. developmental journey culminating in the Spectacular Chess Championship Abuja 2026."
+  />
 </svelte:head>
 
-<!-- ════════════════════════════════════
-     S1: STICKY HEADER
-     ════════════════════════════════════ -->
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand-lockup">
-      <span class="spike-mark" style="color: var(--primary)"></span>
-      <span class="brand-name">BEEE</span>
-    </div>
-    <nav class="header-nav">
-      <a href="#teamp">TEAMUP</a>
+<div class="beee-page">
+  <header class="beee-nav">
+    <a class="brand" href="#top" on:click={closeMenu} aria-label="BEEE homepage">
+      <img src="/logo.svg" alt="" />
+      <span>BEEE</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#why">About</a>
+      <a href="#teamup">T.E.A.M.U.P.</a>
       <a href="#journey">Journey</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="/register" class="button-primary header-cta cta-entrance">Register Now</a>
-  </div>
-</header>
 
-<!-- ════════════════════════════════════
-     S2: HERO (sticky)
-     ════════════════════════════════════ -->
-<div class="sticky-section hero-scroll" style="height: 300vh">
-  <div class="sticky-inner">
-    <section class="hero-band hero-section">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow" style="margin-bottom: 20px">BEEE Spectacular Chess Championship 2026</p>
-          <h1 class="display-xl hero-title" style="max-width: 680px; margin: 0">
-            Every Move<br>Builds a Future
-          </h1>
-          <p class="lead hero-subtitle" style="max-width: 520px">
-            Where the T.E.A.M.U.P. journey meets the board — a youth development programme 
-            that transforms children through chess, technology, enterprise, art, mentorship, 
-            upskilling, and personal development.
-          </p>
-          <div class="hero-actions">
-            <a href="/register" class="button-primary cta-entrance">Start the Journey</a>
-            <a href="#about" class="button-secondary">Explore the Programme</a>
-          </div>
-          <p class="hero-scroll-hint" style="margin-top: 48px; color: var(--muted); font-size: 13px; font-weight: 500">
-            ↓ Scroll to discover
-          </p>
-        </div>
-        <div class="hero-artifact">
-          <div class="artifact-stage">
-            <div class="artifact-topline">
-              <span>Development Passport</span>
-              <span class="status-dot"></span>
-            </div>
-            <div class="surreal-board">
-              <div class="board-plane"></div>
-              <div class="logo-gate">
-                <img src="/logo.svg" alt="BEEE" />
-              </div>
-              <div class="floating-rank">♚</div>
-              <div class="floating-rank">♛</div>
-            </div>
-            <div class="artifact-footer">
-              <span>T.E.A.M.U.P. → Championship</span>
-              <span>2026 Edition</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════
-     S3: TRUST BAR
-     ════════════════════════════════════ -->
-<section class="trust-bar section-band section-soft">
-  <div class="container">
-    <div class="trust-grid">
-      <div class="trust-stat"><strong data-count="500">0</strong><span>Young Champions</span></div>
-      <div class="trust-stat"><strong data-count="50">0</strong><span>Partner Schools</span></div>
-      <div class="trust-stat"><strong data-count="6">0</strong><span>Pillar Programme</span></div>
-      <div class="trust-stat"><strong data-count="2026">0</strong><span>Edition</span></div>
+    <div class="nav-actions">
+      <a class="nav-register" href="/register">Register</a>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded={menuOpen} on:click={() => (menuOpen = !menuOpen)}>
+        {#if menuOpen}<X size={20} />{:else}<Menu size={20} />{/if}
+      </button>
     </div>
-  </div>
-</section>
 
-<!-- ════════════════════════════════════
-     S4: WHY BEEE EXISTS (sticky)
-     ════════════════════════════════════ -->
-<div class="sticky-section why-scroll" style="height: 200vh; background: var(--surface-soft)">
-  <div class="sticky-inner">
-    <section class="why-section" id="about">
-      <div class="container why-grid">
-        <div class="why-text appear-on-scroll">
-          <h2 class="display-lg" style="margin: 0 0 24px">Chess Alone<br>Isn't Enough</h2>
-          <p class="body-md" style="max-width: 480px; color: var(--body)">
-            A child who plays chess learns strategy. A child in the T.E.A.M.U.P. programme 
-            learns strategy, technology, enterprise, art, mentorship, upskilling, and personal 
-            development — then proves it all at the BEEE Spectacular Chess Championship.
-          </p>
-          <p class="body-md" style="max-width: 480px; color: var(--body); margin-top: 16px">
-            We don't just teach chess. We build future leaders.
-          </p>
-        </div>
-        <div class="why-visual appear-on-scroll">
-          <div class="path-illustration">
-            <div class="path-node" style="--node-color: var(--primary)">
-              <span class="path-label">Pawn</span>
-              <span class="path-desc">Beginner</span>
-            </div>
-            <div class="path-connector"></div>
-            <div class="path-node" style="--node-color: var(--accent-amber)">
-              <span class="path-label">Knight</span>
-              <span class="path-desc">Learner</span>
-            </div>
-            <div class="path-connector"></div>
-            <div class="path-node" style="--node-color: var(--accent-teal)">
-              <span class="path-label">Bishop</span>
-              <span class="path-desc">Strategist</span>
-            </div>
-            <div class="path-connector"></div>
-            <div class="path-node" style="--node-color: var(--primary)">
-              <span class="path-label">Queen</span>
-              <span class="path-desc">Champion</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
+    {#if menuOpen}
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#why" on:click={closeMenu}>About</a>
+        <a href="#teamup" on:click={closeMenu}>T.E.A.M.U.P.</a>
+        <a href="#journey" on:click={closeMenu}>Journey</a>
+        <a href="#faq" on:click={closeMenu}>FAQ</a>
+      </nav>
+    {/if}
+  </header>
 
-<!-- ════════════════════════════════════
-     S5: TEAMUP PILLARS
-     ════════════════════════════════════ -->
-<section class="section-band" id="teamp">
-  <div class="container appear-on-scroll">
-    <div class="section-header">
-      <div>
-        <h2 class="display-lg" style="margin: 0">T.E.A.M.U.P.</h2>
-        <p class="title-md" style="margin: 12px 0 0; color: var(--muted)">Six pillars. One journey. Unlimited potential.</p>
-      </div>
-      <p>Every pillar builds on the next, creating a complete youth development experience that transforms how children see themselves and their future.</p>
-    </div>
-    <div class="pillars-grid">
-      <div class="pillar-card" style="--card-color: var(--primary)">
-        <span class="pillar-icon">♚</span>
-        <h3 class="pillar-name">Technology</h3>
-        <p class="pillar-desc">The digital foundation — coding, digital literacy, and computational thinking for the modern world.</p>
-        <span class="pillar-tag">King</span>
-      </div>
-      <div class="pillar-card" style="--card-color: var(--accent-amber)">
-        <span class="pillar-icon">♛</span>
-        <h3 class="pillar-name">Enterprise</h3>
-        <p class="pillar-desc">Building futures — entrepreneurship, financial literacy, and leadership skills.</p>
-        <span class="pillar-tag">Queen</span>
-      </div>
-      <div class="pillar-card" style="--card-color: #8b5cf6">
-        <span class="pillar-icon">♝</span>
-        <h3 class="pillar-name">Art</h3>
-        <p class="pillar-desc">Creative thinking — visual arts, design, and creative expression through multiple media.</p>
-        <span class="pillar-tag">Bishop</span>
-      </div>
-      <div class="pillar-card" style="--card-color: #3b82f6">
-        <span class="pillar-icon">♞</span>
-        <h3 class="pillar-name">Mentorship</h3>
-        <p class="pillar-desc">Guided growth — one-on-one mentoring from professionals, coaches, and role models.</p>
-        <span class="pillar-tag">Knight</span>
-      </div>
-      <div class="pillar-card" style="--card-color: #5db8a6">
-        <span class="pillar-icon">♜</span>
-        <h3 class="pillar-name">Upskill</h3>
-        <p class="pillar-desc">Practical mastery — hands-on workshops, certifications, and real-world projects.</p>
-        <span class="pillar-tag">Rook</span>
-      </div>
-      <div class="pillar-card" style="--card-color: var(--primary)">
-        <span class="pillar-icon">♟</span>
-        <h3 class="pillar-name">Personal Dev.</h3>
-        <p class="pillar-desc">Character first — resilience, emotional intelligence, and self-confidence.</p>
-        <span class="pillar-tag">Pawn</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
-     S6: DEVELOPMENT PASSPORT (sticky)
-     ════════════════════════════════════ -->
-<div class="sticky-section section-dark passport-scroll" style="height: 300vh">
-  <div class="sticky-inner">
-    <section class="passport-section">
-      <div class="container passport-grid">
-        <div class="passport-steps">
-          <h2 class="display-lg" style="margin: 0; color: var(--on-dark)">The Development<br>Passport</h2>
-          <p class="body-md" style="color: var(--on-dark-soft); margin: 16px 0 40px; max-width: 400px">
-            Every skill earned. Every milestone reached. Every stamp collected. 
-            Your child's complete growth journey, visible at a glance.
-          </p>
-          <div class="passport-step passport-step-1">
-            <span class="step-number">01</span>
-            <div>
-              <strong>Discover</strong>
-              <p>Child identifies interests across all six pillars</p>
-            </div>
-          </div>
-          <div class="passport-step passport-step-2">
-            <span class="step-number">02</span>
-            <div>
-              <strong>Engage</strong>
-              <p>Active participation in pillar activities and workshops</p>
-            </div>
-          </div>
-          <div class="passport-step passport-step-3">
-            <span class="step-number">03</span>
-            <div>
-              <strong>Earn</strong>
-              <p>Badges, stamps, and certificates for each completed milestone</p>
-            </div>
-          </div>
-          <div class="passport-step passport-step-4">
-            <span class="step-number">04</span>
-            <div>
-              <strong>Champion</strong>
-              <p>Graduate to the BEEE Spectacular Chess Championship</p>
-            </div>
-          </div>
-        </div>
-        <div class="passport-visual">
-          <div class="passport-book">
-            <div class="passport-cover">
-              <span class="spike-mark" style="color: var(--primary)"></span>
-              <span>BEEE PASSPORT</span>
-            </div>
-            <div class="passport-badges">
-              <svg class="passport-badge passport-badge-1" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--primary)">
-                <path class="badge-ring-1" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">T</text>
-              </svg>
-              <svg class="passport-badge passport-badge-2" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--accent-amber)">
-                <path class="badge-ring-2" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">E</text>
-              </svg>
-              <svg class="passport-badge passport-badge-3" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #8b5cf6">
-                <path class="badge-ring-3" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="#8b5cf6" font-weight="700" font-size="18" font-family="var(--font-display)">A</text>
-              </svg>
-              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #3b82f6">
-                <path class="badge-ring-4" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="#3b82f6" font-weight="700" font-size="18" font-family="var(--font-display)">M</text>
-              </svg>
-              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: #5db8a6">
-                <path class="badge-ring-5" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="#5db8a6" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="#5db8a6" font-weight="700" font-size="18" font-family="var(--font-display)">U</text>
-              </svg>
-              <svg class="passport-badge" viewBox="0 0 48 48" width="48" height="48" style="--badge-color: var(--primary)">
-                <path class="badge-ring-6" d="M24 2A22 22 0 1 1 23.99 2" fill="none" stroke="var(--badge-color)" stroke-width="3" stroke-linecap="round"/>
-                <text x="24" y="25" text-anchor="middle" fill="var(--badge-color)" font-weight="700" font-size="18" font-family="var(--font-display)">P</text>
-              </svg>
-            </div>
-              <div class="passport-progress">
-                <div class="progress-bar"><div class="progress-fill"></div></div>
-                <span>Overall Progress</span>
-              </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════
-     S7: CHAMPIONSHIP JOURNEY TIMELINE (sticky)
-     ════════════════════════════════════ -->
-<div class="sticky-section section-soft timeline-scroll" style="height: 300vh">
-  <div class="sticky-inner">
-    <section class="timeline-section" id="journey">
-      <div class="container">
-        <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">From First Move to Championship</h2>
-        <div class="timeline-track"><div class="timeline-line"></div></div>
-        <div class="timeline-strip">
-          <div class="milestone milestone-1">
-            <span class="milestone-icon">♟</span>
-            <strong>Discovery</strong>
-            <p>Find your passion</p>
-          </div>
-          <div class="milestone milestone-2">
-            <span class="milestone-icon">♙</span>
-            <strong>Foundation</strong>
-            <p>Learn the basics</p>
-          </div>
-          <div class="milestone milestone-3">
-            <span class="milestone-icon">♞</span>
-            <strong>Practice</strong>
-            <p>Sharpen skills</p>
-          </div>
-          <div class="milestone milestone-4">
-            <span class="milestone-icon">♝</span>
-            <strong>Compete</strong>
-            <p>School qualifiers</p>
-          </div>
-          <div class="milestone milestone-5">
-            <span class="milestone-icon">♜</span>
-            <strong>Semi-Finals</strong>
-            <p>Regional face-off</p>
-          </div>
-          <div class="milestone milestone-6">
-            <span class="milestone-icon">♚</span>
-            <strong>Finals</strong>
-            <p>BEEE Spectacular</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════
-     S8: BENEFITS GRID
-     ════════════════════════════════════ -->
-<section class="section-band">
-  <div class="container appear-on-scroll">
-    <div class="section-header" style="margin-bottom: 48px">
-      <h2 class="display-lg" style="margin: 0">Skills That Last<br>a Lifetime</h2>
-      <p>Every child leaves the BEEE programme with more than chess skills — they gain the tools to thrive in school, career, and life.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card"><span class="benefit-icon">♚</span><h3>Strategic Thinking</h3><p>Problem-solving, planning, and foresight through advanced chess training.</p></div>
-      <div class="benefit-card"><span class="benefit-icon">♛</span><h3>Digital Literacy</h3><p>Coding, design, and technology skills for the 21st century.</p></div>
-      <div class="benefit-card"><span class="benefit-icon">♝</span><h3>Confidence</h3><p>Public speaking, presentation, and self-advocacy through mentorship.</p></div>
-      <div class="benefit-card"><span class="benefit-icon">♞</span><h3>Teamwork</h3><p>Collaboration, communication, and leadership in group projects.</p></div>
-      <div class="benefit-card"><span class="benefit-icon">♜</span><h3>Creativity</h3><p>Artistic expression, design thinking, and innovative problem-solving.</p></div>
-      <div class="benefit-card"><span class="benefit-icon">♟</span><h3>Discipline</h3><p>Focus, resilience, and personal responsibility through structured growth.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
-     S9: MYSTERY SECTION
-     ════════════════════════════════════ -->
-<section class="mystery-section section-band section-dark">
-  <div class="container" style="text-align: center">
-    <div class="mystery-blur" style="max-width: 600px; margin: 0 auto">
-      <span class="badge-coral" style="margin-bottom: 20px">Coming Soon</span>
-      <h2 class="display-lg" style="color: var(--on-dark); margin: 0 0 16px">What's Your<br>Next Move?</h2>
-      <p class="body-md" style="color: var(--on-dark-soft); max-width: 440px; margin: 0 auto">
-        Something extraordinary is coming. Something that blends chess, technology, and surprise.
-      </p>
-    </div>
-    <button class="button-secondary-dark" style="margin-top: 32px">Unlock the Secret</button>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
-     S10: PARENT SECTION
-     ════════════════════════════════════ -->
-<section class="parent-section section-band">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="display-lg" style="margin: 0">Built for Parents.<br>Designed for Children.</h2>
-      <p>Every decision we make starts with two questions: Is this good for the child? Is this clear for the parent?</p>
-    </div>
-    <div class="parent-grid">
-      <div class="parent-card feature-card">
-        <div class="parent-quote">"The transformation in my child's confidence since joining BEEE has been remarkable. She approaches every challenge with a strategic mindset now."</div>
-        <div class="parent-author">
-          <div class="author-avatar"></div>
-          <div><strong>Parent of Participant</strong><br><span style="color: var(--muted); font-size: 13px">BEEE TEAMUP 2025</span></div>
-        </div>
-      </div>
-      <div class="parent-card product-mockup-card-dark">
-        <h3 style="margin: 0 0 12px; color: var(--on-dark)">Your Child's Journey, Tracked</h3>
-        <p style="color: var(--on-dark-soft); font-size: 14px; line-height: 1.55; margin: 0">
-          The Development Passport gives you real-time visibility into every skill, badge, and milestone your child achieves.
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
+        <h1>Where Young Minds <span>Compete.</span> <span>Develop.</span> <span>Excel.</span></h1>
+        <p class="hero-lead">
+          More than a championship. A transformational journey in leadership, strategy, innovation and personal growth.
         </p>
+        <div class="cta-row">
+          <a class="primary-cta" href="/register">Register Child</a>
+          <a class="secondary-cta" href="#teamup">Explore T.E.A.M.U.P.</a>
+        </div>
+        <div class="hero-meta" aria-label="Event details">
+          <span><CalendarDays size={16} />October 2026 Grand Finale</span>
+          <span><MapPin size={16} />Abuja</span>
+          <span><CircleCheck size={16} />Open Registration</span>
+        </div>
+        <p class="mystery">Featuring a Grand Finale unlike any other school chess championship.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ════════════════════════════════════
-     S11: AWARDS & RECOGNITION
-     ════════════════════════════════════ -->
-<section class="section-band section-soft">
-  <div class="container appear-on-scroll">
-    <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">Recognised. Accredited. Trusted.</h2>
-    <div class="awards-track">
-      <div class="award-logo">School 1</div>
-      <div class="award-logo">School 2</div>
-      <div class="award-logo">School 3</div>
-      <div class="award-logo">School 4</div>
-      <div class="award-logo">School 5</div>
-      <div class="award-logo">School 6</div>
-      <div class="award-logo">School 7</div>
-      <div class="award-logo">School 8</div>
+      <div class="hero-visual reveal">
+        <div class="board-shell" aria-label="Animated chessboard preview">
+          <div class="board-glow"></div>
+          <div class="chessboard">
+            {#each Array(64) as _, index}
+              <span class:dark={(Math.floor(index / 8) + index) % 2 === 0}></span>
+            {/each}
+            <img class="piece piece-king" src="/pieces/gioco/wK.svg" alt="" />
+            <img class="piece piece-queen" src="/pieces/gioco/bQ.svg" alt="" />
+            <img class="piece piece-knight" src="/pieces/gioco/wN.svg" alt="" />
+            <img class="piece piece-rook" src="/pieces/gioco/bR.svg" alt="" />
+          </div>
+          <div class="board-caption">
+            <span>Development in progress</span>
+            <strong>Level 4</strong>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════
-     S12: FAQ
-     ════════════════════════════════════ -->
-<section class="section-band" id="faq">
-  <div class="container" style="max-width: 720px">
-    <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">Still Have Questions?</h2>
-    <div class="faq-list appear-on-scroll">
-      <div class="faq-item">
-        <button class="faq-question">What age group is this for? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>Ages 7-17. Our programme is divided into three tiers — Junior (7-10), Intermediate (11-13), and Senior (14-17) — each with age-appropriate curriculum and chess training.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Does my child need chess experience? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>Not at all. We welcome every level from complete beginner to experienced player. Our coaches assess each child and provide tailored instruction.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How much does it cost? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>We offer tiered pricing with scholarship options. Contact us for a detailed breakdown based on your child's tier and selected programme tracks.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What's the time commitment? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>2 hours per week for pillar activities plus the championship day. Flexible scheduling available for school groups.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How do I register my school? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>Contact our school coordinator through the registration form. We'll set up a custom programme for your institution.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What if my child can't attend all sessions? <span class="faq-arrow">↓</span></button>
-        <div class="faq-answer"><p>We have a flexible attendance policy. Missed sessions can be made up through our digital learning platform.</p></div>
-      </div>
+  <section class="trust-bar" aria-label="BEEE trust signals">
+    <div class="container trust-grid">
+      <div><BookOpenCheck size={24} /><strong>Development Programme</strong><span>Progress Tracking</span></div>
+      <div><FileBadge size={24} /><strong>Digital Passport</strong><span>Achievements & Badges</span></div>
+      <div><Handshake size={24} /><strong>Mentorship</strong><span>Leadership & Growth</span></div>
+      <div><Trophy size={24} /><strong>Championship</strong><span>Grand Finale</span></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════
-     S13: FINAL CTA
-     ════════════════════════════════════ -->
-<section class="cta-section section-band section-dark">
-  <div class="container" style="text-align: center">
-    <div class="final-cta">
-      <h2 class="display-md" style="color: var(--on-dark); margin: 0 0 12px">The Best Move Is the First One.</h2>
-      <p class="body-md" style="color: var(--on-dark-soft); margin: 0 auto 32px; max-width: 480px">
-        Register your child for the BEEE Spectacular Chess Championship 2026 and start their transformation today.
-      </p>
-      <a href="/register" class="button-primary cta-entrance" style="font-size: 16px; padding: 16px 32px">Register Your Child</a>
+  <section class="section light" id="why">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Why BEEE</p>
+        <h2>More Than A Tournament</h2>
+        <p>Most championships end with a trophy. This one begins with a journey.</p>
+      </div>
+      <div class="three-grid">
+        <article class="card reveal">
+          <Brain size={30} />
+          <h3>Chess Development</h3>
+          <p>Structured chess learning builds focus, pattern recognition, patience and decision quality before competition begins.</p>
+        </article>
+        <article class="card reveal">
+          <Users size={30} />
+          <h3>Leadership & Mentorship</h3>
+          <p>Participants are guided to communicate better, lead responsibly and treat excellence as a habit.</p>
+        </article>
+        <article class="card reveal">
+          <Lightbulb size={30} />
+          <h3>Innovation & Upskilling</h3>
+          <p>The journey connects strategy with technology, enterprise, creative thinking and practical projects.</p>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════
-     S14: FOOTER
-     ════════════════════════════════════ -->
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <span class="spike-mark" style="color: var(--on-dark); margin-bottom: 12px"></span>
-      <span style="display: block; margin-bottom: 8px; color: var(--on-dark)">BEEE</span>
-      <span style="font-size: 13px; color: var(--on-dark-soft)">Building Exceptional Experiences Through Education</span>
+  <section class="section journey-section" id="journey">
+    <div class="container">
+      <div class="section-heading align-left reveal">
+        <p class="section-kicker">Championship Journey</p>
+        <h2>A Roadmap To The Grand Finale</h2>
+        <p>Each step gives parents a clear view of what happens after registration.</p>
+      </div>
+      <div class="journey-map">
+        <div class="journey-line" aria-hidden="true"></div>
+        {#each journey as item}
+          <article class="journey-step reveal" tabindex="0">
+            <span>{item.code}</span>
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        {/each}
+      </div>
+      <div class="inline-cta reveal">
+        <p>Ready to begin the pathway?</p>
+        <a class="primary-cta" href="/register">Register Child</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <strong>Programme</strong>
-      <span>TEAMUP</span>
-      <span>Passport</span>
-      <span>Curriculum</span>
+  </section>
+
+  <section class="section teamup-section" id="teamup">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Programme Core</p>
+        <h2>The T.E.A.M.U.P. Experience</h2>
+      </div>
+      <div class="teamup-layout">
+        <div class="pentagon" aria-label="Interactive T.E.A.M.U.P. pentagon">
+          {#each teamup as item, index}
+            <button
+              class={`pentagon-node node-${index + 1}`}
+              type="button"
+              class:active={activeTeamup === item.name}
+              on:mouseenter={() => (activeTeamup = item.name)}
+              on:focus={() => (activeTeamup = item.name)}
+              on:click={() => (activeTeamup = item.name)}
+            >
+              {item.name}
+            </button>
+          {/each}
+          <div class="pentagon-lines"></div>
+        </div>
+        <article class="teamup-panel reveal">
+          {#each teamup as item}
+            {#if activeTeamup === item.name}
+              <p class="section-kicker">{item.name}</p>
+              <h3>{item.detail}</h3>
+              <div class="teamup-points">
+                {#each item.points as point}
+                  <span><Sparkles size={16} />{point}</span>
+                {/each}
+              </div>
+            {/if}
+          {/each}
+        </article>
+      </div>
     </div>
-    <div class="footer-col">
-      <strong>Event</strong>
-      <span>Schedule</span>
-      <span>Venues</span>
-      <span>Rules</span>
+  </section>
+
+  <section class="section passport-section" id="passport">
+    <div class="container passport-grid">
+      <div class="passport-mock reveal" aria-label="Development passport mockup">
+        <div class="passport-cover">
+          <img src="/logo.svg" alt="" />
+          <span>T.E.A.M.U.P.</span>
+          <strong>Development Passport</strong>
+        </div>
+        <div class="stamp-grid">
+          {#each ['Attendance', 'Achievements', 'Badges', 'Leadership', 'Projects', 'Mentorship', 'Certificates', 'Milestones'] as stamp}
+            <span>{stamp}</span>
+          {/each}
+        </div>
+      </div>
+      <div class="passport-copy reveal">
+        <p class="section-kicker">Development Passport</p>
+        <h2>Every participant receives a T.E.A.M.U.P. Development Passport.</h2>
+        <p>
+          The passport makes growth visible. Parents can see attendance, achievements, badges, leadership activities, projects,
+          mentorship records, certificates and milestones in one structured record.
+        </p>
+        <span class="access-badge"><ShieldCheck size={17} />Parent Access Included</span>
+        <a class="primary-cta" href="/register">Register Child</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <strong>Company</strong>
-      <span>About</span>
-      <span>Blog</span>
-      <span>Contact</span>
+  </section>
+
+  <section class="section benefits-section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Benefits</p>
+        <h2>Growth Parents Can Recognise</h2>
+      </div>
+      <div class="benefit-grid">
+        {#each benefits as benefit}
+          <article class="benefit-card reveal">
+            <BadgeCheck size={24} />
+            <h3>{benefit[0]}</h3>
+            <p>{benefit[1]}</p>
+          </article>
+        {/each}
+      </div>
     </div>
-    <div class="footer-col">
-      <strong>Legal</strong>
-      <span>Privacy</span>
-      <span>Terms</span>
+  </section>
+
+  <section class="section tracking-section">
+    <div class="container tracking-grid">
+      <div class="section-heading align-left reveal">
+        <p class="section-kicker">Progress Tracking</p>
+        <h2>Track Growth Beyond The Chessboard</h2>
+        <p>Parents see a development record, not just a match result.</p>
+      </div>
+      <div class="dashboard reveal">
+        <div class="dashboard-top">
+          <span>Participant Dashboard</span>
+          <strong>Level 4: Innovator</strong>
+        </div>
+        <div class="progress-row">
+          <span>72% Progress</span>
+          <div><i></i></div>
+        </div>
+        <div class="badge-row">
+          <span>Leadership Star</span>
+          <span>Creative Explorer</span>
+          <span>Technology Explorer</span>
+        </div>
+        <div class="xp-card">XP: <strong>3,450</strong></div>
+        <div class="tracking-tabs">
+          <span>Milestones</span><span>Badges</span><span>Certificates</span><span>Reports</span><span>Parent Access</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="container" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--surface-dark-elevated)">
-    <p style="color: var(--on-dark-soft); font-size: 13px; margin: 0">&copy; 2026 BEEE. All rights reserved.</p>
-  </div>
-</footer>
+  </section>
+
+  <section class="section parents-section">
+    <div class="container parents-grid">
+      <div class="parent-dashboard reveal">
+        <div class="phone-shell">
+          <div class="phone-header">Parent View</div>
+          <div class="phone-card"><span>Attendance</span><strong>9/10</strong></div>
+          <div class="phone-card"><span>Latest badge</span><strong>Leadership Star</strong></div>
+          <div class="phone-card"><span>Certificate</span><strong>Ready</strong></div>
+        </div>
+      </div>
+      <div class="parents-copy reveal">
+        <p class="section-kicker">For Parents</p>
+        <h2>See Your Child's Growth In Real Time</h2>
+        <ul>
+          <li>Monitor progress</li>
+          <li>View achievements</li>
+          <li>Track attendance</li>
+          <li>Celebrate milestones</li>
+          <li>Access certificates</li>
+          <li>Support development</li>
+        </ul>
+        <div class="cta-row">
+          <a class="secondary-cta dark-text" href="#passport">View Sample Passport</a>
+          <a class="primary-cta" href="/register">Register Child</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section awards-section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Awards & Recognition</p>
+        <h2>Recognition For Development And Excellence</h2>
+        <p>Awards celebrate effort, leadership, innovation and progress. They do not replace the journey.</p>
+      </div>
+      <div class="awards-grid">
+        {#each awards as award, index}
+          <article class="award-card reveal">
+            {#if index === 0}<Trophy size={24} />{:else if index < 3}<Medal size={24} />{:else if index < 5}<Award size={24} />{:else}<Crown size={24} />{/if}
+            <span>{award}</span>
+          </article>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="faq">
+    <div class="container faq-container">
+      <div class="section-heading reveal">
+        <p class="section-kicker">FAQ</p>
+        <h2>Questions Parents Ask First</h2>
+      </div>
+      <div class="faq-list">
+        {#each faqs as faq, index}
+          <article class="faq-item">
+            <button type="button" on:click={() => (openFaq = openFaq === index ? -1 : index)}>
+              <span>{faq[0]}</span>
+              <ChevronDown size={20} class:rotated={openFaq === index} />
+            </button>
+            {#if openFaq === index}
+              <p>{faq[1]}</p>
+            {/if}
+          </article>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta-section">
+    <div class="container final-cta-card reveal">
+      <GraduationCap size={36} />
+      <h2>Every Great Journey Begins With A Move</h2>
+      <p>Register today and give your child the opportunity to learn, compete, develop and excel.</p>
+      <div class="cta-row center">
+        <a class="primary-cta" href="/register">Register Now</a>
+        <a class="secondary-cta" href="#passport">Download Prospectus</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="/logo.svg" alt="BEEE" />
+        <p>Premium youth development culminating in a championship.</p>
+      </div>
+      <nav aria-label="Footer championship links"><strong>Championship</strong><a href="#journey">Journey</a><a href="/register">Register</a></nav>
+      <nav aria-label="Footer TEAMUP links"><strong>TEAMUP</strong><a href="#teamup">Experience</a><a href="#passport">Passport</a></nav>
+      <nav aria-label="Footer parent links"><strong>Parents</strong><a href="#passport">Progress</a><a href="#faq">FAQ</a></nav>
+      <nav aria-label="Footer resources links"><strong>Resources</strong><a href="#why">About</a><a href="#passport">Prospectus</a></nav>
+      <nav aria-label="Footer contact links"><strong>Contact</strong><a href="/register">Registration Desk</a><a href="#top">Back to top</a></nav>
+    </div>
+    <div class="container copyright">© BEEE Spectacular Chess Championship Abuja 2026</div>
+  </footer>
+</div>
 
 <style>
-  /* ══════════════════════════════════
-     LAYOUT & CONTAINER
-     ══════════════════════════════════ */
+  :global(html) {
+    scroll-padding-top: 72px;
+  }
+
+  .beee-page {
+    --bg: #070807;
+    --bg-soft: #0e1110;
+    --panel: rgba(255, 255, 255, 0.07);
+    --panel-strong: rgba(255, 255, 255, 0.11);
+    --line: rgba(255, 255, 255, 0.14);
+    --text: #f7f3ea;
+    --muted-dark: #b8b1a4;
+    --gold: #f5b84b;
+    --gold-dark: #b98221;
+    --green: #58c69f;
+    --blue: #5ba7ff;
+    --ink-dark: #171614;
+    --cream: #f4efe6;
+    --cream-2: #e9dfd1;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-registration), Inter, system-ui, sans-serif;
+  }
+
   .container {
-    width: min(1200px, calc(100% - 48px));
+    width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
   }
 
-  /* ══════════════════════════════════
-     S1: STICKY HEADER
-     ══════════════════════════════════ */
-  .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 40;
-    height: 64px;
-    background: rgba(250, 249, 245, 0.92);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--hairline-soft);
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .brand-lockup {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .brand-name {
-    font-family: var(--font-championship);
-    letter-spacing: -0.02em;
-  }
-  .header-nav {
-    display: flex;
-    gap: 22px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .header-nav a:hover {
-    color: var(--primary);
-  }
-  @media (max-width: 767px) {
-    .header-nav {
-      display: none;
-    }
-    .header-cta {
-      font-size: 13px;
-      padding: 8px 14px;
-      min-height: 34px;
-    }
-  }
-
-  /* ══════════════════════════════════
-     STICKY CHAPTER SYSTEM
-     ══════════════════════════════════ */
-  .sticky-section {
-    position: relative;
-    width: 100%;
-  }
-  .sticky-inner {
+  .beee-nav {
     position: sticky;
     top: 0;
-    height: 100vh;
+    z-index: 100;
+    display: flex;
+    height: 72px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 8, 7, 0.84);
+    padding: 0 max(20px, calc((100vw - 1180px) / 2));
+    backdrop-filter: blur(18px);
+  }
+
+  .brand,
+  .desktop-nav,
+  .nav-actions,
+  .hero-meta,
+  .cta-row {
     display: flex;
     align-items: center;
   }
-  .sticky-inner > section {
-    width: 100%;
-  }
-  :global(html:not(.supports-scroll-animation)) .sticky-section {
-    height: auto !important;
-  }
-  :global(html:not(.supports-scroll-animation)) .sticky-inner {
-    position: static;
-    height: auto;
-  }
-  @media (max-width: 1023px) {
-    .sticky-inner {
-      align-items: flex-start;
-    }
+
+  .brand {
+    gap: 10px;
+    font-weight: 800;
+    color: var(--text);
   }
 
-  /* ══════════════════════════════════
-     S2: HERO
-     ══════════════════════════════════ */
-  .hero-section {
-    padding: 88px 0 72px;
-    background: var(--canvas);
+  .brand img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
   }
-  @media (max-width: 767px) {
-    .hero-section {
-      padding: 80px 0 48px;
-    }
+
+  .desktop-nav {
+    gap: 26px;
+    color: var(--muted-dark);
+    font-size: 14px;
+    font-weight: 600;
   }
-  .hero-grid {
+
+  .desktop-nav a:hover,
+  .footer a:hover {
+    color: var(--gold);
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .nav-register,
+  .primary-cta,
+  .secondary-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 800;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+
+  .nav-register,
+  .primary-cta {
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, var(--gold), #df8f1f);
+    color: #130f08;
+    box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+  }
+
+  .secondary-cta {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+  }
+
+  .dark-text {
+    border-color: rgba(23, 22, 20, 0.16);
+    background: #fff;
+    color: var(--ink-dark);
+  }
+
+  .nav-register:hover,
+  .primary-cta:hover,
+  .secondary-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .menu-button {
+    display: none;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 72px;
+    right: 20px;
+    left: 20px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.88fr);
+    gap: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(11, 13, 12, 0.96);
+    padding: 14px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .mobile-nav a {
+    border-radius: 8px;
+    padding: 14px;
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    overflow: hidden;
+    padding: 96px 0 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(7, 8, 7, 0.98) 0%, rgba(7, 8, 7, 0.86) 45%, rgba(7, 8, 7, 0.62) 100%),
+      radial-gradient(circle at 76% 22%, rgba(245, 184, 75, 0.24), transparent 24%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.06) 25%, transparent 25%) 0 0 / 72px 72px,
+      linear-gradient(315deg, rgba(255, 255, 255, 0.045) 25%, transparent 25%) 0 0 / 72px 72px,
+      #070807;
+  }
+
+  .hero-bg::after {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.64));
+    content: '';
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
     gap: 56px;
     align-items: center;
   }
-  @media (max-width: 1023px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
+
+  .eyebrow,
+  .section-kicker {
+    display: inline-flex;
+    width: fit-content;
+    margin: 0;
+    border: 1px solid rgba(245, 184, 75, 0.28);
+    border-radius: 999px;
+    background: rgba(245, 184, 75, 0.09);
+    color: var(--gold);
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
-  .hero-actions {
-    display: flex;
+
+  .hero h1,
+  .section-heading h2,
+  .passport-copy h2,
+  .parents-copy h2,
+  .final-cta-card h2 {
+    margin: 16px 0 0;
+    color: var(--text);
+    font-family: var(--font-championship), var(--font-registration), sans-serif;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .hero h1 {
+    max-width: 760px;
+    font-size: clamp(3.1rem, 7vw, 6.8rem);
+    line-height: 0.98;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero-lead {
+    max-width: 610px;
+    margin: 28px 0 0;
+    color: #ded7ca;
+    font-size: clamp(1.05rem, 2vw, 1.32rem);
+    line-height: 1.6;
+  }
+
+  .cta-row {
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 32px;
-  }
-  .hero-scroll-hint {
-    margin-top: 48px;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 500;
+    margin-top: 30px;
   }
 
-  /* ══════════════════════════════════
-     S3: TRUST BAR
-     ══════════════════════════════════ */
-  .trust-bar {
-    padding: 40px 0;
-  }
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 767px) {
-    .trust-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-  }
-  .trust-stat {
-    text-align: center;
-  }
-  .trust-stat strong {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 1;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  @media (max-width: 767px) {
-    .trust-stat strong {
-      font-size: 32px;
-    }
-  }
-  .trust-stat span {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
+  .center {
+    justify-content: center;
   }
 
-  /* ══════════════════════════════════
-     S4: WHY BEEE
-     ══════════════════════════════════ */
-  .why-section {
-    padding: 96px 0;
-    background: var(--surface-soft);
-  }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  @media (max-width: 767px) {
-    .why-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-  }
-  .path-illustration {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 32px;
-    background: var(--canvas);
-    border-radius: 16px;
-  }
-  .path-node {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    border-left: 3px solid var(--node-color);
-    background: var(--surface-soft);
-    border-radius: 0 8px 8px 0;
-  }
-  .path-label {
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--ink);
-  }
-  .path-desc {
-    margin-left: auto;
-    font-size: 13px;
-    color: var(--muted);
-  }
-  .path-connector {
-    width: 2px;
-    height: 24px;
-    margin-left: 16px;
-    background: var(--hairline);
-  }
-
-  /* ══════════════════════════════════
-     S5: TEAMUP PILLARS
-     ══════════════════════════════════ */
-  .section-header {
-    display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.44fr);
-    gap: 40px;
-    align-items: end;
-    margin-bottom: 32px;
-  }
-  @media (max-width: 767px) {
-    .section-header {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-  }
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  @media (max-width: 767px) {
-    .pillars-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .pillars-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  .pillar-card {
-    position: relative;
-    padding: 28px;
-    border-radius: 12px;
-    background: var(--surface-card);
-    border-top: 3px solid var(--card-color);
-    transition: transform 300ms cubic-bezier(.34,1.56,.64,1), box-shadow 300ms ease;
-  }
-  .pillar-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.1);
-  }
-  .pillar-card:hover .pillar-name {
-    color: var(--card-color);
-  }
-  .pillar-icon {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 16px;
-  }
-  .pillar-name {
-    margin: 0 0 8px;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .pillar-desc {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--body);
-  }
-  .pillar-tag {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: var(--card-color);
-    color: white;
-  }
-
-  /* ══════════════════════════════════
-     S6: DEVELOPMENT PASSPORT
-     ══════════════════════════════════ */
-  .passport-section {
-    padding: 96px 0;
-  }
-  .passport-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  @media (max-width: 767px) {
-    .passport-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .passport-steps {
-    position: relative;
-    z-index: 2;
-  }
-  .passport-step {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(250, 249, 245, 0.1);
-  }
-  .progress-fill {
-    width: 100%;
-  }
-  .passport-step strong {
-    display: block;
-    color: var(--on-dark);
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  .passport-step p {
-    margin: 0;
-    color: var(--on-dark-soft);
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .step-number {
-    font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--primary);
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .passport-visual {
-    position: sticky;
-    top: 96px;
-  }
-  .passport-book {
-    background: var(--surface-dark-elevated);
-    border-radius: 16px;
-    padding: 32px;
-    border: 1px solid rgba(250, 249, 245, 0.1);
-  }
-  .passport-cover {
-    display: flex;
-    align-items: center;
+  .hero-meta {
+    flex-wrap: wrap;
     gap: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--on-dark);
-    margin-bottom: 24px;
-  }
-  .passport-badges {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .passport-badge {
-    width: 100%;
-    height: auto;
-    max-height: 56px;
-  }
-  .passport-badge text {
-    opacity: 1;
-  }
-  .passport-progress {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .progress-bar {
-    flex: 1;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(250, 249, 245, 0.1);
-  }
-  .progress-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: var(--primary);
-  }
-  .passport-progress span {
-    font-size: 13px;
-    color: var(--on-dark-soft);
-    flex-shrink: 0;
+    margin-top: 30px;
   }
 
-  /* ══════════════════════════════════
-     S7: TIMELINE
-     ══════════════════════════════════ */
-  .timeline-section {
-    padding: 96px 0;
+  .hero-meta span,
+  .access-badge,
+  .teamup-points span,
+  .badge-row span,
+  .tracking-tabs span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--muted-dark);
+    padding: 8px 11px;
+    font-size: 13px;
+    font-weight: 700;
   }
-  .timeline-track {
+
+  .mystery {
+    max-width: 490px;
+    margin: 22px 0 0;
+    color: rgba(245, 184, 75, 0.78);
+    font-size: 14px;
+  }
+
+  .board-shell {
     position: relative;
-    height: 4px;
-    background: var(--hairline);
-    border-radius: 2px;
-    margin: 0 110px 48px;
-  }
-  .timeline-line {
-    height: 100%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--accent-amber));
-  }
-  .timeline-strip {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 16px;
-    scroll-snap-type: x mandatory;
-  }
-  .milestone {
-    flex: 0 0 220px;
-    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px;
-    background: var(--canvas);
-    scroll-snap-align: start;
-    text-align: center;
-    transition: transform 300ms ease, box-shadow 300ms ease;
-  }
-  .milestone:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 20px rgba(242, 120, 48, 0.15);
-  }
-  .milestone-icon {
-    font-size: 36px;
-    display: block;
-    margin-bottom: 12px;
-    transition: transform 300ms ease;
-  }
-  .milestone:hover .milestone-icon {
-    transform: scale(1.15);
-  }
-  .milestone strong {
-    display: block;
-    font-size: 16px;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .milestone p {
-    margin: 0;
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* ══════════════════════════════════
-     S8: BENEFITS GRID
-     ══════════════════════════════════ */
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  @media (max-width: 767px) {
-    .benefits-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .benefits-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  .benefit-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
     padding: 28px;
-    border-radius: 12px;
-    background: var(--surface-card);
-  }
-  .benefit-card .benefit-icon {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 12px;
-  }
-  .benefit-card h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .benefit-card p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--body);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.48);
   }
 
-  /* ══════════════════════════════════
-     S9: MYSTERY
-     ══════════════════════════════════ */
-  .mystery-section {
-    padding: 96px 0;
-  }
-  .mystery-blur {
-    filter: blur(4px);
-    transition: filter 600ms ease;
-  }
-
-  /* ══════════════════════════════════
-     S10: PARENT SECTION
-     ══════════════════════════════════ */
-  .parent-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 767px) {
-    .parent-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .parent-card {
-    padding: 32px;
-    border-radius: 12px;
-  }
-  .parent-quote {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--body);
-    font-style: italic;
-    margin-bottom: 24px;
-  }
-  .parent-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .author-avatar {
-    width: 40px;
-    height: 40px;
+  .board-glow {
+    position: absolute;
+    inset: 12%;
     border-radius: 999px;
-    background: var(--surface-cream-strong);
+    background: rgba(245, 184, 75, 0.18);
+    filter: blur(40px);
   }
 
-  /* ══════════════════════════════════
-     S11: AWARDS MARQUEE
-     ══════════════════════════════════ */
-  @keyframes marquee { from { translate: 0; } to { translate: -50%; } }
-
-  .awards-track {
-    display: flex;
-    gap: 24px;
+  .chessboard {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    aspect-ratio: 1;
     overflow: hidden;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
-  }
-  .award-logo {
-    flex: 0 0 auto;
-    padding: 16px 32px;
-    background: var(--canvas);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--muted);
-    border: 1px solid var(--hairline);
+    transform: perspective(950px) rotateX(54deg) rotateZ(-34deg);
   }
 
-  /* ══════════════════════════════════
-     S12: FAQ
-     ══════════════════════════════════ */
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .chessboard span {
+    background: rgba(245, 239, 230, 0.12);
   }
-  .faq-item {
-    border: 1px solid var(--hairline);
-    border-radius: 12px;
-    overflow: hidden;
+
+  .chessboard span.dark {
+    background: rgba(245, 184, 75, 0.22);
   }
-  .faq-question {
+
+  .piece {
+    position: absolute;
+    width: 12%;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.48));
+    animation: piece-drift 7s ease-in-out infinite;
+  }
+
+  .piece-king { top: 13%; left: 18%; }
+  .piece-queen { top: 26%; right: 24%; animation-delay: -1.4s; }
+  .piece-knight { bottom: 18%; left: 36%; animation-delay: -2.8s; }
+  .piece-rook { bottom: 26%; right: 12%; animation-delay: -4.2s; }
+
+  .board-caption {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 20px 24px;
-    background: var(--canvas);
-    border: none;
+    margin-top: 20px;
+    color: var(--muted-dark);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .board-caption strong {
+    color: var(--gold);
+  }
+
+  .trust-bar {
+    background: #fff;
+    color: var(--ink-dark);
+    padding: 28px 0;
+  }
+
+  .trust-grid,
+  .three-grid,
+  .benefit-grid,
+  .awards-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .trust-grid div {
+    display: grid;
+    gap: 7px;
+    min-height: 116px;
+    border-right: 1px solid #e6ded0;
+    align-content: center;
+    padding: 6px 22px;
+  }
+
+  .trust-grid div:last-child {
+    border-right: 0;
+  }
+
+  .trust-grid svg {
+    color: var(--gold-dark);
+  }
+
+  .trust-grid strong {
+    color: var(--ink-dark);
     font-size: 16px;
-    font-weight: 500;
-    color: var(--ink);
-    text-align: left;
-    cursor: pointer;
   }
-  .faq-question:hover {
-    background: var(--surface-soft);
-  }
-  .faq-arrow {
-    transition: transform 200ms ease;
+
+  .trust-grid span {
+    color: #655d50;
     font-size: 14px;
-    color: var(--muted);
   }
-  :global(.faq-item.is-open) .faq-arrow {
+
+  .section {
+    padding: 104px 0;
+  }
+
+  .light,
+  .parents-section,
+  .awards-section,
+  .faq-section {
+    background: var(--cream);
+    color: var(--ink-dark);
+  }
+
+  .journey-section,
+  .benefits-section,
+  .tracking-section {
+    background: #0b0d0c;
+  }
+
+  .teamup-section,
+  .passport-section {
+    background:
+      radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
+      radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%),
+      #070807;
+  }
+
+  .section-heading {
+    max-width: 760px;
+    margin: 0 auto 44px;
+    text-align: center;
+  }
+
+  .align-left {
+    margin-inline: 0;
+    text-align: left;
+  }
+
+  .light .section-heading h2,
+  .parents-copy h2,
+  .awards-section .section-heading h2,
+  .faq-section .section-heading h2 {
+    color: var(--ink-dark);
+  }
+
+  .section-heading h2,
+  .passport-copy h2,
+  .parents-copy h2 {
+    font-size: clamp(2.1rem, 5vw, 4.4rem);
+    line-height: 1.04;
+  }
+
+  .section-heading p:not(.section-kicker),
+  .passport-copy p,
+  .parents-copy p {
+    max-width: 650px;
+    margin: 18px auto 0;
+    color: #6b6257;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .journey-section .section-heading p:not(.section-kicker),
+  .teamup-section .section-heading p:not(.section-kicker),
+  .tracking-section .section-heading p:not(.section-kicker),
+  .passport-copy p {
+    color: var(--muted-dark);
+  }
+
+  .three-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card,
+  .benefit-card,
+  .award-card,
+  .journey-step,
+  .teamup-panel,
+  .dashboard,
+  .passport-mock,
+  .parent-dashboard,
+  .faq-item {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: var(--panel);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  }
+
+  .light .card,
+  .award-card,
+  .faq-item {
+    border-color: #ded3c3;
+    background: #fff;
+    box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06);
+  }
+
+  .card {
+    min-height: 280px;
+    padding: 30px;
+  }
+
+  .card svg,
+  .benefit-card svg,
+  .award-card svg {
+    color: var(--gold-dark);
+  }
+
+  .card h3,
+  .benefit-card h3,
+  .journey-step h3 {
+    margin: 22px 0 10px;
+    color: inherit;
+    font-size: 22px;
+  }
+
+  .card p,
+  .benefit-card p,
+  .journey-step p,
+  .faq-item p {
+    margin: 0;
+    color: #6b6257;
+    line-height: 1.6;
+  }
+
+  .journey-map {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(190px, 1fr));
+    gap: 16px;
+    overflow-x: auto;
+    padding: 34px 0 18px;
+  }
+
+  .journey-line {
+    position: absolute;
+    top: 58px;
+    left: 8%;
+    width: 84%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--green));
+    transform-origin: left;
+    animation: line-grow linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 55%;
+  }
+
+  .journey-step {
+    position: relative;
+    min-width: 190px;
+    padding: 26px 22px;
+    color: var(--text);
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .journey-step:hover,
+  .journey-step:focus {
+    background: var(--panel-strong);
+    transform: translateY(-5px);
+  }
+
+  .journey-step span {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid rgba(245, 184, 75, 0.4);
+    border-radius: 999px;
+    background: #10120f;
+    color: var(--gold);
+    font-weight: 900;
+  }
+
+  .journey-step p,
+  .benefit-card p {
+    color: var(--muted-dark);
+  }
+
+  .inline-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 28px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+  }
+
+  .inline-cta p {
+    margin: 0;
+    color: var(--text);
+    font-weight: 800;
+  }
+
+  .teamup-layout,
+  .passport-grid,
+  .tracking-grid,
+  .parents-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr);
+    gap: 56px;
+    align-items: center;
+  }
+
+  .pentagon {
+    position: relative;
+    width: min(540px, 100%);
+    aspect-ratio: 1;
+    margin: 0 auto;
+  }
+
+  .pentagon-lines {
+    position: absolute;
+    inset: 18%;
+    clip-path: polygon(50% 0%, 98% 35%, 79% 92%, 21% 92%, 2% 35%);
+    border: 1px solid rgba(245, 184, 75, 0.28);
+    background: linear-gradient(145deg, rgba(245, 184, 75, 0.12), rgba(88, 198, 159, 0.07));
+  }
+
+  .pentagon-node {
+    position: absolute;
+    z-index: 2;
+    min-width: 132px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    padding: 12px 16px;
+    font-weight: 900;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  }
+
+  .pentagon-node.active,
+  .pentagon-node:hover,
+  .pentagon-node:focus {
+    border-color: rgba(245, 184, 75, 0.78);
+    background: rgba(245, 184, 75, 0.16);
+    transform: scale(1.08);
+  }
+
+  .node-1 { top: 0; left: 50%; transform: translateX(-50%); }
+  .node-2 { top: 33%; right: 0; }
+  .node-3 { right: 12%; bottom: 4%; }
+  .node-4 { bottom: 4%; left: 12%; }
+  .node-5 { top: 33%; left: 0; }
+
+  .node-1.active,
+  .node-1:hover,
+  .node-1:focus {
+    transform: translateX(-50%) scale(1.08);
+  }
+
+  .teamup-panel {
+    min-height: 330px;
+    padding: 34px;
+  }
+
+  .teamup-panel h3 {
+    margin: 20px 0;
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    line-height: 1.14;
+  }
+
+  .teamup-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .passport-mock {
+    min-height: 600px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #10130f, #21190d);
+    padding: 26px;
+  }
+
+  .passport-cover {
+    display: grid;
+    min-height: 250px;
+    align-content: end;
+    border: 1px solid rgba(245, 184, 75, 0.22);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(245, 184, 75, 0.16), transparent 45%),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 30px);
+    padding: 26px;
+  }
+
+  .passport-cover img {
+    width: 70px;
+    margin-bottom: 32px;
+  }
+
+  .passport-cover span {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+  }
+
+  .passport-cover strong {
+    margin-top: 8px;
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .stamp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .stamp-grid span {
+    border: 1px solid rgba(245, 184, 75, 0.24);
+    border-radius: 8px;
+    padding: 16px;
+    color: var(--muted-dark);
+    font-weight: 800;
+  }
+
+  .passport-copy .access-badge {
+    margin: 22px 0 24px;
+    color: var(--text);
+  }
+
+  .benefit-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .benefit-card {
+    padding: 26px;
+    color: var(--text);
+  }
+
+  .tracking-grid {
+    grid-template-columns: 0.8fr 1fr;
+  }
+
+  .dashboard {
+    padding: 28px;
+    color: var(--text);
+  }
+
+  .dashboard-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+  }
+
+  .dashboard-top span {
+    color: var(--muted-dark);
+  }
+
+  .dashboard-top strong {
+    color: var(--gold);
+  }
+
+  .progress-row {
+    margin-top: 24px;
+  }
+
+  .progress-row span {
+    font-weight: 900;
+  }
+
+  .progress-row div {
+    height: 12px;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .progress-row i {
+    display: block;
+    width: 72%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--gold), var(--green));
+  }
+
+  .badge-row,
+  .tracking-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .xp-card {
+    margin-top: 22px;
+    border-radius: 8px;
+    background: rgba(245, 184, 75, 0.12);
+    padding: 22px;
+    color: var(--gold);
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .parents-grid {
+    grid-template-columns: minmax(320px, 0.72fr) 1fr;
+  }
+
+  .parent-dashboard {
+    display: grid;
+    min-height: 520px;
+    place-items: center;
+    border-color: #ded3c3;
+    background: #fff;
+  }
+
+  .phone-shell {
+    width: min(310px, 88%);
+    border: 10px solid #171614;
+    border-radius: 32px;
+    background: #10120f;
+    padding: 18px;
+    color: var(--text);
+  }
+
+  .phone-header {
+    color: var(--gold);
+    font-weight: 900;
+    margin-bottom: 18px;
+  }
+
+  .phone-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    margin-top: 10px;
+  }
+
+  .phone-card span {
+    color: var(--muted-dark);
+  }
+
+  .parents-copy ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .parents-copy li {
+    border: 1px solid #ded3c3;
+    border-radius: 8px;
+    background: #fff;
+    padding: 14px 16px;
+    font-weight: 800;
+  }
+
+  .awards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .award-card {
+    display: flex;
+    min-height: 120px;
+    align-items: center;
+    gap: 14px;
+    padding: 22px;
+    color: var(--ink-dark);
+    font-weight: 900;
+  }
+
+  .faq-container {
+    max-width: 850px;
+  }
+
+  .faq-item {
+    overflow: hidden;
+    margin-top: 10px;
+    border-color: #ded3c3;
+    background: #fff;
+  }
+
+  .faq-item button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 20px 22px;
+    text-align: left;
+    font-weight: 900;
+  }
+
+  .faq-item p {
+    padding: 0 22px 22px;
+  }
+
+  .rotated {
     transform: rotate(180deg);
   }
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 24px;
-    background: var(--surface-soft);
-    transition: max-height 300ms cubic-bezier(.34,1.56,.64,1), opacity 300ms ease;
-    opacity: 0;
-  }
-  :global(.faq-item.is-open) .faq-answer {
-    max-height: 300px;
-    opacity: 1;
-  }
-  .faq-answer p {
-    margin: 0;
-    padding: 0 0 20px;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--body);
+
+  .final-cta-section {
+    background: #070807;
+    padding: 110px 0;
   }
 
-  /* ══════════════════════════════════
-     S13: CTA
-     ══════════════════════════════════ */
-  .cta-section {
-    padding: 96px 0;
+  .final-cta-card {
+    max-width: 900px;
+    text-align: center;
   }
 
-  /* ══════════════════════════════════
-     S14: FOOTER
-     ══════════════════════════════════ */
-  .site-footer {
-    background: var(--surface-dark);
-    padding: 64px 0 32px;
+  .final-cta-card svg {
+    color: var(--gold);
   }
+
+  .final-cta-card h2 {
+    font-size: clamp(2.2rem, 5vw, 5rem);
+    line-height: 1;
+  }
+
+  .final-cta-card p {
+    max-width: 620px;
+    margin: 20px auto 0;
+    color: var(--muted-dark);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .footer {
+    border-top: 1px solid var(--line);
+    background: #050605;
+    padding: 54px 0 28px;
+    color: var(--muted-dark);
+  }
+
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.4fr repeat(5, 1fr);
+    gap: 28px;
   }
-  @media (max-width: 767px) {
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .footer-brand {
-      grid-column: 1 / -1;
-    }
+
+  .footer img {
+    width: 54px;
   }
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+
+  .footer p {
+    max-width: 260px;
+    line-height: 1.5;
   }
-  .footer-col strong {
-    color: var(--on-dark);
+
+  .footer nav {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+  }
+
+  .footer strong {
+    color: var(--text);
+  }
+
+  .footer a {
+    color: var(--muted-dark);
     font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
-  }
-  .footer-col span {
-    display: block;
-    margin-top: 8px;
-    color: var(--on-dark-soft);
-    font-size: 14px;
-    cursor: default;
-    transition: color 200ms ease;
-  }
-  .footer-col span:hover {
-    color: var(--on-dark);
   }
 
-  /* ══════════════════════════════════
-     SCROLL-DRIVEN CSS ANIMATIONS
-     ══════════════════════════════════ */
-  @keyframes fade-up { from { opacity: 0; translate: 0 25px; } to { opacity: 1; translate: 0 0; } }
-  @keyframes fade-up-lg { from { opacity: 0; translate: 0 40px; } to { opacity: 1; translate: 0 0; } }
-  @keyframes fade-left { from { opacity: 0; translate: -30px 0; } to { opacity: 1; translate: 0 0; } }
-  @keyframes scale-in { from { opacity: 0; scale: 0; } to { opacity: 1; scale: 1; } }
-  @keyframes grow-x { from { width: 0%; } to { width: 100%; } }
-  @keyframes draw-ring { from { stroke-dashoffset: 138.23; } to { stroke-dashoffset: 0; } }
-  @keyframes blur-out { from { filter: blur(16px); } to { filter: blur(0px); } }
-  @keyframes hint-out { from { opacity: 1; } to { opacity: 0; } }
-
-  .badge-ring-1, .badge-ring-2, .badge-ring-3,
-  .badge-ring-4, .badge-ring-5, .badge-ring-6 {
-    stroke-dasharray: 138.23;
-    stroke-dashoffset: 0;
+  .copyright {
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    font-size: 13px;
   }
 
-  @supports (animation-timeline: scroll()) {
-    .hero-scroll { view-timeline-name: --hero; view-timeline-axis: block; }
-    .why-scroll { view-timeline-name: --appear; view-timeline-axis: block; }
-    .passport-scroll { view-timeline-name: --passport; view-timeline-axis: block; }
-    .timeline-scroll { view-timeline-name: --timeline; view-timeline-axis: block; }
-    .pillars-grid { view-timeline-name: --pillars; view-timeline-axis: block; }
-    .benefits-grid { view-timeline-name: --benefits; view-timeline-axis: block; }
-    .parent-section { view-timeline-name: --parents; view-timeline-axis: block; }
-    .cta-section { view-timeline-name: --cta; view-timeline-axis: block; }
-    .mystery-section { view-timeline-name: --mystery; view-timeline-axis: block; }
+  .reveal {
+    animation: fade-up both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
 
-    :global(.supports-scroll-animation) .passport-step,
-    :global(.supports-scroll-animation) .passport-cover,
-    :global(.supports-scroll-animation) .passport-progress,
-    :global(.supports-scroll-animation) .milestone,
-    :global(.supports-scroll-animation) .passport-badge text,
-    :global(.supports-scroll-animation) .appear-on-scroll > * {
+  @keyframes fade-up {
+    from {
       opacity: 0;
+      transform: translateY(26px);
     }
-    :global(.supports-scroll-animation) .progress-fill { width: 0%; }
-    :global(.supports-scroll-animation) .badge-ring-1,
-    :global(.supports-scroll-animation) .badge-ring-2,
-    :global(.supports-scroll-animation) .badge-ring-3,
-    :global(.supports-scroll-animation) .badge-ring-4,
-    :global(.supports-scroll-animation) .badge-ring-5,
-    :global(.supports-scroll-animation) .badge-ring-6 {
-      stroke-dashoffset: 138.23;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
-    .hero-title { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 25%; }
-    .hero-subtitle { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 15% cover 40%; }
-    .hero-actions { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 30% cover 55%; }
-    .hero-scroll-hint { animation: hint-out linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 15%; }
+  @keyframes line-grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 
-    .passport-cover { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 10%; }
-    .progress-fill { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 70%; }
-    .passport-step-1 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
-    .badge-ring-1 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 10% cover 25%; }
-    .passport-badge-1 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 15% cover 30%; }
-    .passport-step-2 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
-    .badge-ring-2 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 30% cover 45%; }
-    .passport-badge-2 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 35% cover 50%; }
-    .passport-step-3 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
-    .badge-ring-3 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 50% cover 65%; }
-    .passport-badge-3 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 55% cover 70%; }
-    .passport-step-4 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
-    .badge-ring-4 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 70% cover 85%; }
-    .badge-ring-5 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 75% cover 90%; }
-    .badge-ring-6 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 80% cover 95%; }
-    .passport-progress { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 85% cover 100%; }
-
-    .timeline-line { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: cover 0% cover 60%; }
-    .milestone-1 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 5% cover 25%; }
-    .milestone-2 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 20% cover 40%; }
-    .milestone-3 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 35% cover 55%; }
-    .milestone-4 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 50% cover 70%; }
-    .milestone-5 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 65% cover 85%; }
-    .milestone-6 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 80% cover 100%; }
-
-    .pillar-card { animation: fade-up-lg linear forwards; animation-timeline: --pillars; animation-range: entry 0% entry 100%; }
-    .benefit-card { animation: fade-up linear forwards; animation-timeline: --benefits; animation-range: entry 0% entry 100%; }
-    .parent-card { animation: fade-up linear forwards; animation-timeline: --parents; animation-range: entry 0% entry 100%; }
-    .final-cta { animation: fade-up linear forwards; animation-timeline: --cta; animation-range: entry 0% entry 100%; }
-    .mystery-blur { animation: blur-out linear forwards; animation-timeline: --mystery; animation-range: entry 0% entry 100%; }
-
-    .appear-on-scroll:not(.why-text):not(.why-visual) { view-timeline-name: --appear; view-timeline-axis: block; }
-    .appear-on-scroll > * {
-      opacity: 0;
-      animation: fade-up linear forwards;
-      animation-timeline: --appear;
-      animation-range: cover 0% cover 100%;
+  @keyframes piece-drift {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(8px, -10px, 0) scale(1.04);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-title, .hero-subtitle, .hero-actions, .hero-scroll-hint,
-    .passport-cover, .progress-fill, .passport-step, .badge-ring-1, .badge-ring-2,
-    .badge-ring-3, .badge-ring-4, .badge-ring-5, .badge-ring-6,
-    .passport-badge-1 text, .passport-badge-2 text, .passport-badge-3 text,
-    .passport-progress, .timeline-line, .milestone, .pillar-card,
-    .benefit-card, .parent-card, .final-cta, .mystery-blur,
-    .appear-on-scroll > * {
+    .reveal,
+    .journey-line,
+    .piece {
       animation: none !important;
-      opacity: 1 !important;
-      translate: none !important;
-      scale: none !important;
-      filter: none !important;
-      width: auto !important;
     }
-    .progress-fill { width: 100% !important; }
-    .badge-ring-1, .badge-ring-2, .badge-ring-3,
-    .badge-ring-4, .badge-ring-5, .badge-ring-6 {
-      stroke-dashoffset: 0 !important;
+  }
+
+  @media (max-width: 1023px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-button {
+      display: grid;
+    }
+
+    .hero-grid,
+    .teamup-layout,
+    .passport-grid,
+    .tracking-grid,
+    .parents-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-grid,
+    .three-grid,
+    .benefit-grid,
+    .awards-grid,
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid > div {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .beee-nav {
+      padding-inline: 14px;
+    }
+
+    .brand span {
+      display: none;
+    }
+
+    .nav-register {
+      min-height: 42px;
+      padding-inline: 14px;
+    }
+
+    .hero {
+      min-height: auto;
+      padding: 56px 0 64px;
+    }
+
+    .hero-grid {
+      gap: 34px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero-meta span {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .board-shell {
+      padding: 18px;
+    }
+
+    .trust-grid,
+    .three-grid,
+    .benefit-grid,
+    .awards-grid,
+    .footer-grid,
+    .parents-copy ul {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-grid div {
+      border-right: 0;
+      border-bottom: 1px solid #e6ded0;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .journey-map {
+      grid-template-columns: 1fr;
+      overflow: visible;
+    }
+
+    .journey-line {
+      display: none;
+    }
+
+    .inline-cta,
+    .dashboard-top {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .pentagon {
+      display: flex;
+      width: 100%;
+      aspect-ratio: auto;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .pentagon-lines {
+      display: none;
+    }
+
+    .pentagon-node {
+      position: static;
+      min-width: max-content;
+    }
+
+    .node-1,
+    .node-1.active,
+    .node-1:hover,
+    .node-1:focus {
+      transform: none;
+    }
+
+    .pentagon-node.active,
+    .pentagon-node:hover,
+    .pentagon-node:focus {
+      transform: none;
+    }
+
+    .passport-mock {
+      min-height: auto;
     }
   }
 </style>
