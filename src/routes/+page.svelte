@@ -5,6 +5,10 @@
   onMount(() => {
     if (typeof window === 'undefined') return;
 
+    if (window.CSS?.supports('animation-timeline: scroll()') && window.CSS.supports('animation-range: cover 0% cover 100%')) {
+      document.documentElement.classList.add('supports-scroll-animation');
+    }
+
     // ——— Trust bar counters (one-shot via IO) ———
     const trust_bar = document.querySelector('.trust-bar');
     if (trust_bar) {
@@ -81,7 +85,7 @@
 <!-- ════════════════════════════════════
      S2: HERO (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section" style="height: 300vh">
+<div class="sticky-section hero-scroll" style="height: 300vh">
   <div class="sticky-inner">
     <section class="hero-band hero-section">
       <div class="container hero-grid">
@@ -145,7 +149,7 @@
 <!-- ════════════════════════════════════
      S4: WHY BEEE EXISTS (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section" style="height: 200vh; background: var(--surface-soft)">
+<div class="sticky-section why-scroll" style="height: 200vh; background: var(--surface-soft)">
   <div class="sticky-inner">
     <section class="why-section" id="about">
       <div class="container why-grid">
@@ -160,7 +164,7 @@
             We don't just teach chess. We build future leaders.
           </p>
         </div>
-        <div class="why-visual">
+        <div class="why-visual appear-on-scroll">
           <div class="path-illustration">
             <div class="path-node" style="--node-color: var(--primary)">
               <span class="path-label">Pawn</span>
@@ -244,7 +248,7 @@
 <!-- ════════════════════════════════════
      S6: DEVELOPMENT PASSPORT (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section section-dark" style="height: 300vh">
+<div class="sticky-section section-dark passport-scroll" style="height: 300vh">
   <div class="sticky-inner">
     <section class="passport-section">
       <div class="container passport-grid">
@@ -329,7 +333,7 @@
 <!-- ════════════════════════════════════
      S7: CHAMPIONSHIP JOURNEY TIMELINE (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section section-soft" style="height: 300vh">
+<div class="sticky-section section-soft timeline-scroll" style="height: 300vh">
   <div class="sticky-inner">
     <section class="timeline-section" id="journey">
       <div class="container">
@@ -622,6 +626,13 @@
   .sticky-inner > section {
     width: 100%;
   }
+  :global(html:not(.supports-scroll-animation)) .sticky-section {
+    height: auto !important;
+  }
+  :global(html:not(.supports-scroll-animation)) .sticky-inner {
+    position: static;
+    height: auto;
+  }
   @media (max-width: 1023px) {
     .sticky-inner {
       align-items: flex-start;
@@ -860,16 +871,9 @@
     gap: 16px;
     padding: 16px 0;
     border-bottom: 1px solid rgba(250, 249, 245, 0.1);
-    opacity: 0;
-  }
-  .passport-cover {
-    opacity: 0;
-  }
-  .passport-progress {
-    opacity: 0;
   }
   .progress-fill {
-    width: 0%;
+    width: 100%;
   }
   .passport-step strong {
     display: block;
@@ -922,7 +926,7 @@
     max-height: 56px;
   }
   .passport-badge text {
-    opacity: 0;
+    opacity: 1;
   }
   .passport-progress {
     display: flex;
@@ -978,7 +982,6 @@
     background: var(--canvas);
     scroll-snap-align: start;
     text-align: center;
-    opacity: 0;
     transition: transform 300ms ease, box-shadow 300ms ease;
   }
   .milestone:hover {
@@ -1242,47 +1245,67 @@
   .badge-ring-1, .badge-ring-2, .badge-ring-3,
   .badge-ring-4, .badge-ring-5, .badge-ring-6 {
     stroke-dasharray: 138.23;
+    stroke-dashoffset: 0;
   }
 
   @supports (animation-timeline: scroll()) {
-    .hero-section { view-timeline-name: --hero; view-timeline-axis: block; }
-    .passport-section { view-timeline-name: --passport; view-timeline-axis: block; }
-    .timeline-section { view-timeline-name: --timeline; view-timeline-axis: block; }
+    .hero-scroll { view-timeline-name: --hero; view-timeline-axis: block; }
+    .why-scroll { view-timeline-name: --appear; view-timeline-axis: block; }
+    .passport-scroll { view-timeline-name: --passport; view-timeline-axis: block; }
+    .timeline-scroll { view-timeline-name: --timeline; view-timeline-axis: block; }
     .pillars-grid { view-timeline-name: --pillars; view-timeline-axis: block; }
     .benefits-grid { view-timeline-name: --benefits; view-timeline-axis: block; }
     .parent-section { view-timeline-name: --parents; view-timeline-axis: block; }
     .cta-section { view-timeline-name: --cta; view-timeline-axis: block; }
     .mystery-section { view-timeline-name: --mystery; view-timeline-axis: block; }
 
-    .hero-title { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: entry 0% entry 25%; }
-    .hero-subtitle { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: entry 15% entry 40%; }
-    .hero-actions { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: entry 30% entry 55%; }
-    .hero-scroll-hint { animation: hint-out linear forwards; animation-timeline: --hero; animation-range: entry 0% entry 15%; }
+    :global(.supports-scroll-animation) .passport-step,
+    :global(.supports-scroll-animation) .passport-cover,
+    :global(.supports-scroll-animation) .passport-progress,
+    :global(.supports-scroll-animation) .milestone,
+    :global(.supports-scroll-animation) .passport-badge text,
+    :global(.supports-scroll-animation) .appear-on-scroll > * {
+      opacity: 0;
+    }
+    :global(.supports-scroll-animation) .progress-fill { width: 0%; }
+    :global(.supports-scroll-animation) .badge-ring-1,
+    :global(.supports-scroll-animation) .badge-ring-2,
+    :global(.supports-scroll-animation) .badge-ring-3,
+    :global(.supports-scroll-animation) .badge-ring-4,
+    :global(.supports-scroll-animation) .badge-ring-5,
+    :global(.supports-scroll-animation) .badge-ring-6 {
+      stroke-dashoffset: 138.23;
+    }
 
-    .passport-cover { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: entry 0% entry 10%; }
-    .progress-fill { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: entry 0% entry 70%; }
-    .passport-step-1 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 5% entry 20%; }
-    .badge-ring-1 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 10% entry 25%; }
-    .passport-badge-1 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 15% entry 30%; }
-    .passport-step-2 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 25% entry 40%; }
-    .badge-ring-2 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 30% entry 45%; }
-    .passport-badge-2 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 35% entry 50%; }
-    .passport-step-3 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 45% entry 60%; }
-    .badge-ring-3 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 50% entry 65%; }
-    .passport-badge-3 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 55% entry 70%; }
-    .passport-step-4 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 65% entry 80%; }
-    .badge-ring-4 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 70% entry 85%; }
-    .badge-ring-5 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 75% entry 90%; }
-    .badge-ring-6 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 80% entry 95%; }
-    .passport-progress { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: entry 85% entry 100%; }
+    .hero-title { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 25%; }
+    .hero-subtitle { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 15% cover 40%; }
+    .hero-actions { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 30% cover 55%; }
+    .hero-scroll-hint { animation: hint-out linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 15%; }
 
-    .timeline-line { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: entry 0% entry 60%; }
-    .milestone-1 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 5% entry 25%; }
-    .milestone-2 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 20% entry 40%; }
-    .milestone-3 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 35% entry 55%; }
-    .milestone-4 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 50% entry 70%; }
-    .milestone-5 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 65% entry 85%; }
-    .milestone-6 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 80% entry 100%; }
+    .passport-cover { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 10%; }
+    .progress-fill { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 70%; }
+    .passport-step-1 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
+    .badge-ring-1 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 10% cover 25%; }
+    .passport-badge-1 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 15% cover 30%; }
+    .passport-step-2 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
+    .badge-ring-2 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 30% cover 45%; }
+    .passport-badge-2 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 35% cover 50%; }
+    .passport-step-3 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
+    .badge-ring-3 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 50% cover 65%; }
+    .passport-badge-3 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 55% cover 70%; }
+    .passport-step-4 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
+    .badge-ring-4 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 70% cover 85%; }
+    .badge-ring-5 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 75% cover 90%; }
+    .badge-ring-6 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 80% cover 95%; }
+    .passport-progress { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 85% cover 100%; }
+
+    .timeline-line { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: cover 0% cover 60%; }
+    .milestone-1 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 5% cover 25%; }
+    .milestone-2 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 20% cover 40%; }
+    .milestone-3 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 35% cover 55%; }
+    .milestone-4 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 50% cover 70%; }
+    .milestone-5 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 65% cover 85%; }
+    .milestone-6 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 80% cover 100%; }
 
     .pillar-card { animation: fade-up-lg linear forwards; animation-timeline: --pillars; animation-range: entry 0% entry 100%; }
     .benefit-card { animation: fade-up linear forwards; animation-timeline: --benefits; animation-range: entry 0% entry 100%; }
@@ -1290,12 +1313,12 @@
     .final-cta { animation: fade-up linear forwards; animation-timeline: --cta; animation-range: entry 0% entry 100%; }
     .mystery-blur { animation: blur-out linear forwards; animation-timeline: --mystery; animation-range: entry 0% entry 100%; }
 
-    .appear-on-scroll { view-timeline-name: --appear; view-timeline-axis: block; }
+    .appear-on-scroll:not(.why-text):not(.why-visual) { view-timeline-name: --appear; view-timeline-axis: block; }
     .appear-on-scroll > * {
       opacity: 0;
       animation: fade-up linear forwards;
       animation-timeline: --appear;
-      animation-range: entry 0% entry 100%;
+      animation-range: cover 0% cover 100%;
     }
   }
 

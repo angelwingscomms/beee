@@ -7,6 +7,20 @@ const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationFor
 const nav = readFileSync(resolve(process.cwd(), 'src/lib/components/FloatingNav.svelte'), 'utf8');
 
 describe('homepage registration chess squares', () => {
+	it('drives sticky scroll effects from tall wrappers with visible fallbacks', () => {
+		expect(page).toContain('sticky-section hero-scroll');
+		expect(page).toContain('sticky-section section-dark passport-scroll');
+		expect(page).toContain('sticky-section section-soft timeline-scroll');
+		expect(page).toContain('.hero-scroll { view-timeline-name: --hero;');
+		expect(page).toContain('.passport-scroll { view-timeline-name: --passport;');
+		expect(page).toContain('.timeline-scroll { view-timeline-name: --timeline;');
+		expect(page).toContain('animation-range: cover 0% cover 25%');
+		expect(page).toContain(':global(.supports-scroll-animation) .passport-step');
+		expect(page).toContain(':global(.supports-scroll-animation) .milestone');
+		expect(page).toContain(':global(html:not(.supports-scroll-animation)) .sticky-section');
+		expect(page).toContain('stroke-dashoffset: 0;');
+	});
+
 	it('uses full-width square cells at the bottom of the form instead of the page strip', () => {
 		expect(page).not.toContain('ChessboardPulse');
 		expect(form).not.toContain('absolute inset-x-0 top-0 grid h-2');

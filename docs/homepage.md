@@ -4,11 +4,13 @@
 
 The homepage at `src/routes/+page.svelte` is a single-scroll landing page with **14 sections** (S1–S14). Scroll-driven animations use two layers:
 
-1. **CSS scroll-driven animations** (`@supports animation-timeline: scroll()`) — primary layer. Each section registers a `view-timeline-name` and its children animate via `animation-timeline` with `animation-range` entries. This is the progressive enhancement path — works in Chrome 115+.
+1. **CSS scroll-driven animations** (`@supports animation-timeline: scroll()`) — primary layer. Tall sticky wrappers register `view-timeline-name`, and their children animate via `animation-timeline` with `cover`-based `animation-range` entries. This keeps pinned sections visibly changing while their sticky content stays in place. Browsers without the needed support see the final visible state.
 
 2. **JS `IntersectionObserver`** — fallback/supplement for behaviors CSS can't cover (trust bar counters, FAQ accordion, confetti).
 
 There is **no anime.js, no Lenis**. All motion is pure CSS + native `IntersectionObserver`. Lenis was removed in a prior iteration.
+
+If scroll timelines are not supported, `html` does not receive `.supports-scroll-animation`, sticky wrappers become normal-height sections, and hidden animation start states are not applied. This avoids long scroll ranges where nothing visibly changes.
 
 ---
 
@@ -30,16 +32,16 @@ There is **no anime.js, no Lenis**. All motion is pure CSS + native `Intersectio
 
 ## S2 — Hero (sticky chapter)
 
-**Sticky container**: `height: 300vh` → `.sticky-inner` is `position: sticky; top: 0; height: 100vh` with `align-items: center` (desktop) or `flex-start` (mobile/tablet `<1024px`).
+**Sticky container**: `height: 300vh` → `.sticky-section.hero-scroll` owns the `--hero` view timeline. `.sticky-inner` is `position: sticky; top: 0; height: 100vh` with `align-items: center` (desktop) or `flex-start` (mobile/tablet `<1024px`).
 
 ### Scroll-driven animations (CSS)
 
 | Element | Keyframes | Range |
 |---------|-----------|-------|
-| `.hero-title` (h1) | `fade-up-lg` (0→1 opacity, 0→40px translateY) | `entry 0% → entry 25%` |
-| `.hero-subtitle` (lead p) | `fade-up` (0→1 opacity, 0→25px translateY) | `entry 15% → entry 40%` |
-| `.hero-actions` (CTA buttons) | `fade-up` | `entry 30% → entry 55%` |
-| `.hero-scroll-hint` ("↓ Scroll to discover") | `hint-out` (1→0 opacity) | `entry 0% → entry 15%` |
+| `.hero-title` (h1) | `fade-up-lg` (0→1 opacity, 0→40px translateY) | `cover 0% → cover 25%` |
+| `.hero-subtitle` (lead p) | `fade-up` (0→1 opacity, 0→25px translateY) | `cover 15% → cover 40%` |
+| `.hero-actions` (CTA buttons) | `fade-up` | `cover 30% → cover 55%` |
+| `.hero-scroll-hint` ("↓ Scroll to discover") | `hint-out` (1→0 opacity) | `cover 0% → cover 15%` |
 
 ### Content
 
@@ -84,7 +86,7 @@ There is **no anime.js, no Lenis**. All motion is pure CSS + native `Intersectio
 
 ## S4 — Why BEEE Exists (sticky chapter)
 
-**Sticky container**: `height: 200vh` on `--surface-soft` background.
+**Sticky container**: `height: 200vh` on `--surface-soft` background. `.sticky-section.why-scroll` owns the `--appear` view timeline while the content is pinned.
 
 - `appear-on-scroll` wrapper on `.why-text` and `.why-visual` triggers generic `fade-up` animations (see "Appear on scroll" pattern below)
 - Left column: heading "Chess Alone Isn't Enough" + two paragraphs
@@ -130,7 +132,7 @@ There is **no anime.js, no Lenis**. All motion is pure CSS + native `Intersectio
 
 ## S6 — Development Passport (sticky chapter)
 
-**Sticky container**: `height: 300vh` on `--surface-dark` background.
+**Sticky container**: `height: 300vh` on `--surface-dark` background. `.sticky-section.passport-scroll` owns the `--passport` view timeline.
 
 ### Scroll-driven animations (sequential timeline)
 
@@ -138,22 +140,22 @@ The passport section orchestrates a detailed sequential reveal as the user scrol
 
 | Element | Animation | Range |
 |---------|-----------|-------|
-| `.passport-cover` | `fade-up` (opacity 0→1, translateY 0→40px) | `entry 0% → 10%` |
-| `.progress-fill` | `grow-x` (width 0%→100%) | `entry 0% → 70%` |
-| `.passport-step-1` (Discover) | `fade-left` (opacity 0→1, translateX -30→0) | `entry 5% → 20%` |
-| `.badge-ring-1` (T badge) | `draw-ring` (stroke-dashoffset 138.23→0) | `entry 10% → 25%` |
-| `.passport-badge-1 text` (T letter) | `scale-in` (opacity 0→1, scale 0→1) | `entry 15% → 30%` |
-| `.passport-step-2` (Engage) | `fade-left` | `entry 25% → 40%` |
-| `.badge-ring-2` (E badge) | `draw-ring` | `entry 30% → 45%` |
-| `.passport-badge-2 text` (E letter) | `scale-in` | `entry 35% → 50%` |
-| `.passport-step-3` (Earn) | `fade-left` | `entry 45% → 60%` |
-| `.badge-ring-3` (A badge) | `draw-ring` | `entry 50% → 65%` |
-| `.passport-badge-3 text` (A letter) | `scale-in` | `entry 55% → 70%` |
-| `.passport-step-4` (Champion) | `fade-left` | `entry 65% → 80%` |
-| `.badge-ring-4` (M badge) | `draw-ring` | `entry 70% → 85%` |
-| `.badge-ring-5` (U badge) | `draw-ring` | `entry 75% → 90%` |
-| `.badge-ring-6` (P badge) | `draw-ring` | `entry 80% → 95%` |
-| `.passport-progress` | `fade-up` | `entry 85% → 100%` |
+| `.passport-cover` | `fade-up` (opacity 0→1, translateY 0→40px) | `cover 0% → 10%` |
+| `.progress-fill` | `grow-x` (width 0%→100%) | `cover 0% → 70%` |
+| `.passport-step-1` (Discover) | `fade-left` (opacity 0→1, translateX -30→0) | `cover 5% → 20%` |
+| `.badge-ring-1` (T badge) | `draw-ring` (stroke-dashoffset 138.23→0) | `cover 10% → 25%` |
+| `.passport-badge-1 text` (T letter) | `scale-in` (opacity 0→1, scale 0→1) | `cover 15% → 30%` |
+| `.passport-step-2` (Engage) | `fade-left` | `cover 25% → 40%` |
+| `.badge-ring-2` (E badge) | `draw-ring` | `cover 30% → 45%` |
+| `.passport-badge-2 text` (E letter) | `scale-in` | `cover 35% → 50%` |
+| `.passport-step-3` (Earn) | `fade-left` | `cover 45% → 60%` |
+| `.badge-ring-3` (A badge) | `draw-ring` | `cover 50% → 65%` |
+| `.passport-badge-3 text` (A letter) | `scale-in` | `cover 55% → 70%` |
+| `.passport-step-4` (Champion) | `fade-left` | `cover 65% → 80%` |
+| `.badge-ring-4` (M badge) | `draw-ring` | `cover 70% → 85%` |
+| `.badge-ring-5` (U badge) | `draw-ring` | `cover 75% → 90%` |
+| `.badge-ring-6` (P badge) | `draw-ring` | `cover 80% → 95%` |
+| `.passport-progress` | `fade-up` | `cover 85% → 100%` |
 
 ### Badge ring drawing mechanics
 
@@ -176,19 +178,19 @@ The `draw-ring` keyframes animate `stroke-dashoffset` from 138.23 to 0, creating
 
 ## S7 — Championship Journey Timeline (sticky chapter)
 
-**Sticky container**: `height: 300vh` on `--surface-soft` background.
+**Sticky container**: `height: 300vh` on `--surface-soft` background. `.sticky-section.timeline-scroll` owns the `--timeline` view timeline.
 
 ### Scroll-driven animations
 
 | Element | Animation | Range |
 |---------|-----------|-------|
-| `.timeline-line` | `grow-x` (width 0%→100%) | `entry 0% → 60%` |
-| `.milestone-1` (Discovery) | `fade-left` | `entry 5% → 25%` |
-| `.milestone-2` (Foundation) | `fade-left` | `entry 20% → 40%` |
-| `.milestone-3` (Practice) | `fade-left` | `entry 35% → 55%` |
-| `.milestone-4` (Compete) | `fade-left` | `entry 50% → 70%` |
-| `.milestone-5` (Semi-Finals) | `fade-left` | `entry 65% → 85%` |
-| `.milestone-6` (Finals) | `fade-left` | `entry 80% → 100%` |
+| `.timeline-line` | `grow-x` (width 0%→100%) | `cover 0% → 60%` |
+| `.milestone-1` (Discovery) | `fade-left` | `cover 5% → 25%` |
+| `.milestone-2` (Foundation) | `fade-left` | `cover 20% → 40%` |
+| `.milestone-3` (Practice) | `fade-left` | `cover 35% → 55%` |
+| `.milestone-4` (Compete) | `fade-left` | `cover 50% → 70%` |
+| `.milestone-5` (Semi-Finals) | `fade-left` | `cover 65% → 85%` |
+| `.milestone-6` (Finals) | `fade-left` | `cover 80% → 100%` |
 
 ### Hover micro-interaction
 
