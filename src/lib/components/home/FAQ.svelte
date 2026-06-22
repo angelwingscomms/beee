@@ -46,15 +46,18 @@
 					<button
 						class="faq-question"
 						onclick={() => open_index = open_index === i ? null : i}
+						aria-expanded={open_index === i}
 					>
-						{faq.q}
-						<span class="faq-arrow">↓</span>
+						<span>{faq.q}</span>
+						<svg class="faq-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+							<path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
 					</button>
-					{#if open_index === i}
-						<div class="faq-answer" class:open={open_index === i}>
+					<div class="faq-answer-wrap" class:open={open_index === i}>
+						<div class="faq-answer">
 							<p>{faq.a}</p>
 						</div>
-					{/if}
+					</div>
 				</div>
 			{/each}
 		</div>
@@ -65,22 +68,29 @@
 	.faq-list {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 10px;
 	}
 
 	.faq-item {
 		border: 1px solid var(--hairline);
 		border-radius: 12px;
+		background: var(--surface-card);
 		overflow: hidden;
+		transition: border-color 200ms ease;
+	}
+
+	.faq-item.is-open {
+		border-color: var(--primary);
 	}
 
 	.faq-question {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 16px;
 		width: 100%;
 		padding: 20px 24px;
-		background: var(--canvas);
+		background: transparent;
 		border: none;
 		font-size: 16px;
 		font-weight: 500;
@@ -88,46 +98,50 @@
 		text-align: left;
 		cursor: pointer;
 		transition: background 160ms ease;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	.faq-question:hover {
 		background: var(--surface-soft);
 	}
 
+	.faq-question:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: -2px;
+		border-radius: 12px;
+	}
+
 	.faq-arrow {
-		transition: transform 200ms ease;
-		font-size: 14px;
+		flex-shrink: 0;
 		color: var(--muted);
+		transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), color 200ms ease;
 	}
 
 	.is-open .faq-arrow {
 		transform: rotate(180deg);
+		color: var(--primary);
+	}
+
+	.faq-answer-wrap {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+
+	.faq-answer-wrap.open {
+		grid-template-rows: 1fr;
 	}
 
 	.faq-answer {
-		padding: 0 24px;
-		background: var(--surface-soft);
-		animation: slide-down 250ms cubic-bezier(.34,1.56,.64,1) both;
+		overflow: hidden;
+		min-height: 0;
 	}
 
 	.faq-answer p {
 		margin: 0;
-		padding: 0 0 20px;
+		padding: 0 24px 20px;
 		font-size: 15px;
-		line-height: 1.55;
+		line-height: 1.6;
 		color: var(--body);
-	}
-
-	@keyframes slide-down {
-		from {
-			opacity: 0;
-			max-height: 0;
-			padding-top: 0;
-		}
-		to {
-			opacity: 1;
-			max-height: 300px;
-			padding-top: 20px;
-		}
 	}
 </style>
