@@ -112,7 +112,7 @@
             <div class="surreal-board">
               <div class="board-plane"></div>
               <div class="logo-gate">
-                <img src="/beee-logo.svg" alt="BEEE" />
+                <img src="/logo.svg" alt="BEEE" />
               </div>
               <div class="floating-rank">♚</div>
               <div class="floating-rank">♛</div>
