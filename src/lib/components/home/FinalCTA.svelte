@@ -1,4 +1,4 @@
-<section class="section-band section-dark">
+<section class="section-band section-dark" id="register">
 	<div class="container text-center">
 		<div class="final-cta">
 			<h2 class="display-md" style="color: var(--color-on-dark); margin-bottom: 12px">

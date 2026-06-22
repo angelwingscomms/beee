@@ -13,7 +13,7 @@
 	];
 </script>
 
-<section class="section-band section-soft">
+<section class="section-band section-soft" id="journey">
 	<div class="container">
 		<h2 class="display-lg" style="text-align:center">Championship Journey</h2>
 		<div class="timeline-track">

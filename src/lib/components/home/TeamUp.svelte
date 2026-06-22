@@ -18,7 +18,7 @@
 	];
 </script>
 
-<section class="section-band section-dark">
+<section class="section-band section-dark" id="teamp">
 	<div class="container">
 		<h2 class="display-lg" style="color: var(--on-dark); text-align: center; margin-bottom: 16px">
 			The T.E.A.M.U.P. Experience

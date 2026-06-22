@@ -10,7 +10,7 @@
 			<p class="lead">More than a championship. A transformational journey in leadership, strategy, innovation and personal growth.</p>
 			<div class="hero-actions">
 				<a href="/register" class="button-primary cta-entrance">Register Now</a>
-				<a href="#teamup" class="button-secondary">Explore T.E.A.M.U.P.</a>
+				<a href="#teamp" class="button-secondary">Explore T.E.A.M.U.P.</a>
 			</div>
 			<div class="hero-meta" style="margin-top: 24px; display: flex; gap: 16px; align-items: center; font-size: 14px;">
 				<strong>October 2026 Grand Finale</strong>

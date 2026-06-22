@@ -1,4 +1,4 @@
-<section class="section-band">
+<section class="section-band" id="about">
 	<div class="container">
 		<h2 class="display-lg" style="margin-bottom: 16px">More Than A Tournament</h2>
 		<p class="lead" style="margin-bottom: 48px; max-width: 600px">
