@@ -1,127 +1,36 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { createTimeline, onScroll, animate, stagger, createDrawable } from 'animejs';
-  import Lenis from 'lenis';
   import confetti from 'canvas-confetti';
-
-  let hero_tl: ReturnType<typeof createTimeline> | null = null;
-  let passport_tl: ReturnType<typeof createTimeline> | null = null;
-  let timeline_tl: ReturnType<typeof createTimeline> | null = null;
-  let hero_ref: HTMLElement;
-  let passport_ref: HTMLElement;
-  let timeline_ref: HTMLElement;
-  let lenis_instance: Lenis | null = null;
-
-  function init_lenis() {
-    if (window.innerWidth < 768) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (lenis_instance) return;
-    lenis_instance = new Lenis({ autoRaf: true, lerp: 0.1, anchors: true });
-  }
-
-  function destroy_lenis() {
-    lenis_instance?.destroy();
-    lenis_instance = null;
-  }
-
-  let resize_raf: number | null = null;
 
   onMount(() => {
     if (typeof window === 'undefined') return;
 
-    init_lenis();
-
-    function on_resize() {
-      if (resize_raf) cancelAnimationFrame(resize_raf);
-      resize_raf = requestAnimationFrame(() => {
-        const should = window.innerWidth >= 768;
-        if (should && !lenis_instance) init_lenis();
-        if (!should && lenis_instance) destroy_lenis();
-        resize_raf = null;
-      });
+    // ——— Trust bar counters (one-shot via IO) ———
+    const trust_bar = document.querySelector('.trust-bar');
+    if (trust_bar) {
+      const io = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        document.querySelectorAll('.trust-stat').forEach(el => {
+          const target = +(el.dataset.count ?? '0');
+          const strong = el.querySelector('strong')!;
+          let val = 0;
+          const step = Math.max(1, Math.ceil(target / 60));
+          const t = setInterval(() => {
+            val = Math.min(val + step, target);
+            strong.textContent = String(val);
+            if (val >= target) clearInterval(t);
+          }, 16);
+        });
+      }, { threshold: 0.3 });
+      io.observe(trust_bar);
     }
-    window.addEventListener('resize', on_resize);
 
-    // ——— Hero sticky chapter ———
-    hero_tl = createTimeline({
-      autoplay: onScroll({ container: hero_ref, sync: .5 }),
-      defaults: { ease: 'outCubic' }
-    });
-    hero_tl.add('.hero-title', { opacity: [0, 1], translateY: [40, 0] }, 0)
-      .add('.hero-subtitle', { opacity: [0, 1], translateY: [20, 0] }, 400)
-      .add('.hero-actions', { opacity: [0, 1], translateY: [10, 0] }, 700)
-      .add('.hero-scroll-hint', { opacity: [1, 0] }, 0);
-
-    // ——— Trust bar counters ———
-    document.querySelectorAll('.trust-stat').forEach(el => {
-      const target = +(el.dataset.count ?? '0');
-      const strong = el.querySelector('strong')!;
-      const obj = { val: 0 };
-      animate(obj, {
-        val: [0, target],
-        ease: 'outExpo',
-        duration: 2000,
-        autoplay: onScroll({ target: '.trust-bar', threshold: [0, .3] }),
-        onUpdate: () => { strong.textContent = String(Math.round(obj.val)); }
+    // ——— FAQ accordion ———
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        (q.parentElement!)!.classList.toggle('is-open');
       });
-    });
-
-    // ——— TEAMUP staggered cards ———
-    animate('.pillar-card', {
-      opacity: [0, 1],
-      translateY: [60, 0],
-      scale: [.85, 1],
-      ease: 'outCubic',
-      duration: 900,
-      delay: stagger(100, { from: 'center' }),
-      autoplay: onScroll({ target: '.pillars-grid', threshold: [0, .2] })
-    });
-
-    // ——— Passport sticky chapter ———
-    createDrawable('.badge-ring-1');
-    createDrawable('.badge-ring-2');
-    createDrawable('.badge-ring-3');
-    createDrawable('.badge-ring-4');
-    createDrawable('.badge-ring-5');
-    createDrawable('.badge-ring-6');
-
-    passport_tl = createTimeline({
-      autoplay: onScroll({ container: passport_ref, sync: .5 }),
-      defaults: { ease: 'outCubic' }
-    });
-    passport_tl.add('.passport-cover', { opacity: [0, 1], y: [-10, 0] }, 0)
-      .add('.progress-fill', { width: ['0%', '100%'] }, 0)
-      .add('.passport-step-1', { opacity: [0, 1], x: [-30, 0] }, 0)
-      .add('.badge-ring-1', { draw: ['0%', '100%'] }, 200)
-      .add('.passport-badge-1 text', { opacity: [0, 1], scale: [0, 1] }, 300)
-      .add('.passport-step-2', { opacity: [0, 1], x: [-30, 0] }, 500)
-      .add('.badge-ring-2', { draw: ['0%', '100%'] }, 700)
-      .add('.passport-badge-2 text', { opacity: [0, 1], scale: [0, 1] }, 800)
-      .add('.passport-step-3', { opacity: [0, 1], x: [-30, 0] }, 1000)
-      .add('.badge-ring-3', { draw: ['0%', '100%'] }, 1200)
-      .add('.passport-badge-3 text', { opacity: [0, 1], scale: [0, 1] }, 1300)
-      .add('.passport-step-4', { opacity: [0, 1], x: [-30, 0] }, 1500)
-      .add('.badge-ring-4', { draw: ['0%', '100%'] }, 1700)
-      .add('.badge-ring-5', { draw: ['0%', '100%'] }, 1900)
-      .add('.badge-ring-6', { draw: ['0%', '100%'] }, 2100)
-      .add('.passport-progress', { opacity: [0, 1] }, 2200);
-
-    // ——— Benefits staggered entrance ———
-    animate('.benefit-card', {
-      opacity: [0, 1],
-      translateY: [40, 0],
-      ease: 'outCubic',
-      duration: 600,
-      delay: stagger(100),
-      autoplay: onScroll({ target: '.benefits-grid', threshold: [0, .15] })
-    });
-
-    // ——— Mystery section blur reveal ———
-    animate('.mystery-blur', {
-      filter: ['blur(16px)', 'blur(0px)'],
-      ease: 'outCubic',
-      duration: 1500,
-      autoplay: onScroll({ target: '.mystery-section', threshold: [0, .4] })
     });
 
     // ——— Mystery confetti (once on reveal) ———
@@ -142,82 +51,6 @@
       }, { threshold: 0.5 });
       mo.observe(mystery_el);
     }
-
-    // ——— Parent section fade ———
-    animate('.parent-card', {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: 'outCubic',
-      duration: 700,
-      delay: stagger(150),
-      autoplay: onScroll({ target: '.parent-section', threshold: [0, .2] })
-    });
-
-    // ——— Awards marquee ———
-    animate('.awards-track', {
-      translateX: ['0%', '-50%'],
-      duration: 30000,
-      loop: true,
-      ease: 'linear'
-    });
-
-    // ——— Timeline sticky chapter ———
-    timeline_tl = createTimeline({
-      autoplay: onScroll({ container: timeline_ref, sync: .5 }),
-      defaults: { ease: 'outCubic' }
-    });
-    timeline_tl.add('.timeline-line', { width: ['0%', '100%'] }, 0)
-      .add('.milestone-1', { opacity: [0, 1], x: [-40, 0] }, 0)
-      .add('.milestone-2', { opacity: [0, 1], x: [-40, 0] }, 200)
-      .add('.milestone-3', { opacity: [0, 1], x: [-40, 0] }, 400)
-      .add('.milestone-4', { opacity: [0, 1], x: [-40, 0] }, 600)
-      .add('.milestone-5', { opacity: [0, 1], x: [-40, 0] }, 800)
-      .add('.milestone-6', { opacity: [0, 1], x: [-40, 0] }, 1000);
-
-    // ——— FAQ accordion ———
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        const p = q.parentElement!;
-        const a = p.querySelector('.faq-answer') as HTMLElement;
-        const is_open = p.classList.toggle('is-open');
-        animate(a, {
-          height: is_open ? [0, a.scrollHeight] : [a.scrollHeight, 0],
-          opacity: is_open ? [0, 1] : [1, 0],
-          ease: 'outCubic',
-          duration: 300
-        });
-      });
-    });
-
-    // ——— Final CTA entrance ———
-    animate('.final-cta', {
-      opacity: [0, 1],
-      translateY: [30, 0],
-      ease: 'outCubic',
-      duration: 800,
-      autoplay: onScroll({ target: '.cta-section', threshold: [0, .2] })
-    });
-
-    // ——— Section entrance observers for all flowing sections ———
-    document.querySelectorAll('.appear-on-scroll').forEach(el => {
-      animate(el.children, {
-        opacity: [0, 1],
-        translateY: [25, 0],
-        ease: 'outCubic',
-        duration: 600,
-        delay: stagger(80),
-        autoplay: onScroll({ target: el, threshold: [0, .15] })
-      });
-    });
-
-    return () => {
-      destroy_lenis();
-      window.removeEventListener('resize', on_resize);
-      if (resize_raf) cancelAnimationFrame(resize_raf);
-      hero_tl?.revert();
-      passport_tl?.revert();
-      timeline_tl?.revert();
-    };
   });
 </script>
 
@@ -248,8 +81,8 @@
 <!-- ════════════════════════════════════
      S2: HERO (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section" bind:this={hero_ref} style="height: 300vh">
-  <div class="sticky-inner" data-lenis-prevent>
+<div class="sticky-section" style="height: 300vh">
+  <div class="sticky-inner">
     <section class="hero-band hero-section">
       <div class="container hero-grid">
         <div>
@@ -313,7 +146,7 @@
      S4: WHY BEEE EXISTS (sticky)
      ════════════════════════════════════ -->
 <div class="sticky-section" style="height: 200vh; background: var(--surface-soft)">
-  <div class="sticky-inner" data-lenis-prevent>
+  <div class="sticky-inner">
     <section class="why-section" id="about">
       <div class="container why-grid">
         <div class="why-text appear-on-scroll">
@@ -411,8 +244,8 @@
 <!-- ════════════════════════════════════
      S6: DEVELOPMENT PASSPORT (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section section-dark" style="height: 300vh" bind:this={passport_ref}>
-  <div class="sticky-inner" data-lenis-prevent>
+<div class="sticky-section section-dark" style="height: 300vh">
+  <div class="sticky-inner">
     <section class="passport-section">
       <div class="container passport-grid">
         <div class="passport-steps">
@@ -496,8 +329,8 @@
 <!-- ════════════════════════════════════
      S7: CHAMPIONSHIP JOURNEY TIMELINE (sticky)
      ════════════════════════════════════ -->
-<div class="sticky-section section-soft" style="height: 300vh" bind:this={timeline_ref}>
-  <div class="sticky-inner" data-lenis-prevent>
+<div class="sticky-section section-soft" style="height: 300vh">
+  <div class="sticky-inner">
     <section class="timeline-section" id="journey">
       <div class="container">
         <h2 class="display-lg" style="margin: 0 0 48px; text-align: center">From First Move to Championship</h2>
@@ -1265,11 +1098,14 @@
   /* ══════════════════════════════════
      S11: AWARDS MARQUEE
      ══════════════════════════════════ */
+  @keyframes marquee { from { translate: 0; } to { translate: -50%; } }
+
   .awards-track {
     display: flex;
     gap: 24px;
     overflow: hidden;
     white-space: nowrap;
+    animation: marquee 30s linear infinite;
   }
   .award-logo {
     flex: 0 0 auto;
@@ -1321,10 +1157,16 @@
     transform: rotate(180deg);
   }
   .faq-answer {
-    height: 0;
+    max-height: 0;
     overflow: hidden;
     padding: 0 24px;
     background: var(--surface-soft);
+    transition: max-height 300ms cubic-bezier(.34,1.56,.64,1), opacity 300ms ease;
+    opacity: 0;
+  }
+  .faq-item.is-open .faq-answer {
+    max-height: 300px;
+    opacity: 1;
   }
   .faq-answer p {
     margin: 0;
@@ -1384,9 +1226,96 @@
   }
 
   /* ══════════════════════════════════
-     UTILITY: APPEAR ON SCROLL
+     SCROLL-DRIVEN CSS ANIMATIONS
      ══════════════════════════════════ */
-  .appear-on-scroll > * {
-    opacity: 0;
+  @keyframes fade-up { from { opacity: 0; translate: 0 25px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes fade-up-lg { from { opacity: 0; translate: 0 40px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes fade-left { from { opacity: 0; translate: -30px 0; } to { opacity: 1; translate: 0 0; } }
+  @keyframes scale-in { from { opacity: 0; scale: 0; } to { opacity: 1; scale: 1; } }
+  @keyframes grow-x { from { width: 0%; } to { width: 100%; } }
+  @keyframes draw-ring { from { stroke-dashoffset: 138.23; } to { stroke-dashoffset: 0; } }
+  @keyframes blur-out { from { filter: blur(16px); } to { filter: blur(0px); } }
+  @keyframes hint-out { from { opacity: 1; } to { opacity: 0; } }
+
+  .badge-ring-1, .badge-ring-2, .badge-ring-3,
+  .badge-ring-4, .badge-ring-5, .badge-ring-6 {
+    stroke-dasharray: 138.23;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .hero-section { view-timeline-name: --hero; view-timeline-axis: block; }
+    .passport-section { view-timeline-name: --passport; view-timeline-axis: block; }
+    .timeline-section { view-timeline-name: --timeline; view-timeline-axis: block; }
+    .pillars-grid { view-timeline-name: --pillars; view-timeline-axis: block; }
+    .benefits-grid { view-timeline-name: --benefits; view-timeline-axis: block; }
+    .parent-section { view-timeline-name: --parents; view-timeline-axis: block; }
+    .cta-section { view-timeline-name: --cta; view-timeline-axis: block; }
+    .mystery-section { view-timeline-name: --mystery; view-timeline-axis: block; }
+
+    .hero-title { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: entry 0% entry 25%; }
+    .hero-subtitle { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: entry 15% entry 40%; }
+    .hero-actions { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: entry 30% entry 55%; }
+    .hero-scroll-hint { animation: hint-out linear forwards; animation-timeline: --hero; animation-range: entry 0% entry 15%; }
+
+    .passport-cover { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: entry 0% entry 10%; }
+    .progress-fill { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: entry 0% entry 70%; }
+    .passport-step-1 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 5% entry 20%; }
+    .badge-ring-1 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 10% entry 25%; }
+    .passport-badge-1 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 15% entry 30%; }
+    .passport-step-2 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 25% entry 40%; }
+    .badge-ring-2 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 30% entry 45%; }
+    .passport-badge-2 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 35% entry 50%; }
+    .passport-step-3 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 45% entry 60%; }
+    .badge-ring-3 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 50% entry 65%; }
+    .passport-badge-3 text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: entry 55% entry 70%; }
+    .passport-step-4 { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: entry 65% entry 80%; }
+    .badge-ring-4 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 70% entry 85%; }
+    .badge-ring-5 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 75% entry 90%; }
+    .badge-ring-6 { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: entry 80% entry 95%; }
+    .passport-progress { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: entry 85% entry 100%; }
+
+    .timeline-line { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: entry 0% entry 60%; }
+    .milestone-1 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 5% entry 25%; }
+    .milestone-2 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 20% entry 40%; }
+    .milestone-3 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 35% entry 55%; }
+    .milestone-4 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 50% entry 70%; }
+    .milestone-5 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 65% entry 85%; }
+    .milestone-6 { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: entry 80% entry 100%; }
+
+    .pillar-card { animation: fade-up-lg linear forwards; animation-timeline: --pillars; animation-range: entry 0% entry 100%; }
+    .benefit-card { animation: fade-up linear forwards; animation-timeline: --benefits; animation-range: entry 0% entry 100%; }
+    .parent-card { animation: fade-up linear forwards; animation-timeline: --parents; animation-range: entry 0% entry 100%; }
+    .final-cta { animation: fade-up linear forwards; animation-timeline: --cta; animation-range: entry 0% entry 100%; }
+    .mystery-blur { animation: blur-out linear forwards; animation-timeline: --mystery; animation-range: entry 0% entry 100%; }
+
+    .appear-on-scroll { view-timeline-name: --appear; view-timeline-axis: block; }
+    .appear-on-scroll > * {
+      opacity: 0;
+      animation: fade-up linear forwards;
+      animation-timeline: --appear;
+      animation-range: entry 0% entry 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-subtitle, .hero-actions, .hero-scroll-hint,
+    .passport-cover, .progress-fill, .passport-step, .badge-ring-1, .badge-ring-2,
+    .badge-ring-3, .badge-ring-4, .badge-ring-5, .badge-ring-6,
+    .passport-badge-1 text, .passport-badge-2 text, .passport-badge-3 text,
+    .passport-progress, .timeline-line, .milestone, .pillar-card,
+    .benefit-card, .parent-card, .final-cta, .mystery-blur,
+    .appear-on-scroll > * {
+      animation: none !important;
+      opacity: 1 !important;
+      translate: none !important;
+      scale: none !important;
+      filter: none !important;
+      width: auto !important;
+    }
+    .progress-fill { width: 100% !important; }
+    .badge-ring-1, .badge-ring-2, .badge-ring-3,
+    .badge-ring-4, .badge-ring-5, .badge-ring-6 {
+      stroke-dashoffset: 0 !important;
+    }
   }
 </style>
