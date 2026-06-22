@@ -47,3 +47,19 @@ stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.2026052
 10:45:23 PM [vite] (client) page reload .svelte-kit/generated/root.js
 10:45:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 10:45:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:47:37 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+10:47:37 PM [vite] (ssr) page reload src/routes/+page.svelte
+10:47:40 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+10:47:40 PM [vite] (ssr) page reload src/routes/+page.svelte
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:48:07 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:48:07 PM [vite] (client) page reload .svelte-kit/generated/root.js
+10:48:07 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:48:07 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:03:23 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/app.css
+11:03:23 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte

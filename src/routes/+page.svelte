@@ -6,6 +6,7 @@
 	import TeamUp from '$lib/components/home/TeamUp.svelte';
 	import Passport from '$lib/components/home/Passport.svelte';
 	import FinalCTA from '$lib/components/home/FinalCTA.svelte';
+	import Footer from '$lib/components/home/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -20,6 +21,7 @@
 <TeamUp />
 <Passport />
 <FinalCTA />
+<Footer />
 
 <style>
 	:global(body) {
