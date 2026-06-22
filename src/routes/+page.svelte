@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import FloatingNav from '$lib/components/FloatingNav.svelte';
 	import Navbar from '$lib/components/home/Navbar.svelte';
 	import Hero from '$lib/components/home/Hero.svelte';
 	import TrustBar from '$lib/components/home/TrustBar.svelte';
@@ -65,8 +64,6 @@
 <FAQ />
 <FinalCTA />
 <Footer />
-
-<FloatingNav href="/register">Register Now</FloatingNav>
 
 <style>
 	/* ── Container ── */
