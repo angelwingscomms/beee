@@ -100,6 +100,16 @@
 
 :root {
   /* OLD COLOR DESIGN SYSTEM — primary: #cc785c / primary-active: #a9583e / primary-light: #d6896e / accent-amber: #e8a55a / error: #c64545 */
+
+  /* Design token extensions for homepage premium redesign */
+  /* These extend the existing dark-mode token system (not the DESIGN.md cream-canvas system) */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-blur: 16px;
+  --noise-opacity: 0.03;
+  --cursor-size: 24px;
+  --sticky-cta-z: 90;
+
   --primary: #F27830;
   --primary-active: #BD5E25;
   --primary-light: #F69A64;
