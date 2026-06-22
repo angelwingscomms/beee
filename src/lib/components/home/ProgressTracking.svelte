@@ -72,7 +72,7 @@
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-8">
       {#each features as { icon: Icon, label }}
         <a
-          href="#"
+          href="javascript:void(0)"
           class="flex flex-col items-center gap-2 p-4 rounded-lg bg-surface-dark-elevated border border-white/5 hover:border-white/20 transition-colors no-underline"
           style="color: var(--on-dark-soft)"
         >
