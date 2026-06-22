@@ -155,3 +155,23 @@ https://svelte.dev/e/css_unused_selector
 11:12:23 PM [vite] (client) page reload .svelte-kit/generated/root.js
 11:12:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 11:12:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:24:23 PM [vite] (client) hmr update /src/components/RegistrationForm.svelte, /src/app.css
+11:24:23 PM [vite] (ssr) page reload src/components/RegistrationForm.svelte
+11:24:24 PM [vite] (client) hmr update /src/components/RegistrationForm.svelte, /src/app.css
+11:24:24 PM [vite] (ssr) page reload src/components/RegistrationForm.svelte
+11:24:25 PM [vite] (client) hmr update /src/components/RegistrationForm.svelte, /src/app.css
+11:24:25 PM [vite] (ssr) page reload src/components/RegistrationForm.svelte
+11:25:06 PM [vite] (client) hmr update /src/app.css
+11:25:06 PM [vite] (ssr) page reload src/app.css
+11:25:18 PM [vite] (client) hmr update /src/lib/components/PhoneInput.svelte, /src/app.css
+11:25:18 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
+11:25:23 PM [vite] (client) hmr update /src/lib/components/PhoneInput.svelte, /src/app.css
+11:25:23 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
+11:25:24 PM [vite] (client) hmr update /src/lib/components/PhoneInput.svelte, /src/app.css
+11:25:24 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
+11:25:25 PM [vite] (client) hmr update /src/lib/components/PhoneInput.svelte, /src/app.css
+11:25:25 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
+11:25:31 PM [vite] (client) hmr update /src/lib/components/PhoneInput.svelte?svelte&type=style&lang.css, /src/app.css
+11:25:31 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
+11:25:43 PM [vite] (client) hmr update /src/components/RegistrationForm.svelte, /src/app.css
+11:25:43 PM [vite] (ssr) page reload src/components/RegistrationForm.svelte

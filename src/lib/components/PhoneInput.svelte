@@ -141,17 +141,18 @@
 		<div class="country-select">
 			<button
 				type="button"
-				class="country-trigger {theme ? '!bg-white !text-primary !border-transparent !rounded-l-lg' : ''}"
+				class="country-trigger"
 				class:error={lenErr}
 				class:warn={lenWarn}
+				class:themed={theme}
 				onclick={toggleOpen}
 				aria-expanded={open}
 				aria-haspopup="listbox"
 				aria-label="Select country code"
 			>
 				<span class="country-abbr">{selectedCountry.c}</span>
-				<span class="country-code-label {theme ? '!text-primary/70' : ''}">{selectedCountry.d}</span>
-				<svg class="chevron {theme ? '!text-primary/70' : ''} {open ? 'chevron-up' : ''}" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+				<span class="country-code-label" class:themed-label={theme}>{selectedCountry.d}</span>
+				<svg class="chevron" class:themed-chevron={theme} class:chevron-up={open} width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
 					<path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</button>
@@ -200,7 +201,7 @@
 		<input
 			type="tel"
 			{id}
-			class="phone-input {theme ? '!bg-white !text-primary placeholder:!text-primary/60 !border-transparent !rounded-r-lg' : ''}"
+			class="phone-input" class:themed-input={theme}
 			class:error={lenErr}
 			class:warn={lenWarn}
 			value={phoneNumber}
@@ -392,6 +393,28 @@
 	.warn .phone-input,
 	.warn .country-trigger {
 		background: rgba(232, 165, 90, 0.08);
+	}
+
+	.country-trigger.themed {
+		background: var(--surface-card);
+		color: var(--ink);
+		border-color: transparent;
+		border-radius: 8px 0 0 8px;
+	}
+
+	.themed-input {
+		background: var(--surface-card);
+		color: var(--ink);
+		border-color: transparent;
+		border-radius: 0 8px 8px 0;
+	}
+
+	.themed-label {
+		color: var(--muted);
+	}
+
+	.themed-chevron {
+		color: var(--muted);
 	}
 
 	.phone-input::placeholder {

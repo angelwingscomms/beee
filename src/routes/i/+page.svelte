@@ -34,7 +34,7 @@
                                 <td>{reg.fn} {reg.ln}</td>
                                 <td>{reg.e}</td>
                                 <td>{reg.p}</td>
-                                <td><span class="badge-pill" class:paid={reg.st === 'paid'}>{reg.st}</span></td>
+                                <td><span class="badge-pill" class:paid={reg.st === 'paid'} class:pending={reg.st !== 'paid'}>{reg.st}</span></td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
                             </tr>
@@ -43,18 +43,21 @@
                 </table>
             </div>
         {:else}
-            <div style="max-width:400px">
-                <h1 class="display-md" style="margin-bottom:24px">Admin</h1>
-                <form method="POST" use:enhance>
-                    <div class="field">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" name="password" required class="text-input" />
-                    </div>
-                    {#if form?.error}
-                        <div class="error-message">{form.error}</div>
-                    {/if}
-                    <button type="submit" class="button-primary" style="margin-top:20px;width:100%">Login</button>
-                </form>
+            <div class="login-card">
+                <div class="login-card-inner">
+                    <h1 class="display-md" style="margin-bottom:8px">Admin</h1>
+                    <p class="login-sub">Enter your password to view registrations.</p>
+                    <form method="POST" use:enhance>
+                        <div class="field" style="margin-top:24px">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password" required class="text-input" />
+                        </div>
+                        {#if form?.error}
+                            <div class="error-message">{form.error}</div>
+                        {/if}
+                        <button type="submit" class="button-primary" style="margin-top:20px;width:100%">Login</button>
+                    </form>
+                </div>
             </div>
         {/if}
     </div>
@@ -67,7 +70,9 @@
         <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reg-detail-title" tabindex="-1" onclick={(e) => e.stopPropagation()} onkeydown={(e) => e.key === 'Escape' && (selectedReg = null)}>
             <div class="modal-header">
                 <h2 id="reg-detail-title">{selectedReg.fn} {selectedReg.ln}</h2>
-                <button class="modal-close" onclick={() => selectedReg = null} aria-label="Close">&times;</button>
+                <button class="modal-close" onclick={() => selectedReg = null} aria-label="Close">
+                    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="detail-row">
@@ -92,7 +97,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Status</span>
-                    <span><span class="badge-pill" class:paid={selectedReg.st === 'paid'}>{selectedReg.st}</span></span>
+                    <span><span class="badge-pill" class:paid={selectedReg.st === 'paid'} class:pending={selectedReg.st !== 'paid'}>{selectedReg.st}</span></span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Date</span>
@@ -142,9 +147,31 @@
         cursor: pointer;
     }
 
+    .login-card {
+        max-width: 400px;
+    }
+
+    .login-card-inner {
+        border-radius: 12px;
+        background: var(--surface-card);
+        padding: 32px;
+    }
+
+    .login-sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
     .badge-pill.paid {
         background: var(--success) !important;
         color: var(--on-primary) !important;
+    }
+
+    .badge-pill.pending {
+        background: var(--surface-cream-strong) !important;
+        color: var(--muted) !important;
     }
 
     .modal-backdrop {
@@ -165,7 +192,7 @@
         max-width: 520px;
         max-height: 90vh;
         overflow-y: auto;
-        box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+        box-shadow: 0 24px 80px rgba(242, 120, 48, 0.08);
     }
 
     .modal-header {
@@ -182,17 +209,22 @@
     }
 
     .modal-close {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
         background: none;
-        border: none;
-        font-size: 24px;
+        border: 1px solid var(--hairline);
+        border-radius: 8px;
         color: var(--muted);
         cursor: pointer;
         padding: 0;
-        line-height: 1;
+        transition: color 150ms ease, border-color 150ms ease;
     }
 
     .modal-close:hover {
         color: var(--ink);
+        border-color: var(--ink);
     }
 
     .modal-body {
