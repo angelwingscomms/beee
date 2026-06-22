@@ -95,4 +95,87 @@ export function motionMagnetic(node: HTMLElement) {
   };
 }
 
+type SlideDir = 'left' | 'right' | 'up' | 'down';
+type SlideParams = { dir?: SlideDir; distance?: number; delay?: number; duration?: number };
+
+export function motionSlideEnter(node: HTMLElement, params?: SlideParams) {
+  if (prefersReducedMotion() || isTouchDevice()) return;
+  const p = { dir: 'up' as SlideDir, distance: 30, delay: 0, duration: 0.6, ...params };
+  const dirMap: Record<SlideDir, Record<string, [number, number]>> = {
+    left: { x: [-p.distance, 0] },
+    right: { x: [p.distance, 0] },
+    up: { y: [p.distance, 0] },
+    down: { y: [-p.distance, 0] },
+  };
+  const offset = dirMap[p.dir];
+  inView(node, () => {
+    animate(
+      node,
+      {
+        opacity: [0, 1],
+        transform: p.dir === 'left' || p.dir === 'right'
+          ? [`translateX(${offset.x![0]}px)`, 'translateX(0)']
+          : [`translateY(${offset.y![0]}px)`, 'translateY(0)'],
+      },
+      { duration: p.duration, delay: p.delay, easing: [0.16, 1, 0.3, 1] }
+    );
+  });
+}
+
+type ParallaxParams = { speed?: number; offset?: number };
+
+export function motionParallax(node: HTMLElement, params?: ParallaxParams) {
+  if (prefersReducedMotion() || isTouchDevice()) return;
+  const p = { speed: 0.3, offset: 0, ...params };
+
+  const stop = scroll(
+    ({ y }: { y: number }) => {
+      const rect = node.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const viewCenter = window.innerHeight / 2;
+      const dist = (center - viewCenter) / window.innerHeight;
+      node.style.transform = `translateY(${dist * p.speed * 100}px)`;
+    },
+    { axis: 'y' }
+  );
+
+  return { destroy: () => stop() };
+}
+
+type RevealParams = { delay?: number; blur?: number };
+
+export function motionReveal(node: HTMLElement, params?: RevealParams) {
+  if (prefersReducedMotion() || isTouchDevice()) return;
+  const p = { delay: 0, blur: 6, ...params };
+
+  inView(node, () => {
+    animate(
+      node,
+      {
+        opacity: [0, 1],
+        filter: [`blur(${p.blur}px)`, 'blur(0px)'],
+      },
+      { duration: 0.8, delay: p.delay, easing: [0.16, 1, 0.3, 1] }
+    );
+  });
+}
+
+type StaggeredParams = { delay?: number; stagger?: number; y?: number };
+
+export function motionStaggered(node: HTMLElement, params?: StaggeredParams) {
+  if (prefersReducedMotion() || isTouchDevice()) return;
+  const p = { delay: 0, stagger: 0.08, y: 20, ...params };
+  const children = Array.from(node.children) as HTMLElement[];
+
+  children.forEach((child, i) => {
+    inView(child, () => {
+      animate(
+        child,
+        { opacity: [0, 1], transform: [`translateY(${p.y}px)`, 'translateY(0)'] },
+        { duration: 0.5, delay: p.delay + p.stagger * i, easing: [0.16, 1, 0.3, 1] }
+      );
+    });
+  });
+}
+
 export { animate, inView, scroll };
