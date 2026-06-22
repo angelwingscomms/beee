@@ -5,3 +5,4 @@ $ vite --host --port 5400
   ➜  Local:   http://localhost:5400/
   ➜  Network: http://192.168.43.40:5400/
   ➜  press h + enter to show help
+Using secrets defined in .env
