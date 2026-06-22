@@ -4,13 +4,12 @@
 
 	let { data }: PageProps = $props();
 
-	type State = 'verifying' | 'success' | 'failed';
-	let state = $state<State>('verifying');
+	let payment_state = $state<'verifying' | 'success' | 'failed'>('verifying');
 	let error_msg = $state('');
 
 	$effect(() => {
 		if (!data.reference) {
-			state = 'failed';
+			payment_state = 'failed';
 			error_msg = 'No payment reference found.';
 			return;
 		}
@@ -28,25 +27,25 @@
 			if (!res.ok || !body.success) {
 				throw new Error(body.error || 'Verification failed');
 			}
-			state = 'success';
+			payment_state = 'success';
 		} catch (err) {
-			state = 'failed';
+			payment_state = 'failed';
 			error_msg = err instanceof Error ? err.message : 'Verification failed';
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>Payment {state === 'success' ? 'Confirmed' : state === 'failed' ? 'Failed' : 'Verifying'} — BEEE T.E.A.M.U.P.</title>
+	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} — BEEE T.E.A.M.U.P.</title>
 </svelte:head>
 
 <main class="callback-shell">
 	<div class="callback-card">
-		{#if state === 'verifying'}
+		{#if payment_state === 'verifying'}
 			<Hex3 size={32} dotSize={4} speed={1.2} bloom color="var(--primary)" />
 			<h1>Verifying payment…</h1>
 			<p>Please wait while we confirm your payment with Paystack.</p>
-		{:else if state === 'success'}
+		{:else if payment_state === 'success'}
 			<div class="status-icon success" aria-hidden="true">✓</div>
 			<h1>Registration Confirmed!</h1>
 			<p>Your payment was successful. A confirmation email will be sent to you shortly.</p>

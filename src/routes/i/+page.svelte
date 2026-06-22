@@ -1,10 +1,11 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
     import type { PageProps } from './$types';
+    import type { Registration } from '$lib/types/registration';
 
     let { data, form }: PageProps = $props();
 
-    let selectedReg = $state<null | typeof form.registrations[0]>(null);
+    let selectedReg: Registration | null = $state(null);
 </script>
 
 <svelte:head>
@@ -63,7 +64,7 @@
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="modal-backdrop" role="presentation" onclick={() => selectedReg = null}>
         <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reg-detail-title" onclick={(e) => e.stopPropagation()}>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reg-detail-title" tabindex="-1" onclick={(e) => e.stopPropagation()} onkeydown={(e) => e.key === 'Escape' && (selectedReg = null)}>
             <div class="modal-header">
                 <h2 id="reg-detail-title">{selectedReg.fn} {selectedReg.ln}</h2>
                 <button class="modal-close" onclick={() => selectedReg = null} aria-label="Close">&times;</button>

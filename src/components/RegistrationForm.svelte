@@ -210,6 +210,7 @@
 						theme
 						onChange={(v) => { phone = v; phoneErr = ''; }}
 					/>
+				</div>
 			</section>
 
 			{#if apiError}
@@ -266,16 +267,6 @@
 {/if}
 
 <style>
-	.form-section-title {
-		font-family: var(--font-display);
-		color: var(--primary);
-		margin-bottom: 8px;
-	}
-	.teamup-font {
-		font-family: var(--font-display);
-		font-weight: 700;
-		font-size: 1.15em;
-	}
 	.event-intro {
 		text-align: left;
 	}

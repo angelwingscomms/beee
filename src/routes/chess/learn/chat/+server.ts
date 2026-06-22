@@ -105,15 +105,13 @@ export const POST: RequestHandler = async ({ request }) => {
 				}, { signal: request.signal });
 				for await (const chunk of response) {
 					if (request.signal.aborted) break;
-					const event_type = chunk.event_type ?? chunk.type;
-					console.log(`[chat] gemini event: ${event_type}`);
-					if (event_type === 'step.delta' && chunk.delta.type === 'text') {
+					const event_type = chunk.event_type;
+					if (event_type === 'step.delta' && 'delta' in chunk && chunk.delta.type === 'text') {
 						wrote = true;
 						controller.enqueue(event('text', { t: chunk.delta.text }));
 					}
-					if (event_type === 'interaction.completed' || event_type === 'interaction.complete') {
-						const id = chunk.interaction?.id;
-						console.log(`[chat] interaction completed: id=${id ? id.slice(0, 16) + '…' : 'unknown'}`);
+					if (event_type === 'interaction.completed' && 'interaction' in chunk) {
+						const id = chunk.interaction.id;
 						controller.enqueue(event('interaction', { i: id }));
 					}
 				}

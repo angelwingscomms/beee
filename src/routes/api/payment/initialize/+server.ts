@@ -24,7 +24,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			reg.e,
 			amount_kobo,
 			data.registrationId,
-			reg.sn,
+			reg.sn ?? '',
 			callback_url
 		);
 

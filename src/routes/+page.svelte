@@ -12,7 +12,7 @@
         if (!e.isIntersecting) return;
         io.disconnect();
         document.querySelectorAll('.trust-stat').forEach(el => {
-          const target = +(el.dataset.count ?? '0');
+          const target = +((el as HTMLElement).dataset.count ?? '0');
           const strong = el.querySelector('strong')!;
           let val = 0;
           const step = Math.max(1, Math.ceil(target / 60));
@@ -63,7 +63,7 @@
 <!-- ════════════════════════════════════
      S1: STICKY HEADER
      ════════════════════════════════════ -->
-<header class="site-header" role="banner">
+<header class="site-header">
   <div class="container header-inner">
     <div class="brand-lockup">
       <span class="spike-mark" style="color: var(--primary)"></span>
@@ -507,7 +507,7 @@
 <!-- ════════════════════════════════════
      S14: FOOTER
      ════════════════════════════════════ -->
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       <span class="spike-mark" style="color: var(--on-dark); margin-bottom: 12px"></span>
@@ -516,26 +516,26 @@
     </div>
     <div class="footer-col">
       <strong>Programme</strong>
-      <a href="#">TEAMUP</a>
-      <a href="#">Passport</a>
-      <a href="#">Curriculum</a>
+      <span>TEAMUP</span>
+      <span>Passport</span>
+      <span>Curriculum</span>
     </div>
     <div class="footer-col">
       <strong>Event</strong>
-      <a href="#">Schedule</a>
-      <a href="#">Venues</a>
-      <a href="#">Rules</a>
+      <span>Schedule</span>
+      <span>Venues</span>
+      <span>Rules</span>
     </div>
     <div class="footer-col">
       <strong>Company</strong>
-      <a href="#">About</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
+      <span>About</span>
+      <span>Blog</span>
+      <span>Contact</span>
     </div>
     <div class="footer-col">
       <strong>Legal</strong>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
+      <span>Privacy</span>
+      <span>Terms</span>
     </div>
   </div>
   <div class="container" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--surface-dark-elevated)">
@@ -1153,7 +1153,7 @@
     font-size: 14px;
     color: var(--muted);
   }
-  .faq-item.is-open .faq-arrow {
+  :global(.faq-item.is-open) .faq-arrow {
     transform: rotate(180deg);
   }
   .faq-answer {
@@ -1164,7 +1164,7 @@
     transition: max-height 300ms cubic-bezier(.34,1.56,.64,1), opacity 300ms ease;
     opacity: 0;
   }
-  .faq-item.is-open .faq-answer {
+  :global(.faq-item.is-open) .faq-answer {
     max-height: 300px;
     opacity: 1;
   }
@@ -1216,12 +1216,15 @@
     margin-bottom: 8px;
     display: block;
   }
-  .footer-col a {
+  .footer-col span {
+    display: block;
+    margin-top: 8px;
     color: var(--on-dark-soft);
     font-size: 14px;
+    cursor: default;
     transition: color 200ms ease;
   }
-  .footer-col a:hover {
+  .footer-col span:hover {
     color: var(--on-dark);
   }
 
