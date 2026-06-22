@@ -63,3 +63,95 @@ stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.2026052
 10:48:07 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
 11:03:23 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/app.css
 11:03:23 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:93:2 Unused CSS selector ".footer-nav"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:100:2 Unused CSS selector ".footer-nav a"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:110:2 Unused CSS selector ".footer-nav a:hover"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:165:4 Unused CSS selector ".footer-nav"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:06:10 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:93:2 Unused CSS selector ".footer-nav"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:100:2 Unused CSS selector ".footer-nav a"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:110:2 Unused CSS selector ".footer-nav a:hover"
+https://svelte.dev/e/css_unused_selector
+11:06:10 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:165:4 Unused CSS selector ".footer-nav"
+https://svelte.dev/e/css_unused_selector
+11:06:16 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:179:4 Unused CSS selector ".footer-nav"
+https://svelte.dev/e/css_unused_selector
+11:06:16 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:06:16 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:06:22 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:06:22 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:06:45 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:06:45 PM [vite] (client) page reload .svelte-kit/generated/root.js
+11:06:45 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:06:45 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:83:2 Unused CSS selector ".footer-steps"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:90:2 Unused CSS selector ".step-item"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:99:2 Unused CSS selector ".step-item:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:103:2 Unused CSS selector ".step-num"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:112:2 Unused CSS selector ".step-label"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:160:4 Unused CSS selector ".footer-steps"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:01 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:83:2 Unused CSS selector ".footer-steps"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:90:2 Unused CSS selector ".step-item"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:99:2 Unused CSS selector ".step-item:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:103:2 Unused CSS selector ".step-num"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:112:2 Unused CSS selector ".step-label"
+https://svelte.dev/e/css_unused_selector
+11:11:01 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:160:4 Unused CSS selector ".footer-steps"
+https://svelte.dev/e/css_unused_selector
+11:11:06 PM [vite-plugin-svelte] src/lib/components/home/Footer.svelte:146:4 Unused CSS selector ".footer-steps"
+https://svelte.dev/e/css_unused_selector
+11:11:07 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:07 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:11:11 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:11 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+11:11:19 PM [vite] (client) hmr update /src/lib/components/home/Journey.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:19 PM [vite] (ssr) page reload src/lib/components/home/Journey.svelte
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:11:39 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:11:39 PM [vite] (client) page reload .svelte-kit/generated/root.js
+11:11:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:11:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:11:51 PM [vite] (client) hmr update /src/lib/components/home/Journey.svelte, /src/lib/components/home/Journey.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:51 PM [vite] (ssr) page reload src/lib/components/home/Journey.svelte
+11:11:57 PM [vite] (client) hmr update /src/lib/components/home/Journey.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:57 PM [vite] (ssr) page reload src/lib/components/home/Journey.svelte
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:12:23 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:12:23 PM [vite] (client) page reload .svelte-kit/generated/root.js
+11:12:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:12:23 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

@@ -47,8 +47,9 @@
   .journey-flow {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 0;
+    width: 100%;
   }
 
   .step {
@@ -58,7 +59,6 @@
     padding: 18px 32px;
     border-radius: 12px;
     background: var(--surface-card);
-    min-width: 260px;
     justify-content: center;
     transition: transform 240ms ease, box-shadow 240ms ease;
   }
@@ -98,12 +98,25 @@
     text-align: center;
   }
 
+  @media (min-width: 1024px) {
+    .journey-flow {
+      flex-direction: row;
+      gap: 16px;
+    }
+    .step-arrow {
+      display: none;
+    }
+    .step {
+      min-width: 0;
+      flex: 1;
+    }
+  }
+
   @media (max-width: 767px) {
     .journey {
       padding: 64px 0;
     }
     .step {
-      min-width: 200px;
       padding: 14px 24px;
     }
     .step-label {

@@ -152,10 +152,6 @@
       gap: 32px;
     }
 
-    .footer-nav {
-      gap: 6px 16px;
-    }
-
     .footer-bottom {
       flex-direction: column;
       align-items: flex-start;
