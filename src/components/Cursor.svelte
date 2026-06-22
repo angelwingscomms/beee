@@ -5,7 +5,7 @@
   let x = $state(-100);
   let y = $state(-100);
   let hovered = $state(false);
-  let el: HTMLDivElement;
+  let el: HTMLDivElement | undefined = $state(undefined);
 
   onMount(() => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;

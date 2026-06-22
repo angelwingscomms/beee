@@ -4,7 +4,7 @@
 
   let { teamup }: { teamup: { name: string; detail: string; points: string[] }[] } = $props();
   let activeTeamup = $state('');
-  $: if (teamup && !activeTeamup && teamup.length > 0) activeTeamup = teamup[0].name;
+  $effect(() => { if (teamup && !activeTeamup && teamup.length > 0) activeTeamup = teamup[0].name; });
 </script>
 
 <section class="section teamup-section noise" id="teamup">

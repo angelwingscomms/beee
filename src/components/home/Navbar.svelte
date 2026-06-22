@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Menu, X } from '@lucide/svelte';
 
-  let { menuOpen = $state(false), onMenuToggle }: { menuOpen: boolean; onMenuToggle: () => void } = $props();
+  let { menuOpen = false, onMenuToggle }: { menuOpen: boolean; onMenuToggle: () => void } = $props();
 
   function closeMenu() {
     if (menuOpen) onMenuToggle();

@@ -38,7 +38,7 @@
         <article class="faq-item">
           <button type="button" onclick={() => toggle_faq(index)} aria-expanded={openFaq === index} aria-controls={`faq-${index}`}>
             <span>{faq[0]}</span>
-            <ChevronDown size={20} class:rotated={openFaq === index} />
+            <span class:rotated={openFaq === index}><ChevronDown size={20} /></span>
           </button>
           <p
             id={`faq-${index}`}
