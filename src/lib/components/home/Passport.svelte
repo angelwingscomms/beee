@@ -2,6 +2,7 @@
 	import { Check } from '@lucide/svelte';
 	import { motionFadeUp } from '$lib/actions/motion';
 	import { observe } from '$lib/actions/observe';
+	import { fade } from 'svelte/transition';
 
 	let hovered = $state<number | null>(null);
 	let selected = $state<number | null>(null);
@@ -26,6 +27,8 @@
 		'var(--primary)',
 		'var(--accent-teal)',
 	];
+
+	let displayIndex = $derived(hovered ?? selected);
 </script>
 
 <section class="section-band section-dark" id="passport">
@@ -33,6 +36,8 @@
 		<div class="orb orb-1"></div>
 		<div class="orb orb-2"></div>
 		<div class="orb orb-3"></div>
+		<div class="orb orb-4"></div>
+		<div class="orb-centre"></div>
 	</div>
 
 	<div class="container" use:motionFadeUp>
@@ -82,15 +87,16 @@
 
 				<div class="desc-shell">
 					<div class="desc-panel">
-						{#if hovered !== null}
-							<p class="desc-label">{pillars[hovered].label}</p>
-							<p class="desc-body">{pillars[hovered].desc}</p>
-						{:else if selected !== null}
-							<p class="desc-label">{pillars[selected].label}</p>
-							<p class="desc-body">{pillars[selected].desc}</p>
-						{:else}
-							<p class="desc-body" style="opacity: 0.45">Tap or hover a pillar</p>
-						{/if}
+						{#key displayIndex}
+							<div class="desc-content" in:fade={{ duration: 220 }} out:fade={{ duration: 160 }}>
+								{#if displayIndex !== null}
+									<p class="desc-label">{pillars[displayIndex].label}</p>
+									<p class="desc-body">{pillars[displayIndex].desc}</p>
+								{:else}
+									<p class="desc-body desc-placeholder">Tap or hover a pillar</p>
+								{/if}
+							</div>
+						{/key}
 					</div>
 				</div>
 			</div>
@@ -105,6 +111,7 @@
 		inset: 0;
 		pointer-events: none;
 		z-index: 0;
+		overflow: hidden;
 	}
 
 	.orb {
@@ -115,33 +122,57 @@
 	}
 
 	.orb-1 {
-		width: 400px; height: 400px;
-		top: -10%; right: -5%;
-		background: radial-gradient(circle, rgba(242, 120, 48, 0.10), transparent 70%);
-		animation: orb-float 20s ease-in-out infinite;
+		width: 420px; height: 420px;
+		top: -12%; right: -4%;
+		background: radial-gradient(circle, color-mix(in srgb, var(--primary) 12%, transparent), transparent 70%);
+		animation: orb-drift 22s ease-in-out infinite;
 	}
 
 	.orb-2 {
-		width: 300px; height: 300px;
-		bottom: 10%; left: -8%;
-		background: radial-gradient(circle, rgba(93, 184, 166, 0.07), transparent 70%);
-		animation: orb-float 25s ease-in-out infinite reverse;
+		width: 320px; height: 320px;
+		bottom: 8%; left: -6%;
+		background: radial-gradient(circle, color-mix(in srgb, var(--accent-teal) 8%, transparent), transparent 70%);
+		animation: orb-drift 28s ease-in-out infinite reverse;
 	}
 
 	.orb-3 {
-		width: 350px; height: 350px;
-		bottom: -5%; right: 20%;
-		background: radial-gradient(circle, rgba(255, 178, 0, 0.05), transparent 70%);
-		animation: orb-float 18s ease-in-out infinite 5s;
+		width: 360px; height: 360px;
+		bottom: -6%; right: 18%;
+		background: radial-gradient(circle, color-mix(in srgb, var(--accent-amber) 6%, transparent), transparent 70%);
+		animation: orb-drift 20s ease-in-out infinite 6s;
 	}
 
-	@keyframes orb-float {
+	.orb-4 {
+		width: 260px; height: 260px;
+		top: 40%; left: 40%;
+		background: radial-gradient(circle, color-mix(in srgb, var(--primary) 5%, transparent), transparent 70%);
+		animation: orb-drift 32s ease-in-out infinite 3s reverse;
+	}
+
+	.orb-centre {
+		position: absolute;
+		width: 500px; height: 500px;
+		top: 50%; left: 68%;
+		translate: -50% -50%;
+		border-radius: 50%;
+		background: radial-gradient(circle, color-mix(in srgb, var(--on-dark) 2%, transparent), transparent 60%);
+		filter: blur(100px);
+		animation: orb-pulse 8s ease-in-out infinite;
+	}
+
+	@keyframes orb-drift {
 		0%, 100% { translate: 0 0; }
-		33% { translate: 20px -30px; }
-		66% { translate: -15px 20px; }
+		25% { translate: 24px -22px; }
+		50% { translate: -12px 28px; }
+		75% { translate: -22px -14px; }
 	}
 
-	/* ── Grid: side‑by‑side on desktop ── */
+	@keyframes orb-pulse {
+		0%, 100% { opacity: 0.5; scale: 1; }
+		50% { opacity: 1; scale: 1.08; }
+	}
+
+	/* ── Grid: side-by-side on desktop ── */
 	.passport-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -296,11 +327,6 @@
 
 	.pent-point.active .point-label { opacity: 1; }
 
-	.pent-point:nth-child(4) { filter: hue-rotate(250deg) saturate(0.75) brightness(1.25); }
-	.pent-point:nth-child(5) { box-shadow: 0 0 10px var(--pc), 0 0 24px color-mix(in srgb, var(--pc) 35%, transparent); }
-	.pent-point:nth-child(5):hover,
-	.pent-point:nth-child(5).active { box-shadow: 0 0 22px var(--pc), 0 0 44px color-mix(in srgb, var(--pc) 45%, transparent); }
-
 	.point-label {
 		position: absolute;
 		white-space: nowrap;
@@ -328,7 +354,7 @@
 	.pent-point:nth-child(4) { left: 29%; top: 78%; }
 	.pent-point:nth-child(5) { left: 17%; top: 39%; }
 
-	/* ── Description panel (double‑bezel) ── */
+	/* ── Description panel (double-bezel with crossfade) ── */
 	.desc-shell {
 		width: 100%;
 		max-width: 400px;
@@ -351,15 +377,24 @@
 		justify-content: center;
 		box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
 		transition: box-shadow 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+		overflow: hidden;
 	}
 	.desc-panel:hover { box-shadow: inset 0 1px 2px rgba(255,255,255,0.1); }
+
+	.desc-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		width: 100%;
+	}
 
 	.desc-label {
 		font-family: var(--font-display);
 		font-size: 20px;
 		font-weight: 500;
 		color: var(--on-dark);
-		margin: 0 0 4px;
+		margin: 0;
 	}
 
 	.desc-body {
@@ -367,6 +402,10 @@
 		line-height: 1.5;
 		color: var(--on-dark-soft);
 		margin: 0;
+	}
+
+	.desc-placeholder {
+		opacity: 0.45;
 	}
 
 	/* ── Mobile collapse ── */
@@ -383,5 +422,11 @@
 		.pentagon { max-width: 260px; }
 		.pent-point { width: 44px; height: 44px; }
 		.desc-shell { max-width: 100%; }
+
+		.orb-1 { width: 280px; height: 280px; }
+		.orb-2 { width: 200px; height: 200px; }
+		.orb-3 { width: 240px; height: 240px; }
+		.orb-4 { width: 180px; height: 180px; }
+		.orb-centre { width: 320px; height: 320px; left: 50%; }
 	}
 </style>
