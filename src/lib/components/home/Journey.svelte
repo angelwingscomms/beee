@@ -30,7 +30,7 @@
 						onkeydown={(e) => e.key === 'Enter' && (active = active === i ? -1 : i)}
 					>
 						<span class="milestone-icon">
-							<svelte:component this={step.icon} size={32} color="white" />
+							<step.icon size={32} color="white" />
 						</span>
 						<strong>{step.title}</strong>
 						<p>{step.desc}</p>
