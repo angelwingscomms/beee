@@ -3,7 +3,7 @@
   import { motionFadeUp, motionScaleIn } from '$lib/actions/motion';
 </script>
 
-<section class="section passport-section" id="passport">
+<section class="section passport-section noise" id="passport">
   <div class="container passport-grid">
     <div class="passport-mock" use:motionFadeUp aria-label="Development passport mockup">
       <div class="passport-cover" use:motionScaleIn={{ stiffness: 100, damping: 14, delay: 0.2 }}>
@@ -30,6 +30,7 @@
 <style>
   .section { padding: 104px 0; }
   .passport-section {
+    position: relative;
     background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
                 radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
   }

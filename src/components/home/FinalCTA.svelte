@@ -3,7 +3,7 @@
   import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
-<section class="final-cta-section">
+<section class="final-cta-section noise">
   <div class="container final-cta-card" use:motionFadeUp>
     <GraduationCap size={36} />
     <h2>Every Great Journey Begins With A Move</h2>
@@ -16,7 +16,7 @@
 </section>
 
 <style>
-  .final-cta-section { background: #070807; padding: 110px 0; }
+  .final-cta-section { position: relative; background: #070807; padding: 110px 0; }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .final-cta-card { max-width: 900px; text-align: center; }
   .final-cta-card svg { color: var(--gold); }

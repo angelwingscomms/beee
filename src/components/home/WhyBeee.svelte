@@ -52,7 +52,11 @@
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .card {
     min-height: 280px; padding: 30px;
-    border: 1px solid #ded3c3; border-radius: 8px; background: #fff;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(var(--glass-blur, 16px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 16px));
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06);
   }
   .card svg { color: var(--gold-dark); }

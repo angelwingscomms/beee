@@ -13,7 +13,7 @@
   });
 </script>
 
-<section class="section journey-section" id="journey">
+<section class="section journey-section noise" id="journey">
   <div class="container">
     <div class="section-heading align-left" use:motionFadeUp>
       <p class="section-kicker">Championship Journey</p>
@@ -47,7 +47,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .journey-section { background: #0b0d0c; }
+  .journey-section { position: relative; background: #0b0d0c; }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
   .align-left { margin-inline: 0; text-align: left; }

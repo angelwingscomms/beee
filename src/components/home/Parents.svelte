@@ -68,8 +68,12 @@
   .dark-text { border: 1px solid rgba(23, 22, 20, 0.16); background: #fff; color: var(--ink-dark); }
   .parent-dashboard {
     display: grid; min-height: 520px; place-items: center;
-    border: 1px solid #ded3c3; border-radius: 8px;
-    background: #fff; box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(var(--glass-blur, 16px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 16px));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06);
   }
   .phone-shell { width: min(310px, 88%); border: 10px solid #171614; border-radius: 32px; background: #10120f; padding: 18px; color: var(--text); }
   .phone-header { color: var(--gold); font-weight: 900; margin-bottom: 18px; }

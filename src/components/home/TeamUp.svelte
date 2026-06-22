@@ -7,7 +7,7 @@
   $: if (teamup && !activeTeamup && teamup.length > 0) activeTeamup = teamup[0].name;
 </script>
 
-<section class="section teamup-section" id="teamup">
+<section class="section teamup-section noise" id="teamup">
   <div class="container">
     <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">Programme Core</p>
@@ -47,6 +47,7 @@
 <style>
   .section { padding: 104px 0; }
   .teamup-section {
+    position: relative;
     background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
                 radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
   }

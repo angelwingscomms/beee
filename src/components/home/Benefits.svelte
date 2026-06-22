@@ -5,7 +5,7 @@
   let { benefits }: { benefits: string[][] } = $props();
 </script>
 
-<section class="section benefits-section">
+<section class="section benefits-section noise">
   <div class="container">
     <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">Benefits</p>
@@ -25,7 +25,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .benefits-section { background: #0b0d0c; }
+  .benefits-section { position: relative; background: #0b0d0c; }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
   .section-kicker {

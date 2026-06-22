@@ -77,12 +77,24 @@
   <TeamUp {teamup} />
   <Passport />
   <Benefits {benefits} />
+  <section class="mid-page-cta">
+    <div class="container mid-cta-card">
+      <h3>Ready to begin the journey?</h3>
+      <p>Join BEEE and give your child a transformative experience.</p>
+      <a class="primary-cta" href="/register">Register Now</a>
+    </div>
+  </section>
   <ProgressTracking />
   <Parents />
   <Awards {awards} />
   <FAQ {faqs} />
   <FinalCTA />
   <Footer />
+</div>
+
+<div class="sticky-cta">
+  <span>Join BEEE Today</span>
+  <a class="primary-cta" href="/register">Register Child</a>
 </div>
 
 <style>
@@ -109,5 +121,114 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-registration), Inter, system-ui, sans-serif;
+  }
+
+  .mid-page-cta {
+    padding: 60px 0;
+    background: #070807;
+  }
+
+  .mid-cta-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    padding: 26px 30px;
+  }
+
+  .mid-cta-card h3 {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-championship), var(--font-registration), sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .mid-cta-card p {
+    margin: 0;
+    color: var(--muted-dark);
+  }
+
+  .mid-cta-card .primary-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 800;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, var(--gold), #df8f1f);
+    color: #130f08;
+    box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    transition: transform 180ms ease;
+    white-space: nowrap;
+  }
+
+  .mid-cta-card .primary-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--sticky-cta-z, 90);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border-top: 1px solid var(--line);
+    background: rgba(7, 8, 7, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 14px 20px;
+  }
+
+  .sticky-cta span {
+    color: var(--text);
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .sticky-cta .primary-cta {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 18px;
+    font-size: 13px;
+    font-weight: 800;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, var(--gold), #df8f1f);
+    color: #130f08;
+    box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    text-decoration: none;
+  }
+
+  @media (max-width: 700px) {
+    .mid-cta-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .sticky-cta {
+      display: flex;
+    }
+
+    .beee-page {
+      padding-bottom: 72px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .mid-cta-card {
+      flex-wrap: wrap;
+    }
   }
 </style>

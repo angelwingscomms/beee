@@ -1,8 +1,19 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { animate, spring } from 'motion';
   import { motionFadeUp } from '$lib/actions/motion';
+
+  let xp_ref: HTMLDivElement;
+  let displayed_xp = $state(0);
+
+  onMount(() => {
+    if (!xp_ref) return;
+    const s = spring({ from: 0, to: 3450, stiffness: 80, damping: 18 });
+    s.on('update', (v) => { displayed_xp = Math.round(v); });
+  });
 </script>
 
-<section class="section tracking-section">
+<section class="section tracking-section noise">
   <div class="container tracking-grid">
     <div class="section-heading align-left" use:motionFadeUp>
       <p class="section-kicker">Progress Tracking</p>
@@ -23,7 +34,7 @@
         <span>Creative Explorer</span>
         <span>Technology Explorer</span>
       </div>
-      <div class="xp-card">XP: <strong>3,450</strong></div>
+      <div class="xp-card" bind:this={xp_ref}>XP: <strong>{displayed_xp.toLocaleString()}</strong></div>
       <div class="tracking-tabs">
         <span>Milestones</span><span>Badges</span><span>Certificates</span><span>Reports</span><span>Parent Access</span>
       </div>
@@ -33,7 +44,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .tracking-section { background: #0b0d0c; }
+  .tracking-section { position: relative; background: #0b0d0c; }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .tracking-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 56px; align-items: center; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; }

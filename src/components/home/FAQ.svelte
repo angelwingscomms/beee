@@ -1,9 +1,30 @@
 <script lang="ts">
   import { ChevronDown } from '@lucide/svelte';
+  import { animate } from 'motion';
   import { motionFadeUp } from '$lib/actions/motion';
 
   let { faqs }: { faqs: string[][] } = $props();
   let openFaq = $state(-1);
+  let faq_refs: Record<number, HTMLParagraphElement> = {};
+
+  function toggle_faq(index: number) {
+    const was_open = openFaq === index;
+    const prev = openFaq;
+    openFaq = was_open ? -1 : index;
+
+    if (faq_refs[prev] && prev >= 0) {
+      animate(faq_refs[prev], { height: 0, opacity: 0 }, { duration: 0.2, ease: 'ease-in-out' });
+    }
+    if (faq_refs[index] && !was_open) {
+      const el = faq_refs[index];
+      el.style.height = 'auto';
+      const h = el.offsetHeight;
+      el.style.height = '0px';
+      requestAnimationFrame(() => {
+        animate(el, { height: h, opacity: 1 }, { duration: 0.25, ease: 'ease-in-out' });
+      });
+    }
+  }
 </script>
 
 <section class="section faq-section" id="faq">
@@ -15,13 +36,17 @@
     <div class="faq-list">
       {#each faqs as faq, index}
         <article class="faq-item">
-          <button type="button" onclick={() => (openFaq = openFaq === index ? -1 : index)}>
+          <button type="button" onclick={() => toggle_faq(index)} aria-expanded={openFaq === index} aria-controls={`faq-${index}`}>
             <span>{faq[0]}</span>
             <ChevronDown size={20} class:rotated={openFaq === index} />
           </button>
-          {#if openFaq === index}
-            <p>{faq[1]}</p>
-          {/if}
+          <p
+            id={`faq-${index}`}
+            bind:this={faq_refs[index]}
+            class="faq-answer"
+            class:faq-open={openFaq === index}
+            style="height: {openFaq === index ? 'auto' : '0px'}; overflow: hidden; {openFaq !== index ? 'opacity: 0;' : ''}"
+          >{faq[1]}</p>
         </article>
       {/each}
     </div>
@@ -45,7 +70,7 @@
     margin: 16px 0 0; font-family: var(--font-championship), var(--font-registration), sans-serif;
     font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--ink-dark);
   }
-  .faq-item { overflow: hidden; margin-top: 10px; border: 1px solid #ded3c3; border-radius: 8px; background: #fff; box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06); }
+  .faq-item { overflow: hidden; margin-top: 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(var(--glass-blur, 16px)); -webkit-backdrop-filter: blur(var(--glass-blur, 16px)); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06); }
   .faq-item button {
     display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px;
     border: 0; background: transparent; color: var(--ink-dark);
