@@ -29,6 +29,10 @@
 </section>
 
 <style>
+  .hero-section {
+    position: relative;
+  }
+
   .hero-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
