@@ -861,7 +861,8 @@ img {
   line-height: 1.55;
 }
 
-.feature-grid {
+.feature-grid,
+.benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
@@ -878,6 +879,28 @@ img {
 .feature-card .spike-mark {
   margin-bottom: 28px;
   color: var(--primary);
+}
+
+.benefit-card {
+  border-radius: 12px;
+  background: var(--surface-card);
+  padding: 32px;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.benefit-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .benefit-card {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .feature-card h3,
@@ -1434,7 +1457,8 @@ img {
     position: static;
   }
 
-  .feature-grid {
+  .feature-grid,
+  .benefits-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1499,6 +1523,7 @@ img {
 
   .hero-metrics,
   .feature-grid,
+  .benefits-grid,
   .field-grid,
   .simple-home-grid,
   .cards-row,
