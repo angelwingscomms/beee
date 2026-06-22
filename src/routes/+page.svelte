@@ -32,7 +32,11 @@
 <Navbar />
 
 <!-- HERO (sticky with scroll-driven animation) -->
-<Hero />
+<div class="sticky-section hero-scroll" style="height: 150vh">
+	<div class="sticky-inner">
+		<Hero />
+	</div>
+</div>
 
 <TrustBar />
 <WhyBeee />
@@ -117,6 +121,7 @@
 	}
 
 	@supports (animation-timeline: scroll()) {
+		.hero-scroll { view-timeline-name: --hero; view-timeline-axis: block; }
 		.passport-scroll { view-timeline-name: --passport; view-timeline-axis: block; }
 		.timeline-scroll { view-timeline-name: --timeline; view-timeline-axis: block; }
 
@@ -137,6 +142,10 @@
 		:global(.supports-scroll-animation) :global(.badge-ring-6) {
 			stroke-dashoffset: 138.23;
 		}
+
+		:global(.hero-title) { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 25%; }
+		:global(.hero-subtitle) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 15% cover 40%; }
+		:global(.hero-actions) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 30% cover 55%; }
 
 		:global(.passport-cover) { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 10%; }
 		:global(.progress-fill) { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 70%; }
@@ -170,6 +179,7 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		:global(.hero-title), :global(.hero-subtitle), :global(.hero-actions),
 		:global(.passport-cover), :global(.progress-fill), :global(.passport-step),
 		:global(.badge-ring-1), :global(.badge-ring-2),
 		:global(.badge-ring-3), :global(.badge-ring-4), :global(.badge-ring-5), :global(.badge-ring-6),
