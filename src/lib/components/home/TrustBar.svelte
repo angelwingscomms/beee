@@ -14,7 +14,7 @@
 		<div class="trust-strip">
 			{#each items as item}
 				<div class="trust-item">
-					<svelte:component this={item.icon} size={28} color="var(--primary)" />
+					<item.icon size={28} color="var(--primary)" />
 					<div>
 						<strong>{item.title}</strong>
 						<span>{item.subtitle}</span>
