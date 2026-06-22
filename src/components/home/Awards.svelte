@@ -1,19 +1,20 @@
 <script lang="ts">
   import { Trophy, Medal, Award, Crown } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 
   let { awards }: { awards: string[] } = $props();
 </script>
 
 <section class="section awards-section">
   <div class="container">
-    <div class="section-heading reveal">
+    <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">Awards & Recognition</p>
       <h2>Recognition For Development And Excellence</h2>
       <p>Awards celebrate effort, leadership, innovation and progress. They do not replace the journey.</p>
     </div>
     <div class="awards-grid">
       {#each awards as award, index}
-        <article class="award-card reveal">
+        <article class="award-card" use:motionFadeUp>
           {#if index === 0}<Trophy size={24} />{:else if index < 3}<Medal size={24} />{:else if index < 5}<Award size={24} />{:else}<Crown size={24} />{/if}
           <span>{award}</span>
         </article>
@@ -47,9 +48,6 @@
     color: var(--ink-dark); font-weight: 900;
   }
   .award-card svg { color: var(--gold-dark); }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .awards-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .awards-grid { grid-template-columns: 1fr; } }
 </style>

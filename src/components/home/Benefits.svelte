@@ -1,18 +1,19 @@
 <script lang="ts">
   import { BadgeCheck } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 
   let { benefits }: { benefits: string[][] } = $props();
 </script>
 
 <section class="section benefits-section">
   <div class="container">
-    <div class="section-heading reveal">
+    <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">Benefits</p>
       <h2>Growth Parents Can Recognise</h2>
     </div>
     <div class="benefit-grid">
       {#each benefits as benefit}
-        <article class="benefit-card reveal">
+        <article class="benefit-card" use:motionFadeUp>
           <BadgeCheck size={24} />
           <h3>{benefit[0]}</h3>
           <p>{benefit[1]}</p>
@@ -47,9 +48,6 @@
   .benefit-card svg { color: var(--gold-dark); }
   .benefit-card h3 { margin: 22px 0 10px; font-size: 22px; }
   .benefit-card p { margin: 0; color: var(--muted-dark); line-height: 1.6; }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .benefit-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .benefit-grid { grid-template-columns: 1fr; } }
 </style>

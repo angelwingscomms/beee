@@ -1,5 +1,6 @@
 <script lang="ts">
   import { ChevronDown } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 
   let { faqs }: { faqs: string[][] } = $props();
   let openFaq = $state(-1);
@@ -7,7 +8,7 @@
 
 <section class="section faq-section" id="faq">
   <div class="container faq-container">
-    <div class="section-heading reveal">
+    <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">FAQ</p>
       <h2>Questions Parents Ask First</h2>
     </div>
@@ -52,8 +53,5 @@
   }
   .faq-item p { margin: 0; color: #6b6257; line-height: 1.6; padding: 0 22px 22px; }
   .rotated { transform: rotate(180deg); }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 700px) { .section { padding: 72px 0; } }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Sparkles } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 
   let { teamup }: { teamup: { name: string; detail: string; points: string[] }[] } = $props();
   let activeTeamup = $state('');
@@ -8,7 +9,7 @@
 
 <section class="section teamup-section" id="teamup">
   <div class="container">
-    <div class="section-heading reveal">
+    <div class="section-heading" use:motionFadeUp>
       <p class="section-kicker">Programme Core</p>
       <h2>The T.E.A.M.U.P. Experience</h2>
     </div>
@@ -26,7 +27,7 @@
         {/each}
         <div class="pentagon-lines"></div>
       </div>
-      <article class="teamup-panel reveal">
+      <article class="teamup-panel" use:motionFadeUp>
         {#each teamup as item}
           {#if activeTeamup === item.name}
             <p class="section-kicker">{item.name}</p>
@@ -47,8 +48,7 @@
   .section { padding: 104px 0; }
   .teamup-section {
     background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
-                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%),
-                #070807;
+                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
   }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
@@ -63,9 +63,7 @@
     margin: 16px 0 0; font-family: var(--font-championship), var(--font-registration), sans-serif;
     font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--text);
   }
-  .teamup-layout {
-    display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr); gap: 56px; align-items: center;
-  }
+  .teamup-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr); gap: 56px; align-items: center; }
   .pentagon { position: relative; width: min(540px, 100%); aspect-ratio: 1; margin: 0 auto; }
   .pentagon-lines {
     position: absolute; inset: 18%;
@@ -103,9 +101,6 @@
     background: rgba(255, 255, 255, 0.06); color: var(--muted-dark);
     padding: 8px 11px; font-size: 13px; font-weight: 700;
   }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .teamup-layout { grid-template-columns: 1fr; } }
   @media (max-width: 700px) {
     .section { padding: 72px 0; }

@@ -1,9 +1,10 @@
 <script lang="ts">
   import { GraduationCap } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
 <section class="final-cta-section">
-  <div class="container final-cta-card reveal">
+  <div class="container final-cta-card" use:motionFadeUp>
     <GraduationCap size={36} />
     <h2>Every Great Journey Begins With A Move</h2>
     <p>Register today and give your child the opportunity to learn, compete, develop and excel.</p>
@@ -41,8 +42,5 @@
     color: var(--text); transition: transform 180ms ease;
   }
   .secondary-cta:hover { transform: translateY(-2px); }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 700px) { .final-cta-section { padding: 72px 0; } }
 </style>

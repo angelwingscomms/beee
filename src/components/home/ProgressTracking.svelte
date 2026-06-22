@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
 <section class="section tracking-section">
   <div class="container tracking-grid">
-    <div class="section-heading align-left reveal">
+    <div class="section-heading align-left" use:motionFadeUp>
       <p class="section-kicker">Progress Tracking</p>
       <h2>Track Growth Beyond The Chessboard</h2>
       <p>Parents see a development record, not just a match result.</p>
     </div>
-    <div class="dashboard reveal">
+    <div class="dashboard" use:motionFadeUp>
       <div class="dashboard-top">
         <span>Participant Dashboard</span>
         <strong>Level 4: Innovator</strong>
@@ -72,9 +73,6 @@
     padding: 8px 11px; font-size: 13px; font-weight: 700;
   }
   .xp-card { margin-top: 22px; border-radius: 8px; background: rgba(245, 184, 75, 0.12); padding: 22px; color: var(--gold); font-size: 20px; font-weight: 900; }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .tracking-grid { grid-template-columns: 1fr; } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .dashboard-top { align-items: stretch; flex-direction: column; } }
 </style>

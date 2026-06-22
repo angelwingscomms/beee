@@ -1,10 +1,11 @@
 <script lang="ts">
   import { ShieldCheck } from '@lucide/svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
 <section class="section passport-section" id="passport">
   <div class="container passport-grid">
-    <div class="passport-mock reveal" aria-label="Development passport mockup">
+    <div class="passport-mock" use:motionFadeUp aria-label="Development passport mockup">
       <div class="passport-cover">
         <img src="/logo.svg" alt="" />
         <span>T.E.A.M.U.P.</span>
@@ -16,7 +17,7 @@
         {/each}
       </div>
     </div>
-    <div class="passport-copy reveal">
+    <div class="passport-copy" use:motionFadeUp>
       <p class="section-kicker">Development Passport</p>
       <h2>Every participant receives a T.E.A.M.U.P. Development Passport.</h2>
       <p>The passport makes growth visible. Parents can see attendance, achievements, badges, leadership activities, projects, mentorship records, certificates and milestones in one structured record.</p>
@@ -30,13 +31,10 @@
   .section { padding: 104px 0; }
   .passport-section {
     background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
-                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%),
-                #070807;
+                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
   }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
-  .passport-grid {
-    display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr); gap: 56px; align-items: center;
-  }
+  .passport-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr); gap: 56px; align-items: center; }
   .section-kicker {
     display: inline-flex; width: fit-content; margin: 0;
     border: 1px solid rgba(245, 184, 75, 0.28); border-radius: 999px;
@@ -84,9 +82,6 @@
     border: 1px solid rgba(245, 184, 75, 0.24); border-radius: 8px;
     padding: 16px; color: var(--muted-dark); font-weight: 800;
   }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .passport-grid { grid-template-columns: 1fr; } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .passport-mock { min-height: auto; } }
 </style>

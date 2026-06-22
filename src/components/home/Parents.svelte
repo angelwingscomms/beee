@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
 <section class="section parents-section">
   <div class="container parents-grid">
-    <div class="parent-dashboard reveal">
+    <div class="parent-dashboard" use:motionFadeUp>
       <div class="phone-shell">
         <div class="phone-header">Parent View</div>
         <div class="phone-card"><span>Attendance</span><strong>9/10</strong></div>
@@ -11,7 +12,7 @@
         <div class="phone-card"><span>Certificate</span><strong>Ready</strong></div>
       </div>
     </div>
-    <div class="parents-copy reveal">
+    <div class="parents-copy" use:motionFadeUp>
       <p class="section-kicker">For Parents</p>
       <h2>See Your Child's Growth In Real Time</h2>
       <ul>
@@ -74,9 +75,6 @@
   .phone-header { color: var(--gold); font-weight: 900; margin-bottom: 18px; }
   .phone-card { display: flex; justify-content: space-between; gap: 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); padding: 16px; margin-top: 10px; }
   .phone-card span { color: var(--muted-dark); }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .reveal { animation: none !important; } }
   @media (max-width: 1023px) { .parents-grid { grid-template-columns: 1fr; } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .parents-copy ul { grid-template-columns: 1fr; } }
 </style>

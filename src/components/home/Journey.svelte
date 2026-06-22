@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { motionFadeUp } from '$lib/actions/motion';
   let { journey }: { journey: { code: string; title: string; detail: string }[] } = $props();
 </script>
 
 <section class="section journey-section" id="journey">
   <div class="container">
-    <div class="section-heading align-left reveal">
+    <div class="section-heading align-left" use:motionFadeUp>
       <p class="section-kicker">Championship Journey</p>
       <h2>A Roadmap To The Grand Finale</h2>
       <p>Each step gives parents a clear view of what happens after registration.</p>
@@ -12,14 +13,14 @@
     <div class="journey-map">
       <div class="journey-line" aria-hidden="true"></div>
       {#each journey as item}
-        <article class="journey-step reveal" tabindex="0">
+        <article class="journey-step" use:motionFadeUp tabindex="0">
           <span>{item.code}</span>
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
         </article>
       {/each}
     </div>
-    <div class="inline-cta reveal">
+    <div class="inline-cta" use:motionFadeUp>
       <p>Ready to begin the pathway?</p>
       <a class="primary-cta" href="/register">Register Child</a>
     </div>
@@ -41,8 +42,7 @@
   }
   .section-heading h2 {
     margin: 16px 0 0; font-family: var(--font-championship), var(--font-registration), sans-serif;
-    font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04;
-    color: var(--text);
+    font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--text);
   }
   .section-heading p:not(.section-kicker) {
     max-width: 650px; margin: 18px 0 0; color: var(--muted-dark); font-size: 18px; line-height: 1.6;
@@ -54,8 +54,7 @@
   .journey-line {
     position: absolute; top: 58px; left: 8%; width: 84%; height: 2px;
     background: linear-gradient(90deg, var(--gold), var(--green));
-    transform-origin: left; animation: line-grow linear both;
-    animation-timeline: view(); animation-range: entry 0% cover 55%;
+    transform-origin: left;
   }
   .journey-step {
     position: relative; min-width: 190px; padding: 26px 22px;
@@ -87,10 +86,6 @@
     transition: transform 180ms ease;
   }
   .primary-cta:hover { transform: translateY(-2px); }
-  .reveal { animation: fade-up both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-  @keyframes fade-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes line-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  @media (prefers-reduced-motion: reduce) { .reveal, .journey-line { animation: none !important; } }
   @media (max-width: 700px) {
     .section { padding: 72px 0; }
     .journey-map { grid-template-columns: 1fr; overflow: visible; }
