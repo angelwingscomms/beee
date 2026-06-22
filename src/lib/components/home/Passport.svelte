@@ -4,6 +4,7 @@
 	import { observe } from '$lib/actions/observe';
 
 	let hovered = $state<number | null>(null);
+	let selected = $state<number | null>(null);
 
 	const items = [
 		'Attendance', 'Achievements', 'Badges', 'Leadership Activities',
@@ -57,17 +58,19 @@
 
 			<!-- Right: Pentagon framework -->
 			<div class="passport-right" use:observe>
-				<div class="pillar-label">Five Pillars of Growth</div>
+				<div class="pillar-label">T.E.A.M.U.P</div>
 
 				<div class="pentagon-wrap">
 					<div class="pentagon">
 						{#each pillars as p, i}
 							<button
 								class="pent-point"
+								class:active={selected === i}
 								style="--pc: {colors[i]}"
 								onmouseenter={() => hovered = i}
-								onfocus={() => hovered = i}
 								onmouseleave={() => hovered = null}
+								onclick={() => selected = selected === i ? null : i}
+								onfocus={() => hovered = i}
 								onblur={() => hovered = null}
 								aria-label={p.label}
 							>
@@ -78,29 +81,16 @@
 					</div>
 				</div>
 
-				<div class="mobile-pillars">
-					{#each pillars as p, i}
-						<button
-							class="mobile-item"
-							style="--pc: {colors[i]}"
-							onmouseenter={() => hovered = i}
-							onfocus={() => hovered = i}
-							onmouseleave={() => hovered = null}
-							onblur={() => hovered = null}
-						>
-							<span class="mobile-dot" style="background: {colors[i]}"></span>
-							<span class="mobile-name">{p.label}</span>
-						</button>
-					{/each}
-				</div>
-
 				<div class="desc-shell">
 					<div class="desc-panel">
 						{#if hovered !== null}
 							<p class="desc-label">{pillars[hovered].label}</p>
 							<p class="desc-body">{pillars[hovered].desc}</p>
+						{:else if selected !== null}
+							<p class="desc-label">{pillars[selected].label}</p>
+							<p class="desc-body">{pillars[selected].desc}</p>
 						{:else}
-							<p class="desc-body" style="opacity: 0.45">Hover a pillar to explore</p>
+							<p class="desc-body" style="opacity: 0.45">Tap or hover a pillar</p>
 						{/if}
 					</div>
 				</div>
@@ -298,16 +288,20 @@
 
 	.pent-point:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 3px; }
 
-	.pent-point:hover {
+	.pent-point:hover,
+	.pent-point.active {
 		box-shadow: 0 0 18px var(--pc), 0 0 36px color-mix(in srgb, var(--pc) 35%, transparent);
 		transform: translate(-50%, -50%) scale(1.18);
 		background: color-mix(in srgb, var(--pc) 12%, transparent);
 	}
 
-	.pent-point:nth-child(4) { filter: hue-rotate(250deg) saturate(0.75) brightness(1.25); }
+	.pent-point.active .point-dot { transform: scale(1.5); }
+	.pent-point.active .point-label { opacity: 1; }
 
+	.pent-point:nth-child(4) { filter: hue-rotate(250deg) saturate(0.75) brightness(1.25); }
 	.pent-point:nth-child(5) { box-shadow: 0 0 10px var(--pc), 0 0 24px color-mix(in srgb, var(--pc) 35%, transparent); }
-	.pent-point:nth-child(5):hover { box-shadow: 0 0 22px var(--pc), 0 0 44px color-mix(in srgb, var(--pc) 45%, transparent); }
+	.pent-point:nth-child(5):hover,
+	.pent-point:nth-child(5).active { box-shadow: 0 0 22px var(--pc), 0 0 44px color-mix(in srgb, var(--pc) 45%, transparent); }
 
 	.point-dot {
 		width: 8px; height: 8px;
@@ -344,14 +338,6 @@
 	.pent-point:nth-child(3) { left: 71%; top: 78%; }
 	.pent-point:nth-child(4) { left: 29%; top: 78%; }
 	.pent-point:nth-child(5) { left: 17%; top: 39%; }
-
-	/* ── Mobile pillar list (hidden on desktop) ── */
-	.mobile-pillars {
-		display: none;
-		width: 100%;
-	}
-	.mobile-pillars:not(.in-view) { opacity: 0; translate: 0 16px; }
-	.mobile-pillars { transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.3s, translate 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.3s; }
 
 	/* ── Description panel (double‑bezel) ── */
 	.desc-shell {
@@ -405,56 +391,8 @@
 			padding-top: 0;
 		}
 
-		.pentagon-wrap {
-			display: none;
-		}
-
-		.mobile-pillars {
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-			margin-bottom: 20px;
-		}
-
-		.mobile-item {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			padding: 12px 16px;
-			background: var(--surface-dark-elevated);
-			border-radius: 10px;
-			border: 1px solid color-mix(in srgb, var(--on-dark) 6%, transparent);
-			color: var(--on-dark);
-			cursor: pointer;
-			text-align: left;
-			width: 100%;
-			font-size: 14px;
-			font-weight: 500;
-			transition:
-				background 0.25s cubic-bezier(0.32, 0.72, 0, 1),
-				border-color 0.25s cubic-bezier(0.32, 0.72, 0, 1);
-		}
-
-		.mobile-item:hover,
-		.mobile-item:focus-visible {
-			background: color-mix(in srgb, var(--on-dark) 6%, transparent);
-			border-color: color-mix(in srgb, var(--on-dark) 12%, transparent);
-		}
-
-		.mobile-item:focus-visible {
-			outline: 2px solid var(--on-dark-soft);
-			outline-offset: 2px;
-		}
-
-		.mobile-dot {
-			width: 10px; height: 10px;
-			border-radius: 50%;
-			flex-shrink: 0;
-			box-shadow: 0 0 6px var(--pc);
-		}
-
-		.mobile-name { font-weight: 600; }
-
+		.pentagon { max-width: 260px; }
+		.pent-point { width: 44px; height: 44px; }
 		.desc-shell { max-width: 100%; }
 	}
 </style>
