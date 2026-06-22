@@ -6,7 +6,7 @@
 		</p>
 		<div class="feature-grid">
 			<div class="feature-card">
-				<span class="spike-mark" style="color: var(--primary)" />
+				<span class="spike-mark" style="color: var(--primary)"></span>
 				<h3>Chess Development</h3>
 				<p>
 					A structured chess program that builds foundational skills, sharpens strategic
@@ -14,7 +14,7 @@
 				</p>
 			</div>
 			<div class="feature-card">
-				<span class="spike-mark" style="color: var(--primary)" />
+				<span class="spike-mark" style="color: var(--primary)"></span>
 				<h3>Leadership &amp; Mentorship</h3>
 				<p>
 					Mentorship-driven guidance that cultivates leadership, resilience, and a mindset
@@ -22,7 +22,7 @@
 				</p>
 			</div>
 			<div class="feature-card">
-				<span class="spike-mark" style="color: var(--primary)" />
+				<span class="spike-mark" style="color: var(--primary)"></span>
 				<h3>Innovation &amp; Upskilling</h3>
 				<p>
 					A space where technology, creativity, and innovation converge — empowering
