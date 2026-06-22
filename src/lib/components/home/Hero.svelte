@@ -19,4 +19,5 @@
 			</div>
 			<p class="mystery-teaser" style="margin-top: 32px; color: var(--muted); font-size: 13px; opacity: 0.7;">&mdash; Featuring a Grand Finale unlike any other school chess championship.</p>
 		</div>
+	</div>
 </section>
