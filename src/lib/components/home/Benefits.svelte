@@ -21,7 +21,7 @@
 		<div class="benefits-grid">
 			{#each cards as card, i}
 				<div class="benefit-card" use:observe style="transition-delay: {i * 100}ms">
-					<svelte:component this={card.icon} size={28} color="var(--primary)" />
+					<card.icon size={28} color="var(--primary)" />
 					<h3>{card.title}</h3>
 					<p>{card.desc}</p>
 				</div>
