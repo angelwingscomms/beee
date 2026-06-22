@@ -22,7 +22,7 @@
     </div>
     <div class="journey-map">
       <svg class="journey-svg" aria-hidden="true" viewBox="0 0 1000 4" preserveAspectRatio="none">
-        <path ref={journey_line} d="M 10 2 L 990 2" stroke="url(#journey-grad)" strokeWidth="3" fill="none" pathLength="1" />
+        <path bind:this={journey_line} d="M 10 2 L 990 2" stroke="url(#journey-grad)" stroke-width="3" fill="none" pathLength="1" />
         <defs>
           <linearGradient id="journey-grad" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="var(--accent-amber)" />

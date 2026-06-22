@@ -16,7 +16,7 @@
   import MobileStickyCTA from '../components/home/MobileStickyCTA.svelte';
 
   let menu_open = $state(false);
-  let menu_toggle = $state.function(() => { menu_open = !menu_open; });
+  function menu_toggle() { menu_open = !menu_open; }
 
   const journey = [
     { code: '01', title: 'Register', detail: 'Complete the simple registration form to begin your child\'s championship journey.' },
