@@ -7,8 +7,7 @@
 <nav class="navbar">
 	<div class="container navbar-inner">
 		<a href="/" class="brand">
-			<span class="spike-mark" style="color: var(--primary)"></span>
-			<span class="brand-name">BEEE</span>
+			<img src="/logo.svg" alt="BEEE" class="logo" />
 		</a>
 		<div class="nav-links">
 			<a href="#about">About</a>
@@ -70,9 +69,10 @@
 		color: var(--ink);
 		text-decoration: none;
 	}
-	.brand-name {
-		font-family: var(--font-championship);
-		letter-spacing: -0.02em;
+	.logo {
+		height: 36px;
+		width: auto;
+		display: block;
 	}
 	.nav-links {
 		display: flex;
