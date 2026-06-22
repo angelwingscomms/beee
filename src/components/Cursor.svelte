@@ -1,34 +1,41 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { animate, spring } from 'motion';
+  import { animate } from 'motion';
 
   let x = $state(-100);
   let y = $state(-100);
   let hovered = $state(false);
-  let el: HTMLDivElement | undefined = $state(undefined);
 
   onMount(() => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (isTouch || reduced) return;
 
-    const spring_x = spring({ stiffness: 350, damping: 28 });
-    const spring_y = spring({ stiffness: 350, damping: 28 });
-    spring_x.on('update', (v) => { x = v; });
-    spring_y.on('update', (v) => { y = v; });
+    let mx = -100, my = -100;
+    let raf: number;
 
     const onMove = (e: MouseEvent) => {
-      spring_x.set(e.clientX - 12);
-      spring_y.set(e.clientY - 12);
+      mx = e.clientX - 12;
+      my = e.clientY - 12;
+      if (x < 0) { x = mx; y = my; }
     };
     const onOver = (e: MouseEvent) => {
       const t = (e.target as HTMLElement)?.closest?.('a, button, [role="button"]');
       hovered = !!t;
     };
+
+    function tick() {
+      x += (mx - x) * 0.18;
+      y += (my - y) * 0.18;
+      raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseover', onOver);
 
     return () => {
+      cancelAnimationFrame(raf);
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseover', onOver);
     };

@@ -1,0 +1,60 @@
+[    2420ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2422ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2424ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2426ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2430ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2433ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2435ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2437ms] [WARNING] %c[svelte] binding_property_non_reactive
+%c`bind:this={faq_refs[index]}` (src/components/home/FAQ.svelte:45:12) is binding to a non-reactive property
+https://svelte.dev/e/binding_property_non_reactive font-weight: bold font-weight: normal @ http://localhost:5400/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=4c5e47a9:3360
+[    2503ms] TypeError: Cannot read properties of undefined (reading '0')
+
+	in $effect
+	in Cursor.svelte
+	in +layout.svelte
+	in root.svelte
+	in undefined
+
+    at spring (http://localhost:5400/node_modules/.vite/deps/motion.js?v=4c5e47a9:1064:34)
+    at http://localhost:5400/src/components/Cursor.svelte?t=1782102161256:26:20
+    at untrack (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:5147:10)
+    at $effect (http://localhost:5400/node_modules/.vite/deps/client-DZsulWSl.js?v=4c5e47a9:342:19)
+    at update_reaction (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4884:16)
+    at update_effect (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4984:18)
+    at flush_queued_effects (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:2308:4)
+    at #process (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:1903:3)
+    at Batch.flush (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:2043:17)
+    at Array.<anonymous> (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:2185:32)
+[   41318ms] ReferenceError: el is not defined
+
+	in <unknown>
+	in Cursor.svelte
+	in +layout.svelte
+	in root.svelte
+	in undefined
+
+    at http://localhost:5400/src/components/Cursor.svelte?t=1782105215071:70:54
+    at http://localhost:5400/node_modules/.vite/deps/client-DZsulWSl.js?v=4c5e47a9:3433:24
+    at untrack (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:5147:10)
+    at http://localhost:5400/node_modules/.vite/deps/client-DZsulWSl.js?v=4c5e47a9:3432:4
+    at update_reaction (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4884:16)
+    at update_effect (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4984:18)
+    at create_effect (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4309:4)
+    at render_effect (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4469:9)
+    at http://localhost:5400/node_modules/.vite/deps/client-DZsulWSl.js?v=4c5e47a9:3429:3
+    at update_reaction (http://localhost:5400/node_modules/.vite/deps/runtime-CubcRqiu.js?v=4c5e47a9:4884:16)
