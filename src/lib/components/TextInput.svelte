@@ -7,9 +7,9 @@
 		required = false,
 		value = $bindable(''),
 		oninput,
-		wrapperClass = '!bg-white !border-transparent',
-		labelClass = '!text-primary/70',
-		inputClass = '!text-primary placeholder:!text-primary/60',
+			wrapperClass = '!bg-white !border-transparent',
+			labelClass = '!text-muted',
+			inputClass = '!text-ink placeholder:!text-muted-soft',
 		error = '',
 	}: {
 		id: string;

@@ -175,3 +175,7 @@ https://svelte.dev/e/css_unused_selector
 11:25:31 PM [vite] (ssr) page reload src/lib/components/PhoneInput.svelte
 11:25:43 PM [vite] (client) hmr update /src/components/RegistrationForm.svelte, /src/app.css
 11:25:43 PM [vite] (ssr) page reload src/components/RegistrationForm.svelte
+11:31:24 PM [vite] (client) hmr update /src/lib/components/TextInput.svelte, /src/app.css
+11:31:24 PM [vite] (ssr) page reload src/lib/components/TextInput.svelte
+11:31:48 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/app.css
+11:31:48 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
