@@ -5,6 +5,16 @@
 		<link rel="icon" href="%sveltekit.assets%/logo.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="%sveltekit.assets%/logo.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			(function() {
+				try {
+					var d = document.documentElement;
+					if (localStorage.getItem('beee-theme') === 'dark' || (!localStorage.getItem('beee-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+						d.classList.add('dark');
+					}
+				} catch(e) {}
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
