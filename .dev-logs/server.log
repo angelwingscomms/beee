@@ -1,240 +1,547 @@
 $ vite --host --port 5400
 
-  VITE v8.0.14  ready in 3361 ms
+  VITE v8.0.14  ready in 4476 ms
 
   ➜  Local:   http://localhost:5400/
   ➜  Network: http://192.168.43.40:5400/
   ➜  press h + enter to show help
 Using secrets defined in .env
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:70:1 Unused CSS selector ".container"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:82:1 Unused CSS selector ".container"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:87:1 Unused CSS selector ".sticky-inner > section"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:101:1 Unused CSS selector ".sticky-inner > section"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:132:2 Unused CSS selector ":global(.supports-scroll-animation) :global(.passport-badge) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:129:1 Unused CSS selector ".badge-ring-1"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:129:16 Unused CSS selector ".badge-ring-2"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:157:2 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:129:31 Unused CSS selector ".badge-ring-3"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:130:1 Unused CSS selector ".badge-ring-4"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:130:16 Unused CSS selector ".badge-ring-5"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:186:35 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:130:31 Unused CSS selector ".badge-ring-6"
 https://svelte.dev/e/css_unused_selector
-7:44:10 AM [vite-plugin-svelte] src/routes/+page.svelte:186:68 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:139:2 Unused CSS selector ".benefits-grid"
 https://svelte.dev/e/css_unused_selector
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:10 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:140:2 Unused CSS selector ".cta-section"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:142:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-step"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:143:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:144:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:145:2 Unused CSS selector ":global(.supports-scroll-animation) .milestone"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:146:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-badge text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:147:2 Unused CSS selector ":global(.supports-scroll-animation) .appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:150:2 Unused CSS selector ":global(.supports-scroll-animation) .progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:151:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:152:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:153:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:155:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:156:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:161:2 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:162:2 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:164:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:165:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:166:2 Unused CSS selector ".passport-step-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:167:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:168:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:169:2 Unused CSS selector ".passport-step-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:170:2 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:171:2 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:172:2 Unused CSS selector ".passport-step-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:173:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:174:2 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:175:2 Unused CSS selector ".passport-step-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:176:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:177:2 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:178:2 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:179:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:181:2 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:182:2 Unused CSS selector ".milestone-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:183:2 Unused CSS selector ".milestone-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:184:2 Unused CSS selector ".milestone-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:185:2 Unused CSS selector ".milestone-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ".milestone-5"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:187:2 Unused CSS selector ".milestone-6"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:189:2 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:190:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:191:2 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:192:2 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:194:2 Unused CSS selector ".appear-on-scroll:not(.why-text):not(.why-visual)"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:195:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:204:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:204:15 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:204:31 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:205:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:205:19 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:205:35 Unused CSS selector ".passport-step"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:205:51 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:205:66 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:206:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:206:17 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:206:32 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:206:47 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:207:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:207:26 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:207:50 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:208:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:208:22 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:208:38 Unused CSS selector ".milestone"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:208:50 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:209:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:209:17 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:209:31 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:210:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:218:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:219:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:219:17 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:219:32 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:220:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:220:17 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite-plugin-svelte] src/routes/+page.svelte:220:32 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:22 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/routes/+page.svelte?svelte&type=style&lang.css, /src/app.css
+7:32:22 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:9:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
+https://svelte.dev/e/element_invalid_self_closing_tag
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:17:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
+https://svelte.dev/e/element_invalid_self_closing_tag
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:25:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
+https://svelte.dev/e/element_invalid_self_closing_tag
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/Journey.svelte:33:7 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:9:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:17:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:25:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/Journey.svelte:33:7 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/Passport.svelte:60:33 `a11y_svg_has_accessible_desc` is not a recognised code
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/Passport.svelte:60:33 `a11y_svg_has_accessible_desc` is not a recognised code
 https://svelte.dev/e/unknown_code
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/ProgressTracking.svelte:75:10 '#' is not a valid href attribute
+7:32:22 AM [vite-plugin-svelte] src/lib/components/home/ProgressTracking.svelte:75:10 '#' is not a valid href attribute
 https://svelte.dev/e/a11y_invalid_attribute
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/Benefits.svelte:24:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+7:32:23 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:10 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-7:44:42 AM [vite-plugin-svelte] src/lib/components/home/Awards.svelte:26:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+7:32:23 AM [vite-plugin-svelte] src/lib/components/home/Benefits.svelte:24:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:70:1 Unused CSS selector ".container"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:87:1 Unused CSS selector ".sticky-inner > section"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:132:2 Unused CSS selector ":global(.supports-scroll-animation) :global(.passport-badge) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.passport-badge-1) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:157:2 Unused CSS selector ":global(.passport-badge-2) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ":global(.passport-badge-3) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ":global(.passport-badge-1) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:186:35 Unused CSS selector ":global(.passport-badge-2) text"
-https://svelte.dev/e/css_unused_selector
-7:44:43 AM [vite-plugin-svelte] src/routes/+page.svelte:186:68 Unused CSS selector ":global(.passport-badge-3) text"
-https://svelte.dev/e/css_unused_selector
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:10 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+7:32:23 AM [vite-plugin-svelte] src/lib/components/home/Awards.svelte:26:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:9:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:17:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:25:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/Journey.svelte:33:7 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/Passport.svelte:60:33 `a11y_svg_has_accessible_desc` is not a recognised code
-https://svelte.dev/e/unknown_code
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/ProgressTracking.svelte:75:10 '#' is not a valid href attribute
-https://svelte.dev/e/a11y_invalid_attribute
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/Benefits.svelte:24:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:44:44 AM [vite-plugin-svelte] src/lib/components/home/Awards.svelte:26:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:45:21 AM [vite] (client) hmr update /src/lib/components/home/Hero.svelte, /src/app.css
-7:45:21 AM [vite] (ssr) page reload src/lib/components/home/Hero.svelte
-7:45:34 AM [vite] (client) hmr update /src/lib/components/home/Hero.svelte, /src/app.css
-7:45:34 AM [vite] (ssr) page reload src/lib/components/home/Hero.svelte
-7:49:13 AM [vite-plugin-svelte] /home/ed/i/beee/src/lib/components/home/Hero.svelte:6:1 This element is implicitly closed by the following `</section>`, which can cause an unexpected DOM structure. Add an explicit `</div>` to avoid surprises.
-https://svelte.dev/e/element_implicitly_closed
-7:49:13 AM [vite] (client) hmr update /src/lib/components/home/Hero.svelte, /src/app.css
-7:49:13 AM [vite] (ssr) page reload src/lib/components/home/Hero.svelte
-7:49:13 AM [vite-plugin-svelte] /home/ed/i/beee/src/lib/components/home/Hero.svelte:6:1 This element is implicitly closed by the following `</section>`, which can cause an unexpected DOM structure. Add an explicit `</div>` to avoid surprises.
-https://svelte.dev/e/element_implicitly_closed
-7:49:38 AM [vite] (client) hmr update /src/app.css
-7:49:38 AM [vite] (ssr) page reload src/app.css
-7:50:09 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:50:09 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:50:09 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:50:10 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:50:10 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:50:10 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:50:10 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:50:10 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:50:10 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-7:50:11 AM [vite-plugin-svelte] /home/ed/i/beee/src/lib/components/home/Hero.svelte:6:1 This element is implicitly closed by the following `</section>`, which can cause an unexpected DOM structure. Add an explicit `</div>` to avoid surprises.
-https://svelte.dev/e/element_implicitly_closed
-7:52:30 AM [vite] .env changed, restarting server...
-7:52:30 AM [vite] server restarted.
-Using secrets defined in .env
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:70:1 Unused CSS selector ".container"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:82:1 Unused CSS selector ".container"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:87:1 Unused CSS selector ".sticky-inner > section"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:101:1 Unused CSS selector ".sticky-inner > section"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:132:2 Unused CSS selector ":global(.supports-scroll-animation) :global(.passport-badge) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:129:1 Unused CSS selector ".badge-ring-1"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:129:16 Unused CSS selector ".badge-ring-2"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:157:2 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:129:31 Unused CSS selector ".badge-ring-3"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:130:1 Unused CSS selector ".badge-ring-4"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:130:16 Unused CSS selector ".badge-ring-5"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:186:35 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:130:31 Unused CSS selector ".badge-ring-6"
 https://svelte.dev/e/css_unused_selector
-7:52:34 AM [vite-plugin-svelte] src/routes/+page.svelte:186:68 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:139:2 Unused CSS selector ".benefits-grid"
 https://svelte.dev/e/css_unused_selector
-7:53:34 AM [vite-plugin-svelte] /home/ed/i/beee/src/lib/components/home/Hero.svelte:6:1 This element is implicitly closed by the following `</section>`, which can cause an unexpected DOM structure. Add an explicit `</div>` to avoid surprises.
-https://svelte.dev/e/element_implicitly_closed
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:10 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:9:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:17:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:25:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/Journey.svelte:33:7 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:34 AM [vite-plugin-svelte] src/lib/components/home/Passport.svelte:60:33 `a11y_svg_has_accessible_desc` is not a recognised code
-https://svelte.dev/e/unknown_code
-7:53:35 AM [vite-plugin-svelte] src/lib/components/home/ProgressTracking.svelte:75:10 '#' is not a valid href attribute
-https://svelte.dev/e/a11y_invalid_attribute
-7:53:35 AM [vite-plugin-svelte] src/lib/components/home/Benefits.svelte:24:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:35 AM [vite-plugin-svelte] src/lib/components/home/Awards.svelte:26:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:70:1 Unused CSS selector ".container"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:140:2 Unused CSS selector ".cta-section"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:87:1 Unused CSS selector ".sticky-inner > section"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:142:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-step"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:132:2 Unused CSS selector ":global(.supports-scroll-animation) :global(.passport-badge) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:143:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-cover"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:144:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-progress"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:157:2 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:145:2 Unused CSS selector ":global(.supports-scroll-animation) .milestone"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:146:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-badge text"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ":global(.passport-badge-1) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:147:2 Unused CSS selector ":global(.supports-scroll-animation) .appear-on-scroll > *"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:186:35 Unused CSS selector ":global(.passport-badge-2) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:150:2 Unused CSS selector ":global(.supports-scroll-animation) .progress-fill"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/routes/+page.svelte:186:68 Unused CSS selector ":global(.passport-badge-3) text"
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:151:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-1"
 https://svelte.dev/e/css_unused_selector
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:10 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:36 AM [vite-plugin-svelte] /home/ed/i/beee/src/lib/components/home/Hero.svelte:6:1 This element is implicitly closed by the following `</section>`, which can cause an unexpected DOM structure. Add an explicit `</div>` to avoid surprises.
-https://svelte.dev/e/element_implicitly_closed
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:9:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:17:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/WhyBeee.svelte:25:4 Self-closing HTML tags for non-void elements are ambiguous — use `<span ...></span>` rather than `<span ... />`
-https://svelte.dev/e/element_invalid_self_closing_tag
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/Journey.svelte:33:7 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/Passport.svelte:60:33 `a11y_svg_has_accessible_desc` is not a recognised code
-https://svelte.dev/e/unknown_code
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/ProgressTracking.svelte:75:10 '#' is not a valid href attribute
-https://svelte.dev/e/a11y_invalid_attribute
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/Benefits.svelte:24:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:36 AM [vite-plugin-svelte] src/lib/components/home/Awards.svelte:26:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:53:56 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:53:56 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:53:56 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:53:56 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-7:54:42 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:54:42 AM [vite] (client) hmr update /src/lib/components/home/TrustBar.svelte, /src/app.css
-7:54:42 AM [vite] (ssr) page reload src/lib/components/home/TrustBar.svelte
-7:54:43 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:54:48 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:54:48 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:54:48 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:54:48 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-7:54:49 AM [vite-plugin-svelte] src/lib/components/home/TrustBar.svelte:17:5 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:56:41 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:56:41 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:56:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:56:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:57:26 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:57:26 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:57:26 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:57:26 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-7:57:40 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-7:57:40 AM [vite] (client) page reload .svelte-kit/generated/root.js
-7:57:40 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-7:57:40 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:152:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:153:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:155:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:156:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:161:2 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:162:2 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:164:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:165:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:166:2 Unused CSS selector ".passport-step-1"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:167:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:168:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:169:2 Unused CSS selector ".passport-step-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:170:2 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:171:2 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:172:2 Unused CSS selector ".passport-step-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:173:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:174:2 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:175:2 Unused CSS selector ".passport-step-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:176:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:177:2 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:178:2 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:179:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:181:2 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:182:2 Unused CSS selector ".milestone-1"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:183:2 Unused CSS selector ".milestone-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:184:2 Unused CSS selector ".milestone-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:185:2 Unused CSS selector ".milestone-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ".milestone-5"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:187:2 Unused CSS selector ".milestone-6"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:189:2 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:190:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:191:2 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:192:2 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:194:2 Unused CSS selector ".appear-on-scroll:not(.why-text):not(.why-visual)"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:195:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:204:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:204:15 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:204:31 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:205:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:205:19 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:205:35 Unused CSS selector ".passport-step"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:205:51 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:205:66 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:206:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:206:17 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:206:32 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:206:47 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:207:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:207:26 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:207:50 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:208:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:208:22 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:208:38 Unused CSS selector ".milestone"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:208:50 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:209:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:209:17 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:209:31 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:210:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:218:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:219:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:219:17 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:219:32 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:220:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:220:17 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:23 AM [vite-plugin-svelte] src/routes/+page.svelte:220:32 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:32:34 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:32:34 AM [vite] (client) page reload .svelte-kit/generated/root.js
+7:32:34 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:32:34 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:82:1 Unused CSS selector ".container"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:101:1 Unused CSS selector ".sticky-inner > section"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:129:1 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:129:16 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:129:31 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:130:1 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:130:16 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:130:31 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:139:2 Unused CSS selector ".benefits-grid"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:140:2 Unused CSS selector ".cta-section"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:142:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-step"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:143:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:144:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:145:2 Unused CSS selector ":global(.supports-scroll-animation) .milestone"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:146:2 Unused CSS selector ":global(.supports-scroll-animation) .passport-badge text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:147:2 Unused CSS selector ":global(.supports-scroll-animation) .appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:150:2 Unused CSS selector ":global(.supports-scroll-animation) .progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:151:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:152:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:153:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:154:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:155:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:156:2 Unused CSS selector ":global(.supports-scroll-animation) .badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:160:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:161:2 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:162:2 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:164:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:165:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:166:2 Unused CSS selector ".passport-step-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:167:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:168:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:169:2 Unused CSS selector ".passport-step-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:170:2 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:171:2 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:172:2 Unused CSS selector ".passport-step-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:173:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:174:2 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:175:2 Unused CSS selector ".passport-step-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:176:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:177:2 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:178:2 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:179:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:181:2 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:182:2 Unused CSS selector ".milestone-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:183:2 Unused CSS selector ".milestone-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:184:2 Unused CSS selector ".milestone-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:185:2 Unused CSS selector ".milestone-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:186:2 Unused CSS selector ".milestone-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:187:2 Unused CSS selector ".milestone-6"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:189:2 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:190:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:191:2 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:192:2 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:194:2 Unused CSS selector ".appear-on-scroll:not(.why-text):not(.why-visual)"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:195:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:204:2 Unused CSS selector ".hero-title"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:204:15 Unused CSS selector ".hero-subtitle"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:204:31 Unused CSS selector ".hero-actions"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:205:2 Unused CSS selector ".passport-cover"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:205:19 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:205:35 Unused CSS selector ".passport-step"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:205:51 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:205:66 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:206:2 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:206:17 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:206:32 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:206:47 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:207:2 Unused CSS selector ".passport-badge-1 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:207:26 Unused CSS selector ".passport-badge-2 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:207:50 Unused CSS selector ".passport-badge-3 text"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:208:2 Unused CSS selector ".passport-progress"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:208:22 Unused CSS selector ".timeline-line"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:208:38 Unused CSS selector ".milestone"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:208:50 Unused CSS selector ".pillar-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:209:2 Unused CSS selector ".benefit-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:209:17 Unused CSS selector ".parent-card"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:209:31 Unused CSS selector ".final-cta"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:210:2 Unused CSS selector ".appear-on-scroll > *"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:218:2 Unused CSS selector ".progress-fill"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:219:2 Unused CSS selector ".badge-ring-1"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:219:17 Unused CSS selector ".badge-ring-2"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:219:32 Unused CSS selector ".badge-ring-3"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:220:2 Unused CSS selector ".badge-ring-4"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:220:17 Unused CSS selector ".badge-ring-5"
+https://svelte.dev/e/css_unused_selector
+7:32:35 AM [vite-plugin-svelte] src/routes/+page.svelte:220:32 Unused CSS selector ".badge-ring-6"
+https://svelte.dev/e/css_unused_selector

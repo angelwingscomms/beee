@@ -6,7 +6,7 @@
 	import { LearnEngine, DIFFICULTY_PRESETS, getHints } from '$lib/util/chess/engine';
 	import type { Color, Hint } from '$lib/util/chess/engine';
 	import { can_reuse_hints, hint_squares } from '$lib/util/chess/hint_highlight';
-	import { Lightbulb, Mic, RotateCcw, Settings, Undo2, X } from '@lucide/svelte';
+	import { Lightbulb, RotateCcw, Settings, Undo2, X } from '@lucide/svelte';
 
 	type ChatContext = { f: string; p: string; u: string; a: string };
 	type ChatData = Partial<ChatContext> & { h?: string };
@@ -37,9 +37,6 @@
 	let chat_abort = $state<AbortController | null>(null);
 	let chat_input = $state('');
 	let interaction_id = $state('');
-	let is_recording = $state(false);
-	let voice_loading = $state(false);
-	let media_recorder: MediaRecorder | null = $state(null);
 	let last_user_move = $state('');
 	let last_ai_move = $state('');
 	let successful_context = $state<Partial<ChatContext>>({});
@@ -413,86 +410,6 @@
 		if (!text.trim() || chat_loading) return;
 		await send_chess_chat(text.trim(), '', true);
 	}
-
-	async function toggleMic() {
-		if (voice_loading || chat_loading) return;
-		if (is_recording) { stopRecording(); return; }
-		try {
-			const s = await navigator.mediaDevices.getUserMedia({ audio: true });
-			const chunks: Blob[] = [];
-			const r = new MediaRecorder(s, { mimeType: 'audio/webm' });
-			r.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
-			r.onstop = () => {
-				s.getTracks().forEach((t) => t.stop());
-				processVoice(new Blob(chunks, { type: 'audio/webm' }));
-			};
-			media_recorder = r;
-			is_recording = true;
-			r.start();
-		} catch { /* mic denied */ }
-	}
-
-	function stopRecording() {
-		if (media_recorder && media_recorder.state !== 'inactive') media_recorder.stop();
-		is_recording = false;
-		media_recorder = null;
-	}
-
-	async function processVoice(blob: Blob) {
-		voice_loading = true;
-		try {
-			const fd = new FormData();
-			fd.set('audio', blob, 'r.webm');
-			const res = await fetch('/api/voice/stt', { method: 'POST', body: fd });
-			if (!res.ok) throw Error('stt failed');
-			const d = await res.json();
-			const text = d?.t?.trim();
-			if (!text) return;
-			const sent = current_chat_context();
-			const req: ChatMsg[] = [...chat_messages, { role: 'user', content: text, d: build_chat_data() }];
-			chat_messages = req;
-			chat_loading = true;
-			const ac = new AbortController();
-			chat_abort = ac;
-			chat_messages = [...chat_messages, { role: 'assistant', content: '' }];
-			const sse = await fetch('/api/chat/groq', {
-				method: 'POST',
-				body: JSON.stringify({ x: req.map((m) => ({ r: m.role, c: m.content, d: m.d })) }),
-				signal: ac.signal,
-			});
-			if (!sse.ok || !(await read_chat_stream(sse))) throw Error('groq failed');
-			successful_context = sent;
-			const last = chat_messages[chat_messages.length - 1];
-			if (last?.role === 'assistant' && last.content) playTTS(last.content);
-		} catch (e) {
-			if (e instanceof DOMException && e.name === 'AbortError') return;
-			const last = chat_messages[chat_messages.length - 1];
-			if (last?.role === 'assistant') {
-				chat_messages[chat_messages.length - 1] = { ...last, content: last.content + '\n[Voice failed]' };
-				chat_messages = chat_messages;
-			}
-		} finally {
-			chat_loading = false;
-			voice_loading = false;
-			chat_abort = null;
-		}
-	}
-
-	async function playTTS(text: string) {
-		try {
-			const res = await fetch('/api/voice/tts', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ t: text }),
-			});
-			if (!res.ok) return;
-			const blob = await res.blob();
-			const url = URL.createObjectURL(blob);
-			const a = new Audio(url);
-			a.onended = () => URL.revokeObjectURL(url);
-			await a.play();
-		} catch { /* tts silence */ }
-	}
 </script>
 
 <main class="page-shell">
@@ -634,20 +551,6 @@
 							class="flex-1 min-h-[40px] rounded-lg border border-hairline bg-canvas text-ink px-3.5 py-2.5 text-sm outline-none transition-[border-color,box-shadow] duration-150 ease-in-out focus:border-primary focus:shadow-[0_0_0_3px_rgba(204,120,92,0.15)]"
 							disabled={chat_loading}
 						/>
-						<button
-							onclick={toggleMic}
-							disabled={chat_loading || voice_loading}
-							class="button-secondary !px-3 !min-h-[40px] !rounded-lg shrink-0"
-							aria-label="Voice"
-						>
-							{#if voice_loading}
-								<span class="animate-pulse text-muted">...</span>
-							{:else if is_recording}
-								<span class="inline-block size-3 rounded-full bg-error animate-pulse"></span>
-							{:else}
-								<Mic size={18} />
-							{/if}
-						</button>
 						<button
 							onclick={() => sendChatMessage(chat_input)}
 							disabled={!chat_input.trim() || chat_loading}
