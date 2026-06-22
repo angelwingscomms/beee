@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Navbar from '$components/home/Navbar.svelte';
   import {
     Award,
     BadgeCheck,
@@ -16,18 +17,20 @@
     Lightbulb,
     MapPin,
     Medal,
-    Menu,
     Palette,
     ShieldCheck,
     Sparkles,
     Trophy,
-    Users,
-    X
+    Users
   } from '@lucide/svelte';
 
-  let menuOpen = false;
-  let activeTeamup = 'Technology';
-  let openFaq = 0;
+  let menuOpen = $state(false);
+  let activeTeamup = $state('Technology');
+  let openFaq = $state(0);
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+  }
 
   const journey = [
     {
@@ -120,9 +123,7 @@
     ['How do I register?', 'Use any Register Child button on this page. Registration is always one click away from the homepage.']
   ];
 
-  function closeMenu() {
-    menuOpen = false;
-  }
+
 </script>
 
 <svelte:head>
@@ -134,35 +135,7 @@
 </svelte:head>
 
 <div class="beee-page">
-  <header class="beee-nav">
-    <a class="brand" href="#top" on:click={closeMenu} aria-label="BEEE homepage">
-      <img src="/logo.svg" alt="" />
-      <span>BEEE</span>
-    </a>
-
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#why">About</a>
-      <a href="#teamup">T.E.A.M.U.P.</a>
-      <a href="#journey">Journey</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-
-    <div class="nav-actions">
-      <a class="nav-register" href="/register">Register</a>
-      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded={menuOpen} on:click={() => (menuOpen = !menuOpen)}>
-        {#if menuOpen}<X size={20} />{:else}<Menu size={20} />{/if}
-      </button>
-    </div>
-
-    {#if menuOpen}
-      <nav class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#why" on:click={closeMenu}>About</a>
-        <a href="#teamup" on:click={closeMenu}>T.E.A.M.U.P.</a>
-        <a href="#journey" on:click={closeMenu}>Journey</a>
-        <a href="#faq" on:click={closeMenu}>FAQ</a>
-      </nav>
-    {/if}
-  </header>
+  <Navbar {menuOpen} onMenuToggle={toggleMenu} />
 
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"></div>
@@ -507,58 +480,16 @@
     margin: 0 auto;
   }
 
-  .beee-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    height: 72px;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(7, 8, 7, 0.84);
-    padding: 0 max(20px, calc((100vw - 1180px) / 2));
-    backdrop-filter: blur(18px);
-  }
-
-  .brand,
-  .desktop-nav,
-  .nav-actions,
   .hero-meta,
   .cta-row {
     display: flex;
     align-items: center;
   }
 
-  .brand {
-    gap: 10px;
-    font-weight: 800;
-    color: var(--text);
-  }
-
-  .brand img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-  }
-
-  .desktop-nav {
-    gap: 26px;
-    color: var(--muted-dark);
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .desktop-nav a:hover,
   .footer a:hover {
     color: var(--gold);
   }
 
-  .nav-actions {
-    gap: 10px;
-  }
-
-  .nav-register,
   .primary-cta,
   .secondary-cta {
     display: inline-flex;
@@ -572,7 +503,6 @@
     transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   }
 
-  .nav-register,
   .primary-cta {
     border: 1px solid var(--gold);
     background: linear-gradient(135deg, var(--gold), #df8f1f);
@@ -592,42 +522,9 @@
     color: var(--ink-dark);
   }
 
-  .nav-register:hover,
   .primary-cta:hover,
   .secondary-cta:hover {
     transform: translateY(-2px);
-  }
-
-  .menu-button {
-    display: none;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text);
-  }
-
-  .mobile-nav {
-    position: absolute;
-    top: 72px;
-    right: 20px;
-    left: 20px;
-    display: grid;
-    gap: 8px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: rgba(11, 13, 12, 0.96);
-    padding: 14px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
-  }
-
-  .mobile-nav a {
-    border-radius: 8px;
-    padding: 14px;
-    color: var(--text);
-    font-weight: 700;
   }
 
   .hero {
@@ -1479,14 +1376,6 @@
   }
 
   @media (max-width: 1023px) {
-    .desktop-nav {
-      display: none;
-    }
-
-    .menu-button {
-      display: grid;
-    }
-
     .hero-grid,
     .teamup-layout,
     .passport-grid,
@@ -1511,19 +1400,6 @@
   @media (max-width: 700px) {
     .container {
       width: min(100% - 28px, 1180px);
-    }
-
-    .beee-nav {
-      padding-inline: 14px;
-    }
-
-    .brand span {
-      display: none;
-    }
-
-    .nav-register {
-      min-height: 42px;
-      padding-inline: 14px;
     }
 
     .hero {
