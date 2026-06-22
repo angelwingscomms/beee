@@ -68,4 +68,31 @@ export function motionSpring(node: HTMLElement, properties?: Partial<Record<stri
   });
 }
 
+export function motionMagnetic(node: HTMLElement) {
+  if (prefersReducedMotion() || isTouchDevice()) return;
+
+  const onMove = (e: MouseEvent) => {
+    const rect = node.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / 8;
+    const dy = (e.clientY - cy) / 8;
+    node.style.transform = `translate(${dx}px, ${dy}px)`;
+  };
+
+  const onLeave = () => {
+    node.style.transform = 'translate(0, 0)';
+  };
+
+  node.addEventListener('mousemove', onMove);
+  node.addEventListener('mouseleave', onLeave);
+
+  return {
+    destroy() {
+      node.removeEventListener('mousemove', onMove);
+      node.removeEventListener('mouseleave', onLeave);
+    },
+  };
+}
+
 export { animate, inView, scroll };

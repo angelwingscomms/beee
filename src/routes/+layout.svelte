@@ -1,5 +1,6 @@
 <script lang="ts">
   import '../app.css';
+  import Cursor from '../components/Cursor.svelte';
   let { children } = $props();
 </script>
 
@@ -11,6 +12,7 @@
 </svelte:head>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
+<Cursor />
 <main id="main-content" tabindex="-1">
   {@render children()}
 </main>
