@@ -32,7 +32,7 @@
 <Navbar />
 
 <!-- HERO (sticky with scroll-driven animation) -->
-<div class="sticky-section hero-scroll" style="height: 300vh">
+<div class="sticky-section hero-scroll" style="height: 150vh">
 	<div class="sticky-inner">
 		<Hero />
 	</div>
