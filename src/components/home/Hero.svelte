@@ -1,30 +1,29 @@
 <script lang="ts">
   import { CalendarDays, CircleCheck, MapPin } from '@lucide/svelte';
+  import { motionSpring, motionScaleIn } from '$lib/actions/motion';
 </script>
 
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
-      <h1>Where Young Minds <span>Compete.</span> <span>Develop.</span> <span>Excel.</span></h1>
-      <p class="hero-lead">
-        More than a championship. A transformational journey in leadership, strategy, innovation and personal growth.
-      </p>
-      <div class="cta-row">
+      <p class="eyebrow" use:motionSpring={{ opacity: [0, 1], y: [-12, 0], stiffness: 180, damping: 20 }}>BEEE Spectacular Chess Championship Abuja 2026</p>
+      <h1 use:motionSpring={{ opacity: [0, 1], y: [-24, 0], stiffness: 120, damping: 14, delay: 0.15 }}>Where Young Minds <span>Compete.</span> <span>Develop.</span> <span>Excel.</span></h1>
+      <p class="hero-lead" use:motionSpring={{ opacity: [0, 1], y: [-16, 0], stiffness: 160, damping: 18, delay: 0.3 }}>More than a championship. A transformational journey in leadership, strategy, innovation and personal growth.</p>
+      <div class="cta-row" use:motionSpring={{ opacity: [0, 1], y: [-12, 0], stiffness: 200, damping: 22, delay: 0.45 }}>
         <a class="primary-cta" href="/register">Register Child</a>
         <a class="secondary-cta" href="#teamup">Explore T.E.A.M.U.P.</a>
       </div>
-      <div class="hero-meta" aria-label="Event details">
+      <div class="hero-meta" use:motionSpring={{ opacity: [0, 1], y: [-10, 0], stiffness: 180, damping: 20, delay: 0.6 }} aria-label="Event details">
         <span><CalendarDays size={16} />October 2026 Grand Finale</span>
         <span><MapPin size={16} />Abuja</span>
         <span><CircleCheck size={16} />Open Registration</span>
       </div>
-      <p class="mystery">Featuring a Grand Finale unlike any other school chess championship.</p>
+      <p class="mystery" use:motionSpring={{ opacity: [0, 1], y: [-8, 0], stiffness: 200, damping: 22, delay: 0.75 }}>Featuring a Grand Finale unlike any other school chess championship.</p>
     </div>
 
     <div class="hero-visual">
-      <div class="board-shell" aria-label="Animated chessboard preview">
+      <div class="board-shell" use:motionScaleIn={{ stiffness: 100, damping: 12, delay: 0.35 }} aria-label="Animated chessboard preview">
         <div class="board-glow"></div>
         <div class="chessboard">
           {#each Array(64) as _, index}

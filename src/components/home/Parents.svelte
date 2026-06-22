@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { motionFadeUp } from '$lib/actions/motion';
+  import { motionFadeUp, motionScaleIn } from '$lib/actions/motion';
 </script>
 
 <section class="section parents-section">
   <div class="container parents-grid">
     <div class="parent-dashboard" use:motionFadeUp>
-      <div class="phone-shell">
+      <div class="phone-shell" use:motionScaleIn={{ stiffness: 100, damping: 14, delay: 0.2 }}>
         <div class="phone-header">Parent View</div>
         <div class="phone-card"><span>Attendance</span><strong>9/10</strong></div>
         <div class="phone-card"><span>Latest badge</span><strong>Leadership Star</strong></div>

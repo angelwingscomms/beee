@@ -1,12 +1,12 @@
 <script lang="ts">
   import { ShieldCheck } from '@lucide/svelte';
-  import { motionFadeUp } from '$lib/actions/motion';
+  import { motionFadeUp, motionScaleIn } from '$lib/actions/motion';
 </script>
 
 <section class="section passport-section" id="passport">
   <div class="container passport-grid">
     <div class="passport-mock" use:motionFadeUp aria-label="Development passport mockup">
-      <div class="passport-cover">
+      <div class="passport-cover" use:motionScaleIn={{ stiffness: 100, damping: 14, delay: 0.2 }}>
         <img src="/logo.svg" alt="" />
         <span>T.E.A.M.U.P.</span>
         <strong>Development Passport</strong>
