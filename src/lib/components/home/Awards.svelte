@@ -22,9 +22,9 @@
           class="bg-surface-card rounded-xl p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           style="background: var(--color-surface-card)"
         >
-          <div class="flex justify-center mb-0">
-            <svelte:component this={item.icon} size={32} color="var(--color-primary)" />
-          </div>
+			<div class="flex justify-center mb-0">
+				<item.icon size={32} color="var(--color-primary)" />
+			</div>
           <h3 class="text-lg font-medium mt-4" style="color: var(--color-ink)">{item.title}</h3>
           <p class="text-sm mt-2" style="color: var(--color-body)">{item.desc}</p>
         </div>
