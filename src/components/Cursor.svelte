@@ -58,9 +58,9 @@
     z-index: 99999;
     width: 24px;
     height: 24px;
-    border: 2px solid rgba(245, 184, 75, 0.7);
+    border: 2px solid rgba(242, 120, 48, 0.5);
     border-radius: 999px;
-    background: rgba(245, 184, 75, 0.08);
+    background: rgba(242, 120, 48, 0.06);
     pointer-events: none;
     transition: width 240ms ease, height 240ms ease, border-color 240ms ease, background 240ms ease;
   }
@@ -68,7 +68,7 @@
   .cursor-hover {
     width: 40px;
     height: 40px;
-    border-color: var(--gold);
-    background: rgba(245, 184, 75, 0.12);
+    border-color: var(--primary);
+    background: rgba(242, 120, 48, 0.1);
   }
 </style>

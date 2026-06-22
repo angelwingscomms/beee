@@ -13,22 +13,74 @@
 </script>
 
 <section class="section-band section-soft">
-  <div class="container mx-auto px-4">
-    <h2 class="display-lg text-center mb-12">Awards & Recognition</h2>
+  <div class="container">
+    <h2 class="display-lg" style="text-align: center; margin-bottom: 48px;">Awards & Recognition</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="awards-grid">
       {#each awards as item}
-        <div
-          class="bg-surface-card rounded-xl p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-          style="background: var(--color-surface-card)"
-        >
-			<div class="flex justify-center mb-0">
-				<item.icon size={32} color="var(--color-primary)" />
-			</div>
-          <h3 class="text-lg font-medium mt-4" style="color: var(--color-ink)">{item.title}</h3>
-          <p class="text-sm mt-2" style="color: var(--color-body)">{item.desc}</p>
+        <div class="award-card">
+          <div class="award-icon-wrap">
+            <item.icon size={28} color="var(--color-primary)" />
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
         </div>
       {/each}
     </div>
   </div>
 </section>
+
+<style>
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .award-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    border-radius: 12px;
+    background: var(--surface-card);
+    transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease;
+  }
+  .award-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(242, 120, 48, 0.08);
+    background: color-mix(in srgb, var(--surface-card) 94%, var(--primary));
+  }
+  .award-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+  .award-card h3 {
+    margin: 20px 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .award-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--body);
+    line-height: 1.55;
+  }
+  @media (max-width: 767px) {
+    .awards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .awards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

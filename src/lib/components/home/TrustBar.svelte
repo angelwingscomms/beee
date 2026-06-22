@@ -39,6 +39,12 @@
 		padding: 20px 24px;
 		border-radius: 12px;
 		background: var(--surface-card);
+		transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+	}
+	.trust-item:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(242, 120, 48, 0.1);
+		background: color-mix(in srgb, var(--surface-card) 95%, var(--primary));
 	}
 
 	.trust-item strong {

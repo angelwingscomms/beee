@@ -83,12 +83,27 @@
 		color: var(--ink);
 	}
 	.nav-links a {
+		position: relative;
 		color: var(--ink);
 		text-decoration: none;
 		transition: color 160ms ease;
 	}
+	.nav-links a::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--primary);
+		transition: width 220ms cubic-bezier(.34,1.56,.64,1);
+	}
 	.nav-links a:hover {
 		color: var(--primary);
+	}
+	.nav-links a:hover::after {
+		width: 100%;
 	}
 	.nav-actions {
 		display: flex;
