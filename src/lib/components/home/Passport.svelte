@@ -74,7 +74,6 @@
 								onblur={() => hovered = null}
 								aria-label={p.label}
 							>
-								<span class="point-dot"></span>
 								<span class="point-label">{p.label}</span>
 							</button>
 						{/each}
@@ -295,22 +294,12 @@
 		background: color-mix(in srgb, var(--pc) 12%, transparent);
 	}
 
-	.pent-point.active .point-dot { transform: scale(1.5); }
 	.pent-point.active .point-label { opacity: 1; }
 
 	.pent-point:nth-child(4) { filter: hue-rotate(250deg) saturate(0.75) brightness(1.25); }
 	.pent-point:nth-child(5) { box-shadow: 0 0 10px var(--pc), 0 0 24px color-mix(in srgb, var(--pc) 35%, transparent); }
 	.pent-point:nth-child(5):hover,
 	.pent-point:nth-child(5).active { box-shadow: 0 0 22px var(--pc), 0 0 44px color-mix(in srgb, var(--pc) 45%, transparent); }
-
-	.point-dot {
-		width: 8px; height: 8px;
-		border-radius: 50%;
-		background: var(--pc);
-		box-shadow: 0 0 10px var(--pc);
-		transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-	}
-	.pent-point:hover .point-dot { transform: scale(1.5); }
 
 	.point-label {
 		position: absolute;
