@@ -56,7 +56,7 @@
     inset: 0;
     background:
       linear-gradient(90deg, rgba(7, 8, 7, 0.98) 0%, rgba(7, 8, 7, 0.86) 45%, rgba(7, 8, 7, 0.62) 100%),
-      radial-gradient(circle at 76% 22%, rgba(245, 184, 75, 0.24), transparent 24%),
+      radial-gradient(circle at 76% 22%, rgba(242, 120, 48, 0.24), transparent 24%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.06) 25%, transparent 25%) 0 0 / 72px 72px,
       linear-gradient(315deg, rgba(255, 255, 255, 0.045) 25%, transparent 25%) 0 0 / 72px 72px,
       #070807;
@@ -87,10 +87,10 @@
     display: inline-flex;
     width: fit-content;
     margin: 0;
-    border: 1px solid rgba(245, 184, 75, 0.28);
+    border: 1px solid rgba(255, 178, 0, 0.28);
     border-radius: 999px;
-    background: rgba(245, 184, 75, 0.09);
-    color: var(--gold);
+    background: rgba(255, 178, 0, 0.09);
+    color: var(--accent-amber);
     padding: 7px 12px;
     font-size: 12px;
     font-weight: 900;
@@ -153,7 +153,7 @@
   .mystery {
     max-width: 490px;
     margin: 22px 0 0;
-    color: rgba(245, 184, 75, 0.78);
+    color: rgba(242, 120, 48, 0.78);
     font-size: 14px;
   }
 
@@ -170,7 +170,7 @@
     position: absolute;
     inset: 12%;
     border-radius: 999px;
-    background: rgba(245, 184, 75, 0.18);
+    background: rgba(242, 120, 48, 0.18);
     filter: blur(40px);
   }
 
@@ -190,7 +190,7 @@
   }
 
   .chessboard span.dark {
-    background: rgba(245, 184, 75, 0.22);
+    background: rgba(242, 120, 48, 0.22);
   }
 
   .piece {
@@ -216,7 +216,45 @@
   }
 
   .board-caption strong {
-    color: var(--gold);
+    color: var(--primary);
+  }
+
+  .primary-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 800;
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    color: var(--on-primary);
+    transition: transform 180ms ease;
+  }
+
+  .primary-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .secondary-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 800;
+    border: 1px solid var(--primary);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    transition: transform 180ms ease;
+  }
+
+  .secondary-cta:hover {
+    transform: translateY(-2px);
   }
 
   @keyframes piece-drift {

@@ -25,7 +25,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .awards-section { background: var(--cream); color: var(--ink-dark); }
+  .awards-section { background: var(--canvas); color: var(--ink); }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
   .section-kicker {
@@ -39,7 +39,7 @@
     margin: 16px 0 0; font-family: var(--font-championship), var(--font-registration), sans-serif;
     font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--ink-dark);
   }
-  .section-heading p:not(.section-kicker) { max-width: 650px; margin: 18px auto 0; color: #6b6257; font-size: 18px; line-height: 1.6; }
+  .section-heading p:not(.section-kicker) { max-width: 650px; margin: 18px auto 0; color: var(--body); font-size: 18px; line-height: 1.6; }
   .awards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .award-card {
     display: flex; min-height: 120px; align-items: center; gap: 14px; padding: 22px;

@@ -16,7 +16,7 @@
 </section>
 
 <style>
-  .final-cta-section { position: relative; background: #070807; padding: 110px 0; }
+  .final-cta-section { position: relative; background: var(--surface-dark); padding: 110px 0; }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .final-cta-card { max-width: 900px; text-align: center; }
   .final-cta-card svg { color: var(--gold); }
@@ -30,8 +30,8 @@
   .primary-cta {
     display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
     border-radius: 8px; padding: 0 20px; font-size: 14px; font-weight: 800;
-    border: 1px solid var(--gold); background: linear-gradient(135deg, var(--gold), #df8f1f);
-    color: #130f08; box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    border: 1px solid var(--primary); background: var(--primary);
+    color: var(--on-primary);
     transition: transform 180ms ease;
   }
   .primary-cta:hover { transform: translateY(-2px); }

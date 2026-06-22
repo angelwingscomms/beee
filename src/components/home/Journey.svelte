@@ -25,8 +25,8 @@
         <path ref={journey_line} d="M 10 2 L 990 2" stroke="url(#journey-grad)" strokeWidth="3" fill="none" pathLength="1" />
         <defs>
           <linearGradient id="journey-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="var(--gold)" />
-            <stop offset="100%" stop-color="var(--green)" />
+            <stop offset="0%" stop-color="var(--accent-amber)" />
+            <stop offset="100%" stop-color="var(--accent-teal)" />
           </linearGradient>
         </defs>
       </svg>
@@ -47,7 +47,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .journey-section { position: relative; background: #0b0d0c; }
+  .journey-section { position: relative; background: var(--surface-dark); }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
   .align-left { margin-inline: 0; text-align: left; }
@@ -84,8 +84,8 @@
   }
   .journey-step span {
     display: grid; width: 48px; height: 48px; place-items: center;
-    border: 1px solid rgba(245, 184, 75, 0.4); border-radius: 999px;
-    background: #10120f; color: var(--gold); font-weight: 900;
+    border: 1px solid rgba(255, 178, 0, 0.4); border-radius: 999px;
+    background: var(--surface-dark-soft); color: var(--gold); font-weight: 900;
   }
   .journey-step h3 { margin: 22px 0 10px; font-size: 22px; }
   .journey-step p { margin: 0; color: var(--muted-dark); line-height: 1.6; }
@@ -98,8 +98,8 @@
   .primary-cta {
     display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
     border-radius: 8px; padding: 0 20px; font-size: 14px; font-weight: 800;
-    border: 1px solid var(--gold); background: linear-gradient(135deg, var(--gold), #df8f1f);
-    color: #130f08; box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    border: 1px solid var(--primary); background: var(--primary);
+    color: var(--on-primary);
     transition: transform 180ms ease;
   }
   .primary-cta:hover { transform: translateY(-2px); }

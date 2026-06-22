@@ -32,7 +32,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .light { background: var(--cream); color: var(--ink-dark); }
+  .light { background: var(--canvas); color: var(--ink); }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
   .section-kicker {
@@ -47,7 +47,7 @@
     font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--ink-dark);
   }
   .section-heading p:not(.section-kicker) {
-    max-width: 650px; margin: 18px auto 0; color: #6b6257; font-size: 18px; line-height: 1.6;
+    max-width: 650px; margin: 18px auto 0; color: var(--body); font-size: 18px; line-height: 1.6;
   }
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .card {
@@ -61,7 +61,7 @@
   }
   .card svg { color: var(--gold-dark); }
   .card h3 { margin: 22px 0 10px; font-size: 22px; color: var(--ink-dark); }
-  .card p { margin: 0; color: #6b6257; line-height: 1.6; }
+  .card p { margin: 0; color: var(--body); line-height: 1.6; }
   @media (max-width: 1023px) { .three-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .three-grid { grid-template-columns: 1fr; } }
 </style>

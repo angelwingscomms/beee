@@ -13,8 +13,8 @@
 
 <style>
   .trust-bar {
-    background: #fff;
-    color: var(--ink-dark);
+    background: var(--canvas);
+    color: var(--ink);
     padding: 28px 0;
   }
 
@@ -33,7 +33,7 @@
     display: grid;
     gap: 7px;
     min-height: 116px;
-    border-right: 1px solid #e6ded0;
+    border-right: 1px solid var(--hairline);
     align-content: center;
     padding: 6px 22px;
   }
@@ -52,7 +52,7 @@
   }
 
   .trust-grid span {
-    color: #655d50;
+    color: var(--muted);
     font-size: 14px;
   }
 
@@ -69,7 +69,7 @@
 
     .trust-grid div {
       border-right: 0;
-      border-bottom: 1px solid #e6ded0;
+      border-bottom: 1px solid var(--hairline);
       text-align: center;
       justify-items: center;
     }

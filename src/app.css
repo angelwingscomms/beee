@@ -101,6 +101,18 @@
 :root {
   /* OLD COLOR DESIGN SYSTEM — primary: #cc785c / primary-active: #a9583e / primary-light: #d6896e / accent-amber: #e8a55a / error: #c64545 */
 
+  /* Legacy CSS variable aliases — existing homepage components use these */
+  --gold: var(--accent-amber);
+  --text: var(--on-dark);
+  --muted-dark: var(--on-dark-soft);
+  --ink-dark: var(--ink);
+  --cream: var(--canvas);
+  --panel: var(--surface-dark-elevated);
+  --panel-strong: var(--surface-dark-elevated);
+  --line: rgba(255, 255, 255, 0.10);
+  --gold-dark: var(--accent-amber);
+  --green: var(--accent-teal);
+
   /* Design token extensions for homepage premium redesign */
   /* These extend the existing dark-mode token system (not the DESIGN.md cream-canvas system) */
   --glass-bg: rgba(255, 255, 255, 0.06);

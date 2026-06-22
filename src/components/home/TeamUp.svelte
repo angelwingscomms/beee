@@ -48,8 +48,8 @@
   .section { padding: 104px 0; }
   .teamup-section {
     position: relative;
-    background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
-                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
+    background: radial-gradient(circle at 18% 15%, rgba(255, 178, 0, 0.16), transparent 24%),
+                radial-gradient(circle at 82% 80%, rgba(93, 184, 166, 0.12), transparent 26%), var(--surface-dark);
   }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
@@ -69,8 +69,8 @@
   .pentagon-lines {
     position: absolute; inset: 18%;
     clip-path: polygon(50% 0%, 98% 35%, 79% 92%, 21% 92%, 2% 35%);
-    border: 1px solid rgba(245, 184, 75, 0.28);
-    background: linear-gradient(145deg, rgba(245, 184, 75, 0.12), rgba(88, 198, 159, 0.07));
+    border: 1px solid rgba(255, 178, 0, 0.28);
+    background: linear-gradient(145deg, rgba(255, 178, 0, 0.12), rgba(93, 184, 166, 0.07));
   }
   .pentagon-node {
     position: absolute; z-index: 2; min-width: 132px;
@@ -80,8 +80,8 @@
     transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
   }
   .pentagon-node.active, .pentagon-node:hover, .pentagon-node:focus {
-    border-color: rgba(245, 184, 75, 0.78);
-    background: rgba(245, 184, 75, 0.16); transform: scale(1.08);
+    border-color: rgba(255, 178, 0, 0.78);
+    background: rgba(255, 178, 0, 0.16); transform: scale(1.08);
   }
   .node-1 { top: 0; left: 50%; transform: translateX(-50%); }
   .node-2 { top: 33%; right: 0; }

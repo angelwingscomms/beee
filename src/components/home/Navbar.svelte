@@ -80,7 +80,7 @@
   }
 
   .desktop-nav a:hover {
-    color: var(--gold);
+    color: var(--accent-amber);
   }
 
   .nav-actions {
@@ -97,10 +97,10 @@
     font-size: 14px;
     font-weight: 800;
     transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-    border: 1px solid var(--gold);
-    background: linear-gradient(135deg, var(--gold), #df8f1f);
-    color: #130f08;
-    box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0 14px 38px rgba(242, 120, 48, 0.18);
   }
 
   .nav-register:hover {

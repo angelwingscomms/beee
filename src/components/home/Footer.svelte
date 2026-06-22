@@ -19,7 +19,7 @@
 <style>
   .footer {
     border-top: 1px solid var(--line);
-    background: #050605;
+    background: var(--surface-dark);
     padding: 54px 0 28px;
     color: var(--muted-dark);
   }

@@ -55,7 +55,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .faq-section { background: var(--cream); color: var(--ink-dark); }
+  .faq-section { background: var(--canvas); color: var(--ink); }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .faq-container { max-width: 850px; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; text-align: center; }
@@ -68,15 +68,15 @@
   }
   .section-heading h2 {
     margin: 16px 0 0; font-family: var(--font-championship), var(--font-registration), sans-serif;
-    font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--ink-dark);
+    font-weight: 800; font-size: clamp(2.1rem, 5vw, 4.4rem); line-height: 1.04; color: var(--ink);
   }
   .faq-item { overflow: hidden; margin-top: 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(var(--glass-blur, 16px)); -webkit-backdrop-filter: blur(var(--glass-blur, 16px)); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 18px 45px rgba(23, 22, 20, 0.06); }
   .faq-item button {
     display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px;
-    border: 0; background: transparent; color: var(--ink-dark);
+    border: 0; background: transparent; color: var(--ink);
     padding: 20px 22px; text-align: left; font-weight: 900;
   }
-  .faq-item p { margin: 0; color: #6b6257; line-height: 1.6; padding: 0 22px 22px; }
+  .faq-item p { margin: 0; color: var(--body); line-height: 1.6; padding: 0 22px 22px; }
   .rotated { transform: rotate(180deg); }
   @media (max-width: 700px) { .section { padding: 72px 0; } }
 </style>

@@ -49,7 +49,7 @@
 
 <style>
   .section { padding: 104px 0; }
-  .tracking-section { position: relative; background: #0b0d0c; }
+  .tracking-section { position: relative; background: var(--surface-dark); }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .tracking-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 56px; align-items: center; }
   .section-heading { max-width: 760px; margin: 0 auto 44px; }
@@ -80,7 +80,7 @@
   .progress-row { margin-top: 24px; }
   .progress-row span { font-weight: 900; }
   .progress-row div { height: 12px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, 0.1); }
-  .progress-row i { display: block; width: 72%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--gold), var(--green)); }
+  .progress-row i { display: block; width: 72%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent-amber), var(--accent-teal)); }
   .badge-row, .tracking-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .badge-row span, .tracking-tabs span {
     display: inline-flex; align-items: center; gap: 7px;
@@ -88,7 +88,7 @@
     background: rgba(255, 255, 255, 0.06); color: var(--muted-dark);
     padding: 8px 11px; font-size: 13px; font-weight: 700;
   }
-  .xp-card { margin-top: 22px; border-radius: 8px; background: rgba(245, 184, 75, 0.12); padding: 22px; color: var(--gold); font-size: 20px; font-weight: 900; }
+  .xp-card { margin-top: 22px; border-radius: 8px; background: rgba(255, 178, 0, 0.12); padding: 22px; color: var(--gold); font-size: 20px; font-weight: 900; }
   @media (max-width: 1023px) { .tracking-grid { grid-template-columns: 1fr; } }
   @media (max-width: 700px) { .section { padding: 72px 0; } .dashboard-top { align-items: stretch; flex-direction: column; } }
 </style>

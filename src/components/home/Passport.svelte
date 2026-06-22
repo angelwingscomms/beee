@@ -31,8 +31,8 @@
   .section { padding: 104px 0; }
   .passport-section {
     position: relative;
-    background: radial-gradient(circle at 18% 15%, rgba(245, 184, 75, 0.16), transparent 24%),
-                radial-gradient(circle at 82% 80%, rgba(88, 198, 159, 0.12), transparent 26%), #070807;
+    background: radial-gradient(circle at 18% 15%, rgba(255, 178, 0, 0.16), transparent 24%),
+                radial-gradient(circle at 82% 80%, rgba(93, 184, 166, 0.12), transparent 26%), var(--surface-dark);
   }
   .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
   .passport-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.82fr); gap: 56px; align-items: center; }
@@ -57,21 +57,21 @@
   .primary-cta {
     display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
     border-radius: 8px; padding: 0 20px; font-size: 14px; font-weight: 800;
-    border: 1px solid var(--gold); background: linear-gradient(135deg, var(--gold), #df8f1f);
-    color: #130f08; box-shadow: 0 14px 38px rgba(245, 184, 75, 0.18);
+    border: 1px solid var(--primary); background: var(--primary);
+    color: var(--on-primary);
     transition: transform 180ms ease;
   }
   .primary-cta:hover { transform: translateY(-2px); }
   .passport-mock {
     min-height: 600px; overflow: hidden;
-    background: linear-gradient(145deg, #10130f, #21190d); padding: 26px;
+    background: linear-gradient(145deg, var(--surface-dark-soft), var(--surface-dark-elevated)); padding: 26px;
     border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
   }
   .passport-cover {
     display: grid; min-height: 250px; align-content: end;
     border: 1px solid rgba(245, 184, 75, 0.22); border-radius: 8px;
-    background: linear-gradient(135deg, rgba(245, 184, 75, 0.16), transparent 45%),
+    background: linear-gradient(135deg, rgba(255, 178, 0, 0.16), transparent 45%),
                 repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 30px);
     padding: 26px;
   }
