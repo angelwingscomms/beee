@@ -616,7 +616,6 @@
     position: sticky;
     top: 0;
     height: 100vh;
-    overflow-y: auto;
     display: flex;
     align-items: center;
   }
