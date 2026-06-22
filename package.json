@@ -19,6 +19,7 @@
     "canvas-confetti": "^1.9.4",
     "chess.js": "^1.4.0",
     "marked": "^18.0.4",
+    "motion": "^12.40.0",
     "svelte": "^5.55.10",
     "svelte-chess": "^0.11.1",
     "web-push": "^3.6.7",
