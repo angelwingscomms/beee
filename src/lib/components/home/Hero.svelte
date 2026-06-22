@@ -21,10 +21,6 @@
 		</div>
 		<div class="hero-artifact">
 			<div class="artifact-stage">
-				<div class="artifact-topline">
-					<span>Development Passport</span>
-					<span class="status-dot"></span>
-				</div>
 				<div class="surreal-board">
 					<div class="board-plane"></div>
 					<div class="logo-gate">
