@@ -1,3 +1,7 @@
+<script lang="ts">
+	// no props
+</script>
+
 <section class="section-band section-dark" id="register">
 	<div class="container" style="text-align: center;">
 		<h2 class="display-md" style="color: var(--on-dark); margin: 0 0 12px;">

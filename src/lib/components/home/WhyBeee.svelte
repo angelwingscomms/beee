@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { observe } from '$lib/actions/observe';
 
   let cards = $state([
@@ -35,7 +35,7 @@
     perspective: 800px;
   }
 
-  .feature-card.in-view {
+  :global(.feature-card.in-view) {
     opacity: 1;
     transform: translateY(0);
   }

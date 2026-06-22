@@ -59,7 +59,7 @@
     <!-- FEATURE LINKS -->
     <div class="feature-grid">
       {#each features as { icon: Icon, label }}
-        <a href="javascript:void(0)" class="feature-link">
+        <a href="#_" class="feature-link">
           <Icon size={20} color="var(--primary)" />
           <span class="feature-label">{label}</span>
         </a>

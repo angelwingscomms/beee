@@ -45,7 +45,7 @@
 </nav>
 
 <!-- Mobile overlay backdrop -->
-<div class="mobile-backdrop" class:visible={menu_open} onclick={() => menu_open = false}></div>
+<button class="mobile-backdrop" class:visible={menu_open} onclick={() => menu_open = false} aria-label="Close menu"></button>
 
 <!-- Mobile slide-down menu -->
 <div class="mobile-menu" class:open={menu_open}>
@@ -204,6 +204,9 @@
 		-webkit-tap-highlight-color: transparent;
 		-webkit-backdrop-filter: blur(4px);
 		backdrop-filter: blur(4px);
+		border: none;
+		padding: 0;
+		cursor: default;
 	}
 
 	.mobile-backdrop.visible {

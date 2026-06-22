@@ -1,4 +1,20 @@
-import { animate, inView, scroll } from 'motion';
+import { inView, scroll } from 'motion';
+
+interface AxisScrollInfo {
+  current: number;
+  offset: number[];
+  progress: number;
+  scrollLength: number;
+  velocity: number;
+  targetOffset: number;
+  targetLength: number;
+  containerLength: number;
+}
+interface ScrollInfo {
+  time: number;
+  x: AxisScrollInfo;
+  y: AxisScrollInfo;
+}
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -15,29 +31,30 @@ type MotionActionParams = {
   mass?: number;
 };
 
+function waapiAnim(node: HTMLElement, keyframes: Keyframe[], options?: KeyframeAnimationOptions) {
+  return node.animate(keyframes, { fill: 'both', ...options });
+}
+
 export function motionFadeUp(node: HTMLElement, params?: MotionActionParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
   const p = { stiffness: 200, damping: 25, ...params };
   inView(node, () => {
-    animate(
-      node,
-      { opacity: [0, 1], transform: ['translateY(26px)', 'translateY(0)'] },
-      { type: 'spring', stiffness: p.stiffness, damping: p.damping, duration: 0.6 }
-    );
+    waapiAnim(node, [
+      { opacity: 0, transform: 'translateY(26px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 600, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
   });
 }
 
 export function motionScaleIn(node: HTMLElement, params?: MotionActionParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
-  const p = { stiffness: 200, damping: 25, ...params };
   inView(node, () => {
-    animate(
-      node,
-      { opacity: [0, 1], transform: ['scale(0.95)', 'scale(1)'] },
-      { type: 'spring', stiffness: p.stiffness, damping: p.damping, duration: 0.5 }
-    );
+    waapiAnim(node, [
+      { opacity: 0, transform: 'scale(0.95)' },
+      { opacity: 1, transform: 'scale(1)' },
+    ], { duration: 500, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
   });
 }
 
@@ -48,11 +65,10 @@ export function motionStagger(node: HTMLElement, params?: MotionActionParams) {
   const children = Array.from(node.children) as HTMLElement[];
   children.forEach((child, i) => {
     inView(child, () => {
-      animate(
-        child,
-        { opacity: [0, 1], transform: ['translateY(20px)', 'translateY(0)'] },
-        { type: 'spring', stiffness: 200, damping: 25, delay: p.delay! * i }
-      );
+      waapiAnim(child, [
+        { opacity: 0, transform: 'translateY(20px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ], { duration: 500, delay: p.delay! * i, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
     });
   });
 }
@@ -61,11 +77,26 @@ export function motionSpring(node: HTMLElement, properties?: Partial<Record<stri
   if (prefersReducedMotion() || isTouchDevice()) return;
 
   const { stiffness = 200, damping = 25, ...rest } = properties || {};
-  animate(node, rest as Record<string, string | number>, {
-    type: 'spring',
-    stiffness,
-    damping,
+  const keyframes: Keyframe[] = [{}];
+  for (const [key, val] of Object.entries(rest)) {
+    if (Array.isArray(val)) {
+      keyframes[0] = { ...keyframes[0], [key]: val[0] };
+      keyframes[1] = { ...(keyframes[1] || {}), [key]: val[val.length - 1] };
+    } else {
+      keyframes[1] = { ...(keyframes[1] || {}), [key]: val };
+    }
+  }
+  if (keyframes.length === 1) return;
+  waapiAnim(node, keyframes, {
+    duration: 600,
+    easing: `cubic-bezier(${springToCubic(stiffness, damping)})`,
   });
+}
+
+function springToCubic(stiffness: number, damping: number): string {
+  const s = Math.max(0, Math.min(1, stiffness / 400));
+  const d = Math.max(0, Math.min(1, damping / 50));
+  return `${0.33 + s * 0.33}, ${0.66 - d * 0.33}, ${0.66 + s * 0.17}, 1`;
 }
 
 export function motionMagnetic(node: HTMLElement) {
@@ -100,25 +131,19 @@ type SlideParams = { dir?: SlideDir; distance?: number; delay?: number; duration
 
 export function motionSlideEnter(node: HTMLElement, params?: SlideParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
-  const p = { dir: 'up' as SlideDir, distance: 30, delay: 0, duration: 0.6, ...params };
-  const dirMap: Record<SlideDir, Record<string, [number, number]>> = {
-    left: { x: [-p.distance, 0] },
-    right: { x: [p.distance, 0] },
-    up: { y: [p.distance, 0] },
-    down: { y: [-p.distance, 0] },
-  };
-  const offset = dirMap[p.dir];
+  const p = { dir: 'up' as SlideDir, distance: 30, delay: 0, duration: 600, ...params };
+  const tx = p.dir === 'left' || p.dir === 'right'
+    ? p.dir === 'left' ? `translateX(${p.distance}px)` : `translateX(${-p.distance}px)`
+    : 'translateX(0)';
+  const ty = p.dir === 'up' || p.dir === 'down'
+    ? p.dir === 'up' ? `translateY(${p.distance}px)` : `translateY(${-p.distance}px)`
+    : 'translateY(0)';
+
   inView(node, () => {
-    animate(
-      node,
-      {
-        opacity: [0, 1],
-        transform: p.dir === 'left' || p.dir === 'right'
-          ? [`translateX(${offset.x![0]}px)`, 'translateX(0)']
-          : [`translateY(${offset.y![0]}px)`, 'translateY(0)'],
-      },
-      { duration: p.duration, delay: p.delay, easing: [0.16, 1, 0.3, 1] }
-    );
+    waapiAnim(node, [
+      { opacity: 0, transform: `${tx} ${ty}` },
+      { opacity: 1, transform: 'translateX(0) translateY(0)' },
+    ], { duration: p.duration, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
   });
 }
 
@@ -129,7 +154,7 @@ export function motionParallax(node: HTMLElement, params?: ParallaxParams) {
   const p = { speed: 0.3, offset: 0, ...params };
 
   const stop = scroll(
-    ({ y }: { y: number }) => {
+    (progress: number, info: ScrollInfo) => {
       const rect = node.getBoundingClientRect();
       const center = rect.top + rect.height / 2;
       const viewCenter = window.innerHeight / 2;
@@ -149,14 +174,10 @@ export function motionReveal(node: HTMLElement, params?: RevealParams) {
   const p = { delay: 0, blur: 6, ...params };
 
   inView(node, () => {
-    animate(
-      node,
-      {
-        opacity: [0, 1],
-        filter: [`blur(${p.blur}px)`, 'blur(0px)'],
-      },
-      { duration: 0.8, delay: p.delay, easing: [0.16, 1, 0.3, 1] }
-    );
+    waapiAnim(node, [
+      { opacity: 0, filter: `blur(${p.blur}px)` },
+      { opacity: 1, filter: 'blur(0px)' },
+    ], { duration: 800, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
   });
 }
 
@@ -169,13 +190,12 @@ export function motionStaggered(node: HTMLElement, params?: StaggeredParams) {
 
   children.forEach((child, i) => {
     inView(child, () => {
-      animate(
-        child,
-        { opacity: [0, 1], transform: [`translateY(${p.y}px)`, 'translateY(0)'] },
-        { duration: 0.5, delay: p.delay + p.stagger * i, easing: [0.16, 1, 0.3, 1] }
-      );
+      waapiAnim(child, [
+        { opacity: 0, transform: `translateY(${p.y}px)` },
+        { opacity: 1, transform: 'translateY(0)' },
+      ], { duration: 500, delay: (p.delay + p.stagger * i) * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
     });
   });
 }
 
-export { animate, inView, scroll };
+export { inView, scroll };

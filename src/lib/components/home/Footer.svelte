@@ -1,5 +1,5 @@
-<script>
-	let { } = $props();
+<script lang="ts">
+	let { }: Record<string, never> = $props();
 </script>
 
 <footer class="site-footer">
