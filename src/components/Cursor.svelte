@@ -44,7 +44,6 @@
 
 {#if x >= 0}
   <div
-    bind:this={el}
     class="cursor"
     class:cursor-hover={hovered}
     style="transform: translate({x}px, {y}px)"

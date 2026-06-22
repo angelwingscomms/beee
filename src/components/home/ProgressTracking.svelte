@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { animate, spring } from 'motion';
+  import { animate } from 'motion';
   import { motionFadeUp } from '$lib/actions/motion';
 
   let xp_ref: HTMLDivElement;
@@ -8,8 +8,13 @@
 
   onMount(() => {
     if (!xp_ref) return;
-    const s = spring({ from: 0, to: 3450, stiffness: 80, damping: 18 });
-    s.on('update', (v) => { displayed_xp = Math.round(v); });
+    const controls = animate(0, 3450, {
+      type: 'spring',
+      stiffness: 80,
+      damping: 18,
+      onUpdate: (v) => { displayed_xp = Math.round(v); }
+    });
+    return () => controls.stop();
   });
 </script>
 
