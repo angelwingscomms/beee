@@ -19,21 +19,4 @@
 			</div>
 			<p class="mystery-teaser" style="margin-top: 32px; color: var(--muted); font-size: 13px; opacity: 0.7;">&mdash; Featuring a Grand Finale unlike any other school chess championship.</p>
 		</div>
-		<div class="hero-artifact">
-			<div class="artifact-stage">
-				<div class="surreal-board">
-					<div class="board-plane"></div>
-					<div class="logo-gate">
-						<img src="/logo.svg" alt="BEEE" />
-					</div>
-					<div class="floating-rank">♚</div>
-					<div class="floating-rank">♛</div>
-				</div>
-				<div class="artifact-footer">
-					<span>T.E.A.M.U.P. → Championship</span>
-					<span>2026 Edition</span>
-				</div>
-			</div>
-		</div>
-	</div>
 </section>

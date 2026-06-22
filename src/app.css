@@ -521,10 +521,7 @@ img {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.88fr);
-  gap: 56px;
-  align-items: center;
+  max-width: 720px;
 }
 
 .eyebrow,
