@@ -5,7 +5,6 @@
 	import TrustBar from '$lib/components/home/TrustBar.svelte';
 	import WhyBeee from '$lib/components/home/WhyBeee.svelte';
 	import Journey from '$lib/components/home/Journey.svelte';
-	import TeamUp from '$lib/components/home/TeamUp.svelte';
 	import Passport from '$lib/components/home/Passport.svelte';
 	import ProgressTracking from '$lib/components/home/ProgressTracking.svelte';
 	import Benefits from '$lib/components/home/Benefits.svelte';
@@ -40,14 +39,7 @@
 
 <TrustBar />
 <WhyBeee />
-<TeamUp />
-
-<!-- PASSPORT (sticky with scroll-driven animation) -->
-<div class="sticky-section section-dark passport-scroll" style="height: 300vh">
-	<div class="sticky-inner">
-		<Passport />
-	</div>
-</div>
+<Passport />
 
 <ProgressTracking />
 
@@ -122,47 +114,16 @@
 
 	@supports (animation-timeline: scroll()) {
 		.hero-scroll { view-timeline-name: --hero; view-timeline-axis: block; }
-		.passport-scroll { view-timeline-name: --passport; view-timeline-axis: block; }
 		.timeline-scroll { view-timeline-name: --timeline; view-timeline-axis: block; }
 
-		:global(.supports-scroll-animation) :global(.passport-step),
-		:global(.supports-scroll-animation) :global(.passport-cover),
-		:global(.supports-scroll-animation) :global(.passport-progress),
 		:global(.supports-scroll-animation) :global(.milestone),
-		:global(.supports-scroll-animation) :global(.passport-badge) text,
 		:global(.supports-scroll-animation) :global(.appear-on-scroll) > * {
 			opacity: 0;
-		}
-		:global(.supports-scroll-animation) :global(.progress-fill) { width: 0%; }
-		:global(.supports-scroll-animation) :global(.badge-ring-1),
-		:global(.supports-scroll-animation) :global(.badge-ring-2),
-		:global(.supports-scroll-animation) :global(.badge-ring-3),
-		:global(.supports-scroll-animation) :global(.badge-ring-4),
-		:global(.supports-scroll-animation) :global(.badge-ring-5),
-		:global(.supports-scroll-animation) :global(.badge-ring-6) {
-			stroke-dashoffset: 138.23;
 		}
 
 		:global(.hero-title) { animation: fade-up-lg linear forwards; animation-timeline: --hero; animation-range: cover 0% cover 25%; }
 		:global(.hero-subtitle) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 15% cover 40%; }
 		:global(.hero-actions) { animation: fade-up linear forwards; animation-timeline: --hero; animation-range: cover 30% cover 55%; }
-
-		:global(.passport-cover) { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 10%; }
-		:global(.progress-fill) { animation: grow-x linear forwards; animation-timeline: --passport; animation-range: cover 0% cover 70%; }
-		:global(.passport-step-1) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
-		:global(.badge-ring-1) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 10% cover 25%; }
-		:global(.passport-badge-1) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 15% cover 30%; }
-		:global(.passport-step-2) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
-		:global(.badge-ring-2) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 30% cover 45%; }
-		:global(.passport-badge-2) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 35% cover 50%; }
-		:global(.passport-step-3) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
-		:global(.badge-ring-3) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 50% cover 65%; }
-		:global(.passport-badge-3) text { animation: scale-in linear forwards; animation-timeline: --passport; animation-range: cover 55% cover 70%; }
-		:global(.passport-step-4) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
-		:global(.badge-ring-4) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 70% cover 85%; }
-		:global(.badge-ring-5) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 75% cover 90%; }
-		:global(.badge-ring-6) { animation: draw-ring linear forwards; animation-timeline: --passport; animation-range: cover 80% cover 95%; }
-		:global(.passport-progress) { animation: fade-up linear forwards; animation-timeline: --passport; animation-range: cover 85% cover 100%; }
 
 		:global(.timeline-line) { animation: grow-x linear forwards; animation-timeline: --timeline; animation-range: cover 0% cover 60%; }
 		:global(.milestone-1) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 5% cover 25%; }
@@ -171,20 +132,11 @@
 		:global(.milestone-4) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 50% cover 70%; }
 		:global(.milestone-5) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 65% cover 85%; }
 		:global(.milestone-6) { animation: fade-left linear forwards; animation-timeline: --timeline; animation-range: cover 80% cover 100%; }
-
-		:global(.passport-step):nth-child(1) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 5% cover 20%; }
-		:global(.passport-step):nth-child(2) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 25% cover 40%; }
-		:global(.passport-step):nth-child(3) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 45% cover 60%; }
-		:global(.passport-step):nth-child(4) { animation: fade-left linear forwards; animation-timeline: --passport; animation-range: cover 65% cover 80%; }
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		:global(.hero-title), :global(.hero-subtitle), :global(.hero-actions),
-		:global(.passport-cover), :global(.progress-fill), :global(.passport-step),
-		:global(.badge-ring-1), :global(.badge-ring-2),
-		:global(.badge-ring-3), :global(.badge-ring-4), :global(.badge-ring-5), :global(.badge-ring-6),
-		:global(.passport-badge-1) text, :global(.passport-badge-2) text, :global(.passport-badge-3) text,
-		:global(.passport-progress), :global(.timeline-line), :global(.milestone),
+		:global(.timeline-line), :global(.milestone),
 		:global(.appear-on-scroll) > * {
 			animation: none !important;
 			opacity: 1 !important;
@@ -194,13 +146,5 @@
 			width: auto !important;
 		}
 		:global(.progress-fill) { width: 100% !important; }
-		:global(.badge-ring-1),
-		:global(.badge-ring-2),
-		:global(.badge-ring-3),
-		:global(.badge-ring-4),
-		:global(.badge-ring-5),
-		:global(.badge-ring-6) {
-			stroke-dashoffset: 0 !important;
-		}
 	}
 </style>
