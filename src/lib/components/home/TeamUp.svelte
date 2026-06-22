@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { motionFadeUp } from '$lib/actions/motion';
 	import { observe } from '$lib/actions/observe';
+	import { fly } from 'svelte/transition';
 
 	let hovered = $state<number | null>(null);
 
@@ -19,6 +20,20 @@
 		'var(--primary)',
 		'var(--accent-teal)',
 	];
+
+	const ptPcts: [number, number][] = [
+		[50, 15],
+		[83, 39],
+		[71, 78],
+		[29, 78],
+		[17, 39],
+	];
+
+	/* SVG viewBox coords for pentagon edges (420x420 box) */
+	const pts = ptPcts.map(([px, py]) => ({
+		x: (px / 100) * 420,
+		y: (py / 100) * 420,
+	}));
 </script>
 
 <section class="section-band section-dark teamp-section" id="teamp">
@@ -26,7 +41,9 @@
 		<div class="orb orb-1"></div>
 		<div class="orb orb-2"></div>
 		<div class="orb orb-3"></div>
+		<div class="orb orb-4"></div>
 	</div>
+	<div class="orbital-ring" aria-hidden="true"></div>
 
 	<div class="container" use:motionFadeUp>
 		<div class="eyebrow-wrap" use:observe>
@@ -41,7 +58,7 @@
 		</p>
 
 		<div class="pentagon-wrap" use:observe>
-			<div class="pentagon">
+			<div class="pentagon" data-hovered={hovered}>
 				{#each pillars as p, i}
 					<button
 						class="pent-point"
@@ -56,6 +73,17 @@
 						<span class="point-label">{p.label}</span>
 					</button>
 				{/each}
+				<svg class="pent-lines" viewBox="0 0 420 420" aria-hidden="true">
+					{#each [0, 1, 2, 3, 4] as ei}
+						<line
+							class="edge edge-{ei}"
+							x1={pts[ei].x}
+							y1={pts[ei].y}
+							x2={pts[(ei + 1) % 5].x}
+							y2={pts[(ei + 1) % 5].y}
+						/>
+					{/each}
+				</svg>
 			</div>
 		</div>
 
@@ -75,14 +103,23 @@
 			{/each}
 		</div>
 
-		<div class="desc-shell" use:observe>
+		<div
+			class="desc-shell"
+			class:has-hint={hovered !== null}
+			style={hovered !== null ? `--hint-c: ${colors[hovered]}` : ''}
+			use:observe
+		>
 			<div class="desc-panel">
-				{#if hovered !== null}
-					<p class="desc-label">{pillars[hovered].label}</p>
-					<p class="desc-body">{pillars[hovered].desc}</p>
-				{:else}
-					<p class="desc-body" style="opacity: 0.5">Hover a pillar to explore</p>
-				{/if}
+				{#key hovered}
+					<div class="panel-content">
+						{#if hovered !== null}
+							<p class="desc-label" in:fly={{ y: 6, duration: 300 }}>{pillars[hovered].label}</p>
+							<p class="desc-body" in:fly={{ y: 6, duration: 300, delay: 40 }}>{pillars[hovered].desc}</p>
+						{:else}
+							<p class="desc-body placeholder-text" in:fly={{ y: 6, duration: 300 }}>Hover a pillar to explore</p>
+						{/if}
+					</div>
+				{/key}
 			</div>
 		</div>
 	</div>
@@ -110,36 +147,78 @@
 	}
 
 	.orb-1 {
-		width: 400px;
-		height: 400px;
-		top: -10%;
-		right: -5%;
-		background: radial-gradient(circle, rgba(242, 120, 48, 0.12), transparent 70%);
+		width: 420px;
+		height: 420px;
+		top: -12%;
+		right: -6%;
+		background: radial-gradient(circle, rgba(242, 120, 48, 0.14), transparent 70%);
 		animation: orb-float 20s ease-in-out infinite;
 	}
 
 	.orb-2 {
-		width: 300px;
-		height: 300px;
-		bottom: 10%;
-		left: -8%;
-		background: radial-gradient(circle, rgba(93, 184, 166, 0.08), transparent 70%);
+		width: 320px;
+		height: 320px;
+		bottom: 8%;
+		left: -10%;
+		background: radial-gradient(circle, rgba(93, 184, 166, 0.10), transparent 70%);
 		animation: orb-float 25s ease-in-out infinite reverse;
 	}
 
 	.orb-3 {
-		width: 350px;
-		height: 350px;
-		bottom: -5%;
-		right: 20%;
-		background: radial-gradient(circle, rgba(255, 178, 0, 0.06), transparent 70%);
+		width: 360px;
+		height: 360px;
+		bottom: -6%;
+		right: 18%;
+		background: radial-gradient(circle, rgba(255, 178, 0, 0.08), transparent 70%);
 		animation: orb-float 18s ease-in-out infinite 5s;
+	}
+
+	.orb-4 {
+		width: 240px;
+		height: 240px;
+		top: 20%;
+		left: 6%;
+		background: radial-gradient(circle, rgba(242, 120, 48, 0.06), transparent 70%);
+		animation: orb-float 22s ease-in-out infinite -8s;
 	}
 
 	@keyframes orb-float {
 		0%, 100% { translate: 0 0; }
-		33% { translate: 20px -30px; }
-		66% { translate: -15px 20px; }
+		33% { translate: 24px -34px; }
+		66% { translate: -18px 24px; }
+	}
+
+	/* ── Orbital ring ── */
+	.orbital-ring {
+		position: absolute;
+		width: 560px;
+		height: 560px;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		border: 1px solid rgba(255, 255, 255, 0.03);
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 0;
+		animation: orbit-spin 50s linear infinite;
+	}
+
+	.orbital-ring::before {
+		content: '';
+		position: absolute;
+		top: -3px;
+		left: 50%;
+		width: 6px;
+		height: 6px;
+		margin-left: -3px;
+		border-radius: 50%;
+		background: var(--primary);
+		opacity: 0.25;
+		box-shadow: 0 0 14px var(--primary);
+	}
+
+	@keyframes orbit-spin {
+		to { rotate: 360deg; }
 	}
 
 	/* ── Eyebrow badge ── */
@@ -243,6 +322,28 @@
 		pointer-events: none;
 	}
 
+	/* ── SVG connecting lines ── */
+	.pent-lines {
+		position: absolute;
+		inset: 9%;
+		width: 82%;
+		height: 82%;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.edge {
+		stroke: var(--on-dark);
+		stroke-width: 1;
+		stroke-opacity: 0.06;
+		transition: stroke-opacity 0.5s ease;
+	}
+
+	.pentagon[data-hovered] .edge {
+		stroke-opacity: 0.2;
+	}
+
+	/* ── Pentagon points ── */
 	.pent-point {
 		position: absolute;
 		width: 60px;
@@ -256,6 +357,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		z-index: 1;
 		transition:
 			box-shadow 0.6s cubic-bezier(0.32, 0.72, 0, 1),
 			transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
@@ -277,7 +379,9 @@
 	}
 
 	.pent-point:hover {
-		box-shadow: 0 0 20px var(--pc), 0 0 40px color-mix(in srgb, var(--pc) 40%, transparent);
+		box-shadow:
+			0 0 20px var(--pc),
+			0 0 40px color-mix(in srgb, var(--pc) 40%, transparent);
 		transform: translate(-50%, -50%) scale(1.15);
 		background: color-mix(in srgb, var(--pc) 15%, transparent);
 	}
@@ -354,6 +458,7 @@
 		padding: 1.5px;
 		border-radius: calc(12px + 1.5px);
 		background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+		transition: background 0.5s ease;
 	}
 	.desc-shell:not(.in-view) {
 		opacity: 0;
@@ -362,6 +467,13 @@
 	.desc-shell {
 		transition: opacity 0.8s cubic-bezier(0.32, 0.72, 0, 1) 0.4s,
 			translate 0.8s cubic-bezier(0.32, 0.72, 0, 1) 0.4s;
+	}
+
+	.desc-shell.has-hint {
+		background: linear-gradient(135deg,
+			color-mix(in srgb, var(--hint-c, rgba(255,255,255,0.08)) 25%, transparent),
+			rgba(255,255,255,0.03)
+		);
 	}
 
 	.desc-panel {
