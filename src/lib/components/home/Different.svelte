@@ -44,9 +44,9 @@
   }
 
   .different-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -61,10 +61,11 @@
   }
 
   .statement-strong {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
+    letter-spacing: -0.01em;
     color: var(--ink);
     margin: 0;
   }

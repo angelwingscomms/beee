@@ -63,9 +63,9 @@
   }
 
   .passport-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--ink);

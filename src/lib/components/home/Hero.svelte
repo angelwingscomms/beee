@@ -59,9 +59,9 @@
   }
 
   .hero-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 52px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.08;
     letter-spacing: -0.02em;
     color: var(--ink);

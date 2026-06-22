@@ -59,11 +59,11 @@
   }
 
   .teamup-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.15;
-    letter-spacing: 0.08em;
+    letter-spacing: -0.01em;
     color: var(--on-dark);
     margin: 0;
   }
@@ -100,9 +100,10 @@
   }
 
   .item-letter {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--primary);
     line-height: 1;
   }
