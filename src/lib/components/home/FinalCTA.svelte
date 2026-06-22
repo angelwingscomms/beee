@@ -9,7 +9,7 @@
 			</p>
 			<div class="flex justify-center gap-4">
 				<a href="/register" class="button-primary cta-entrance">Register Now</a>
-				<a href="/prospectus.pdf" class="button-secondary-dark">Download Prospectus</a>
+				<!-- <a href="/prospectus.pdf" class="button-secondary-dark">Download Prospectus</a> -->
 			</div>
 		</div>
 	</div>
