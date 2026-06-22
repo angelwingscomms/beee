@@ -790,7 +790,7 @@
   .sticky-inner > section {
     width: 100%;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     .sticky-inner {
       align-items: flex-start;
     }
