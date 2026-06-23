@@ -14,13 +14,10 @@
 
 <style>
   .tu-cta {
-    padding: 0 24px;
-    max-width: 800px;
     margin: 0 auto;
   }
 
   .tu-cta-inner {
-    border-radius: 16px;
     background: var(--primary);
     color: var(--on-primary);
     padding: 72px 64px;

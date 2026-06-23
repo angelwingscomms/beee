@@ -13,7 +13,6 @@
 
 <style>
   .cta-card {
-    border-radius: 12px;
     background: var(--primary);
     color: var(--on-primary);
     padding: 64px;

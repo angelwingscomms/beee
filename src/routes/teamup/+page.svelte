@@ -1,5 +1,4 @@
 <script lang="ts">
-  import TeamUpNav from '$lib/components/teamup/TeamUpNav.svelte';
   import TeamUpHero from '$lib/components/teamup/TeamUpHero.svelte';
   import PillarsBento from '$lib/components/teamup/PillarsBento.svelte';
   import PassportSection from '$lib/components/teamup/PassportSection.svelte';
@@ -13,7 +12,6 @@
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
-  <TeamUpNav />
   <TeamUpHero />
   <PillarsBento />
   <MarqueeStrip />

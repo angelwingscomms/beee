@@ -10,6 +10,7 @@
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (isTouch || reduced) return;
+    document.documentElement.style.cursor = 'none';
 
     let mx = -100, my = -100;
     let raf: number;
@@ -38,6 +39,7 @@
       cancelAnimationFrame(raf);
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseover', onOver);
+      document.documentElement.style.cursor = '';
     };
   });
 </script>

@@ -1283,7 +1283,6 @@ img {
   grid-template-columns: minmax(0, 0.7fr) auto;
   gap: 32px;
   align-items: center;
-  border-radius: 12px;
   background: var(--primary);
   color: var(--on-primary);
   padding: 64px;
