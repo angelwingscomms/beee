@@ -3,36 +3,46 @@
 
   const features = [
     {
-      keyword: 'chess',
+      img: '/images/championship/bento_chess.png',
       span: 'col-span-2 row-span-1',
       title: 'Chess & Personal Development',
       body: 'Competitive chess combined with structured learning, mentorship, and personal growth. Every match teaches resilience, patience, and strategic thinking.'
     },
     {
-      keyword: 'mentor',
+      img: '/images/championship/bento_mentor.png',
       span: 'col-span-1 row-span-1',
       title: 'Structured Mentorship',
       body: 'Guided learning experiences with experienced mentors who help translate chess strategies into life skills.'
     },
     {
-      keyword: 'passport',
+      img: '/images/championship/bento_passport.png',
       span: 'col-span-1 row-span-1',
       title: 'Development Passport',
       body: 'Digital passport that records milestones, achievements, and personal growth throughout the championship cycle.'
     },
     {
-      keyword: 'award',
+      img: '/images/championship/bento_award.png',
       span: 'col-span-2 row-span-1',
       title: 'Achievement Badges & Milestones',
       body: 'Track progress through developmental milestones and earn achievement badges that celebrate both chess and personal development.'
     },
     {
-      keyword: 'family',
+      img: '/images/championship/bento_family.png',
       span: 'col-span-3 row-span-1',
       title: 'Parent Engagement & Visibility',
       body: 'Parents stay connected with real-time progress visibility, event updates, and a front-row seat to their child\'s development journey.'
     }
   ];
+
+  let loaded = $state<Set<number>>(new Set());
+  function on_img_load(i: number) {
+    loaded.add(i);
+    loaded = new Set(loaded);
+  }
+  function img_style(i: number) {
+    const f = features[i];
+    return `background-image: url(${f.img}); opacity: ${loaded.has(i) ? 1 : 0}; transition: opacity 300ms ease;`;
+  }
 </script>
 
 <section class="section-soft" use:motionStagger>
@@ -42,8 +52,10 @@
       <p class="champ-features-sub">Most championships end with a trophy. BEEE begins with a journey.</p>
     </div>
     <div class="champ-bento">
-      {#each features as feat}
-        <div class="champ-bento-card {feat.span}" style="background-image: url(https://picsum.photos/seed/{feat.keyword}/800/600);">
+      {#each features as feat, i}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <div class="champ-bento-card {feat.span}" style={img_style(i)}>
+          <img src={feat.img} alt="" class="champ-bento-hidden" onload={() => on_img_load(i)} />
           <div class="champ-bento-overlay"></div>
           <div class="champ-bento-content">
             <h3 class="champ-bento-card-title">{feat.title}</h3>
@@ -93,7 +105,16 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    background-color: var(--surface-card);
     transition: transform 400ms ease;
+  }
+
+  .champ-bento-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .champ-bento-card:hover {
