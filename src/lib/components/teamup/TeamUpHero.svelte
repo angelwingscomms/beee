@@ -9,9 +9,9 @@
   <div class="tu-hero-inner">
     <div class="tu-hero-content" use:motionFadeUp>
       <h1 class="tu-hero-title">
-        T.E.A.<span class="inline-img-wrap"><span class="inline-img" style="background-image: url(https://picsum.photos/seed/knight/80/80)"></span></span>M.U.P.
+        T.E.A.M.U.P.
       </h1>
-      <p class="tu-hero-sub">Development Beyond <span class="inline-img-wrap"><span class="inline-img inline-img-sm" style="background-image: url(https://picsum.photos/seed/pawn/60/60)"></span></span> The Chessboard</p>
+      <p class="tu-hero-sub">Development Beyond The Chessboard</p>
       <p class="tu-hero-body">
         Every participant is automatically enrolled in the T.E.A.M.U.P. Development Programme upon registration. Designed to help young minds grow not only as chess players, but as learners, leaders, creators, and problem-solvers.
       </p>
@@ -76,36 +76,6 @@
     margin: 0;
     max-width: 640px;
     text-wrap: balance;
-  }
-
-  .inline-img-wrap {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 2px;
-  }
-
-  .inline-img {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    background-size: cover;
-    background-position: center;
-    vertical-align: -6px;
-    filter: grayscale(0.3) contrast(1.1);
-    border: 2px solid var(--surface-card);
-    transition: transform 400ms ease;
-  }
-
-  .inline-img:hover {
-    transform: scale(1.15);
-  }
-
-  .inline-img-sm {
-    width: 32px;
-    height: 32px;
-    vertical-align: -4px;
-    filter: grayscale(0.2) contrast(1.05) brightness(1.05);
   }
 
   .tu-hero-sub {
@@ -204,14 +174,6 @@
   @media (max-width: 767px) {
     .tu-hero-title {
       font-size: clamp(2rem, 8vw, 2.8rem);
-    }
-    .inline-img {
-      width: 36px;
-      height: 36px;
-    }
-    .inline-img-sm {
-      width: 24px;
-      height: 24px;
     }
     .tu-hero-body {
       font-size: 15px;
