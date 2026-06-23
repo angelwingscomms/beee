@@ -51,12 +51,10 @@
 	}
 
 	.accordion-item {
-		border-bottom: 1px solid var(--hairline-soft);
-	}
-
-	.accordion-item:first-child {
 		border-top: 1px solid var(--hairline-soft);
 	}
+
+
 
 	.accordion-trigger {
 		display: flex;

@@ -47,6 +47,10 @@
 	.faq-page {
 		min-height: 100vh;
 		background: var(--canvas);
+		display: flex;
+		flex-direction: column;
+		gap: 144px;
+		padding-bottom: 144px;
 	}
 
 	.container {
@@ -58,19 +62,18 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		padding-bottom: 40px;
 	}
 
 	.faq-list {
-		padding-bottom: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 27px;
 	}
 
-	.faq-category {
-		margin-bottom: 8px;
-	}
-
-	.faq-category:last-child {
-		margin-bottom: 0;
+	@media (max-width: 767px) {
+		.faq-list {
+			gap: 20px;
+		}
 	}
 
 	.faq-cat-title {
@@ -83,6 +86,13 @@
 		line-height: 1.3;
 	}
 
+	@media (max-width: 767px) {
+		.faq-page {
+			gap: 96px;
+			padding-bottom: 96px;
+		}
+	}
+
 	.faq-empty {
 		padding: 64px 0;
 		text-align: center;
@@ -90,9 +100,5 @@
 		font-size: 15px;
 	}
 
-	@media (max-width: 767px) {
-		.faq-toolbar {
-			padding-bottom: 24px;
-		}
-	}
+
 </style>

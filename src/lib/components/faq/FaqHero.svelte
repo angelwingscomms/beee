@@ -12,7 +12,7 @@
 
 <style>
 	.faq-hero {
-		padding: 96px 0 48px;
+		padding: 96px 0 0;
 		background: var(--canvas);
 	}
 
@@ -31,7 +31,7 @@
 
 	@media (max-width: 767px) {
 		.faq-hero {
-			padding: 64px 0 32px;
+			padding: 64px 0 0;
 		}
 
 		.faq-subtitle {

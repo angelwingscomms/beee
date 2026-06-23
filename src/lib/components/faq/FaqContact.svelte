@@ -27,7 +27,7 @@
 
 <style>
 	.faq-contact {
-		padding: 48px 0 96px;
+		padding: 0 0 96px;
 		background: var(--canvas);
 	}
 
@@ -80,7 +80,7 @@
 
 	@media (max-width: 767px) {
 		.faq-contact {
-			padding: 32px 0 64px;
+			padding: 0 0 64px;
 		}
 
 		.contact-card {
