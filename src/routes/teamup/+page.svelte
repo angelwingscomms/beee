@@ -5,7 +5,6 @@
   import PassportSection from '$lib/components/teamup/PassportSection.svelte';
   import MarqueeStrip from '$lib/components/teamup/MarqueeStrip.svelte';
   import TeamUpCTA from '$lib/components/teamup/TeamUpCTA.svelte';
-  import TeamUpFooter from '$lib/components/teamup/TeamUpFooter.svelte';
 </script>
 
 <svelte:head>
@@ -20,5 +19,4 @@
   <MarqueeStrip />
   <PassportSection />
   <TeamUpCTA />
-  <TeamUpFooter />
 </div>

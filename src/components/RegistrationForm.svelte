@@ -249,7 +249,6 @@
 			</div>
 		</form>
 
-		<p class="text-[14px] font-registration text-muted">Questions? Email <a href="mailto:info@beeeproject.com" class="text-primary underline-offset-2 hover:underline">info@beeeproject.com</a> or call <span class="text-primary">+234 802 092 0872</span></p>
 	</section>
 </main>
 

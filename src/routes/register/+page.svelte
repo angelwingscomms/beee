@@ -9,7 +9,6 @@
 
 <div class="register-page">
   <div class="container" style="padding-top: 96px; padding-bottom: 64px">
-    <a href="/" class="back-link">← Back to Home</a>
     <RegistrationForm />
   </div>
 </div>
@@ -23,14 +22,5 @@
     width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
   }
-  .back-link {
-    display: inline-block;
-    margin-bottom: 24px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
-  }
-  .back-link:hover {
-    color: var(--primary);
-  }
+
 </style>
