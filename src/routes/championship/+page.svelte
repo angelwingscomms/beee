@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ChampNav from '$lib/components/championship/ChampNav.svelte';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
@@ -14,7 +13,6 @@
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
-  <ChampNav />
   <ChampHero />
   <ChampAbout />
   <ChampFeatures />

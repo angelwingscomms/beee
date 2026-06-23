@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
 
   let open = $state(false);
+  let path = $derived($page.url.pathname);
 </script>
 
 <nav class="champ-nav">
@@ -12,10 +14,10 @@
       <span class="champ-nav-name">BEEE</span>
     </a>
     <div class="champ-nav-links">
-      <a href="/">Home</a>
-      <a href="/championship" class="active">Championship</a>
-      <a href="/register">Register</a>
-      <a href="/faq">FAQ</a>
+      <a href="/" class:active={path === '/'}>Home</a>
+      <a href="/championship" class:active={path === '/championship'}>Championship</a>
+      <a href="/register" class:active={path === '/register'}>Register</a>
+      <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
     <a href="/register" class="button-primary champ-nav-cta">Register Now</a>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
@@ -24,10 +26,10 @@
   </div>
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
-      <a href="/" onclick={() => open = false}>Home</a>
-      <a href="/championship" onclick={() => open = false}>Championship</a>
-      <a href="/register" onclick={() => open = false}>Register</a>
-      <a href="/faq" onclick={() => open = false}>FAQ</a>
+      <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
+      <a href="/championship" class:active={path === '/championship'} onclick={() => open = false}>Championship</a>
+      <a href="/register" class:active={path === '/register'} onclick={() => open = false}>Register</a>
+      <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
       <a href="/register" class="button-primary" onclick={() => open = false}>Register Now</a>
     </div>
   {/if}
@@ -177,7 +179,8 @@
     text-decoration: none;
   }
 
-  .champ-mobile-menu a:hover {
+  .champ-mobile-menu a:hover,
+  .champ-mobile-menu a.active {
     background: var(--surface-card);
     color: var(--ink);
   }
