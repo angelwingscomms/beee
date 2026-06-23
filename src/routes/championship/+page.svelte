@@ -4,7 +4,6 @@
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
   import ChampMarquee from '$lib/components/championship/ChampMarquee.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
-  import ChampFooter from '$lib/components/championship/ChampFooter.svelte';
 </script>
 
 <svelte:head>
@@ -18,5 +17,4 @@
   <ChampFeatures />
   <ChampMarquee />
   <ChampCTA />
-  <ChampFooter />
 </div>

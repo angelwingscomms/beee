@@ -2,6 +2,7 @@
   import '../app.css';
   import Cursor from '../components/Cursor.svelte';
   import ChampNav from '$lib/components/championship/ChampNav.svelte';
+  import Footer from '$lib/components/home/Footer.svelte';
   let { children } = $props();
 </script>
 
@@ -18,3 +19,4 @@
 <main id="main-content" tabindex="-1">
   {@render children()}
 </main>
+<Footer />

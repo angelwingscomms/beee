@@ -55,7 +55,7 @@
     font-size: 15px;
     font-weight: 600;
     line-height: 1;
-    border-radius: 8px;
+    border-radius: 999px;
     background: var(--canvas);
     color: var(--primary);
     text-decoration: none;

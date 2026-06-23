@@ -509,7 +509,7 @@ img {
   min-height: 40px;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 999px;
   padding: 12px 20px;
   font-size: 14px;
   font-weight: 500;
