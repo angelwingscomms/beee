@@ -2,25 +2,16 @@
   import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
-<section class="final-cta" use:motionFadeUp>
-  <div class="container">
-    <div class="cta-card">
-      <h2 class="cta-title">Ready To Begin?</h2>
-      <p class="cta-body">
-        Join a championship where every move contributes to growth,
-        achievement, and future success.
-      </p>
-      <a href="/register" class="cta-button">Register Now</a>
-    </div>
-  </div>
-</section>
+<div class="cta-card" use:motionFadeUp>
+  <h2 class="cta-title">Ready To Begin?</h2>
+  <p class="cta-body">
+    Join a championship where every move contributes to growth,
+    achievement, and future success.
+  </p>
+  <a href="/register" class="cta-button">Register Now</a>
+</div>
 
 <style>
-  .final-cta {
-    padding: 96px 0;
-    background: var(--canvas);
-  }
-
   .cta-card {
     border-radius: 12px;
     background: var(--primary);
@@ -82,9 +73,6 @@
   }
 
   @media (max-width: 767px) {
-    .final-cta {
-      padding: 64px 0;
-    }
     .cta-card {
       padding: 40px 28px;
     }
