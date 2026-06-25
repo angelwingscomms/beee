@@ -15,8 +15,8 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
-      <a href="/championship" class:active={path === '/championship'}>Championship</a>
-      <a href="/register" class:active={path === '/register'}>Register</a>
+      <a href="/register" class:active={path === '/'}>Register</a>
+      <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
     <a href="/register" class="button-primary champ-nav-cta">Register Now</a>
@@ -27,8 +27,8 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
-      <a href="/championship" class:active={path === '/championship'} onclick={() => open = false}>Championship</a>
       <a href="/register" class:active={path === '/register'} onclick={() => open = false}>Register</a>
+      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>T.E.A.M.U.P.</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
       <a href="/register" class="button-primary" onclick={() => open = false}>Register Now</a>
     </div>

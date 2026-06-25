@@ -10,11 +10,22 @@
 	let search_q = $state('');
 
 	let filtered = $derived(filterByCategory(filterBySearch(all_cs, search_q), active_cat));
+
+	let faq_schema = $derived(JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: all_cs.flatMap(c => c.qs.map(i => ({
+			'@type': 'Question',
+			name: i.q,
+			acceptedAnswer: { '@type': 'Answer', text: i.a }
+		})))
+	}));
 </script>
 
 <svelte:head>
 	<title>FAQ — BEEE Spectacular Chess Championship Abuja 2026</title>
 	<meta name="description" content="Frequently asked questions about the BEEE Spectacular Chess Championship Abuja 2026 and T.E.A.M.U.P. Development Programme — registration, participation, awards, and more." />
+	<script type="application/ld+json">{@html faq_schema}</script>
 </svelte:head>
 
 <div class="faq-page">

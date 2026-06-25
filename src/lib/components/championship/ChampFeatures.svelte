@@ -55,7 +55,7 @@
       {#each features as feat, i}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div class="champ-bento-card {feat.span}" style={img_style(i)}>
-          <img src={feat.img} alt="" class="champ-bento-hidden" onload={() => on_img_load(i)} />
+          <img src={feat.img} alt={feat.title} class="champ-bento-hidden" onload={() => on_img_load(i)} />
           <div class="champ-bento-overlay"></div>
           <div class="champ-bento-content">
             <h3 class="champ-bento-card-title">{feat.title}</h3>

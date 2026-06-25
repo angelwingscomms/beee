@@ -11,11 +11,9 @@
       </div>
       <nav class="footer-nav">
         <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/teamup">T.E.A.M.U.P.</a>
         <a href="/register">Registration</a>
+        <a href="/teamup">T.E.A.M.U.P.</a>
         <a href="/faq">FAQ</a>
-        <a href="/contact">Contact</a>
       </nav>
     </div>
     <div class="footer-divider"></div>

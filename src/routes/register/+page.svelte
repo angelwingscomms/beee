@@ -46,7 +46,7 @@
         <p class="reg-hero-sub">Registration for the BEEE Spectacular Chess Championship Abuja 2026 and the T.E.A.M.U.P. youth development programme.</p>
         <div class="reg-hero-actions">
           <a href="#form" class="button-primary reg-hero-btn">Begin Registration</a>
-          <a href="/championship" class="button-secondary reg-hero-btn">Learn About the Championship</a>
+          <a href="/teamup" class="button-secondary reg-hero-btn">Learn About the Programme</a>
         </div>
       </div>
       <div class="reg-hero-chess" aria-hidden="true">
