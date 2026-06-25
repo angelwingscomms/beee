@@ -1,6 +1,86 @@
 <script lang="ts">
-  import RegistrationForm from '../../components/RegistrationForm.svelte';
-  import { motionFadeUp, motionScaleIn } from '$lib/actions/motion';
+  import ConfirmationModal from '../../components/ConfirmationModal.svelte';
+  import PhoneInput from '$lib/components/PhoneInput.svelte';
+  import TextInput from '$lib/components/TextInput.svelte';
+  import { motionFadeUp } from '$lib/actions/motion';
+
+  let gf = $state('');
+  let gl = $state('');
+  let em = $state('');
+  let ph = $state('+234');
+  let pf = $state('');
+  let pl = $state('');
+  let sc = $state('');
+
+  let gfe = $state('');
+  let gle = $state('');
+  let eme = $state('');
+  let phe = $state('');
+  let pfe = $state('');
+  let ple = $state('');
+
+  let showConfirmation = $state(false);
+  let isProcessing = $state(false);
+  let apiError = $state('');
+  let registrationId = $state('');
+
+  const AMOUNT = 12500;
+
+  let allValid = $derived(
+    gf.trim() && gl.trim() && em.trim() &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
+    ph.trim() && ph.trim() !== '+234' &&
+    pf.trim() && pl.trim()
+  );
+
+  function clearErrors() {
+    gfe = ''; gle = ''; eme = ''; phe = ''; pfe = ''; ple = '';
+  }
+
+  function validateForm(): boolean {
+    clearErrors();
+    apiError = '';
+    let v = true;
+    if (!gf.trim()) { gfe = 'Required'; v = false; }
+    if (!gl.trim()) { gle = 'Required'; v = false; }
+    if (!em.trim()) { eme = 'Required'; v = false; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
+    if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
+    if (!pf.trim()) { pfe = 'Required'; v = false; }
+    if (!pl.trim()) { ple = 'Required'; v = false; }
+    return v;
+  }
+
+  function handleSubmit() {
+    if (!validateForm()) return;
+    showConfirmation = true;
+  }
+
+  async function confirmPayment() {
+    isProcessing = true;
+    apiError = '';
+    try {
+      const r = await fetch('/api/register-init-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim() })
+      });
+      if (!r.ok) {
+        const e = await r.json().catch(() => ({}));
+        throw new Error(e.error || 'Payment initialization failed');
+      }
+      const { authorization_url, registrationId: rid } = await r.json();
+      registrationId = rid;
+      window.location.href = authorization_url;
+    } catch (error) {
+      apiError = error instanceof Error ? error.message : 'Unknown error';
+      isProcessing = false;
+    }
+  }
+
+  function closeConfirmation() {
+    showConfirmation = false;
+  }
 </script>
 
 <svelte:head>
@@ -9,128 +89,317 @@
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
-  <section class="reg-hero">
-    <div class="reg-hero-noise"></div>
-    <div class="reg-hero-glow"></div>
-    <div class="container reg-hero-inner" use:motionFadeUp>
-      <h1 class="reg-hero-title">
-        Secure Your Child's
-        <span
-          class="reg-hero-inline-img"
-          style="background-image: url(https://picsum.photos/seed/chess-knight/200/80);"
-        ></span>
-        Place in the Championship
-      </h1>
-
+  <section class="reg-header" use:motionFadeUp>
+    <div class="container">
+      <p class="reg-event">BEEE Spectacular Chess Championship</p>
+      <h1 class="reg-title">Abuja 2026</h1>
+      <p class="reg-deadline">Registration closes June 18, 2026 — limited slots</p>
     </div>
   </section>
 
-  <section class="reg-form-section" id="form">
-    <div class="reg-form-bg"></div>
-    <div class="container" style="padding: 100px 0 120px;">
-      <div class="reg-form-card" use:motionScaleIn>
-        <RegistrationForm />
-      </div>
+  <section class="reg-body">
+    <div class="container reg-grid">
+      <form
+        class="reg-form"
+        novalidate
+        onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}
+      >
+        <fieldset class="reg-fieldset">
+          <legend class="reg-legend">Parent / Guardian</legend>
+          <div class="reg-row">
+            <TextInput id="gf" label="First name" bind:value={gf} required wrapperClass="!bg-surface-card !border-transparent" error={gfe} oninput={() => gfe = ''} />
+            <TextInput id="gl" label="Last name" bind:value={gl} required wrapperClass="!bg-surface-card !border-transparent" error={gle} oninput={() => gle = ''} />
+          </div>
+          <TextInput id="em" label="Email" type="email" bind:value={em} required wrapperClass="!bg-surface-card !border-transparent" error={eme} oninput={() => eme = ''} />
+          <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
+        </fieldset>
+
+        <div class="reg-divider"><span>Participant details</span></div>
+
+        <fieldset class="reg-fieldset">
+          <div class="reg-row">
+            <TextInput id="pf" label="First name" bind:value={pf} required wrapperClass="!bg-surface-card !border-transparent" error={pfe} oninput={() => pfe = ''} />
+            <TextInput id="pl" label="Last name" bind:value={pl} required wrapperClass="!bg-surface-card !border-transparent" error={ple} oninput={() => ple = ''} />
+          </div>
+          <TextInput id="sc" label="School name (optional)" bind:value={sc} wrapperClass="!bg-surface-card !border-transparent" />
+        </fieldset>
+
+        {#if apiError}
+          <div class="reg-error" role="alert">{apiError}</div>
+        {/if}
+
+        <button type="submit" class="reg-submit" disabled={!allValid}>
+          Register — ₦12,500
+        </button>
+      </form>
+
+      <aside class="reg-summary" use:motionFadeUp>
+        <div class="reg-summary-price">
+          <span class="reg-amount">₦12,500</span>
+          <span class="reg-per">per participant</span>
+        </div>
+        <div class="reg-summary-deadline">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" rx="7.5" stroke="currentColor"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-linecap="round"/></svg>
+          Deadline: June 18, 2026
+        </div>
+        <p class="reg-summary-note">Registration may be completed by a parent or sponsor</p>
+        <div class="reg-age-callout">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div>
+            <strong>Age requirement</strong>
+            <p>Participants must be between 10 and 14 years old (born 2011–2015)</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="reg-fine">
+    <div class="container">
+      <p>Qualification slots are limited and will be allocated on a first-completed-registration basis <span class="reg-bul">·</span> Registration closes on June 18, 2026, or earlier if available placement slots are filled <span class="reg-bul">·</span> Participants must be between 10 and 14 years of age <span class="reg-bul">·</span> Sponsorship of participants is by parents or other interested sponsor</p>
     </div>
   </section>
 </div>
 
+{#if showConfirmation}
+  <ConfirmationModal
+    firstName={gf}
+    lastName={gl}
+    email={em}
+    phone={ph}
+    {AMOUNT}
+    onConfirm={confirmPayment}
+    onCancel={closeConfirmation}
+    {isProcessing}
+  />
+{/if}
+
 <style>
-  .reg-hero {
-    position: relative;
-    min-height: 70dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--canvas);
-    padding-top: 120px;
+  .reg-header {
+    padding: 140px 0 0;
+    text-align: left;
   }
-
-  .reg-hero-noise {
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px 256px;
-    pointer-events: none;
-    z-index: 0;
+  .reg-event {
+    font-family: var(--font-registration);
+    font-size: clamp(13px, 1.2vw, 15px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 8px;
   }
-
-  .reg-hero-glow {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 20% 40%, rgba(242, 120, 48, 0.08), transparent 70%),
-      radial-gradient(ellipse 50% 50% at 80% 60%, rgba(255, 178, 0, 0.05), transparent 60%);
-  }
-
-  .reg-hero-inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 80px 0;
-  }
-
-  .reg-hero-title {
+  .reg-title {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
     font-weight: 500;
     line-height: 1.06;
     letter-spacing: -0.02em;
     color: var(--ink);
-    margin: 0 auto;
-    max-width: 48rem;
-    text-wrap: balance;
+    margin: 0 0 10px;
+  }
+  .reg-deadline {
+    font-family: var(--font-registration);
+    font-size: clamp(14px, 1.2vw, 16px);
+    color: var(--muted);
+    margin: 0;
   }
 
-  .reg-hero-inline-img {
-    display: inline-block;
-    width: 80px;
-    height: 36px;
-    border-radius: 999px;
-    vertical-align: middle;
-    background-size: cover;
-    background-position: center;
-    margin: -6px 8px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 2px rgba(255, 255, 255, 0.2);
+  .reg-body {
+    padding: 56px 0 80px;
+  }
+  .reg-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 48px;
+    align-items: start;
   }
 
-  .reg-form-section {
-    position: relative;
-    background: var(--canvas);
-    overflow: hidden;
+  .reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .reg-fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .reg-legend {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0;
+    margin-bottom: 4px;
+  }
+  .reg-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .reg-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-registration);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .reg-divider::before,
+  .reg-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .reg-error {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(255, 55, 45, 0.08);
+    color: var(--error);
+    font-family: var(--font-registration);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .reg-submit {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-registration);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    line-height: 1;
+  }
+  .reg-submit:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .reg-submit:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
   }
 
-  .reg-form-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 60% 40% at 30% 30%, rgba(242, 120, 48, 0.05), transparent 60%),
-      radial-gradient(ellipse 40% 40% at 80% 70%, rgba(255, 178, 0, 0.03), transparent 50%);
+  .reg-summary {
+    background: var(--surface-soft);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 100px;
+  }
+  .reg-summary-price {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .reg-amount {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .reg-per {
+    font-family: var(--font-registration);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .reg-summary-deadline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-registration);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--body-strong);
+  }
+  .reg-summary-note {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  .reg-age-callout {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 10px;
+    background: rgba(242, 120, 48, 0.08);
+    color: var(--body-strong);
+  }
+  .reg-age-callout svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--primary);
+  }
+  .reg-age-callout strong {
+    display: block;
+    font-family: var(--font-registration);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .reg-age-callout p {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--body);
+    margin: 0;
   }
 
-  .reg-form-card {
-    position: relative;
-    border-radius: 20px;
+  .reg-fine {
+    padding: 0 0 80px;
+  }
+  .reg-fine p {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted-soft);
+    margin: 0;
+  }
+  .reg-bul {
+    margin: 0 6px;
+    color: var(--hairline);
   }
 
-  @media (max-width: 767px) {
-    .reg-hero {
-      min-height: auto;
-      padding: 100px 0 60px;
+  @media (max-width: 860px) {
+    .reg-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
-    .reg-hero-title {
-      font-size: clamp(2rem, 8vw, 2.8rem);
+    .reg-summary {
+      order: -1;
+      position: static;
     }
-    .reg-hero-inline-img {
-      width: 56px;
-      height: 28px;
-      margin: -4px 6px 0;
+    .reg-body {
+      padding: 40px 0 60px;
+    }
+  }
+  @media (max-width: 480px) {
+    .reg-row {
+      grid-template-columns: 1fr;
+    }
+    .reg-header {
+      padding: 120px 0 0;
     }
   }
 </style>
