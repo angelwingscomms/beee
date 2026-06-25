@@ -23,13 +23,8 @@
   const paragraphs = [
     'Your child gains strategic thinking, confidence, and real connection with talented peers across Abuja.',
     'T.E.A.M.U.P. — Technology, Enterprise, Art, Mentorship, Upskill — weaves development into every stage.',
-    'A digital Development Passport tracks every milestone, badge, and certificate — parents follow progress in real time.',
-    'Think. Compete. Develop. Excel.'
+    'A digital Development Passport tracks every milestone, badge, and certificate — parents follow progress in real time.'
   ];
-
-  const strong_at = new Set([1]);
-  const quote_at = 3;
-
 
   function word_reveal(word_idx: number, para_idx: number) {
     const p = para_idx / paragraphs.length;
@@ -41,6 +36,7 @@
 </script>
 
 <section bind:this={section} class="champ-about">
+  <div class="champ-about-gradient"></div>
   <div class="champ-about-pin" bind:this={pinBox}>
     <div class="container champ-about-grid">
       <div class="champ-about-sticky">
@@ -50,21 +46,10 @@
         {#each paragraphs as para, pi}
           <p>
             {#each para.split(/(\s+)/).filter(Boolean) as word, wi}
-              {#if pi === quote_at}
-                {#if /^\s+$/.test(word)}
-                  <span class="champ-about-quote" style={word_reveal(wi, pi)}>{word}</span>
-                {:else}
-                  <span class="champ-about-quote" class:alt={Math.floor(wi / 2) % 2 === 1} style={word_reveal(wi, pi)}>{word}</span>
-                {/if}
-              {:else if strong_at.has(pi) && word === 'T.E.A.M.U.P.'}
-                <strong class="champ-about-word" style={word_reveal(wi, pi)}>{word}</strong>
-              {:else}
-                <span class="champ-about-word" style={word_reveal(wi, pi)}>{word}</span>
-              {/if}
+              <span class="champ-about-word" style={word_reveal(wi, pi)}>{word}</span>
             {/each}
           </p>
         {/each}
-
       </div>
     </div>
   </div>
@@ -74,11 +59,17 @@
   .champ-about {
     position: relative;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.2) 0%, rgba(24,23,21,0.88) 100%),
       url('/images/championship/about-bg.png');
     background-size: cover;
     background-position: center;
     color: var(--on-dark);
+  }
+
+  .champ-about-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 0;
   }
 
   .champ-about-pin {
@@ -102,9 +93,9 @@
   .champ-about-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--on-dark);
   }
@@ -116,32 +107,14 @@
 
   .champ-about-text p {
     margin: 0;
-    font-size: 17px;
-    line-height: 1.75;
-    color: #fff;
-  }
-
-  .champ-about-text strong.champ-about-word {
-    color: #fff;
-    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250, 249, 245, 0.82);
   }
 
   .champ-about-word {
     will-change: opacity;
     transition: opacity 0.1s ease;
-  }
-
-  .champ-about-quote {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-style: normal;
-    letter-spacing: 0.04em;
-    color: var(--primary);
-    display: inline-block;
-  }
-
-  .champ-about-quote.alt {
-    color: #fff;
   }
 
   @media (max-width: 767px) {
@@ -156,7 +129,7 @@
       position: static;
     }
     .champ-about-text p {
-      font-size: 15px;
+      font-size: 14px;
     }
   }
 </style>

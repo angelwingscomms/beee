@@ -81,7 +81,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    max-width: 720px;
+    max-width: 800px;
     padding: 120px 0;
   }
 
@@ -112,7 +112,7 @@
   }
 
   .champ-cta-sub {
-    max-width: 520px;
+    max-width: 680px;
     margin: 20px auto 0;
     font-size: 17px;
     line-height: 1.65;

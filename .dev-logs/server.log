@@ -127,3 +127,33 @@ https://svelte.dev/e/css_unused_selector
 5:47:55 PM [vite] (client) page reload .svelte-kit/generated/root.js
 5:47:55 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 5:47:55 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:59:33 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:59:33 PM [vite] (ssr) page reload src/routes/+page.svelte
+5:59:33 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:59:33 PM [vite] (ssr) page reload src/routes/+page.svelte
+5:59:43 PM [vite] (client) hmr update /src/app.css
+5:59:43 PM [vite] (ssr) page reload src/lib/components/championship/ChampMarquee.svelte
+6:00:02 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+6:00:02 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+6:00:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte, /src/app.css
+6:00:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+6:00:14 PM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte?svelte&type=style&lang.css, /src/app.css
+6:00:14 PM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+6:00:16 PM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte?svelte&type=style&lang.css, /src/app.css
+6:00:16 PM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+6:00:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+6:00:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+6:00:28 PM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+6:00:28 PM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:01:03 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:01:03 PM [vite] (client) page reload .svelte-kit/generated/root.js
+6:01:03 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:01:03 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

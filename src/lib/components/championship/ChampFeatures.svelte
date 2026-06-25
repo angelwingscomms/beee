@@ -48,7 +48,7 @@
 <section id="features" class="section-soft" use:motionStagger>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-features-header">
-      <h2 class="champ-features-title">What Makes BEEE Different?</h2>
+      <h2 class="champ-features-title">Five stages of growth, one championship.</h2>
       <p class="champ-features-sub">Most championships end with a trophy. BEEE begins with a journey across five pillars of growth.</p>
     </div>
     <div class="champ-bento">
@@ -132,12 +132,12 @@
   .champ-bento-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(24, 23, 21, 0.15) 0%, rgba(24, 23, 21, 0.82) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     transition: background 400ms ease;
   }
 
   .champ-bento-card:hover .champ-bento-overlay {
-    background: linear-gradient(180deg, rgba(24, 23, 21, 0.1) 0%, rgba(24, 23, 21, 0.72) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
   }
 
   .champ-bento-content {
@@ -153,17 +153,18 @@
   .champ-bento-card-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.3;
     letter-spacing: -0.01em;
+    color: #fff;
   }
 
   .champ-bento-card-body {
-    margin: 10px 0 0;
-    font-size: 14px;
-    line-height: 1.55;
-    color: rgba(250, 249, 245, 0.78);
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
     max-width: 440px;
   }
 

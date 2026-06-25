@@ -1,6 +1,5 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
-  import ChampMarquee from '$lib/components/championship/ChampMarquee.svelte';
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
@@ -60,8 +59,7 @@
   <!-- ATTENTION: Hero -->
   <ChampHero />
 
-  <!-- INTEREST: Marquee + About -->
-  <ChampMarquee />
+  <!-- INTEREST: About -->
   <ChampAbout />
 
   <!-- DESIRE: Features with alternating image layout -->
