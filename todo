@@ -2,3 +2,23 @@ gen images
 make user account on chess on register
 add affiliate page
 add become an affiliate sections
+
+## SEO
+
+### Critical
+- resolve www.beeeproject.com DNS + redirect to non-www
+- deploy latest code (FAQ title, homepage description are stale)
+
+### High Impact
+- submit site to Google Search Console
+- create /about, /contact, /privacy pages (or remove remaining broken links)
+- add hreflang if multi-language planned
+
+### Quick Wins
+- add OG image (done — og.png + og.webp in static/)
+- test via Google Rich Results Test for schema validation
+
+### Long-Term
+- build backlinks (schools, chess community in Nigeria)
+- content cluster: blog posts on chess education, youth development
+- replace picsum.photos placeholders with real images
