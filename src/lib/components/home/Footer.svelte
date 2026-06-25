@@ -7,7 +7,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <p class="footer-event">BEEE Spectacular Chess Championship Abuja 2026</p>
-        <p class="footer-tagline">More Than A Chess Championship</p>
+        <p class="footer-tagline">Be Everything Excellent Everyday</p>
       </div>
       <nav class="footer-nav">
         <a href="/">Home</a>
