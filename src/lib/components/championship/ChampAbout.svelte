@@ -21,21 +21,15 @@
   });
 
   const paragraphs = [
-    'Sharpen strategic thinking, build confidence, and connect with other talented young minds across Abuja.',
-    'BEEE integrates development into every stage through the T.E.A.M.U.P. Programme — Technology, Enterprise, Art, Mentorship and Upskill.',
-    'Every participant joins a structured journey combining chess, innovation, leadership, and personal growth — tracked from first session to championship finale.',
+    'Your child gains strategic thinking, confidence, and real connection with talented peers across Abuja.',
+    'T.E.A.M.U.P. — Technology, Enterprise, Art, Mentorship, Upskill — weaves development into every stage.',
+    'A digital Development Passport tracks every milestone, badge, and certificate — parents follow progress in real time.',
     'Think. Compete. Develop. Excel.'
   ];
 
   const strong_at = new Set([1]);
   const quote_at = 3;
 
-  const benefits = [
-    'Advanced chess training', 'Strategic & analytical thinking',
-    'Confidence & leadership', 'Mentored personal development',
-    'Healthy competition & sportsmanship', 'Connect with talented young players',
-    'Certificates, scholarships & awards', 'Compete for the Championship Trophy'
-  ];
 
   function word_reveal(word_idx: number, para_idx: number) {
     const p = para_idx / paragraphs.length;
@@ -57,7 +51,11 @@
           <p>
             {#each para.split(/(\s+)/).filter(Boolean) as word, wi}
               {#if pi === quote_at}
-                <span class="champ-about-quote" style={word_reveal(wi, pi)}>{word}</span>
+                {#if /^\s+$/.test(word)}
+                  <span class="champ-about-quote" style={word_reveal(wi, pi)}>{word}</span>
+                {:else}
+                  <span class="champ-about-quote" class:alt={Math.floor(wi / 2) % 2 === 1} style={word_reveal(wi, pi)}>{word}</span>
+                {/if}
               {:else if strong_at.has(pi) && word === 'T.E.A.M.U.P.'}
                 <strong class="champ-about-word" style={word_reveal(wi, pi)}>{word}</strong>
               {:else}
@@ -66,11 +64,7 @@
             {/each}
           </p>
         {/each}
-        <div class="champ-benefits">
-          {#each benefits as benefit}
-            <span class="champ-benefit">{benefit}</span>
-          {/each}
-        </div>
+
       </div>
     </div>
   </div>
@@ -79,7 +73,11 @@
 <style>
   .champ-about {
     position: relative;
-    background: var(--surface-dark);
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.2) 0%, rgba(24,23,21,0.88) 100%),
+      url('/images/championship/about-bg.png');
+    background-size: cover;
+    background-position: center;
     color: var(--on-dark);
   }
 
@@ -120,11 +118,11 @@
     margin: 0;
     font-size: 17px;
     line-height: 1.75;
-    color: var(--on-dark-soft);
+    color: #fff;
   }
 
   .champ-about-text strong.champ-about-word {
-    color: var(--on-dark);
+    color: #fff;
     font-weight: 600;
   }
 
@@ -142,26 +140,8 @@
     display: inline-block;
   }
 
-  .champ-benefits {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 12px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(250, 249, 245, 0.08);
-  }
-
-  .champ-benefit {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--on-dark-soft);
-    letter-spacing: 0.02em;
-    padding: 6px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(250, 249, 245, 0.1);
-    background: rgba(250, 249, 245, 0.03);
-    line-height: 1;
-    white-space: nowrap;
+  .champ-about-quote.alt {
+    color: #fff;
   }
 
   @media (max-width: 767px) {

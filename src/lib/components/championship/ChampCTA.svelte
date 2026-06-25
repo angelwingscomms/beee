@@ -18,7 +18,7 @@
   <div class="champ-cta-noise"></div>
   <div class="container champ-cta-body" class:visible>
     <h2 class="champ-cta-title">Ready to Compete, Develop & Excel?</h2>
-    <p class="champ-cta-sub">Register for the BEEE Spectacular Chess Championship Abuja 2026 and begin the T.E.A.M.U.P. journey.</p>
+    <p class="champ-cta-sub">Register your young player for the BEEE Spectacular Chess Championship Abuja 2026 and begin their T.E.A.M.U.P. journey.</p>
     <div class="champ-cta-actions">
       <a href="/register" class="champ-cta-btn-primary">Register Now</a>
       <a href="/faq" class="champ-cta-btn-secondary">View FAQ</a>
@@ -59,7 +59,10 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.3) 0%, rgba(24,23,21,0.8) 100%);
+      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.15) 0%, rgba(24,23,21,0.85) 100%),
+      url('/images/championship/cta-bg.png');
+    background-size: cover;
+    background-position: center;
   }
 
   .champ-cta-noise::before {
@@ -166,7 +169,7 @@
     margin: 40px 0 0;
     font-size: 12px;
     font-weight: 500;
-    color: rgba(250, 249, 245, 0.4);
+    color: #fff;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }

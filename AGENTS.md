@@ -15,6 +15,7 @@
 - never start the dev server
 - where necessary (e.g for non-trivial updates), always write failing unit and e2e tests before implementing a feature/fix and then run tests after implementing
 - fonts go in static/fonts
+- image prompts must follow docs/images/prompt-guide.md for style/theme consistency
 
 ## Git Workflow
 

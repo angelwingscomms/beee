@@ -11,7 +11,7 @@
     <h1 class="champ-hero-title">
       More Than A Chess Championship
     </h1>
-    <p class="champ-hero-sub">Competitive chess meets structured mentorship, leadership, and personal growth through the T.E.A.M.U.P. Programme.</p>
+    <p class="champ-hero-sub">We invite young players across Abuja to a summer of chess, mentorship, and growth — online sessions leading to live preliminaries and a grand finale. This is the T.E.A.M.U.P. Programme.</p>
     <div class="champ-hero-actions">
       <a href="/register" class="champ-hero-btn-primary">Register Now</a>
       <a href="#features" class="champ-hero-btn-secondary">Explore the Programme</a>

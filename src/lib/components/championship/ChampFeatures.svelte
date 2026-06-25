@@ -16,7 +16,7 @@
     },
     {
       title: 'Achievement Badges & Awards',
-      body: 'Earn badges, certificates, and trophies as you progress through each stage. Recognition at every level keeps motivation high and growth visible.'
+      body: 'Earn badges, certificates, scholarships, and trophies through each stage. Recognition at every level keeps motivation high and growth visible.'
     },
     {
       title: 'Parent Engagement & Visibility',
