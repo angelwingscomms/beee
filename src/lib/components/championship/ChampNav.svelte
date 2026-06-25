@@ -6,6 +6,13 @@
   let path = $derived($page.url.pathname);
 </script>
 
+<svg style="position:fixed;width:0;height:0;pointer-events:none" aria-hidden="true">
+  <filter id="lg-distort" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feTurbulence type="turbulence" baseFrequency="0.012" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="28" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+</svg>
+
 <nav class="champ-nav">
   <div class="champ-nav-bg"></div>
   <div class="champ-nav-inner container">
@@ -15,7 +22,7 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
-      <a href="/register" class:active={path === '/'}>Register</a>
+      <a href="/register" class:active={path === '/register'}>Register</a>
       <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
@@ -51,12 +58,65 @@
     position: absolute;
     inset: 0;
     border-radius: 999px;
-    background: rgba(250, 249, 245, 0.88);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     z-index: -1;
+    background: rgba(250, 249, 245, 0.6);
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+      inset 1px 0 0 rgba(255, 255, 255, 0.08),
+      inset -1px 0 0 rgba(255, 255, 255, 0.08);
+    filter: url(#lg-distort) saturate(1.15) brightness(1.03);
+  }
+
+  .champ-nav-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.12) 37%,
+      rgba(255, 255, 255, 0.28) 42%,
+      rgba(255, 255, 255, 0.12) 47%,
+      transparent 65%
+    );
+    background-size: 200% 100%;
+    animation: sheen 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sheen {
+    0% { background-position: 150% 0; }
+    50% { background-position: -50% 0; }
+    100% { background-position: 150% 0; }
+  }
+
+  :global(.dark) .champ-nav-bg {
+    background: rgba(24, 23, 21, 0.55);
+    border-color: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(28px) saturate(1.2);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+      inset 1px 0 0 rgba(255, 255, 255, 0.04),
+      inset -1px 0 0 rgba(255, 255, 255, 0.04);
+  }
+
+  :global(.dark) .champ-nav-bg::before {
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.025) 37%,
+      rgba(255, 255, 255, 0.05) 42%,
+      rgba(255, 255, 255, 0.025) 47%,
+      transparent 65%
+    );
   }
 
   .champ-nav-inner {

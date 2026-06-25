@@ -10,3 +10,16 @@ Using secrets defined in .env
 2:36:19 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 2:36:43 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 2:36:43 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+2:41:33 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+2:41:33 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+2:41:42 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+2:41:42 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+2:41:53 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+2:41:53 PM [vite] (client) page reload .svelte-kit/generated/root.js
+2:41:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+2:41:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
