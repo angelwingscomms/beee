@@ -23,3 +23,17 @@ Using secrets defined in .env
 2:41:53 PM [vite] (client) page reload .svelte-kit/generated/root.js
 2:41:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 2:41:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+2:44:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+2:44:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+2:44:04 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+2:44:04 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+2:46:13 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+2:46:13 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+2:50:47 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:142:2 Unused CSS selector ".champ-hero-gradient"
+https://svelte.dev/e/css_unused_selector
+2:50:47 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+2:50:47 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+2:50:47 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:142:2 Unused CSS selector ".champ-hero-gradient"
+https://svelte.dev/e/css_unused_selector
+2:50:50 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+2:50:50 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte

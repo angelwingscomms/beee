@@ -6,13 +6,6 @@
   let path = $derived($page.url.pathname);
 </script>
 
-<svg style="position:fixed;width:0;height:0;pointer-events:none" aria-hidden="true">
-  <filter id="lg-distort" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-    <feTurbulence type="turbulence" baseFrequency="0.012" numOctaves="3" result="noise" />
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="28" xChannelSelector="R" yChannelSelector="G" />
-  </filter>
-</svg>
-
 <nav class="champ-nav">
   <div class="champ-nav-bg"></div>
   <div class="champ-nav-inner container">
@@ -69,7 +62,6 @@
       inset 0 -1px 0 rgba(255, 255, 255, 0.12),
       inset 1px 0 0 rgba(255, 255, 255, 0.08),
       inset -1px 0 0 rgba(255, 255, 255, 0.08);
-    filter: url(#lg-distort) saturate(1.15) brightness(1.03);
   }
 
   .champ-nav-bg::before {
@@ -160,7 +152,7 @@
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--body);
+    color: #fff;
     text-decoration: none;
     transition: background 160ms ease, color 160ms ease;
   }

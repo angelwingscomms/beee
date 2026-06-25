@@ -17,7 +17,6 @@
       <a href="#features" class="champ-hero-btn-secondary">Explore the Programme</a>
     </div>
   </div>
-  <div class="champ-hero-gradient"></div>
 </section>
 
 <style>
@@ -138,17 +137,6 @@
     background: rgba(250, 249, 245, 0.08);
     border-color: rgba(250, 249, 245, 0.4);
     transform: scale(1.03);
-  }
-
-  .champ-hero-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(180deg, transparent, var(--canvas));
-    z-index: 2;
-    pointer-events: none;
   }
 
   @media (max-width: 767px) {
