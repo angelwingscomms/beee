@@ -88,7 +88,8 @@
   <meta name="description" content="Register your child for the BEEE T.E.A.M.U.P. programme and Spectacular Chess Championship Abuja 2026." />
 </svelte:head>
 
-<div class="overflow-x-hidden w-full max-w-full">
+<div class="overflow-x-hidden w-full max-w-full reg-page">
+  <div class="reg-bg-overlay"></div>
   <section class="reg-header" use:motionFadeUp>
     <div class="container">
       <p class="reg-event">BEEE Spectacular Chess Championship</p>
@@ -159,7 +160,7 @@
       <p>Qualification slots are limited and will be allocated on a first-completed-registration basis <span class="reg-bul">·</span> Registration closes on June 18, 2026, or earlier if available placement slots are filled <span class="reg-bul">·</span> Participants must be between 10 and 14 years of age <span class="reg-bul">·</span> Sponsorship of participants is by parents or other interested sponsor</p>
     </div>
   </section>
-</div>
+</div><!-- .reg-page -->
 
 {#if showConfirmation}
   <ConfirmationModal
@@ -175,6 +176,21 @@
 {/if}
 
 <style>
+  .reg-page {
+    position: relative;
+    background: url('/register-bg.png') center center / cover no-repeat fixed;
+    min-height: 100vh;
+  }
+  .reg-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    pointer-events: none;
+  }
+  .reg-page > :not(.reg-bg-overlay) {
+    position: relative;
+    z-index: 1;
+  }
   .reg-header {
     padding: 140px 0 0;
     text-align: left;
