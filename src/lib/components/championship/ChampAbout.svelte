@@ -1,6 +1,7 @@
 <script lang="ts">
   import { scroll } from 'motion';
   import { onMount } from 'svelte';
+  import { motionStaggered } from '$lib/actions/motion';
 
   let section: HTMLElement;
   let textEl: HTMLElement;
@@ -43,7 +44,8 @@
         </p>
         <p style={revealStyles(1)}>
           Unlike traditional tournaments that focus solely on competition, BEEE integrates development
-          into every stage of the journey through the <strong>T.E.A.M.U.P. Programme</strong>.
+          into every stage of the journey through the <strong>T.E.A.M.U.P. Programme</strong>
+          &mdash; Technology, Enterprise, Art, Mentorship and Upskill.
         </p>
         <p style={revealStyles(2)}>
           Every participant gains access to the T.E.A.M.U.P. Development Programme, a unique journey
@@ -52,6 +54,11 @@
         <p style={revealStyles(3)}>
           <strong class="champ-about-quote">Think. Compete. Develop. Excel.</strong>
         </p>
+        <div class="champ-benefits" use:motionStaggered={{ stagger: 0.06, y: 14 }}>
+          {#each ['Advanced chess training', 'Strategic & analytical thinking', 'Confidence & leadership', 'Mentored personal development', 'Healthy competition & sportsmanship', 'Connect with talented young players', 'Certificates, scholarships & awards', 'Compete for the Championship Trophy'] as benefit}
+            <span class="champ-benefit-item">{benefit}</span>
+          {/each}
+        </div>
       </div>
     </div>
   </div>
@@ -112,6 +119,28 @@
     font-size: 22px;
     letter-spacing: 0.04em;
     color: var(--primary);
+  }
+
+  .champ-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250, 249, 245, 0.1);
+  }
+
+  .champ-benefit-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--on-dark-soft);
+    letter-spacing: 0.02em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(250, 249, 245, 0.12);
+    background: rgba(250, 249, 245, 0.04);
+    white-space: nowrap;
+    line-height: 1;
   }
 
   @media (max-width: 767px) {

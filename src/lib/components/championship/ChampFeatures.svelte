@@ -18,19 +18,19 @@
       img: '/images/championship/bento_passport.png',
       span: 'col-span-1 row-span-1',
       title: 'Development Passport',
-      body: 'Digital passport that records milestones, achievements, and personal growth throughout the championship cycle.'
+      body: 'Digital passport that records every milestone, certificate, badge, and achievement throughout the championship cycle. Parents can follow their child\'s progress from enrollment through to the grand finale.'
     },
     {
       img: '/images/championship/bento_award.png',
       span: 'col-span-2 row-span-1',
       title: 'Achievement Badges & Milestones',
-      body: 'Track progress through developmental milestones and earn achievement badges that celebrate both chess and personal development.'
+      body: 'Earn achievement badges, certificates, and recognition awards as you hit each milestone — celebrating growth in chess skill, leadership, and personal development.'
     },
     {
       img: '/images/championship/bento_family.png',
       span: 'col-span-3 row-span-1',
       title: 'Parent Engagement & Visibility',
-      body: 'Parents stay connected with real-time progress visibility, event updates, and a front-row seat to their child\'s development journey.'
+      body: 'Parents track their child\'s journey from enrollment through to the championship finale — real-time progress, event updates, certificates earned, and a front-row seat to every stage of development.'
     }
   ];
 

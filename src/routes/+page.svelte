@@ -1,28 +1,22 @@
 <script lang="ts">
-	import Hero from '$lib/components/home/Hero.svelte';
-	import Pillars from '$lib/components/home/Pillars.svelte';
-	import Different from '$lib/components/home/Different.svelte';
-	import Journey from '$lib/components/home/Journey.svelte';
-	import TeamUp from '$lib/components/home/TeamUp.svelte';
-	import Passport from '$lib/components/home/Passport.svelte';
-	import FinalCTA from '$lib/components/home/FinalCTA.svelte';
+  import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
+  import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
+  import ChampHow from '$lib/components/championship/ChampHow.svelte';
+  import ChampMarquee from '$lib/components/championship/ChampMarquee.svelte';
+  import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
 <svelte:head>
-	<title>BEEE Spectacular Chess Championship Abuja 2026</title>
-	<meta name="description" content="More Than A Chess Championship. Compete. Develop. Excel. Join the BEEE Spectacular Chess Championship Abuja 2026 and access the T.E.A.M.U.P. Development Programme." />
+  <title>Championship — BEEE Spectacular Chess Championship Abuja 2026</title>
+  <meta name="description" content="More Than A Chess Championship. The BEEE Spectacular Chess Championship Abuja 2026 combines competitive chess with structured learning, mentorship, and personal growth through the T.E.A.M.U.P. Programme." />
 </svelte:head>
 
-<Hero />
-<Pillars />
-<Different />
-<Journey />
-<TeamUp />
-<Passport />
-	<FinalCTA />
-
-<style>
-	:global(body) {
-		background: var(--canvas);
-	}
-</style>
+<div class="overflow-x-hidden w-full max-w-full">
+  <ChampHero />
+  <ChampAbout />
+  <ChampFeatures />
+  <ChampHow />
+  <ChampMarquee />
+  <ChampCTA />
+</div>

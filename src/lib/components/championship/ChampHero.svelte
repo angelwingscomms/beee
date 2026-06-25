@@ -6,7 +6,8 @@
   <div class="champ-hero-bg"></div>
   <div class="champ-hero-inner container">
     <div class="champ-hero-content">
-      <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
+      <p class="champ-hero-eyebrow">BEEE&reg; Spectacular Chess Championship Abuja 2026</p>
+      <p class="champ-hero-motto">Be Everything Excellent Every Day</p>
       <h1 class="champ-hero-title">More Than A Chess Championship</h1>
       <p class="champ-hero-body">
         A unique youth development initiative that combines competitive chess with structured learning,
@@ -76,6 +77,15 @@
     text-transform: uppercase;
   }
 
+  .champ-hero-motto {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+  }
+
   .champ-hero-title {
     font-family: var(--font-display);
     font-size: clamp(2.6rem, 4.5vw, 4rem);
@@ -84,7 +94,7 @@
     letter-spacing: -0.02em;
     color: var(--ink);
     margin: 0;
-    max-width: 600px;
+    max-width: 640px;
     text-wrap: balance;
   }
 

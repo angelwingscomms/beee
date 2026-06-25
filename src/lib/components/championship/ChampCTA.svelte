@@ -15,6 +15,7 @@
           <a href="/register" class="button-primary champ-cta-btn">Register Now</a>
           <a href="/faq" class="button-secondary-dark champ-cta-btn">View FAQ</a>
         </div>
+        <p class="champ-cta-signoff">Aspire to BEEE. Be Everything Excellent Every Day.</p>
       </div>
       <div class="champ-cta-visual">
         <span class="champ-cta-piece champ-cta-k">&#9818;</span>
@@ -63,6 +64,16 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 32px;
+  }
+
+  .champ-cta-signoff {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--on-dark-soft);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 32px 0 0;
+    opacity: 0.6;
   }
 
   .champ-cta-btn {
