@@ -25,8 +25,10 @@
 <svelte:head>
 	<title>FAQ — BEEE Spectacular Chess Championship Abuja 2026</title>
 	<meta name="description" content="Frequently asked questions about the BEEE Spectacular Chess Championship Abuja 2026 and T.E.A.M.U.P. Development Programme — registration, participation, awards, and more." />
-	<script type="application/ld+json">{@html faq_schema}</script>
 </svelte:head>
+
+<!-- SEO FAQPage schema -->
+{@html '<script type="application/ld+json">' + faq_schema + '</script>'}
 
 <div class="faq-page">
 	<FaqHero />
