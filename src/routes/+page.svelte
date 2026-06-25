@@ -3,7 +3,7 @@
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
   import ChampHow from '$lib/components/championship/ChampHow.svelte';
-  import ChampMarquee from '$lib/components/championship/ChampMarquee.svelte';
+  import ChampDesire from '$lib/components/championship/ChampDesire.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
@@ -62,6 +62,6 @@
   <ChampAbout />
   <ChampFeatures />
   <ChampHow />
-  <ChampMarquee />
+  <ChampDesire />
   <ChampCTA />
 </div>
