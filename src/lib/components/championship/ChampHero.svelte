@@ -7,25 +7,9 @@
     <div class="champ-hero-overlay"></div>
     <div class="champ-hero-noise"></div>
   </div>
-  <nav class="champ-nav">
-    <div class="champ-nav-inner">
-      <span class="champ-nav-logo">
-        <span class="spike-mark" style="color:var(--on-dark)"></span>
-        <span class="champ-nav-wordmark">BEEE</span>
-      </span>
-      <div class="champ-nav-links">
-        <a href="#features">Approach</a>
-        <a href="#about">Programme</a>
-        <a href="#testimonials">Voices</a>
-      </div>
-      <a href="/register" class="champ-nav-cta">Register</a>
-    </div>
-  </nav>
   <div class="champ-hero-body container">
     <h1 class="champ-hero-title">
-      More Than A
-      <span class="champ-hero-inline-img" style="background-image: url('https://picsum.photos/seed/chess-king/240/60')"></span>
-      Chess Championship
+      More Than A Chess Championship
     </h1>
     <p class="champ-hero-sub">Competitive chess meets structured mentorship, leadership, and personal growth through the T.E.A.M.U.P. Programme.</p>
     <div class="champ-hero-actions">
@@ -82,78 +66,6 @@
     z-index: 1;
   }
 
-  /* ── Nav ── */
-  .champ-nav {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    translate: -50% 0;
-    z-index: 50;
-    width: min(720px, calc(100% - 32px));
-    border-radius: 999px;
-    background: rgba(24, 23, 21, 0.72);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(250, 249, 245, 0.08);
-    padding: 8px 12px 8px 24px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  }
-
-  .champ-nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .champ-nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--on-dark);
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .champ-nav-wordmark {
-    font-family: var(--font-display);
-    font-size: 18px;
-  }
-
-  .champ-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(250, 249, 245, 0.72);
-  }
-
-  .champ-nav-links a:hover {
-    color: var(--on-dark);
-  }
-
-  .champ-nav-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 36px;
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: var(--primary);
-    color: var(--on-primary);
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1;
-    transition: background 160ms ease, transform 160ms ease;
-  }
-
-  .champ-nav-cta:hover {
-    background: var(--primary-active);
-    transform: scale(1.04);
-  }
-
   /* ── Hero Body ── */
   .champ-hero-body {
     position: relative;
@@ -172,19 +84,6 @@
     letter-spacing: -0.02em;
     color: var(--on-dark);
     text-wrap: balance;
-  }
-
-  .champ-hero-inline-img {
-    display: inline-block;
-    width: 1.8em;
-    height: 0.5em;
-    border-radius: 999px;
-    background-size: cover;
-    background-position: center;
-    vertical-align: middle;
-    margin: 0 0.08em;
-    opacity: 0.85;
-    filter: grayscale(0.3) contrast(1.2);
   }
 
   .champ-hero-sub {
@@ -253,14 +152,6 @@
   }
 
   @media (max-width: 767px) {
-    .champ-nav {
-      top: 12px;
-      padding: 6px 10px 6px 18px;
-      width: calc(100% - 24px);
-    }
-    .champ-nav-links {
-      display: none;
-    }
     .champ-hero-body {
       padding: 100px 0 120px;
     }
@@ -270,10 +161,5 @@
     .champ-hero-sub {
       font-size: 15px;
       margin-top: 20px;
-    }
-    .champ-hero-inline-img {
-      width: 1.4em;
-      height: 0.4em;
-    }
-  }
+    }  }
 </style>

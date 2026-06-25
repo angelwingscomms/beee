@@ -27,37 +27,6 @@
   </div>
 </section>
 
-<footer class="champ-footer">
-  <div class="container champ-footer-inner">
-    <div class="champ-footer-brand">
-      <span class="spike-mark" style="color:var(--on-dark)"></span>
-      <span class="champ-footer-wordmark">BEEE</span>
-    </div>
-    <div class="champ-footer-links">
-      <div class="champ-footer-col">
-        <strong>Programme</strong>
-        <a href="#features">Approach</a>
-        <a href="#about">The Journey</a>
-        <a href="/register">Register</a>
-      </div>
-      <div class="champ-footer-col">
-        <strong>Resources</strong>
-        <a href="/faq">FAQ</a>
-        <a href="/design">Design System</a>
-      </div>
-      <div class="champ-footer-col">
-        <strong>Connect</strong>
-        <span>info@beeeproject.com</span>
-        <span>Abuja, Nigeria</span>
-      </div>
-    </div>
-  </div>
-  <div class="container champ-footer-bottom">
-    <span>&copy; 2026 BEEE. All rights reserved.</span>
-    <span>T.E.A.M.U.P. Programme</span>
-  </div>
-</footer>
-
 <style>
   .champ-cta {
     position: relative;
@@ -202,72 +171,6 @@
     text-transform: uppercase;
   }
 
-  /* ── Footer ── */
-  .champ-footer {
-    background: var(--surface-dark);
-    border-top: 1px solid rgba(250, 249, 245, 0.06);
-    padding: 64px 0 32px;
-  }
-
-  .champ-footer-inner {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 48px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid rgba(250, 249, 245, 0.06);
-  }
-
-  .champ-footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--on-dark);
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .champ-footer-wordmark {
-    font-family: var(--font-display);
-  }
-
-  .champ-footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-
-  .champ-footer-col strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--on-dark);
-    margin-bottom: 16px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .champ-footer-col a,
-  .champ-footer-col span {
-    display: block;
-    font-size: 14px;
-    color: var(--on-dark-soft);
-    line-height: 1.6;
-    margin-top: 8px;
-  }
-
-  .champ-footer-col a:hover {
-    color: var(--on-dark);
-  }
-
-  .champ-footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding-top: 24px;
-    font-size: 13px;
-    color: var(--on-dark-soft);
-  }
-
   @media (max-width: 767px) {
     .champ-cta-body {
       padding: 80px 0;
@@ -277,17 +180,6 @@
     }
     .champ-cta-sub {
       font-size: 15px;
-    }
-    .champ-footer-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .champ-footer-links {
-      grid-template-columns: 1fr 1fr;
-    }
-    .champ-footer-bottom {
-      flex-direction: column;
-      text-align: center;
     }
   }
 </style>

@@ -96,3 +96,137 @@ https://svelte.dev/e/css_unused_selector
 10:58:04 AM [vite] (client) page reload .svelte-kit/generated/root.js
 10:58:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 10:58:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:02:15 AM [vite] (client) hmr update /src/app.css
+11:02:15 AM [vite] (ssr) page reload src/app.css
+11:03:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:175:2 Unused CSS selector ".champ-hero-inline-img"
+https://svelte.dev/e/css_unused_selector
+11:03:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:272:4 Unused CSS selector ".champ-hero-inline-img"
+https://svelte.dev/e/css_unused_selector
+11:03:08 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:03:08 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:03:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:175:2 Unused CSS selector ".champ-hero-inline-img"
+https://svelte.dev/e/css_unused_selector
+11:03:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:272:4 Unused CSS selector ".champ-hero-inline-img"
+https://svelte.dev/e/css_unused_selector
+11:03:18 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:259:4 Unused CSS selector ".champ-hero-inline-img"
+https://svelte.dev/e/css_unused_selector
+11:03:18 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:03:18 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:03:24 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:03:24 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:70:2 Unused CSS selector ".champ-nav"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:86:2 Unused CSS selector ".champ-nav-inner"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:93:2 Unused CSS selector ".champ-nav-logo"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:103:2 Unused CSS selector ".champ-nav-wordmark"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:108:2 Unused CSS selector ".champ-nav-links"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:117:2 Unused CSS selector ".champ-nav-links a:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:121:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:136:2 Unused CSS selector ".champ-nav-cta:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:227:4 Unused CSS selector ".champ-nav"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:232:4 Unused CSS selector ".champ-nav-links"
+https://svelte.dev/e/css_unused_selector
+11:11:20 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:11:20 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:70:2 Unused CSS selector ".champ-nav"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:86:2 Unused CSS selector ".champ-nav-inner"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:93:2 Unused CSS selector ".champ-nav-logo"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:103:2 Unused CSS selector ".champ-nav-wordmark"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:108:2 Unused CSS selector ".champ-nav-links"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:117:2 Unused CSS selector ".champ-nav-links a:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:121:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:136:2 Unused CSS selector ".champ-nav-cta:hover"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:227:4 Unused CSS selector ".champ-nav"
+https://svelte.dev/e/css_unused_selector
+11:11:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:232:4 Unused CSS selector ".champ-nav-links"
+https://svelte.dev/e/css_unused_selector
+11:13:05 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:155:4 Unused CSS selector ".champ-nav"
+https://svelte.dev/e/css_unused_selector
+11:13:05 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:160:4 Unused CSS selector ".champ-nav-links"
+https://svelte.dev/e/css_unused_selector
+11:13:05 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:13:05 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:13:12 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:13:12 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:175:2 Unused CSS selector ".champ-footer"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:181:2 Unused CSS selector ".champ-footer-inner"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:189:2 Unused CSS selector ".champ-footer-brand"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:198:2 Unused CSS selector ".champ-footer-wordmark"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:202:2 Unused CSS selector ".champ-footer-links"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:208:2 Unused CSS selector ".champ-footer-col strong"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:218:2 Unused CSS selector ".champ-footer-col a"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:219:2 Unused CSS selector ".champ-footer-col span"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:227:2 Unused CSS selector ".champ-footer-col a:hover"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:231:2 Unused CSS selector ".champ-footer-bottom"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:250:4 Unused CSS selector ".champ-footer-inner"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:254:4 Unused CSS selector ".champ-footer-links"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:257:4 Unused CSS selector ".champ-footer-bottom"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte, /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+11:13:20 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:175:2 Unused CSS selector ".champ-footer"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:181:2 Unused CSS selector ".champ-footer-inner"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:189:2 Unused CSS selector ".champ-footer-brand"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:198:2 Unused CSS selector ".champ-footer-wordmark"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:202:2 Unused CSS selector ".champ-footer-links"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:208:2 Unused CSS selector ".champ-footer-col strong"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:218:2 Unused CSS selector ".champ-footer-col a"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:219:2 Unused CSS selector ".champ-footer-col span"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:227:2 Unused CSS selector ".champ-footer-col a:hover"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:231:2 Unused CSS selector ".champ-footer-bottom"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:250:4 Unused CSS selector ".champ-footer-inner"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:254:4 Unused CSS selector ".champ-footer-links"
+https://svelte.dev/e/css_unused_selector
+11:13:20 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:257:4 Unused CSS selector ".champ-footer-bottom"
+https://svelte.dev/e/css_unused_selector
+11:14:02 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+11:14:02 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+11:14:30 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:14:30 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:14:37 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:14:37 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:16:29 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:16:29 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:16:36 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:16:36 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:19:47 AM [vite] (client) hmr update /src/components/Cursor.svelte, /src/app.css
+11:19:47 AM [vite] (ssr) page reload src/components/Cursor.svelte
