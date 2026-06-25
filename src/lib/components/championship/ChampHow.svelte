@@ -5,19 +5,19 @@
     {
       num: '01',
       title: 'Summer Online Programme',
-      body: 'Participants begin with the T.E.A.M.U.P. Development Programme online. Chess training, mentorship sessions, and personal development activities — all from home.',
+      body: 'T.E.A.M.U.P. Programme online — chess training, mentorship, and personal development from home.',
       icon: '\u2600'
     },
     {
       num: '02',
       title: 'Live Preliminaries',
-      body: 'Top participants advance to in-person preliminary rounds. The board shifts from screen to table. Real opponents. Real stakes.',
+      body: 'Top participants advance to in-person rounds. Screen to table. Real opponents. Real stakes.',
       icon: '\u265E'
     },
     {
       num: '03',
       title: 'Grand Finale',
-      body: 'The championship culminates in a spectacular live finale. Winners receive trophies, certificates, and scholarships. Every participant walks away with a completed Development Passport.',
+      body: 'A spectacular live finale. Trophies, certificates, scholarships. Every participant leaves with a completed Development Passport.',
       icon: '\u265B'
     }
   ];

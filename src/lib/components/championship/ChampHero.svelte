@@ -1,25 +1,39 @@
 <script lang="ts">
-  import { motionFadeUp } from '$lib/actions/motion';
+  let loaded = $state(false);
 </script>
 
-<section class="champ-hero" use:motionFadeUp>
-  <div class="champ-hero-bg"></div>
-  <div class="champ-hero-inner container">
-    <div class="champ-hero-content">
-      <p class="champ-hero-eyebrow">BEEE&reg; Spectacular Chess Championship Abuja 2026</p>
-      <p class="champ-hero-motto">Be Everything Excellent Every Day</p>
-      <h1 class="champ-hero-title">More Than A Chess Championship</h1>
-      <p class="champ-hero-body">
-        A unique youth development initiative that combines competitive chess with structured learning,
-        mentorship, leadership development, and personal growth.
-      </p>
-      <div class="champ-hero-actions">
-        <a href="/register" class="button-primary champ-hero-btn">Register Now</a>
-        <a href="#about" class="button-secondary champ-hero-btn">Learn More</a>
-      </div>
-    </div>
-
+<section class="champ-hero">
+  <div class="champ-hero-bg" class:loaded>
+    <div class="champ-hero-overlay"></div>
+    <div class="champ-hero-noise"></div>
   </div>
+  <nav class="champ-nav">
+    <div class="champ-nav-inner">
+      <span class="champ-nav-logo">
+        <span class="spike-mark" style="color:var(--on-dark)"></span>
+        <span class="champ-nav-wordmark">BEEE</span>
+      </span>
+      <div class="champ-nav-links">
+        <a href="#features">Approach</a>
+        <a href="#about">Programme</a>
+        <a href="#testimonials">Voices</a>
+      </div>
+      <a href="/register" class="champ-nav-cta">Register</a>
+    </div>
+  </nav>
+  <div class="champ-hero-body container">
+    <h1 class="champ-hero-title">
+      More Than A
+      <span class="champ-hero-inline-img" style="background-image: url('https://picsum.photos/seed/chess-king/240/60')"></span>
+      Chess Championship
+    </h1>
+    <p class="champ-hero-sub">Competitive chess meets structured mentorship, leadership, and personal growth through the T.E.A.M.U.P. Programme.</p>
+    <div class="champ-hero-actions">
+      <a href="/register" class="champ-hero-btn-primary">Register Now</a>
+      <a href="#features" class="champ-hero-btn-secondary">Explore the Programme</a>
+    </div>
+  </div>
+  <div class="champ-hero-gradient"></div>
 </section>
 
 <style>
@@ -27,96 +41,239 @@
     position: relative;
     min-height: 100dvh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    background: var(--canvas);
-    padding-top: 72px;
+    background: var(--surface-dark);
   }
 
   .champ-hero-bg {
     position: absolute;
     inset: 0;
-    pointer-events: none;
+    background-image: url('https://picsum.photos/seed/chess-championship-abuja/1920/1080');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: saturate(1.05) contrast(1.1);
+  }
+
+  .champ-hero-bg.loaded {
+    opacity: 1;
+  }
+
+  .champ-hero-overlay {
+    position: absolute;
+    inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 80% 30%, rgba(242, 120, 48, 0.06), transparent 70%),
-      radial-gradient(ellipse 50% 50% at 10% 70%, rgba(255, 178, 0, 0.04), transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.3) 0%, rgba(24,23,21,0.78) 100%);
   }
 
-  .champ-hero-inner {
-    position: relative;
+  .champ-hero-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    pointer-events: none;
     z-index: 1;
-    padding: 80px 0;
   }
 
-  .champ-hero-content {
-    max-width: 520px;
+  /* ── Nav ── */
+  .champ-nav {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 50;
+    width: min(720px, calc(100% - 32px));
+    border-radius: 999px;
+    background: rgba(24, 23, 21, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(250, 249, 245, 0.08);
+    padding: 8px 12px 8px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   }
 
-  .champ-hero-eyebrow {
+  .champ-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .champ-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--on-dark);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .champ-nav-wordmark {
+    font-family: var(--font-display);
+    font-size: 18px;
+  }
+
+  .champ-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--muted);
-    margin: 0 0 20px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    color: rgba(250, 249, 245, 0.72);
   }
 
-  .champ-hero-motto {
-    font-size: 11px;
+  .champ-nav-links a:hover {
+    color: var(--on-dark);
+  }
+
+  .champ-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--on-primary);
+    font-size: 13px;
     font-weight: 500;
-    color: var(--primary);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin: 0 0 20px;
+    line-height: 1;
+    transition: background 160ms ease, transform 160ms ease;
+  }
+
+  .champ-nav-cta:hover {
+    background: var(--primary-active);
+    transform: scale(1.04);
+  }
+
+  /* ── Hero Body ── */
+  .champ-hero-body {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 120px 0 160px;
+    max-width: 880px;
   }
 
   .champ-hero-title {
+    margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-size: clamp(2.8rem, 4vw, 4.5rem);
     font-weight: 500;
     line-height: 1.08;
     letter-spacing: -0.02em;
-    color: var(--ink);
-    margin: 0;
-    max-width: 640px;
+    color: var(--on-dark);
     text-wrap: balance;
   }
 
-  .champ-hero-body {
+  .champ-hero-inline-img {
+    display: inline-block;
+    width: 1.8em;
+    height: 0.5em;
+    border-radius: 999px;
+    background-size: cover;
+    background-position: center;
+    vertical-align: middle;
+    margin: 0 0.08em;
+    opacity: 0.85;
+    filter: grayscale(0.3) contrast(1.2);
+  }
+
+  .champ-hero-sub {
+    max-width: 580px;
+    margin: 28px auto 0;
     font-size: 17px;
-    line-height: 1.6;
-    color: var(--body);
-    margin: 24px 0 0;
-    max-width: 480px;
+    line-height: 1.65;
+    color: rgba(250, 249, 245, 0.7);
   }
 
   .champ-hero-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
-    margin-top: 36px;
+    margin-top: 40px;
   }
 
-  .champ-hero-btn {
-    min-height: 44px;
-    padding: 12px 24px;
+  .champ-hero-btn-primary,
+  .champ-hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
   }
 
-  @media (max-width: 1024px) {
-    .champ-hero-inner {
-      padding: 64px 0;
-    }
-    .champ-hero-content {
-      max-width: none;
-    }
+  .champ-hero-btn-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+    border: 1px solid var(--primary);
+  }
+
+  .champ-hero-btn-primary:hover {
+    background: var(--primary-active);
+    border-color: var(--primary-active);
+    transform: scale(1.03);
+  }
+
+  .champ-hero-btn-secondary {
+    background: transparent;
+    color: var(--on-dark);
+    border: 1px solid rgba(250, 249, 245, 0.25);
+  }
+
+  .champ-hero-btn-secondary:hover {
+    background: rgba(250, 249, 245, 0.08);
+    border-color: rgba(250, 249, 245, 0.4);
+    transform: scale(1.03);
+  }
+
+  .champ-hero-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, transparent, var(--canvas));
+    z-index: 2;
+    pointer-events: none;
   }
 
   @media (max-width: 767px) {
-    .champ-hero-title {
-      font-size: clamp(2rem, 8vw, 2.8rem);
+    .champ-nav {
+      top: 12px;
+      padding: 6px 10px 6px 18px;
+      width: calc(100% - 24px);
+    }
+    .champ-nav-links {
+      display: none;
     }
     .champ-hero-body {
+      padding: 100px 0 120px;
+    }
+    .champ-hero-title {
+      font-size: clamp(2rem, 7vw, 2.6rem);
+    }
+    .champ-hero-sub {
       font-size: 15px;
+      margin-top: 20px;
+    }
+    .champ-hero-inline-img {
+      width: 1.4em;
+      height: 0.4em;
     }
   }
 </style>

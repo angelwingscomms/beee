@@ -1,9 +1,10 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import ChampFullImage from '$lib/components/championship/ChampFullImage.svelte';
+  import ChampMarquee from '$lib/components/championship/ChampMarquee.svelte';
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
-  import ChampHow from '$lib/components/championship/ChampHow.svelte';
-  import ChampDesire from '$lib/components/championship/ChampDesire.svelte';
+  import ChampTestimonials from '$lib/components/championship/ChampTestimonials.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
@@ -57,11 +58,25 @@
   }</script>
 </svelte:head>
 
-<div class="overflow-x-hidden w-full max-w-full">
+<main class="overflow-x-hidden w-full max-w-full">
+  <!-- ATTENTION: Hero -->
   <ChampHero />
+
+  <!-- INTEREST: Marquee + About -->
+  <ChampMarquee />
   <ChampAbout />
+
+  <!-- Full-width image breaks between key sections -->
+  <ChampFullImage src="https://picsum.photos/seed/chess-mentorship/1920/1080" alt="Chess mentorship session" />
+
+  <!-- DESIRE: Features with alternating image layout -->
   <ChampFeatures />
-  <ChampHow />
-  <ChampDesire />
+
+  <ChampFullImage src="https://picsum.photos/seed/chess-tournament/1920/1080" alt="Chess tournament" />
+
+  <!-- Testimonials: social proof -->
+  <ChampTestimonials />
+
+  <!-- ACTION: CTA + Footer -->
   <ChampCTA />
-</div>
+</main>

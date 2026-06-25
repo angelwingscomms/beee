@@ -4,19 +4,19 @@
   const frames = [
     {
       title: 'The board is set. Your opponent is waiting.',
-      body: "Sixty-four squares. Thirty-two pieces. One clock. Every opening you've practiced, every endgame you've studied \u2014 this is where they meet the moment. The silence just before the first move. That's where champions are made.",
+      body: "Sixty-four squares. Thirty-two pieces. One clock. Every opening you've practiced meets the moment. That silence before the first move \u2014 that's where champions are made.",
       symbol: '\u265F',
       gradient: 'linear-gradient(135deg, rgba(60, 120, 200, 0.10), transparent 60%)'
     },
     {
       title: "The real win isn't the trophy. It's who you become",
-      body: "Under pressure, the noise fades. The mind sharpens. You start to see patterns you couldn't see before. Composure. Clarity. The confidence of someone who's learned to think before they move. That doesn't leave when the game ends.",
+      body: "Under pressure, the mind sharpens. Composure. Clarity. The confidence of someone who thinks before they move. That doesn't leave when the game ends.",
       symbol: '\u265E',
       gradient: 'linear-gradient(135deg, rgba(255, 178, 0, 0.10), transparent 60%)'
     },
     {
       title: 'What you learn here moves with you.',
-      body: "The championship is one summer. What it teaches you lasts a lifetime. Sharper instincts. Steadier nerves. The quiet belief that hard problems have answers. Not everyone takes a trophy home. Everyone carries something forward.",
+      body: "One summer. A lifetime of sharper instincts, steadier nerves, and the quiet belief that hard problems have answers. Everyone carries something forward.",
       symbol: '\u265A',
       gradient: 'linear-gradient(135deg, rgba(93, 184, 166, 0.10), transparent 60%)'
     }
