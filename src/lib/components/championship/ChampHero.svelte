@@ -1,5 +1,5 @@
 <script lang="ts">
-  let loaded = $state(false);
+  let loaded = $state(true);
 </script>
 
 <section class="champ-hero">
@@ -35,7 +35,7 @@
   .champ-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://picsum.photos/seed/chess-championship-abuja/1920/1080');
+    background-image: url('/cosmic-chess-bg.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
