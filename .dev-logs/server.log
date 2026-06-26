@@ -25,3 +25,42 @@ Using secrets defined in .env
 9:37:24 AM [vite] (ssr) page reload src/routes/register/+page.svelte
 9:39:51 AM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
 9:39:51 AM [vite] (ssr) page reload src/routes/register/+page.svelte
+10:01:46 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:01:46 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:01:49 AM [vite] (client) [optimizer] bundling dependencies...
+10:01:52 AM [vite] (client) ✨ new dependencies optimized: @ybouane/liquidglass
+10:01:52 AM [vite] (client) ✨ optimized dependencies changed. reloading
+10:01:55 AM [vite-plugin-svelte] src/routes/+layout.svelte:8:6 `rootEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+10:01:55 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
+10:01:55 AM [vite] (ssr) page reload src/routes/+layout.svelte
+10:01:55 AM [vite-plugin-svelte] src/routes/+layout.svelte:8:6 `rootEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:02:47 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:02:47 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:02:47 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:02:47 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:02:48 AM [vite-plugin-svelte] src/routes/+layout.svelte:8:6 `rootEl` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+10:02:54 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
+10:02:54 AM [vite] (ssr) page reload src/routes/+layout.svelte
+10:03:34 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
+10:03:34 AM [vite] (ssr) page reload src/routes/+layout.svelte
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:05:22 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:05:22 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:05:22 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:05:22 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
