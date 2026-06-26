@@ -2,7 +2,6 @@
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
-	import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
 	let firstName = $state('');
 	let lastName = $state('');
@@ -219,9 +218,10 @@
 			{/if}
 
 			<div class="submit-row">
-				<RegisterBtn
+				<button
+					type="submit"
 					disabled={isProcessing}
-					class="w-fit !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(242,120,48,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
+					class="button-primary w-fit !transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_42px_rgba(242,120,48,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100"
 				>
 					{#if isProcessing}
 						<span class="spinner" aria-hidden="true"></span>
@@ -229,7 +229,7 @@
 					{:else}
 						Register
 					{/if}
-				</RegisterBtn>
+				</button>
 			</div>
 
 			<div class="registration-checker-squares mt-10 grid grid-cols-8 overflow-hidden" aria-hidden="true">
