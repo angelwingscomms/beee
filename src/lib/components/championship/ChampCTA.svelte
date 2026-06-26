@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
   let el: HTMLElement;
   let visible = $state(false);
 
@@ -20,7 +21,7 @@
     <h2 class="champ-cta-title">Ready to Compete, Develop & Excel?</h2>
     <p class="champ-cta-sub">Register your young player for the BEEE Spectacular Chess Championship Abuja 2026 and begin their T.E.A.M.U.P. journey.</p>
     <div class="champ-cta-actions">
-      <a href="/register" class="champ-cta-btn-primary">Register Now</a>
+      <RegisterBtn href="/register" class="champ-cta-btn-primary">Register Now</RegisterBtn>
       <a href="/faq" class="champ-cta-btn-secondary">View FAQ</a>
     </div>
     <p class="champ-cta-signoff">Aspire to BEEE. Be Everything Excellent Every Day.</p>
@@ -127,7 +128,12 @@
     margin-top: 36px;
   }
 
-  .champ-cta-btn-primary,
+  :global(.champ-cta-btn-primary) {
+    min-height: 48px;
+    padding: 14px 32px;
+    font-size: 15px;
+  }
+
   .champ-cta-btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -138,19 +144,10 @@
     font-size: 15px;
     font-weight: 500;
     line-height: 1;
+    background: transparent;
+    color: var(--on-dark);
+    border: 1px solid rgba(250, 249, 245, 0.25);
     transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
-  }
-
-  .champ-cta-btn-primary {
-    background: var(--primary);
-    color: var(--on-primary);
-    border: 1px solid var(--primary);
-  }
-
-  .champ-cta-btn-primary:hover {
-    background: var(--primary-active);
-    border-color: var(--primary-active);
-    transform: scale(1.03);
   }
 
   .champ-cta-btn-secondary {

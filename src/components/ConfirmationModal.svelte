@@ -1,4 +1,6 @@
 <script lang="ts">
+	import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+
 	let {
 		firstName,
 		lastName,
@@ -58,14 +60,14 @@
 			<button type="button" onclick={onCancel} disabled={isProcessing} class="button-secondary">
 				Cancel
 			</button>
-			<button type="button" onclick={onConfirm} disabled={isProcessing} class="button-primary">
+			<RegisterBtn onclick={onConfirm} disabled={isProcessing}>
 				{#if isProcessing}
 					<span class="spinner" aria-hidden="true"></span>
 					Processing
 				{:else}
 					Confirm and Pay
 				{/if}
-			</button>
+			</RegisterBtn>
 		</div>
 	</div>
 </div>

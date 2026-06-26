@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
   let loaded = $state(true);
 </script>
 
@@ -13,7 +14,7 @@
     </h1>
     <p class="champ-hero-sub">We invite young players across Abuja to a summer of chess, mentorship, and growth — online sessions leading to live preliminaries and a grand finale. This is the T.E.A.M.U.P. Programme.</p>
     <div class="champ-hero-actions">
-      <a href="/register" class="champ-hero-btn-primary">Register Now</a>
+      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
       <a href="#features" class="champ-hero-btn-secondary">Explore the Programme</a>
     </div>
   </div>
@@ -101,7 +102,11 @@
     margin-top: 40px;
   }
 
-  .champ-hero-btn-primary,
+  :global(.champ-hero-btn-primary) {
+    min-height: 46px;
+    padding: 14px 28px;
+  }
+
   .champ-hero-btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -112,19 +117,10 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 1;
+    background: transparent;
+    color: var(--on-dark);
+    border: 1px solid rgba(250, 249, 245, 0.25);
     transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
-  }
-
-  .champ-hero-btn-primary {
-    background: var(--primary);
-    color: var(--on-primary);
-    border: 1px solid var(--primary);
-  }
-
-  .champ-hero-btn-primary:hover {
-    background: var(--primary-active);
-    border-color: var(--primary-active);
-    transform: scale(1.03);
   }
 
   .champ-hero-btn-secondary {

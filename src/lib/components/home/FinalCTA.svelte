@@ -1,5 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 </script>
 
 <div class="cta-card" use:motionFadeUp>
@@ -8,7 +9,7 @@
     Join a championship where every move contributes to growth,
     achievement, and future success.
   </p>
-  <a href="/register" class="cta-button">Register Now</a>
+  <RegisterBtn href="/register" class="cta-button">Register Now</RegisterBtn>
 </div>
 
 <style>
@@ -44,31 +45,12 @@
     max-width: 560px;
   }
 
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  :global(.cta-button) {
     height: 44px;
     padding: 0 28px;
     margin-top: 28px;
     font-size: 15px;
     font-weight: 600;
-    line-height: 1;
-    border-radius: 999px;
-    background: var(--canvas);
-    color: var(--primary);
-    text-decoration: none;
-    border: none;
-    transition: transform 180ms ease, box-shadow 180ms ease;
-  }
-
-  .cta-button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  .cta-button:active {
-    transform: scale(0.98);
   }
 
   @media (max-width: 767px) {
@@ -78,8 +60,8 @@
     .cta-title {
       font-size: 24px;
     }
-    .cta-button {
-      width: 100%;
-    }
+      :global(.cta-button) {
+        width: 100%;
+      }
   }
 </style>

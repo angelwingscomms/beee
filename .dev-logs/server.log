@@ -64,3 +64,191 @@ https://svelte.dev/e/non_reactive_update
 10:05:22 AM [vite] (client) page reload .svelte-kit/generated/root.js
 10:05:22 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 10:05:22 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:08:00 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+10:08:00 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:01 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:229:2 Unused CSS selector ".champ-mobile-menu .button-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:01 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:01 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:08:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:229:2 Unused CSS selector ".champ-mobile-menu .button-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:08:02 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:02 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:08:42 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+10:08:42 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:08:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:105:2 Unused CSS selector ".champ-hero-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:119:2 Unused CSS selector ".champ-hero-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:125:2 Unused CSS selector ".champ-hero-btn-primary:hover"
+https://svelte.dev/e/css_unused_selector
+10:08:43 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:43 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:08:45 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:105:2 Unused CSS selector ".champ-hero-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:45 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:45 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:08:49 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte, /src/app.css
+10:08:49 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+10:08:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:131:2 Unused CSS selector ".champ-cta-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:145:2 Unused CSS selector ".champ-cta-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:151:2 Unused CSS selector ".champ-cta-btn-primary:hover"
+https://svelte.dev/e/css_unused_selector
+10:08:50 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte, /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:50 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+10:08:52 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:131:2 Unused CSS selector ".champ-cta-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:08:52 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte, /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:08:52 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+10:09:09 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:154:2 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:09:09 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:09:32 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpHero.svelte, /src/app.css
+10:09:32 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpHero.svelte
+10:09:33 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpHero.svelte, /src/app.css
+10:09:33 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpHero.svelte
+10:09:33 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpCTA.svelte, /src/app.css
+10:09:33 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpCTA.svelte
+10:09:34 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:54:2 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:34 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:72:2 Unused CSS selector ".tu-cta-btn:hover"
+https://svelte.dev/e/css_unused_selector
+10:09:34 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:77:2 Unused CSS selector ".tu-cta-btn:active"
+https://svelte.dev/e/css_unused_selector
+10:09:34 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:85:4 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:34 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpCTA.svelte, /src/lib/components/teamup/TeamUpCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:09:34 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpCTA.svelte
+10:09:35 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:54:2 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:35 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:66:4 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:35 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpCTA.svelte, /src/lib/components/teamup/TeamUpCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:09:35 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpCTA.svelte
+10:09:37 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:54:2 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:37 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:66:4 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+10:09:42 AM [vite] (ssr) page reload src/routes/register/+page.svelte
+10:09:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:105:2 Unused CSS selector ".champ-hero-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:131:2 Unused CSS selector ".champ-cta-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:289:2 Unused CSS selector ".reg-submit"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:304:2 Unused CSS selector ".reg-submit:hover:not(:disabled)"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:308:2 Unused CSS selector ".reg-submit:disabled"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
+10:09:42 AM [vite] (ssr) page reload src/routes/register/+page.svelte
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:289:2 Unused CSS selector ".reg-submit"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:304:2 Unused CSS selector ".reg-submit:hover:not(:disabled)"
+https://svelte.dev/e/css_unused_selector
+10:09:42 AM [vite-plugin-svelte] src/routes/register/+page.svelte:308:2 Unused CSS selector ".reg-submit:disabled"
+https://svelte.dev/e/css_unused_selector
+10:09:44 AM [vite-plugin-svelte] src/routes/register/+page.svelte:289:2 Unused CSS selector ".reg-submit"
+https://svelte.dev/e/css_unused_selector
+10:09:44 AM [vite] (client) hmr update /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
+10:09:44 AM [vite] (ssr) page reload src/routes/register/+page.svelte
+10:10:08 AM [vite] (client) hmr update /src/components/ConfirmationModal.svelte, /src/app.css
+10:10:08 AM [vite] (ssr) page reload src/components/ConfirmationModal.svelte
+10:10:09 AM [vite] (client) hmr update /src/components/ConfirmationModal.svelte, /src/app.css
+10:10:09 AM [vite] (ssr) page reload src/components/ConfirmationModal.svelte
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:10:27 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:10:27 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:10:27 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:10:27 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:10:28 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:105:2 Unused CSS selector ".champ-hero-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:10:28 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:131:2 Unused CSS selector ".champ-cta-btn-primary"
+https://svelte.dev/e/css_unused_selector
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:10:56 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:10:56 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:10:56 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:10:56 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:11:06 AM [vite] (client) hmr update /src/lib/components/RegisterBtn.svelte, /src/app.css
+10:11:06 AM [vite] (ssr) page reload src/lib/components/RegisterBtn.svelte
+10:11:15 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:11:15 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:15 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:11:16 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:16 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:11:17 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:17 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+10:11:17 AM [vite-plugin-svelte] src/lib/components/championship/ChampNav.svelte:236:4 Unused CSS selector ".champ-nav-cta"
+https://svelte.dev/e/css_unused_selector
+10:11:19 AM [vite-plugin-svelte] src/lib/components/teamup/TeamUpCTA.svelte:66:4 Unused CSS selector ".tu-cta-btn"
+https://svelte.dev/e/css_unused_selector
+10:11:19 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:19 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpCTA.svelte
+10:11:20 AM [vite] (client) hmr update /src/lib/components/teamup/TeamUpCTA.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:20 AM [vite] (ssr) page reload src/lib/components/teamup/TeamUpCTA.svelte
+10:11:21 AM [vite] (client) hmr update /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:21 AM [vite] (ssr) page reload src/routes/register/+page.svelte
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:11:38 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:11:38 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:11:38 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:11:38 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:11:47 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+10:11:47 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:12:28 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:12:28 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:12:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:12:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

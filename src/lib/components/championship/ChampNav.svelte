@@ -4,6 +4,7 @@
   import { onMount } from 'svelte';
   import { afterNavigate } from '$app/navigation';
   import { browser } from '$app/environment';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
   let { rootEl }: { rootEl?: HTMLElement } = $props();
 
@@ -69,7 +70,7 @@
       <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
-    <a href="/register" class="button-primary champ-nav-cta">Register Now</a>
+    <RegisterBtn href="/register" class="champ-nav-cta">Register Now</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
@@ -80,7 +81,7 @@
       <a href="/register" class:active={path === '/register'} onclick={() => open = false}>Register</a>
       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>T.E.A.M.U.P.</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
-      <a href="/register" class="button-primary" onclick={() => open = false}>Register Now</a>
+      <RegisterBtn href="/register" onclick={() => open = false}>Register Now</RegisterBtn>
     </div>
   {/if}
 </nav>
@@ -150,7 +151,7 @@
     color: var(--ink);
   }
 
-  .champ-nav-cta {
+  :global(.champ-nav-cta) {
     min-height: 36px;
     padding: 8px 18px;
     font-size: 13px;
@@ -225,14 +226,14 @@
     color: var(--ink);
   }
 
-  .champ-mobile-menu .button-primary {
+  .champ-mobile-menu :global(.register-btn) {
     text-align: center;
     margin-top: 4px;
   }
 
   @media (max-width: 767px) {
     .champ-nav-links,
-    .champ-nav-cta {
+    :global(.champ-nav-cta) {
       display: none;
     }
     .champ-mobile-btn {

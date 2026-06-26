@@ -1,5 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 </script>
 
 <section class="hero" use:motionFadeUp>
@@ -14,7 +15,7 @@
         a unique journey that combines chess, innovation, leadership, mentorship,
         creativity, and personal growth.
       </p>
-      <a href="/register" class="button-primary hero-cta">Register Now</a>
+      <RegisterBtn href="/register" class="hero-cta">Register Now</RegisterBtn>
     </div>
   </div>
 </section>
@@ -86,7 +87,7 @@
     max-width: 580px;
   }
 
-  .hero-cta {
+  :global(.hero-cta) {
     margin-top: 36px;
   }
 

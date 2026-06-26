@@ -3,6 +3,7 @@
   import PhoneInput from '$lib/components/PhoneInput.svelte';
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
   let gf = $state('');
   let gl = $state('');
@@ -129,9 +130,9 @@
           <div class="reg-error" role="alert">{apiError}</div>
         {/if}
 
-        <button type="submit" class="reg-submit" disabled={!allValid}>
+        <RegisterBtn class="reg-submit" disabled={!allValid}>
           Register — ₦12,500
-        </button>
+        </RegisterBtn>
       </form>
 
       <aside class="reg-summary" use:motionFadeUp>
@@ -285,29 +286,13 @@
     font-size: 13px;
     line-height: 1.4;
   }
-  .reg-submit {
+  :global(.reg-submit) {
     width: 100%;
     padding: 16px 24px;
-    border: none;
-    border-radius: 10px;
-    background: var(--primary);
-    color: #fff;
     font-family: var(--font-registration);
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-    line-height: 1;
-  }
-  .reg-submit:hover:not(:disabled) {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
-  .reg-submit:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    transform: none;
   }
 
   .reg-summary {
