@@ -20,6 +20,9 @@ importers:
       '@sveltejs/kit':
         specifier: ^2.61.1
         version: 2.61.1(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.55.10)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.27.3)(jiti@2.7.0)))(svelte@5.55.10)(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.27.3)(jiti@2.7.0))
+      '@ybouane/liquidglass':
+        specifier: ^1.0.3
+        version: 1.0.3
       canvas-confetti:
         specifier: ^1.9.4
         version: 1.9.4
@@ -989,6 +992,9 @@ packages:
 
   '@vitest/utils@4.1.7':
     resolution: {integrity: sha512-T532WBu791cBxJlCl6SO+J14l81DQx6uQHm1bQbmCDY7nqlEIgkza/UFnSBNaUtSf41unldDFjdOBYEQC4b5Hw==}
+
+  '@ybouane/liquidglass@1.0.3':
+    resolution: {integrity: sha512-Ro/Q3vaEduvj1yUp/TVz9AYmxY+cYhnBj76eJ/Y9VQoPlRA0DWrKPQufEzrDSYzAWXL3qxiFibi5XQVW/egTnA==}
 
   accepts@2.0.0:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
@@ -2835,6 +2841,8 @@ snapshots:
       '@vitest/pretty-format': 4.1.7
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
+
+  '@ybouane/liquidglass@1.0.3': {}
 
   accepts@2.0.0:
     dependencies:

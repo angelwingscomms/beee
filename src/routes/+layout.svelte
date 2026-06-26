@@ -5,6 +5,7 @@
   import ChampNav from '$lib/components/championship/ChampNav.svelte';
   import Footer from '$lib/components/home/Footer.svelte';
   let { children } = $props();
+  let rootEl = $state<HTMLDivElement | undefined>(undefined);
 
   let url = $derived($page.url);
   let og_img = $derived(`https://beeeproject.com/og.png`);
@@ -27,10 +28,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<Cursor />
-<ChampNav />
-<main id="main-content" tabindex="-1">
-  {@render children()}
-</main>
-<Footer />
+<div bind:this={rootEl} class="lg-root">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <Cursor />
+  <ChampNav {rootEl} />
+  <main id="main-content" tabindex="-1">
+    {@render children()}
+  </main>
+  <Footer />
+</div>
+
+<style>
+  .lg-root {
+    position: relative;
+    min-height: 100vh;
+  }
+</style>
