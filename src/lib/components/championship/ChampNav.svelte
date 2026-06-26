@@ -1,64 +1,14 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
-  import { onMount } from 'svelte';
-  import { afterNavigate } from '$app/navigation';
-  import { browser } from '$app/environment';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
-
-  let { rootEl }: { rootEl?: HTMLElement } = $props();
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
-  let navEl: HTMLElement | undefined = $state();
-  let lgInstance: any = null;
-
-  let isDark = $derived(browser && document.documentElement.classList.contains('dark'));
-
-  let config = $derived(JSON.stringify({
-    blurAmount: 0.30,
-    refraction: 0.35,
-    chromAberration: 0.03,
-    edgeHighlight: 0.08,
-    specular: 0.10,
-    fresnel: 1.0,
-    cornerRadius: 999,
-    zRadius: 40,
-    opacity: isDark ? 0.70 : 0.85,
-    tintStrength: isDark ? 0.05 : 0.02,
-    brightness: isDark ? -0.05 : 0.05,
-    shadowOpacity: isDark ? 0.40 : 0.25,
-    shadowSpread: 12,
-    shadowOffsetY: 2,
-    distortion: 0,
-    saturation: 0,
-    floating: false,
-    button: false,
-    bevelMode: 0,
-  }));
-
-  onMount(async () => {
-    if (!rootEl || !navEl) return;
-    const { LiquidGlass } = await import('@ybouane/liquidglass');
-    lgInstance = await LiquidGlass.init({
-      root: rootEl,
-      glassElements: [navEl],
-    });
-  });
-
-  afterNavigate(() => {
-    lgInstance?.markChanged();
-  });
-
-  $effect(() => {
-    return () => {
-      lgInstance?.destroy();
-      lgInstance = null;
-    };
-  });
 </script>
 
-<nav bind:this={navEl} class="champ-nav" data-config={config}>
+<nav class="champ-nav">
+  <div class="champ-nav-bg"></div>
   <div class="champ-nav-inner container">
     <a href="/" class="champ-nav-brand">
       <img src="/logo.svg" alt="BEEE" class="champ-nav-logo" />
@@ -95,6 +45,71 @@
     z-index: 50;
     width: min(1200px, calc(100% - 32px));
     border-radius: 999px;
+    isolation: isolate;
+  }
+
+  .champ-nav-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    z-index: -1;
+    background: rgba(250, 249, 245, 0.6);
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+      inset 1px 0 0 rgba(255, 255, 255, 0.08),
+      inset -1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .champ-nav-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.12) 37%,
+      rgba(255, 255, 255, 0.28) 42%,
+      rgba(255, 255, 255, 0.12) 47%,
+      transparent 65%
+    );
+    background-size: 200% 100%;
+    animation: sheen 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sheen {
+    0% { background-position: 150% 0; }
+    50% { background-position: -50% 0; }
+    100% { background-position: 150% 0; }
+  }
+
+  :global(.dark) .champ-nav-bg {
+    background: rgba(24, 23, 21, 0.55);
+    border-color: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(28px) saturate(1.2);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+      inset 1px 0 0 rgba(255, 255, 255, 0.04),
+      inset -1px 0 0 rgba(255, 255, 255, 0.04);
+  }
+
+  :global(.dark) .champ-nav-bg::before {
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.025) 37%,
+      rgba(255, 255, 255, 0.05) 42%,
+      rgba(255, 255, 255, 0.025) 47%,
+      transparent 65%
+    );
   }
 
   .champ-nav-inner {
@@ -104,7 +119,6 @@
     gap: 24px;
     width: 100%;
     padding: 0 24px;
-    position: relative;
   }
 
   .champ-nav-brand {
@@ -208,7 +222,6 @@
     backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    position: relative;
   }
 
   .champ-mobile-menu a {

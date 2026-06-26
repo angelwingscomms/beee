@@ -16,7 +16,6 @@
     "@lucide/svelte": "^1.17.0",
     "@qdrant/js-client-rest": "^1.18.0",
     "@sveltejs/kit": "^2.61.1",
-    "@ybouane/liquidglass": "^1.0.3",
     "canvas-confetti": "^1.9.4",
     "chess.js": "^1.4.0",
     "marked": "^18.0.4",
