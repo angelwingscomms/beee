@@ -8,6 +8,9 @@ export const cs: FaqC[] = [
 			{ q: 'Is this only a chess tournament?', a: 'No. The championship includes a structured development programme that extends beyond competition and focuses on building well-rounded young thinkers, leaders, and problem-solvers.' },
 			{ q: 'Who can participate?', a: 'Primary and secondary school students who meet the eligibility requirements published by the championship organisers.' },
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
+			{ q: 'What age group can participate?', a: 'Chess players aged 10–14.' },
+			{ q: 'Where is the championship held?', a: 'Abuja.' },
+			{ q: 'When does the programme run?', a: 'Summer through October.' },
 		]
 	},
 	{
@@ -17,6 +20,7 @@ export const cs: FaqC[] = [
 			{ q: 'Can parents register their children directly?', a: 'Yes, where direct registration has been provided by the organisers.' },
 			{ q: 'Is there a registration deadline?', a: 'Yes. Registration deadlines will be published on the official championship website and communication channels.' },
 			{ q: 'Is there a registration fee?', a: 'Any applicable registration fee will be clearly stated during the registration process.' },
+			{ q: 'Can participation fees be sponsored?', a: 'Yes. Participation fees may be sponsored by parents, guardians, schools, or other interested sponsors.' },
 		]
 	},
 	{
@@ -33,6 +37,7 @@ export const cs: FaqC[] = [
 			{ q: 'What information is recorded in the passport?', a: 'The passport may contain attendance records, developmental milestones, achievement badges, skills acquired, assessment results, project participation, leadership activities, mentorship engagement, certificates earned, and other notable accomplishments.' },
 			{ q: 'Can parents access the passport?', a: 'Yes. Parents and guardians will have access to their child\'s Development Passport and progress records.' },
 			{ q: 'Why is the passport important?', a: 'It provides a documented record of growth, achievements, participation, and development throughout the programme.' },
+			{ q: 'How do registered players access the programme materials?', a: 'Registered players are issued a Passport code with access to the T.E.A.M.U.P. Development materials.' },
 		]
 	},
 	{
@@ -54,6 +59,7 @@ export const cs: FaqC[] = [
 			{ q: 'How can parents support participants?', a: 'Parents can monitor progress through the Development Passport, encourage participation, and support learning activities throughout the programme.' },
 			{ q: 'How will schools benefit?', a: 'Schools gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and student achievement.' },
 			{ q: 'Will progress reports be available?', a: 'Yes. Progress information will be available through the participant\'s Development Passport and other programme reporting mechanisms.' },
+			{ q: 'Why should my school partner with BEEE?', a: 'Affiliate schools may complement their summer activities with the T.E.A.M.U.P. programme and benefit from its developmental opportunities.' },
 		]
 	},
 ];

@@ -25,7 +25,7 @@ describe('faq data integrity', () => {
 
 	it('total question count across all categories is 26', () => {
 		const total = cs.reduce((s, c) => s + c.qs.length, 0);
-		expect(total).toBe(26);
+		expect(total).toBe(32);
 	});
 });
 
@@ -83,7 +83,7 @@ describe('combined filters', () => {
 		const cat = filterByCategory(cs, 'registration');
 		const searched = filterBySearch(cat, 'fee');
 		expect(searched.length).toBe(1);
-		expect(searched[0].qs.length).toBe(1);
+		expect(searched[0].qs.length).toBe(2);
 		expect(searched[0].qs[0].q).toContain('fee');
 	});
 });
