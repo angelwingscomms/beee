@@ -5,7 +5,6 @@
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
   import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
   import ChampHow from '$lib/components/championship/ChampHow.svelte';
-  import ChampGetInvolved from '$lib/components/championship/ChampGetInvolved.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
@@ -66,6 +65,5 @@
   <ChampFeatures />
   <ChampPassport />
   <ChampHow />
-  <ChampGetInvolved />
   <ChampCTA />
 </main>

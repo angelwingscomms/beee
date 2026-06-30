@@ -193,3 +193,13 @@ https://svelte.dev/e/css_unused_selector
 [1;31m[404] GET /images/championship/cta-triumph.png[0m
 8:21:10 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
 8:21:10 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+8:21:52 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:21:52 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:21:55 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:21:55 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:22:41 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+8:22:41 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+8:22:42 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+8:22:42 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+8:22:50 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+8:22:50 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte

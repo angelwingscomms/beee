@@ -60,12 +60,14 @@
   .champ-about {
     position: relative;
     color: var(--on-dark);
+    background-image: url('/images/championship/about-new.png');
+    background-size: cover;
+    background-position: center;
   }
 
   .champ-about-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/championship/about-nebula.png');
     background-size: cover;
     background-position: center;
     filter: saturate(0.9) contrast(0.95);
@@ -89,11 +91,7 @@
     grid-template-columns: 0.85fr 1.15fr;
     gap: 64px;
     align-items: start;
-    background-image: url('/images/championship/about-new.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 16px;
-    padding: 32px;
+
   }
 
   .champ-about-sticky {
