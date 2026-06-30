@@ -7,6 +7,11 @@ import { createHmac } from 'crypto';
 
 console.log('[paystack] module loaded');
 
+function mask(s: string): string {
+	if (!s) return '(empty)';
+	return s.length < 12 ? s : s.substring(0, 6) + '...' + s.slice(-4);
+}
+
 const BASE = 'https://api.paystack.co';
 
 export interface PaystackInitResult {
@@ -31,10 +36,17 @@ export function get_secret_key(): string {
 		: dev;
 	console.log(`[paystack] get_secret_key: PAYSTACK_TEST=${paystack_test}, dev=${dev}, is_test=${is_test}`);
 
+	const all_keys = {
+		test: env.PAYSTACK_SECRET_KEY_TEST ? mask(env.PAYSTACK_SECRET_KEY_TEST) : 'unset',
+		live: env.PAYSTACK_SECRET_KEY_LIVE ? mask(env.PAYSTACK_SECRET_KEY_LIVE) : 'unset',
+		legacy: env.PAYSTACK_SECRET_KEY ? mask(env.PAYSTACK_SECRET_KEY) : 'unset',
+	};
+	console.log(`[paystack] get_secret_key: all available keys`, all_keys);
+
 	const key = is_test
 		? (env.PAYSTACK_SECRET_KEY_TEST || env.PAYSTACK_SECRET_KEY)
 		: (env.PAYSTACK_SECRET_KEY_LIVE || env.PAYSTACK_SECRET_KEY);
-	console.log(`[paystack] get_secret_key: resolved key ${key ? key.substring(0, 10) + '...' : 'EMPTY'}`);
+	console.log(`[paystack] get_secret_key: resolved key ${key ? mask(key) : 'EMPTY'}`);
 	return key || '';
 }
 

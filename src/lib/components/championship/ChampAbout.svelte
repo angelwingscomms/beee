@@ -58,10 +58,6 @@
 <style>
   .champ-about {
     position: relative;
-    background:
-      url('/images/championship/about-bg.png');
-    background-size: cover;
-    background-position: center;
     color: var(--on-dark);
   }
 
