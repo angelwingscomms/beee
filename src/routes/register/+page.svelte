@@ -60,6 +60,7 @@
   async function confirmPayment() {
     isProcessing = true;
     apiError = '';
+    let auth_url = '';
     try {
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
@@ -70,12 +71,36 @@
         const e = await r.json().catch(() => ({}));
         throw new Error(e.error || 'Payment initialization failed');
       }
-      const { authorization_url, registrationId: rid } = await r.json();
-      registrationId = rid;
-      window.location.href = authorization_url;
+      const d = await r.json();
+      if (!d.access_code) throw new Error('Invalid response from payment gateway');
+      registrationId = d.registrationId;
+      auth_url = d.authorization_url;
+
+      const PaystackPop = (await import('@paystack/inline-js')).default;
+      const popup = new PaystackPop();
+      const fb = setTimeout(() => { window.location.href = auth_url; }, 15000);
+      popup.resumeTransaction(d.access_code, {
+        onLoad: () => clearTimeout(fb),
+        onSuccess: (tx) => {
+          clearTimeout(fb);
+          window.location.href = `/payment/callback?reference=${tx.reference}`;
+        },
+        onCancel: () => {
+          clearTimeout(fb);
+          isProcessing = false;
+        },
+        onError: () => {
+          clearTimeout(fb);
+          window.location.href = auth_url;
+        }
+      });
     } catch (error) {
-      apiError = error instanceof Error ? error.message : 'Unknown error';
-      isProcessing = false;
+      if (auth_url) {
+        window.location.href = auth_url;
+      } else {
+        apiError = error instanceof Error ? error.message : 'Unknown error';
+        isProcessing = false;
+      }
     }
   }
 

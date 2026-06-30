@@ -14,6 +14,9 @@ importers:
       '@lucide/svelte':
         specifier: ^1.17.0
         version: 1.17.0(svelte@5.55.10)
+      '@paystack/inline-js':
+        specifier: ^2.23.1
+        version: 2.23.1
       '@qdrant/js-client-rest':
         specifier: ^1.18.0
         version: 1.18.0(typescript@6.0.3)
@@ -606,6 +609,10 @@ packages:
 
   '@oxc-project/types@0.132.0':
     resolution: {integrity: sha512-FESMOxil5Se014ui/Eq8fT5uHJo6nIRwH0PfJrZJXs6Gek3ZVFOrpUv3YIZT20m+extU98Hg1Ym72U58rlsxUQ==}
+
+  '@paystack/inline-js@2.23.1':
+    resolution: {integrity: sha512-yf3mSh6CQMfhSbdiCO+j+yqnguw01vqSMuOIL2gCMYSijS3iiUSJyaN8O8K9m4ZdW5njXNMKJq8H945Dqt/f+g==}
+    engines: {node: '>= 22.0.0'}
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
@@ -2520,6 +2527,8 @@ snapshots:
     optional: true
 
   '@oxc-project/types@0.132.0': {}
+
+  '@paystack/inline-js@2.23.1': {}
 
   '@polka/url@1.0.0-next.29': {}
 

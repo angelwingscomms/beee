@@ -64,9 +64,10 @@
 	async function confirmPayment() {
 		isProcessing = true;
 		apiError = '';
+		let auth_url = '';
 
 		try {
-			const initResponse = await fetch('/api/register-init-payment', {
+			const r = await fetch('/api/register-init-payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
@@ -77,20 +78,43 @@
 				})
 			});
 
-			if (!initResponse.ok) {
-				const err = await initResponse.json().catch(() => ({}));
-				throw new Error(err.error || 'Payment initialization failed');
+			if (!r.ok) {
+				const e = await r.json().catch(() => ({}));
+				throw new Error(e.error || 'Payment initialization failed');
 			}
 
-			const { authorization_url, registrationId: reg_id } = await initResponse.json();
-			registrationId = reg_id;
+			const d = await r.json();
+			if (!d.access_code) throw new Error('Invalid response from payment gateway');
+			registrationId = d.registrationId;
+			auth_url = d.authorization_url;
 
-			window.location.href = authorization_url;
+			const PaystackPop = (await import('@paystack/inline-js')).default;
+			const popup = new PaystackPop();
+			const fb = setTimeout(() => { window.location.href = auth_url; }, 15000);
+			popup.resumeTransaction(d.access_code, {
+				onLoad: () => clearTimeout(fb),
+				onSuccess: (tx) => {
+					clearTimeout(fb);
+					window.location.href = `/payment/callback?reference=${tx.reference}`;
+				},
+				onCancel: () => {
+					clearTimeout(fb);
+					isProcessing = false;
+				},
+				onError: () => {
+					clearTimeout(fb);
+					window.location.href = auth_url;
+				}
+			});
 		} catch (error) {
-			const msg = error instanceof Error ? error.message : 'Unknown error';
-			apiError = msg;
-			console.error('[registration]', error);
-			isProcessing = false;
+			if (auth_url) {
+				window.location.href = auth_url;
+			} else {
+				const msg = error instanceof Error ? error.message : 'Unknown error';
+				apiError = msg;
+				console.error('[registration]', error);
+				isProcessing = false;
+			}
 		}
 	}
 
