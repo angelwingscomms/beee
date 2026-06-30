@@ -205,3 +205,18 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 5:14:20 AM [vite-plugin-svelte] src/routes/register/+page.svelte:279:2 Unused CSS selector ".reg-divider::after"
 https://svelte.dev/e/css_unused_selector
+5:16:07 AM [vite] (client) hmr update /src/lib/components/RegisterBtn.svelte?svelte&type=style&lang.css, /src/app.css
+5:16:07 AM [vite] (ssr) page reload src/lib/components/RegisterBtn.svelte
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:16:19 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:16:19 AM [vite] (client) page reload .svelte-kit/generated/root.js
+5:16:19 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:16:19 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

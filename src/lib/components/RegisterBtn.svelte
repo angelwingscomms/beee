@@ -40,6 +40,7 @@
     cursor: pointer;
     transition: transform 160ms ease, box-shadow 160ms ease;
     white-space: nowrap;
+    opacity: 1;
   }
   .register-btn:hover {
     transform: scale(1.02);
