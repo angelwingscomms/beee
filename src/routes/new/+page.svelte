@@ -2,6 +2,20 @@
   import { fly } from 'svelte/transition';
   import { observe } from '$lib/actions/observe';
 
+  let knightY = 0;
+
+  function handleScroll() {
+    const knight = document.querySelector('.parallax-knight') as HTMLElement | null;
+    if (!knight) return;
+    const speed = 0.15;
+    const rect = knight.parentElement?.getBoundingClientRect();
+    if (!rect) return;
+    const center = rect.top + rect.height / 2;
+    const viewCenter = window.innerHeight / 2;
+    const dist = (center - viewCenter) / window.innerHeight;
+    knightY = dist * speed * 100;
+  }
+
   function blur(node: Element, { delay = 0, duration = 800, amount = 6 } = {}) {
     return {
       delay,
@@ -21,6 +35,8 @@
 <svelte:head>
   <title>BEEE Spectacular Chess Championship Abuja 2026</title>
 </svelte:head>
+
+<svelte:window on:scroll={handleScroll}/>
 
 <main class="page">
   <section class="hero">
@@ -63,7 +79,31 @@
     </div>
   </section>
 
-  <section id="philosophy"></section>
+  <section id="philosophy" class="philosophy">
+    <div class="macro-board">
+      <div class="macro-cell"></div>
+      <div class="macro-cell"></div>
+      <div class="macro-cell"></div>
+      <div class="macro-cell"></div>
+    </div>
+
+    <div class="parallax-knight" style="transform: translateY({knightY}px)">
+      <svg viewBox="0 0 40 48" class="knight-svg" xmlns="http://www.w3.org/2000/svg">
+        <path d="M29 5c-2.5-.5-5.5 0-7.5 1.5L14 12l-1 2-4 1-3 4 2 3 3 1 2 3 4 1 2 4h13l1-3 2-1v-4l3-5 1-6-2-5-4-2z" fill="none" stroke="#d4a34e" stroke-width="1.2"/>
+        <path d="M10 33l-3 4 1 3 2 2h20l2-2 1-3-3-4H10z" fill="none" stroke="#d4a34e" stroke-width="1.2"/>
+        <circle cx="22" cy="11" r="1.5" fill="#d4a34e"/>
+      </svg>
+    </div>
+
+    <div class="philosophy-content" use:observe>
+      <p class="etch-text">
+        At BEEE, we believe every young person possesses extraordinary potential waiting to be unlocked. Chess is not merely a game of strategy — it is a mirror to the mind, a forge for character, and a launchpad for greatness.
+      </p>
+      <p class="etch-text" style="animation-delay: 0.6s">
+        Chess is not the destination. It is the platform.
+      </p>
+    </div>
+  </section>
 </main>
 
 <style>
@@ -210,7 +250,105 @@
     white-space: nowrap;
   }
 
-  #philosophy {
+  .philosophy {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .macro-board {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100vw;
     height: 100vh;
+    opacity: 0.15;
+  }
+
+  .macro-cell:nth-child(1) {
+    background: #0a0a0a;
+  }
+  .macro-cell:nth-child(2) {
+    background: #111;
+  }
+  .macro-cell:nth-child(3) {
+    background: #111;
+  }
+  .macro-cell:nth-child(4) {
+    background: #0a0a0a;
+  }
+
+  .parallax-knight {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    width: 80px;
+    height: 96px;
+    opacity: 0.1;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .knight-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .philosophy-content {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .etch-text {
+    margin: 0;
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, #f5d78e 0%, #d4a34e 25%, #b8862d 50%, #d4a34e 75%, #f5d78e 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: none;
+  }
+
+  .philosophy-content.in-view .etch-text {
+    animation: scratch 1.2s ease-out forwards;
+  }
+
+  .philosophy-content.in-view .etch-text:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes scratch {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0% 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .etch-text {
+      font-size: 20px;
+    }
+    .parallax-knight {
+      width: 50px;
+      height: 60px;
+      right: 4%;
+    }
   }
 </style>
