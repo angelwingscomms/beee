@@ -203,3 +203,7 @@ https://svelte.dev/e/css_unused_selector
 8:22:42 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
 8:22:50 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
 8:22:50 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+8:23:05 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+8:23:05 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+8:23:06 AM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+8:23:06 AM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
