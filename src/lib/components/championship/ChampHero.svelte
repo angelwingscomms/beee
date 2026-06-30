@@ -15,8 +15,8 @@
     </h1>
     <p class="champ-hero-hook">Chess, leadership, mentorship, and creativity &mdash; one journey for Abuja's youth.</p>
     <div class="champ-hero-actions">
-      <RegisterBtn href="/register" class="champ-hero-btn-primary">Make Your Move</RegisterBtn>
-      <a href="/register" class="champ-hero-btn-secondary">Register Now</a>
+      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
+      <a href="#champ-intro" class="champ-hero-btn-secondary">Learn more</a>
     </div>
   </div>
 </section>
@@ -36,7 +36,7 @@
   .champ-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/cosmic-chess-bg.png');
+    background-image: url('/hero-bg.png');
     background-size: cover;
     background-position: center;
     opacity: 0;

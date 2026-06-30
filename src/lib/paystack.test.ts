@@ -4,14 +4,12 @@ let mock_dev = false;
 
 const mock_env = vi.hoisted(() => ({
 	PAYSTACK_TEST: undefined as string | undefined,
-	PAYSTACK_SECRET_KEY: undefined as string | undefined,
 	PAYSTACK_SECRET_KEY_TEST: undefined as string | undefined,
 	PAYSTACK_SECRET_KEY_LIVE: undefined as string | undefined,
 }));
 
 vi.mock('$env/static/private', () => ({
 	get PAYSTACK_TEST() { return mock_env.PAYSTACK_TEST; },
-	get PAYSTACK_SECRET_KEY() { return mock_env.PAYSTACK_SECRET_KEY; },
 	get PAYSTACK_SECRET_KEY_TEST() { return mock_env.PAYSTACK_SECRET_KEY_TEST; },
 	get PAYSTACK_SECRET_KEY_LIVE() { return mock_env.PAYSTACK_SECRET_KEY_LIVE; },
 }));
@@ -23,7 +21,6 @@ vi.mock('$app/environment', () => ({
 describe('Paystack Key Selection Logic', () => {
 	beforeEach(() => {
 		mock_env.PAYSTACK_TEST = undefined;
-		mock_env.PAYSTACK_SECRET_KEY = undefined;
 		mock_env.PAYSTACK_SECRET_KEY_TEST = undefined;
 		mock_env.PAYSTACK_SECRET_KEY_LIVE = undefined;
 		mock_dev = false;

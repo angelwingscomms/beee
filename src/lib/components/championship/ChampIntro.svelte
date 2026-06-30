@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section class="champ-intro">
+<section id="champ-intro" class="champ-intro">
   <div class="container">
     <div class="champ-intro-body">
       <p class="champ-intro-text">The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P.&trade; (Technology, Enterprise, Art, Mentorship and Upskill) Development Programme.</p>

@@ -3,7 +3,6 @@
 
 import {
 	PAYSTACK_TEST,
-	PAYSTACK_SECRET_KEY,
 	PAYSTACK_SECRET_KEY_TEST,
 	PAYSTACK_SECRET_KEY_LIVE,
 } from '$env/static/private';
@@ -43,13 +42,12 @@ export function get_secret_key(): string {
 	const all_keys = {
 		test: PAYSTACK_SECRET_KEY_TEST ? mask(PAYSTACK_SECRET_KEY_TEST) : 'unset',
 		live: PAYSTACK_SECRET_KEY_LIVE ? mask(PAYSTACK_SECRET_KEY_LIVE) : 'unset',
-		legacy: PAYSTACK_SECRET_KEY ? mask(PAYSTACK_SECRET_KEY) : 'unset',
 	};
 	console.log(`[paystack] get_secret_key: all available keys`, all_keys);
 
 	const key = is_test
-		? (PAYSTACK_SECRET_KEY_TEST || PAYSTACK_SECRET_KEY)
-		: (PAYSTACK_SECRET_KEY_LIVE || PAYSTACK_SECRET_KEY);
+		? PAYSTACK_SECRET_KEY_TEST
+		: PAYSTACK_SECRET_KEY_LIVE;
 	console.log(`[paystack] get_secret_key: resolved key ${key ? mask(key) : 'EMPTY'}`);
 	return key || '';
 }

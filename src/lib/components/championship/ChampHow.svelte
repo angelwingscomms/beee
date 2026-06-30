@@ -35,7 +35,7 @@
   ];
 </script>
 
-<section class="section-dark champ-how" use:motionFadeUp>
+<section class="champ-how" use:motionFadeUp>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-how-header">
       <p class="champ-how-eyebrow">The Championship Journey</p>
@@ -43,9 +43,8 @@
       <p class="champ-how-sub">Five stages. One transformative experience.</p>
     </div>
     <div class="champ-how-track">
-      <div class="champ-how-line"></div>
       {#each steps as step, i}
-        <div class="champ-how-step" style="--i: {i}">
+        <div class="champ-how-step" class:alt={i === 1 || i === 3} style="--i: {i}">
           <div class="champ-how-step-head">
             <span class="champ-how-step-num">{step.num}</span>
             <span class="champ-how-step-icon">{step.icon}</span>
@@ -79,7 +78,7 @@
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
-    color: var(--on-dark);
+    color: var(--ink);
     margin: 0;
   }
 
@@ -87,62 +86,60 @@
     font-family: var(--font-display);
     font-size: 20px;
     line-height: 1.3;
-    color: var(--on-dark-soft);
+    color: var(--body);
     margin: 12px 0 0;
   }
 
   .champ-how-track {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    position: relative;
-  }
-
-  .champ-how-line {
-    position: absolute;
-    top: 40px;
-    left: calc(10% + 20px);
-    right: calc(10% + 20px);
-    height: 1px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 100%);
-    opacity: 0.25;
   }
 
   .champ-how-step {
-    position: relative;
     display: grid;
-    gap: 20px;
-    padding: 32px 24px;
+    gap: 16px;
+    padding: 32px 28px;
     border-radius: 16px;
-    background: var(--surface-dark-elevated);
-    border: 1px solid rgba(250, 249, 245, 0.08);
-    transition: transform 400ms ease, box-shadow 400ms ease;
-    animation: step-enter 0.6s ease-out both;
-    animation-delay: calc(var(--i, 0) * 0.15s);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    box-shadow: var(--shadow-soft);
+    transition: transform 360ms ease, box-shadow 360ms ease;
+    animation: step-enter 0.5s ease-out both;
+    animation-delay: calc(var(--i, 0) * 0.12s);
+  }
+
+  .champ-how-step:nth-child(1) { grid-column: 1; }
+  .champ-how-step:nth-child(2) { grid-column: 2 / 4; }
+  .champ-how-step:nth-child(3) { grid-column: 4; }
+  .champ-how-step:nth-child(4) { grid-column: 1 / 3; }
+  .champ-how-step:nth-child(5) { grid-column: 3 / 5; }
+
+  .champ-how-step.alt {
+    background: color-mix(in srgb, var(--surface-card) 94%, var(--primary));
   }
 
   .champ-how-step:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(20, 20, 19, 0.1);
   }
 
   .champ-how-step-head {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .champ-how-step-num {
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--on-dark-soft);
+    color: var(--muted);
     letter-spacing: 0.04em;
-    opacity: 0.5;
   }
 
   .champ-how-step-icon {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1;
     color: var(--primary);
   }
@@ -150,18 +147,18 @@
   .champ-how-step-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    color: var(--on-dark);
+    color: var(--ink);
   }
 
   .champ-how-step-body {
     margin: 0;
     font-size: 14px;
     line-height: 1.6;
-    color: var(--on-dark-soft);
+    color: var(--body);
   }
 
   @keyframes step-enter {
@@ -185,6 +182,11 @@
     .champ-how-track {
       grid-template-columns: repeat(3, 1fr);
     }
+    .champ-how-step:nth-child(1) { grid-column: 1; }
+    .champ-how-step:nth-child(2) { grid-column: 2 / 4; }
+    .champ-how-step:nth-child(3) { grid-column: 1 / 3; }
+    .champ-how-step:nth-child(4) { grid-column: 3; }
+    .champ-how-step:nth-child(5) { grid-column: 1 / 4; }
   }
 
   @media (max-width: 767px) {
@@ -192,11 +194,15 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
-    .champ-how-line {
-      display: none;
-    }
     .champ-how-step {
       padding: 24px 20px;
+    }
+    .champ-how-step:nth-child(1),
+    .champ-how-step:nth-child(2),
+    .champ-how-step:nth-child(3),
+    .champ-how-step:nth-child(4),
+    .champ-how-step:nth-child(5) {
+      grid-column: 1;
     }
   }
 </style>
