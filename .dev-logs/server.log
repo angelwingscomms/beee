@@ -1,29 +1,22 @@
 $ vite --host --port 5400
 
-  VITE v8.0.14  ready in 2519 ms
+  VITE v8.0.14  ready in 2991 ms
 
   ➜  Local:   http://localhost:5400/
   ➜  Network: http://192.168.43.40:5400/
+  ➜  Network: http://192.168.240.1:5400/
+  ➜  Network: http://169.254.10.65:5400/
   ➜  press h + enter to show help
 Using secrets defined in .env
-Using secrets defined in .env
-8:48:14 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+9:36:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-8:48:14 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-
-[1;31m[404] GET /images/championship/cta-triumph.png[0m
-8:48:33 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-8:48:33 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+9:36:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
 
 [1;31m[404] GET /images/championship/cta-triumph.png[0m
-8:49:20 AM [vite-plugin-svelte] src/routes/register/+page.svelte:252:2 Unused CSS selector ".reg-legend"
-https://svelte.dev/e/css_unused_selector
-8:49:20 AM [vite-plugin-svelte] src/routes/register/+page.svelte:267:2 Unused CSS selector ".reg-divider"
-https://svelte.dev/e/css_unused_selector
-8:49:20 AM [vite-plugin-svelte] src/routes/register/+page.svelte:278:2 Unused CSS selector ".reg-divider::before"
-https://svelte.dev/e/css_unused_selector
-8:49:20 AM [vite-plugin-svelte] src/routes/register/+page.svelte:279:2 Unused CSS selector ".reg-divider::after"
-https://svelte.dev/e/css_unused_selector
+9:37:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+9:37:02 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
