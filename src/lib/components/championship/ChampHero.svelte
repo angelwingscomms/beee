@@ -36,8 +36,7 @@
   .champ-hero-bg {
     position: absolute;
     inset: 0;
-    /* TODO: Generate 3D render via prompt — see docs/images/prompt-guide.md. Use style: Surreal digital painting — ivory-and-gold chess queen on glossy marble, ringed Saturn-like planet upper-left, white-gold nebula burst, pale blue starfield, generous empty sky in upper third. */
-    background-image: url('/images/championship/hero-cosmic.png');
+    background-image: url('/cosmic-chess-bg.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -53,8 +52,7 @@
     position: absolute;
     inset: 0;
     background:
-      /* Increased opacity for light/pale hero background */
-      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.5) 0%, rgba(24,23,21,0.85) 100%);
+      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.3) 0%, rgba(24,23,21,0.78) 100%);
   }
 
   .champ-hero-noise::before {
