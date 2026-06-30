@@ -1,8 +1,17 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
+  import { fly, scale } from 'svelte/transition';
   import { observe } from '$lib/actions/observe';
 
   let knightY = 0;
+  let activePiece: string | null = null;
+
+  const pieces = [
+    { name: 'Technology', piece: 'Rook', desc: 'Using technology creatively to solve real-world problems and build the future.' },
+    { name: 'Enterprise', piece: 'Queen', desc: 'Fostering entrepreneurial thinking and business acumen in young minds.' },
+    { name: 'Art', piece: 'Bishop', desc: 'Expressing ideas through creative arts, design, and visual storytelling.' },
+    { name: 'Mentorship', piece: 'King', desc: 'Guiding the next generation with wisdom, patience, and strategic thinking.' },
+    { name: 'Upskill', piece: 'Knight', desc: 'Continuous learning and skill development for tomorrow\'s challenges.' },
+  ] as const;
 
   function handleScroll() {
     const knight = document.querySelector('.parallax-knight') as HTMLElement | null;
@@ -102,6 +111,72 @@
       <p class="etch-text" style="animation-delay: 0.6s">
         Chess is not the destination. It is the platform.
       </p>
+    </div>
+  </section>
+
+  <section class="arsenal">
+    <div class="orbit-container" class:orbit-paused={activePiece !== null}>
+      <div class="piece-wrapper pos-top" on:mouseenter={() => activePiece = 'Technology'} on:mouseleave={() => activePiece = null} class:piece-paused={activePiece !== null}>
+        <svg viewBox="0 0 32 40" class="piece-icon" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2L4 8v4l2 2v6l-2 2v4h20v-4l-2-2V14l2-2V8l-2-6H6z" fill="none" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <rect x="4" y="32" width="24" height="4" rx="1" fill="url(#pawnGrad)"/>
+          <rect x="8" y="36" width="16" height="2" rx="1" fill="url(#pawnGrad)"/>
+        </svg>
+        <span class="piece-label">Technology</span>
+      </div>
+
+      <div class="piece-wrapper pos-top-right" on:mouseenter={() => activePiece = 'Enterprise'} on:mouseleave={() => activePiece = null} class:piece-paused={activePiece !== null}>
+        <svg viewBox="0 0 32 40" class="piece-icon" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2l4 8h6l-5 6 2 8-7-5-7 5 2-8-5-6h6l4-8z" fill="none" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <rect x="6" y="32" width="20" height="4" rx="1" fill="url(#pawnGrad)"/>
+          <rect x="9" y="36" width="14" height="2" rx="1" fill="url(#pawnGrad)"/>
+        </svg>
+        <span class="piece-label">Enterprise</span>
+      </div>
+
+      <div class="piece-wrapper pos-bottom-right" on:mouseenter={() => activePiece = 'Art'} on:mouseleave={() => activePiece = null} class:piece-paused={activePiece !== null}>
+        <svg viewBox="0 0 32 40" class="piece-icon" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2c-2 0-4 2-4 4s1 4 2 5l-4 3v4l-4 6v4h20v-4l-4-6v-4l-4-3c1-1 2-3 2-5s-2-4-4-4z" fill="none" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <line x1="16" y1="14" x2="16" y2="24" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <rect x="6" y="32" width="20" height="4" rx="1" fill="url(#pawnGrad)"/>
+          <rect x="9" y="36" width="14" height="2" rx="1" fill="url(#pawnGrad)"/>
+        </svg>
+        <span class="piece-label">Art</span>
+      </div>
+
+      <div class="piece-wrapper pos-bottom-left" on:mouseenter={() => activePiece = 'Mentorship'} on:mouseleave={() => activePiece = null} class:piece-paused={activePiece !== null}>
+        <svg viewBox="0 0 32 40" class="piece-icon" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4l-4 6H6l4 4-2 8h16l-2-8 4-4h-6l-4-6z" fill="none" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <line x1="16" y1="4" x2="16" y2="2" stroke="url(#pawnGrad)" stroke-width="2"/>
+          <circle cx="16" cy="1.5" r="1.5" fill="url(#pawnGrad)"/>
+          <rect x="6" y="32" width="20" height="4" rx="1" fill="url(#pawnGrad)"/>
+          <rect x="9" y="36" width="14" height="2" rx="1" fill="url(#pawnGrad)"/>
+        </svg>
+        <span class="piece-label">Mentorship</span>
+      </div>
+
+      <div class="piece-wrapper pos-top-left" on:mouseenter={() => activePiece = 'Upskill'} on:mouseleave={() => activePiece = null} class:piece-paused={activePiece !== null}>
+        <svg viewBox="0 0 32 40" class="piece-icon" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 4c-2 0-4 1-5 2l-3 3-1 1-2 1-2 3 2 3 2 1 1 3 3 1 1 3h10v-2l1-1v-3l2-4v-5l-2-3-3-1h-4z" fill="none" stroke="url(#pawnGrad)" stroke-width="1.5"/>
+          <circle cx="20" cy="8" r="1" fill="url(#pawnGrad)"/>
+          <rect x="5" y="33" width="22" height="4" rx="1" fill="url(#pawnGrad)"/>
+          <rect x="8" y="37" width="16" height="2" rx="1" fill="url(#pawnGrad)"/>
+        </svg>
+        <span class="piece-label">Upskill</span>
+      </div>
+
+      <div class="orbit-center">
+        {#if activePiece}
+          {#each pieces.filter(p => p.name === activePiece) as p}
+            <div class="aura-text" in:scale={{ duration: 400, start: 0.85 }}>
+              <span class="aura-name">{p.name}</span>
+              <span class="aura-desc">{p.desc}</span>
+            </div>
+          {/each}
+        {:else}
+          <span class="orbit-title">T.E.A.M.U.P.™</span>
+        {/if}
+      </div>
     </div>
   </section>
 </main>
@@ -341,6 +416,131 @@
     }
   }
 
+  .arsenal {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .orbit-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 60s linear infinite;
+  }
+
+  .orbit-container.orbit-paused {
+    animation-play-state: paused;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .piece-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    animation: spin-reverse 60s linear infinite;
+    z-index: 2;
+  }
+
+  .piece-wrapper.piece-paused {
+    animation-play-state: paused;
+  }
+
+  @keyframes spin-reverse {
+    to { transform: rotate(-360deg); }
+  }
+
+  .piece-wrapper:hover {
+    transform: scale(1.25);
+    z-index: 10;
+  }
+
+  .pos-top { top: 6%; left: 50%; }
+  .pos-top-right { top: 20%; left: 82%; }
+  .pos-bottom-right { top: 74%; left: 82%; }
+  .pos-bottom-left { top: 74%; left: 18%; }
+  .pos-top-left { top: 20%; left: 18%; }
+
+  .piece-icon {
+    width: 40px;
+    height: 50px;
+    filter: drop-shadow(0 0 10px rgba(212, 163, 78, 0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .piece-wrapper:hover .piece-icon {
+    filter: drop-shadow(0 0 20px rgba(212, 163, 78, 0.6));
+  }
+
+  .piece-label {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 215, 142, 0.6);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .piece-wrapper:hover .piece-label {
+    opacity: 1;
+  }
+
+  .orbit-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .orbit-title {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(245, 215, 142, 0.7);
+  }
+
+  .aura-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .aura-name {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f5d78e;
+  }
+
+  .aura-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
   @media (max-width: 768px) {
     .etch-text {
       font-size: 20px;
@@ -349,6 +549,44 @@
       width: 50px;
       height: 60px;
       right: 4%;
+    }
+
+    .orbit-container {
+      width: 100%;
+      height: auto;
+      animation: none;
+      flex-direction: column;
+      gap: 16px;
+      padding: 40px 20px;
+    }
+
+    .piece-wrapper {
+      position: static;
+      animation: none;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    .piece-wrapper.piece-paused {
+      animation-play-state: running;
+    }
+
+    .piece-label {
+      opacity: 1;
+      font-size: 12px;
+    }
+
+    .piece-icon {
+      width: 30px;
+      height: 38px;
+    }
+
+    .orbit-center {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin-top: 20px;
+      pointer-events: auto;
     }
   }
 </style>
