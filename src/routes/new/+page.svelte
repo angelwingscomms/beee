@@ -4,6 +4,11 @@
 
   let knightY = 0;
   let activePiece: string | null = null;
+  let pawnY = 0;
+  let reached = [false, false, false, false, false];
+  let promoted = false;
+
+  const milestones = ['Register', 'Learn', 'Grow', 'Compete', 'Become'];
 
   const pieces = [
     { name: 'Technology', piece: 'Rook', desc: 'Using technology creatively to solve real-world problems and build the future.' },
@@ -15,14 +20,37 @@
 
   function handleScroll() {
     const knight = document.querySelector('.parallax-knight') as HTMLElement | null;
-    if (!knight) return;
-    const speed = 0.15;
-    const rect = knight.parentElement?.getBoundingClientRect();
-    if (!rect) return;
-    const center = rect.top + rect.height / 2;
-    const viewCenter = window.innerHeight / 2;
-    const dist = (center - viewCenter) / window.innerHeight;
-    knightY = dist * speed * 100;
+    if (knight) {
+      const speed = 0.15;
+      const rect = knight.parentElement?.getBoundingClientRect();
+      if (rect) {
+        const center = rect.top + rect.height / 2;
+        const viewCenter = window.innerHeight / 2;
+        const dist = (center - viewCenter) / window.innerHeight;
+        knightY = dist * speed * 100;
+      }
+    }
+
+    const journey = document.querySelector('.journey') as HTMLElement | null;
+    if (!journey) return;
+    const rect = journey.getBoundingClientRect();
+    const totalScroll = rect.height - window.innerHeight;
+    if (totalScroll <= 0) return;
+    const progress = Math.max(0, Math.min(1, (-rect.top) / totalScroll));
+    const pathHeight = window.innerHeight * 0.8;
+    pawnY = progress * pathHeight;
+
+    for (let i = 0; i < 5; i++) {
+      const threshold = i / 4;
+      if (progress >= threshold && !reached[i]) {
+        reached[i] = true;
+        reached = [...reached];
+      }
+    }
+
+    if (progress >= 1 && !promoted) {
+      promoted = true;
+    }
   }
 
   function blur(node: Element, { delay = 0, duration = 800, amount = 6 } = {}) {
@@ -175,6 +203,61 @@
           {/each}
         {:else}
           <span class="orbit-title">T.E.A.M.U.P.™</span>
+        {/if}
+      </div>
+    </div>
+  </section>
+
+  <section class="journey">
+    <div class="sticky-board">
+      <div class="path-line">
+        {#each milestones as label, i}
+          <div class="path-node" style="top: {i * 25}%">
+            <div class="node-dot" class:node-reached={reached[i]}></div>
+            {#if reached[i]}
+              <div class="node-label" in:fly={{ x: 50, duration: 400 }}>
+                {label}
+              </div>
+            {/if}
+          </div>
+        {/each}
+      </div>
+
+      <div class="traveling-pawn" style="top: calc(10vh + {pawnY}px)">
+        {#if promoted}
+          <div in:scale={{ duration: 500, start: 0.3 }}>
+            <svg viewBox="0 0 32 48" class="queen-icon" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="queenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f5d78e"/>
+                  <stop offset="50%" stop-color="#d4a34e"/>
+                  <stop offset="100%" stop-color="#f5d78e"/>
+                </linearGradient>
+              </defs>
+              <path d="M16 2l3 8h-6l3-8z" fill="url(#queenGrad)"/>
+              <path d="M8 10l-3 6h22l-3-6H8z" fill="url(#queenGrad)"/>
+              <circle cx="8" cy="8" r="2" fill="url(#queenGrad)"/>
+              <circle cx="16" cy="6" r="2" fill="url(#queenGrad)"/>
+              <circle cx="24" cy="8" r="2" fill="url(#queenGrad)"/>
+              <rect x="6" y="30" width="20" height="4" rx="1" fill="url(#queenGrad)"/>
+              <rect x="9" y="34" width="14" height="3" rx="1" fill="url(#queenGrad)"/>
+              <rect x="4" y="38" width="24" height="6" rx="1" fill="url(#queenGrad)"/>
+            </svg>
+          </div>
+        {:else}
+          <svg viewBox="0 0 32 48" class="pawn-icon" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pawnJourneyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d78e"/>
+                <stop offset="40%" stop-color="#d4a34e"/>
+                <stop offset="70%" stop-color="#b8862d"/>
+                <stop offset="100%" stop-color="#8b6914"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 2c-1.7 0-3 1.3-3 3 0 .6.2 1.2.5 1.7-2.2 1.2-3.7 3.6-3.7 6.3 0 2.5 1.3 4.8 3.3 6-2.5 1.2-4.2 3.7-4.2 6.6 0 .5.1 1 .2 1.5H6v4h20v-4h-3.1c.1-.5.2-1 .2-1.5 0-2.9-1.7-5.4-4.2-6.6 2-1.2 3.3-3.5 3.3-6 0-2.7-1.5-5.1-3.7-6.3.3-.5.5-1.1.5-1.7 0-1.7-1.3-3-3-3z" fill="url(#pawnJourneyGrad)"/>
+            <rect x="6" y="38" width="20" height="4" rx="1" fill="url(#pawnJourneyGrad)"/>
+            <rect x="9" y="42" width="14" height="3" rx="1" fill="url(#pawnJourneyGrad)"/>
+          </svg>
         {/if}
       </div>
     </div>
@@ -541,6 +624,85 @@
     color: rgba(255, 255, 255, 0.6);
   }
 
+  .journey {
+    position: relative;
+    height: 200vh;
+  }
+
+  .sticky-board {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .path-line {
+    position: relative;
+    width: 2px;
+    height: 80vh;
+    background: rgba(245, 215, 142, 0.15);
+  }
+
+  .path-node {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .node-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(245, 215, 142, 0.3);
+    border: 1px solid rgba(245, 215, 142, 0.4);
+    transition: all 0.4s ease;
+  }
+
+  .node-dot.node-reached {
+    background: #f5d78e;
+    box-shadow: 0 0 12px rgba(245, 215, 142, 0.5);
+  }
+
+  .node-label {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f5d78e;
+    white-space: nowrap;
+  }
+
+  .traveling-pawn {
+    position: absolute;
+    left: 50%;
+    top: 10vh;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 24px;
+    height: 36px;
+    will-change: top;
+    transition: top 0.05s linear;
+  }
+
+  .pawn-icon,
+  .queen-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pawn-icon {
+    filter: drop-shadow(0 0 10px rgba(212, 163, 78, 0.5));
+  }
+
+  .queen-icon {
+    filter: drop-shadow(0 0 20px rgba(245, 215, 142, 0.7));
+  }
+
   @media (max-width: 768px) {
     .etch-text {
       font-size: 20px;
@@ -587,6 +749,18 @@
       width: 100%;
       margin-top: 20px;
       pointer-events: auto;
+    }
+
+    .path-line {
+      height: 60vh;
+    }
+
+    .traveling-pawn {
+      top: 20vh;
+    }
+
+    .node-label {
+      font-size: 13px;
     }
   }
 </style>
