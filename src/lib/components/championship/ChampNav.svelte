@@ -135,7 +135,7 @@
 
   .champ-nav-name {
     letter-spacing: -0.02em;
-    color: #fff;
+    color: var(--color-primary);
   }
 
   .champ-nav-links {

@@ -222,7 +222,7 @@
   .reg-deadline {
     font-family: var(--font-registration);
     font-size: clamp(14px, 1.2vw, 16px);
-    color: var(--muted);
+    color: white;
     margin: 0;
   }
 

@@ -31,7 +31,7 @@
 <style>
   .footer {
     position: relative;
-    padding: 80px 0 48px;
+    padding: 40px 0 28px;
     background: var(--surface-dark);
     color: var(--on-dark-soft);
   }
@@ -57,7 +57,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 40px;
+    gap: 24px;
   }
 
   .footer-event {
@@ -102,7 +102,7 @@
   .footer-divider {
     height: 1px;
     background: rgba(250, 249, 245, 0.1);
-    margin: 32px 0;
+    margin: 16px 0;
     border: none;
   }
 
@@ -142,12 +142,12 @@
 
   @media (max-width: 767px) {
     .footer {
-      padding: 64px 0 40px;
+      padding: 32px 0 24px;
     }
 
     .footer-top {
       flex-direction: column;
-      gap: 32px;
+      gap: 20px;
     }
 
     .footer-bottom {

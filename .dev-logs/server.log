@@ -126,3 +126,25 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 7:11:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
 7:11:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:36:58 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+7:36:58 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+7:43:25 PM [vite-plugin-svelte] src/routes/register/+page.svelte:252:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:43:25 PM [vite-plugin-svelte] src/routes/register/+page.svelte:267:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+7:43:25 PM [vite-plugin-svelte] src/routes/register/+page.svelte:278:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+7:43:25 PM [vite-plugin-svelte] src/routes/register/+page.svelte:279:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+7:43:25 PM [vite] (client) hmr update /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
+7:43:25 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+7:53:26 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+7:53:26 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+7:53:28 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+7:53:28 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+7:53:28 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+7:53:28 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+7:53:28 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+7:53:28 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+7:53:29 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+7:53:29 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
