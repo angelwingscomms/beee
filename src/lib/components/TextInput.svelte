@@ -7,7 +7,7 @@
 		required = false,
 		value = $bindable(''),
 		oninput,
-			wrapperClass = '!bg-white !border-transparent',
+			wrapperClass = '!bg-[var(--canvas)] !border-transparent',
 			labelClass = '!text-muted',
 			inputClass = '!text-ink placeholder:!text-muted-soft',
 		error = '',

@@ -124,10 +124,10 @@
       >
         <fieldset class="reg-fieldset">
           <div class="reg-row">
-            <TextInput id="gf" label="First name" bind:value={gf} required wrapperClass="!bg-surface-card !border-transparent" error={gfe} oninput={() => gfe = ''} />
-            <TextInput id="gl" label="Last name" bind:value={gl} required wrapperClass="!bg-surface-card !border-transparent" error={gle} oninput={() => gle = ''} />
+            <TextInput id="gf" label="First name" bind:value={gf} required error={gfe} oninput={() => gfe = ''} />
+            <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
-          <TextInput id="em" label="Email" type="email" bind:value={em} required wrapperClass="!bg-surface-card !border-transparent" error={eme} oninput={() => eme = ''} />
+          <TextInput id="em" label="Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
 
@@ -379,7 +379,7 @@
     font-family: var(--font-registration);
     font-size: 13px;
     line-height: 1.7;
-    color: var(--muted-soft);
+    color: var(--on-dark-soft);
     margin: 0;
   }
   .reg-bul {
