@@ -2,19 +2,22 @@
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
+  import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
+  import ChampHow from '$lib/components/championship/ChampHow.svelte';
+  import ChampGetInvolved from '$lib/components/championship/ChampGetInvolved.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
 <svelte:head>
-  <title>Championship — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="More Than A Chess Championship. The BEEE Spectacular Chess Championship Abuja 2026 combines competitive chess with structured learning, mentorship, and personal growth through the T.E.A.M.U.P. Programme." />
+  <title>BEEE Spectacular Chess Championship Abuja 2026 — More Than a Chess Championship</title>
+  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P. Programme. Designed for chess players aged 10–14 years in schools across Abuja." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "A unique championship combining competitive chess with structured youth development through the T.E.A.M.U.P. Programme.",
+        "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P. Development Programme.",
         "startDate": "2026-06",
         "endDate": "2026-10",
         "location": {
@@ -43,7 +46,7 @@
         "name": "BEEE Spectacular Chess Championship",
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth development programme and Spectacular Chess Championship Abuja 2026.",
+        "description": "Youth development initiative combining competitive chess with leadership development and personal growth through the T.E.A.M.U.P. Programme.",
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "info@beeeproject.com",
@@ -56,15 +59,11 @@
 </svelte:head>
 
 <main class="overflow-x-hidden w-full max-w-full">
-  <!-- ATTENTION: Hero -->
   <ChampHero />
-
-  <!-- INTEREST: About -->
   <ChampAbout />
-
-  <!-- DESIRE: Features with alternating image layout -->
   <ChampFeatures />
-
-  <!-- ACTION: CTA -->
+  <ChampPassport />
+  <ChampHow />
+  <ChampGetInvolved />
   <ChampCTA />
 </main>

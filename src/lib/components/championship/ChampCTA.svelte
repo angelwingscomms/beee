@@ -18,13 +18,13 @@
   <div class="champ-cta-overlay"></div>
   <div class="champ-cta-noise"></div>
   <div class="container champ-cta-body" class:visible>
-    <h2 class="champ-cta-title">Ready to Compete, Develop & Excel?</h2>
-    <p class="champ-cta-sub">Register your young player for the BEEE Spectacular Chess Championship Abuja 2026 and begin their T.E.A.M.U.P. journey.</p>
+    <h2 class="champ-cta-title">Aspire to BEEE</h2>
+    <p class="champ-cta-sub">Be Everything Excellent Every Day</p>
+    <p class="champ-cta-tagline">More Than a Chess Championship. Make Your Move.</p>
     <div class="champ-cta-actions">
       <RegisterBtn href="/register" class="champ-cta-btn-primary">Register Now</RegisterBtn>
       <a href="/faq" class="champ-cta-btn-secondary">View FAQ</a>
     </div>
-    <p class="champ-cta-signoff">Aspire to BEEE. Be Everything Excellent Every Day.</p>
   </div>
 </section>
 
@@ -104,10 +104,10 @@
   .champ-cta-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.6vw, 3.2rem);
+    font-size: clamp(2.4rem, 4.4vw, 4rem);
     font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
     color: var(--on-dark);
     text-wrap: balance;
   }
@@ -118,6 +118,15 @@
     font-size: 17px;
     line-height: 1.65;
     color: rgba(250, 249, 245, 0.7);
+  }
+
+  .champ-cta-tagline {
+    max-width: 680px;
+    margin: 16px auto 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(250, 249, 245, 0.5);
+    font-style: italic;
   }
 
   .champ-cta-actions {
@@ -160,15 +169,6 @@
     background: rgba(250, 249, 245, 0.08);
     border-color: rgba(250, 249, 245, 0.4);
     transform: scale(1.03);
-  }
-
-  .champ-cta-signoff {
-    margin: 40px 0 0;
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
   }
 
   @media (max-width: 767px) {

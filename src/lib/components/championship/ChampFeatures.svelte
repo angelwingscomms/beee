@@ -4,33 +4,33 @@
   const features = [
     {
       img: '/images/championship/bento_chess.png',
-      span: 'col-span-2 row-span-1',
-      title: 'Chess & Personal Development',
-      body: 'Competitive chess with structured mentorship. Every match teaches resilience, patience, and strategic thinking that extends far beyond the board.'
+      span: 'col-span-1 row-span-1',
+      title: 'Technology',
+      body: 'Using technology creatively and responsibly to solve problems and expand learning.'
     },
     {
       img: '/images/championship/bento_mentor.png',
       span: 'col-span-1 row-span-1',
-      title: 'Structured Mentorship',
-      body: 'Experienced mentors translate chess strategies into real-life skills — leadership, decision-making, and emotional intelligence — through the T.E.A.M.U.P. curriculum.'
+      title: 'Enterprise',
+      body: 'Developing initiative, innovation, entrepreneurship, and practical problem-solving skills.'
     },
     {
       img: '/images/championship/bento_passport.png',
       span: 'col-span-1 row-span-1',
-      title: 'Development Passport',
-      body: 'A digital passport tracks every milestone, certificate, and badge earned. Parents follow progress in real time with transparent, detailed reporting.'
+      title: 'Art',
+      body: 'Encouraging creativity, imagination, communication, and design thinking.'
     },
     {
       img: '/images/championship/bento_award.png',
-      span: 'col-span-2 row-span-1',
-      title: 'Achievement Badges & Awards',
-      body: 'Earn badges, certificates, scholarships, and trophies through each stage. Recognition at every level keeps motivation high and growth visible.'
+      span: 'col-span-1 row-span-1',
+      title: 'Mentorship',
+      body: 'Learning from experienced professionals, educators, and inspiring role models.'
     },
     {
       img: '/images/championship/bento_family.png',
-      span: 'col-span-3 row-span-1',
-      title: 'Parent Engagement & Visibility',
-      body: 'Real-time progress dashboards, event updates, and a front-row seat to your child\'s developmental journey — from first move to championship finale.'
+      span: 'col-span-1 row-span-1',
+      title: 'Upskill',
+      body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
     }
   ];
 
@@ -48,8 +48,8 @@
 <section id="features" class="section-soft" use:motionStagger>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-features-header">
-      <h2 class="champ-features-title">Five stages of growth, one championship.</h2>
-      <p class="champ-features-sub">Most championships end with a trophy. BEEE begins with a journey across five pillars of growth.</p>
+      <h2 class="champ-features-title">The T.E.A.M.U.P.™ Development Programme</h2>
+      <p class="champ-features-sub">The heart of the BEEE experience is the T.E.A.M.U.P.™ Development Programme. Throughout the summer holiday period, participants engage in structured online learning, challenges, mentorship, and developmental activities before progressing to immersive live championship experiences.</p>
     </div>
     <div class="champ-bento">
       {#each features as feat, i}

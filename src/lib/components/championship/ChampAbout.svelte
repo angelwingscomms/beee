@@ -21,9 +21,9 @@
   });
 
   const paragraphs = [
-    'Your child gains strategic thinking, confidence, and real connection with talented peers across Abuja.',
-    'T.E.A.M.U.P. — Technology, Enterprise, Art, Mentorship, Upskill — weaves development into every stage.',
-    'A digital Development Passport tracks every milestone, badge, and certificate — parents follow progress in real time.'
+    'At BEEE, we believe every young person possesses extraordinary potential waiting to be discovered and developed.',
+    'Our mission is to provide opportunities that cultivate strategic thinking, leadership, creativity, collaboration, critical reasoning, resilience, confidence, and lifelong learning through carefully designed experiences centred around chess.',
+    'Chess is not the destination. It is the platform.'
   ];
 
   function word_reveal(word_idx: number, para_idx: number) {
@@ -40,7 +40,7 @@
   <div class="champ-about-pin" bind:this={pinBox}>
     <div class="container champ-about-grid">
       <div class="champ-about-sticky">
-        <h2 class="champ-about-title">Designed for young learners across Abuja</h2>
+        <h2 class="champ-about-title">Why BEEE?</h2>
       </div>
       <div class="champ-about-text">
         {#each paragraphs as para, pi}

@@ -9,13 +9,15 @@
     <div class="champ-hero-noise"></div>
   </div>
   <div class="champ-hero-body container">
+    <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
     <h1 class="champ-hero-title">
-      More Than A Chess Championship
+      More Than a Chess Championship
     </h1>
-    <p class="champ-hero-sub">We invite young players across Abuja to a summer of chess, mentorship, and growth — online sessions leading to live preliminaries and a grand finale. This is the T.E.A.M.U.P. Programme.</p>
+    <p class="champ-hero-sub">The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P.™ (Technology, Enterprise, Art, Mentorship and Upskill) Development Programme.</p>
+    <p class="champ-hero-sub">Designed for chess players aged 10–14 years in schools across Abuja, the programme provides participants with a structured journey of learning, achievement, and competition that extends far beyond the chessboard.</p>
     <div class="champ-hero-actions">
-      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
-      <a href="#features" class="champ-hero-btn-secondary">Explore the Programme</a>
+      <RegisterBtn href="/register" class="champ-hero-btn-primary">Make Your Move</RegisterBtn>
+      <a href="/register" class="champ-hero-btn-secondary">Register Now</a>
     </div>
   </div>
 </section>
@@ -73,6 +75,15 @@
     text-align: center;
     padding: 120px 0 160px;
     max-width: 880px;
+  }
+
+  .champ-hero-eyebrow {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250, 249, 245, 0.55);
   }
 
   .champ-hero-title {

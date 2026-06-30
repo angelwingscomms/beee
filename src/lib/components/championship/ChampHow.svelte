@@ -4,31 +4,43 @@
   const steps = [
     {
       num: '01',
-      title: 'Summer Online Programme',
-      body: 'T.E.A.M.U.P. Programme online — chess training, mentorship, and personal development from home.',
-      icon: '\u2600'
+      title: 'Register',
+      body: 'Join through your participating school.',
+      icon: '\u265F'
     },
     {
       num: '02',
-      title: 'Live Preliminaries',
-      body: 'Top participants advance to in-person rounds. Screen to table. Real opponents. Real stakes.',
+      title: 'Learn',
+      body: 'Complete T.E.A.M.U.P.\u2122 activities, assessments, and challenges online.',
       icon: '\u265E'
     },
     {
       num: '03',
-      title: 'Grand Finale',
-      body: 'A spectacular live finale. Trophies, certificates, scholarships. Every participant leaves with a completed Development Passport.',
+      title: 'Grow',
+      body: 'Earn Development Passport points, achievement badges, certificates, and valuable skills.',
       icon: '\u265B'
+    },
+    {
+      num: '04',
+      title: 'Compete',
+      body: 'Participate in exciting live preliminary events and immersive championship experiences.',
+      icon: '\u265C'
+    },
+    {
+      num: '05',
+      title: 'Become',
+      body: 'Celebrate your achievements at the BEEE Spectacular Chess Championship Abuja 2026 Grand Finale.',
+      icon: '\u265A'
     }
   ];
 </script>
 
-<section class="section-soft champ-how" use:motionFadeUp>
+<section class="section-dark champ-how" use:motionFadeUp>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-how-header">
-      <p class="champ-how-eyebrow">The Journey</p>
-      <h2 class="champ-how-title">From Summer Session to Grand Finale</h2>
-      <p class="champ-how-sub">Three stages. One transformative experience.</p>
+      <p class="champ-how-eyebrow">The Championship Journey</p>
+      <h2 class="champ-how-title">From Registration to Grand Finale</h2>
+      <p class="champ-how-sub">Five stages. One transformative experience.</p>
     </div>
     <div class="champ-how-track">
       <div class="champ-how-line"></div>
@@ -67,7 +79,7 @@
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: var(--on-dark);
     margin: 0;
   }
 
@@ -75,22 +87,22 @@
     font-family: var(--font-display);
     font-size: 20px;
     line-height: 1.3;
-    color: var(--body);
+    color: var(--on-dark-soft);
     margin: 12px 0 0;
   }
 
   .champ-how-track {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
     position: relative;
   }
 
   .champ-how-line {
     position: absolute;
     top: 40px;
-    left: calc(16.67% + 20px);
-    right: calc(16.67% + 20px);
+    left: calc(10% + 20px);
+    right: calc(10% + 20px);
     height: 1px;
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 100%);
     opacity: 0.25;
@@ -100,10 +112,10 @@
     position: relative;
     display: grid;
     gap: 20px;
-    padding: 40px 32px;
+    padding: 32px 24px;
     border-radius: 16px;
-    background: var(--canvas);
-    border: 1px solid var(--hairline);
+    background: var(--surface-dark-elevated);
+    border: 1px solid rgba(250, 249, 245, 0.08);
     transition: transform 400ms ease, box-shadow 400ms ease;
     animation: step-enter 0.6s ease-out both;
     animation-delay: calc(var(--i, 0) * 0.15s);
@@ -111,7 +123,7 @@
 
   .champ-how-step:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(242, 120, 48, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   }
 
   .champ-how-step-head {
@@ -124,8 +136,9 @@
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
-    color: var(--muted);
+    color: var(--on-dark-soft);
     letter-spacing: 0.04em;
+    opacity: 0.5;
   }
 
   .champ-how-step-icon {
@@ -141,14 +154,14 @@
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: var(--on-dark);
   }
 
   .champ-how-step-body {
     margin: 0;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
-    color: var(--body);
+    color: var(--on-dark-soft);
   }
 
   @keyframes step-enter {
@@ -168,16 +181,22 @@
     }
   }
 
+  @media (max-width: 1024px) {
+    .champ-how-track {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   @media (max-width: 767px) {
     .champ-how-track {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 16px;
     }
     .champ-how-line {
       display: none;
     }
     .champ-how-step {
-      padding: 28px 24px;
+      padding: 24px 20px;
     }
   }
 </style>

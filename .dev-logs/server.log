@@ -220,3 +220,44 @@ https://svelte.dev/e/css_unused_selector
 5:16:19 AM [vite] (client) page reload .svelte-kit/generated/root.js
 5:16:19 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 5:16:19 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:36:06 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+5:36:06 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:36:11 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+5:36:11 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:36:16 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+5:36:16 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+5:36:20 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+5:36:20 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+5:36:27 AM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte, /src/app.css
+5:36:27 AM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+5:36:32 AM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte, /src/app.css
+5:36:32 AM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+5:37:48 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:165:2 Unused CSS selector ".champ-cta-signoff"
+https://svelte.dev/e/css_unused_selector
+5:37:48 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte, /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+5:37:48 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+5:37:49 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:165:2 Unused CSS selector ".champ-cta-signoff"
+https://svelte.dev/e/css_unused_selector
+5:37:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampCTA.svelte:174:2 Unused CSS selector ".champ-cta-signoff"
+https://svelte.dev/e/css_unused_selector
+5:37:54 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+5:37:54 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+5:37:58 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+5:37:58 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+5:38:03 AM [vite] (client) hmr update /src/lib/components/championship/ChampCTA.svelte?svelte&type=style&lang.css, /src/app.css
+5:38:03 AM [vite] (ssr) page reload src/lib/components/championship/ChampCTA.svelte
+5:38:16 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:38:16 AM [vite] (ssr) page reload src/routes/+page.svelte
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/7.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:39:08 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:39:08 AM [vite] (client) page reload .svelte-kit/generated/root.js
+5:39:08 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:39:08 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
