@@ -8,7 +8,6 @@
     <div class="champ-involved-grid">
       <div class="champ-involved-col">
         <h3 class="champ-involved-title">Why Participate?</h3>
-        <p class="champ-involved-desc">Participants will have opportunities to:</p>
         <ul class="champ-involved-list">
           <li>Receive advanced chess training.</li>
           <li>Develop strategic and analytical thinking skills.</li>
@@ -21,13 +20,11 @@
       </div>
       <div class="champ-involved-col">
         <h3 class="champ-involved-title">Information for Schools</h3>
-        <p class="champ-involved-desc">Schools play an important role in identifying and encouraging young chess talent.</p>
         <p class="champ-involved-text">Participating schools receive a unique registration code through which eligible players may enrol in the programme.</p>
         <p class="champ-involved-text">The T.E.A.M.U.P.™ Development Programme complements summer learning by providing meaningful developmental opportunities that continue beyond the classroom.</p>
       </div>
       <div class="champ-involved-col">
         <h3 class="champ-involved-title">Registration</h3>
-        <p class="champ-involved-desc">Players may join the T.E.A.M.U.P.™ Development Programme at any time during the summer holiday period.</p>
         <p class="champ-involved-text">Early registration provides greater opportunities to participate fully, complete more activities, earn additional Development Passport points, and maximise the overall learning experience.</p>
         <div class="champ-involved-action">
           <RegisterBtn href="/register" class="champ-involved-btn">Register Now</RegisterBtn>
@@ -57,13 +54,6 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--on-dark);
-    margin: 0;
-  }
-
-  .champ-involved-desc {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--on-dark-soft);
     margin: 0;
   }
 

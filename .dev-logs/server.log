@@ -107,3 +107,89 @@ https://svelte.dev/e/css_unused_selector
 8:01:14 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
 8:02:35 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
 8:02:35 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+8:13:16 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:13:16 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:13:16 AM [vite] (client) hmr update /src/lib/components/championship/ChampPassport.svelte, /src/lib/components/championship/ChampPassport.svelte?svelte&type=style&lang.css, /src/app.css
+8:13:16 AM [vite] (ssr) page reload src/lib/components/championship/ChampPassport.svelte
+8:13:16 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:13:16 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:13:24 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:13:24 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:13:24 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:13:24 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:13:24 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:31:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:13:24 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:40:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+8:14:31 AM [vite] (client) hmr update /src/lib/components/championship/ChampGetInvolved.svelte, /src/app.css
+8:14:31 AM [vite] (ssr) page reload src/lib/components/championship/ChampGetInvolved.svelte
+8:14:36 AM [vite] (client) hmr update /src/lib/components/championship/ChampGetInvolved.svelte, /src/app.css
+8:14:36 AM [vite] (ssr) page reload src/lib/components/championship/ChampGetInvolved.svelte
+8:14:40 AM [vite-plugin-svelte] src/lib/components/championship/ChampGetInvolved.svelte:60:2 Unused CSS selector ".champ-involved-desc"
+https://svelte.dev/e/css_unused_selector
+8:14:40 AM [vite] (client) hmr update /src/lib/components/championship/ChampGetInvolved.svelte, /src/lib/components/championship/ChampGetInvolved.svelte?svelte&type=style&lang.css, /src/app.css
+8:14:40 AM [vite] (ssr) page reload src/lib/components/championship/ChampGetInvolved.svelte
+8:14:40 AM [vite-plugin-svelte] src/lib/components/championship/ChampGetInvolved.svelte:60:2 Unused CSS selector ".champ-involved-desc"
+https://svelte.dev/e/css_unused_selector
+8:14:43 AM [vite] (client) hmr update /src/lib/components/championship/ChampGetInvolved.svelte?svelte&type=style&lang.css, /src/app.css
+8:14:43 AM [vite] (ssr) page reload src/lib/components/championship/ChampGetInvolved.svelte
+8:17:56 AM [vite] (client) hmr update /src/lib/components/championship/ChampIntro.svelte, /src/lib/components/championship/ChampIntro.svelte?svelte&type=style&lang.css, /src/app.css
+8:17:56 AM [vite] (ssr) page reload src/lib/components/championship/ChampIntro.svelte
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:18:04 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:18:04 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:18:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:18:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+8:19:41 AM [vite] (client) hmr update /src/lib/components/championship/ChampIntro.svelte, /src/lib/components/championship/ChampIntro.svelte?svelte&type=style&lang.css, /src/app.css
+8:19:41 AM [vite] (ssr) page reload src/lib/components/championship/ChampIntro.svelte
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:19:48 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:19:48 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:19:48 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:19:48 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+
+[1;31m[404] GET /images/championship/cta-triumph.png[0m
+8:21:10 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+8:21:10 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte

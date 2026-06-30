@@ -89,6 +89,11 @@
     grid-template-columns: 0.85fr 1.15fr;
     gap: 64px;
     align-items: start;
+    background-image: url('/images/championship/about-new.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    padding: 32px;
   }
 
   .champ-about-sticky {
