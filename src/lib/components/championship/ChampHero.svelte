@@ -1,13 +1,12 @@
 <script lang="ts">
+  import heroBg from '$lib/assets/images/hero-bg.png?enhanced';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
-  let loaded = $state(true);
 </script>
 
 <section class="champ-hero">
-  <div class="champ-hero-bg" class:loaded>
-    <div class="champ-hero-overlay"></div>
-    <div class="champ-hero-noise"></div>
-  </div>
+  <enhanced:img src={heroBg} alt="" class="champ-hero-bg-img" sizes="100vw" fetchpriority="high" />
+  <div class="champ-hero-overlay"></div>
+  <div class="champ-hero-noise"></div>
   <div class="champ-hero-body container">
     <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
     <h1 class="champ-hero-title">
@@ -33,19 +32,13 @@
     background: var(--surface-dark);
   }
 
-  .champ-hero-bg {
+  .champ-hero-bg-img {
     position: absolute;
     inset: 0;
-    background-image: url('/hero-bg.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     filter: saturate(1.05) contrast(1.1);
-  }
-
-  .champ-hero-bg.loaded {
-    opacity: 1;
   }
 
   .champ-hero-overlay {
@@ -78,7 +71,7 @@
 
   .champ-hero-eyebrow {
     margin: 0 0 12px;
-    font-size: 13px;
+    font-size: clamp(0.875rem, 1.6vw, 1.25rem);
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;

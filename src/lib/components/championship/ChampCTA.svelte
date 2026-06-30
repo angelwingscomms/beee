@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ctaBg from '$lib/assets/images/championship/cta-bg.png?enhanced';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
   let el: HTMLElement;
   let visible = $state(false);
@@ -13,8 +14,8 @@
   });
 </script>
 
-<section bind:this={el} class="champ-cta" class:visible>
-  <div class="champ-cta-bg"></div>
+<section bind:this={el} class="champ-cta" class:visible style="--cta-bg: url({ctaBg.img.src})">
+  <div class="champ-cta-bg" style="background-image: url({ctaBg.img.src})"></div>
   <div class="champ-cta-overlay"></div>
   <div class="champ-cta-noise"></div>
   <div class="container champ-cta-body" class:visible>
@@ -42,8 +43,6 @@
   .champ-cta-bg {
     position: absolute;
     inset: 0;
-    /* TODO: Generate — Photorealistic 3D render, full row of ivory-and-gold chess pieces like triumphant army on reflective marble, crowned king and queen elevated center, backlit by bright golden nebula burst, ringed planet and asteroids, warm victorious glow, wide cinematic 16:9, darker clear band at bottom for CTA buttons. */
-    background-image: url('/images/championship/cta-triumph.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -61,9 +60,8 @@
     position: absolute;
     inset: 0;
     background:
-      /* Increased center opacity for bright golden background */
       radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.35) 0%, rgba(24,23,21,0.88) 100%),
-      url('/images/championship/cta-bg.png');
+      var(--cta-bg);
     background-size: cover;
     background-position: center;
   }

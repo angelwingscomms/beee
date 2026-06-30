@@ -1,6 +1,7 @@
 <script lang="ts">
   import { scroll } from 'motion';
   import { onMount } from 'svelte';
+  import aboutBg from '$lib/assets/images/championship/about-new.png?enhanced';
 
   let section: HTMLElement;
   let progress = $state(0);
@@ -35,7 +36,7 @@
   }
 </script>
 
-<section bind:this={section} class="champ-about">
+<section bind:this={section} class="champ-about" style="background-image: url({aboutBg.img.src})">
   <div class="champ-about-bg"></div>
   <div class="champ-about-gradient"></div>
   <div class="champ-about-pin" bind:this={pinBox}>
@@ -60,7 +61,6 @@
   .champ-about {
     position: relative;
     color: var(--on-dark);
-    background-image: url('/images/championship/about-new.png');
     background-size: cover;
     background-position: center;
   }

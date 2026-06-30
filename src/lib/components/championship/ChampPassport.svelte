@@ -17,7 +17,7 @@
   ];
 </script>
 
-<section class="section-dark champ-passport" use:motionFadeUp>
+<section class="section-soft champ-passport" use:motionFadeUp>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-passport-header">
       <h2 class="champ-passport-title">The T.E.A.M.U.P. Development Passport</h2>
@@ -35,7 +35,7 @@
       {/each}
 
       {#each regular as item, i}
-        <div class="bento-cell" class:bento-wide={i === regular.length - 1} style="--ca: {item.a || 'var(--on-dark-soft)'}">
+        <div class="bento-cell" class:bento-wide={i === regular.length - 1} style="--ca: {item.a || 'var(--muted)'}">
           <span class="bento-iw">
             <svelte:component this={item.icon} size={18} />
           </span>
@@ -70,14 +70,14 @@
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
-    color: var(--on-dark);
+    color: var(--ink);
     margin: 0;
   }
 
   .champ-passport-lede {
     font-size: 16px;
     line-height: 1.6;
-    color: var(--on-dark-soft);
+    color: var(--body);
     margin: 16px 0 0;
   }
 
@@ -95,15 +95,15 @@
     gap: 20px;
     padding: 32px 28px;
     border-radius: 12px;
-    background: var(--surface-dark-elevated);
-    border: 1px solid rgba(250, 249, 245, 0.06);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
     transition: transform 300ms ease, box-shadow 300ms ease;
     cursor: default;
   }
 
   .bento-feat:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
   }
 
   .bento-feat-iw {
@@ -122,7 +122,7 @@
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    color: var(--on-dark);
+    color: var(--ink);
   }
 
   .bento-cell {
@@ -131,16 +131,16 @@
     gap: 14px;
     padding: 20px 22px;
     border-radius: 12px;
-    background: var(--surface-dark-elevated);
-    border: 1px solid rgba(250, 249, 245, 0.06);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
     transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
     cursor: default;
   }
 
   .bento-cell:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-color: color-mix(in srgb, var(--ca) 30%, rgba(250, 249, 245, 0.06));
+    box-shadow: 0 8px 24px rgba(20, 20, 19, 0.06);
+    border-color: color-mix(in srgb, var(--ca) 30%, var(--hairline));
   }
 
   .bento-wide {
@@ -153,24 +153,24 @@
     display: grid;
     place-items: center;
     border-radius: 10px;
-    background: var(--surface-dark-soft);
+    background: var(--surface-soft);
     color: var(--ca);
     flex-shrink: 0;
   }
 
   .bento-cell:hover .bento-iw {
-    background: color-mix(in srgb, var(--ca) 18%, var(--surface-dark-soft));
+    background: color-mix(in srgb, var(--ca) 18%, var(--surface-soft));
   }
 
   .bento-l {
     font-size: 14px;
     line-height: 1.35;
-    color: var(--on-dark-soft);
+    color: var(--body);
     transition: color 300ms ease;
   }
 
   .bento-cell:hover .bento-l {
-    color: var(--on-dark);
+    color: var(--ink);
   }
 
   .bento-stamp {
@@ -178,15 +178,15 @@
     place-items: center;
     padding: 20px;
     border-radius: 12px;
-    background: var(--surface-dark-elevated);
-    border: 1px solid rgba(250, 249, 245, 0.06);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
   }
 
   .stamp-r {
     width: 84px;
     height: 84px;
     border-radius: 999px;
-    border: 2px solid rgba(250, 249, 245, 0.08);
+    border: 2px solid var(--hairline);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -198,19 +198,19 @@
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.18em;
-    color: rgba(250, 249, 245, 0.15);
+    color: var(--muted-soft);
     text-transform: uppercase;
   }
 
   .stamp-d {
     font-size: 6px;
-    color: rgba(250, 249, 245, 0.1);
+    color: var(--hairline);
   }
 
   .champ-passport-footer p {
     font-size: 15px;
     line-height: 1.6;
-    color: var(--on-dark-soft);
+    color: var(--body);
     max-width: 680px;
     margin: 0;
   }

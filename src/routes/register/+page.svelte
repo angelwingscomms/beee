@@ -1,4 +1,5 @@
 <script lang="ts">
+  import regBg from '$lib/assets/images/register-bg.png?enhanced';
   import ConfirmationModal from '../../components/ConfirmationModal.svelte';
   import PhoneInput from '$lib/components/PhoneInput.svelte';
   import TextInput from '$lib/components/TextInput.svelte';
@@ -105,7 +106,7 @@
   <meta name="description" content="Register your child for the BEEE T.E.A.M.U.P. programme and Spectacular Chess Championship Abuja 2026." />
 </svelte:head>
 
-<div class="overflow-x-hidden w-full max-w-full reg-page">
+<div class="overflow-x-hidden w-full max-w-full reg-page" style="background: url({regBg.img.src}) center center / cover no-repeat fixed">
   <div class="reg-bg-overlay"></div>
   <section class="reg-header" use:motionFadeUp>
     <div class="container">
@@ -184,7 +185,6 @@
 <style>
   .reg-page {
     position: relative;
-    background: url('/register-bg.png') center center / cover no-repeat fixed;
     min-height: 100vh;
   }
   .reg-bg-overlay {

@@ -1,48 +1,37 @@
 <script lang="ts">
   import { motionStagger } from '$lib/actions/motion';
-
   const features = [
     {
-      img: '/images/championship/bento_chess.png',
+      img: '/images/championship/technology.png',
       span: 'col-span-1 row-span-1',
       title: 'Technology',
       body: 'Using technology creatively and responsibly to solve problems and expand learning.'
     },
     {
-      img: '/images/championship/bento_mentor.png',
+      img: '/images/championship/enterprise.png',
       span: 'col-span-1 row-span-1',
       title: 'Enterprise',
       body: 'Developing initiative, innovation, entrepreneurship, and practical problem-solving skills.'
     },
     {
-      img: '/images/championship/bento_passport.png',
+      img: '/images/championship/art.png',
       span: 'col-span-1 row-span-1',
       title: 'Art',
       body: 'Encouraging creativity, imagination, communication, and design thinking.'
     },
     {
-      img: '/images/championship/bento_award.png',
+      img: '/images/championship/mentorship.png',
       span: 'col-span-1 row-span-1',
       title: 'Mentorship',
       body: 'Learning from experienced professionals, educators, and inspiring role models.'
     },
     {
-      img: '/images/championship/bento_family.png',
+      img: '/images/championship/upskill.png',
       span: 'col-span-1 row-span-1',
       title: 'Upskill',
       body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
     }
   ];
-
-  let loaded = $state<Set<number>>(new Set());
-  function on_img_load(i: number) {
-    loaded.add(i);
-    loaded = new Set(loaded);
-  }
-  function img_style(i: number) {
-    const f = features[i];
-    return `background-image: url(${f.img}); opacity: ${loaded.has(i) ? 1 : 0}; transition: opacity 300ms ease;`;
-  }
 </script>
 
 <section id="features" class="section-soft" use:motionStagger>
@@ -54,8 +43,8 @@
     <div class="champ-bento">
       {#each features as feat, i}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <div class="champ-bento-card {feat.span}" style={img_style(i)}>
-          <img src={feat.img} alt="" class="champ-bento-hidden" onload={() => on_img_load(i)} />
+        <div class="champ-bento-card {feat.span}">
+          <img src={feat.img} alt="" class="champ-bento-img" />
           <div class="champ-bento-overlay"></div>
           <div class="champ-bento-content">
             <h3 class="champ-bento-card-title">{feat.title}</h3>
@@ -103,18 +92,16 @@
     min-height: 280px;
     border-radius: 16px;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
     background-color: var(--surface-card);
     transition: transform 400ms ease;
   }
 
-  .champ-bento-hidden {
+  .champ-bento-img {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .champ-bento-card:hover {
