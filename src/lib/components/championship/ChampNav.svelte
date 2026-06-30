@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
@@ -16,10 +15,8 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
-      <a href="/register" class:active={path === '/register'}>Register</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
-    <RegisterBtn href="/register" class="champ-nav-cta">Register Now</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
@@ -27,9 +24,7 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
-      <a href="/register" class:active={path === '/register'} onclick={() => open = false}>Register</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
-      <RegisterBtn href="/register" onclick={() => open = false}>Register Now</RegisterBtn>
     </div>
   {/if}
 </nav>
@@ -163,13 +158,6 @@
     color: var(--ink);
   }
 
-  :global(.champ-nav-cta) {
-    min-height: 36px;
-    padding: 8px 18px;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
   .champ-mobile-btn {
     display: none;
     width: 36px;
@@ -237,14 +225,8 @@
     color: var(--ink);
   }
 
-  .champ-mobile-menu :global(.register-btn) {
-    text-align: center;
-    margin-top: 4px;
-  }
-
   @media (max-width: 767px) {
-    .champ-nav-links,
-    :global(.champ-nav-cta) {
+    .champ-nav-links {
       display: none;
     }
     .champ-mobile-btn {
