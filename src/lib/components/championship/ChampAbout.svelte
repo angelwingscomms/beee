@@ -36,6 +36,7 @@
 </script>
 
 <section bind:this={section} class="champ-about">
+  <div class="champ-about-bg"></div>
   <div class="champ-about-gradient"></div>
   <div class="champ-about-pin" bind:this={pinBox}>
     <div class="container champ-about-grid">
@@ -61,10 +62,21 @@
     color: var(--on-dark);
   }
 
+  .champ-about-bg {
+    position: absolute;
+    inset: 0;
+    /* TODO: Generate — Photorealistic 3D render, ivory-and-gold chess pieces blurred along bottom edge, vast pale blue-white nebula filling most of frame, tiny distant ringed planet, faint stars, upper two-thirds clear for text, calm airy mood, wide 16:9. */
+    background-image: url('/images/championship/about-nebula.png');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.9) contrast(0.95);
+  }
+
   .champ-about-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    /* Increased opacity for pale nebula background */
+    background: linear-gradient(180deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 100%);
     z-index: 0;
   }
 

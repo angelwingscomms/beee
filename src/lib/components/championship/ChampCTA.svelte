@@ -42,7 +42,8 @@
   .champ-cta-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://picsum.photos/seed/chess-tournament-finale/1920/1080');
+    /* TODO: Generate — Photorealistic 3D render, full row of ivory-and-gold chess pieces like triumphant army on reflective marble, crowned king and queen elevated center, backlit by bright golden nebula burst, ringed planet and asteroids, warm victorious glow, wide cinematic 16:9, darker clear band at bottom for CTA buttons. */
+    background-image: url('/images/championship/cta-triumph.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -60,7 +61,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.15) 0%, rgba(24,23,21,0.85) 100%),
+      /* Increased center opacity for bright golden background */
+      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,23,21,0.35) 0%, rgba(24,23,21,0.88) 100%),
       url('/images/championship/cta-bg.png');
     background-size: cover;
     background-position: center;

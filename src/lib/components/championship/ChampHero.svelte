@@ -13,8 +13,7 @@
     <h1 class="champ-hero-title">
       More Than a Chess Championship
     </h1>
-    <p class="champ-hero-sub">The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P.™ (Technology, Enterprise, Art, Mentorship and Upskill) Development Programme.</p>
-    <p class="champ-hero-sub">Designed for chess players aged 10–14 years in schools across Abuja, the programme provides participants with a structured journey of learning, achievement, and competition that extends far beyond the chessboard.</p>
+    <p class="champ-hero-hook">Chess, leadership, mentorship, and creativity &mdash; one journey for Abuja's youth.</p>
     <div class="champ-hero-actions">
       <RegisterBtn href="/register" class="champ-hero-btn-primary">Make Your Move</RegisterBtn>
       <a href="/register" class="champ-hero-btn-secondary">Register Now</a>
@@ -37,7 +36,8 @@
   .champ-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/cosmic-chess-bg.png');
+    /* TODO: Generate 3D render via prompt — see docs/images/prompt-guide.md. Use style: Surreal digital painting — ivory-and-gold chess queen on glossy marble, ringed Saturn-like planet upper-left, white-gold nebula burst, pale blue starfield, generous empty sky in upper third. */
+    background-image: url('/images/championship/hero-cosmic.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -53,7 +53,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.3) 0%, rgba(24,23,21,0.78) 100%);
+      /* Increased opacity for light/pale hero background */
+      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.5) 0%, rgba(24,23,21,0.85) 100%);
   }
 
   .champ-hero-noise::before {
@@ -97,12 +98,14 @@
     text-wrap: balance;
   }
 
-  .champ-hero-sub {
+  .champ-hero-hook {
     max-width: 580px;
-    margin: 28px auto 0;
-    font-size: 17px;
-    line-height: 1.65;
-    color: rgba(250, 249, 245, 0.7);
+    margin: 20px auto 0;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(250, 249, 245, 0.75);
+    font-family: var(--font-display);
+    font-style: italic;
   }
 
   .champ-hero-actions {
@@ -153,8 +156,8 @@
     .champ-hero-title {
       font-size: clamp(2rem, 7vw, 2.6rem);
     }
-    .champ-hero-sub {
-      font-size: 15px;
-      margin-top: 20px;
+    .champ-hero-hook {
+      font-size: 16px;
+      margin-top: 16px;
     }  }
 </style>

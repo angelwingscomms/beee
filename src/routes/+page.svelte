@@ -1,5 +1,6 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import ChampIntro from '$lib/components/championship/ChampIntro.svelte';
   import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
   import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
@@ -60,6 +61,7 @@
 
 <main class="overflow-x-hidden w-full max-w-full">
   <ChampHero />
+  <ChampIntro />
   <ChampAbout />
   <ChampFeatures />
   <ChampPassport />
