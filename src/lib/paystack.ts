@@ -1,7 +1,12 @@
 // Shared Paystack utilities — server-side only
 // All amounts are in kobo (NGN × 100)
 
-import { env } from '$env/dynamic/private';
+import {
+	PAYSTACK_TEST,
+	PAYSTACK_SECRET_KEY,
+	PAYSTACK_SECRET_KEY_TEST,
+	PAYSTACK_SECRET_KEY_LIVE,
+} from '$env/static/private';
 import { dev } from '$app/environment';
 import { createHmac } from 'crypto';
 
@@ -30,22 +35,21 @@ export interface PaystackVerifyResult {
 
 /** Get secret key dynamically based on PAYSTACK_TEST config or SvelteKit environment */
 export function get_secret_key(): string {
-	const paystack_test = env.PAYSTACK_TEST;
-	const is_test = paystack_test !== undefined && paystack_test !== null
-		? paystack_test === '.'
+	const is_test = PAYSTACK_TEST !== undefined && PAYSTACK_TEST !== null
+		? PAYSTACK_TEST === '.'
 		: dev;
-	console.log(`[paystack] get_secret_key: PAYSTACK_TEST=${paystack_test}, dev=${dev}, is_test=${is_test}`);
+	console.log(`[paystack] get_secret_key: PAYSTACK_TEST=${PAYSTACK_TEST}, dev=${dev}, is_test=${is_test}`);
 
 	const all_keys = {
-		test: env.PAYSTACK_SECRET_KEY_TEST ? mask(env.PAYSTACK_SECRET_KEY_TEST) : 'unset',
-		live: env.PAYSTACK_SECRET_KEY_LIVE ? mask(env.PAYSTACK_SECRET_KEY_LIVE) : 'unset',
-		legacy: env.PAYSTACK_SECRET_KEY ? mask(env.PAYSTACK_SECRET_KEY) : 'unset',
+		test: PAYSTACK_SECRET_KEY_TEST ? mask(PAYSTACK_SECRET_KEY_TEST) : 'unset',
+		live: PAYSTACK_SECRET_KEY_LIVE ? mask(PAYSTACK_SECRET_KEY_LIVE) : 'unset',
+		legacy: PAYSTACK_SECRET_KEY ? mask(PAYSTACK_SECRET_KEY) : 'unset',
 	};
 	console.log(`[paystack] get_secret_key: all available keys`, all_keys);
 
 	const key = is_test
-		? (env.PAYSTACK_SECRET_KEY_TEST || env.PAYSTACK_SECRET_KEY)
-		: (env.PAYSTACK_SECRET_KEY_LIVE || env.PAYSTACK_SECRET_KEY);
+		? (PAYSTACK_SECRET_KEY_TEST || PAYSTACK_SECRET_KEY)
+		: (PAYSTACK_SECRET_KEY_LIVE || PAYSTACK_SECRET_KEY);
 	console.log(`[paystack] get_secret_key: resolved key ${key ? mask(key) : 'EMPTY'}`);
 	return key || '';
 }
