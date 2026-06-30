@@ -9,16 +9,10 @@
   let gl = $state('');
   let em = $state('');
   let ph = $state('+234');
-  let pf = $state('');
-  let pl = $state('');
-  let sc = $state('');
-
   let gfe = $state('');
   let gle = $state('');
   let eme = $state('');
   let phe = $state('');
-  let pfe = $state('');
-  let ple = $state('');
 
   let showConfirmation = $state(false);
   let isProcessing = $state(false);
@@ -30,12 +24,11 @@
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
-    ph.trim() && ph.trim() !== '+234' &&
-    pf.trim() && pl.trim()
+    ph.trim() && ph.trim() !== '+234'
   );
 
   function clearErrors() {
-    gfe = ''; gle = ''; eme = ''; phe = ''; pfe = ''; ple = '';
+    gfe = ''; gle = ''; eme = ''; phe = '';
   }
 
   function validateForm(): boolean {
@@ -47,8 +40,6 @@
     if (!em.trim()) { eme = 'Required'; v = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
     if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
-    if (!pf.trim()) { pfe = 'Required'; v = false; }
-    if (!pl.trim()) { ple = 'Required'; v = false; }
     return v;
   }
 
@@ -132,23 +123,12 @@
         onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}
       >
         <fieldset class="reg-fieldset">
-          <legend class="reg-legend">Parent / Guardian</legend>
           <div class="reg-row">
             <TextInput id="gf" label="First name" bind:value={gf} required wrapperClass="!bg-surface-card !border-transparent" error={gfe} oninput={() => gfe = ''} />
             <TextInput id="gl" label="Last name" bind:value={gl} required wrapperClass="!bg-surface-card !border-transparent" error={gle} oninput={() => gle = ''} />
           </div>
           <TextInput id="em" label="Email" type="email" bind:value={em} required wrapperClass="!bg-surface-card !border-transparent" error={eme} oninput={() => eme = ''} />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
-        </fieldset>
-
-        <div class="reg-divider"><span>Participant details</span></div>
-
-        <fieldset class="reg-fieldset">
-          <div class="reg-row">
-            <TextInput id="pf" label="First name" bind:value={pf} required wrapperClass="!bg-surface-card !border-transparent" error={pfe} oninput={() => pfe = ''} />
-            <TextInput id="pl" label="Last name" bind:value={pl} required wrapperClass="!bg-surface-card !border-transparent" error={ple} oninput={() => ple = ''} />
-          </div>
-          <TextInput id="sc" label="School name (optional)" bind:value={sc} wrapperClass="!bg-surface-card !border-transparent" />
         </fieldset>
 
         {#if apiError}
