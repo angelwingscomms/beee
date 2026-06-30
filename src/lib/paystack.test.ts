@@ -36,9 +36,9 @@ describe('Paystack Key Selection Logic', () => {
 		expect(get_secret_key()).toBe('sk_test_123');
 	});
 
-	it('should use LIVE key if PAYSTACK_TEST is empty string ""', () => {
+	it('should use LIVE key if PAYSTACK_TEST is "0"', () => {
 		mock_env = {
-			PAYSTACK_TEST: '',
+			PAYSTACK_TEST: '0',
 			PAYSTACK_SECRET_KEY_TEST: 'sk_test_123',
 			PAYSTACK_SECRET_KEY_LIVE: 'sk_live_456'
 		};
