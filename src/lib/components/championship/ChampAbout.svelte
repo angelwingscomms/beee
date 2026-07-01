@@ -25,7 +25,7 @@
     'At BEEE, we believe every young person possesses extraordinary potential waiting to be discovered and developed.',
     'Our mission is to provide opportunities that cultivate strategic thinking, leadership, creativity, collaboration, critical reasoning, resilience, confidence, and lifelong learning through carefully designed experiences centred around chess.',
     'Chess is not the destination. It is the platform.',
-    'Our vision: a generation of young thinkers, innovators, leaders, and changemakers who apply the strategic lessons of chess to academics, leadership, entrepreneurship, and life.'
+    'Our vision: to create a generation of young thinkers, innovators, leaders, and changemakers who apply the strategic lessons of chess to academics, leadership, entrepreneurship, and life.'
   ];
 
   function word_reveal(word_idx: number, para_idx: number) {
@@ -88,16 +88,10 @@
   }
 
   .champ-about-grid {
+    max-width: 50%;
+    margin-left: auto;
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 64px;
-    align-items: start;
-
-  }
-
-  .champ-about-sticky {
-    position: sticky;
-    top: 120px;
+    gap: 32px;
   }
 
   .champ-about-title {
@@ -132,11 +126,8 @@
       padding: 80px 0;
     }
     .champ-about-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .champ-about-sticky {
-      position: static;
+      max-width: 100%;
+      gap: 20px;
     }
     .champ-about-text p {
       font-size: 14px;
