@@ -105,6 +105,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					s: 'reg',
 					fn: reg_data.fn as string,
 					ln: reg_data.ln as string,
+					sn: reg_data.sn as string,
 					e: reg_data.e as string,
 					p: reg_data.p as string,
 					st: 'paid',

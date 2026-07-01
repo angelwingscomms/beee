@@ -12,7 +12,7 @@
     <h1 class="champ-hero-title">
       More Than a Chess Championship
     </h1>
-    <p class="champ-hero-hook">Chess, leadership, mentorship, and creativity &mdash; one journey for Abuja's youth.</p>
+    <p class="champ-hero-hook"><span>Leadership, Mentorship, and Growth</span><span class="champ-hero-hook-cursive"> &mdash; make your move</span></p>
     <div class="champ-hero-actions">
       <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
       <a href="#champ-intro" class="champ-hero-btn-secondary">Learn more</a>
@@ -90,13 +90,18 @@
   }
 
   .champ-hero-hook {
-    max-width: 580px;
+    max-width: 800px;
     margin: 20px auto 0;
     font-size: 18px;
     line-height: 1.5;
     color: rgba(250, 249, 245, 0.75);
+    font-family: var(--font-body);
+  }
+  .champ-hero-hook-cursive {
     font-family: var(--font-display);
     font-style: italic;
+    font-weight: 700;
+    font-size: 1.3em;
   }
 
   .champ-hero-actions {

@@ -4,6 +4,7 @@
 	let {
 		firstName,
 		lastName,
+		school,
 		email,
 		phone,
 		AMOUNT,
@@ -13,6 +14,7 @@
 	}: {
 		firstName: string;
 		lastName: string;
+		school: string;
 		email: string;
 		phone: string;
 		AMOUNT: number;
@@ -40,6 +42,7 @@
 					<div class="summary-item">
 						<div>
 							<strong>{firstName} {lastName}</strong>
+							<span>{school}</span>
 							<span>{email}</span>
 							<span>{phone}</span>
 						</div>
@@ -50,7 +53,7 @@
 			<div class="modal-total">
 				<div>
 					<p>Register now</p>
-					<p class="summary-item-desc">₦12,500 per participant</p>
+					<p class="summary-item-desc">{formatCurrency(AMOUNT)} per participant</p>
 				</div>
 				<strong>{formatCurrency(AMOUNT)}</strong>
 			</div>

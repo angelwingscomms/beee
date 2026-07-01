@@ -136,7 +136,7 @@
 
 			<h1 id="event-title" class="championship-title flex flex-col">
   <span class="text-[32px] font-championship font-bold mb-2">BEEE Spectacular Chess Championship</span>
-  <span class="text-[20px] font-championship" style="color:var(--primary)">Abuja 2026</span>
+  <span class="text-[20px] font-championship" style="color:white">Abuja 2026</span>
 </h1>
 
 			<p class="welcome-text">Welcome to a unique championship experience that redefines engagement among young minds.</p>

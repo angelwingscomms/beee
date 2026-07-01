@@ -1,5 +1,16 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import { motionFadeUp } from '$lib/actions/motion';
+
+  let links = $derived.by(() => {
+    let p = $page.url.pathname;
+    return [
+      { href: '/', label: 'Home' },
+      { href: '/register', label: 'Registration' },
+      { href: '/teamup', label: 'T.E.A.M.U.P.' },
+      { href: '/faq', label: 'FAQ' },
+    ].filter(l => l.href !== p);
+  });
 </script>
 
 <section class="footer" use:motionFadeUp>
@@ -10,10 +21,9 @@
         <p class="footer-tagline">Be Everything Excellent Everyday</p>
       </div>
       <nav class="footer-nav">
-        <a href="/">Home</a>
-        <a href="/register">Registration</a>
-        <a href="/teamup">T.E.A.M.U.P.</a>
-        <a href="/faq">FAQ</a>
+        {#each links as l}
+          <a href={l.href}>{l.label}</a>
+        {/each}
       </nav>
     </div>
     <div class="footer-divider"></div>

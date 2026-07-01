@@ -23,9 +23,9 @@ describe('faq data integrity', () => {
 		}
 	});
 
-	it('total question count across all categories is 26', () => {
+	it('total question count across all categories is 34', () => {
 		const total = cs.reduce((s, c) => s + c.qs.length, 0);
-		expect(total).toBe(32);
+		expect(total).toBe(34);
 	});
 });
 

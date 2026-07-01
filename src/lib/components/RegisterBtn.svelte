@@ -42,14 +42,13 @@
     white-space: nowrap;
     opacity: 1;
   }
-  .register-btn:hover {
+  .register-btn:hover:not(:disabled) {
     transform: scale(1.02);
   }
-  .register-btn:active {
+  .register-btn:active:not(:disabled) {
     transform: scale(0.98);
   }
   .register-btn:disabled {
-    opacity: 0.35;
     cursor: not-allowed;
     transform: none;
   }

@@ -9,10 +9,12 @@
   let gf = $state('');
   let gl = $state('');
   let em = $state('');
+  let sc = $state('');
   let ph = $state('+234');
   let gfe = $state('');
   let gle = $state('');
   let eme = $state('');
+  let sce = $state('');
   let phe = $state('');
 
   let showConfirmation = $state(false);
@@ -20,16 +22,16 @@
   let apiError = $state('');
   let registrationId = $state('');
 
-  const AMOUNT = 12500;
+  const AMOUNT = 15000;
 
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
-    ph.trim() && ph.trim() !== '+234'
+    sc.trim() && ph.trim() && ph.trim() !== '+234'
   );
 
   function clearErrors() {
-    gfe = ''; gle = ''; eme = ''; phe = '';
+    gfe = ''; gle = ''; eme = ''; sce = ''; phe = '';
   }
 
   function validateForm(): boolean {
@@ -40,6 +42,7 @@
     if (!gl.trim()) { gle = 'Required'; v = false; }
     if (!em.trim()) { eme = 'Required'; v = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
+    if (!sc.trim()) { sce = 'Required'; v = false; }
     if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
     return v;
   }
@@ -57,7 +60,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim() })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim() })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -112,7 +115,6 @@
     <div class="container">
       <p class="reg-event">BEEE Spectacular Chess Championship</p>
       <h1 class="reg-title">Abuja 2026</h1>
-      <p class="reg-deadline">Registration closes June 18, 2026 — limited slots</p>
     </div>
   </section>
 
@@ -128,6 +130,7 @@
             <TextInput id="gf" label="First name" bind:value={gf} required error={gfe} oninput={() => gfe = ''} />
             <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
+          <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
           <TextInput id="em" label="Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
@@ -137,20 +140,25 @@
         {/if}
 
         <RegisterBtn class="reg-submit" disabled={!allValid}>
-          Register — ₦12,500
+          Register
         </RegisterBtn>
+        <div class="reg-fine">
+          <p>Qualification slots are limited and will be allocated on a first-completed-registration basis</p>
+          <p>Participants must be between 10 and 14 years of age</p>
+          <p>Sponsorship of participants is by parents or other interested sponsor</p>
+        </div>
       </form>
 
       <aside class="reg-summary" use:motionFadeUp>
         <div class="reg-summary-price">
-          <span class="reg-amount">₦12,500</span>
+          <span class="reg-amount">₦15,000</span>
           <span class="reg-per">per participant</span>
         </div>
         <div class="reg-summary-deadline">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" rx="7.5" stroke="currentColor"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-linecap="round"/></svg>
-          Deadline: June 18, 2026
+          Limited slots available
         </div>
-        <p class="reg-summary-note">Registration may be completed by a parent or sponsor</p>
+        <p class="reg-summary-note">Registration may be paid for by a parent or sponsor</p>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div>
@@ -162,17 +170,13 @@
     </div>
   </section>
 
-  <section class="reg-fine">
-    <div class="container">
-      <p>Qualification slots are limited and will be allocated on a first-completed-registration basis <span class="reg-bul">·</span> Registration closes on June 18, 2026, or earlier if available placement slots are filled <span class="reg-bul">·</span> Participants must be between 10 and 14 years of age <span class="reg-bul">·</span> Sponsorship of participants is by parents or other interested sponsor</p>
-    </div>
-  </section>
 </div><!-- .reg-page -->
 
 {#if showConfirmation}
   <ConfirmationModal
     firstName={gf}
     lastName={gl}
+    school={sc}
     email={em}
     phone={ph}
     {AMOUNT}
@@ -216,16 +220,9 @@
     font-weight: 500;
     line-height: 1.06;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    color: white;
     margin: 0 0 10px;
   }
-  .reg-deadline {
-    font-family: var(--font-registration);
-    font-size: clamp(14px, 1.2vw, 16px);
-    color: white;
-    margin: 0;
-  }
-
   .reg-body {
     padding: 56px 0 80px;
   }
@@ -373,13 +370,16 @@
   }
 
   .reg-fine {
-    padding: 0 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 16px 0 0;
   }
   .reg-fine p {
     font-family: var(--font-registration);
     font-size: 13px;
-    line-height: 1.7;
-    color: var(--on-dark-soft);
+    line-height: 1.5;
+    color: white;
     margin: 0;
   }
   .reg-bul {

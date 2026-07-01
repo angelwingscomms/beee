@@ -8,9 +8,10 @@ export const cs: FaqC[] = [
 			{ q: 'Is this only a chess tournament?', a: 'No. The championship includes a structured development programme that extends beyond competition and focuses on building well-rounded young thinkers, leaders, and problem-solvers.' },
 			{ q: 'Who can participate?', a: 'Primary and secondary school students who meet the eligibility requirements published by the championship organisers.' },
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
-			{ q: 'What age group can participate?', a: 'Chess players aged 10–14.' },
+			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
 			{ q: 'Where is the championship held?', a: 'Abuja.' },
 			{ q: 'When does the programme run?', a: 'Summer through October.' },
+			{ q: 'What are the competition dates?', a: 'Specific competition dates and stages are published on the official championship website and communicated to registered participants.' },
 		]
 	},
 	{
@@ -45,12 +46,12 @@ export const cs: FaqC[] = [
 			{ q: 'How does the championship work?', a: 'Participants progress through various stages of development and competition leading to the Championship Grand Finale.' },
 			{ q: 'What happens after registration?', a: 'Participants begin the T.E.A.M.U.P. Development Programme and prepare for championship activities and competition stages.' },
 			{ q: 'How are winners determined?', a: 'Winners are determined according to the official competition rules and scoring procedures.' },
-			{ q: 'Will participants receive certificates?', a: 'Yes. Eligible participants may receive certificates of participation, achievement, and other forms of recognition.' },
+			{ q: 'Are certificates issued?', a: 'Yes. Eligible participants may receive certificates of participation, achievement, and other forms of recognition.' },
 		]
 	},
 	{
 		i: 'awards', n: 'Awards', qs: [
-			{ q: 'What awards are available?', a: 'Awards may include championship trophies, medals, certificates, achievement awards, leadership recognition awards, innovation awards, and special merit awards.' },
+			{ q: 'What are the prizes?', a: 'Prizes may include championship trophies, medals, certificates, achievement awards, leadership recognition awards, innovation awards, and special merit awards.' },
 			{ q: 'Are there awards for schools?', a: 'Yes. Schools may also receive recognition based on participation and championship performance.' },
 		]
 	},
@@ -58,8 +59,9 @@ export const cs: FaqC[] = [
 		i: 'parents', n: 'Parents & Schools', qs: [
 			{ q: 'How can parents support participants?', a: 'Parents can monitor progress through the Development Passport, encourage participation, and support learning activities throughout the programme.' },
 			{ q: 'How will schools benefit?', a: 'Schools gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and student achievement.' },
-			{ q: 'Will progress reports be available?', a: 'Yes. Progress information will be available through the participant\'s Development Passport and other programme reporting mechanisms.' },
+			{ q: 'How will progress be tracked?', a: 'Progress is tracked through the participant\'s T.E.A.M.U.P. Development Passport, which records attendance, milestones, badges, assessment results, and other achievements.' },
 			{ q: 'Why should my school partner with BEEE?', a: 'Affiliate schools may complement their summer activities with the T.E.A.M.U.P. programme and benefit from its developmental opportunities.' },
+			{ q: 'What is expected of participating schools?', a: 'Participating schools are expected to support student registration, encourage engagement with the T.E.A.M.U.P. programme, facilitate participation in competition stages, and celebrate student achievements throughout the championship.' },
 		]
 	},
 ];
