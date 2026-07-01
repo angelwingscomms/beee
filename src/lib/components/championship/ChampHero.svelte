@@ -75,7 +75,7 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(250, 249, 245, 0.55);
+    color: var(--on-dark);
   }
 
   .champ-hero-title {
@@ -94,7 +94,7 @@
     margin: 20px auto 0;
     font-size: 18px;
     line-height: 1.5;
-    color: rgba(250, 249, 245, 0.75);
+    color: var(--on-dark);
     font-family: var(--font-body);
   }
   .champ-hero-hook-cursive {

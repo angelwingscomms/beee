@@ -77,3 +77,13 @@ https://svelte.dev/e/svelte_component_deprecated
 11:35:28 AM [vite] (client) page reload .svelte-kit/generated/root.js
 11:35:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 11:35:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:59:30 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+11:59:30 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:59:36 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+11:59:36 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+12:00:45 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+12:00:45 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+12:11:03 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+12:11:03 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+12:11:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+12:11:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
