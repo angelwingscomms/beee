@@ -31,3 +31,25 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 10:17:25 AM [vite-plugin-svelte] src/routes/register/+page.svelte:385:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+11:03:39 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/app.css
+11:03:39 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+11:03:43 AM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+11:03:43 AM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:03:47 AM [vite] (client) hmr update /src/lib/components/championship/ChampFeatures.svelte, /src/app.css
+11:03:47 AM [vite] (ssr) page reload src/lib/components/championship/ChampFeatures.svelte
+11:03:56 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+11:03:56 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+11:03:56 AM [vite] (client) hmr update /src/lib/components/championship/ChampPassport.svelte, /src/app.css
+11:03:56 AM [vite] (ssr) page reload src/lib/components/championship/ChampPassport.svelte
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:04:06 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:04:06 AM [vite] (client) page reload .svelte-kit/generated/root.js
+11:04:06 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:04:06 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

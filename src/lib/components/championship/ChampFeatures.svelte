@@ -29,7 +29,7 @@
       img: '/images/championship/upskill.png',
       span: 'col-span-1 row-span-1',
       title: 'Upskill',
-      body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
+      body: 'Building leadership, teamwork, communication, academic and intellectual growth, and other essential life skills for the future.'
     }
   ];
 </script>

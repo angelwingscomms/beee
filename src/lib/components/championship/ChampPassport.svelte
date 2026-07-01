@@ -14,6 +14,8 @@
     { icon: Star, label: 'Leadership experiences' },
     { icon: Users, label: 'Mentorship participation' },
     { icon: Trophy, label: 'Championship accomplishments' },
+    { icon: Medal, label: 'Chess performance assessments', a: 'var(--accent-amber)' },
+    { icon: ClipboardCheck, label: 'Attendance & consistency records' },
   ];
 </script>
 

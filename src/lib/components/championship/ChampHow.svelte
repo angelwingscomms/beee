@@ -23,13 +23,13 @@
     {
       num: '04',
       title: 'Compete',
-      body: 'Participate in exciting live preliminary events and immersive championship experiences.',
+      body: 'Face off in live preliminary events, advance through championship stages, and build team leadership, coordination, and strategic communication skills.',
       icon: '\u265C'
     },
     {
       num: '05',
       title: 'Become',
-      body: 'Celebrate your achievements at the BEEE Spectacular Chess Championship Abuja 2026 Grand Finale.',
+      body: 'Compete in the Elite Qualification stage and vie for a spot at the Championship Grand Finale — mastering command & execution, collaborative sport, and performing under pressure.',
       icon: '\u265A'
     }
   ];

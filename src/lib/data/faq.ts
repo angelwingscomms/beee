@@ -51,7 +51,7 @@ export const cs: FaqC[] = [
 	},
 	{
 		i: 'awards', n: 'Awards', qs: [
-			{ q: 'What are the prizes?', a: 'Prizes may include championship trophies, medals, certificates, achievement awards, leadership recognition awards, innovation awards, and special merit awards.' },
+			{ q: 'What are the prizes?', a: 'Prizes may include championship trophies, medals, certificates, achievement awards, T.E.A.M.U.P. Excellence Awards, leadership recognition awards, innovation awards, and special merit awards.' },
 			{ q: 'Are there awards for schools?', a: 'Yes. Schools may also receive recognition based on participation and championship performance.' },
 		]
 	},
