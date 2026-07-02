@@ -161,17 +161,6 @@
     font-size: 13px;
     white-space: nowrap;
   }
-  :global(.champ-nav-cta.register-btn) {
-    background: transparent !important;
-    border: 2px solid #F27830 !important;
-    color: #F27830 !important;
-    box-shadow: none !important;
-  }
-  :global(.champ-nav-cta.register-btn:hover) {
-    background: #F27830 !important;
-    color: #fff !important;
-  }
-
   .champ-nav-links a:hover {
     color: var(--ink);
     background: var(--surface-card);
