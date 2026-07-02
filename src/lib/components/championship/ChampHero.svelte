@@ -111,6 +111,7 @@
     text-align: left;
     padding: 120px 0 160px;
     max-width: 640px;
+    margin-left: 0;
   }
 
   .champ-hero-eyebrow {
