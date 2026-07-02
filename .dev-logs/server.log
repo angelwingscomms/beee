@@ -365,3 +365,15 @@ https://svelte.dev/e/css_unused_selector
 10:56:13 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 11:00:35 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
 11:00:35 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:01:47 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+11:01:47 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+11:02:39 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:02:39 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:02:44 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:02:44 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:03:36 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:03:36 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:05:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:05:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:09:44 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:09:44 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte

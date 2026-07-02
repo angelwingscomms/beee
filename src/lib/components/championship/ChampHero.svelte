@@ -26,10 +26,8 @@
 </script>
 
 <section class="champ-hero">
-  <div class="champ-hero-img-wrap">
-    <enhanced:img src={heroBg} alt="" class="champ-hero-bg-img" sizes="100vw" fetchpriority="high" />
-    <div class="champ-hero-fade"></div>
-  </div>
+  <enhanced:img src={heroBg} alt="" class="champ-hero-bg-img" sizes="100vw" fetchpriority="high" />
+  <div class="champ-hero-overlay"></div>
   <div class="champ-hero-noise"></div>
   <div class="champ-hero-body container">
     <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship</p>
@@ -65,30 +63,28 @@
     position: relative;
     min-height: 100dvh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
     background: var(--surface-dark);
   }
 
-  .champ-hero-img-wrap {
+  .champ-hero-bg-img {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .champ-hero-bg-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
     filter: saturate(1.05) contrast(1.1);
   }
 
-  .champ-hero-fade {
+  .champ-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--surface-dark) 0%, rgba(24,23,21,0.95) 40%, rgba(24,23,21,0.4) 65%, transparent 85%);
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
+      radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -108,10 +104,9 @@
   .champ-hero-body {
     position: relative;
     z-index: 2;
-    text-align: left;
+    text-align: center;
     padding: 120px 0 160px;
-    max-width: 640px;
-    margin-left: 0;
+    max-width: 880px;
   }
 
   .champ-hero-eyebrow {
@@ -124,7 +119,7 @@
   }
 
   .champ-hero-title {
-    margin: 0;
+    margin: 0 auto;
     font-family: var(--font-display);
     font-size: clamp(2.8rem, 4vw, 4.5rem);
     font-weight: 500;
@@ -138,7 +133,7 @@
 
   .champ-hero-hook {
     max-width: 800px;
-    margin: 20px 0 0;
+    margin: 20px auto 0;
     font-size: 18px;
     line-height: 1.5;
     color: var(--on-dark);
@@ -147,7 +142,7 @@
   .champ-hero-info {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 24px;
     margin-top: 12px;
     margin-bottom: 32px;
@@ -175,7 +170,7 @@
   .champ-hero-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 12px;
     margin-top: 0;
   }
@@ -213,7 +208,6 @@
   @media (max-width: 767px) {
     .champ-hero-body {
       padding: 100px 0 120px;
-      text-align: center;
     }
     .champ-hero-title {
       font-size: clamp(2rem, 7vw, 2.6rem);
@@ -221,19 +215,11 @@
     .champ-hero-hook {
       font-size: 16px;
       margin-top: 16px;
-    }
-    .champ-hero-fade {
-      background: linear-gradient(to top, var(--surface-dark) 0%, rgba(24,23,21,0.95) 30%, rgba(24,23,21,0.5) 60%, transparent 85%);
-    }
-    .champ-hero-actions {
-      justify-content: center;
-    }
-  }
+    }  }
   @media (max-width: 639px) {
     .champ-hero-info {
       flex-direction: column;
       gap: 8px;
-      align-items: center;
     }
     .champ-hero-info-divider {
       width: 40px;
