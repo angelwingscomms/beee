@@ -335,3 +335,7 @@ https://svelte.dev/e/component_invalid_directive
 10:21:18 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
 10:21:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
 10:21:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:40:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+10:40:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+10:41:13 PM [vite] (client) hmr update /src/routes/championship/+page.svelte, /src/app.css
+10:41:13 PM [vite] (ssr) page reload src/routes/championship/+page.svelte
