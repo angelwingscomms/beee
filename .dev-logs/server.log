@@ -261,3 +261,29 @@ https://svelte.dev/e/css_unused_selector
 9:32:41 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 9:32:41 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
 9:32:41 PM [vite] (ssr) page reload src/routes/+page.svelte
+9:50:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+9:50:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+9:50:27 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+9:50:27 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+9:50:38 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+9:50:38 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:50:53 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+9:50:53 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:50:57 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:131:2 Unused CSS selector ".champ-hero-hook-cursive"
+https://svelte.dev/e/css_unused_selector
+9:50:57 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+9:50:57 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:50:58 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:131:2 Unused CSS selector ".champ-hero-hook-cursive"
+https://svelte.dev/e/css_unused_selector
+9:51:01 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+9:51:01 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:51:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+9:51:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:51:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+9:51:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:51:17 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+9:51:17 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:51:25 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+9:51:25 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+9:51:31 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+9:51:31 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte

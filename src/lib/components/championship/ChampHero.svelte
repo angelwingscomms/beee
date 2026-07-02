@@ -13,25 +13,25 @@
     <h1 class="champ-hero-title">
       More Than a Chess Championship
     </h1>
-    <p class="champ-hero-hook"><span>Leadership, Mentorship, and Growth</span> <span class="champ-hero-hook-cursive">&mdash; make your move</span></p>
+    <p class="champ-hero-hook">Leadership, Mentorship, and Growth — Make your move.</p>
     <div class="champ-hero-info">
       <div class="champ-hero-info-item">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 6H15" stroke="currentColor" stroke-width="1.2"/><path d="M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M1 6H15" stroke="currentColor" stroke-width="2.5"/><path d="M5 1V4M11 1V4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
         <span>October 10, 2026</span>
       </div>
       <div class="champ-hero-info-divider"></div>
       <div class="champ-hero-info-item">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.2 1 3 3.2 3 6C3 9.5 8 15 8 15C8 15 13 9.5 13 6C13 3.2 10.8 1 8 1Z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="1.2"/></svg>
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.2 1 3 3.2 3 6C3 9.5 8 15 8 15C8 15 13 9.5 13 6C13 3.2 10.8 1 8 1Z" stroke="currentColor" stroke-width="2.5"/><circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="2.5"/></svg>
         <span>Abuja, Nigeria</span>
       </div>
       <div class="champ-hero-info-divider"></div>
       <div class="champ-hero-info-item">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5L7.5 2L14 2.5L13.5 9L8 15.5L2 8.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="10.5" cy="5.5" r="0.8" fill="currentColor"/></svg>
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5L7.5 2L14 2.5L13.5 9L8 15.5L2 8.5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="10.5" cy="5.5" r="0.8" fill="currentColor"/></svg>
         <span>₦{REG_AMOUNT.toLocaleString()} per participant</span>
       </div>
     </div>
     <div class="champ-hero-actions">
-      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
+      <RegisterBtn href="/register" class="champ-hero-btn-primary">Join the Waitlist</RegisterBtn>
       <a href="#champ-intro" class="champ-hero-btn-secondary">Why BEEE? →</a>
     </div>
   </div>
@@ -62,7 +62,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(24,23,21,0.3) 0%, rgba(24,23,21,0.78) 100%);
+      linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
+      radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
   }
 
   .champ-hero-noise::before {
@@ -89,10 +90,10 @@
   .champ-hero-eyebrow {
     margin: 0 0 12px;
     font-size: clamp(0.875rem, 1.6vw, 1.25rem);
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--on-dark);
+    color: var(--primary);
   }
 
   .champ-hero-title {
@@ -114,13 +115,6 @@
     color: var(--on-dark);
     font-family: var(--font-body);
   }
-  .champ-hero-hook-cursive {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 700;
-    font-size: 1.3em;
-  }
-
   .champ-hero-info {
     display: flex;
     align-items: center;
@@ -170,23 +164,19 @@
     padding: 14px 28px;
     border-radius: 999px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
-    background: transparent;
-    color: var(--on-dark);
-    border: 1px solid rgba(250, 249, 245, 0.25);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: rgba(250, 249, 245, 0.9);
+    border: 2px solid rgba(250, 249, 245, 0.7);
     transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
   }
 
-  .champ-hero-btn-secondary {
-    background: transparent;
-    color: var(--on-dark);
-    border: 1px solid rgba(250, 249, 245, 0.25);
-  }
-
   .champ-hero-btn-secondary:hover {
-    background: rgba(250, 249, 245, 0.08);
-    border-color: rgba(250, 249, 245, 0.4);
+    background: rgba(0,0,0,0.6);
+    border-color: rgba(250, 249, 245, 1);
     transform: scale(1.03);
   }
 
