@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="champ-hero-actions">
-      <RegisterBtn href="/register" class="champ-hero-btn-primary">Join the Waitlist</RegisterBtn>
+      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register</RegisterBtn>
       <a href="#champ-intro" class="champ-hero-btn-secondary">Why BEEE? →</a>
     </div>
   </div>
