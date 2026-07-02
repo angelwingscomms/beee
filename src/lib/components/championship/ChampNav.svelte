@@ -6,6 +6,13 @@
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
+  let ctaClasses = $derived(
+    `champ-nav-cta transition-all duration-300 ${
+      $isHeroCtaVisible
+        ? 'opacity-0 translate-y-[-10px] pointer-events-none'
+        : 'opacity-100 translate-y-0 pointer-events-auto'
+    }`
+  );
 </script>
 
 <nav class="champ-nav">
@@ -22,16 +29,7 @@
       <a href="/why-beee" class:active={path === '/why-beee'}>Why BEEE?</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
-    <RegisterBtn
-      href="/register"
-      class="champ-nav-cta transition-all duration-300"
-      class:opacity-0={$isHeroCtaVisible}
-      class:translate-y-[-10px]={$isHeroCtaVisible}
-      class:pointer-events-none={$isHeroCtaVisible}
-      class:opacity-100={!$isHeroCtaVisible}
-      class:translate-y-0={!$isHeroCtaVisible}
-      class:pointer-events-auto={!$isHeroCtaVisible}
-    >Register Now</RegisterBtn>
+    <RegisterBtn href="/register" class={ctaClasses}>Register Now</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>

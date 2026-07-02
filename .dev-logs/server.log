@@ -311,3 +311,27 @@ https://svelte.dev/e/css_unused_selector
 10:15:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
 10:15:18 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
 10:15:28 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:21:00 PM [vite] (ssr) Error when evaluating SSR module /src/routes/+layout.svelte: src/lib/components/championship/ChampNav.svelte:28:6 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: vite-plugin-svelte:compile
+  File: src/lib/components/championship/ChampNav.svelte:28:6
+   26 |        href="/register"
+   27 |        class="champ-nav-cta transition-all duration-300"
+   28 |        class:opacity-0={$isHeroCtaVisible}
+                                                  ^
+   29 |        class:translate-y-[-10px]={$isHeroCtaVisible}
+   30 |        class:pointer-events-none={$isHeroCtaVisible}
+
+[1;31m[500] GET /[0m
+
+
+[1;31m[500] GET /[0m
+
+
+[1;31m[404] GET /favicon.ico[0m
+
+[1;31m[500] GET /favicon.ico[0m
+
+10:21:18 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+10:21:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+10:21:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
