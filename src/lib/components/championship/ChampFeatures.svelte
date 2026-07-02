@@ -37,8 +37,8 @@
 <section id="features" class="section-soft" use:motionStagger>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-features-header">
-      <h2 class="champ-features-title">The T.E.A.M.U.P.™ Development Programme</h2>
-      <p class="champ-features-sub">The heart of the BEEE experience is the T.E.A.M.U.P.™ Development Programme. Throughout the summer holiday period, participants engage in structured online learning, challenges, mentorship, and developmental activities before progressing to immersive live championship experiences.</p>
+      <h2 class="champ-features-title">The TEAMUP™ Development Programme</h2>
+      <p class="champ-features-sub">The heart of the BEEE experience is the TEAMUP™ Development Programme. Throughout the summer holiday period, participants engage in structured online learning, challenges, mentorship, and developmental activities before progressing to preliminary live chess matches that will culminate in an immersive live championship experience.</p>
     </div>
     <div class="champ-bento">
       {#each features as feat, i}

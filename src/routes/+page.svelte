@@ -10,14 +10,14 @@
 
 <svelte:head>
   <title>BEEE Spectacular Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P. Programme. Designed for chess players aged 10–14 years in schools across Abuja." />
+  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Programme. Designed for chess players aged 10–14 years in schools across Abuja." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the T.E.A.M.U.P. Development Programme.",
+        "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Development Programme.",
         "startDate": "2026-06",
         "endDate": "2026-10",
         "location": {
@@ -46,7 +46,7 @@
         "name": "BEEE Spectacular Chess Championship",
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth development initiative combining competitive chess with leadership development and personal growth through the T.E.A.M.U.P. Programme.",
+        "description": "Youth development initiative combining competitive chess with leadership development and personal growth through the TEAMUP Programme.",
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "info@beeeproject.com",

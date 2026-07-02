@@ -126,7 +126,7 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
+			<a class="brand-lockup" href="/" aria-label="BEEE TEAMUP Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
 				<span class="logo-chip" style="display:flex;flex-direction:row;align-items:flex-start">
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
@@ -156,7 +156,7 @@
 							<div class="journey-step">
 								<div class="journey-body">
 									<span class="journey-date">July/August 2026</span>
-									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+									<span class="journey-name">BEEE TEAMUP Development</span>
 								</div>
 							</div>
 							<div class="journey-arrow"></div>
@@ -175,14 +175,14 @@
 				</div>
 				<div class="teamup-card">
 					<div class="flex items-baseline gap-x-2">
-					<h3 class="teamup-heading">About BEEE T.E.A.M.U.P.</h3>
+					<h3 class="teamup-heading">About BEEE TEAMUP</h3>
 					<span class="relative inline-flex items-end shrink-0">
 						<img src="/flower-gear.png" alt="" class="teamup-icon" />
 						<sup class="absolute top-0 -right-2.5 text-[6.5px] leading-none font-semibold" style="color:var(--primary)">TM</sup>
 					</span>
 				</div>
 					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
-					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
+					<p class="teamup-text">BEEE TEAMUP is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
 						<li>Advanced Chess Development</li>
 						<li>Creativity &amp; Innovation</li>

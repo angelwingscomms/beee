@@ -11,7 +11,7 @@
     },
     {
       name: 'Kelechi M.',
-      role: 'T.E.A.M.U.P. mentor',
+      role: 'TEAMUP mentor',
       quote: 'Watching these young minds discover their potential through chess is extraordinary. The framework gives them structure while the game teaches them life.'
     },
     {

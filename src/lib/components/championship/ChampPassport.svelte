@@ -22,8 +22,8 @@
 <section class="section-soft champ-passport" use:motionFadeUp>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-passport-header">
-      <h2 class="champ-passport-title">The T.E.A.M.U.P. Development Passport</h2>
-      <p class="champ-passport-lede">Every registered participant receives access to a personal digital T.E.A.M.U.P. Development Passport that records their progress throughout the programme.</p>
+      <h2 class="champ-passport-title">The TEAMUP Development Passport</h2>
+      <p class="champ-passport-lede">Every registered participant receives access to a personal digital TEAMUP Development Passport that records their progress throughout the programme.</p>
     </div>
 
     <div class="passport-bento" use:motionStaggered={{ stagger: 0.07, y: 16 }}>

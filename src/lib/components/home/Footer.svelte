@@ -7,7 +7,7 @@
     return [
       { href: '/', label: 'Home' },
       { href: '/register', label: 'Registration' },
-      { href: '/teamup', label: 'T.E.A.M.U.P.' },
+      { href: '/teamup', label: 'TEAMUP' },
       { href: '/faq', label: 'FAQ' },
     ].filter(l => l.href !== p);
   });

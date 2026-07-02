@@ -11,7 +11,7 @@
     {
       num: '02',
       title: 'Learn',
-      body: 'Complete T.E.A.M.U.P.\u2122 activities, assessments, and challenges online.',
+      body: 'Complete TEAMUP\u2122 activities, assessments, and challenges online.',
       icon: '\u265E'
     },
     {

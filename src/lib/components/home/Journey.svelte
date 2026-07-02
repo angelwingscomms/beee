@@ -13,7 +13,7 @@
       <div class="step-arrow"><ChevronDown size={20} /></div>
       <div class="step">
         <span class="step-num">02</span>
-        <span class="step-label">T.E.A.M.U.P. Development</span>
+        <span class="step-label">TEAMUP Development</span>
       </div>
       <div class="step-arrow"><ChevronDown size={20} /></div>
       <div class="step">

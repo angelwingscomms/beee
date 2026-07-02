@@ -12,7 +12,7 @@
       <nav class="tu-footer-nav">
         <a href="/">Home</a>
         <a href="/championship">Championship</a>
-        <a href="/teamup">T.E.A.M.U.P.</a>
+        <a href="/teamup">TEAMUP</a>
         <a href="/register">Registration</a>
         <a href="/faq">FAQ</a>
       </nav>

@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} — BEEE T.E.A.M.U.P.</title>
+	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} — BEEE TEAMUP</title>
 </svelte:head>
 
 <main class="callback-shell">

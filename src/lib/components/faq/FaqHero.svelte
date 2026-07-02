@@ -6,7 +6,7 @@
 	<div class="container">
 		<p class="eyebrow">FAQ</p>
 		<h1 class="display-lg">Frequently Asked Questions</h1>
-		<p class="faq-subtitle">Everything you need to know about the BEEE Spectacular Chess Championship Abuja 2026 and the T.E.A.M.U.P. Development Programme.</p>
+		<p class="faq-subtitle">Everything you need to know about the BEEE Spectacular Chess Championship Abuja 2026 and the TEAMUP Development Programme.</p>
 	</div>
 </section>
 

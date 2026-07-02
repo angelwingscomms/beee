@@ -14,7 +14,7 @@
     <div class="tu-nav-links">
       <a href="/">Home</a>
       <a href="/championship">Championship</a>
-      <a href="/teamup" class="active">T.E.A.M.U.P.</a>
+      <a href="/teamup" class="active">TEAMUP</a>
       <a href="/register">Register</a>
       <a href="/faq">FAQ</a>
     </div>
@@ -27,7 +27,7 @@
     <div class="tu-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" onclick={() => open = false}>Home</a>
       <a href="/championship" onclick={() => open = false}>Championship</a>
-      <a href="/teamup" class="active" onclick={() => open = false}>T.E.A.M.U.P.</a>
+      <a href="/teamup" class="active" onclick={() => open = false}>TEAMUP</a>
       <a href="/register" onclick={() => open = false}>Register</a>
       <a href="/faq" onclick={() => open = false}>FAQ</a>
       <a href="/register" class="button-primary" onclick={() => open = false}>Register Now</a>

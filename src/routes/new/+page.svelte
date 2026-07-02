@@ -202,7 +202,7 @@
             </div>
           {/each}
         {:else}
-          <span class="orbit-title">T.E.A.M.U.P.™</span>
+          <span class="orbit-title">TEAMUP™</span>
         {/if}
       </div>
     </div>

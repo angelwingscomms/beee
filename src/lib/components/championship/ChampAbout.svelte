@@ -22,7 +22,7 @@
   });
 
   const paragraphs = [
-    'At BEEE, we believe every young person possesses extraordinary potential waiting to be discovered and developed.',
+    'We believe every young person possesses extraordinary potential waiting to be discovered and developed.',
     'Our mission is to provide opportunities that cultivate strategic thinking, leadership, creativity, collaboration, critical reasoning, resilience, confidence, and lifelong learning through carefully designed experiences centred around chess.',
     'Chess is not the destination. It is the platform.',
     'Our vision: To create a generation of young thinkers, innovators, leaders, and changemakers who apply the strategic lessons of chess to academics, leadership, entrepreneurship, and life.'

@@ -10,11 +10,11 @@
   <div class="tu-hero-inner">
     <div class="tu-hero-content" use:motionFadeUp>
       <h1 class="tu-hero-title">
-        T.E.A.M.U.P.
+        TEAMUP
       </h1>
       <p class="tu-hero-sub">Development Beyond The Chessboard</p>
       <p class="tu-hero-body">
-        Every participant is automatically enrolled in the T.E.A.M.U.P. Development Programme upon registration. Designed to help young minds grow not only as chess players, but as learners, leaders, creators, and problem-solvers.
+        Every participant is automatically enrolled in the TEAMUP Development Programme upon registration. Designed to help young minds grow not only as chess players, but as learners, leaders, creators, and problem-solvers.
       </p>
       <div class="tu-hero-actions">
         <RegisterBtn href="/register" class="tu-hero-btn">Enrol Now</RegisterBtn>
