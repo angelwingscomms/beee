@@ -166,17 +166,23 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(250, 249, 245, 0.12);
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
     color: rgba(250, 249, 245, 0.9);
-    border: 2px solid rgba(250, 249, 245, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+      inset 1px 0 0 rgba(255, 255, 255, 0.06),
+      inset -1px 0 0 rgba(255, 255, 255, 0.06);
     transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
   }
 
   .champ-hero-btn-secondary:hover {
-    background: rgba(0,0,0,0.6);
-    border-color: rgba(250, 249, 245, 1);
+    background: rgba(250, 249, 245, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
     transform: scale(1.03);
   }
 
