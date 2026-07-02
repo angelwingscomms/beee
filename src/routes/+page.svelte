@@ -1,10 +1,6 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import ChampIntro from '$lib/components/championship/ChampIntro.svelte';
-  import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
-  import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
-  import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
-  import ChampHow from '$lib/components/championship/ChampHow.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
 
@@ -61,9 +57,111 @@
 <main class="overflow-x-hidden w-full max-w-full">
   <ChampHero />
   <ChampIntro />
-  <ChampAbout />
-  <ChampFeatures />
-  <ChampPassport />
-  <ChampHow />
+  <section class="section-soft why-beee-rail">
+    <div class="container" style="padding: 120px 0; text-align: center;">
+      <h2 class="why-beee-rail-title">Why BEEE?</h2>
+      <p class="why-beee-rail-sub">We believe every young person possesses extraordinary potential. Chess is not the destination — it is the platform for developing strategic thinkers, leaders, and changemakers.</p>
+      <a href="/why-beee" class="why-beee-rail-btn">Our Mission &amp; Vision &rarr;</a>
+    </div>
+  </section>
+  <section class="section-soft teamup-rail">
+    <div class="container" style="padding: 120px 0; text-align: center;">
+      <h2 class="teamup-rail-title">The TEAMUP™ Development Programme</h2>
+      <p class="teamup-rail-sub">Five integrated pillars — Technology, Enterprise, Art, Mentorship, and Upskill — designed to develop well-rounded young leaders through chess and beyond.</p>
+      <a href="/teamup" class="teamup-rail-btn">Explore the Programme &rarr;</a>
+    </div>
+  </section>
+  <section class="section-soft championship-rail">
+    <div class="container" style="padding: 120px 0; text-align: center;">
+      <p class="championship-rail-eyebrow">The Championship Journey</p>
+      <h2 class="championship-rail-title">From Registration to Grand Finale</h2>
+      <p class="championship-rail-sub">Five stages. One transformative experience.</p>
+      <a href="/championship" class="championship-rail-btn">View the Journey &rarr;</a>
+    </div>
+  </section>
   <ChampCTA />
 </main>
+
+<style>
+  .why-beee-rail-title,
+  .teamup-rail-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .why-beee-rail-sub,
+  .teamup-rail-sub {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--body);
+    margin: 16px auto 32px;
+    max-width: 600px;
+  }
+
+  .why-beee-rail-btn,
+  .teamup-rail-btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--on-primary);
+    background: var(--primary);
+    padding: 14px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 200ms ease;
+  }
+
+  .why-beee-rail-btn:hover,
+  .teamup-rail-btn:hover,
+  .championship-rail-btn:hover {
+    opacity: 0.85;
+  }
+
+  .championship-rail-eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+    margin: 0 0 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .championship-rail-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .championship-rail-sub {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--body);
+    margin: 12px auto 32px;
+    max-width: 600px;
+  }
+
+  .championship-rail-btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--on-primary);
+    background: var(--primary);
+    padding: 14px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 200ms ease;
+  }
+</style>

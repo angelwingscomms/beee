@@ -1,23 +1,121 @@
 $ vite --host --port 5400
 
-  VITE v8.0.14  ready in 5479 ms
+  VITE v8.0.14  ready in 2642 ms
 
   ➜  Local:   http://localhost:5400/
   ➜  Network: http://192.168.43.40:5400/
-  ➜  Network: http://192.168.240.1:5400/
-  ➜  Network: http://169.254.32.188:5400/
   ➜  press h + enter to show help
 Using secrets defined in .env
 Using secrets defined in .env
-*** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:842: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY (extended: SQLITE_BUSY_RECOVERY)
-stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@32b9b6b /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fd3395 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@201e412 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fde94c /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fde3a2 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f9d512 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20188bf /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@201bc15 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f6f389 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c6855 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c6d78 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c483e /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c463e /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f56d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f56024
-11:45:25 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+6:33:02 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-11:45:25 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+6:33:02 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-11:45:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+6:33:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
-11:45:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+6:33:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
+6:38:43 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:38:51 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+6:38:51 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:39:18 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:39:18 PM [vite] (client) page reload .svelte-kit/generated/root.js
+6:39:18 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:39:18 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+6:51:08 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte
+6:51:08 PM [vite] (ssr) page reload src/lib/assets/images/hero-bg.png
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:51:26 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:51:26 PM [vite] (client) page reload .svelte-kit/generated/root.js
+6:51:26 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:51:26 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+6:52:01 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:52:08 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/routes/+page.svelte?svelte&type=style&lang.css, /src/app.css
+6:52:08 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:52:16 PM [vite] (client) hmr update /src/routes/+page.svelte?svelte&type=style&lang.css, /src/app.css
+6:52:16 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/13.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:52:30 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:52:30 PM [vite] (client) page reload .svelte-kit/generated/root.js
+6:52:30 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:52:30 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+6:53:46 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte
+6:53:46 PM [vite] (ssr) page reload src/lib/assets/images/championship/about-new.png
 
-[1;31m[404] GET /favicon.ico[0m
+[1;31m[404] GET /championship[0m
+6:58:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+6:58:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/13.js
+6:58:04 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:58:05 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+6:58:05 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:58:10 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+6:58:10 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:58:16 PM [vite] (client) hmr update /src/routes/+page.svelte?svelte&type=style&lang.css, /src/app.css
+6:58:16 PM [vite] (ssr) page reload src/routes/+page.svelte
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/13.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:58:33 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:58:33 PM [vite] (client) page reload .svelte-kit/generated/root.js
+6:58:33 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:58:33 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:04:22 PM [vite-plugin-svelte] src/routes/register/+page.svelte:249:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:04:22 PM [vite-plugin-svelte] src/routes/register/+page.svelte:264:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+7:04:22 PM [vite-plugin-svelte] src/routes/register/+page.svelte:275:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+7:04:22 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+7:04:22 PM [vite-plugin-svelte] src/routes/register/+page.svelte:385:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+[paystack] module loaded
+[POST /api/register-init-payment] Received request
+[POST /api/register-init-payment] Request body: {"firstName":"gold","lastName":"edem hogan","email":"1440fl@gmail.com","phone":"+234+2348036513400","school":"asdfds"}
+[POST /api/register-init-payment] Generated ID: d046b3a7-9eff-4ca8-b320-5fdabf120866, initializing Paystack...
+[paystack] get_secret_key: PAYSTACK_TEST=., dev=true, is_test=true
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_tes...dfac
+[paystack_init] Starting transaction initialize {
+  email: '1440fl@gmail.com',
+  amount_kobo: 1250000,
+  registration_id: 'd046b3a7-9eff-4ca8-b320-5fdabf120866',
+  p_name: 'gold edem hogan',
+  callback_url: 'http://localhost:5400/payment/callback',
+  has_reg_data: true,
+  secret_key_preview: 'sk_test_27...'
+}
+[paystack_init] Response status: 200 OK
+[paystack_init] Success response body: {"status":true,"message":"Authorization URL created","data":{"authorization_url":"https://checkout.paystack.com/ar818agdfbowpfi","access_code":"ar818agdfbowpfi","reference":"d046b3a7-9eff-4ca8-b320-5fdabf120866"}}
+[POST /api/register-init-payment] Paystack init succeeded, ref: d046b3a7-9eff-4ca8-b320-5fdabf120866
+[POST /api/register-init-payment] NOT writing to DB — waiting for payment confirmation
+7:22:14 PM [vite-plugin-svelte] src/routes/register/+page.svelte:249:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:22:14 PM [vite-plugin-svelte] src/routes/register/+page.svelte:264:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+7:22:14 PM [vite-plugin-svelte] src/routes/register/+page.svelte:275:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+7:22:14 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+7:22:14 PM [vite-plugin-svelte] src/routes/register/+page.svelte:385:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector

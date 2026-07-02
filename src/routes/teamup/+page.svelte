@@ -1,9 +1,6 @@
 <script lang="ts">
-  import TeamUpHero from '$lib/components/teamup/TeamUpHero.svelte';
-  import PillarsBento from '$lib/components/teamup/PillarsBento.svelte';
-  import PassportSection from '$lib/components/teamup/PassportSection.svelte';
-  import MarqueeStrip from '$lib/components/teamup/MarqueeStrip.svelte';
-  import TeamUpCTA from '$lib/components/teamup/TeamUpCTA.svelte';
+  import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
+  import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
 </script>
 
 <svelte:head>
@@ -12,9 +9,6 @@
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
-  <TeamUpHero />
-  <PillarsBento />
-  <MarqueeStrip />
-  <PassportSection />
-  <TeamUpCTA />
+  <ChampFeatures />
+  <ChampPassport />
 </div>
