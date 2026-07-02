@@ -1,11 +1,7 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
-  import ChampIntro from '$lib/components/championship/ChampIntro.svelte';
-  import ChampAbout from '$lib/components/championship/ChampAbout.svelte';
-  import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
-  import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
-  import ChampHow from '$lib/components/championship/ChampHow.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
+  import HomePreview from '$lib/components/home/HomePreview.svelte';
 </script>
 
 <svelte:head>
@@ -60,10 +56,6 @@
 
 <main class="overflow-x-hidden w-full max-w-full">
   <ChampHero />
-  <ChampIntro />
-  <ChampAbout />
-  <ChampFeatures />
-  <ChampPassport />
-  <ChampHow />
+  <HomePreview />
   <ChampCTA />
 </main>

@@ -6,8 +6,10 @@
     let p = $page.url.pathname;
     return [
       { href: '/', label: 'Home' },
+      { href: '/about', label: 'About' },
       { href: '/register', label: 'Registration' },
       { href: '/teamup', label: 'TEAMUP' },
+      { href: '/how-it-works', label: 'Journey' },
       { href: '/faq', label: 'FAQ' },
     ].filter(l => l.href !== p);
   });
