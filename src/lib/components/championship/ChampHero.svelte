@@ -1,6 +1,7 @@
 <script lang="ts">
   import heroBg from '$lib/assets/images/hero-bg.png?enhanced';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import { REG_AMOUNT } from '$lib/constants';
 </script>
 
 <section class="champ-hero">
@@ -12,10 +13,26 @@
     <h1 class="champ-hero-title">
       More Than a Chess Championship
     </h1>
-    <p class="champ-hero-hook"><span>Leadership, Mentorship, and Growth</span><span class="champ-hero-hook-cursive"> &mdash; make your move</span></p>
+    <p class="champ-hero-hook"><span>Leadership, Mentorship, and Growth</span> <span class="champ-hero-hook-cursive">&mdash; make your move</span></p>
+    <div class="champ-hero-info">
+      <div class="champ-hero-info-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 6H15" stroke="currentColor" stroke-width="1.2"/><path d="M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span>Date TBA</span>
+      </div>
+      <div class="champ-hero-info-divider"></div>
+      <div class="champ-hero-info-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.2 1 3 3.2 3 6C3 9.5 8 15 8 15C8 15 13 9.5 13 6C13 3.2 10.8 1 8 1Z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="1.2"/></svg>
+        <span>Abuja, Nigeria</span>
+      </div>
+      <div class="champ-hero-info-divider"></div>
+      <div class="champ-hero-info-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5L7.5 2L14 2.5L13.5 9L8 15.5L2 8.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="10.5" cy="5.5" r="0.8" fill="currentColor"/></svg>
+        <span>₦{REG_AMOUNT.toLocaleString()} per participant</span>
+      </div>
+    </div>
     <div class="champ-hero-actions">
       <RegisterBtn href="/register" class="champ-hero-btn-primary">Register Now</RegisterBtn>
-      <a href="#champ-intro" class="champ-hero-btn-secondary">Learn more</a>
+      <a href="#champ-intro" class="champ-hero-btn-secondary">Why BEEE? →</a>
     </div>
   </div>
 </section>
@@ -104,12 +121,40 @@
     font-size: 1.3em;
   }
 
+  .champ-hero-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+    margin-bottom: 32px;
+  }
+  .champ-hero-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--on-dark);
+    font-size: 14px;
+    line-height: 1;
+  }
+  .champ-hero-info-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .champ-hero-info-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(250, 249, 245, 0.2);
+    flex-shrink: 0;
+  }
+
   .champ-hero-actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    margin-top: 40px;
+    margin-top: 0;
   }
 
   :global(.champ-hero-btn-primary) {
@@ -156,4 +201,14 @@
       font-size: 16px;
       margin-top: 16px;
     }  }
+  @media (max-width: 639px) {
+    .champ-hero-info {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .champ-hero-info-divider {
+      width: 40px;
+      height: 1px;
+    }
+  }
 </style>

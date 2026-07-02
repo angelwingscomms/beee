@@ -5,6 +5,7 @@
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import { REG_AMOUNT } from '$lib/constants';
 
   let gf = $state('');
   let gl = $state('');
@@ -22,7 +23,7 @@
   let apiError = $state('');
   let registrationId = $state('');
 
-  const AMOUNT = 15000;
+  const AMOUNT = REG_AMOUNT;
 
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&

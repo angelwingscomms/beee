@@ -176,3 +176,82 @@ https://svelte.dev/e/css_unused_selector
 7:44:16 PM [vite] (client) page reload .svelte-kit/generated/root.js
 7:44:16 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 7:44:16 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:17:09 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+8:17:09 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:17:16 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+8:17:16 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:17:21 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+8:17:21 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:17:26 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+8:17:26 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+8:17:30 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:30 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+8:17:33 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:33 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:17:55 PM [vite] (client) hmr update /src/app.css
+8:17:55 PM [vite] (ssr) page reload src/lib/constants.ts
+8:17:58 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+8:17:58 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+8:17:59 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:17:59 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:18:02 PM [vite] (client) page reload src/lib/data/constants.ts
