@@ -17,7 +17,7 @@
     <div class="champ-hero-info">
       <div class="champ-hero-info-item">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M1 6H15" stroke="currentColor" stroke-width="1.2"/><path d="M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <span>Date TBA</span>
+        <span>October 10, 2026</span>
       </div>
       <div class="champ-hero-info-divider"></div>
       <div class="champ-hero-info-item">

@@ -10,7 +10,7 @@ export const cs: FaqC[] = [
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
 			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
 			{ q: 'Where is the championship held?', a: 'Abuja.' },
-			{ q: 'When does the programme run?', a: 'Summer through October.' },
+			{ q: 'When does the programme run?', a: 'Summer through the Championship Grand Finale on October 10.' },
 			{ q: 'What are the competition dates?', a: 'Specific competition dates and stages are published on the official championship website and communicated to registered participants.' },
 		]
 	},

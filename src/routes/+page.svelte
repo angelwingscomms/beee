@@ -14,8 +14,8 @@
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
         "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Development Programme.",
-        "startDate": "2026-06",
-        "endDate": "2026-10",
+        "startDate": "2026-10-10",
+        "endDate": "2026-10-10",
         "location": {
           "@type": "Place",
           "name": "Abuja",

@@ -162,7 +162,7 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">October 2026</span>
+									<span class="journey-date">October 10, 2026</span>
 									<span class="journey-name">Championship Grand Finale</span>
 								</div>
 							</div>
