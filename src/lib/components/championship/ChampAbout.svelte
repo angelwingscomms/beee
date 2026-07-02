@@ -5,7 +5,6 @@
 
   let section: HTMLElement;
   let progress = $state(0);
-  let pinBox: HTMLElement;
 
   onMount(() => {
     if (!section) return;
@@ -38,28 +37,36 @@
 </script>
 
 <section bind:this={section} class="champ-about" style="background-image: url({aboutBg.img.src})">
-  <div class="champ-about-bg"></div>
   <div class="champ-about-gradient"></div>
-  <div class="champ-about-pin" bind:this={pinBox}>
+  <div class="champ-about-pin">
     <div class="container champ-about-grid">
       <div class="champ-about-sticky">
+        <div class="champ-about-ornament"></div>
         <h2 class="champ-about-title">Why BEEE?</h2>
       </div>
       <div class="champ-about-text">
         {#each paragraphs as para, pi}
-          <p>
-            {#if pi === 3}
-              <strong class="champ-about-word" style={word_reveal(0, pi)}>Our</strong>
-              <strong class="champ-about-word" style={word_reveal(1, pi)}>vision:</strong>
-              {#each para.split(/(\s+)/).filter(Boolean).slice(4) as word, wi}
-                <span class="champ-about-word" style={word_reveal(wi + 4, pi)}>{word}</span>
-              {/each}
-            {:else}
+          {#if pi === 2}
+            <blockquote class="champ-about-emphasis">
               {#each para.split(/(\s+)/).filter(Boolean) as word, wi}
                 <span class="champ-about-word" style={word_reveal(wi, pi)}>{word}</span>
               {/each}
-            {/if}
-          </p>
+            </blockquote>
+          {:else}
+            <p>
+              {#if pi === 3}
+                <strong class="champ-about-word" style={word_reveal(0, pi)}>Our</strong>
+                <strong class="champ-about-word" style={word_reveal(1, pi)}>vision:</strong>
+                {#each para.split(/(\s+)/).filter(Boolean).slice(4) as word, wi}
+                  <span class="champ-about-word" style={word_reveal(wi + 4, pi)}>{word}</span>
+                {/each}
+              {:else}
+                {#each para.split(/(\s+)/).filter(Boolean) as word, wi}
+                  <span class="champ-about-word" style={word_reveal(wi, pi)}>{word}</span>
+                {/each}
+              {/if}
+            </p>
+          {/if}
         {/each}
       </div>
     </div>
@@ -72,14 +79,6 @@
     color: var(--on-dark);
     background-size: cover;
     background-position: center;
-  }
-
-  .champ-about-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    filter: saturate(0.9) contrast(0.95);
   }
 
   .champ-about-gradient {
@@ -96,10 +95,24 @@
   }
 
   .champ-about-grid {
-    max-width: 50%;
-    margin-left: auto;
     display: grid;
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .champ-about-sticky {
+    position: sticky;
+    top: 96px;
+    display: grid;
+    gap: 20px;
+  }
+
+  .champ-about-ornament {
+    width: 32px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 999px;
   }
 
   .champ-about-title {
@@ -114,19 +127,29 @@
 
   .champ-about-text {
     display: grid;
-    gap: 24px;
+    gap: 28px;
   }
 
   .champ-about-text p {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
-    color: rgba(250, 249, 245, 0.82);
+    color: var(--on-dark-soft);
+  }
+
+  .champ-about-emphasis {
+    margin: 0;
+    padding: 16px 0 16px 20px;
+    border-left: 3px solid var(--primary);
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    color: var(--primary);
+    line-height: 1.4;
   }
 
   .champ-about-word {
     will-change: opacity;
-    transition: opacity 0.1s ease;
   }
 
   @media (max-width: 767px) {
@@ -134,11 +157,14 @@
       padding: 80px 0;
     }
     .champ-about-grid {
-      max-width: 100%;
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .champ-about-sticky {
+      position: static;
     }
     .champ-about-text p {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 </style>

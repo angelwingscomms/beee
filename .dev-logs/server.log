@@ -377,3 +377,45 @@ https://svelte.dev/e/css_unused_selector
 11:05:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
 11:09:44 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
 11:09:44 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:48:50 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+11:48:50 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:48:53 PM [vite-plugin-svelte] src/lib/components/championship/ChampAbout.svelte:75:2 Unused CSS selector ".champ-about-bg"
+https://svelte.dev/e/css_unused_selector
+11:48:53 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+11:48:53 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:49:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampAbout.svelte:84:2 Unused CSS selector ".champ-about-bg"
+https://svelte.dev/e/css_unused_selector
+11:49:01 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte, /src/app.css
+11:49:01 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:49:09 PM [vite] (client) hmr update /src/lib/components/championship/ChampAbout.svelte?svelte&type=style&lang.css, /src/app.css
+11:49:09 PM [vite] (ssr) page reload src/lib/components/championship/ChampAbout.svelte
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/13.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:49:31 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:49:31 PM [vite] (client) page reload .svelte-kit/generated/root.js
+11:49:31 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:49:31 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/13.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:49:50 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:49:50 PM [vite] (client) page reload .svelte-kit/generated/root.js
+11:49:50 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:49:50 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
