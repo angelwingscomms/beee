@@ -353,3 +353,13 @@ https://svelte.dev/e/css_unused_selector
 10:53:57 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 10:54:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
 10:54:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:55:59 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:55:59 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:56:02 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:56:02 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:56:06 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:56:06 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:56:09 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:56:09 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+10:56:13 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+10:56:13 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte

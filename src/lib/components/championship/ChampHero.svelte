@@ -88,7 +88,7 @@
   .champ-hero-fade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--surface-dark) 0%, rgba(24,23,21,0.95) 25%, rgba(24,23,21,0.6) 50%, transparent 70%);
+    background: linear-gradient(to right, var(--surface-dark) 0%, rgba(24,23,21,0.95) 40%, rgba(24,23,21,0.4) 65%, transparent 85%);
     pointer-events: none;
   }
 
@@ -123,7 +123,7 @@
   }
 
   .champ-hero-title {
-    margin: 0 auto;
+    margin: 0;
     font-family: var(--font-display);
     font-size: clamp(2.8rem, 4vw, 4.5rem);
     font-weight: 500;
@@ -137,7 +137,7 @@
 
   .champ-hero-hook {
     max-width: 800px;
-    margin: 20px auto 0;
+    margin: 20px 0 0;
     font-size: 18px;
     line-height: 1.5;
     color: var(--on-dark);
@@ -146,7 +146,7 @@
   .champ-hero-info {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 24px;
     margin-top: 12px;
     margin-bottom: 32px;
@@ -174,7 +174,7 @@
   .champ-hero-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     margin-top: 0;
   }
