@@ -1,7 +1,28 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import heroBg from '$lib/assets/images/hero-bg.png?enhanced';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
   import { REG_AMOUNT } from '$lib/constants';
+  import { isHeroCtaVisible } from '$lib/stores';
+
+  let heroCtaNode: HTMLDivElement | undefined = $state();
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isHeroCtaVisible.set(entries[0].isIntersecting);
+      },
+      { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
+    );
+
+    if (heroCtaNode) {
+      observer.observe(heroCtaNode);
+    }
+
+    return () => {
+      if (heroCtaNode) observer.unobserve(heroCtaNode);
+    };
+  });
 </script>
 
 <section class="champ-hero">
@@ -9,7 +30,7 @@
   <div class="champ-hero-overlay"></div>
   <div class="champ-hero-noise"></div>
   <div class="champ-hero-body container">
-    <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship Abuja 2026</p>
+    <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship</p>
     <h1 class="champ-hero-title">
       More Than a Chess Championship
     </h1>
@@ -31,7 +52,7 @@
       </div>
     </div>
     <div class="champ-hero-actions">
-      <RegisterBtn href="/register" class="champ-hero-btn-primary">Register</RegisterBtn>
+      <div bind:this={heroCtaNode}><RegisterBtn href="/register" class="champ-hero-btn-primary">Register</RegisterBtn></div>
       <a href="#champ-intro" class="champ-hero-btn-secondary">Why BEEE? →</a>
     </div>
   </div>
@@ -62,8 +83,9 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
       radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .champ-hero-noise::before {
@@ -97,7 +119,7 @@
   }
 
   .champ-hero-title {
-    margin: 0;
+    margin: 0 auto;
     font-family: var(--font-display);
     font-size: clamp(2.8rem, 4vw, 4.5rem);
     font-weight: 500;
@@ -105,6 +127,8 @@
     letter-spacing: -0.02em;
     color: var(--on-dark);
     text-wrap: balance;
+    max-width: 56rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   .champ-hero-hook {
@@ -166,23 +190,18 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
-    background: rgba(250, 249, 245, 0.12);
-    backdrop-filter: blur(24px) saturate(1.35);
-    -webkit-backdrop-filter: blur(24px) saturate(1.35);
-    color: rgba(250, 249, 245, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-      inset 1px 0 0 rgba(255, 255, 255, 0.06),
-      inset -1px 0 0 rgba(255, 255, 255, 0.06);
-    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
   }
 
   .champ-hero-btn-secondary:hover {
-    background: rgba(250, 249, 245, 0.18);
-    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
+    border-color: rgba(255,255,255,1);
     transform: scale(1.03);
   }
 

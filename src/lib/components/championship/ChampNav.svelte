@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import { isHeroCtaVisible } from '$lib/stores';
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
@@ -16,9 +17,21 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
+      <a href="/championship" class:active={path === '/championship'}>The Journey</a>
+      <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
+      <a href="/why-beee" class:active={path === '/why-beee'}>Why BEEE?</a>
       <a href="/faq" class:active={path === '/faq'}>FAQ</a>
     </div>
-    <RegisterBtn href="/register" class="champ-nav-cta">Register Now</RegisterBtn>
+    <RegisterBtn
+      href="/register"
+      class="champ-nav-cta transition-all duration-300"
+      class:opacity-0={$isHeroCtaVisible}
+      class:translate-y-[-10px]={$isHeroCtaVisible}
+      class:pointer-events-none={$isHeroCtaVisible}
+      class:opacity-100={!$isHeroCtaVisible}
+      class:translate-y-0={!$isHeroCtaVisible}
+      class:pointer-events-auto={!$isHeroCtaVisible}
+    >Register Now</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
@@ -26,6 +39,9 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
+      <a href="/championship" class:active={path === '/championship'} onclick={() => open = false}>The Journey</a>
+      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
+      <a href="/why-beee" class:active={path === '/why-beee'} onclick={() => open = false}>Why BEEE?</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
       <RegisterBtn href="/register" onclick={() => open = false}>Register Now</RegisterBtn>
     </div>
