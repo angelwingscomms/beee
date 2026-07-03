@@ -2,6 +2,7 @@
   import { scroll } from 'motion';
   import { onMount } from 'svelte';
   import aboutBg from '$lib/assets/images/championship/about-new.png?enhanced';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
   let section: HTMLElement;
   let progress = $state(0);
@@ -68,6 +69,7 @@
             </p>
           {/if}
         {/each}
+        <RegisterBtn href="/register" class="register-btn--hero">Register Now →</RegisterBtn>
       </div>
     </div>
   </div>
@@ -75,16 +77,25 @@
 
 <style>
   .champ-about {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, 'Segoe UI', sans-serif;
     position: relative;
     color: var(--on-dark);
     background-size: cover;
     background-position: center;
+    font-family: var(--font-sans);
   }
 
   .champ-about-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(
+      100deg,
+      rgba(30, 20, 10, 0.15) 0%,
+      rgba(30, 20, 10, 0.25) 35%,
+      rgba(30, 20, 10, 0.55) 65%,
+      rgba(30, 20, 10, 0.78) 100%
+    );
     z-index: 0;
   }
 
@@ -117,7 +128,7 @@
 
   .champ-about-title {
     margin: 0;
-    font-family: var(--font-display);
+    font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
     font-size: clamp(2.4rem, 4vw, 3.2rem);
     font-weight: 500;
     line-height: 1.1;
@@ -128,20 +139,23 @@
   .champ-about-text {
     display: grid;
     gap: 28px;
+    max-width: 480px;
+    line-height: 1.7;
   }
 
   .champ-about-text p {
-    margin: 0;
+    margin: 0 0 24px;
     font-size: 16px;
     line-height: 1.7;
-    color: var(--on-dark-soft);
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
   }
 
   .champ-about-emphasis {
     margin: 0;
     padding: 16px 0 16px 20px;
     border-left: 3px solid var(--primary);
-    font-family: var(--font-display);
+    font-family: var(--font-serif);
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     font-style: italic;
     color: var(--primary);
@@ -150,6 +164,47 @@
 
   .champ-about-word {
     will-change: opacity;
+  }
+
+  :global(#svelte) {
+    min-height: auto;
+  }
+
+  :global(.champ-nav-bg) {
+    background: rgba(35, 24, 15, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  :global(.footer-event) {
+    font-family: var(--font-serif) !important;
+  }
+
+  :global(.register-btn) {
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(232, 121, 28, 0.35);
+  }
+  :global(.register-btn:hover:not(:disabled)) {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 22px rgba(232, 121, 28, 0.5);
+  }
+
+  :global(.register-btn--hero) {
+    padding: 18px 44px !important;
+    font-size: 18px !important;
+    margin-top: 32px;
+  }
+
+  :global(.champ-nav-links a),
+  :global(.champ-nav-name),
+  :global(.footer-nav a),
+  :global(.footer-contact),
+  :global(.footer-copy),
+  :global(.footer-tagline) {
+    font-family: var(--font-sans) !important;
   }
 
   @media (max-width: 767px) {
