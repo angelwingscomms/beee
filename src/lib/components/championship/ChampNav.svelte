@@ -11,7 +11,7 @@
   <div class="champ-nav-bg"></div>
   <div class="champ-nav-inner container">
     <a href="/" class="champ-nav-brand">
-      <img src="/logo.svg" alt="BEEE" class="champ-nav-logo" />
+      <img src="/logo.svg" alt="BEEE — Building Exceptional Experiences Through Education" class="champ-nav-logo" />
       <span class="champ-nav-name">BEEE</span>
     </a>
     <div class="champ-nav-links">
@@ -128,8 +128,8 @@
   }
 
   .champ-nav-logo {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     object-fit: contain;
   }
 
@@ -141,7 +141,7 @@
   .champ-nav-links {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: var(--space-4);
     margin-left: auto;
   }
 

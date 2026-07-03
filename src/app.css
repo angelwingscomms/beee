@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:ital,wght@0,900;1,500&family=Open+Sans:wght@400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,500&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:ital,wght@0,900;1,500&family=Open+Sans:wght@400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,500&family=Poppins:wght@700&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap');
 
 @import "tailwindcss";
 
@@ -41,6 +41,22 @@
   src: url('/fonts/bumble-regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces/fraunces-latin-normal.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces/fraunces-latin-italic.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -189,6 +205,28 @@
   --font-championship: 'Poppins', sans-serif;
   --font-welcome: 'Open Sans', sans-serif;
   --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+
+  /* Hero section tokens (why-beee) */
+  --color-brand: #F27830;
+  --color-brand-dark: #C25F12;
+  --color-ink-warm: #1E140D;
+  --color-ink-soft-warm: #3A2A1E;
+  --color-on-photo: #FFFFFF;
+  --color-on-photo-muted: rgba(255, 255, 255, 0.84);
+  --font-display-hero: 'Fraunces', Georgia, serif;
+  --font-body-hero: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --fs-eyebrow: 0.8125rem;
+  --fs-h1: clamp(2.25rem, 3.4vw + 1rem, 3.75rem);
+  --fs-quote: clamp(1.5rem, 1.6vw + 1rem, 2.125rem);
+  --fs-body: 1.0625rem;
+  --lh-body: 1.6;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 72px;
+  --radius-pill: 999px;
 }
 
 * {
@@ -239,6 +277,12 @@
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary) !important;
+  outline-offset: 2px !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
