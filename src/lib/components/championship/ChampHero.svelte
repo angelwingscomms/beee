@@ -87,7 +87,7 @@
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base" />
-        <a href="/championship" class="bg-transparent border border-gray-600 text-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center">
+        <a href="/championship" class="bg-transparent border border-white text-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center">
           Explore the Journey
         </a>
       </div>

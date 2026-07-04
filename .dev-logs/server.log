@@ -38,3 +38,45 @@ Using secrets defined in .env
 8:08:12 PM [vite] (client) page reload .svelte-kit/generated/root.js
 8:08:12 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 8:08:12 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:09:26 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:09:26 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+8:09:26 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+8:09:26 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+8:09:26 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+8:09:37 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:09:37 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:09:45 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:09:45 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:10:13 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:10:13 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:10:49 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:10:49 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:12:25 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:12:25 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:14:30 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+8:14:30 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:27:43 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+8:27:43 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+8:42:37 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:42:37 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:45:31 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:45:31 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:45:51 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:45:51 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:46:45 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:46:45 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:47:11 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:47:11 PM [vite] (ssr) page reload src/routes/+page.svelte
+
+[1;31m[404] GET /url('https://fonts.googleapis.com/css2[0m
+8:53:06 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:53:06 PM [vite] (ssr) page reload src/routes/+page.svelte
+9:00:26 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+9:00:26 PM [vite] (ssr) page reload src/routes/+page.svelte

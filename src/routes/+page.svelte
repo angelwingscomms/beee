@@ -5,7 +5,6 @@
   import SplitText from 'gsap/SplitText';
   import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -121,7 +120,7 @@
 </section>
 
 <!-- Section 3: The Platform -->
-<section id="platform" class="py-32 px-6 max-w-7xl mx-auto">
+<section id="platform" class="py-20 px-6">
   <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">A Comprehensive Development Pathway</h2>
   <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
     <!-- Card 1: Master Chess Player -->
@@ -135,8 +134,8 @@
     >
       <img src="/images/master-chess-ui.png" alt="Master Chess Player UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-xl font-bold text-white mb-2">MASTER CHESS PLAYER™</h3>
-        <p class="font-['Inter'] text-gray-300 text-sm">Real-time AI mentoring and move analysis.</p>
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">MASTER CHESS PLAYER™</h3>
+        <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
       </div>
     </div>
 
@@ -166,8 +165,9 @@
       <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
       <div class="relative z-20 ml-12 max-w-xl">
         <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-          Technology.<br />Enterprise.<br />Art.<br />Mentorship.<br />Upskill.
+          <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
         </p>
+        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color:#fff">Learn More<span style="display:inline-block;vertical-align:middle"> →</span></a>
       </div>
     </div>
   </div>
@@ -182,8 +182,8 @@
 
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
-  <h1 class="font-hero text-[10vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
-  <RegisterBtn href="/register" class="px-8 py-4 text-base mt-6" />
+  <h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
+  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Register Now<span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
 
 <style>
