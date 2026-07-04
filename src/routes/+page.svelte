@@ -29,8 +29,6 @@
 
     if (journeyTrack && journeySection) {
       const maxX = -(journeyTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.1);
-      const scrollDist = Math.abs(maxX);
-      journeySection.style.height = (scrollDist + window.innerHeight) + 'px';
       gsap.to(journeyTrack, {
         x: maxX,
         ease: 'none',
@@ -106,7 +104,7 @@
 <ChampHero />
 
 <!-- Section 2: The Journey -->
-<section id="journey" bind:this={journeySection} class="relative bg-navy">
+<section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
   <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
     <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">The Championship Journey</h2>
     <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
