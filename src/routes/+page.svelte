@@ -28,9 +28,10 @@
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     if (journeyTrack && journeySection) {
-      const maxX = -(journeyTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.1);
       gsap.to(journeyTrack, {
-        x: maxX,
+        // Use a function here so GSAP recalculates dynamically when layout settles
+        // and safely accounts for window resizes thanks to invalidateOnRefresh
+        x: () => -(journeyTrack!.scrollWidth - window.innerWidth),
         ease: 'none',
         scrollTrigger: {
           trigger: journeySection,
