@@ -38,7 +38,7 @@
         }
     </style>
 </svelte:head>
-<body>
+
     <!-- HERO SECTION -->
     <section class="hero-bg min-h-screen flex items-center relative text-white">
         <!-- Navigation -->
@@ -59,7 +59,7 @@
                     <a href="#" class="hover:text-indigo-300 transition">Apply</a>
                 </div>
 
-                <button onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})"
+                <button onclick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}
                         class="px-6 py-3 bg-white text-indigo-700 rounded-2xl font-semibold text-sm hover:bg-indigo-50 transition">
                     Apply Now
                 </button>
@@ -90,13 +90,13 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap gap-4">
-                    <button onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})"
+<button onclick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}
                             class="cta-button px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold rounded-3xl flex items-center gap-3">
                         Join the next cohort
                         <i class="fas fa-arrow-right"></i>
                     </button>
 
-                    <button onclick="watchVideo()"
+                    <button onclick={watchVideo}
                             class="cta-button px-8 py-5 border-2 border-white/70 hover:border-white text-white text-lg font-medium rounded-3xl flex items-center gap-3 backdrop-blur-sm">
                         <i class="fas fa-play"></i>
                         Watch 2:14 min video
