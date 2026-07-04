@@ -56,6 +56,10 @@
 }
 
 @media (max-width: 766px) {
+  #contact a {
+    font-size: 16px !important;
+  }
+
   .container {
     width: min(100% - 32px, 1200px);
   }
