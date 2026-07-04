@@ -1353,7 +1353,7 @@ img {
 
 .footer {
   padding: 64px 0;
-  background: var(--surface-dark);
+  background: var(--color-navy);
   color: var(--on-dark-soft);
 }
 
