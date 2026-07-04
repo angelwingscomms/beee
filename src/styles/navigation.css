@@ -1,0 +1,144 @@
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 64px;
+  border-bottom: 1px solid var(--hairline-soft);
+  background: rgba(250, 249, 245, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+.dark .top-nav, .dark .navbar {
+  background: rgba(24, 23, 21, 0.92);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 24px;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.logo-chip {
+  position: relative;
+  display: grid;
+  width: 128px;
+  height: 128px;
+  place-items: center;
+  border-radius: 20px;
+  line-height: 0;
+  transition: width 200ms ease, height 200ms ease, border-radius 200ms ease;
+}
+
+.logo-tm {
+  font-weight: 900;
+  font-size: 8px;
+  line-height: 1;
+  color: var(--primary);
+  letter-spacing: 0;
+}
+
+.logo-chip img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  transition: width 200ms ease, height 200ms ease;
+}
+
+.spike-mark {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.spike-mark::before,
+.spike-mark::after {
+  position: absolute;
+  inset: 8px 0 auto 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: '';
+}
+
+.spike-mark::before {
+  transform: rotate(45deg);
+}
+
+.spike-mark::after {
+  transform: rotate(-45deg);
+}
+
+.nav-links,
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a,
+.button-text {
+  color: var(--ink);
+}
+
+.mobile-menu-button {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+.mobile-menu-button span,
+.mobile-menu-button span::before,
+.mobile-menu-button span::after {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: '';
+}
+
+.mobile-menu-button span {
+  position: relative;
+}
+
+.mobile-menu-button span::before {
+  position: absolute;
+  top: -5px;
+}
+
+.mobile-menu-button span::after {
+  position: absolute;
+  top: 5px;
+}
+
+.mobile-menu {
+  display: none;
+}

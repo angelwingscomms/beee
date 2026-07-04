@@ -1,0 +1,32 @@
+.dark {
+  --color-canvas: #181715;
+  --color-ink: #faf9f5;
+  --color-body: #a09d96;
+  --color-secondary: #252320;
+  --color-hairline: #252320;
+  --color-hairline-soft: #1f1e1b;
+  --color-surface-soft: #1f1e1b;
+  --color-surface-card: #252320;
+  --color-surface-cream-strong: #2a2825;
+  --color-on-dark: #faf9f5;
+  --color-muted: #8e8b82;
+  --color-muted-soft: #6c6a64;
+  --color-body-strong: #e8e0d2;
+}
+
+.dark {
+  --canvas: #181715;
+  --ink: #faf9f5;
+  --body: #a09d96;
+  --body-strong: #e8e0d2;
+  --muted: #8e8b82;
+  --muted-soft: #6c6a64;
+  --hairline: #252320;
+  --hairline-soft: #1f1e1b;
+  --surface-soft: #1f1e1b;
+  --surface-card: #252320;
+  --surface-cream-strong: #2a2825;
+  --on-dark: #faf9f5;
+  --on-dark-soft: #a09d96;
+  --surface-dark-elevated: #2f2d2a;
+}

@@ -1,0 +1,26 @@
+.footer {
+  padding: 64px 0;
+  background: var(--color-navy);
+  color: var(--on-dark-soft);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer strong {
+  display: block;
+  color: var(--on-dark);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer a,
+.footer span {
+  display: block;
+  margin-top: 12px;
+  color: var(--on-dark-soft);
+  font-size: 14px;
+}

@@ -1,0 +1,27 @@
+.cg-wrap.cg-default-style.board-themed cg-board {
+  background-color: var(--surface-soft) !important;
+  background-image: repeating-conic-gradient(var(--primary) 0% 25%, transparent 0% 50%) !important;
+  background-size: 25% 25% !important;
+}
+
+.cg-default-style.cg-wrap piece.pawn.white { background-image: url('/pieces/gioco/wP.svg') !important; }
+.cg-default-style.cg-wrap piece.knight.white { background-image: url('/pieces/gioco/wN.svg') !important; }
+.cg-default-style.cg-wrap piece.bishop.white { background-image: url('/pieces/gioco/wB.svg') !important; }
+.cg-default-style.cg-wrap piece.rook.white { background-image: url('/pieces/gioco/wR.svg') !important; }
+.cg-default-style.cg-wrap piece.queen.white { background-image: url('/pieces/gioco/wQ.svg') !important; }
+.cg-default-style.cg-wrap piece.king.white { background-image: url('/pieces/gioco/wK.svg') !important; }
+.cg-default-style.cg-wrap piece.pawn.black { background-image: url('/pieces/gioco/bP.svg') !important; }
+.cg-default-style.cg-wrap piece.knight.black { background-image: url('/pieces/gioco/bN.svg') !important; }
+.cg-default-style.cg-wrap piece.bishop.black { background-image: url('/pieces/gioco/bB.svg') !important; }
+.cg-default-style.cg-wrap piece.rook.black { background-image: url('/pieces/gioco/bR.svg') !important; }
+.cg-default-style.cg-wrap piece.queen.black { background-image: url('/pieces/gioco/bQ.svg') !important; }
+.cg-default-style.cg-wrap piece.king.black { background-image: url('/pieces/gioco/bK.svg') !important; }
+
+.b.white { background-image: url('/pieces/gioco/wB.svg') !important; }
+.n.white { background-image: url('/pieces/gioco/wN.svg') !important; }
+.r.white { background-image: url('/pieces/gioco/wR.svg') !important; }
+.q.white { background-image: url('/pieces/gioco/wQ.svg') !important; }
+.b.black { background-image: url('/pieces/gioco/bB.svg') !important; }
+.n.black { background-image: url('/pieces/gioco/bN.svg') !important; }
+.r.black { background-image: url('/pieces/gioco/bR.svg') !important; }
+.q.black { background-image: url('/pieces/gioco/bQ.svg') !important; }

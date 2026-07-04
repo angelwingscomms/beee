@@ -1,0 +1,145 @@
+@media (max-width: 1024px) {
+  .nav-links,
+  .nav-actions {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    z-index: 25;
+    top: 64px;
+    right: 0;
+    left: 0;
+    display: grid;
+    gap: 14px;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--canvas);
+    padding: 24px;
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .hero-grid,
+  .registration-grid,
+  .simple-home-grid,
+  .section-header,
+  .cta-card {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-form {
+    padding: 0 0 24px;
+  }
+
+  .dark-copy {
+    position: static;
+  }
+
+  .feature-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-intro {
+    text-align: center;
+  }
+
+  .event-intro .lead {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 766px) {
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .hero-band,
+  .section-band {
+    padding: 64px 0;
+  }
+
+  .display-xl {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .display-lg {
+    font-size: 34px;
+  }
+
+  .display-md {
+    font-size: 30px;
+  }
+
+  .logo-chip {
+    width: 88px;
+    height: 88px;
+    border-radius: 14px;
+  }
+
+  .logo-chip img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .championship-title {
+    font-size: 32px;
+  }
+
+  #event-title {
+    font-size: 36px;
+  }
+
+  .welcome-text {
+    font-size: 16px;
+  }
+
+  .form-header h2 {
+    font-size: 18px;
+  }
+
+  .hero-metrics,
+  .feature-grid,
+  .benefits-grid,
+  .field-grid,
+  .simple-home-grid,
+  .cards-row,
+  .footer-grid,
+  .modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .field-grid {
+    gap: 8px;
+  }
+
+  .hero-artifact,
+  .artifact-stage {
+    min-height: 430px;
+  }
+
+  .artifact-stage,
+  .feature-card {
+    padding: 24px;
+  }
+
+  .registration-form {
+    padding: 0 0 24px;
+  }
+
+  .cta-card,
+  .modal-total {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-card {
+    padding: 40px 28px;
+  }
+}
