@@ -5,7 +5,7 @@
     {
       num: '1',
       title: 'Register',
-      body: 'Join through your school and receive access to the T.E.A.M.U.P. Development Programme.',
+      body: 'Join through your school and receive access to the TEAMUP Development Programme.',
       icon: '📋',
       img: '/images/championship/bento_chess.png'
     },

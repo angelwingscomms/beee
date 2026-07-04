@@ -8,7 +8,7 @@ Dear Parent, School Administrator and Prospective Participant,
 
 The BEEE® Spectacular Chess Championship Abuja 2026 is a transformative youth development journey that combines competitive chess with leadership development, mentorship, and personal growth. 
 
-Designed for chess players aged 10 to 14 years in schools across Abuja, the championship combines MASTER CHESS PLAYER™, T.E.A.M.U.P.™  (Technology, Enterprise, Art, Mentorship and Upskill) and TASKIFY™ self Development Programmes to deliver a structured journey of learning, achievementq and competition that extends far beyond the chessboard.  
+Designed for chess players aged 10 to 14 years in schools across Abuja, the championship combines MASTER CHESS PLAYER™, TEAMUP™  (Technology, Enterprise, Art, Mentorship and Upskill) and TASKIFY™ self Development Programmes to deliver a structured journey of learning, achievementq and competition that extends far beyond the chessboard.  
 
 PARTICIPATION BENEFITS 
 Participants will have opportunities to develop in:
@@ -54,10 +54,10 @@ Commencing July 20, 2026 with online engagement, participants complete activitie
 A comprehensive development pathway
 
 Stage 1: Registration and Enrollment
-Participants register through participating schools and gain access to the MASTER CHESS PLAYER , TASKIFY and T.E.A.M.U.P.™  (Technology, Enterprise, Art, Mentorship Upskill) and apps and modules.
+Participants register through participating schools and gain access to the MASTER CHESS PLAYER , TASKIFY and TEAMUP™  (Technology, Enterprise, Art, Mentorship Upskill) and apps and modules.
 
 Stage 2: Innovative Learning and Development Tools
-At the heart of the BEEE Chess Championship is the MASTER CHESS PLAYER™, T.E.A.M.U.P.™ and TASKIFY™ Development Programmes. These innovative learning tools guide participants through a pathway that nurtures and support whole child development.
+At the heart of the BEEE Chess Championship is the MASTER CHESS PLAYER™, TEAMUP™ and TASKIFY™ Development Programmes. These innovative learning tools guide participants through a pathway that nurtures and support whole child development.
 
 September 2026 to October 2026
 
@@ -84,7 +84,7 @@ Participants and schools will compete for a variety of honours, including:
 - Medals and Awards
 - Certificates of Participation
 - Certificates of Achievement
-- T.E.A.M.U.P.™ Excellence Awards
+- TEAMUP™ Excellence Awards
 - Leadership Recognition Awards
 - Innovation and Creativity Awards
 - Special Merit Awards
@@ -139,7 +139,7 @@ The MASTER CHESS PLAYER™ is a chess training app where players can compete aga
 Being able to predict every move, it can suggest the next best move for the player, analyse mistakes, answer questions  and  improve the players level through voice prompts and text. 
 
 
-About T.E.A.M.U.P.™ 
+About TEAMUP™ 
 
 Technology
 Using technology creatively and responsibly to solve problems and expand learning.

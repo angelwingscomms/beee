@@ -82,7 +82,7 @@
       </h1>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative championship combining AI-powered chess training, leadership mentorship, and the T.E.A.M.U.P.&#8482; curriculum. July to October 2026.
+        A transformative championship combining AI-powered chess training, leadership mentorship, and the TEAMUP&#8482; curriculum. July to October 2026.
       </p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
@@ -94,7 +94,7 @@
 
       <div class="hero-anim-elem mt-12">
         <p class="text-xs font-mono text-gray-500 uppercase tracking-widest opacity-70">
-          Powered by: MASTER CHESS PLAYER&#8482; &bull; TASKIFY&#8482; &bull; T.E.A.M.U.P.&#8482;
+          Powered by: MASTER CHESS PLAYER&#8482; &bull; TASKIFY&#8482; &bull; TEAMUP&#8482;
         </p>
       </div>
     </div>

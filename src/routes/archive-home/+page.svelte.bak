@@ -10,7 +10,7 @@
 
 <svelte:head>
 	<title>BEEE Spectacular Chess Championship Abuja 2026</title>
-	<meta name="description" content="More Than A Chess Championship. Compete. Develop. Excel. Join the BEEE Spectacular Chess Championship Abuja 2026 and access the T.E.A.M.U.P. Development Programme." />
+	<meta name="description" content="More Than A Chess Championship. Compete. Develop. Excel. Join the BEEE Spectacular Chess Championship Abuja 2026 and access the TEAMUP Development Programme." />
 </svelte:head>
 
 <Hero />

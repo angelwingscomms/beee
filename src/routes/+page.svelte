@@ -17,7 +17,7 @@
   let philosophyText: HTMLElement | undefined = $state();
 
   const stages = [
-    { num: '01', title: 'Registration & Enrollment', desc: 'Register your school and gain access to the MASTER CHESS PLAYER™, TASKIFY™ and T.E.A.M.U.P.™ platforms and begin the journey.' },
+    { num: '01', title: 'Registration & Enrollment', desc: 'Register your school and gain access to the MASTER CHESS PLAYER™, TASKIFY™ and TEAMUP™ platforms and begin the journey.' },
     { num: '02', title: 'Innovative Learning', desc: 'AI-powered chess training, mentorship modules, and self-paced development through our integrated apps and tools.' },
     { num: '03', title: 'Preliminary Rounds', desc: 'Live qualifying events where participants compete and demonstrate their growing skills on the board.' },
     { num: '04', title: 'Elite Qualification', desc: 'Advanced competition rounds with higher stakes, team challenges, and leadership evaluations.' },

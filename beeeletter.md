@@ -3,7 +3,7 @@ Be Everything E✓cellent Every Day
 
 TM
 
-T.E.A.M.U.P.
+TEAMUP
 
 BEEE SPECTACULAR CHESS CHAMPIONSHIP ABUJA 2026
 
@@ -15,12 +15,12 @@ We  are  pleased  to  invite  your  chess  players  to  participate  in  the  BE
 Championship  Abuja  2026—an  annual  intellectual  competition  designed  to  challenge  and  inspire
 young minds.
 
-The championship goes beyond traditional competition by integrating the T.E.A.M.U.P.TM (Technology,
+The championship goes beyond traditional competition by integrating the TEAMUPTM (Technology,
 Enterprise,  Art,  Mentorship  and  Upskill)  Development  Programme,  a  unique  developmental
 initiative to cultivate strategic thinking, leadership, creativity, critical reasoning, and personal growth
 through chess and related learning experiences.
 
-The T.E.A.M.U.P. programme will run online during the summer and culminate in an immersive series
+The TEAMUP programme will run online during the summer and culminate in an immersive series
 of live preliminaries and a spectacular grand �inale structured to challenge participants in ways that
 extend beyond the conventional chessboard.
 
@@ -34,14 +34,14 @@ The Championship seeks to provide players with opportunities to:
        •  Earn certi�icates, scholarships, and other recognition awards
        •  Win the Championship Trophy
 
-Another  unique  feature  of  the  programme  is  the  T.E.A.M.U.P.  Development  Passport—a  digital
+Another  unique  feature  of  the  programme  is  the  TEAMUP  Development  Passport—a  digital
 record  of  each  participant’s  journey  of  learning,  achievement  and  competition.  The  passport  will
 document  skills  developed,  milestones  attained,  badges  earned,  certi�icates  obtained,  and  notable
 achievements throughout the programme.
 
 Parents can track their child's progress from enrollment through to the championship �inale.
 
-Af�iliate schools can complement their summer activities with the T.E.A.M.U.P. programme and bene�it
+Af�iliate schools can complement their summer activities with the TEAMUP programme and bene�it
 from  its  developmental  opportunities.  Detailed  information  regarding  registration  procedures,
 participation  requirements,  programme  structure,  and  championship  stages  is  available  on  our
 website.
