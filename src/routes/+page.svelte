@@ -123,7 +123,7 @@
 
 <!-- Section 3: The Platform -->
 <section id="platform" class="py-32 px-6 max-w-7xl mx-auto">
-  <h2 class="font-hero text-5xl text-white text-center mb-20 tracking-tight">A Comprehensive Development Pathway</h2>
+  <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">A Comprehensive Development Pathway</h2>
   <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
     <!-- Card 1: Master Chess Player -->
     <div
@@ -134,15 +134,7 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/student-holding-phone.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
-      <div
-        bind:this={bentoUI}
-        class="absolute z-10"
-        style="top:12%;left:15%;right:15%;bottom:22%;transform:perspective(1000px) rotateX(2deg) rotateY(-15deg) skewY(-2deg);overflow:hidden;border-radius:8px;"
-      >
-        <img src="/images/master-chess-ui.png" alt="Master Chess Player UI" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-      </div>
+      <img src="/images/master-chess-ui.png" alt="Master Chess Player UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
         <h3 class="font-hero text-xl font-bold text-white mb-2">MASTER CHESS PLAYER™</h3>
         <p class="font-['Inter'] text-gray-300 text-sm">Real-time AI mentoring and move analysis.</p>
@@ -192,9 +184,7 @@
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
   <h1 class="font-hero text-[10vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
-  <RegisterBtn href="/register" class="text-amber-400 text-2xl mt-4 text-[inherit] !bg-transparent !bg-none !p-0 !min-h-0 !font-normal h-auto">
-    Register your school for Abuja 2026 &rarr;
-  </RegisterBtn>
+  <RegisterBtn href="/register" class="px-8 py-4 text-base mt-6" />
 </footer>
 
 <style>
