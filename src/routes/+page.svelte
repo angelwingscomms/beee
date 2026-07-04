@@ -1,16 +1,80 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import SplitText from 'gsap/SplitText';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
-  import ChampJourney from '$lib/components/championship/ChampJourney.svelte';
-  import ChampPlatform from '$lib/components/championship/ChampPlatform.svelte';
-  import ChampPhilosophy from '$lib/components/championship/ChampPhilosophy.svelte';
-  import ChampFooter from '$lib/components/championship/ChampFooter.svelte';
-  import ChampIntro from '$lib/components/championship/ChampIntro.svelte';
-  import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
+  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  let journeySection: HTMLElement | undefined = $state();
+  let journeyTrack: HTMLElement | undefined = $state();
+  let bentoCard1: HTMLElement | undefined = $state();
+  let bentoCard2: HTMLElement | undefined = $state();
+  let bentoCardBase: HTMLElement | undefined = $state();
+  let bentoUI: HTMLElement | undefined = $state();
+  let philosophyText: HTMLElement | undefined = $state();
+
+  const stages = [
+    { num: '01', title: 'Registration & Enrollment', desc: 'Register your school and gain access to the MASTER CHESS PLAYER™, TASKIFY™ and T.E.A.M.U.P.™ platforms and begin the journey.' },
+    { num: '02', title: 'Innovative Learning', desc: 'AI-powered chess training, mentorship modules, and self-paced development through our integrated apps and tools.' },
+    { num: '03', title: 'Preliminary Rounds', desc: 'Live qualifying events where participants compete and demonstrate their growing skills on the board.' },
+    { num: '04', title: 'Elite Qualification', desc: 'Advanced competition rounds with higher stakes, team challenges, and leadership evaluations.' },
+    { num: '05', title: 'Grand Finale', desc: 'An immersive championship experience unlike conventional chess competitions awaits the finalists.' },
+  ];
+
+  onMount(() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    if (journeyTrack && journeySection) {
+      const maxX = -(journeyTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.1);
+      gsap.to(journeyTrack, {
+        x: maxX,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: journeySection,
+          start: 'top top',
+          end: () => '+=' + (journeySection!.offsetHeight - window.innerHeight),
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+
+    gsap.from([bentoCardBase, bentoCard2, bentoCard1].filter(Boolean), {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '#platform', start: 'top 80%' },
+    });
+
+    if (philosophyText) {
+      const split = new SplitText(philosophyText, { type: 'words' });
+      gsap.from(split.words, {
+        y: 100,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
+      });
+    }
+  });
+
+  function onBentoHover(enter: boolean) {
+    if (!bentoCard1 || !bentoUI) return;
+    gsap.to(bentoCard1, { rotateX: enter ? 2 : 0, rotateY: enter ? -8 : 0, duration: 0.6, ease: 'power2.out' });
+    gsap.to(bentoUI, { filter: enter ? 'brightness(1.2)' : 'brightness(1)', duration: 0.4 });
+  }
 </script>
 
 <svelte:head>
   <title>BEEE Spectacular Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Programme. Designed for chess players aged 10–14 years in schools across Abuja." />
+  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Programme." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
@@ -20,25 +84,9 @@
         "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Development Programme.",
         "startDate": "2026-10-10",
         "endDate": "2026-10-10",
-        "location": {
-          "@type": "Place",
-          "name": "Abuja",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Abuja",
-            "addressCountry": "NG"
-          }
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "12500",
-          "priceCurrency": "NGN"
-        },
-        "organizer": {
-          "@type": "Organization",
-          "name": "BEEE",
-          "url": "https://beeeproject.com"
-        }
+        "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
+        "offers": { "@type": "Offer", "price": "12500", "priceCurrency": "NGN" },
+        "organizer": { "@type": "Organization", "name": "BEEE", "url": "https://beeeproject.com" }
       },
       {
         "@type": "Organization",
@@ -47,431 +95,113 @@
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
         "description": "Youth development initiative combining competitive chess with leadership development and personal growth through the TEAMUP Programme.",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "info@beeeproject.com",
-          "telephone": "+234-802-092-0872",
-          "contactType": "customer service"
-        }
+        "contactPoint": { "@type": "ContactPoint", "email": "info@beeeproject.com", "telephone": "+234-802-092-0872", "contactType": "customer service" }
       }
     ]
   }</script>
 </svelte:head>
 
-<main class="overflow-x-hidden w-full max-w-full">
-  <ChampHero />
-  <ChampJourney />
-  <ChampPlatform />
-  <ChampPhilosophy />
-  <ChampFooter />
-  <ChampIntro />
-  <section class="section-soft why-beee-rail">
-    <div class="container why-beee-rail-inner">
-      <div class="why-beee-rail-grid">
-        <div class="why-beee-rail-img-col">
-          <img src="/images/championship/about-new.png" alt="" class="why-beee-rail-img" />
+<ChampHero />
+
+<!-- Section 2: The Journey -->
+<section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
+  <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+    <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">The Championship Journey</h2>
+    <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
+      {#each stages as s}
+        <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
+          <span class="text-6xl font-bold text-amber-400 font-hero tracking-tight">{s.num}</span>
+          <div>
+            <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
+            <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
+          </div>
         </div>
-        <div class="why-beee-rail-text-col">
-          <p class="championship-rail-eyebrow">OUR MISSION</p>
-          <h2 class="why-beee-rail-title">Why BEEE?</h2>
-          <p class="why-beee-rail-sub">We believe every young person possesses extraordinary potential. Chess is not the destination — it is the platform for developing strategic thinkers, leaders, and changemakers.</p>
-          <blockquote class="why-beee-rail-quote">Chess is not the destination. It is the platform.</blockquote>
-          <a href="/why-beee" class="why-beee-rail-btn">Our Mission &amp; Vision &rarr;</a>
+      {/each}
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: The Platform -->
+<section id="platform" class="py-32 px-6 max-w-7xl mx-auto">
+  <h2 class="font-hero text-5xl text-white text-center mb-20 tracking-tight">A Comprehensive Development Pathway</h2>
+  <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
+    <!-- Card 1: Master Chess Player -->
+    <div
+      bind:this={bentoCardBase}
+      role="button"
+      tabindex="0"
+      class="col-span-12 md:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group"
+      onmouseenter={() => onBentoHover(true)}
+      onmouseleave={() => onBentoHover(false)}
+    >
+      <img src="/images/student-holding-phone.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div
+        bind:this={bentoUI}
+        class="absolute z-10"
+        style="top:12%;left:15%;right:15%;bottom:22%;transform:perspective(1000px) rotateX(2deg) rotateY(-15deg) skewY(-2deg);overflow:hidden;border-radius:8px;"
+      >
+        <img src="/images/master-chess-ui.png" alt="Master Chess Player UI" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+      </div>
+      <div class="absolute bottom-0 left-0 p-8 z-20">
+        <h3 class="font-hero text-xl font-bold text-white mb-2">MASTER CHESS PLAYER™</h3>
+        <p class="font-['Inter'] text-gray-300 text-sm">Real-time AI mentoring and move analysis.</p>
+      </div>
+    </div>
+
+    <!-- Card 2: Taskify -->
+    <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl overflow-hidden relative group p-8 flex flex-col justify-between">
+      <div class="absolute inset-0 bg-[#1A2B4C]"></div>
+      <div class="relative z-10">
+        <h3 class="font-hero text-xl font-bold text-white mb-2">TASKIFY™ Passport</h3>
+        <p class="font-['Inter'] text-gray-300 text-sm">Track milestones and earn digital achievement badges.</p>
+      </div>
+      <div class="relative z-10 flex gap-3">
+        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">🏆</span>
+        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">⭐</span>
+        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">🎯</span>
+      </div>
+      <div class="relative z-10">
+        <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="w-[60%] h-full bg-amber-400 rounded-full"></div>
         </div>
+        <p class="text-xs text-gray-500 mt-2 font-mono">PROGRESS: 60%</p>
       </div>
     </div>
-  </section>
-  <section class="section-soft teamup-rail">
-    <div class="container" style="padding: 120px 0; text-align: center;">
-      <p class="championship-rail-eyebrow">THE PROGRAMME</p>
-      <h2 class="teamup-rail-title">The TEAMUP™ Development Programme</h2>
-      <p class="teamup-rail-sub">Five integrated pillars — Technology, Enterprise, Art, Mentorship, and Upskill — designed to develop well-rounded young leaders through chess and beyond.</p>
-      <div class="teamup-rail-chips">
-        <a href="/teamup" class="teamup-rail-chip">
-          <img src="/images/championship/technology.png" alt="" class="teamup-rail-chip-img" />
-          <span class="teamup-rail-chip-overlay"></span>
-          <span class="teamup-rail-chip-label">Technology</span>
-        </a>
-        <a href="/teamup" class="teamup-rail-chip">
-          <img src="/images/championship/enterprise.png" alt="" class="teamup-rail-chip-img" />
-          <span class="teamup-rail-chip-overlay"></span>
-          <span class="teamup-rail-chip-label">Enterprise</span>
-        </a>
-        <a href="/teamup" class="teamup-rail-chip">
-          <img src="/images/championship/art.png" alt="" class="teamup-rail-chip-img" />
-          <span class="teamup-rail-chip-overlay"></span>
-          <span class="teamup-rail-chip-label">Art</span>
-        </a>
-        <a href="/teamup" class="teamup-rail-chip">
-          <img src="/images/championship/mentorship.png" alt="" class="teamup-rail-chip-img" />
-          <span class="teamup-rail-chip-overlay"></span>
-          <span class="teamup-rail-chip-label">Mentorship</span>
-        </a>
-        <a href="/teamup" class="teamup-rail-chip">
-          <img src="/images/championship/upskill.png" alt="" class="teamup-rail-chip-img" />
-          <span class="teamup-rail-chip-overlay"></span>
-          <span class="teamup-rail-chip-label">Upskill</span>
-        </a>
+
+    <!-- Card 3: TEAMUP -->
+    <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
+      <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
+      <div class="relative z-20 ml-12 max-w-xl">
+        <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
+          Technology.<br />Enterprise.<br />Art.<br />Mentorship.<br />Upskill.
+        </p>
       </div>
-      <a href="/teamup" class="teamup-rail-btn">Explore the Programme &rarr;</a>
     </div>
-  </section>
-  <section class="section-soft championship-rail">
-    <div class="container" style="padding: 120px 0; text-align: center;">
-      <p class="championship-rail-eyebrow">The Championship Journey</p>
-      <h2 class="championship-rail-title">From Registration to Grand Finale</h2>
-      <p class="championship-rail-sub">Five stages. One transformative experience.</p>
-      <div class="championship-rail-track">
-        <a href="/championship" class="championship-rail-step">
-          <div class="championship-rail-step-circle"><span class="championship-rail-step-icon">♟</span></div>
-          <span class="championship-rail-step-label">Register</span>
-        </a>
-        <a href="/championship" class="championship-rail-step">
-          <div class="championship-rail-step-circle"><span class="championship-rail-step-icon">♞</span></div>
-          <span class="championship-rail-step-label">Learn</span>
-        </a>
-        <a href="/championship" class="championship-rail-step">
-          <div class="championship-rail-step-circle"><span class="championship-rail-step-icon">♛</span></div>
-          <span class="championship-rail-step-label">Grow</span>
-        </a>
-        <a href="/championship" class="championship-rail-step">
-          <div class="championship-rail-step-circle"><span class="championship-rail-step-icon">♜</span></div>
-          <span class="championship-rail-step-label">Compete</span>
-        </a>
-        <a href="/championship" class="championship-rail-step">
-          <div class="championship-rail-step-circle"><span class="championship-rail-step-icon">♚</span></div>
-          <span class="championship-rail-step-label">Become</span>
-        </a>
-      </div>
-      <a href="/championship" class="championship-rail-btn">View the Journey &rarr;</a>
-    </div>
-  </section>
-  <ChampCTA />
-</main>
+  </div>
+</section>
+
+<!-- Section 4: Philosophy -->
+<section id="philosophy" class="h-screen flex items-center justify-center bg-amber-400 overflow-hidden">
+  <h2 bind:this={philosophyText} class="split-text-target font-hero text-6xl md:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9] w-[80vw] mx-auto">
+    Chess is not the destination. It is the platform.
+  </h2>
+</section>
+
+<!-- Section 5: Footer -->
+<footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
+  <h1 class="font-hero text-[10vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
+  <RegisterBtn href="/register" class="text-amber-400 text-2xl mt-4 text-[inherit] !bg-transparent !bg-none !p-0 !min-h-0 !font-normal h-auto">
+    Register your school for Abuja 2026 &rarr;
+  </RegisterBtn>
+</footer>
 
 <style>
-  .championship-rail-eyebrow {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--primary);
-    margin: 0 0 16px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  #journey {
+    scrollbar-width: none;
   }
-
-  .why-beee-rail-inner {
-    padding: 120px 0;
-  }
-
-  .why-beee-rail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-
-  .why-beee-rail-img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 12px;
-    min-height: 320px;
-  }
-
-  .why-beee-rail-text-col {
-    text-align: left;
-  }
-
-  .why-beee-rail-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 0;
-  }
-
-  .why-beee-rail-sub {
-    font-family: var(--font-display);
-    font-size: 20px;
-    line-height: 1.3;
-    color: var(--body);
-    margin: 16px 0 24px;
-    max-width: 600px;
-  }
-
-  .why-beee-rail-quote {
-    margin: 0 0 28px;
-    padding: 0 0 0 16px;
-    border-left: 3px solid var(--primary);
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-    font-style: italic;
-    color: var(--primary);
-    line-height: 1.4;
-  }
-
-  .why-beee-rail-btn {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--on-primary);
-    background: var(--primary);
-    padding: 14px 32px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 200ms ease;
-  }
-
-  .why-beee-rail-btn:hover {
-    opacity: 0.85;
-  }
-
-  .teamup-rail-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 0;
-  }
-
-  .teamup-rail-sub {
-    font-family: var(--font-display);
-    font-size: 20px;
-    line-height: 1.3;
-    color: var(--body);
-    margin: 16px auto 32px;
-    max-width: 600px;
-  }
-
-  .teamup-rail-chips {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 32px;
-  }
-
-  .teamup-rail-chip {
-    position: relative;
-    display: block;
-    width: 140px;
-    height: 140px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .teamup-rail-chip-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .teamup-rail-chip-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .teamup-rail-chip-label {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1.2;
-  }
-
-  .teamup-rail-btn {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--on-primary);
-    background: var(--primary);
-    padding: 14px 32px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 200ms ease;
-  }
-
-  .teamup-rail-btn:hover {
-    opacity: 0.85;
-  }
-
-  .championship-rail-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 0;
-  }
-
-  .championship-rail-sub {
-    font-family: var(--font-display);
-    font-size: 20px;
-    line-height: 1.3;
-    color: var(--body);
-    margin: 12px auto 32px;
-    max-width: 600px;
-  }
-
-  .championship-rail-btn {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--on-primary);
-    background: var(--primary);
-    padding: 14px 32px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 200ms ease;
-  }
-
-  .championship-rail-btn:hover {
-    opacity: 0.85;
-  }
-
-  .championship-rail-track {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 720px;
-    margin: 0 auto 40px;
-    padding: 0 0 4px;
-    background: linear-gradient(to bottom, transparent 23px, color-mix(in srgb, var(--primary) 28%, transparent) 23px, color-mix(in srgb, var(--primary) 28%, transparent) 25px, transparent 25px);
-    background-attachment: local;
-  }
-
-  .championship-rail-step {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-    z-index: 1;
-  }
-
-  .championship-rail-step-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--surface-card);
-    border: 2px solid var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .championship-rail-step-icon {
-    font-size: 20px;
-    line-height: 1;
-    color: var(--primary);
-  }
-
-  .championship-rail-step-label {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--body);
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 1023px) {
-    .why-beee-rail-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .why-beee-rail-img {
-      min-height: 220px;
-    }
-
-    .why-beee-rail-text-col {
-      text-align: left;
-    }
-
-    .why-beee-rail-sub {
-      margin: 16px 0 24px;
-    }
-
-    .teamup-rail-chips {
-      justify-content: flex-start;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 0 4px 16px;
-      margin-bottom: 28px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .teamup-rail-chips::-webkit-scrollbar {
-      display: none;
-    }
-
-    .teamup-rail-chips {
-      scrollbar-width: none;
-    }
-
-    .teamup-rail-chip {
-      width: 96px;
-      height: 96px;
-      scroll-snap-align: start;
-    }
-
-    .championship-rail-track {
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 0 4px 16px;
-      margin-bottom: 36px;
-      -webkit-overflow-scrolling: touch;
-      justify-content: flex-start;
-      background: linear-gradient(to bottom, transparent 17px, color-mix(in srgb, var(--primary) 28%, transparent) 17px, color-mix(in srgb, var(--primary) 28%, transparent) 19px, transparent 19px);
-      background-attachment: local;
-    }
-
-    .championship-rail-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .championship-rail-track {
-      scrollbar-width: none;
-    }
-
-    .championship-rail-step {
-      scroll-snap-align: start;
-    }
-
-    .championship-rail-step-circle {
-      width: 36px;
-      height: 36px;
-    }
-
-    .championship-rail-step-icon {
-      font-size: 16px;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .why-beee-rail-inner {
-      padding: 80px 0;
-    }
+  #journey::-webkit-scrollbar {
+    display: none;
   }
 </style>
