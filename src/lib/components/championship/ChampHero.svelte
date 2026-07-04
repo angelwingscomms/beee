@@ -74,21 +74,21 @@
     <div class="lg:col-span-5">
       <p class="hero-anim-elem text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        FOR ABUJA SCHOOLS &amp; STUDENTS (AGES 10–14)
+        Abuja · Ages 10–14 · Summer 2026
       </p>
 
       <h1 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-        Equip your students for life beyond the chessboard.
+        Your child. One board. A lifetime of advantage.
       </h1>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative championship combining AI-powered chess training, leadership mentorship, and the TEAMUP&#8482; curriculum. July to October 2026.
+        Chess training, leadership mentorship, and the TEAMUP&#8482; programme — one summer that changes how they think, lead, and grow. July to October 2026.
       </p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
-        <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base" />
+        <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
         <a href="/championship" class="bg-transparent border border-white text-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center">
-          Explore the Journey
+          See How It Works
         </a>
       </div>
 

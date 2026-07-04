@@ -17,11 +17,11 @@
   let philosophyText: HTMLElement | undefined = $state();
 
   const stages = [
-    { num: '01', title: 'Registration & Enrollment', desc: 'Register your school and gain access to the MASTER CHESS PLAYER™, TASKIFY™ and TEAMUP™ platforms and begin the journey.' },
-    { num: '02', title: 'Innovative Learning', desc: 'AI-powered chess training, mentorship modules, and self-paced development through our integrated apps and tools.' },
-    { num: '03', title: 'Preliminary Rounds', desc: 'Live qualifying events where participants compete and demonstrate their growing skills on the board.' },
-    { num: '04', title: 'Elite Qualification', desc: 'Advanced competition rounds with higher stakes, team challenges, and leadership evaluations.' },
-    { num: '05', title: 'Grand Finale', desc: 'An immersive championship experience unlike conventional chess competitions awaits the finalists.' },
+    { num: '01', title: 'Your First Move', desc: 'Register your child and unlock access to MASTER CHESS PLAYER™, TASKIFY™, and the full TEAMUP™ programme.' },
+    { num: '02', title: 'Train Like a Champion', desc: 'AI-powered chess training, mentorship sessions, and self-paced challenges through integrated apps and tools.' },
+    { num: '03', title: 'Face the Board', desc: 'Live qualifying matches where participants test their growing skills against peers from across Abuja.' },
+    { num: '04', title: 'Outthink the Room', desc: 'Advanced rounds with higher stakes, team challenges, and leadership evaluations that reveal who they\'re becoming.' },
+    { num: '05', title: 'Lift the Trophy', desc: 'An immersive championship finale where preparation, courage, and strategy meet. This is the moment they\'ve built toward.' },
   ];
 
   onMount(() => {
@@ -71,15 +71,15 @@
 </script>
 
 <svelte:head>
-  <title>BEEE Spectacular Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="The BEEE Spectacular Chess Championship Abuja 2026 is a unique youth development initiative that combines competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Programme." />
+  <title>BEEE Chess Championship Abuja 2026 — More Than a Chess Championship</title>
+  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the TEAMUP programme. Summer 2026." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "A unique youth development initiative combining competitive chess with leadership development, mentorship, creativity, innovation, and personal growth through the TEAMUP Development Programme.",
+        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the TEAMUP programme.",
         "startDate": "2026-10-10",
         "endDate": "2026-10-10",
         "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
@@ -92,7 +92,7 @@
         "name": "BEEE Spectacular Chess Championship",
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth development initiative combining competitive chess with leadership development and personal growth through the TEAMUP Programme.",
+        "description": "Youth chess championship with AI training, leadership mentorship, and the TEAMUP development programme for Abuja kids aged 10-14.",
         "contactPoint": { "@type": "ContactPoint", "email": "info@beeeproject.com", "telephone": "+234-802-092-0872", "contactType": "customer service" }
       }
     ]
@@ -104,7 +104,7 @@
 <!-- Section 2: The Journey -->
 <section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
   <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-    <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">The Championship Journey</h2>
+    <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">Your Journey to the Finals</h2>
     <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
       {#each stages as s}
         <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
@@ -121,7 +121,7 @@
 
 <!-- Section 3: The Platform -->
 <section id="platform" class="py-20 px-6">
-  <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">A Comprehensive Development Pathway</h2>
+    <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
   <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
     <!-- Card 1: Master Chess Player -->
     <div
@@ -183,7 +183,7 @@
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
   <h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
-  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Register Now<span style="display:inline-block;vertical-align:middle"> →</span></a>
+  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey<span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
 
 <style>
