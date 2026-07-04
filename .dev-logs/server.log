@@ -70,3 +70,36 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 5:36:34 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
 5:36:34 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
+https://svelte.dev/e/css_unused_selector
+5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--none"
+https://svelte.dev/e/css_unused_selector
+5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
+https://svelte.dev/e/css_unused_selector
+5:51:09 AM [vite] (client) hmr update /src/app.css
+5:51:09 AM [vite] (ssr) page reload src/app.css
+5:51:26 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+5:51:26 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:51:29 AM [vite] (client) [optimizer] bundling dependencies...
+5:51:31 AM [vite] (client) ✨ new dependencies optimized: gsap, gsap/ScrollTrigger
+5:51:31 AM [vite] (client) ✨ optimized dependencies changed. reloading
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:51:52 AM [vite] (client) page reload .svelte-kit/generated/root.js
+5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:52:00 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+5:52:00 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:52:16 AM [vite] (client) page reload .svelte-kit/generated/root.js
+5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
