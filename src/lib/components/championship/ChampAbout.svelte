@@ -17,18 +17,14 @@
           <span class="champ-about-eyebrow">OUR VISION</span>
           <p class="champ-about-vision-text">A generation of confident thinkers who carry chess-forged skills into academics, leadership, and life.</p>
         </div>
+        <RegisterBtn href="/register" class="register-btn--hero">Register Now →</RegisterBtn>
       </div>
     </div>
-  </div>
-  <div class="champ-about-footer">
-    <RegisterBtn href="/register" class="register-btn--hero">Register Now →</RegisterBtn>
   </div>
 </section>
 
 <style>
   .champ-about {
-    display: flex;
-    flex-direction: column;
     position: relative;
     color: var(--color-on-photo);
     background-size: cover;
@@ -132,16 +128,6 @@
     margin: 0;
   }
 
-  .champ-about-footer {
-    position: relative;
-    z-index: 2;
-    min-height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-ink-warm);
-  }
-
   :global(.register-btn--hero) {
     padding: 18px 44px !important;
     font-size: 18px !important;
@@ -192,9 +178,6 @@
     }
     .champ-about-text {
       padding-right: 0;
-    }
-    .champ-about-footer {
-      min-height: 100px;
     }
   }
 

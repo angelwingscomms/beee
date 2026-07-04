@@ -1,229 +1,338 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import heroBg from '$lib/assets/images/hero-bg.png?enhanced';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
-  import { REG_AMOUNT } from '$lib/constants';
-  import { isHeroCtaVisible } from '$lib/stores';
 
-  let heroCtaNode: HTMLDivElement | undefined = $state();
+  let hero: HTMLElement | undefined = $state();
+  let visual: HTMLElement | undefined = $state();
 
   onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        isHeroCtaVisible.set(entries[0].isIntersecting);
-      },
-      { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
-    );
+    requestAnimationFrame(() => hero?.classList.add('is-visible'));
 
-    if (heroCtaNode) {
-      observer.observe(heroCtaNode);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = scrollY;
+          if (visual) visual.style.transform = `translateY(${y * 0.6}px)`;
+          ticking = false;
+        });
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+      return () => removeEventListener('scroll', onScroll);
     }
-
-    return () => {
-      if (heroCtaNode) observer.unobserve(heroCtaNode);
-    };
   });
 </script>
 
-<section class="champ-hero">
-  <enhanced:img src={heroBg} alt="" class="champ-hero-bg-img" sizes="100vw" fetchpriority="high" />
-  <div class="champ-hero-overlay"></div>
-  <div class="champ-hero-noise"></div>
-  <div class="champ-hero-body container">
-    <p class="champ-hero-eyebrow">BEEE Spectacular Chess Championship</p>
-    <h1 class="champ-hero-title">
-      More Than a Chess Championship
-    </h1>
-    <p class="champ-hero-hook">Leadership, Mentorship, and Growth — Make your move.</p>
-    <div class="champ-hero-info">
-      <div class="champ-hero-info-item">
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M1 6H15" stroke="currentColor" stroke-width="2.5"/><path d="M5 1V4M11 1V4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <span>October 10, 2026</span>
+<section class="hero" bind:this={hero} aria-label="Championship hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <span class="hero__kicker">AGES 10–14 · ABUJA SCHOOLS · 2026</span>
+      <img class="hero__wordmark" src="/logo-wm.svg" alt="BEEE" width="180" height="48" />
+      <h1 class="hero__headline">Building Leaders<br><span class="hero__gold">Not Just Winners</span></h1>
+      <p class="hero__subheadline">The BEEE® Spectacular Chess Championship — a 5-month journey of competitive chess, leadership mentorship, and personal growth for students aged 10 to 14 across Abuja.</p>
+      <ul class="hero__stats">
+        <li>Starts July 20, 2026</li>
+        <li>Grand Finale · Oct 2026</li>
+        <li>Schools-Only Entry</li>
+      </ul>
+      <div class="hero__cta">
+        <RegisterBtn href="/register" class="hero__reg-btn">Register Now</RegisterBtn>
+        <a href="#journey" class="btn btn--secondary">Explore the Journey</a>
       </div>
-      <div class="champ-hero-info-divider"></div>
-      <div class="champ-hero-info-item">
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.2 1 3 3.2 3 6C3 9.5 8 15 8 15C8 15 13 9.5 13 6C13 3.2 10.8 1 8 1Z" stroke="currentColor" stroke-width="2.5"/><circle cx="8" cy="6" r="2" stroke="currentColor" stroke-width="2.5"/></svg>
-        <span>Abuja, Nigeria</span>
-      </div>
-      <div class="champ-hero-info-divider"></div>
-      <div class="champ-hero-info-item">
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5L7.5 2L14 2.5L13.5 9L8 15.5L2 8.5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="10.5" cy="5.5" r="0.8" fill="currentColor"/></svg>
-        <span>₦{REG_AMOUNT.toLocaleString()} per participant</span>
-      </div>
+      <p class="hero__micro">Chess is not the destination. It is the platform.</p>
     </div>
-    <div class="champ-hero-actions">
-      <div bind:this={heroCtaNode}><RegisterBtn href="/register" class="champ-hero-btn-primary">Register</RegisterBtn></div>
-      <a href="#champ-intro" class="champ-hero-btn-secondary">Why BEEE? →</a>
+    <div class="hero__visual" bind:this={visual}>
+      <img class="hero__photo" src="/images/hero.png" alt="Young chess player from an Abuja school competing in the BEEE Spectacular Chess Championship." width="720" height="880" fetchpriority="high" />
+
     </div>
+  </div>
+  <div class="hero__trust">
+    <span>Instagram @thebeeeproject</span>
+    <span>X @beeeproject</span>
+    <a href="mailto:info@beeeproject.com">info@beeeproject.com</a>
+    <a href="tel:+2349026824439">+234 902 682 4439</a>
   </div>
 </section>
 
 <style>
-  .champ-hero {
+  .hero {
     position: relative;
-    min-height: 100dvh;
+    overflow: hidden;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--surface-dark);
+    justify-content: space-between;
+    background: #fff;
+    --gold: var(--primary);
+    --gold-hover: var(--primary-active);
+    --ease-out: cubic-bezier(.16,1,.3,1);
   }
 
-  .champ-hero-bg-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(1.05) contrast(1.1);
-  }
-
-  .champ-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
-      radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .champ-hero-noise::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px 256px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* ── Hero Body ── */
-  .champ-hero-body {
+  .hero__container {
     position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 120px 0 160px;
-    max-width: 880px;
-  }
-
-  .champ-hero-eyebrow {
-    margin: 0 0 12px;
-    font-size: clamp(0.875rem, 1.6vw, 1.25rem);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--primary);
-  }
-
-  .champ-hero-title {
+    z-index: 1;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+  }
+
+  .hero__kicker {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font: 700 12px/1 var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+
+  .hero__wordmark {
+    height: 32px;
+    width: auto;
+    display: block;
+    margin: 20px 0;
+  }
+
+  .hero__headline {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 4vw, 4.5rem);
-    font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    color: var(--on-dark);
-    text-wrap: balance;
-    max-width: 56rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 1.2rem + 3.5vw, 4rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0 0 16px;
   }
 
-  .champ-hero-hook {
-    max-width: 800px;
-    margin: 20px auto 0;
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--on-dark);
-    font-family: var(--font-body);
-  }
-  .champ-hero-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 12px;
-    margin-bottom: 32px;
-  }
-  .champ-hero-info-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--on-dark);
-    font-size: 14px;
-    line-height: 1;
-  }
-  .champ-hero-info-item svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-  }
-  .champ-hero-info-divider {
-    width: 1px;
-    height: 16px;
-    background: rgba(250, 249, 245, 0.2);
-    flex-shrink: 0;
+  .hero__gold {
+    color: var(--gold);
   }
 
-  .champ-hero-actions {
+  .hero__subheadline {
+    max-width: 60ch;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--body);
+    margin: 0 0 32px;
+  }
+
+  .hero__stats {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 0;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    font-size: 14px;
+    color: var(--body);
   }
 
-  :global(.champ-hero-btn-primary) {
-    min-height: 46px;
-    padding: 14px 28px;
+  .hero__stats li {
+    padding: 0 24px;
+    border-left: 1px solid var(--hairline);
   }
 
-  .champ-hero-btn-secondary {
+  .hero__stats li:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    height: 56px;
+    padding: 0 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    padding: 14px 28px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: rgba(255,255,255,0.9);
-    border: 1px solid rgba(255,255,255,0.6);
-    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    text-decoration: none;
+    transition: all .25s var(--ease-out);
   }
 
-  .champ-hero-btn-secondary:hover {
-    background: rgba(255,255,255,1);
-    color: rgba(0,0,0,1);
-    border-color: rgba(255,255,255,1);
-    transform: scale(1.03);
+  .btn--secondary {
+    background: #fff;
+    color: var(--ink);
+    border: 1px solid var(--hairline);
   }
 
-  @media (max-width: 767px) {
-    .champ-hero-body {
-      padding: 100px 0 120px;
+  .btn--secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--surface-soft);
+  }
+
+  :global(.hero__reg-btn) {
+    min-height: 56px;
+    padding: 0 32px;
+    font-size: 16px;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .hero__micro {
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .hero__visual {
+    position: relative;
+    justify-self: end;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .hero__photo {
+    width: 100%;
+    aspect-ratio: 720/880;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .hero__float {
+    position: absolute;
+  }
+
+  .hero__trust {
+    position: relative;
+    z-index: 2;
+    height: 80px;
+    background: var(--surface-soft);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--body);
+  }
+
+  .hero__trust a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .hero__trust a:hover {
+    color: var(--primary);
+  }
+
+  /* Motion */
+  .hero__content > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .5s var(--ease-out) var(--delay,0ms), transform .5s var(--ease-out) var(--delay,0ms);
+  }
+
+  .hero__kicker { --delay: 0ms; }
+  .hero__wordmark { --delay: 80ms; }
+  .hero__headline { --delay: 160ms; }
+  .hero__subheadline { --delay: 240ms; }
+  .hero__stats { --delay: 320ms; }
+  .hero__cta { --delay: 520ms; }
+  .hero__micro { --delay: 600ms; }
+
+  .hero:global(.is-visible) .hero__content > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero__photo {
+    opacity: 0;
+    transform: scale(.96);
+    transition: opacity .9s var(--ease-out) .2s, transform .9s var(--ease-out) .2s;
+  }
+
+  .hero:global(.is-visible) .hero__photo {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (max-width: 1024px) {
+    .hero__container {
+      gap: 40px;
     }
-    .champ-hero-title {
-      font-size: clamp(2rem, 7vw, 2.6rem);
+    .hero__stats {
+      gap: 16px;
     }
-    .champ-hero-hook {
-      font-size: 16px;
-      margin-top: 16px;
-    }  }
-  @media (max-width: 639px) {
-    .champ-hero-info {
+  }
+
+  @media (max-width: 768px) {
+    .hero__container {
+      grid-template-columns: 1fr;
+      padding: 0 24px;
+    }
+    .hero__visual {
+      order: -1;
+      height: 240px;
+      overflow: hidden;
+      justify-self: center;
+      max-width: 320px;
+    }
+    .hero__visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, #fff);
+      pointer-events: none;
+    }
+    .hero__photo {
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__float--none {
+      transform: scale(.6);
+    }
+    .hero__stats {
       flex-direction: column;
-      gap: 8px;
     }
-    .champ-hero-info-divider {
-      width: 40px;
-      height: 1px;
+    .hero__stats li {
+      padding: 0;
+      border-left: none;
+    }
+    .hero__trust {
+      gap: 16px;
+      padding: 0 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__headline {
+      font-size: 2rem;
+    }
+    .hero__cta {
+      flex-direction: column;
+    }
+    .hero__cta .btn {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content > *,
+    .hero__photo,
+    .hero__float {
+      transition: opacity .3s linear !important;
+      transform: none !important;
+      animation: none !important;
     }
   }
 </style>
