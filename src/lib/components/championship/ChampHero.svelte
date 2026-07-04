@@ -66,7 +66,7 @@
   });
 </script>
 
-<section class="min-h-screen relative overflow-hidden flex items-center bg-[#0A0F1A]">
+<section class="min-h-screen relative overflow-hidden flex items-center bg-navy">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 120% 100% at 0% 0%, #1A2B4C 0%, transparent 70%)"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-24 pb-12 relative z-10">
@@ -86,9 +86,7 @@
       </p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
-        <RegisterBtn href="/register" class="!bg-amber-400 !text-slate-950 !font-bold px-8 py-4 rounded-full hover:!bg-amber-300 !w-full sm:!w-auto !text-center !text-base !bg-none !min-h-0">
-          Register Your School
-        </RegisterBtn>
+        <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base" />
         <a href="/championship" class="bg-transparent border border-gray-600 text-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center">
           Explore the Journey
         </a>
@@ -110,6 +108,8 @@
           fetchpriority="high"
         />
 
+        <!-- feature-float-cards -->
+        <!-- Master Chess Player AI feedback card
         <div bind:this={float1} class="absolute -right-4 lg:-right-12 top-12 max-w-[280px] z-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-4 rounded-2xl flex flex-col gap-3">
           <div class="flex items-center gap-2">
             <span class="w-4 h-4 bg-amber-400/20 rounded flex items-center justify-center text-xs shrink-0">🧠</span>
@@ -119,7 +119,9 @@
             Excellent strategic defense. Consider Knight to F3 to develop your center.
           </p>
         </div>
-
+        -->
+        <!-- feature-float-cards -->
+        <!-- Taskify Progress card
         <div bind:this={float2} class="absolute -left-4 lg:-left-12 bottom-12 max-w-[240px] z-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-4 rounded-2xl">
           <p class="text-xs font-bold text-white mb-2">TASKIFY&#8482; Progress</p>
           <div class="w-full h-1.5 bg-white/20 rounded-full mb-3">
@@ -131,6 +133,7 @@
             <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">🚀</span>
           </div>
         </div>
+        -->
       </div>
     </div>
 

@@ -1,105 +1,123 @@
 $ vite --host --port 5400
+6:08:02 AM [vite] (ssr) Re-optimizing dependencies because lockfile has changed
 
-  VITE v8.0.14  ready in 2667 ms
+  VITE v8.0.14  ready in 2497 ms
 
   ➜  Local:   http://localhost:5400/
   ➜  Network: http://192.168.43.40:5400/
+  ➜  Network: http://192.168.240.1:5400/
+  ➜  Network: http://169.254.24.16:5400/
   ➜  press h + enter to show help
+6:08:30 AM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+6:08:30 AM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+6:08:30 AM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+6:08:30 AM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+6:08:30 AM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
 Using secrets defined in .env
-5:34:20 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
-5:34:20 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:34:57 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
-5:34:57 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:214:2 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:312:4 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:343:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:35:34 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:214:2 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:312:4 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:343:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:42 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:35:42 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:35:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--king"
-https://svelte.dev/e/css_unused_selector
-5:35:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:24 Unused CSS selector ".hero__float--chip"
-https://svelte.dev/e/css_unused_selector
-5:35:50 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:50 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:35:50 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:35:57 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:57 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--none"
-https://svelte.dev/e/css_unused_selector
-5:35:57 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:35:57 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:35:57 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:36:23 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:36:23 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--none"
-https://svelte.dev/e/css_unused_selector
-5:36:23 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:36:23 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:36:23 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:36:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:36:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--none"
-https://svelte.dev/e/css_unused_selector
-5:36:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:36:34 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
-5:36:34 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:210:2 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:301:4 Unused CSS selector ".hero__float--none"
-https://svelte.dev/e/css_unused_selector
-5:51:03 AM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:332:4 Unused CSS selector ".hero__float"
-https://svelte.dev/e/css_unused_selector
-5:51:09 AM [vite] (client) hmr update /src/app.css
-5:51:09 AM [vite] (ssr) page reload src/app.css
-5:51:26 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
-5:51:26 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:51:29 AM [vite] (client) [optimizer] bundling dependencies...
-5:51:31 AM [vite] (client) ✨ new dependencies optimized: gsap, gsap/ScrollTrigger
-5:51:31 AM [vite] (client) ✨ optimized dependencies changed. reloading
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-5:51:52 AM [vite] (client) page reload .svelte-kit/generated/root.js
-5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-5:51:52 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-5:52:00 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
-5:52:00 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-5:52:16 AM [vite] (client) page reload .svelte-kit/generated/root.js
-5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
-5:52:16 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+6:09:57 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:09:57 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:10:40 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:10:40 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:10:57 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:10:57 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:11:36 AM [vite] (client) hmr update /src/app.css
+6:11:36 AM [vite] (ssr) page reload src/app.css
+6:11:41 AM [vite] (client) hmr update /src/app.css
+6:11:41 AM [vite] (ssr) page reload src/app.css
+6:11:51 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:11:51 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:26:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+6:26:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+8:05:06 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:05:06 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:05:06 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:43:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:05:10 AM [vite] (client) [optimizer] bundling dependencies...
+8:05:12 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:05:12 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:05:13 AM [vite] (client) ✨ new dependencies optimized: gsap/dist/SplitText
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:05:41 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:05:41 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:05:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:05:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:06:04 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:06:04 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:06:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:06:04 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:06:21 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:06:21 AM [vite] (client) hmr update /src/lib/components/championship/ChampPlatform.svelte
+8:06:26 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:06:26 AM [vite] (client) hmr update /src/lib/components/championship/ChampPlatform.svelte
+8:06:31 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:06:31 AM [vite] (client) hmr update /src/lib/components/championship/ChampPlatform.svelte
+8:06:35 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:06:35 AM [vite] (client) hmr update /src/lib/components/championship/ChampPlatform.svelte
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:07:05 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:07:05 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:07:05 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:07:05 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:07:35 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:07:35 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:07:35 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:07:35 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:07:53 AM [vite] (client) hmr update /src/lib/components/championship/ChampFooter.svelte, /src/app.css
+8:07:53 AM [vite] (ssr) page reload src/lib/components/championship/ChampFooter.svelte
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:08:20 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:08:20 AM [vite] (client) page reload .svelte-kit/generated/root.js
+8:08:20 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:08:20 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:17:33 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+8:17:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampPlatform.svelte:46:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions

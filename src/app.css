@@ -98,6 +98,8 @@
   --color-surface-dark: #181715;
   --color-surface-dark-elevated: #252320;
   --color-surface-dark-soft: #1f1e1b;
+  --color-navy: #0A0F1A;
+  --color-navy-blob: #1A2B4C;
   --color-on-dark: #faf9f5;
   --color-muted: #6c6a64;
   --color-teal: #5db8a6;
@@ -191,6 +193,8 @@
   --surface-dark: #181715;
   --surface-dark-elevated: #252320;
   --surface-dark-soft: #1f1e1b;
+  --navy: #0A0F1A;
+  --navy-blob: #1A2B4C;
   --on-primary: #ffffff;
   --on-dark: #faf9f5;
   --on-dark-soft: #a09d96;

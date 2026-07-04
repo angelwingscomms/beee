@@ -1,5 +1,9 @@
 <script lang="ts">
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import ChampJourney from '$lib/components/championship/ChampJourney.svelte';
+  import ChampPlatform from '$lib/components/championship/ChampPlatform.svelte';
+  import ChampPhilosophy from '$lib/components/championship/ChampPhilosophy.svelte';
+  import ChampFooter from '$lib/components/championship/ChampFooter.svelte';
   import ChampIntro from '$lib/components/championship/ChampIntro.svelte';
   import ChampCTA from '$lib/components/championship/ChampCTA.svelte';
 </script>
@@ -56,6 +60,10 @@
 
 <main class="overflow-x-hidden w-full max-w-full">
   <ChampHero />
+  <ChampJourney />
+  <ChampPlatform />
+  <ChampPhilosophy />
+  <ChampFooter />
   <ChampIntro />
   <section class="section-soft why-beee-rail">
     <div class="container why-beee-rail-inner">
