@@ -9,3 +9,32 @@ $ vite --host --port 5400
   ➜  press h + enter to show help
 Using secrets defined in .env
 Using secrets defined in .env
+8:06:41 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:06:41 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:06:43 PM [vite] (client) [optimizer] bundling dependencies...
+8:06:46 PM [vite] (client) ✨ new dependencies optimized: animejs
+8:06:46 PM [vite] (client) ✨ optimized dependencies changed. reloading
+8:06:47 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+8:06:47 PM [vite] (ssr) page reload src/routes/+page.svelte
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:07:40 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:07:40 PM [vite] (client) page reload .svelte-kit/generated/root.js
+8:07:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:07:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:08:12 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+8:08:12 PM [vite] (client) page reload .svelte-kit/generated/root.js
+8:08:12 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+8:08:12 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

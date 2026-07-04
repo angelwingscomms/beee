@@ -3,6 +3,7 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import SplitText from 'gsap/SplitText';
+  import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import RegisterBtn from '$lib/components/RegisterBtn.svelte';
 
@@ -28,19 +29,16 @@
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     if (journeyTrack && journeySection) {
-      gsap.to(journeyTrack, {
-        // Use a function here so GSAP recalculates dynamically when layout settles
-        // and safely accounts for window resizes thanks to invalidateOnRefresh
-        x: () => -(journeyTrack!.scrollWidth - window.innerWidth),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: journeySection,
-          start: 'top top',
-          end: () => '+=' + (journeySection!.offsetHeight - window.innerHeight),
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
+      const maxX = -(journeyTrack.scrollWidth - window.innerWidth);
+      animate(journeyTrack, {
+        translateX: [0, maxX],
+        ease: 'linear',
+        autoplay: onScroll({
+          target: journeySection,
+          enter: 'top top',
+          leave: 'bottom bottom',
+          sync: true,
+        }),
       });
     }
 
