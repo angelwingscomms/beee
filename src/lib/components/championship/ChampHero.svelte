@@ -72,14 +72,13 @@
   <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-24 pb-12 relative z-10">
 
     <div class="lg:col-span-5">
-      <p class="hero-anim-elem text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <h1 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">
         BEEE Spectacular Chess Championship Abuja 2026
-      </p>
-
-      <h1 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-        Your child. One board. A lifetime of advantage.
       </h1>
+
+      <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+        Building leaders,<br />not just winners
+      </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
         Chess training, leadership mentorship, and the TEAMUP&#8482; programme — one summer that changes how they think, lead, and grow. July to October 2026.
