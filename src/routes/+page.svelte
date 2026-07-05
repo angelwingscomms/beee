@@ -88,7 +88,6 @@
     <div class="px-[10vw]">
       <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
         <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">BEEE Spectacular Chess Championship</p>
-        <h3 class="text-4xl font-bold text-white mb-6 font-hero tracking-tight">BEEE Spectacular Chess Championship</h3>
         <p class="font-['Inter'] text-gray-400 leading-relaxed text-lg">The BEEE&reg; Spectacular Chess Championship is the flagship programme of The BEEE Project&trade;, combining competitive chess with technology, mentorship, leadership development, and personal growth.</p>
       </div>
     </div>
