@@ -94,7 +94,7 @@
           <span class="text-white font-medium">Jul 28 – Oct 10</span>
         </div>
         <div class="flex items-center gap-2 text-sm">
-          <svg class="w-4 h-4 text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M17 5l-5-3-5 3m-4 2l4-2m16 6l-4 2m0 8l4 2M3 13l4-2m0-4l4 2m0 4l4-2m0-4l4 2"/></svg>
+          <svg class="w-4 h-4 text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
           <span class="text-white font-medium">₦15,000</span>
         </div>
       </div>
