@@ -3,40 +3,18 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import SplitText from 'gsap/SplitText';
-  import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
-  let journeySection: HTMLElement | undefined = $state();
-  let journeyTrack: HTMLElement | undefined = $state();
   let bentoCard1: HTMLElement | undefined = $state();
   let bentoCard2: HTMLElement | undefined = $state();
   let bentoCardBase: HTMLElement | undefined = $state();
   let bentoUI: HTMLElement | undefined = $state();
   let philosophyText: HTMLElement | undefined = $state();
 
-  const stages = [
-    { num: 'The BEEE Project', title: '', desc: '' },
-    { num: 'BEEE', title: 'BEEE Spectacular Chess Championship', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.\n\nDesigned for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.\n\nMore than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
-  ];
-
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    if (journeyTrack && journeySection) {
-      const maxX = -(journeyTrack.scrollWidth - window.innerWidth);
-      animate(journeyTrack, {
-        translateX: [0, maxX],
-        ease: 'linear',
-        autoplay: onScroll({
-          target: journeySection,
-          enter: 'top top',
-          leave: 'bottom bottom',
-          sync: true,
-        }),
-      });
-    }
 
     gsap.from([bentoCardBase, bentoCard2, bentoCard1].filter(Boolean), {
       y: 50,
@@ -99,31 +77,21 @@
 <ChampHero />
 
 <!-- Section 2: The Journey -->
-<section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
-  <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-    <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">Your Journey to the Finals</h2>
-    <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
-      {#each stages as s, i}
-        {#if i === 0}
-          <div class="w-[80vw] md:w-[600px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
-            <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-3 font-hero tracking-tight">What is The BEEE Project&trade;?</h3>
-              <p class="font-['Inter'] text-gray-400 leading-relaxed">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
-            </div>
-          </div>
-        {:else}
-          <div class="w-[80vw] md:w-[600px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
-            <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">{s.num}</p>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
-              <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
-            </div>
-          </div>
-        {/if}
-      {/each}
+<section id="journey" class="min-h-screen py-24 bg-navy">
+    <h2 class="font-hero text-5xl text-white ml-[10vw] tracking-tight mb-20">Your Journey to the Finals</h2>
+    <div class="px-[10vw] mb-16">
+      <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
+        <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">The BEEE Project</p>
+        <p class="font-['Inter'] text-gray-400 leading-relaxed text-lg">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
+      </div>
     </div>
-  </div>
+    <div class="px-[10vw]">
+      <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
+        <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">BEEE Spectacular Chess Championship</p>
+        <h3 class="text-4xl font-bold text-white mb-6 font-hero tracking-tight">BEEE Spectacular Chess Championship</h3>
+        <p class="font-['Inter'] text-gray-400 leading-relaxed text-lg">The BEEE&reg; Spectacular Chess Championship is the flagship programme of The BEEE Project&trade;, combining competitive chess with technology, mentorship, leadership development, and personal growth.</p>
+      </div>
+    </div>
 </section>
 
 <!-- Section 3: The Platform -->
