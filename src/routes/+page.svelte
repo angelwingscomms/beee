@@ -111,7 +111,7 @@
           <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
             <p class="font-hero text-xs tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
             <div>
-              <h3 class="text-4xl font-bold text-white leading-tight font-hero tracking-tight">A youth development initiative that uses chess as a platform to inspire young people for success</h3>
+              <h3 class="text-5xl font-bold text-white leading-tight font-hero tracking-tight">A youth development initiative that uses chess as a platform to inspire young people for success</h3>
             </div>
           </div>
         {:else}
