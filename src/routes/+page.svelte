@@ -17,11 +17,11 @@
   let philosophyText: HTMLElement | undefined = $state();
 
   const stages = [
-    { num: 'The BEEE Project', title: '', desc: 'A youth development initiative that uses chess as a platform to inspire young people for success.' },
-    { num: '02', title: 'The BEEE Chess Championship', desc: 'BEEE, SONU and TASKIFY are collaborating to deliver a chess championship that trains the children at the same time.' },
-    { num: '03', title: 'Face the Board', desc: 'Live qualifying matches where participants test their growing skills against peers from across Abuja.' },
-    { num: '04', title: 'Outthink the Room', desc: 'Advanced rounds with higher stakes, team challenges, and leadership evaluations that reveal who they\'re becoming.' },
-    { num: '05', title: 'Lift the Trophy', desc: 'An immersive championship finale where preparation, courage, and strategy meet. This is the moment they\'ve built toward.' },
+    { num: 'The BEEE Project', title: '', desc: '' },
+    { num: '02', title: 'The BEEE Project', desc: 'Guided by the motto, "Aspire to BEEE \u2014 Be Everything Excellent Every Day," the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.' },
+    { num: '03', title: 'The BEEE Spectacular Chess Championship', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.' },
+    { num: '04', title: 'Outthink the Room', desc: 'Designed for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.' },
+    { num: '05', title: 'Lift the Trophy', desc: 'More than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
   ];
 
   onMount(() => {
@@ -111,7 +111,8 @@
           <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
             <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
             <div>
-              <h3 class="text-3xl font-bold text-white leading-tight font-hero tracking-tight">Be Everything Excellent Everyday<br />A youth development initiative that uses chess as a platform to inspire young people for success</h3>
+              <h3 class="text-2xl font-bold text-white mb-3 font-hero tracking-tight">What is The BEEE Project&trade;?</h3>
+              <p class="font-['Inter'] text-gray-400 leading-relaxed">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement.</p>
             </div>
           </div>
         {:else}
@@ -120,6 +121,9 @@
             <div>
               <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
               <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
+              {#if i === 1}
+                <h4 class="text-lg font-bold text-white mt-6 font-hero tracking-tight">What is the BEEE&reg; Spectacular Chess Championship?</h4>
+              {/if}
             </div>
           </div>
         {/if}
