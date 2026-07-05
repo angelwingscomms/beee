@@ -114,7 +114,7 @@
           </div>
         {:else}
           <div class="w-[80vw] md:w-[600px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
-            <span class="text-6xl font-bold text-amber-400 font-hero tracking-tight">{s.num}</span>
+            <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">{s.num}</p>
             <div>
               <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
               <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
