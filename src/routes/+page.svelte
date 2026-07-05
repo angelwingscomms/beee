@@ -17,7 +17,7 @@
   let philosophyText: HTMLElement | undefined = $state();
 
   const stages = [
-    { num: '01', title: 'Your First Move', desc: 'Register your child and unlock access to SONU™, TASKIFY™, and the full TEAMUP™ programme.' },
+    { num: 'The BEEE Project', title: '', desc: 'A youth development initiative that uses chess as a platform to inspire young people for success.' },
     { num: '02', title: 'Train Like a Champion', desc: 'AI-powered chess training, mentorship sessions, and self-paced challenges through integrated apps and tools.' },
     { num: '03', title: 'Face the Board', desc: 'Live qualifying matches where participants test their growing skills against peers from across Abuja.' },
     { num: '04', title: 'Outthink the Room', desc: 'Advanced rounds with higher stakes, team challenges, and leadership evaluations that reveal who they\'re becoming.' },
@@ -101,26 +101,28 @@
 
 <ChampHero />
 
-<section class="py-24 px-6 bg-navy text-center">
-  <p class="font-hero text-sm tracking-[0.2em] uppercase text-amber-400/80 mb-4">The BEEE Project</p>
-  <h2 class="font-hero text-3xl md:text-5xl text-white max-w-3xl mx-auto leading-tight tracking-tight font-bold">
-    A youth development initiative that uses chess as a platform to inspire young people for success
-  </h2>
-</section>
-
 <!-- Section 2: The Journey -->
 <section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
   <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
     <h2 class="font-hero text-4xl text-white ml-[10vw] tracking-tight">Your Journey to the Finals</h2>
     <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
-      {#each stages as s}
-        <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
-          <span class="text-6xl font-bold text-amber-400 font-hero tracking-tight">{s.num}</span>
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
-            <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
+      {#each stages as s, i}
+        {#if i === 0}
+          <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
+            <div>
+              <p class="font-hero text-xs tracking-[0.2em] uppercase text-amber-400/80 mb-3">The BEEE Project</p>
+              <h3 class="text-2xl font-bold text-white leading-tight font-hero tracking-tight">A youth development initiative that uses chess as a platform to inspire young people for success</h3>
+            </div>
           </div>
-        </div>
+        {:else}
+          <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
+            <span class="text-6xl font-bold text-amber-400 font-hero tracking-tight">{s.num}</span>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
+              <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        {/if}
       {/each}
     </div>
   </div>
