@@ -42,7 +42,7 @@
   .footer {
     position: relative;
     padding: 40px 0 28px;
-    background: var(--surface-dark);
+    background: var(--color-navy);
     color: var(--on-dark-soft);
   }
 
