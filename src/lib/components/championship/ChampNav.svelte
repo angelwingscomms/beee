@@ -48,16 +48,18 @@
     inset: 0;
     border-radius: 999px;
     z-index: -1;
-    background: rgba(250, 249, 245, 0.6);
-    backdrop-filter: blur(24px) saturate(1.35);
-    -webkit-backdrop-filter: blur(24px) saturate(1.35);
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,247,242,0.85) 50%, rgba(255,255,255,0.92) 100%);
+    backdrop-filter: blur(32px) saturate(1.5);
+    -webkit-backdrop-filter: blur(32px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.65),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.12),
-      inset 1px 0 0 rgba(255, 255, 255, 0.08),
-      inset -1px 0 0 rgba(255, 255, 255, 0.08);
+      0 8px 40px rgba(0, 0, 0, 0.04),
+      0 2px 12px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      inset 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset -1px 0 0 rgba(255, 255, 255, 0.15),
+      0 0 60px rgba(255, 255, 255, 0.15);
   }
 
   .champ-nav-bg::before {
@@ -67,44 +69,58 @@
     border-radius: inherit;
     background: linear-gradient(
       105deg,
-      transparent 20%,
-      rgba(255, 255, 255, 0.12) 37%,
-      rgba(255, 255, 255, 0.28) 42%,
-      rgba(255, 255, 255, 0.12) 47%,
-      transparent 65%
+      transparent 15%,
+      rgba(255, 255, 255, 0.35) 32%,
+      rgba(255, 255, 255, 0.6) 38%,
+      rgba(255, 255, 255, 0.35) 44%,
+      transparent 60%
     );
-    background-size: 200% 100%;
-    animation: sheen 7s ease-in-out infinite;
+    background-size: 220% 100%;
+    animation: sheen 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .champ-nav-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
     pointer-events: none;
   }
 
   @keyframes sheen {
-    0% { background-position: 150% 0; }
-    50% { background-position: -50% 0; }
-    100% { background-position: 150% 0; }
+    0% { background-position: 170% 0; }
+    50% { background-position: -70% 0; }
+    100% { background-position: 170% 0; }
   }
 
   :global(.dark) .champ-nav-bg {
-    background: rgba(24, 23, 21, 0.55);
-    border-color: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(28px) saturate(1.2);
+    background: linear-gradient(135deg, rgba(30, 29, 26, 0.6) 0%, rgba(24, 23, 21, 0.45) 50%, rgba(30, 29, 26, 0.55) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(36px) saturate(1.3);
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.03),
-      inset 1px 0 0 rgba(255, 255, 255, 0.04),
-      inset -1px 0 0 rgba(255, 255, 255, 0.04);
+      0 8px 40px rgba(0, 0, 0, 0.35),
+      0 0 40px rgba(255, 255, 255, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+      inset 1px 0 0 rgba(255, 255, 255, 0.05),
+      inset -1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
   :global(.dark) .champ-nav-bg::before {
     background: linear-gradient(
       105deg,
-      transparent 20%,
-      rgba(255, 255, 255, 0.025) 37%,
-      rgba(255, 255, 255, 0.05) 42%,
-      rgba(255, 255, 255, 0.025) 47%,
-      transparent 65%
+      transparent 15%,
+      rgba(255, 255, 255, 0.04) 32%,
+      rgba(255, 255, 255, 0.08) 38%,
+      rgba(255, 255, 255, 0.04) 44%,
+      transparent 60%
     );
+  }
+
+  :global(.dark) .champ-nav-bg::after {
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
   }
 
   .champ-nav-inner {

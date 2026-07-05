@@ -51,11 +51,18 @@
     position: absolute;
     inset: 0;
     border-radius: 999px;
-    background: rgba(250, 249, 245, 0.88);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,247,242,0.85) 50%, rgba(255,255,255,0.92) 100%);
+    backdrop-filter: blur(32px) saturate(1.5);
+    -webkit-backdrop-filter: blur(32px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.04),
+      0 2px 12px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      inset 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset -1px 0 0 rgba(255, 255, 255, 0.15),
+      0 0 60px rgba(255, 255, 255, 0.15);
     z-index: -1;
   }
 
