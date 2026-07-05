@@ -17,7 +17,7 @@
   let philosophyText: HTMLElement | undefined = $state();
 
   const stages = [
-    { num: '01', title: 'Your First Move', desc: 'Register your child and unlock access to MASTER CHESS PLAYER™, TASKIFY™, and the full TEAMUP™ programme.' },
+    { num: '01', title: 'Your First Move', desc: 'Register your child and unlock access to SONU™, TASKIFY™, and the full TEAMUP™ programme.' },
     { num: '02', title: 'Train Like a Champion', desc: 'AI-powered chess training, mentorship sessions, and self-paced challenges through integrated apps and tools.' },
     { num: '03', title: 'Face the Board', desc: 'Live qualifying matches where participants test their growing skills against peers from across Abuja.' },
     { num: '04', title: 'Outthink the Room', desc: 'Advanced rounds with higher stakes, team challenges, and leadership evaluations that reveal who they\'re becoming.' },
@@ -123,7 +123,7 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
   <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
-    <!-- Card 1: Master Chess Player -->
+    <!-- Card 1: Sonu -->
     <div
       bind:this={bentoCardBase}
       role="button"
@@ -132,9 +132,9 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/master-chess-ui.png" alt="Master Chess Player UI" class="absolute inset-0 w-full h-full object-cover" />
+      <img src="/images/sonu-ui.png" alt="Sonu UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-2xl font-bold text-white mb-2">MASTER CHESS PLAYER™</h3>
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">SONU™</h3>
         <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
       </div>
     </div>
