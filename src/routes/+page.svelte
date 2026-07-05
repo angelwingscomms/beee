@@ -18,10 +18,7 @@
 
   const stages = [
     { num: 'The BEEE Project', title: '', desc: '' },
-    { num: '02', title: 'The BEEE Project', desc: 'Guided by the motto, "Aspire to BEEE \u2014 Be Everything Excellent Every Day," the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.' },
-    { num: '03', title: 'The BEEE Spectacular Chess Championship', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.' },
-    { num: '04', title: 'Outthink the Room', desc: 'Designed for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.' },
-    { num: '05', title: 'Lift the Trophy', desc: 'More than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
+    { num: '02', title: 'The BEEE Project', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.\n\nDesigned for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.\n\nMore than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
   ];
 
   onMount(() => {
@@ -108,22 +105,19 @@
     <div bind:this={journeyTrack} class="flex gap-8 px-[10vw] mt-12 w-fit">
       {#each stages as s, i}
         {#if i === 0}
-          <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
+          <div class="w-[80vw] md:w-[600px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
             <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
             <div>
               <h3 class="text-2xl font-bold text-white mb-3 font-hero tracking-tight">What is The BEEE Project&trade;?</h3>
-              <p class="font-['Inter'] text-gray-400 leading-relaxed">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement.</p>
+              <p class="font-['Inter'] text-gray-400 leading-relaxed">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
             </div>
           </div>
         {:else}
-          <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
+          <div class="w-[80vw] md:w-[600px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
             <span class="text-6xl font-bold text-amber-400 font-hero tracking-tight">{s.num}</span>
             <div>
               <h3 class="text-2xl font-bold text-white mb-4 font-hero tracking-tight">{s.title}</h3>
               <p class="font-['Inter'] text-gray-400 leading-relaxed">{s.desc}</p>
-              {#if i === 1}
-                <h4 class="text-lg font-bold text-white mt-6 font-hero tracking-tight">What is the BEEE&reg; Spectacular Chess Championship?</h4>
-              {/if}
             </div>
           </div>
         {/if}
