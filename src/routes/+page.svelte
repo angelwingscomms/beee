@@ -96,7 +96,7 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
   <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
-    <!-- Card 1: Sonu -->
+    <!-- Card 1: e4 -->
     <div
       bind:this={bentoCardBase}
       role="button"
@@ -105,9 +105,9 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/sonu-ui.png" alt="Sonu UI" class="absolute inset-0 w-full h-full object-cover" />
+      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-2xl font-bold text-white mb-2">SONU™</h3>
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">e4™</h3>
         <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
       </div>
     </div>

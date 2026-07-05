@@ -108,7 +108,7 @@
 
       <div class="hero-anim-elem mt-12">
         <p class="text-xs font-mono text-gray-500 uppercase tracking-widest opacity-70">
-          Powered by: SONU&#8482; &bull; TASKIFY&#8482; &bull; TEAMUP&#8482;
+          Powered by: e4&#8482; &bull; TASKIFY&#8482; &bull; TEAMUP&#8482;
         </p>
       </div>
     </div>
@@ -123,11 +123,11 @@
         />
 
         <!-- feature-float-cards -->
-        <!-- Sonu AI feedback card
+        <!-- e4 AI feedback card
         <div bind:this={float1} class="absolute -right-4 lg:-right-12 top-12 max-w-[280px] z-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-4 rounded-2xl flex flex-col gap-3">
           <div class="flex items-center gap-2">
             <span class="w-4 h-4 bg-amber-400/20 rounded flex items-center justify-center text-xs shrink-0">🧠</span>
-            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-wider">SONU&#8482; AI</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-wider">e4&#8482; AI</span>
           </div>
           <p class="text-[13px] text-white leading-relaxed">
             Excellent strategic defense. Consider Knight to F3 to develop your center.
