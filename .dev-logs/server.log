@@ -24,3 +24,5 @@ stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.2026052
 3:15:02 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 3:15:47 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 3:15:47 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+3:16:41 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+3:16:41 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
