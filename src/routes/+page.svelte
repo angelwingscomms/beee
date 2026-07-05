@@ -167,7 +167,7 @@
         <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
           <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
         </p>
-        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color:#fff">Learn More<span style="display:inline-block;vertical-align:middle"> →</span></a>
+        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
       </div>
     </div>
   </div>
@@ -183,7 +183,7 @@
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
   <h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1>
-  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey<span style="display:inline-block;vertical-align:middle"> →</span></a>
+  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
 
 <style>

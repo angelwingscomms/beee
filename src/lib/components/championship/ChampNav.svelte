@@ -27,7 +27,6 @@
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
-      <RegisterBtn href="/register" onclick={() => open = false}>Register Now</RegisterBtn>
     </div>
   {/if}
 </nav>
@@ -237,11 +236,6 @@
   .champ-mobile-menu a.active {
     background: var(--surface-card);
     color: var(--ink);
-  }
-
-  .champ-mobile-menu :global(.register-btn) {
-    text-align: center;
-    margin-top: 4px;
   }
 
   @media (max-width: 767px) {
