@@ -72,11 +72,11 @@
   <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-24 pb-12 relative z-10">
 
     <div class="lg:col-span-5">
-      <h1 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">
+      <h1 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">
         BEEE Spectacular Chess Championship Abuja 2026
       </h1>
 
-      <h2 class="hero-anim-elem font-hero text-4xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+      <h2 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
         Building leaders,<br />not just winners
       </h2>
 
