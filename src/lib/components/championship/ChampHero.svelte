@@ -77,7 +77,7 @@
       </h1>
 
       <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-        Your child.<br />One board. A lifetime of advantage.
+        Your child.<br />One board.<br />A lifetime of advantage.
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
