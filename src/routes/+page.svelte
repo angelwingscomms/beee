@@ -101,6 +101,13 @@
 
 <ChampHero />
 
+<section class="py-24 px-6 bg-navy text-center">
+  <p class="font-hero text-sm tracking-[0.2em] uppercase text-amber-400/80 mb-4">The BEEE Project</p>
+  <h2 class="font-hero text-3xl md:text-5xl text-white max-w-3xl mx-auto leading-tight tracking-tight font-bold">
+    A youth development initiative that uses chess as a platform to inspire young people for success
+  </h2>
+</section>
+
 <!-- Section 2: The Journey -->
 <section id="journey" bind:this={journeySection} class="h-[300vh] relative bg-navy">
   <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
