@@ -34,7 +34,7 @@
 <style>
   .champ-nav {
     position: fixed;
-    top: 16px;
+    top: 24px;
     left: 50%;
     translate: -50% 0;
     z-index: 50;
@@ -126,25 +126,25 @@
   .champ-nav-inner {
     display: flex;
     align-items: center;
-    height: 56px;
-    gap: 24px;
+    height: 72px;
+    gap: 32px;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   .champ-nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
     color: var(--ink);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .champ-nav-logo {
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
   }
 
@@ -156,14 +156,14 @@
   .champ-nav-links {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: 12px;
     margin-left: auto;
   }
 
   .champ-nav-links a {
-    padding: 6px 14px;
+    padding: 10px 22px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     color: #fff;
     text-decoration: none;
@@ -171,9 +171,9 @@
   }
 
   :global(.champ-nav-cta) {
-    min-height: 36px;
-    padding: 8px 18px;
-    font-size: 13px;
+    min-height: 44px;
+    padding: 10px 24px;
+    font-size: 14px;
     white-space: nowrap;
   }
   .champ-nav-links a:hover {
@@ -183,14 +183,14 @@
   .champ-nav-links a.active {
     color: var(--primary);
     border-bottom: 2px solid var(--primary);
-    padding-bottom: 4px;
+    padding-bottom: 8px;
     background: transparent;
   }
 
   .champ-mobile-btn {
     display: none;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--hairline);
@@ -204,7 +204,7 @@
   .champ-mobile-btn span::before,
   .champ-mobile-btn span::after {
     display: block;
-    width: 14px;
+    width: 18px;
     height: 2px;
     border-radius: 999px;
     background: currentColor;
@@ -221,18 +221,18 @@
     content: '';
   }
 
-  .champ-mobile-btn span::before { top: -5px; }
-  .champ-mobile-btn span::after { top: 5px; }
+  .champ-mobile-btn span::before { top: -6px; }
+  .champ-mobile-btn span::after { top: 6px; }
 
-  .champ-mobile-btn span.open::before { transform: rotate(45deg) translate(1px, 3px); }
-  .champ-mobile-btn span.open::after { transform: rotate(-45deg) translate(1px, -3px); }
+  .champ-mobile-btn span.open::before { transform: rotate(45deg) translate(2px, 4px); }
+  .champ-mobile-btn span.open::after { transform: rotate(-45deg) translate(2px, -4px); }
 
   .champ-mobile-menu {
     display: grid;
     gap: 8px;
-    margin-top: 8px;
-    padding: 16px 20px;
-    border-radius: 20px;
+    margin-top: 12px;
+    padding: 20px 24px;
+    border-radius: 24px;
     background: rgba(250, 249, 245, 0.96);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 0, 0, 0.06);
@@ -240,9 +240,9 @@
   }
 
   .champ-mobile-menu a {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--body);
     text-decoration: none;
@@ -261,6 +261,14 @@
     }
     .champ-mobile-btn {
       display: inline-flex;
+    }
+    .champ-nav-inner {
+      height: 64px;
+      padding: 0 20px;
+    }
+    .champ-nav-logo {
+      width: 36px;
+      height: 36px;
     }
   }
 </style>

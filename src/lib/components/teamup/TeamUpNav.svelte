@@ -38,7 +38,7 @@
 <style>
   .tu-nav {
     position: fixed;
-    top: 16px;
+    top: 24px;
     left: 50%;
     translate: -50% 0;
     z-index: 50;
@@ -69,25 +69,25 @@
   .tu-nav-inner {
     display: flex;
     align-items: center;
-    height: 56px;
-    gap: 24px;
+    height: 72px;
+    gap: 32px;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 32px;
   }
 
   .tu-nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
     color: var(--ink);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .tu-nav-logo {
-    width: 28px;
-    height: 28px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
   }
 
@@ -98,14 +98,14 @@
   .tu-nav-links {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     margin-left: auto;
   }
 
   .tu-nav-links a {
-    padding: 6px 14px;
+    padding: 10px 22px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--body);
     text-decoration: none;
@@ -119,16 +119,16 @@
   }
 
   .tu-nav-cta {
-    min-height: 36px;
-    padding: 8px 18px;
-    font-size: 13px;
+    min-height: 44px;
+    padding: 10px 24px;
+    font-size: 14px;
     white-space: nowrap;
   }
 
   .tu-mobile-btn {
     display: none;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--hairline);
@@ -142,7 +142,7 @@
   .tu-mobile-btn span::before,
   .tu-mobile-btn span::after {
     display: block;
-    width: 14px;
+    width: 18px;
     height: 2px;
     border-radius: 999px;
     background: currentColor;
@@ -159,18 +159,18 @@
     content: '';
   }
 
-  .tu-mobile-btn span::before { top: -5px; }
-  .tu-mobile-btn span::after { top: 5px; }
+  .tu-mobile-btn span::before { top: -6px; }
+  .tu-mobile-btn span::after { top: 6px; }
 
-  .tu-mobile-btn span.open::before { transform: rotate(45deg) translate(1px, 3px); }
-  .tu-mobile-btn span.open::after { transform: rotate(-45deg) translate(1px, -3px); }
+  .tu-mobile-btn span.open::before { transform: rotate(45deg) translate(2px, 4px); }
+  .tu-mobile-btn span.open::after { transform: rotate(-45deg) translate(2px, -4px); }
 
   .tu-mobile-menu {
     display: grid;
     gap: 8px;
-    margin-top: 8px;
-    padding: 16px 20px;
-    border-radius: 20px;
+    margin-top: 12px;
+    padding: 20px 24px;
+    border-radius: 24px;
     background: rgba(250, 249, 245, 0.96);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 0, 0, 0.06);
@@ -178,9 +178,9 @@
   }
 
   .tu-mobile-menu a {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--body);
     text-decoration: none;
@@ -203,6 +203,14 @@
     }
     .tu-mobile-btn {
       display: inline-flex;
+    }
+    .tu-nav-inner {
+      height: 64px;
+      padding: 0 20px;
+    }
+    .tu-nav-logo {
+      width: 36px;
+      height: 36px;
     }
   }
 </style>
