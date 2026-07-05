@@ -76,7 +76,7 @@
         BEEE Spectacular Chess Championship Abuja 2026
       </h1>
 
-      <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+      <h2 class="hero-anim-elem font-hero text-4xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
         Building leaders,<br />not just winners
       </h2>
 
