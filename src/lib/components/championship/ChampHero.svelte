@@ -77,7 +77,7 @@
       </h1>
 
       <h2 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-        Building leaders,<br />not just winners
+        Your child. One board. A lifetime of advantage.
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
