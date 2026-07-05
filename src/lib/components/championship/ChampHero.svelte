@@ -74,7 +74,7 @@
     <div class="lg:col-span-5">
       <p class="hero-anim-elem text-xs font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        Abuja · Ages 10–14 · Summer 2026
+        BEEE Spectacular Chess Championship Abuja 2026
       </p>
 
       <h1 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">

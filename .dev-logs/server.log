@@ -16,3 +16,5 @@ stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.2026052
 [1;31m[404] GET /favicon.ico[0m
 3:03:57 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 3:03:58 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+3:05:32 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+3:05:32 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
