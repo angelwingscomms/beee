@@ -84,6 +84,21 @@
         A transformative youth development journey that integrates competitive chess with leadership training, mentorship, and personal growth
       </p>
 
+      <div class="hero-anim-elem flex gap-6 mb-8">
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-amber-400/70">Age</span>
+          <span class="text-white font-medium">10–14</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-amber-400/70">Dates</span>
+          <span class="text-white font-medium">Jul 28 – Oct 10</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-amber-400/70">Price</span>
+          <span class="text-white font-medium">₦15,000</span>
+        </div>
+      </div>
+
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
         <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">
