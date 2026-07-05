@@ -18,7 +18,7 @@
 
   const stages = [
     { num: 'The BEEE Project', title: '', desc: 'A youth development initiative that uses chess as a platform to inspire young people for success.' },
-    { num: '02', title: 'Train Like a Champion', desc: 'AI-powered chess training, mentorship sessions, and self-paced challenges through integrated apps and tools.' },
+    { num: '02', title: 'The BEEE Chess Championship', desc: 'BEEE, SONU and TASKIFY are collaborating to deliver a chess championship that trains the children at the same time.' },
     { num: '03', title: 'Face the Board', desc: 'Live qualifying matches where participants test their growing skills against peers from across Abuja.' },
     { num: '04', title: 'Outthink the Room', desc: 'Advanced rounds with higher stakes, team challenges, and leadership evaluations that reveal who they\'re becoming.' },
     { num: '05', title: 'Lift the Trophy', desc: 'An immersive championship finale where preparation, courage, and strategy meet. This is the moment they\'ve built toward.' },
@@ -109,9 +109,9 @@
       {#each stages as s, i}
         {#if i === 0}
           <div class="w-[80vw] md:w-[400px] h-[500px] bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col justify-between flex-shrink-0">
-            <p class="font-hero text-xs tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
+            <p class="font-hero text-xl tracking-[0.2em] uppercase text-amber-400/80">The BEEE Project</p>
             <div>
-              <h3 class="text-5xl font-bold text-white leading-tight font-hero tracking-tight">A youth development initiative that uses chess as a platform to inspire young people for success</h3>
+              <h3 class="text-3xl font-bold text-white leading-tight font-hero tracking-tight">Be Everything Excellent Everyday</h3>
             </div>
           </div>
         {:else}
