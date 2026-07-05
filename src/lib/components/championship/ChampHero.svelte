@@ -81,7 +81,7 @@
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative youth development journey that integrates competitive chess with leadership training, mentorship, and personal growth.
+        A transformative youth development journey that integrates competitive chess with leadership training, mentorship, and personal growth
       </p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
