@@ -81,13 +81,13 @@
     <div class="px-[10vw] mb-16">
       <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
         <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">The BEEE Project</p>
-        <p class="font-['Inter'] text-gray-400 leading-relaxed text-lg">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
+        <p class="font-['Inter'] text-gray-400 leading-relaxed text-xl">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
       </div>
     </div>
     <div class="px-[10vw]">
       <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
         <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">BEEE Spectacular Chess Championship</p>
-        <p class="font-['Inter'] text-gray-400 leading-relaxed text-lg">The BEEE&reg; Spectacular Chess Championship is the flagship programme of The BEEE Project&trade;, combining competitive chess with technology, mentorship, leadership development, and personal growth.</p>
+        <p class="font-['Inter'] text-gray-400 leading-relaxed text-xl">The BEEE&reg; Spectacular Chess Championship is the flagship programme of The BEEE Project&trade;, combining competitive chess with technology, mentorship, leadership development, and personal growth.</p>
       </div>
     </div>
 </section>
