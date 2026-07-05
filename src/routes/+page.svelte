@@ -78,7 +78,6 @@
 
 <!-- Section 2: The Journey -->
 <section id="journey" class="min-h-screen py-24 bg-navy">
-    <h2 class="font-hero text-5xl text-white ml-[10vw] tracking-tight mb-20">Your Journey to the Finals</h2>
     <div class="px-[10vw] mb-16">
       <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
         <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">The BEEE Project</p>
