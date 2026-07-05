@@ -18,7 +18,7 @@
 
   const stages = [
     { num: 'The BEEE Project', title: '', desc: '' },
-    { num: '02', title: 'The BEEE Project', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.\n\nDesigned for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.\n\nMore than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
+    { num: 'BEEE', title: 'BEEE Spectacular Chess Championship', desc: 'The BEEE\u00ae Spectacular Chess Championship is the flagship programme of The BEEE Project\u2122, combining competitive chess with technology, mentorship, leadership development, and personal growth.\n\nDesigned for students aged 10 to 14 years in schools across Abuja, the championship runs from July 28 to October 2026, guiding participants through online learning, structured challenges, AI-supported chess training, live competitions, and an immersive championship finale.\n\nMore than a tournament, it is a journey that develops strategic thinkers, confident learners, and future leaders.' },
   ];
 
   onMount(() => {
