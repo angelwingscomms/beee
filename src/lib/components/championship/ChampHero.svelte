@@ -81,7 +81,7 @@
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        Chess training, leadership mentorship, and the TEAMUP&#8482; programme — one summer that changes how they think, lead, and grow. July to October 2026.
+        A transformative youth development journey that integrates competitive chess with leadership training, mentorship, and personal growth.
       </p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
