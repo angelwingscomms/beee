@@ -16,7 +16,7 @@
       <a href="/championship">Championship</a>
       <a href="/teamup" class="active">TEAMUP</a>
       <a href="/register">Register</a>
-      <a href="/faq">FAQ</a>
+      <a href="/faq">FAQs</a>
     </div>
     <a href="/register" class="button-primary tu-nav-cta">Register Now</a>
     <button class="tu-mobile-btn" onclick={() => open = !open} aria-label="Menu">
@@ -29,7 +29,7 @@
       <a href="/championship" onclick={() => open = false}>Championship</a>
       <a href="/teamup" class="active" onclick={() => open = false}>TEAMUP</a>
       <a href="/register" onclick={() => open = false}>Register</a>
-      <a href="/faq" onclick={() => open = false}>FAQ</a>
+      <a href="/faq" onclick={() => open = false}>FAQs</a>
       <a href="/register" class="button-primary" onclick={() => open = false}>Register Now</a>
     </div>
   {/if}

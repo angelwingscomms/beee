@@ -81,7 +81,10 @@
     <div class="px-[10vw] mb-16">
       <div class="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 md:p-16">
         <p class="font-hero text-2xl tracking-[0.2em] uppercase text-amber-400/80 mb-6">The BEEE Project</p>
-        <p class="font-['Inter'] text-gray-400 leading-relaxed text-xl">The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement. Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</p>
+        <ul class="font-['Inter'] text-gray-400 leading-relaxed text-xl list-disc list-inside space-y-3">
+          <li>The BEEE Project&trade; is a youth development initiative that empowers young people for success in school, leadership, and life by harnessing the positive impact of purposeful learning, everyday tasks, and meaningful engagement.</li>
+          <li>Guided by the motto, &ldquo;Aspire to BEEE &mdash; Be Everything Excellent Every Day,&rdquo; the project helps young people discover their potential while developing critical thinking, confidence, discipline, creativity, resilience, and problem-solving skills needed to thrive in an ever-changing world.</li>
+        </ul>
       </div>
     </div>
     <div class="px-[10vw]">
@@ -112,23 +115,12 @@
       </div>
     </div>
 
-    <!-- Card 2: Taskify -->
+    <!-- Card 2: e4 Explanation -->
     <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl overflow-hidden relative group p-8 flex flex-col justify-between">
       <div class="absolute inset-0 bg-[#1A2B4C]"></div>
       <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-2">TASKIFY™ Passport</h3>
-        <p class="font-['Inter'] text-gray-300 text-sm">Track milestones and earn digital achievement badges.</p>
-      </div>
-      <div class="relative z-10 flex gap-3">
-        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">🏆</span>
-        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">⭐</span>
-        <span class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center text-lg">🎯</span>
-      </div>
-      <div class="relative z-10">
-        <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-          <div class="w-[60%] h-full bg-amber-400 rounded-full"></div>
-        </div>
-        <p class="text-xs text-gray-500 mt-2 font-mono">PROGRESS: 60%</p>
+        <h3 class="font-hero text-xl font-bold text-white mb-2">e4™ — AI Chess Coach</h3>
+        <p class="font-['Inter'] text-gray-300 text-sm">Play against a virtual opponent while an AI coach analyzes every move, explains mistakes, and guides improvement through voice and text.</p>
       </div>
     </div>
 
@@ -147,9 +139,18 @@
 </section>
 
 <!-- Section 4: Philosophy -->
-<section id="philosophy" class="h-screen flex items-center justify-center bg-amber-400 overflow-hidden">
-  <h2 bind:this={philosophyText} class="split-text-target font-hero text-6xl md:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9] w-[80vw] mx-auto">
-    Chess is not the destination. It is the platform.
+<section id="philosophy" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
+  <h2 bind:this={philosophyText} class="split-text-target font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
+    <span class="block whitespace-nowrap">Chess is not the destination.</span>
+    <span class="block whitespace-nowrap">It is the platform.</span>
+  </h2>
+</section>
+
+<!-- Section 4b: Philosophy (alt) -->
+<section id="philosophy-alt" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
+  <h2 class="font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
+    <span class="block whitespace-nowrap">Chess is where they learn.</span>
+    <span class="block whitespace-nowrap">Life is where they lead.</span>
   </h2>
 </section>
 

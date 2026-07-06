@@ -18,6 +18,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <p class="footer-event">BEEE Spectacular Chess Championship Abuja 2026</p>
+        <p class="footer-motto">Aspire to BEEE</p>
         <p class="footer-tagline">Be Everything Excellent Everyday</p>
       </div>
       <nav class="footer-nav">
@@ -41,7 +42,7 @@
 <style>
   .footer {
     position: relative;
-    padding: 40px 0 28px;
+    padding: 56px 0 40px;
     background: var(--color-navy);
     color: var(--on-dark-soft);
   }
@@ -65,38 +66,47 @@
 
   .footer-top {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 20px;
   }
 
   .footer-event {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 32px;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--on-dark);
     margin: 0;
-    max-width: 360px;
+    max-width: 540px;
+  }
+
+  .footer-motto {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-amber);
+    margin: 12px 0 0;
   }
 
   .footer-tagline {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--on-dark-soft);
+    font-size: 20px;
+    line-height: 1.4;
+    color: #fff;
     margin: 8px 0 0;
   }
 
   .footer-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 20px;
+    gap: 12px 28px;
     min-width: 200px;
   }
 
   .footer-nav a {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     line-height: 1.4;
     color: var(--on-dark-soft);
@@ -112,16 +122,16 @@
   .footer-divider {
     height: 1px;
     background: rgba(250, 249, 245, 0.1);
-    margin: 16px 0;
+    margin: 24px 0;
     border: none;
   }
 
   .footer-bottom {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    font-size: 13px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 18px;
   }
 
   .footer-contact {
@@ -134,11 +144,12 @@
   .footer-contact a {
     color: var(--on-dark-soft);
     text-decoration: none;
+    font-size: 18px;
     transition: color 160ms ease;
   }
 
   .footer-contact a:hover {
-    color: var(--primary);
+    color: #fff;
   }
 
   .contact-sep {
@@ -152,7 +163,7 @@
 
   @media (max-width: 767px) {
     .footer {
-      padding: 32px 0 24px;
+      padding: 40px 0 32px;
     }
 
     .footer-top {

@@ -16,7 +16,7 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
-      <a href="/faq" class:active={path === '/faq'}>FAQ</a>
+      <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
     <RegisterBtn href="/register" class="champ-nav-cta">Register Now</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
@@ -26,7 +26,7 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
-      <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
+      <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
     </div>
   {/if}
 </nav>
