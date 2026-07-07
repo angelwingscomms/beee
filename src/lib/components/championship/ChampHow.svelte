@@ -4,9 +4,11 @@
   const stages = [
     {
       num: 1,
-      title: 'REGISTER',
-      body: `Every great journey begins with one step.
-Participants register through participating schools and gain access to E4, TASKIFY and T.E.A.M.U.P. training apps and modules.`,
+      title: 'REGISTRATION',
+      body: `Participants register through participating schools and gain access to:
+E4 Ai CHESS COACH™ 
+T.E.A.M.U.P.™
+TASKIFY™ Development Passport`,
       img: '/images/championship/register.png',
       color: '#F27830',
       colorLight: '#F69A64',
@@ -15,9 +17,19 @@ Participants register through participating schools and gain access to E4, TASKI
     {
       num: 2,
       title: 'LEARN',
-      body: `Innovative Learning and mentorship.
-July 28 to September 2026 - Online
-Players benefit from advanced chess training on the E4 chess app where they can compete against a virtual opponent while being mentored by an AI coach.`,
+      body: `July 28 to September 2026 - Online
+Innovative Learning  and Mentorship
+
+Participants train on E4 Ai CHESS COACH™. 
+TASKIFY records and evaluates T.E.A.M.U.P. activities. 
+
+- Critical and Analytical Reasoning 
+- Strategic Communication 
+- Audio Visual Comprehension
+- Creative and Adaptive Skills 
+- Collaboration and Teamwork 
+- Appreciation skills in Chess & Technology
+- Access medals and badges earned, achievement points, certificates, valuable skills, merit and recognition awards.`,
       img: '/images/championship/learn.png',
       color: '#7C3AED',
       colorLight: '#8B5CF6',
@@ -26,7 +38,10 @@ Players benefit from advanced chess training on the E4 chess app where they can 
     {
       num: 3,
       title: 'COMPETE',
-      body: 'Take part in exciting live preliminary rounds and qualifying competitions.',
+      body: `September 2026.
+Preliminary Chess Championship Rounds 
+
+Participants compete in the live qualifying stages.`,
       img: '/images/championship/compete.png',
       color: '#B91C1C',
       colorLight: '#DC2626',
@@ -34,8 +49,9 @@ Players benefit from advanced chess training on the E4 chess app where they can 
     },
     {
       num: 4,
-      title: 'DEVELOP',
-      body: 'Advance through higher levels of competition while strengthening leadership, teamwork, communication, and strategic thinking.',
+      title: 'EVOLVE',
+      body: `Qualifying participants advance to higher levels of the championship competition with live elimination tournamens. 
+Elite qualifiers emerge.`,
       img: '/images/championship/develop.png',
       color: '#15803D',
       colorLight: '#22C55E',
@@ -44,7 +60,8 @@ Players benefit from advanced chess training on the E4 chess app where they can 
     {
       num: 5,
       title: 'QUALIFY',
-      body: 'Earn your place among the finalists through consistent performance and development.',
+      body: `Elite qualifiers  are trained for higher competence in the finalists competition. 
+They compete for finalists positions.`,
       img: '/images/championship/qualify.png',
       color: '#CA8A04',
       colorLight: '#EAB308',
@@ -53,7 +70,7 @@ Players benefit from advanced chess training on the E4 chess app where they can 
     {
       num: 6,
       title: 'GRAND FINALE',
-      body: 'Experience a spectacular championship finale where preparation, teamwork, and strategy come together in a unique and unforgettable competition.',
+      body: `Finalists participate in an immersive championship experience, unlike conventional chess competitions.`,
       img: '/images/championship/grandfinale.png',
       color: '#1A2744',
       colorLight: '#2D4A7A',
