@@ -1,38 +1,67 @@
 $ vite --host --port 5400
 
-  VITE v8.0.14  ready in 2731 ms
+  VITE v8.0.14  ready in 3083 ms
 
   ➜  Local:   http://localhost:5400/
-  ➜  Network: http://192.168.43.40:5400/
-  ➜  Network: http://192.168.240.1:5400/
-  ➜  Network: http://169.254.38.63:5400/
+  ➜  Network: http://192.168.1.2:5400/
+  ➜  Network: http://172.19.0.1:5400/
+  ➜  Network: http://169.254.105.203:5400/
+  ➜  Network: http://169.254.118.235:5400/
+  ➜  Network: http://169.254.156.7:5400/
+  ➜  Network: http://169.254.225.206:5400/
   ➜  press h + enter to show help
 Using secrets defined in .env
-4:28:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+9:25:29 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
 https://svelte.dev/e/css_unused_selector
-4:28:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+9:25:41 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
 https://svelte.dev/e/css_unused_selector
-4:28:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+9:26:34 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:252:2 Unused CSS selector ".stage-label"
 https://svelte.dev/e/css_unused_selector
-4:28:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+9:26:34 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+9:26:34 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+
+[1;31m[404] GET /favicon.ico[0m
+9:27:26 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:252:2 Unused CSS selector ".stage-label"
 https://svelte.dev/e/css_unused_selector
-4:28:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+9:28:17 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
 https://svelte.dev/e/css_unused_selector
-4:38:03 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:38:03 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:47:58 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:47:58 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:49:13 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:49:13 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:49:28 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:49:28 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:50:38 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:50:38 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:53:07 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-4:53:07 PM [vite] (ssr) page reload src/routes/+page.svelte
-4:54:18 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-4:54:18 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
-https://svelte.dev/e/svelte_component_deprecated
-5:02:38 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
-5:02:38 PM [vite] (ssr) page reload src/routes/+page.svelte
+9:28:17 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+9:28:17 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:28:17 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:31:19 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:31:19 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+9:31:19 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:33:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:33:43 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/app.css
+9:33:43 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:33:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:33:49 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:33:49 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/app.css
+9:33:49 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:33:49 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:33:54 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:33:54 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+9:33:54 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:34:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:34:08 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/app.css
+9:34:08 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:34:08 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:34:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:34:43 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte, /src/app.css
+9:34:43 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
+9:34:43 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:36:59 AM [vite-plugin-svelte] src/lib/components/championship/ChampHow.svelte:251:2 Unused CSS selector ".stage-label"
+https://svelte.dev/e/css_unused_selector
+9:36:59 AM [vite] (client) hmr update /src/lib/components/championship/ChampHow.svelte?svelte&type=style&lang.css, /src/app.css
+9:36:59 AM [vite] (ssr) page reload src/lib/components/championship/ChampHow.svelte
