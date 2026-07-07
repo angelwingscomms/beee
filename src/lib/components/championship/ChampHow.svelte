@@ -5,7 +5,8 @@
     {
       num: 1,
       title: 'REGISTER',
-      body: 'Join through your school and receive access to the T.E.A.M.U.P.™ Development Programme.',
+      body: `Every great journey begins with one step.
+Participants register through participating schools and gain access to E4, TASKIFY and T.E.A.M.U.P. training apps and modules.`,
       img: '/images/championship/register.png',
       color: '#F27830',
       colorLight: '#F69A64',
@@ -14,7 +15,9 @@
     {
       num: 2,
       title: 'LEARN',
-      body: 'Complete online activities, chess training, mentorship sessions, challenges, and project-based assignments.',
+      body: `Innovative Learning and mentorship.
+July 28 to September 2026 - Online
+Players benefit from advanced chess training on the E4 chess app where they can compete against a virtual opponent while being mentored by an AI coach.`,
       img: '/images/championship/learn.png',
       color: '#7C3AED',
       colorLight: '#8B5CF6',
@@ -66,7 +69,7 @@
   <div class="champ-how-inner">
     <header class="champ-how-header">
       <h1 class="champ-how-title">Your <span class="gold">Championship</span> Journey</h1>
-      <p class="champ-how-sub">Every Great Journey Begins with a Single Move.</p>
+      <p class="champ-how-sub">A comprehensive development pathway</p>
     </header>
 
     {#snippet stageCard(s)}
@@ -82,7 +85,11 @@
             <span class="stage-num" style="color: {s.color};">{s.num}</span>
             <span class="stage-title" style="color: {s.color};">– {s.title}</span>
           </div>
-          <p class="stage-body">{s.body}</p>
+          <p class="stage-body">
+            {#each s.body.split('\n') as line, j}
+              {#if j > 0}<br>{/if}{line}
+            {/each}
+          </p>
         </div>
       </div>
     {/snippet}
@@ -114,7 +121,7 @@
     <footer class="champ-how-cta">
       <p class="cta-main">MAKE YOUR <span class="gold">MOVE</span></p>
       <p class="cta-motto"><span style="color:#fff">ASPIRE TO</span> <span class="gold">BEEE</span></p>
-      <p class="cta-sub" style="color: var(--color-amber);">BE EVERYTHING EXCELLENT EVERY DAY</p>
+      <p class="cta-sub">BE EVERYTHING EXCELLENT EVERY <span class="gold">DAY</span></p>
     </footer>
   </div>
 </section>
@@ -169,9 +176,10 @@
 
   .champ-how-sub {
     margin: 16px 0 0;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
     line-height: 1.5;
-    color: var(--color-amber);
+    color: #fff;
   }
 
   .stage-band {
@@ -179,6 +187,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: stretch;
+    border: 2px solid var(--sc);
     border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 3 / 1;
@@ -248,14 +257,6 @@
     z-index: 1;
   }
 
-  .stage-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin: 0;
-    color: var(--sc);
-  }
 
   .stage-title-row {
     display: flex;
@@ -333,13 +334,13 @@
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.35);
+    color: #fff;
     margin: 0;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     .champ-how-inner {
-      padding: 48px 16px 40px;
+      padding: 100px 16px 40px;
     }
 
     .champ-how-header {
