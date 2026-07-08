@@ -69,7 +69,7 @@
 <section class="min-h-screen relative overflow-hidden flex items-center bg-navy">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 120% 100% at 0% 0%, #1A2B4C 0%, transparent 70%)"></div>
 
-  <div class="max-w-[90rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
+  <div class="max-w-[96rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
 
     <div class="lg:col-span-5">
       <h1 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">

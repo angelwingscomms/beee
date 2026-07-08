@@ -126,7 +126,7 @@
   .champ-nav-inner {
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 54px;
     gap: 32px;
     width: 100%;
     padding: 0 24px;
