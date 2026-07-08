@@ -114,7 +114,7 @@
     </div>
 
     <div class="lg:col-span-7 flex justify-center" bind:this={imageWrapper}>
-      <div class="relative w-full max-w-md aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
+      <div class="relative w-full max-w-lg aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
         <img
           src="/images/hero.png"
           alt="Student playing chess"
