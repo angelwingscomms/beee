@@ -12,3 +12,7 @@ $ vite --host --port 5400
   ➜  press h + enter to show help
 Using secrets defined in .env
 Using secrets defined in .env
+4:30:19 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+4:30:19 PM [vite] (ssr) page reload src/routes/+page.svelte
+4:30:29 PM [vite] (client) hmr update /src/routes/+page.svelte?svelte&type=style&lang.css, /src/app.css
+4:30:29 PM [vite] (ssr) page reload src/routes/+page.svelte
