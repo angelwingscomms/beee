@@ -23,3 +23,5 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 6:47:47 AM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+7:17:22 AM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:17:22 AM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte

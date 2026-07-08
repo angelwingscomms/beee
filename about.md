@@ -6,7 +6,7 @@ A Place where Young Minds Compete, Develop and Excel
 
 Dear Parent, School Administrator and Prospective Participant,
 
-The BEEE® Spectacular Chess Championship Abuja 2026 is a transformative youth development journey that combines competitive chess with leadership development, mentorship, and personal growth. 
+The BEEE® Spectacular Chess Championship is a transformative youth development experience that combines competitive chess with AI-powered learning, leadership development, mentorship, and personal growth. 
 
 Designed for chess players aged 10 to 14 years in schools across Abuja, the championship combines e4™, TEAMUP™  (Technology, Enterprise, Art, Mentorship and Upskill) and TASKIFY™ self Development Programmes to deliver a structured journey of learning, achievementq and competition that extends far beyond the chessboard.  
 
