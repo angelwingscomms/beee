@@ -126,10 +126,10 @@
   .champ-nav-inner {
     display: flex;
     align-items: center;
-    height: 72px;
+    height: 60px;
     gap: 32px;
     width: 100%;
-    padding: 0 32px;
+    padding: 0 24px;
   }
 
   .champ-nav-brand {
@@ -143,8 +143,8 @@
   }
 
   .champ-nav-logo {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
   }
 

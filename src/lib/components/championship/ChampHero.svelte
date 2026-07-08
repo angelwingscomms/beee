@@ -69,7 +69,7 @@
 <section class="min-h-screen relative overflow-hidden flex items-center bg-navy">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 120% 100% at 0% 0%, #1A2B4C 0%, transparent 70%)"></div>
 
-  <div class="max-w-[90rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+  <div class="max-w-[90rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
 
     <div class="lg:col-span-5">
       <h1 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">
@@ -113,7 +113,7 @@
       </div>
     </div>
 
-    <div class="lg:col-span-7 flex justify-center" bind:this={imageWrapper}>
+    <div class="lg:col-span-7 flex justify-center items-center" bind:this={imageWrapper}>
       <div class="relative w-full max-w-xl aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
         <img
           src="/images/hero.png"
