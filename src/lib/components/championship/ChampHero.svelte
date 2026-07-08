@@ -105,12 +105,6 @@
           See How It Works
         </a>
       </div>
-
-      <div class="hero-anim-elem mt-12">
-        <p class="text-xs font-mono text-gray-500 uppercase tracking-widest opacity-70">
-          Powered by: e4&#8482; &bull; TASKIFY&#8482; &bull; TEAMUP&#8482;
-        </p>
-      </div>
     </div>
 
     <div class="lg:col-span-7 flex justify-center items-center" bind:this={imageWrapper}>
