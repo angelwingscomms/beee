@@ -3,6 +3,7 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import SplitText from 'gsap/SplitText';
+  import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -12,6 +13,9 @@
   let bentoCardBase: HTMLElement | undefined = $state();
   let bentoUI: HTMLElement | undefined = $state();
   let philosophyText: HTMLElement | undefined = $state();
+  let makeYourMove: HTMLElement | undefined = $state();
+  let diffCardsParent: HTMLElement | undefined = $state();
+  let skillsParent: HTMLElement | undefined = $state();
 
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -36,6 +40,57 @@
         scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
       });
     }
+
+    let animatedMakeYourMove = false;
+    onScroll({
+      target: '#intro-cta',
+      enter: 'top 75%',
+      onEnter: () => {
+        if (animatedMakeYourMove || !makeYourMove) return;
+        animatedMakeYourMove = true;
+        animate(makeYourMove, {
+          opacity: [0, 1],
+          translateY: [80, 0],
+          scale: [0.95, 1],
+          duration: 1200,
+          easing: 'easeOutCubic',
+        });
+      },
+    });
+
+    let animatedDiff = false;
+    onScroll({
+      target: '#diff-section',
+      enter: 'top 75%',
+      onEnter: () => {
+        if (animatedDiff || !diffCardsParent) return;
+        animatedDiff = true;
+        animate(diffCardsParent.children, {
+          opacity: [0, 1],
+          translateY: [60, 0],
+          delay: ((_el: any, i: number) => i * 150) as any,
+          duration: 800,
+          easing: 'easeOutCubic',
+        });
+      },
+    });
+
+    let animatedSkills = false;
+    onScroll({
+      target: '#skills',
+      enter: 'top 75%',
+      onEnter: () => {
+        if (animatedSkills || !skillsParent) return;
+        animatedSkills = true;
+        animate(skillsParent.children, {
+          opacity: [0, 1],
+          translateY: [30, 0],
+          delay: ((_el: any, i: number) => i * 60) as any,
+          duration: 500,
+          easing: 'easeOutCubic',
+        });
+      },
+    });
   });
 
   function onBentoHover(enter: boolean) {
@@ -101,7 +156,7 @@
     <p class="font-['Inter'] text-gray-400 text-xl md:text-2xl leading-relaxed max-w-4xl">
       Designed for students aged 10 to 14 years in schools across Abuja, the championship runs from 28 July to October 2026, taking participants on an exciting journey from online learning to an unforgettable championship finale.
     </p>
-    <h2 class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
+    <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
       Make Your Move
     </h2>
   </div>
@@ -158,7 +213,7 @@
       Every participant benefits from an integrated learning experience powered by four unique platforms.
     </p>
 
-    <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
+    <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
       <!-- BEEE -->
       <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
         <span class="text-3xl mb-5 block">&#9820;</span>
@@ -206,7 +261,7 @@
       Participants strengthen their ability in:
     </p>
 
-    <div class="grid grid-cols-12 gap-4 auto-rows-[auto]">
+    <div bind:this={skillsParent} class="grid grid-cols-12 gap-4 auto-rows-[auto]">
       <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
