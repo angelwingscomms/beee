@@ -29,3 +29,26 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/svelte_component_deprecated
 7:37:36 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
+7:38:36 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:38:36 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:38:43 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:38:43 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:38:49 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:38:49 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:39:08 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:39:08 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/11.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:39:41 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:39:41 AM [vite] (client) page reload .svelte-kit/generated/root.js
+7:39:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:39:41 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:39:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+7:39:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
