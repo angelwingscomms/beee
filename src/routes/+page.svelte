@@ -153,9 +153,6 @@
 <!-- Intro Bridge -->
 <section id="intro-cta" class="py-32 md:py-48 bg-navy">
   <div class="max-w-6xl mx-auto px-6">
-    <p class="font-['Inter'] text-gray-400 text-xl md:text-2xl leading-relaxed max-w-4xl">
-      Designed for students aged 10 to 14 years in schools across Abuja, the championship runs from 28 July to October 2026, taking participants on an exciting journey from online learning to an unforgettable championship finale.
-    </p>
     <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
       Make Your Move
     </h2>
