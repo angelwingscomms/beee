@@ -281,37 +281,33 @@
 
     <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
       <!-- BEEE -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
-        <span class="text-3xl mb-5 block">&#9820;</span>
+      <div class="col-span-12 md:col-span-6 bg-[#F27830] rounded-3xl p-8 md:p-10 flex flex-col group">
         <h3 class="font-hero text-2xl text-white font-bold mb-3">BEEE&reg;</h3>
-        <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
+        <p class="font-['Inter'] text-white/80 text-base leading-relaxed mt-auto">
           A championship that develops strategic thinkers, confident learners, and future leaders.
         </p>
       </div>
 
       <!-- E4 AI CHESS COACH -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
-        <span class="text-3xl mb-5 block">&#129302;</span>
-        <h3 class="font-hero text-2xl text-white font-bold mb-3">E4 AI CHESS COACH&trade;</h3>
-        <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
+      <div class="col-span-12 md:col-span-6 bg-[#f5e6c8] rounded-3xl p-8 md:p-10 flex flex-col group">
+        <h3 class="font-hero text-2xl text-[#141413] font-bold mb-3">E4 AI CHESS COACH&trade;</h3>
+        <p class="font-['Inter'] text-[#3d3d3a] text-base leading-relaxed mt-auto">
           An intelligent AI chess coach that provides personalised training, game analysis, instant feedback, and advanced chess development.
         </p>
       </div>
 
       <!-- TEAMUP -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
-        <span class="text-3xl mb-5 block">&#127775;</span>
+      <div class="col-span-12 md:col-span-6 bg-[#ffb200] rounded-3xl p-8 md:p-10 flex flex-col group">
         <h3 class="font-hero text-2xl text-white font-bold mb-3">T.E.A.M.U.P.&trade;</h3>
-        <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
+        <p class="font-['Inter'] text-white/80 text-base leading-relaxed mt-auto">
           A holistic development programme that nurtures Technology, Enterprise, Art, Mentorship, and Upskilling to prepare participants for success beyond the chessboard.
         </p>
       </div>
 
       <!-- TASKIFY -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
-        <span class="text-3xl mb-5 block">&#128216;</span>
-        <h3 class="font-hero text-2xl text-white font-bold mb-3">TASKIFY&trade;</h3>
-        <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
+      <div class="col-span-12 md:col-span-6 bg-[#7ec8e3] rounded-3xl p-8 md:p-10 flex flex-col group">
+        <h3 class="font-hero text-2xl text-[#141413] font-bold mb-3">TASKIFY&trade;</h3>
+        <p class="font-['Inter'] text-[#3d3d3a] text-base leading-relaxed mt-auto">
           A digital Development Passport that records each participant's achievements, milestones, badges, certificates, skills, and championship progress.
         </p>
       </div>
