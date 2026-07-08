@@ -12,9 +12,6 @@
   let bentoCardBase: HTMLElement | undefined = $state();
   let bentoUI: HTMLElement | undefined = $state();
   let philosophyText: HTMLElement | undefined = $state();
-  let makeYourMove: HTMLElement | undefined = $state();
-  let diffGrid: HTMLElement | undefined = $state();
-  let skillsContainer: HTMLElement | undefined = $state();
 
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -37,39 +34,6 @@
         stagger: 0.05,
         ease: 'power3.out',
         scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
-      });
-    }
-
-    if (makeYourMove) {
-      gsap.from(makeYourMove, {
-        y: 80,
-        opacity: 0,
-        scale: 0.95,
-        duration: 1.2,
-        ease: 'power4.out',
-        scrollTrigger: { trigger: '#intro-cta', start: 'top 70%' },
-      });
-    }
-
-    if (diffGrid) {
-      gsap.from(diffGrid.children, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#diff-section', start: 'top 75%' },
-      });
-    }
-
-    if (skillsContainer) {
-      gsap.from(skillsContainer.children, {
-        y: 30,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.06,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: '#skills', start: 'top 75%' },
       });
     }
   });
@@ -132,13 +96,12 @@
 </section>
 
 <!-- Intro Bridge -->
-<section id="intro-cta" class="py-32 md:py-48 bg-navy relative overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 50%, #1A2B4C 0%, transparent 70%)"></div>
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
+<section id="intro-cta" class="py-32 md:py-48 bg-navy">
+  <div class="max-w-6xl mx-auto px-6">
     <p class="font-['Inter'] text-gray-400 text-xl md:text-2xl leading-relaxed max-w-4xl">
       Designed for students aged 10 to 14 years in schools across Abuja, the championship runs from 28 July to October 2026, taking participants on an exciting journey from online learning to an unforgettable championship finale.
     </p>
-    <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
+    <h2 class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
       Make Your Move
     </h2>
   </div>
@@ -188,17 +151,16 @@
 </section>
 
 <!-- Section: What Makes BEEE Different -->
-<section id="diff-section" class="py-32 md:py-48 bg-navy relative overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 50% at 100% 0%, #1A2B4C 0%, transparent 60%)"></div>
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
+<section id="diff-section" class="py-32 md:py-48 bg-navy">
+  <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-6">What Makes BEEE Different?</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
       Every participant benefits from an integrated learning experience powered by four unique platforms.
     </p>
 
-    <div bind:this={diffGrid} class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
+    <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
       <!-- BEEE -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
         <span class="text-3xl mb-5 block">&#9820;</span>
         <h3 class="font-hero text-2xl text-white font-bold mb-3">BEEE&reg;</h3>
         <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
@@ -207,7 +169,7 @@
       </div>
 
       <!-- E4 AI CHESS COACH -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
         <span class="text-3xl mb-5 block">&#129302;</span>
         <h3 class="font-hero text-2xl text-white font-bold mb-3">E4 AI CHESS COACH&trade;</h3>
         <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
@@ -216,7 +178,7 @@
       </div>
 
       <!-- TEAMUP -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
         <span class="text-3xl mb-5 block">&#127775;</span>
         <h3 class="font-hero text-2xl text-white font-bold mb-3">T.E.A.M.U.P.&trade;</h3>
         <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
@@ -225,7 +187,7 @@
       </div>
 
       <!-- TASKIFY -->
-      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col group">
         <span class="text-3xl mb-5 block">&#128216;</span>
         <h3 class="font-hero text-2xl text-white font-bold mb-3">TASKIFY&trade;</h3>
         <p class="font-['Inter'] text-gray-400 text-base leading-relaxed mt-auto">
@@ -237,58 +199,57 @@
 </section>
 
 <!-- What Participants Develop -->
-<section id="skills" class="py-32 md:py-48 bg-navy relative overflow-hidden border-t border-white/5">
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 0% 100%, #1A2B4C 0%, transparent 60%)"></div>
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
+<section id="skills" class="py-32 md:py-48 bg-navy border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-6">What Participants Develop</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
       Participants strengthen their ability in:
     </p>
 
-    <div bind:this={skillsContainer} class="grid grid-cols-12 gap-4 auto-rows-[auto]">
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+    <div class="grid grid-cols-12 gap-4 auto-rows-[auto]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Strategic thinking and decision-making</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Critical reasoning and problem-solving</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Advanced chess concepts</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Leadership and teamwork</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Creativity and innovation</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Communication and collaboration</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>
         <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Academic confidence and intellectual growth</p>
       </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4 transition-all duration-700 ease-out hover:scale-[1.02]">
+      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
         </div>

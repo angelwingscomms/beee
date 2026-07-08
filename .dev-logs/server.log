@@ -52,3 +52,15 @@ https://svelte.dev/e/svelte_component_deprecated
 https://svelte.dev/e/svelte_component_deprecated
 7:39:42 AM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
+7:44:18 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:18 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:44:25 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:25 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:44:33 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:33 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:44:40 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:40 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:44:46 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:46 AM [vite] (ssr) page reload src/routes/+page.svelte
+7:44:51 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:44:51 AM [vite] (ssr) page reload src/routes/+page.svelte
