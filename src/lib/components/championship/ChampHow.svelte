@@ -7,7 +7,7 @@
       title: 'REGISTRATION',
       body: `Participants register through participating schools and gain access to:
 E4 Ai CHESS COACH™ 
-T.E.A.M.U.P.™
+TEAMUP™
 TASKIFY™ Development Passport`,
       img: '/images/championship/register.png',
       color: '#F27830',

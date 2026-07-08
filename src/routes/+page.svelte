@@ -5,6 +5,7 @@
   import SplitText from 'gsap/SplitText';
   import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import PlatformCard from '$lib/components/home/PlatformCard.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -15,7 +16,6 @@
   let philosophyText: HTMLElement | undefined = $state();
   let makeYourMove: HTMLElement | undefined = $state();
   let diffCardsParent: HTMLElement | undefined = $state();
-  let skillsParent: HTMLElement | undefined = $state();
 
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -75,22 +75,6 @@
       },
     });
 
-    let animatedSkills = false;
-    onScroll({
-      target: '#skills',
-      enter: 'top 75%',
-      onEnter: () => {
-        if (animatedSkills || !skillsParent) return;
-        animatedSkills = true;
-        animate(skillsParent.children, {
-          opacity: [0, 1],
-          translateY: [30, 0],
-          delay: ((_el: any, i: number) => i * 60) as any,
-          duration: 500,
-          easing: 'easeOutCubic',
-        });
-      },
-    });
   });
 
   function onBentoHover(enter: boolean) {
@@ -130,6 +114,78 @@
 </svelte:head>
 
 <ChampHero />
+
+<!-- Section: What Makes BEEE Different -->
+<section id="diff-section" class="py-32 md:py-48 bg-navy">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
+    <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
+      It goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms.
+    </p>
+
+    <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
+      <PlatformCard bg="#f5e6c8" title="E4&trade; CHESS COACH" body="An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice." />
+      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="Digital Development Passport that tracks participant progress, milestones, achievements, badges, certificates, and developmental growth throughout the championship journey." />
+    </div>
+
+
+
+    <!-- School Benefits -->
+    <div class="border-t border-white/10 pt-14">
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: The Platform -->
+<section id="platform" class="py-20 px-6">
+    <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
+  <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
+    <!-- Card 1: e4 -->
+    <div
+      bind:this={bentoCardBase}
+      role="button"
+      tabindex="0"
+      class="col-span-12 md:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group"
+      onmouseenter={() => onBentoHover(true)}
+      onmouseleave={() => onBentoHover(false)}
+    >
+      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute bottom-0 left-0 p-8 z-20">
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">e4™</h3>
+        <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
+      </div>
+    </div>
+
+    <!-- Card 2: e4 Explanation -->
+    <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-between">
+      <div class="relative z-10">
+        <h3 class="font-hero text-xl font-bold text-white mb-4">What Players Gain</h3>
+        <ul class="flex flex-col items-start gap-2.5">
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#7ec8e3] rounded-full px-4 py-2 w-fit self-end">Critical reasoning and problem-solving</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#5db8a6] rounded-full px-4 py-2 w-fit self-end">Leadership and collaboration</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#cdb4f6] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#f6a5c0] rounded-full px-4 py-2 w-fit self-end">Academic excellence and lifelong passion for learning</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#a3d9a5] rounded-full px-4 py-2 w-fit">Resilience, self-discipline and confidence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 3: TEAMUP -->
+    <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
+      <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
+      <div class="relative z-20 ml-12 max-w-xl">
+        <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
+          <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
+        </p>
+        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Section 2: The Journey -->
 <section id="journey" class="min-h-screen py-24 bg-navy">
@@ -228,154 +284,6 @@
   </div>
 </section>
 
-<!-- Section 3: The Platform -->
-<section id="platform" class="py-20 px-6">
-    <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
-  <div class="grid grid-cols-12 gap-6 auto-rows-[400px]">
-    <!-- Card 1: e4 -->
-    <div
-      bind:this={bentoCardBase}
-      role="button"
-      tabindex="0"
-      class="col-span-12 md:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group"
-      onmouseenter={() => onBentoHover(true)}
-      onmouseleave={() => onBentoHover(false)}
-    >
-      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
-      <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-2xl font-bold text-white mb-2">e4™</h3>
-        <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
-      </div>
-    </div>
-
-    <!-- Card 2: e4 Explanation -->
-    <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl overflow-hidden relative group p-8 flex flex-col justify-between">
-      <div class="absolute inset-0 bg-[#1A2B4C]"></div>
-      <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-2">e4™ — AI Chess Coach</h3>
-        <p class="font-['Inter'] text-gray-300 text-sm">Play against a virtual opponent while an AI coach analyzes every move, explains mistakes, and guides improvement through voice and text.</p>
-      </div>
-    </div>
-
-    <!-- Card 3: TEAMUP -->
-    <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
-      <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
-      <div class="relative z-20 ml-12 max-w-xl">
-        <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-          <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
-        </p>
-        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section: What Makes BEEE Different -->
-<section id="diff-section" class="py-32 md:py-48 bg-navy">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-6">What Makes BEEE Different?</h2>
-    <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
-      Every participant benefits from an integrated learning experience powered by four unique platforms.
-    </p>
-
-    <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(260px,auto)] grid-flow-dense">
-      <!-- BEEE -->
-      <div class="col-span-12 md:col-span-6 bg-[#F27830] rounded-3xl p-8 md:p-10 flex flex-col group">
-        <h3 class="font-hero text-2xl text-white font-bold mb-3">BEEE&reg;</h3>
-        <p class="font-['Inter'] text-white/80 text-base leading-relaxed mt-auto">
-          A championship that develops strategic thinkers, confident learners, and future leaders.
-        </p>
-      </div>
-
-      <!-- E4 AI CHESS COACH -->
-      <div class="col-span-12 md:col-span-6 bg-[#f5e6c8] rounded-3xl p-8 md:p-10 flex flex-col group">
-        <h3 class="font-hero text-2xl text-[#141413] font-bold mb-3">E4 AI CHESS COACH&trade;</h3>
-        <p class="font-['Inter'] text-[#3d3d3a] text-base leading-relaxed mt-auto">
-          An intelligent AI chess coach that provides personalised training, game analysis, instant feedback, and advanced chess development.
-        </p>
-      </div>
-
-      <!-- TEAMUP -->
-      <div class="col-span-12 md:col-span-6 bg-[#ffb200] rounded-3xl p-8 md:p-10 flex flex-col group">
-        <h3 class="font-hero text-2xl text-white font-bold mb-3">T.E.A.M.U.P.&trade;</h3>
-        <p class="font-['Inter'] text-white/80 text-base leading-relaxed mt-auto">
-          A holistic development programme that nurtures Technology, Enterprise, Art, Mentorship, and Upskilling to prepare participants for success beyond the chessboard.
-        </p>
-      </div>
-
-      <!-- TASKIFY -->
-      <div class="col-span-12 md:col-span-6 bg-[#7ec8e3] rounded-3xl p-8 md:p-10 flex flex-col group">
-        <h3 class="font-hero text-2xl text-[#141413] font-bold mb-3">TASKIFY&trade;</h3>
-        <p class="font-['Inter'] text-[#3d3d3a] text-base leading-relaxed mt-auto">
-          A digital Development Passport that records each participant's achievements, milestones, badges, certificates, skills, and championship progress.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- What Participants Develop -->
-<section id="skills" class="py-32 md:py-48 bg-navy border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-6">What Participants Develop</h2>
-    <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
-      Participants strengthen their ability in:
-    </p>
-
-    <div bind:this={skillsParent} class="grid grid-cols-12 gap-4 auto-rows-[auto]">
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Strategic thinking and decision-making</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Critical reasoning and problem-solving</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Advanced chess concepts</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Leadership and teamwork</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Creativity and innovation</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Communication and collaboration</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Academic confidence and intellectual growth</p>
-      </div>
-      <div class="col-span-12 md:col-span-6 lg:col-span-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 mt-0.5">
-          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-        </div>
-        <p class="font-['Inter'] text-gray-300 text-base leading-relaxed">Resilience, discipline, and self-confidence</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Section 4: Philosophy -->
 <section id="philosophy" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
   <h2 bind:this={philosophyText} class="split-text-target font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
@@ -458,11 +366,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 45px;
+    width: 120px;
     height: 3px;
-    background: #ffffff;
+    background: linear-gradient(90deg, transparent, #ffffff 20%, #ffffff 80%, transparent);
     border-radius: 50%;
-    box-shadow: 0 0 12px 3px #ffffff, 0 0 30px 8px #FFC72C;
+    box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.6), 0 0 30px 8px rgba(255, 199, 44, 0.5);
   }
 
   .tree-container {
@@ -602,5 +510,79 @@
     color: #FFC72C;
     font-size: 14px;
     font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .nodes-wrapper {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .node-column {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .card {
+      width: 100%;
+      height: 140px;
+      padding: 14px 10px;
+    }
+
+    .card-title {
+      font-size: 16px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+    }
+
+    .card-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .top-drop {
+      height: 25px;
+    }
+
+    .node-drop {
+      height: 25px;
+    }
+
+    .line-h {
+      width: 2px;
+      height: 0;
+      border-top: none;
+      border-left: 2px dotted #FFC72C;
+    }
+
+    .bottom-drop {
+      height: 25px;
+    }
+
+    .bottom-card {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      padding: 16px 20px;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .bottom-card-text {
+      text-align: center;
+    }
+
+    .bottom-card-title {
+      font-size: 16px;
+    }
+
+    .bottom-card-subtitle {
+      font-size: 12px;
+    }
   }
 </style>
