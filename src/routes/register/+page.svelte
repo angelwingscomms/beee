@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from '$app/environment';
   import regBg from '$lib/assets/images/register-bg.png?enhanced';
   import ConfirmationModal from '../../components/ConfirmationModal.svelte';
   import PhoneInput from '$lib/components/PhoneInput.svelte';
@@ -12,11 +13,13 @@
   let em = $state('');
   let sc = $state('');
   let ph = $state('+234');
+  let ac = $state('');
   let gfe = $state('');
   let gle = $state('');
   let eme = $state('');
   let sce = $state('');
   let phe = $state('');
+  let ace = $state('');
 
   let showConfirmation = $state(false);
   let isProcessing = $state(false);
@@ -30,6 +33,23 @@
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
     sc.trim() && ph.trim() && ph.trim() !== '+234'
   );
+
+  $effect(() => {
+    if (browser) {
+      const stored = localStorage.getItem('affiliate_c');
+      if (stored && !ac) ac = stored;
+      if (stored) ace = 'Registrations with an affiliate code get a 10% discount';
+    }
+  });
+
+  function handleAffiliateInput(e: Event) {
+    const input = e.target as HTMLInputElement;
+    let val = input.value.trim();
+    const match = val.match(/[?&]c=([^&\s]+)/);
+    if (match) val = match[1];
+    ac = val;
+    ace = val ? 'Registrations with an affiliate code get a 10% discount' : '';
+  }
 
   function clearErrors() {
     gfe = ''; gle = ''; eme = ''; sce = ''; phe = '';
@@ -61,7 +81,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim() })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim(), affiliateCode: ac.trim() || undefined })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -135,6 +155,30 @@
           <TextInput id="em" label="Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
+
+        <div class="reg-divider">Affiliate Code</div>
+
+        <div class="reg-affiliate-wrap">
+          <TextInput
+            id="ac"
+            label="Affiliate code (optional)"
+            placeholder="Paste your code or link"
+            bind:value={ac}
+            error={ace}
+            wrapperClass="!bg-white/10 !border-white/20"
+            labelClass="!text-white/60"
+            inputClass="!text-white placeholder:!text-white/30"
+            oninput={handleAffiliateInput}
+          />
+          {#if ac}
+            <div class="reg-discount-callout">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>
+              </svg>
+              <span>Registrations with an affiliate code get a 10% discount</span>
+            </div>
+          {/if}
+        </div>
 
         {#if apiError}
           <div class="reg-error" role="alert">{apiError}</div>
@@ -279,6 +323,27 @@
     flex: 1;
     height: 1px;
     background: var(--hairline);
+  }
+  .reg-affiliate-wrap {
+    margin-top: -12px;
+  }
+  .reg-discount-callout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(93, 184, 114, 0.12);
+    color: #7ddf8a;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .reg-discount-callout svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--success);
   }
   .reg-error {
     padding: 12px 16px;

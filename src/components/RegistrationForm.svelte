@@ -280,6 +280,7 @@
 	<ConfirmationModal
 		{firstName}
 		{lastName}
+		school={''}
 		{email}
 		{phone}
 		{AMOUNT}

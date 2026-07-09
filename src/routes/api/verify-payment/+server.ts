@@ -92,7 +92,8 @@ export const POST: RequestHandler = async ({ request }) => {
 			v: 0,
 			amt: expected_amt,
 			d: Date.now(),
-			ref: verified.reference
+			ref: verified.reference,
+			ac: reg_data.ac as string | undefined
 		};
 
 		await create(payload, undefined, reg_id);

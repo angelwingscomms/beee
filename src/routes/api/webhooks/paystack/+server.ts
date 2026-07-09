@@ -101,19 +101,20 @@ export const POST: RequestHandler = async ({ request }) => {
 				// console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
 
 				// Write full registration to DB
-				const payload: Registration = {
-					s: 'reg',
-					fn: reg_data.fn as string,
-					ln: reg_data.ln as string,
-					sn: reg_data.sn as string,
-					e: reg_data.e as string,
-					p: reg_data.p as string,
-					st: 'paid',
-					v: 0,
-					amt: expected_amt,
-					d: Date.now(),
-					ref: verified.reference
-				};
+			const payload: Registration = {
+				s: 'reg',
+				fn: reg_data.fn as string,
+				ln: reg_data.ln as string,
+				sn: reg_data.sn as string,
+				e: reg_data.e as string,
+				p: reg_data.p as string,
+				st: 'paid',
+				v: 0,
+				amt: expected_amt,
+				d: Date.now(),
+				ref: verified.reference,
+				ac: reg_data.ac as string | undefined
+			};
 
 				await create(payload, undefined, ref);
 				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);

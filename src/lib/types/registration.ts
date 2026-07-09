@@ -11,4 +11,5 @@ export interface Registration {
 	d: number;
 	amt: number;
 	ref?: string;
+	ac?: string; // affiliate code
 }

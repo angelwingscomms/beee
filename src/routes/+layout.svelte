@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import '../app.css';
   import Cursor from '../components/Cursor.svelte';
@@ -8,6 +9,13 @@
 
   let url = $derived($page.url);
   let og_img = $derived(`https://beeeproject.com/og.png`);
+
+  $effect(() => {
+    if (browser) {
+      const c = $page.url.searchParams.get('c');
+      if (c) localStorage.setItem('affiliate_c', c);
+    }
+  });
 </script>
 
 <svelte:head>

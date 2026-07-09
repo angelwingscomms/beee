@@ -1,7 +1,17 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
 
-  const stages = [
+  interface Stage {
+    num: number;
+    title: string;
+    body: string;
+    img: string;
+    color: string;
+    colorLight: string;
+    iconPath: string;
+  }
+
+  const stages: Stage[] = [
     {
       num: 1,
       title: 'REGISTRATION',
@@ -89,7 +99,7 @@ They compete for finalists positions.`,
       <p class="champ-how-sub">A comprehensive development pathway</p>
     </header>
 
-    {#snippet stageCard(s)}
+    {#snippet stageCard(s: Stage)}
       <div class="stage-card">
         <svg class="stage-curve" viewBox="0 0 100 300" preserveAspectRatio="none" fill={s.color}><path d="M0,0 H40 C10,80 0,140 0,300 Z"/></svg>
         <div class="stage-badge" style="background: {s.color};">
