@@ -191,6 +191,7 @@
     display: none;
     width: 44px;
     height: 44px;
+    min-width: 44px;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--hairline);
@@ -198,6 +199,7 @@
     background: var(--canvas);
     color: var(--ink);
     margin-left: auto;
+    flex-shrink: 0;
   }
 
   .champ-mobile-btn span,
