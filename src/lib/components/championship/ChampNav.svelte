@@ -257,14 +257,12 @@
   }
 
   @media (max-width: 767px) {
-    .champ-nav-links {
+    .champ-nav-links,
+    :global(.champ-nav-cta) {
       display: none;
     }
     .champ-mobile-btn {
       display: inline-flex;
-    }
-    :global(.champ-nav-cta) {
-      margin: 0 auto;
     }
     .champ-nav-inner {
       height: 64px;
@@ -273,6 +271,16 @@
     .champ-nav-logo {
       width: 36px;
       height: 36px;
+    }
+  }
+
+  @media (max-width: 359px) {
+    :global(.champ-nav-cta) {
+      display: inline-flex;
+      margin-left: auto;
+      padding: 8px 12px;
+      font-size: 13px;
+      min-height: 36px;
     }
   }
 </style>
