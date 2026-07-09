@@ -61,3 +61,31 @@ Using secrets defined in .env
 3:20:21 PM [vite] server restarted.
 3:20:26 PM [vite] .env changed, restarting server...
 3:20:26 PM [vite] server restarted.
+Using secrets defined in .env
+3:41:07 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:41:07 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:41:10 PM [vite] (client) [optimizer] bundling dependencies...
+3:41:12 PM [vite] (client) ✨ new dependencies optimized: @paystack/inline-js
+3:41:12 PM [vite] (client) ✨ optimized dependencies changed. reloading
+3:41:12 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:41:12 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:41:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:41:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+3:43:20 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:43:20 PM [vite] (client) page reload .svelte-kit/generated/root.js
+3:43:20 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+3:43:20 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
