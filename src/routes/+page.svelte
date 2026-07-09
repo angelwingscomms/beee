@@ -133,7 +133,7 @@
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
-      It goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms.
+      The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms.
     </p>
 
     <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
@@ -314,7 +314,7 @@
 </section>
 
 <!-- Section 5: Footer -->
-<footer id="contact" class="py-20 pl-20 pr-6 bg-navy border-t border-white/10">
+<footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
   <a href="/register" class="block no-underline"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
   <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>

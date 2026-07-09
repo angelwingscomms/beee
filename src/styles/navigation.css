@@ -3,10 +3,6 @@
   margin: 0 auto;
 }
 
-body > div > section > div.container {
-  margin: 0;
-}
-
 .top-nav {
   position: sticky;
   top: 0;

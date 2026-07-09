@@ -81,9 +81,10 @@
   .champ-cta-body {
     position: relative;
     z-index: 2;
-    text-align: center;
-    max-width: 800px;
-    padding: 120px 0;
+    text-align: left;
+    padding: 120px 0 120px 80px;
+    margin: 0;
+    width: 100%;
   }
 
   .champ-cta-body > * {
@@ -132,7 +133,7 @@
   .champ-cta-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     margin-top: 36px;
   }
@@ -173,7 +174,7 @@
 
   @media (max-width: 767px) {
     .champ-cta-body {
-      padding: 80px 0;
+      padding: 80px 0 80px 24px;
     }
     .champ-cta-title {
       font-size: clamp(1.6rem, 6vw, 2rem);

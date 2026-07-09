@@ -81,7 +81,7 @@
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative youth development experience that combines competitive chess with AI-powered learning, leadership development, mentorship, and personal growth
+        A transformative youth development experience that combines competitive chess with AI-powered chess training, mentorship, and personal growth
       </p>
 
       <div class="hero-anim-elem flex flex-col sm:flex-row gap-4 sm:gap-10 mb-10">
@@ -101,7 +101,7 @@
 
       <div class="hero-anim-elem flex items-center gap-2 mb-8 text-base sm:text-lg text-amber-400/80">
         <svg class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z"/></svg>
-        <span>Preliminaries and Grand Finale<br />Venue:<br />National Stadium, Abuja</span>
+        <span>Preliminaries and Grand Finale<br />Venue: National Stadium, Abuja</span>
       </div>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
