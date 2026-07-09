@@ -82,7 +82,8 @@
     position: relative;
     z-index: 2;
     text-align: left;
-    padding: 24px 80px;
+    padding: 120px 0;
+    padding-left: 80px;
     margin: 0;
     width: 100%;
   }
@@ -172,7 +173,8 @@
 
   @media (max-width: 767px) {
     .champ-cta-body {
-      padding: 24px 24px;
+      padding: 80px 0;
+      padding-left: 24px;
     }
     .champ-cta-title {
       font-size: clamp(1.6rem, 6vw, 2rem);
