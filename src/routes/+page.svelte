@@ -146,7 +146,7 @@
       bind:this={bentoCardBase}
       role="button"
       tabindex="0"
-      class="col-span-12 md:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group"
+      class="col-span-12 md:col-span-12 lg:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group"
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
@@ -158,7 +158,7 @@
     </div>
 
     <!-- Card 2: e4 Explanation -->
-    <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-between">
+    <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-between">
       <div class="relative z-10">
         <h3 class="font-hero text-xl font-bold text-white mb-4">What Players Gain</h3>
         <ul class="flex flex-col items-start gap-2.5 gain-list">
