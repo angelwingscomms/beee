@@ -292,6 +292,12 @@
       padding: 8px 14px !important;
       font-size: 13px !important;
       min-height: 36px !important;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+    }
+    .champ-nav-inner {
+      position: relative;
     }
   }
 </style>
