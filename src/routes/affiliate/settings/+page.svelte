@@ -1,40 +1,233 @@
 <script lang="ts">
   import type { PageData } from './$types';
+
   let { data }: { data: PageData } = $props();
+
+  let ba = $state(data.ba || '');
+  let bn = $state(data.bn || '');
+  let bae = $state('');
+  let bne = $state('');
+  let saveMsg = $state('');
+  let isSaving = $state(false);
+
+  let copied = $state(false);
+
+  async function copyCode() {
+    if (!data.ac) return;
+    try {
+      await navigator.clipboard.writeText(`https://beeeproject.com/register?c=${data.ac}`);
+      copied = true;
+      setTimeout(() => { copied = false; }, 2000);
+    } catch {
+      const el = document.getElementById('affiliate-code-text');
+      if (el) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    }
+  }
+
+  function validateBank(): boolean {
+    let v = true; bae = ''; bne = '';
+    if (!ba || !/^\d{10}$/.test(ba)) { bae = 'Must be exactly 10 digits'; v = false; }
+    if (!bn || bn.trim().length < 2) { bne = 'Account name is required'; v = false; }
+    return v;
+  }
+
+  async function saveBank(e: Event) {
+    e.preventDefault();
+    if (!validateBank()) return;
+    isSaving = true; saveMsg = '';
+    try {
+      const r = await fetch('/api/affiliate/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ba: ba.trim(), bn: bn.trim() })
+      });
+      if (r.ok) {
+        saveMsg = 'saved';
+      } else {
+        const d = await r.json().catch(() => ({}));
+        saveMsg = 'error:' + (d.error || 'Failed to save');
+      }
+    } catch {
+      saveMsg = 'error:Network error';
+    } finally {
+      isSaving = false;
+    }
+  }
 </script>
 
 <svelte:head>
   <title>Affiliate Settings — BEEE</title>
 </svelte:head>
 
-<div class="affiliate-settings-page">
-  <section class="container" style="padding: 140px 0 80px;">
-    <h1 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 500; color: var(--ink); margin: 0 0 24px;">
-      Affiliate Settings
-    </h1>
-    <p style="font-size: 16px; color: var(--body); margin: 0 0 32px;">
-      Welcome, {data.name || data.email}.
-    </p>
+<div class="settings-page">
+  <section class="container" style="padding: 140px 0 80px; max-width: 640px;">
+    <h1 class="settings-title">Affiliate Settings</h1>
 
-    {#if data.ac}
-      <div style="background: var(--surface-soft); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-        <p style="font-size: 14px; color: var(--muted); margin: 0 0 8px;">Your affiliate code</p>
-        <p style="font-size: 24px; font-weight: 600; color: var(--primary); margin: 0 0 16px; letter-spacing: 0.04em;">
-          {data.ac}
-        </p>
-        <p style="font-size: 14px; color: var(--muted); margin: 0;">
-          Share this link:
-          <code style="display: block; margin-top: 8px; padding: 8px 12px; background: var(--canvas); border-radius: 8px; font-size: 13px; word-break: break-all;">
-            https://beeeproject.com/register?c={data.ac}
-          </code>
-        </p>
+    <div class="settings-card">
+      <h2 class="settings-card-title">Your Affiliate Code</h2>
+      <div class="code-row">
+        <span class="code-value" id="affiliate-code-text">{data.ac || '—'}</span>
+        <button class="button-secondary code-copy-btn" onclick={copyCode} disabled={!data.ac}>
+          {copied ? 'Copied!' : 'Copy'}
+        </button>
       </div>
-    {:else}
-      <p style="color: var(--muted);">No affiliate code generated yet.</p>
-    {/if}
+      <p class="code-label">Share this link to earn commissions:</p>
+      <code class="code-url">https://beeeproject.com/register?c={data.ac || '{code}'}</code>
+    </div>
 
-    <p style="margin-top: 32px; color: var(--muted); font-size: 14px;">
-      Bank account settings coming soon.
-    </p>
+    <div class="settings-card">
+      <h2 class="settings-card-title">Bank Account Details</h2>
+      <p class="settings-card-sub">Where we'll send your referral earnings.</p>
+      <form onsubmit={saveBank}>
+        <div class="field">
+          <label for="ba">Account Number</label>
+          <input id="ba" class="text-input" type="text" inputmode="numeric"
+            bind:value={ba} placeholder="0123456789" maxlength={10}
+            oninput={() => { bae = ''; saveMsg = ''; }}
+          />
+          {#if bae}<p class="field-msg field-error">{bae}</p>{/if}
+        </div>
+        <div class="field">
+          <label for="bn">Account Name</label>
+          <input id="bn" class="text-input" type="text"
+            bind:value={bn} placeholder="Full name on bank account"
+            oninput={() => { bne = ''; saveMsg = ''; }}
+          />
+          {#if bne}<p class="field-msg field-error">{bne}</p>{/if}
+        </div>
+        <div class="settings-save-row">
+          <button type="submit" class="button-primary" disabled={isSaving || (!ba && !bn)}>
+            {#if isSaving}
+              <span class="spinner" aria-hidden="true"></span> Saving...
+            {:else}
+              Save Changes
+            {/if}
+          </button>
+          {#if saveMsg === 'saved'}
+            <span class="save-success">Saved ✓</span>
+          {:else if saveMsg.startsWith('error')}
+            <span class="save-error">{saveMsg.replace('error:', '')}</span>
+          {/if}
+        </div>
+      </form>
+    </div>
+
+    <div class="settings-card settings-card-muted">
+      <h2 class="settings-card-title">Your Referrals</h2>
+      <p class="stats-placeholder">Stats coming once the program launches.</p>
+    </div>
   </section>
 </div>
+
+<style>
+  .settings-page {
+    background: var(--canvas);
+    min-height: 100vh;
+  }
+  .settings-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+  .settings-card {
+    background: var(--surface-soft);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .settings-card-muted {
+    opacity: 0.6;
+  }
+  .settings-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .settings-card-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  .code-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0 12px;
+  }
+  .code-value {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    font-family: var(--font-display);
+  }
+  .code-copy-btn {
+    flex-shrink: 0;
+    min-height: 34px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  .code-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  .code-url {
+    display: block;
+    padding: 10px 14px;
+    background: var(--canvas);
+    border-radius: 8px;
+    font-size: 13px;
+    word-break: break-all;
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .field {
+    margin-bottom: 14px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--body-strong);
+    margin-bottom: 6px;
+  }
+  .field-error {
+    font-size: 12px;
+    color: var(--error);
+    margin: 4px 0 0;
+  }
+  .settings-save-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .save-success {
+    font-size: 14px;
+    color: var(--success);
+    font-weight: 500;
+  }
+  .save-error {
+    font-size: 14px;
+    color: var(--error);
+  }
+  .stats-placeholder {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 12px 0 0;
+  }
+  @media (max-width: 767px) {
+    .settings-card { padding: 20px; }
+    .code-value { font-size: 22px; }
+  }
+</style>
