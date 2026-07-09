@@ -274,13 +274,10 @@
     }
   }
 
-  @media (max-width: 359px) {
+  @media (max-width: 369px) {
     :global(.champ-nav-cta) {
       display: inline-flex;
-      margin-left: auto;
-      padding: 8px 12px;
-      font-size: 13px;
-      min-height: 36px;
+      margin-left: 3.69rem;
     }
   }
 </style>
