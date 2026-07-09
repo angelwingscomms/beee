@@ -36,7 +36,9 @@ export async function GET(event: RequestEvent): Promise<Response> {
     event.cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
     event.cookies.delete('oauth_state', { path: '/' });
     event.cookies.delete('oauth_verifier', { path: '/' });
-    return new Response(null, { status: 302, headers: { Location: '/' } });
+    const next = event.cookies.get('oauth_next') || '/';
+    event.cookies.delete('oauth_next', { path: '/' });
+    return new Response(null, { status: 302, headers: { Location: next } });
   } catch {
     return new Response(null, { status: 400 });
   }

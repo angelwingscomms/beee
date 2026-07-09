@@ -16,6 +16,7 @@
         creativity, and personal growth.
       </p>
       <RegisterBtn href="/register" class="hero-cta">Register Now</RegisterBtn>
+      <p class="hero-affiliate"><a href="/affiliate">Become an Affiliate →</a></p>
     </div>
   </div>
 </section>
@@ -89,6 +90,22 @@
 
   :global(.hero-cta) {
     margin-top: 36px;
+  }
+
+  .hero-affiliate {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .hero-affiliate a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--hairline);
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+  .hero-affiliate a:hover {
+    color: var(--primary);
+    text-decoration-color: var(--primary);
   }
 
   @media (max-width: 767px) {
