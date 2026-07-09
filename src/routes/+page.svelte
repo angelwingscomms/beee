@@ -201,7 +201,7 @@
 </section>
 
 <!-- Section 2: The Journey -->
-<section id="journey" class="min-h-screen py-24 bg-navy">
+<section id="journey" class="min-h-screen py-12 md:py-16 bg-navy">
     <div class="framework-container">
         <div class="header">
             <div class="super-title">The Championship Framework</div>
@@ -289,9 +289,9 @@
 </section>
 
 <!-- Intro Bridge -->
-<section id="intro-cta" class="py-32 md:py-48 bg-navy">
+<section id="intro-cta" class="py-16 md:py-24 bg-navy">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter mt-20 select-none">
+    <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter select-none">
       Make Your Move
     </h2>
   </div>
