@@ -40,9 +40,9 @@ export async function process_affiliate_payout(
     return;
   }
 
-  const bank_code = get_bank_code(aff.bn);
+  const bank_code = aff.bk || get_bank_code(aff.bn);
   if (!bank_code) {
-    console.log(`[payout] Unknown bank: ${aff.bn} for affiliate ${aff_id}`);
+    console.log(`[payout] Unknown bank: ${aff.bn} (code: ${aff.bk}) for affiliate ${aff_id}`);
     await store_failed_payout(reg_id, aff_id, ac, `Unknown bank: ${aff.bn}`);
     return;
   }

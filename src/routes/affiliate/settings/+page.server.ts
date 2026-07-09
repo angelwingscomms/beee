@@ -31,6 +31,7 @@ export const load: PageServerLoad = async ({ locals }) => {
     name: user.n,
     ac,
     ba: user.ba,
-    bn: user.bn
+    bn: user.bn,
+    bk: user.bk
   };
 };

@@ -1,12 +1,14 @@
 <script lang="ts">
+  import BankSelect from '$lib/components/BankSelect.svelte';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
 
   let ba = $state(data.ba || '');
   let bn = $state(data.bn || '');
+  let bk = $state(data.bk || '');
   let bae = $state('');
-  let bne = $state('');
+  let bke = $state('');
   let saveMsg = $state('');
   let isSaving = $state(false);
 
@@ -30,10 +32,17 @@
     }
   }
 
+  function onBankSelect(b: { n: string; c: string } | null) {
+    bk = b?.c || '';
+    bn = b?.n || '';
+    bke = '';
+    saveMsg = '';
+  }
+
   function validateBank(): boolean {
-    let v = true; bae = ''; bne = '';
+    let v = true; bae = ''; bke = '';
     if (!ba || !/^\d{10}$/.test(ba)) { bae = 'Must be exactly 10 digits'; v = false; }
-    if (!bn || bn.trim().length < 2) { bne = 'Account name is required'; v = false; }
+    if (!bk) { bke = 'Please select your bank'; v = false; }
     return v;
   }
 
@@ -45,7 +54,7 @@
       const r = await fetch('/api/affiliate/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ba: ba.trim(), bn: bn.trim() })
+        body: JSON.stringify({ ba: ba.trim(), bn, bk })
       });
       if (r.ok) {
         saveMsg = 'saved';
@@ -94,15 +103,12 @@
           {#if bae}<p class="field-msg field-error">{bae}</p>{/if}
         </div>
         <div class="field">
-          <label for="bn">Account Name</label>
-          <input id="bn" class="text-input" type="text"
-            bind:value={bn} placeholder="Full name on bank account"
-            oninput={() => { bne = ''; saveMsg = ''; }}
-          />
-          {#if bne}<p class="field-msg field-error">{bne}</p>{/if}
+          <label for="bn">Bank</label>
+          <BankSelect value={bn} onChange={onBankSelect} />
+          {#if bke}<p class="field-msg field-error">{bke}</p>{/if}
         </div>
         <div class="settings-save-row">
-          <button type="submit" class="button-primary" disabled={isSaving || (!ba && !bn)}>
+          <button type="submit" class="button-primary" disabled={isSaving || (!ba && !bk)}>
             {#if isSaving}
               <span class="spinner" aria-hidden="true"></span> Saving...
             {:else}

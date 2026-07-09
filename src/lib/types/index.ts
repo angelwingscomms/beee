@@ -8,5 +8,6 @@ export interface User {
   ac?: string;  // affiliate code (sqids)
   ba?: string;  // bank account number
   bn?: string;  // bank name
+  bk?: string;  // bank code
   d: number;    // date joined (Date.now())
 }

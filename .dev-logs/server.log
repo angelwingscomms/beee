@@ -163,3 +163,103 @@ https://svelte.dev/e/state_referenced_locally
 https://svelte.dev/e/state_referenced_locally
 4:08:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
 https://svelte.dev/e/state_referenced_locally
+4:19:44 PM [vite] (client) hmr update /src/app.css
+4:19:44 PM [vite] (ssr) page reload src/routes/affiliate/settings/+page.server.ts
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:19:57 PM [vite] (client) hmr update /src/routes/affiliate/settings/+page.svelte, /src/app.css
+4:19:57 PM [vite] (ssr) page reload src/routes/affiliate/settings/+page.svelte
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:19:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite] (client) hmr update /src/routes/affiliate/settings/+page.svelte, /src/app.css
+4:20:01 PM [vite] (ssr) page reload src/routes/affiliate/settings/+page.svelte
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:01 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite] (client) hmr update /src/routes/affiliate/settings/+page.svelte, /src/app.css
+4:20:04 PM [vite] (ssr) page reload src/routes/affiliate/settings/+page.svelte
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:04 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:20:39 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:20:39 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:20:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:20:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:20:41 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:41 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:41 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:20:59 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:20:59 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:20:59 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:20:59 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:21:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:21:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:21:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:21:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:21:19 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:21:20 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:21:20 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:21:20 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:21:20 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:21:20 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:21:25 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:21:25 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:21:25 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:21:25 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:21:51 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:21:51 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:21:51 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:21:51 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
