@@ -139,7 +139,7 @@
     <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
       <PlatformCard bg="#f5e6c8" title="E4&trade; CHESS COACH" body="An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice." href="/e4" />
       <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="Digital Development Passport that tracks participant progress, milestones, achievements, badges, certificates, and developmental growth throughout the championship journey." href="/taskify" />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="The Taskify Development Passport is a digital record that tracks participant progress, milestones, achievements, badges, certificates, and developmental growth throughout the championship journey." href="/taskify" />
     </div>
 
 
