@@ -1,0 +1,80 @@
+# Affiliate System — Multiphase Plan
+
+## Overview
+
+Add a complete affiliate system: affiliate signup, affiliate code tracking via `?c=` URL param, player discount on referred registrations, and automatic 10% payout via Paystack Transfer on successful payment.
+
+---
+
+## Phase 1 — Auth Infrastructure (Foundation)
+
+Build shared user authentication across BEEE products: Google OAuth, email+password auth, HMAC-signed session cookies, user storage in Qdrant.
+
+**Files:**
+- Modify: `src/lib/types/index.ts`, `.env`, `package.json`
+- New: `src/lib/server/session.ts`, `src/lib/server/oauth.ts`, `src/app.d.ts`, `src/hooks.server.ts`
+- New routes: `src/routes/login/google/+server.ts`, `src/routes/google/+server.ts`
+- New API: `src/routes/api/auth/signup/+server.ts`, `src/routes/api/auth/login/+server.ts`, `src/routes/api/auth/logout/+server.ts`
+
+**Deps:** `arctic`, `sqids`, `bcryptjs`
+
+---
+
+## Phase 2 — Affiliate Signup Page
+
+**Goal:** People can sign up to become affiliates.
+
+**Sub-steps:**
+- Add "Become an Affiliate" link in homepage Hero → `/affiliate`
+- Create `/affiliate` page: program info + signup form (email, password, confirm password) + "Sign in with Google" button
+- On submit: check `find_user_by_email()` — if exists, redirect to login; if new, create user with `c: ['fab']`, generate sqids code
+- Redirect to `/affiliate/settings`
+
+---
+
+## Phase 3 — Affiliate Settings Page
+
+**Goal:** Affiliates configure bank details and copy their affiliate code.
+
+**Sub-steps:**
+- `/affiliate/settings` page: bank account number, bank name, save button
+- `POST /api/affiliate/settings` — update user with `ba`, `bn`
+- Copy affiliate code button (clipboard API)
+- Auth guard: require `c` contains `'fab'`
+
+---
+
+## Phase 4 — Affiliate Code Detection & Autofill
+
+**Goal:** Visitors with `?c=CODE` in URL get it saved to localStorage and autofilled on `/register`.
+
+**Sub-steps:**
+- In `+layout.svelte`, detect `?c=` param → `localStorage.setItem('affiliate_c', value)`
+- Overwrite localStorage if new code differs
+- Add "Affiliate Code" text input on `/register`, auto-extract code from pasted link
+- On load, check localStorage and pre-fill
+- Show helper: "Registrations with an affiliate code get a 10% discount"
+
+---
+
+## Phase 5 — Player Registration with User System
+
+**Goal:** Players have accounts shared across BEEE products.
+
+**Sub-steps:**
+- Pre-submit check: `find_user_by_email()` — if exists, redirect to login
+- After payment verify, create user `{e, s:'u', c:['rpb'], d:now}` for new players
+- Set session cookie, redirect to player dashboard
+- Pass affiliate code through `reg_data` metadata → stored in `Registration` + payout trigger
+
+---
+
+## Phase 6 — Automatic Payout & Notification
+
+**Goal:** On paid registration with affiliate code, 10% goes to affiliate.
+
+**Sub-steps:**
+- `paystack_transfer()` function → `POST /transfer`
+- `POST /transferrecipient` using affiliate's bank details
+- In `verify-payment` and `webhook/paystack`: look up affiliate → create recipient → initiate 10% transfer
+- Email notification to affiliate (requires email service integration)

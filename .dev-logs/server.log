@@ -16,3 +16,5 @@ https://svelte.dev/e/svelte_component_deprecated
 https://svelte.dev/e/svelte_component_deprecated
 2:14:20 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
 https://svelte.dev/e/svelte_component_deprecated
+3:02:53 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+3:02:53 PM [vite] (ssr) page reload src/routes/+page.svelte
