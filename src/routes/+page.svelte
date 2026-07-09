@@ -161,13 +161,13 @@
     <div bind:this={bentoCard2} class="col-span-12 md:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-between">
       <div class="relative z-10">
         <h3 class="font-hero text-xl font-bold text-white mb-4">What Players Gain</h3>
-        <ul class="flex flex-col items-start gap-2.5">
+        <ul class="flex flex-col items-start gap-2.5 gain-list">
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#7ec8e3] rounded-full px-4 py-2 w-fit self-end">Critical reasoning and problem-solving</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Critical reasoning and problem-solving</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#5db8a6] rounded-full px-4 py-2 w-fit self-end">Leadership and collaboration</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#5db8a6] rounded-full px-4 py-2 w-fit">Leadership and collaboration</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#cdb4f6] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-right bg-[#f6a5c0] rounded-full px-4 py-2 w-fit self-end">Academic excellence and lifelong passion for learning</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#f6a5c0] rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#a3d9a5] rounded-full px-4 py-2 w-fit">Resilience, self-discipline and confidence</li>
         </ul>
       </div>
@@ -583,6 +583,11 @@
 
     .bottom-card-subtitle {
       font-size: 12px;
+    }
+  }
+  @media (min-width: 768px) {
+    .gain-list > li:nth-child(even) {
+      align-self: flex-end;
     }
   }
 </style>
