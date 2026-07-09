@@ -111,9 +111,6 @@
         </a>
       </div>
 
-      <div class="mt-5">
-        <a href="/affiliate" class="text-base font-semibold no-underline" style="color:#7ec8e3">Become an Affiliate →</a>
-      </div>
     </div>
 
     <div class="lg:col-span-7 flex justify-center items-center" bind:this={imageWrapper}>

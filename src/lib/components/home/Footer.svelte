@@ -34,6 +34,7 @@
         <span class="contact-sep">|</span>
         <span>+234 802 092 0872</span>
       </div>
+      <a href="/affiliate" class="footer-affiliate">Become an Affiliate →</a>
       <p class="footer-copy">&copy; 2026 BEEE Spectacular Chess Championship</p>
     </div>
   </div>
@@ -154,6 +155,18 @@
 
   .contact-sep {
     color: rgba(250, 249, 245, 0.2);
+  }
+
+  .footer-affiliate {
+    font-size: 16px;
+    font-weight: 600;
+    color: #7ec8e3;
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .footer-affiliate:hover {
+    color: #a8e8ff;
   }
 
   .footer-copy {

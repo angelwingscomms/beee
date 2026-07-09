@@ -330,3 +330,9 @@ https://svelte.dev/e/svelte_component_deprecated
 5:36:39 PM [vite] (ssr) page reload src/routes/+page.svelte
 5:36:40 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 5:36:40 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:37:58 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+5:37:58 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+5:37:59 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/app.css
+5:37:59 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+5:38:03 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+5:38:03 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
