@@ -152,3 +152,14 @@ https://svelte.dev/e/style_duplicate
 3:58:29 PM [vite] (client) page reload .svelte-kit/generated/root.js
 3:58:29 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 3:58:29 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:01:04 PM [vite] .env changed, restarting server...
+4:01:05 PM [vite] server restarted.
+Using secrets defined in .env
+4:08:56 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:6:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:08:56 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:08:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:6:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+4:08:57 PM [vite-plugin-svelte] src/routes/affiliate/settings/+page.svelte:7:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
