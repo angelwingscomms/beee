@@ -99,6 +99,11 @@
         </div>
       </div>
 
+      <div class="hero-anim-elem flex items-center gap-2 mb-8 text-sm text-amber-400/80">
+        <svg class="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+        <span>Venue for Preliminaries and Grand Finale: National Stadium, Abuja</span>
+      </div>
+
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
         <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">
