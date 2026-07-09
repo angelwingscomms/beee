@@ -148,7 +148,7 @@
     margin-top: 36px;
   }
 
-  .page-hero-btn {
+  :global(.page-hero-btn) {
     min-height: 48px;
     padding: 14px 28px;
     font-size: 15px;
@@ -251,7 +251,7 @@
     margin: 16px 0 32px;
   }
 
-  .page-cta-btn {
+  :global(.page-cta-btn) {
     min-height: 52px;
     padding: 16px 36px;
     font-size: 16px;
