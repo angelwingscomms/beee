@@ -114,16 +114,14 @@
   }
 
   .champ-cta-sub {
-    max-width: 680px;
-    margin: 20px auto 0;
+    margin: 20px 0 0;
     font-size: 17px;
     line-height: 1.65;
     color: rgba(250, 249, 245, 0.7);
   }
 
   .champ-cta-tagline {
-    max-width: 680px;
-    margin: 16px auto 0;
+    margin: 16px 0 0;
     font-size: 15px;
     line-height: 1.5;
     color: rgba(250, 249, 245, 0.5);
