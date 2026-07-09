@@ -336,3 +336,5 @@ https://svelte.dev/e/svelte_component_deprecated
 5:37:59 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
 5:38:03 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
 5:38:03 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+5:38:37 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/Footer.svelte?svelte&type=style&lang.css, /src/app.css
+5:38:37 PM [vite] (ssr) page reload src/lib/components/home/Footer.svelte

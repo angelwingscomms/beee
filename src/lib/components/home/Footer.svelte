@@ -160,7 +160,7 @@
   .footer-affiliate {
     font-size: 16px;
     font-weight: 600;
-    color: #7ec8e3;
+    color: #14d9c4;
     text-decoration: none;
     transition: color 160ms ease;
   }
