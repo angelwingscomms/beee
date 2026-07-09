@@ -1,6 +1,12 @@
 export interface User {
-  s: string; // type/tenant (e.g., 'u' user, 'se' session, 'm' message, 'n' notif sub)
-  t: string; // tag
-  p: string; // password hash
-  e: string; // email
+  s: 'u';
+  e: string;    // email (unique identifier across products)
+  p?: string;   // bcrypt password hash (null for Google-only users)
+  n?: string;   // display name
+  pic?: string; // Google profile picture URL
+  c?: string[]; // classifications: 'fab' (affiliate), 'rpb' (player)
+  ac?: string;  // affiliate code (sqids)
+  ba?: string;  // bank account number
+  bn?: string;  // bank name
+  d: number;    // date joined (Date.now())
 }

@@ -18,3 +18,23 @@ https://svelte.dev/e/svelte_component_deprecated
 https://svelte.dev/e/svelte_component_deprecated
 3:02:53 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
 3:02:53 PM [vite] (ssr) page reload src/routes/+page.svelte
+3:04:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:250:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:04:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:265:2 Unused CSS selector ".reg-divider"
+https://svelte.dev/e/css_unused_selector
+3:04:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:276:2 Unused CSS selector ".reg-divider::before"
+https://svelte.dev/e/css_unused_selector
+3:04:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:277:2 Unused CSS selector ".reg-divider::after"
+https://svelte.dev/e/css_unused_selector
+3:04:13 PM [vite-plugin-svelte] src/routes/register/+page.svelte:386:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:05:03 PM [vite] .env changed, restarting server...
+3:05:03 PM [vite] (client) Re-optimizing dependencies because lockfile has changed
+3:05:03 PM [vite] (ssr) Re-optimizing dependencies because lockfile has changed
+3:05:07 PM [vite] (ssr) [optimizer] bundling dependencies...
+3:05:07 PM [vite] (client) [optimizer] bundling dependencies...
+3:05:09 PM [vite] server restarted.
+Using secrets defined in .env
+3:05:10 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:05:16 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+3:05:16 PM [vite] (ssr) page reload src/routes/+page.svelte
