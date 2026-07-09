@@ -119,12 +119,12 @@
   .champ-bento-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    background: rgba(0,0,0,0.15);
     transition: background 400ms ease;
   }
 
   .champ-bento-card:hover .champ-bento-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    background: rgba(0,0,0,0.1);
   }
 
   .champ-bento-content {
@@ -133,8 +133,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-        padding: 36px;
-        color: var(--on-dark);
+    padding: 36px;
+    color: var(--on-dark);
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
   }
 
   .champ-bento-card-title {
@@ -145,14 +146,16 @@
     line-height: 1.3;
     letter-spacing: -0.01em;
     color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
   }
 
   .champ-bento-card-body {
     margin: 8px 0 0;
     font-size: 15px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
     max-width: 440px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
   }
 
   @media (max-width: 767px) {
