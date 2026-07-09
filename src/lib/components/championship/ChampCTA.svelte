@@ -81,11 +81,9 @@
   .champ-cta-body {
     position: relative;
     z-index: 2;
-    text-align: left;
+    text-align: center;
+    max-width: 800px;
     padding: 120px 0;
-    padding-left: 80px;
-    margin: 0;
-    width: 100%;
   }
 
   .champ-cta-body > * {
@@ -115,14 +113,16 @@
   }
 
   .champ-cta-sub {
-    margin: 20px 0 0;
+    max-width: 680px;
+    margin: 20px auto 0;
     font-size: 17px;
     line-height: 1.65;
     color: rgba(250, 249, 245, 0.7);
   }
 
   .champ-cta-tagline {
-    margin: 16px 0 0;
+    max-width: 680px;
+    margin: 16px auto 0;
     font-size: 15px;
     line-height: 1.5;
     color: rgba(250, 249, 245, 0.5);
@@ -132,7 +132,7 @@
   .champ-cta-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 12px;
     margin-top: 36px;
   }
@@ -174,7 +174,6 @@
   @media (max-width: 767px) {
     .champ-cta-body {
       padding: 80px 0;
-      padding-left: 24px;
     }
     .champ-cta-title {
       font-size: clamp(1.6rem, 6vw, 2rem);

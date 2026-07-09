@@ -314,7 +314,7 @@
 </section>
 
 <!-- Section 5: Footer -->
-<footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
+<footer id="contact" class="py-20 pl-20 pr-6 bg-navy border-t border-white/10">
   <a href="/register" class="block no-underline"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
   <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
