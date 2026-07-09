@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { banks, type Bank } from '$lib/data/banks';
+	import { banks as staticBanks, type Bank } from '$lib/data/banks';
 
 	let {
 		value = '',
@@ -16,6 +16,21 @@
 	let activeIdx = $state(0);
 
 	let selectedBank = $state<Bank | null>(null);
+	let banks = $state<Bank[]>(staticBanks);
+
+	$effect(() => {
+		fetch('/api/banks')
+			.then(r => r.json())
+			.then(fresh => {
+				if (fresh?.banks) {
+					banks = fresh.banks.map((fb: { n: string; c: string }) => {
+						const s = staticBanks.find(sb => sb.c === fb.c);
+						return { n: fb.n, c: fb.c, a: s?.a || [] };
+					});
+				}
+			})
+			.catch(() => {});
+	});
 
 	$effect(() => {
 		if (value) {
