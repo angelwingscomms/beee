@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <svelte:head>
@@ -17,7 +17,7 @@
         <p class="page-hero-sub">AI Chess Coach</p>
         <p class="page-hero-body">An AI-assisted chess learning platform that provides guided instruction, real-time game analysis, and personalised practice tailored to each participant's skill level.</p>
         <div class="page-hero-actions">
-          <RegisterBtn href="/register" class="page-hero-btn">Get Started</RegisterBtn>
+          <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
@@ -65,7 +65,7 @@
     <div class="container" style="padding: 120px 0; text-align: center;">
       <h2 class="page-cta-title">Ready to Train Smarter?</h2>
       <p class="page-cta-body">Give your child the edge of AI-powered chess coaching.</p>
-      <RegisterBtn href="/register" class="page-cta-btn">Start Your Child's Journey</RegisterBtn>
+      <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
     </div>
   </section>
 </div>

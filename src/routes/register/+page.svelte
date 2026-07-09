@@ -6,7 +6,7 @@
   import PhoneInput from '$lib/components/PhoneInput.svelte';
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
   import { REG_AMOUNT } from '$lib/constants';
 
   let gf = $state('');
@@ -203,9 +203,9 @@
           <div class="reg-error" role="alert">{apiError}</div>
         {/if}
 
-        <RegisterBtn class="reg-submit" disabled={!allValid}>
+        <Button class="reg-submit" disabled={!allValid}>
           Register
-        </RegisterBtn>
+        </Button>
         <div class="reg-fine">
           <p>Qualification slots are limited and will be allocated on a first-completed-registration basis</p>
           <p>Participants must be between 10 and 14 years of age</p>

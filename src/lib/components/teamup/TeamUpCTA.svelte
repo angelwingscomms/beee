@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <section class="tu-cta" use:motionFadeUp>
@@ -9,7 +9,7 @@
     <p class="tu-cta-body">
       Join the BEEE Spectacular Chess Championship and unlock the full TEAMUP Development Programme — where every move builds a brighter future.
     </p>
-    <RegisterBtn href="/register" class="tu-cta-btn">Register Now</RegisterBtn>
+    <Button href="/register" class="tu-cta-btn">Register Now</Button>
   </div>
 </section>
 

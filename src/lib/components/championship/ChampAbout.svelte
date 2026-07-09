@@ -1,6 +1,6 @@
 <script lang="ts">
   import aboutBg from '$lib/assets/images/championship/about-new.png?enhanced';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <section class="champ-about" style="background-image: url({aboutBg.img.src})">
@@ -17,7 +17,7 @@
           <span class="champ-about-eyebrow">OUR VISION</span>
           <p class="champ-about-vision-text">A generation of confident thinkers who carry chess-forged skills into academics, leadership, and life.</p>
         </div>
-        <RegisterBtn href="/register" class="register-btn--hero">Register Now →</RegisterBtn>
+        <Button href="/register" class="register-btn--hero">Register Now →</Button>
       </div>
     </div>
   </div>

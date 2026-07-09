@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 
   const hero_img = 'https://picsum.photos/seed/chess-education/1200/1400';
 </script>
@@ -17,7 +17,7 @@
         Every participant is automatically enrolled in the TEAMUP Development Programme upon registration. Designed to help young minds grow not only as chess players, but as learners, leaders, creators, and problem-solvers.
       </p>
       <div class="tu-hero-actions">
-        <RegisterBtn href="/register" class="tu-hero-btn">Enrol Now</RegisterBtn>
+        <Button href="/register" class="tu-hero-btn">Enrol Now</Button>
         <a href="#pillars" class="button-secondary tu-hero-btn">Explore Pillars</a>
       </div>
     </div>

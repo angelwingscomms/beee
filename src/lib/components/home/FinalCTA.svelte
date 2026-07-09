@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <div class="cta-card" use:motionFadeUp>
@@ -9,7 +9,7 @@
     Join a championship where every move contributes to growth,
     achievement, and future success.
   </p>
-  <RegisterBtn href="/register" class="cta-button">Register Now</RegisterBtn>
+  <Button href="/register" class="cta-button">Register Now</Button>
 </div>
 
 <style>

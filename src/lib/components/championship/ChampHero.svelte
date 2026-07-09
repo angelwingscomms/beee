@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -105,7 +105,7 @@
       </div>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
-        <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
+        <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</Button>
         <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">
           See How It Works
         </a>

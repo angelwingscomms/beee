@@ -2,30 +2,40 @@
   let {
     href,
     disabled = false,
+    bg = 'o',
     children,
     class: className = '',
     onclick
   }: {
     href?: string;
     disabled?: boolean;
+    bg?: 'o' | '0' | string;
     children?: import('svelte').Snippet;
     class?: string;
     onclick?: (e: Event) => void;
   } = $props();
+
+  const bg_style = $derived(
+    bg === '0'
+      ? 'background: transparent; border: 1px solid rgba(255,255,255,0.6);'
+      : bg !== 'o' && bg.startsWith('#')
+        ? `background: ${bg};`
+        : ''
+  );
 </script>
 
 {#if href}
-  <a {href} class="register-btn {className}">
+  <a {href} class="btn {className}" style={bg_style}>
     {#if children}{@render children()}{:else}Register Now{/if}
   </a>
 {:else}
-  <button {disabled} {onclick} class="register-btn {className}">
+  <button {disabled} {onclick} class="btn {className}" style={bg_style}>
     {#if children}{@render children()}{:else}Register{/if}
   </button>
 {/if}
 
 <style>
-  .register-btn {
+  .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -42,13 +52,13 @@
     white-space: nowrap;
     opacity: 1;
   }
-  .register-btn:hover:not(:disabled) {
+  .btn:hover:not(:disabled) {
     transform: scale(1.02);
   }
-  .register-btn:active:not(:disabled) {
+  .btn:active:not(:disabled) {
     transform: scale(0.98);
   }
-  .register-btn:disabled {
+  .btn:disabled {
     cursor: not-allowed;
     transform: none;
   }

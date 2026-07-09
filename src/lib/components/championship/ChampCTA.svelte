@@ -1,6 +1,6 @@
 <script lang="ts">
   import ctaBg from '$lib/assets/images/championship/cta-bg.png?enhanced';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
   let el: HTMLElement;
   let visible = $state(false);
 
@@ -23,7 +23,7 @@
     <p class="champ-cta-sub">Be Everything Excellent Every Day</p>
     <p class="champ-cta-tagline">More Than a Chess Championship. Make Your Move.</p>
     <div class="champ-cta-actions">
-      <RegisterBtn href="/register" class="champ-cta-btn-primary">Register Now</RegisterBtn>
+      <Button href="/register" class="champ-cta-btn-primary">Register Now</Button>
       <a href="/faq" class="champ-cta-btn-secondary">View FAQ</a>
     </div>
   </div>

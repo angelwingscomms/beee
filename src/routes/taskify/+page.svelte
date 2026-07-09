@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <svelte:head>
@@ -17,7 +17,7 @@
         <p class="page-hero-sub">Digital Development Passport</p>
         <p class="page-hero-body">A digital passport that records every participant's progress throughout the championship — tracking milestones, achievements, badges, certificates, and personal growth.</p>
         <div class="page-hero-actions">
-          <RegisterBtn href="/register" class="page-hero-btn">Get Started</RegisterBtn>
+          <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
@@ -74,7 +74,7 @@
     <div class="container" style="padding: 120px 0; text-align: center;">
       <h2 class="page-cta-title">Start Building Their Record</h2>
       <p class="page-cta-body">Every achievement deserves to be documented and celebrated.</p>
-      <RegisterBtn href="/register" class="page-cta-btn">Start Your Child's Journey</RegisterBtn>
+      <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
     </div>
   </section>
 </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
 </script>
 
@@ -27,7 +27,7 @@
         <h3 class="champ-involved-title">Registration</h3>
         <p class="champ-involved-text">Early registration provides greater opportunities to participate fully, complete more activities, earn additional Development Passport points, and maximise the overall learning experience.</p>
         <div class="champ-involved-action">
-          <RegisterBtn href="/register" class="champ-involved-btn">Register Now</RegisterBtn>
+          <Button href="/register" class="champ-involved-btn">Register Now</Button>
         </div>
       </div>
     </div>

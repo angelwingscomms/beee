@@ -1,6 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 </script>
 
 <section class="hero" use:motionFadeUp>
@@ -15,7 +15,7 @@
         a unique journey that combines chess, innovation, leadership, mentorship,
         creativity, and personal growth.
       </p>
-      <RegisterBtn href="/register" class="hero-cta">Register Now</RegisterBtn>
+      <Button href="/register" class="hero-cta">Register Now</Button>
     </div>
   </div>
 </section>

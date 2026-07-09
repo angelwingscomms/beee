@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { slide } from 'svelte/transition';
-  import RegisterBtn from '$lib/components/RegisterBtn.svelte';
+  import Button from '$lib/components/Button.svelte';
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
@@ -21,7 +21,7 @@
       <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
-    <RegisterBtn href="/register" class="champ-nav-cta">Register</RegisterBtn>
+    <Button href="/register" class="champ-nav-cta">Register</Button>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
