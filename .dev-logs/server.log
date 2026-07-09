@@ -59,3 +59,96 @@ https://svelte.dev/e/css_unused_selector
 3:52:41 PM [vite] (client) page reload .svelte-kit/generated/root.js
 3:52:41 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 3:52:41 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+3:57:27 PM [vite] (ssr) page reload src/lib/components/TextInput.svelte
+3:57:34 PM [vite] (client) hmr update /src/routes/affiliate/+page.svelte, /src/app.css
+3:57:34 PM [vite] (ssr) page reload src/routes/affiliate/+page.svelte
+3:57:34 PM [vite] (client) Pre-transform error: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0 A component can have a single top-level `<style>` element
+https://svelte.dev/e/style_duplicate
+  Plugin: vite-plugin-svelte:compile
+  File: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0
+   84 |  </style>
+   85 |  
+   86 |  <style>
+         ^
+   87 |    .field-msg {
+   88 |      margin: 6px 0 0;
+3:57:34 PM [vite] (ssr) Error when evaluating SSR module /src/routes/affiliate/+page.svelte: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0 A component can have a single top-level `<style>` element
+https://svelte.dev/e/style_duplicate
+  Plugin: vite-plugin-svelte:compile
+  File: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0
+   84 |  </style>
+   85 |  
+   86 |  <style>
+         ^
+   87 |    .field-msg {
+   88 |      margin: 6px 0 0;
+
+[1;31m[500] GET /affiliate[0m
+
+
+[1;31m[500] GET /affiliate[0m
+
+3:57:36 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:57:36 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:57:36 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+3:57:36 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+3:57:36 PM [vite] (client) Pre-transform error: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0 A component can have a single top-level `<style>` element
+https://svelte.dev/e/style_duplicate
+  Plugin: vite-plugin-svelte:compile
+  File: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0
+   84 |  </style>
+   85 |  
+   86 |  <style>
+         ^
+   87 |    .field-msg {
+   88 |      margin: 6px 0 0;
+
+[1;31m[500] GET /affiliate[0m
+
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+3:57:53 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:57:53 PM [vite] (client) page reload .svelte-kit/generated/root.js
+3:57:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+3:57:53 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+3:57:53 PM [vite] (ssr) Error when evaluating SSR module /src/routes/affiliate/+page.svelte: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0 A component can have a single top-level `<style>` element
+https://svelte.dev/e/style_duplicate
+  Plugin: vite-plugin-svelte:compile
+  File: /home/ed/i/beee/src/lib/components/TextInput.svelte:86:0
+   84 |  </style>
+   85 |  
+   86 |  <style>
+         ^
+   87 |    .field-msg {
+   88 |      margin: 6px 0 0;
+
+[1;31m[500] GET /affiliate[0m
+
+3:58:14 PM [vite] (client) hmr update /src/lib/components/TextInput.svelte, /src/lib/components/TextInput.svelte?svelte&type=style&lang.css, /src/app.css
+3:58:14 PM [vite] (ssr) page reload src/lib/components/TextInput.svelte
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+3:58:29 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:58:29 PM [vite] (client) page reload .svelte-kit/generated/root.js
+3:58:29 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+3:58:29 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

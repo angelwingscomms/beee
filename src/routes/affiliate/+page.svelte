@@ -104,12 +104,12 @@
                 labelClass="!text-muted"
                 inputClass="!text-ink placeholder:!text-muted-soft" />
               <TextInput id="af-pw" label="Password" type="password" bind:value={password} required error={pwe}
-                oninput={() => pwe = ''} placeholder="Min 8 characters"
+                oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle
                 wrapperClass="!bg-white !border-[var(--hairline)]"
                 labelClass="!text-muted"
                 inputClass="!text-ink placeholder:!text-muted-soft" />
               <TextInput id="af-cpw" label="Confirm Password" type="password" bind:value={confirmPassword} required error={cpe}
-                oninput={() => cpe = ''}
+                oninput={() => cpe = ''} showToggle
                 wrapperClass="!bg-white !border-[var(--hairline)]"
                 labelClass="!text-muted"
                 inputClass="!text-ink placeholder:!text-muted-soft" />

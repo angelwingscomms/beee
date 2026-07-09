@@ -63,7 +63,7 @@
 
     <form onsubmit={handleSubmit} novalidate>
       <TextInput id="em" label="Email" type="email" bind:value={em} error={eme} oninput={() => eme = ''} />
-      <TextInput id="pw" label="Password" type="password" bind:value={pw} error={pwe} oninput={() => pwe = ''} />
+      <TextInput id="pw" label="Password" type="password" bind:value={pw} error={pwe} oninput={() => pwe = ''} showToggle />
 
       {#if apiError}
         <div class="login-error" role="alert">{apiError}</div>
