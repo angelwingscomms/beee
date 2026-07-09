@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { create, get, find_or_create_player_user } from '$lib/db';
 import { paystack_verify } from '$lib/paystack';
 import { encode_session } from '$lib/server/session';
+import { process_affiliate_payout } from '$lib/affiliate';
 import type { Registration } from '$lib/types/registration';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
@@ -28,7 +29,7 @@ import type { Registration } from '$lib/types/registration';
 // 	}
 // }
 
-export const POST: RequestHandler = async ({ request, cookies }) => {
+export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 	console.log(`[POST /api/verify-payment] Received payment verification request`);
 	try {
 		const data = await request.json();
@@ -110,6 +111,11 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 		const session = await encode_session({ id: user_id, email, name: `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim() });
 		cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
+
+		// Fire-and-forget affiliate payout
+		process_affiliate_payout(reg_data, reg_id, platform).catch(e =>
+			console.error(`[payout] Failed for ${reg_id}:`, e)
+		);
 
 		return json({ success: true, status: 'success', message: 'Payment verified and registration confirmed', redirect: '/dashboard', userId: user_id });
 	} catch (error) {

@@ -176,6 +176,100 @@ export async function paystack_verify(
 	}
 }
 
+// ── Bank code map ──────────────────────────────────────────
+
+const BANK_CODES: Record<string, string> = {
+  'access bank': '044',
+  'access bank (diamond)': '063',
+  'citibank': '023',
+  'ecobank': '050',
+  'fidelity bank': '070',
+  'first bank': '011',
+  'first city monument bank': '214',
+  'fcmb': '214',
+  'globus bank': '001',
+  'guaranty trust bank': '058',
+  'gtbank': '058',
+  'heritage bank': '030',
+  'jaiz bank': '301',
+  'keystone bank': '082',
+  'kuda bank': '50211',
+  'kuda': '50211',
+  'moniepoint': '50515',
+  'opay': '100004',
+  'palmpay': '50563',
+  'parallex bank': '526',
+  'polaris bank': '076',
+  'providus bank': '101',
+  'stanbic ibtc bank': '221',
+  'stanbic ibtc': '221',
+  'standard chartered bank': '068',
+  'sterling bank': '232',
+  'suntrust bank': '100',
+  'titan trust bank': '102',
+  'union bank': '032',
+  'united bank for africa': '033',
+  'uba': '033',
+  'unity bank': '215',
+  'wema bank': '035',
+  'zenith bank': '057',
+};
+
+export function get_bank_code(bn: string): string | null {
+  const key = bn.trim().toLowerCase().replace(/\s+/g, ' ');
+  return BANK_CODES[key] || null;
+}
+
+// ── Transfer API ───────────────────────────────────────────
+
+export async function paystack_resolve_bank(account_number: string, bank_code: string): Promise<{ account_name: string }> {
+  const secret_key = get_secret_key();
+  const res = await fetch(`${BASE}/bank/resolve`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ account_number, bank_code })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Bank resolve failed: ${err}`);
+  }
+  const body = await res.json();
+  if (!body.status) throw new Error(`Bank resolve error: ${body.message}`);
+  return body.data as { account_name: string };
+}
+
+export async function paystack_create_recipient(name: string, account_number: string, bank_code: string): Promise<{ recipient_code: string; active: boolean }> {
+  const secret_key = get_secret_key();
+  const res = await fetch(`${BASE}/transferrecipient`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'nuban', name, account_number, bank_code, currency: 'NGN' })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Create recipient failed: ${err}`);
+  }
+  const body = await res.json();
+  if (!body.status) throw new Error(`Create recipient error: ${body.message}`);
+  return body.data as { recipient_code: string; active: boolean };
+}
+
+export async function paystack_transfer(recipient_code: string, amount_kobo: number, reason: string): Promise<{ transfer_code: string; status: string }> {
+  const secret_key = get_secret_key();
+  const res = await fetch(`${BASE}/transfer`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ source: 'balance', amount: amount_kobo, recipient: recipient_code, reason })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Transfer failed: ${err}`);
+  }
+  const body = await res.json();
+  if (!body.status) throw new Error(`Transfer error: ${body.message}`);
+  return body.data as { transfer_code: string; status: string };
+}
+
 /**
  * Verify the HMAC SHA512 signature on an incoming Paystack webhook.
  * raw_body must be the raw request body string — not a parsed object.

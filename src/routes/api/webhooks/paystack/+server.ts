@@ -3,6 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
 import { create, get, find_or_create_player_user } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
+import { process_affiliate_payout } from '$lib/affiliate';
 import type { Registration } from '$lib/types/registration';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
@@ -39,7 +40,7 @@ import type { Registration } from '$lib/types/registration';
  * Configure this URL in Paystack Dashboard → Settings → API Keys & Webhooks.
  * Paystack IPs: 52.31.139.75, 52.49.173.169, 52.214.14.220
  */
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, platform }) => {
 	console.log(`[POST /api/webhooks/paystack] Webhook event received`);
 	const raw = await request.text();
 	const signature = request.headers.get('x-paystack-signature') ?? '';
@@ -127,6 +128,11 @@ export const POST: RequestHandler = async ({ request }) => {
 				if (pw) ph = await bcrypt.hash(pw, 10);
 				const user_id = await find_or_create_player_user(email, `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(), ph);
 				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
+
+				// Fire-and-forget affiliate payout
+				process_affiliate_payout(reg_data, ref, platform).catch(e =>
+					console.error(`[webhook payout] Failed for ${ref}:`, e)
+				);
 			}
 		} catch (err) {
 			console.error('Webhook processing error:', err);
