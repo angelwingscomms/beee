@@ -513,6 +513,9 @@
   }
 
   @media (max-width: 768px) {
+    .tree-container {
+      padding: 0 16px;
+    }
     .nodes-wrapper {
       width: 100%;
       flex-direction: column;
