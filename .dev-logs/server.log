@@ -316,3 +316,11 @@ https://svelte.dev/e/css_unused_selector
 5:03:19 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
 5:03:50 PM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte, /src/app.css
 5:03:50 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
+5:05:27 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:33:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+5:05:27 PM [vite-plugin-svelte] src/lib/components/championship/ChampPassport.svelte:42:12 `<svelte:component>` is deprecated in runes mode — components are dynamic by default
+https://svelte.dev/e/svelte_component_deprecated
+5:06:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+5:06:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+5:06:44 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+5:06:44 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte

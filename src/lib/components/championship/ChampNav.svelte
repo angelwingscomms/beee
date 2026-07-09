@@ -16,7 +16,7 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
-      <a href="/e4" class:active={path === '/e4'}>e4</a>
+      <a href="/e4" class:active={path === '/e4'}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
       <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
@@ -29,7 +29,7 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
-      <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>e4</a>
+      <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
@@ -270,13 +270,13 @@
       display: inline-flex;
     }
     .champ-nav-inner {
-      height: 64px;
+      height: 52px;
       padding: 0 20px;
       gap: 16px;
     }
     .champ-nav-logo {
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
     }
   }
   @media (max-width: 400px) {
