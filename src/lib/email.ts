@@ -8,7 +8,8 @@ export async function send_affiliate_notification(
   platform: App.Platform | undefined,
   to_email: string,
   recipient_name: string,
-  amount_kobo: number,
+  commission_kobo: number,
+  total_kobo: number,
   player_name: string
 ): Promise<void> {
   const subject = 'You received a commission payout — BEEE Affiliate Program';
@@ -33,11 +34,11 @@ export async function send_affiliate_notification(
     <div class="card">
       <p>Hi ${recipient_name},</p>
       <p>A registration was completed using your affiliate code. You've earned a commission!</p>
-      <div class="amt">${fmt_kobo(amount_kobo)}</div>
+      <div class="amt">${fmt_kobo(commission_kobo)}</div>
       <div class="label">Player</div>
       <div class="detail">${player_name}</div>
       <div class="label">Amount Paid</div>
-      <div class="detail">${fmt_kobo(amount_kobo * 10)}</div>
+      <div class="detail">${fmt_kobo(total_kobo)}</div>
       <p style="margin-top:24px;font-size:13px;color:#6c6a64;">The commission has been sent to your registered bank account. It may take 1–2 business days to reflect.</p>
     </div>
     <div class="footer">BEEE — Building Exceptional Experiences Through Education</div>

@@ -23,3 +23,22 @@ Using secrets defined in .env
 3:46:33 PM [vite] (client) page reload .svelte-kit/generated/root.js
 3:46:33 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 3:46:33 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+3:49:00 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+3:49:00 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/5.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/8.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+3:50:19 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:50:19 PM [vite] (client) page reload .svelte-kit/generated/root.js
+3:50:19 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+3:50:19 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

@@ -1,4 +1,4 @@
-import { search_by_payload, create, get } from '$lib/db';
+import { search_by_payload, create } from '$lib/db';
 import { get_bank_code, paystack_resolve_bank, paystack_create_recipient, paystack_transfer } from '$lib/paystack';
 import { send_affiliate_notification } from '$lib/email';
 import { COMMISSION_PCT } from '$lib/constants';
@@ -59,12 +59,13 @@ export async function process_affiliate_payout(
   }
 
   // Calculate commission
-  const amt_kobo = Math.round((reg_data.amt as number) * COMMISSION_PCT / 100);
+  const total_kobo = reg_data.amt as number;
+  const amt_kobo = Math.round(total_kobo * COMMISSION_PCT / 100);
 
   // Create transfer recipient
   let recipient: { recipient_code: string; active: boolean };
   try {
-    recipient = await paystack_create_recipient(aff.n || 'Affiliate', aff.ba, bank_code);
+    recipient = await paystack_create_recipient(account_name, aff.ba, bank_code);
   } catch (e) {
     console.error(`[payout] Create recipient failed for ${aff_id}:`, e);
     await store_failed_payout(reg_id, aff_id, ac, `Recipient failed: ${(e as Error).message}`);
@@ -87,7 +88,7 @@ export async function process_affiliate_payout(
   // Email affiliate
   try {
     const player_name = `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim() || 'A player';
-    await send_affiliate_notification(platform, aff.e, aff.n || 'Affiliate', amt_kobo, player_name);
+    await send_affiliate_notification(platform, aff.e, aff.n || 'Affiliate', amt_kobo, total_kobo, player_name);
   } catch (e) {
     console.error(`[payout] Email notification failed for ${aff_id}:`, e);
   }
