@@ -240,9 +240,9 @@
   }
 
   .champ-mobile-menu a {
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 16px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--body);
     text-decoration: none;
