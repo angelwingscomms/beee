@@ -274,6 +274,9 @@
       padding: 0 20px;
       gap: 16px;
     }
+    :global(.champ-nav-cta) {
+      margin-left: auto;
+    }
     .champ-nav-logo {
       width: 30px;
       height: 30px;
@@ -298,12 +301,7 @@
       padding: 8px 14px !important;
       font-size: 13px !important;
       min-height: 36px !important;
-      position: absolute;
-      left: 50%;
-      translate: -50% 0;
-    }
-    .champ-nav-inner {
-      position: relative;
+      margin-left: auto;
     }
   }
 </style>
