@@ -64,7 +64,7 @@
 
   .champ-features-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
@@ -74,10 +74,10 @@
 
   .champ-features-sub {
     font-family: var(--font-display);
-    font-size: 22px;
-    line-height: 1.35;
+    font-size: 20px;
+    line-height: 1.3;
     color: var(--body);
-    margin: 16px 0 0;
+    margin: 12px 0 0;
   }
 
   .champ-bento {
@@ -89,7 +89,7 @@
 
   .champ-bento-card {
     position: relative;
-    min-height: 340px;
+    min-height: 280px;
     border-radius: 16px;
     overflow: hidden;
     background-color: var(--surface-card);
@@ -119,12 +119,12 @@
   .champ-bento-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.15);
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     transition: background 400ms ease;
   }
 
   .champ-bento-card:hover .champ-bento-overlay {
-    background: rgba(0,0,0,0.1);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
   }
 
   .champ-bento-content {
@@ -133,29 +133,26 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 36px;
+    padding: 32px;
     color: var(--on-dark);
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
   }
 
   .champ-bento-card-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: -0.01em;
     color: #fff;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
   }
 
   .champ-bento-card-body {
-    margin: 8px 0 0;
-    font-size: 15px;
+    margin: 6px 0 0;
+    font-size: 13px;
     line-height: 1.5;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     max-width: 440px;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
   }
 
   @media (max-width: 767px) {
@@ -167,10 +164,10 @@
       grid-column: span 1 / span 1;
     }
     .champ-bento-card {
-      min-height: 260px;
+      min-height: 220px;
     }
     .champ-bento-content {
-      padding: 28px;
+      padding: 24px;
     }
   }
 </style>
