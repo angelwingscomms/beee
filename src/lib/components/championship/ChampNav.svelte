@@ -18,7 +18,7 @@
       <a href="/" class:active={path === '/'}>Home</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
-    <RegisterBtn href="/register" class="champ-nav-cta">Register Now</RegisterBtn>
+    <RegisterBtn href="/register" class="champ-nav-cta">Register</RegisterBtn>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
