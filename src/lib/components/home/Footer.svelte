@@ -63,6 +63,9 @@
   .footer-inner {
     position: relative;
     z-index: 1;
+    margin: 0;
+    width: 100%;
+    padding-left: 24px;
   }
 
   .footer-top {
@@ -188,6 +191,10 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
+    }
+
+    .footer-inner {
+      padding-left: 16px;
     }
   }
 </style>
