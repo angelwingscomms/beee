@@ -14,6 +14,7 @@
   let bentoCardBase: HTMLElement | undefined = $state();
   let bentoUI: HTMLElement | undefined = $state();
   let philosophyText: HTMLElement | undefined = $state();
+  let philosophyAltText: HTMLElement | undefined = $state();
   let makeYourMove: HTMLElement | undefined = $state();
   let diffCardsParent: HTMLElement | undefined = $state();
 
@@ -38,6 +39,28 @@
         stagger: 0.05,
         ease: 'power3.out',
         scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
+      });
+    }
+
+    if (philosophyAltText) {
+      const words = philosophyAltText.innerText.split(/\s+/).map(w => `<span style="display:inline-block">${w}</span>`).join(' ');
+      philosophyAltText.innerHTML = words;
+      const wordEls = [...philosophyAltText.querySelectorAll('span')];
+      let animated = false;
+      onScroll({
+        target: '#philosophy-alt',
+        enter: 'top 70%',
+        onEnter: () => {
+          if (animated) return;
+          animated = true;
+          animate(wordEls, {
+            opacity: [0, 1],
+            translateY: [100, 0],
+            duration: 600,
+            delay: (el: Element, i: number) => i * 50,
+            easing: 'easeOutCubic',
+          });
+        },
       });
     }
 
@@ -181,7 +204,7 @@
         <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
           <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
         </p>
-        <a href="/teamup" class="block text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
+        <a href="/teamup" class="block text-sm md:text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
       </div>
     </div>
   </div>
@@ -294,7 +317,7 @@
 
 <!-- Section 4b: Philosophy (alt) -->
 <section id="philosophy-alt" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
-  <h2 class="font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
+  <h2 bind:this={philosophyAltText} class="font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
     <span class="block lg:whitespace-nowrap">Chess is where they learn.</span>
     <span class="block lg:whitespace-nowrap">Life is where they lead.</span>
   </h2>
