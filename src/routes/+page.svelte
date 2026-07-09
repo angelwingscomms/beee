@@ -300,16 +300,16 @@
 <!-- Section 4: Philosophy -->
 <section id="philosophy" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
   <h2 bind:this={philosophyText} class="split-text-target font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
-    <span class="block lg:whitespace-nowrap">Chess is not the destination.</span>
-    <span class="block lg:whitespace-nowrap">It's the platform.</span>
+    <span class="block">Chess is not the destination.</span>
+    <span class="block">It's the platform.</span>
   </h2>
 </section>
 
 <!-- Section 4b: Philosophy (alt) -->
 <section id="philosophy-alt" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
   <h2 bind:this={philosophyAltText} class="font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
-    <span class="block lg:whitespace-nowrap">Chess is where they learn.</span>
-    <span class="block lg:whitespace-nowrap">Life is where they lead.</span>
+    <span class="block">Chess is where they learn.</span>
+    <span class="block">Life is where they lead.</span>
   </h2>
 </section>
 
