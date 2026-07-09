@@ -257,9 +257,8 @@
   }
 
   @media (max-width: 767px) {
-    .champ-nav-links,
-    :global(.champ-nav-cta) {
-      display: none !important;
+    .champ-nav-links {
+      display: none;
     }
     .champ-mobile-btn {
       display: inline-flex;
@@ -288,6 +287,11 @@
     }
     .champ-nav-name {
       font-size: 14px;
+    }
+    :global(.champ-nav-cta) {
+      padding: 8px 14px !important;
+      font-size: 13px !important;
+      min-height: 36px !important;
     }
   }
 </style>
