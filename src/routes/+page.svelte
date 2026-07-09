@@ -185,6 +185,11 @@
       </div>
     </div>
   </div>
+  <div class="flex justify-center mt-16">
+    <a href="/championship" class="inline-block border border-white/30 text-white font-medium px-10 py-4 rounded-full hover:border-white transition-colors text-lg">
+      See How It Works →
+    </a>
+  </div>
 </section>
 
 <!-- Section 2: The Journey -->

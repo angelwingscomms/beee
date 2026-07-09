@@ -104,12 +104,7 @@
         <span>Preliminaries and Grand Finale Venue:<br />National Stadium, Abuja</span>
       </div>
 
-      <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
-        <RegisterBtn href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
-        <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">
-          See How It Works
-        </a>
-      </div>
+      <RegisterBtn href="/register" class="hero-anim-elem px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</RegisterBtn>
     </div>
 
     <div class="lg:col-span-7 flex justify-center items-center" bind:this={imageWrapper}>
