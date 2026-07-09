@@ -43,24 +43,14 @@
     }
 
     if (philosophyAltText) {
-      const words = philosophyAltText.innerText.split(/\s+/).map(w => `<span style="display:inline-block">${w}</span>`).join(' ');
-      philosophyAltText.innerHTML = words;
-      const wordEls = [...philosophyAltText.querySelectorAll('span')];
-      let animated = false;
-      onScroll({
-        target: '#philosophy-alt',
-        enter: 'top 70%',
-        onEnter: () => {
-          if (animated) return;
-          animated = true;
-          animate(wordEls, {
-            opacity: [0, 1],
-            translateY: [100, 0],
-            duration: 600,
-            delay: (el: Element, i: number) => i * 50,
-            easing: 'easeOutCubic',
-          });
-        },
+      const split = new SplitText(philosophyAltText, { type: 'words' });
+      gsap.from(split.words, {
+        y: 100,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '#philosophy-alt', start: 'top 70%' },
       });
     }
 
