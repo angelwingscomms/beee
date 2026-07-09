@@ -304,3 +304,9 @@ https://svelte.dev/e/css_unused_selector
 4:56:33 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 4:56:45 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 4:56:45 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+4:59:53 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+4:59:53 PM [vite] (ssr) page reload src/routes/+page.svelte
+5:00:03 PM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte, /src/app.css
+5:00:03 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
+5:00:11 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:00:11 PM [vite] (ssr) page reload src/routes/+page.svelte
