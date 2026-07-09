@@ -275,3 +275,22 @@ https://svelte.dev/e/state_referenced_locally
 4:33:28 PM [vite] (client) page reload .svelte-kit/generated/root.js
 4:33:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 4:33:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+4:35:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:313:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+4:35:47 PM [vite-plugin-svelte] src/routes/register/+page.svelte:470:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+4:38:45 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+4:38:45 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+4:38:52 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+4:38:52 PM [vite] (client) page reload .svelte-kit/generated/root.js
+4:38:52 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+4:38:52 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
