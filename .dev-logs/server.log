@@ -314,3 +314,5 @@ https://svelte.dev/e/css_unused_selector
 5:02:09 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
 5:03:19 PM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte, /src/app.css
 5:03:19 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
+5:03:50 PM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte, /src/app.css
+5:03:50 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
