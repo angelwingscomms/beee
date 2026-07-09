@@ -65,7 +65,7 @@
     z-index: 1;
     margin: 0;
     width: 100%;
-    padding-left: 24px;
+    padding-left: 80px;
   }
 
   .footer-top {
@@ -194,7 +194,7 @@
     }
 
     .footer-inner {
-      padding-left: 16px;
+      padding-left: 24px;
     }
   }
 </style>
