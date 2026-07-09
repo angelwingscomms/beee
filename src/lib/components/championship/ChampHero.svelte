@@ -111,9 +111,8 @@
         </a>
       </div>
 
-      <div class="flex items-center gap-2 mt-5">
-        <span class="w-[6px] h-[6px] rounded-full bg-[#5db8a6] shrink-0 mt-[2px]"></span>
-        <a href="/affiliate" class="text-white/60 text-sm font-medium no-underline border-b border-transparent hover:text-amber-400 hover:border-amber-400 transition-colors">Become an Affiliate →</a>
+      <div class="mt-5">
+        <a href="/affiliate" class="text-[#5db8a6] text-base font-medium no-underline hover:brightness-110 transition-all">Become an Affiliate →</a>
       </div>
     </div>
 
