@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { create, get } from '$lib/db';
+import bcrypt from 'bcryptjs';
+import { create, get, find_or_create_player_user } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
 import type { Registration } from '$lib/types/registration';
 
@@ -118,6 +119,14 @@ export const POST: RequestHandler = async ({ request }) => {
 
 				await create(payload, undefined, ref);
 				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);
+
+				// Create or update player user account
+				const email = reg_data.e as string;
+				const pw = reg_data.pw as string | undefined;
+				let ph: string | undefined;
+				if (pw) ph = await bcrypt.hash(pw, 10);
+				const user_id = await find_or_create_player_user(email, `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(), ph);
+				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
 			}
 		} catch (err) {
 			console.error('Webhook processing error:', err);

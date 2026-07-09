@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
+  import { goto } from '$app/navigation';
   import regBg from '$lib/assets/images/register-bg.png?enhanced';
   import ConfirmationModal from '../../components/ConfirmationModal.svelte';
   import PhoneInput from '$lib/components/PhoneInput.svelte';
@@ -13,12 +14,14 @@
   let em = $state('');
   let sc = $state('');
   let ph = $state('+234');
+  let pw = $state('');
   let ac = $state('');
   let gfe = $state('');
   let gle = $state('');
   let eme = $state('');
   let sce = $state('');
   let phe = $state('');
+  let pwe = $state('');
   let ace = $state('');
 
   let showConfirmation = $state(false);
@@ -31,7 +34,8 @@
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
-    sc.trim() && ph.trim() && ph.trim() !== '+234'
+    sc.trim() && ph.trim() && ph.trim() !== '+234' &&
+    pw.trim().length >= 8
   );
 
   $effect(() => {
@@ -52,7 +56,7 @@
   }
 
   function clearErrors() {
-    gfe = ''; gle = ''; eme = ''; sce = ''; phe = '';
+    gfe = ''; gle = ''; eme = ''; sce = ''; phe = ''; pwe = '';
   }
 
   function validateForm(): boolean {
@@ -65,11 +69,25 @@
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
     if (!sc.trim()) { sce = 'Required'; v = false; }
     if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
+    if (!pw || pw.length < 8) { pwe = 'Min 8 characters'; v = false; }
     return v;
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!validateForm()) return;
+    apiError = '';
+    // Check if user already exists
+    try {
+      const r = await fetch('/api/user/check?email=' + encodeURIComponent(em.trim()));
+      const d = await r.json();
+      if (d.exists) {
+        apiError = 'An account with this email already exists. Redirecting to login…';
+        setTimeout(() => goto('/login?email=' + encodeURIComponent(em.trim()) + '&next=/register'), 1500);
+        return;
+      }
+    } catch {
+      // Proceed even if check fails
+    }
     showConfirmation = true;
   }
 
@@ -81,7 +99,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim(), affiliateCode: ac.trim() || undefined })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim(), password: pw, affiliateCode: ac.trim() || undefined })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -153,6 +171,7 @@
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
           <TextInput id="em" label="Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
+          <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
 

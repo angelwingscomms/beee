@@ -7,7 +7,7 @@ const AMOUNT_KOBO = 1_250_000;
 
 export const POST: RequestHandler = async ({ request, url }) => {
     const data = await request.json();
-    if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.school) {
+    if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.school || !data.password) {
         return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -25,6 +25,9 @@ export const POST: RequestHandler = async ({ request, url }) => {
     };
     if (data.affiliateCode) {
         reg_data.ac = data.affiliateCode;
+    }
+    if (data.password) {
+        reg_data.pw = data.password;
     }
 
     const callback_url = `${url.origin}/payment/callback`;

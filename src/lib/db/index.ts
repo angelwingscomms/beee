@@ -404,6 +404,22 @@ export const find_user_by_email = async (
 	)[0];
 };
 
+export async function find_or_create_player_user(email: string, name: string, password_hash?: string): Promise<string> {
+  const existing = await find_user_by_email(email) as (User & { i: string }) | undefined;
+  if (existing) {
+    if (!existing.c?.includes('rpb')) {
+      const c = [...(existing.c || []), 'rpb'];
+      await edit_point(existing.i, { c, e: existing.e, s: 'u' });
+    }
+    return existing.i;
+  }
+  const user_id = new_id();
+  const u: User = { s: 'u', e: email, n: name, d: Date.now(), c: ['rpb'] };
+  if (password_hash) u.p = password_hash;
+  await create(u, undefined, user_id);
+  return user_id;
+}
+
 export const delete_ = async (
 	id: string
 ): Promise<void> => {

@@ -16,23 +16,26 @@
 		verify(data.reference);
 	});
 
-	async function verify(reference: string) {
-		try {
-			const res = await fetch('/api/verify-payment', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ reference, registrationId: reference })
-			});
-			const body = await res.json();
-			if (!res.ok || !body.success) {
-				throw new Error(body.error || 'Verification failed');
-			}
-			payment_state = 'success';
-		} catch (err) {
-			payment_state = 'failed';
-			error_msg = err instanceof Error ? err.message : 'Verification failed';
-		}
-	}
+  async function verify(reference: string) {
+    try {
+      const res = await fetch('/api/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reference, registrationId: reference })
+      });
+      const body = await res.json();
+      if (!res.ok || !body.success) {
+        throw new Error(body.error || 'Verification failed');
+      }
+      payment_state = 'success';
+      if (body.redirect) {
+        setTimeout(() => { window.location.href = body.redirect; }, 2000);
+      }
+    } catch (err) {
+      payment_state = 'failed';
+      error_msg = err instanceof Error ? err.message : 'Verification failed';
+    }
+  }
 </script>
 
 <svelte:head>
