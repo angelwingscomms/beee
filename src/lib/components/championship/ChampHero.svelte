@@ -112,7 +112,7 @@
       </div>
 
       <div class="mt-5">
-        <a href="/affiliate" class="text-teal-400 text-base font-medium no-underline hover:text-teal-300 transition-colors">Become an Affiliate →</a>
+        <a href="/affiliate" class="text-base font-semibold no-underline" style="color:#14d9c4">Become an Affiliate →</a>
       </div>
     </div>
 
