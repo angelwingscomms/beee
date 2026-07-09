@@ -27,7 +27,6 @@
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
-      <a href="/register" class="champ-mobile-register" onclick={() => open = false}>Register</a>
     </div>
   {/if}
 </nav>
@@ -231,9 +230,7 @@
   .champ-mobile-btn span.open::after { transform: rotate(-45deg) translate(2px, -4px); }
 
   .champ-mobile-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
     gap: 8px;
     margin-top: 12px;
     padding: 20px 24px;
@@ -259,28 +256,15 @@
     color: var(--ink);
   }
 
-  .champ-mobile-register {
-    margin-top: 8px;
-    background: var(--color-primary);
-    color: #fff !important;
-    font-weight: 600;
-    text-align: center;
-    width: 100%;
-    max-width: 240px;
-    border-radius: 999px;
-    padding: 12px 24px;
-  }
-  .champ-mobile-register:hover {
-    opacity: 0.9;
-  }
-
   @media (max-width: 767px) {
-    .champ-nav-links,
-    :global(.champ-nav-cta) {
+    .champ-nav-links {
       display: none;
     }
     .champ-mobile-btn {
       display: inline-flex;
+    }
+    :global(.champ-nav-cta) {
+      margin: 0 auto;
     }
     .champ-nav-inner {
       height: 64px;
