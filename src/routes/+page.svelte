@@ -585,7 +585,13 @@
       font-size: 12px;
     }
   }
+  .gain-list > li {
+    width: 100%;
+  }
   @media (min-width: 768px) {
+    .gain-list > li {
+      width: auto;
+    }
     .gain-list > li:nth-child(even) {
       align-self: flex-end;
     }
