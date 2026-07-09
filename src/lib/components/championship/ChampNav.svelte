@@ -259,7 +259,7 @@
   @media (max-width: 767px) {
     .champ-nav-links,
     :global(.champ-nav-cta) {
-      display: none;
+      display: none !important;
     }
     .champ-mobile-btn {
       display: inline-flex;
@@ -267,17 +267,27 @@
     .champ-nav-inner {
       height: 64px;
       padding: 0 20px;
+      gap: 16px;
     }
     .champ-nav-logo {
       width: 36px;
       height: 36px;
     }
   }
-
-  @media (max-width: 369px) {
-    :global(.champ-nav-cta) {
-      display: inline-flex;
-      margin-left: 3.69rem;
+  @media (max-width: 400px) {
+    .champ-nav-inner {
+      padding: 0 12px;
+      gap: 8px;
+    }
+    .champ-nav-brand {
+      gap: 6px;
+    }
+    .champ-nav-logo {
+      width: 28px;
+      height: 28px;
+    }
+    .champ-nav-name {
+      font-size: 14px;
     }
   }
 </style>
