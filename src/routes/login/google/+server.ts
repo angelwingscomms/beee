@@ -2,9 +2,15 @@ import { generateState, generateCodeVerifier, google_client } from '$lib/server/
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  const env = event.platform?.env;
-  const id = await env?.GOOGLE_ID.get() ?? '';
-  const secret = await env?.GOOGLE_SECRET.get() ?? '';
+  let id = '';
+  let secret = '';
+  try {
+    const env = event.platform?.env;
+    id = await env?.GOOGLE_ID.get() ?? '';
+    secret = await env?.GOOGLE_SECRET.get() ?? '';
+  } catch {
+    return new Response(null, { status: 302, headers: { Location: '/' } });
+  }
   console.log('[google login] GOOGLE_ID:', id, 'GOOGLE_SECRET:', secret ? '***' : 'MISSING');
   const state = generateState();
   const verifier = generateCodeVerifier();
