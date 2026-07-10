@@ -2,9 +2,12 @@ import { generateState, generateCodeVerifier, google_client } from '$lib/server/
 import type { RequestEvent } from '@sveltejs/kit';
 
 export function GET(event: RequestEvent): Response {
+  const env = event.platform?.env as Record<string, string> | undefined;
+  const id = env?.GOOGLE_ID ?? '';
+  const secret = env?.GOOGLE_SECRET ?? '';
   const state = generateState();
   const verifier = generateCodeVerifier();
-  const url = google_client(event.url.origin)
+  const url = google_client(event.url.origin, id, secret)
     .createAuthorizationURL(state, verifier, ['openid', 'profile', 'email'])
     .toString();
   event.cookies.set('oauth_state', state, { path: '/', httpOnly: true, maxAge: 600, sameSite: 'lax' });

@@ -6,6 +6,11 @@ import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
+  const env = event.platform?.env as Record<string, string> | undefined;
+  const google_id = env?.GOOGLE_ID ?? '';
+  const google_secret = env?.GOOGLE_SECRET ?? '';
+  const session_secret = env?.SECRET ?? '';
+
   const code = event.url.searchParams.get('code');
   const state = event.url.searchParams.get('state');
   const stored_state = event.cookies.get('oauth_state') ?? null;
@@ -15,7 +20,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
   }
 
   try {
-    const tokens = await get_google(event.url.origin).validateAuthorizationCode(code, verifier);
+    const tokens = await get_google(event.url.origin, google_id, google_secret).validateAuthorizationCode(code, verifier);
     const claims = decodeIdToken(tokens.idToken()) as Record<string, unknown>;
     const email = claims.email as string | undefined;
     const name = claims.name as string | undefined;
@@ -32,7 +37,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
       await create(u, undefined, user_id);
     }
 
-    const session = await encode_session({ id: user_id, name, picture, email });
+    const session = await encode_session({ id: user_id, name, picture, email }, session_secret);
     event.cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
     event.cookies.delete('oauth_state', { path: '/' });
     event.cookies.delete('oauth_verifier', { path: '/' });

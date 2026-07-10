@@ -3,8 +3,23 @@ main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat_v2"]
 
-# Required secrets (set via wrangler secret put):
+# Required secrets in Secrets Store (create via wrangler secrets-store):
 # GOOGLE_ID, GOOGLE_SECRET, SECRET
+
+[[secrets_store_secrets]]
+binding = "GOOGLE_ID"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "GOOGLE_ID"
+
+[[secrets_store_secrets]]
+binding = "GOOGLE_SECRET"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "GOOGLE_SECRET"
+
+[[secrets_store_secrets]]
+binding = "SECRET"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "SECRET"
 
 [assets]
 binding = "ASSETS"
@@ -27,5 +42,3 @@ invocation_logs = true
 enabled = true
 persist = true
 head_sampling_rate = 1
-
-
