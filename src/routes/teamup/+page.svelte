@@ -1,6 +1,5 @@
 <script lang="ts">
   import ChampFeatures from '$lib/components/championship/ChampFeatures.svelte';
-  import ChampPassport from '$lib/components/championship/ChampPassport.svelte';
 </script>
 
 <svelte:head>
@@ -10,5 +9,4 @@
 
 <div class="overflow-x-hidden w-full max-w-full">
   <ChampFeatures />
-  <ChampPassport />
 </div>

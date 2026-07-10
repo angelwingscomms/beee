@@ -104,6 +104,17 @@
         <span>Preliminaries and Grand Finale<br />Venue: National Stadium, Abuja</span>
       </div>
 
+      <div class="flex flex-col gap-3 mb-8 text-sm">
+        <div class="flex items-start gap-2 text-yellow-500 font-medium">
+          <span class="mt-0.5">💻</span>
+          <p class="leading-relaxed">Online chess training and self development programs commence July 28, 2026</p>
+        </div>
+        <div class="flex items-start gap-2 text-gray-200">
+          <span class="mt-0.5">✨</span>
+          <p>Sign up early to give your child a richer, more rewarding championship experience.</p>
+        </div>
+      </div>
+
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</Button>
         <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">

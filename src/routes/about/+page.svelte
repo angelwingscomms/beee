@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-  <title>e4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="e4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
+  <title>BEEE® — Be Everything Excellent Every Day</title>
+  <meta name="description" content="BEEE® is an integrated learning and development platform combining innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
@@ -13,50 +13,60 @@
     <div class="page-hero-bg"></div>
     <div class="page-hero-inner">
       <div class="page-hero-content" use:motionFadeUp>
-        <h1 class="page-hero-title">E4™</h1>
-        <p class="page-hero-sub">AI Chess Coach</p>
-        <p class="page-hero-body">An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice.</p>
-        <p class="page-hero-body">E4 can predict every move, analyse mistakes, answer questions and improve players' level through voice prompts and text.</p>
+        <h1 class="page-hero-title">BEEE®</h1>
+        <p class="page-hero-sub">A Vision and Mission Beyond Chess</p>
+        <p class="page-hero-body">BEEE® (Be Everything Excellent Every Day) is an integrated learning and development platform that combines innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence and empower individuals to discover their potential, develop their abilities, and excel in education, leadership, enterprise, and life.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
       <div class="page-hero-visual" use:motionFadeUp>
-        <div class="page-hero-img-frame">
-          <img src="/images/e4-ui.png" alt="e4 AI Chess Coach interface" class="page-hero-img" />
+        <div class="hero-placeholder">
+          <div class="placeholder-icon">
+            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="5"/>
+              <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
+              <path d="M12 3l1 2 2-1 1 2 2-1v2"/>
+            </svg>
+          </div>
+          <p class="placeholder-text">Discover. Develop. Excel.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-belief" use:motionFadeUp>
+    <div class="container" style="padding: 120px 0;">
+      <div class="belief-content">
+        <p class="belief-text">We believe that every individual possesses extraordinary potential waiting to be discovered and developed. By providing opportunities for purposeful learning, mentorship, innovation, and meaningful engagement, BEEE® seeks to nurture a generation of thinkers, innovators, leaders, and changemakers equipped with the discipline, confidence, resilience, critical thinking, and problem-solving skills needed to thrive in an ever-changing world.</p>
       </div>
     </div>
   </section>
 
   <section class="page-features" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
-      <h2 class="page-features-title">Benefits of e4™</h2>
+      <h2 class="page-features-title">Benefits of BEEE® Programmes</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <h3>Guided AI Instruction</h3>
-          <p>Gives guided AI instructions to help participants learn and improve at their own pace with personalised feedback.</p>
+          <h3>Structured Learning</h3>
+          <p>Participation in structured learning and development programmes designed to build skills and character.</p>
         </div>
         <div class="feature-card">
-          <h3>Advanced Concepts Mentoring</h3>
-          <p>Mentors on advanced concepts in chess, helping players understand sophisticated strategies and tactical patterns.</p>
+          <h3>Achievement Tracking</h3>
+          <p>Tracking of achievements, with recognition for personal growth, skills development, and outstanding accomplishments across BEEE® programmes.</p>
         </div>
         <div class="feature-card">
-          <h3>Grandmaster Technologies</h3>
-          <p>Exposes users to technologies employed by grandmasters to gain a competitive edge in their gameplay.</p>
+          <h3>Network & Collaborate</h3>
+          <p>Opportunities to network, collaborate, and share experiences with like-minded individuals.</p>
         </div>
         <div class="feature-card">
-          <h3>Deep Game Analysis</h3>
-          <p>Provides deep game analysis, breaking down every move to reveal strengths, weaknesses, and areas for improvement.</p>
+          <h3>Digital Tools & Mentorship</h3>
+          <p>Access to innovative digital tools, mentorship, and immersive learning experiences.</p>
         </div>
         <div class="feature-card">
-          <h3>Virtual & Real Opponents</h3>
-          <p>Players can compete against both virtual and real opponents, building experience across different playing styles.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Custom Puzzles</h3>
-          <p>Players can train with custom puzzles auto-generated from real game mistakes, turning errors into learning opportunities.</p>
+          <h3>Life Skills Development</h3>
+          <p>Development of skills that support success in education, leadership, enterprise, and life.</p>
         </div>
       </div>
     </div>
@@ -64,8 +74,8 @@
 
   <section class="page-cta" use:motionFadeUp>
     <div class="container" style="padding: 120px 0; text-align: center;">
-      <h2 class="page-cta-title">Ready to Train Smarter?</h2>
-      <p class="page-cta-body">Give your child the edge of AI-powered chess coaching.</p>
+      <h2 class="page-cta-title">Aspire to BEEE</h2>
+      <p class="page-cta-body">Be Everything Excellent Every Day. Start your journey today.</p>
       <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
     </div>
   </section>
@@ -87,8 +97,8 @@
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(ellipse 70% 60% at 10% 50%, rgba(245, 230, 200, 0.15), transparent 70%),
-      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(126, 200, 227, 0.1), transparent 60%);
+      radial-gradient(ellipse 70% 60% at 10% 50%, rgba(242, 120, 48, 0.12), transparent 70%),
+      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(126, 200, 227, 0.08), transparent 60%);
   }
 
   .page-hero-inner {
@@ -151,21 +161,51 @@
     place-items: center;
   }
 
-  .page-hero-img-frame {
-    width: min(100%, 500px);
+  .hero-placeholder {
+    width: min(100%, 360px);
+    aspect-ratio: 3/4;
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
   }
 
-  .page-hero-img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .placeholder-icon {
+    color: var(--primary);
+    opacity: 0.6;
+  }
+
+  .placeholder-text {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--body);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .page-belief {
+    background: var(--surface-soft);
+  }
+
+  .belief-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .belief-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--body);
+    text-align: center;
+    margin: 0;
   }
 
   .page-features {
-    background: var(--surface-soft);
+    background: var(--canvas);
   }
 
   .page-features-title {
@@ -213,7 +253,7 @@
   }
 
   .page-cta {
-    background: var(--canvas);
+    background: var(--surface-soft);
   }
 
   .page-cta-title {
@@ -244,7 +284,6 @@
     }
     .page-hero-content { max-width: none; }
     .page-hero-visual { order: -1; }
-    .page-hero-img-frame { max-width: 400px; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -253,5 +292,6 @@
     .page-hero-body { font-size: 15px; }
     .features-grid { grid-template-columns: 1fr; }
     .feature-card { padding: 24px; }
+    .belief-text { font-size: 16px; }
   }
 </style>

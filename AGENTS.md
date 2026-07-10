@@ -16,6 +16,7 @@
 - where necessary (e.g for non-trivial updates), always write failing unit and e2e tests before implementing a feature/fix and then run tests after implementing
 - fonts go in static/fonts
 - image prompts must follow docs/images/prompt-guide.md for style/theme consistency
+- when creating images always create them to match the site's design system and style
 
 ## Git Workflow
 

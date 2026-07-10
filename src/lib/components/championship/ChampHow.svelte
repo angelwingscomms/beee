@@ -15,9 +15,12 @@
     {
       num: 1,
       title: 'REGISTRATION',
-      body: `Participants register through participating schools and gain access to:
-E4 Ai CHESS COACH™ 
-TEAMUP™
+      body: `Participants register and gain access to:
+
+E4™ CHESS COACH
+
+T.E.A.M.U.P.™ and
+
 TASKIFY™ Development Passport`,
       img: '/images/championship/register.png',
       color: '#F27830',
@@ -27,19 +30,15 @@ TASKIFY™ Development Passport`,
     {
       num: 2,
       title: 'LEARN',
-      body: `July 28 to September 2026 - Online
-Innovative Learning  and Mentorship
+      body: `Participants train on the E4™ chess app, T.E.A.M.U.P.™ activities, and build their TASKIFY development passport in:
 
-Participants train on E4 Ai CHESS COACH™. 
-TASKIFY records and evaluates T.E.A.M.U.P. activities. 
-
-- Critical and Analytical Reasoning 
-- Strategic Communication 
-- Audio Visual Comprehension
-- Creative and Adaptive Skills 
-- Collaboration and Teamwork 
-- Appreciation skills in Chess & Technology
-- Access medals and badges earned, achievement points, certificates, valuable skills, merit and recognition awards.`,
+- Strategic thinking and decision-making
+- Critical reasoning and problem-solving
+- Creativity and innovation
+- Leadership and teamwork
+- Communication and interpersonal skills
+- Confidence, Resilience, and Self-discipline
+- Academic excellence and a lifelong passion for learning`,
       img: '/images/championship/learn.png',
       color: '#7C3AED',
       colorLight: '#8B5CF6',
@@ -217,8 +216,6 @@ They compete for finalists positions.`,
     border: 2px solid var(--sc);
     border-radius: 16px;
     overflow: hidden;
-    aspect-ratio: 3 / 1;
-    max-height: 300px;
     width: 90vw;
     margin-left: calc(-45vw + 50%);
   }

@@ -16,6 +16,7 @@
     </a>
     <div class="champ-nav-links">
       <a href="/" class:active={path === '/'}>Home</a>
+      <a href="/about" class:active={path === '/about'}>About</a>
       <a href="/e4" class:active={path === '/e4'}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
       <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
@@ -30,6 +31,7 @@
   {#if open}
     <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
+      <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>

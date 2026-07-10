@@ -2,34 +2,34 @@
   import { motionStagger } from '$lib/actions/motion';
   const features = [
     {
-      img: '/images/championship/technology.png',
+      img: '/images/technology-card.png',
       span: 'col-span-1 row-span-1',
       title: 'Technology',
       body: 'Using technology creatively and responsibly to solve problems and expand learning.'
     },
     {
-      img: '/images/championship/enterprise.png',
+      img: '/images/enterprise.jpeg',
       span: 'col-span-1 row-span-1',
       title: 'Enterprise',
-      body: 'Developing initiative, innovation, entrepreneurship, and practical problem-solving skills.'
+      body: 'Developing initiative, innovation and practical problem-solving skills.'
     },
     {
-      img: '/images/championship/art.png',
+      img: '/images/championship/grandfinale.png',
       span: 'col-span-1 row-span-1',
       title: 'Art',
       body: 'Encouraging creativity, imagination, communication, and design thinking.'
     },
     {
-      img: '/images/championship/mentorship.png',
+      img: '/images/championship/develop.png',
       span: 'col-span-1 row-span-1',
       title: 'Mentorship',
       body: 'Learning from experienced professionals, educators, and inspiring role models.'
     },
     {
-      img: '/images/championship/upskill.png',
+      img: '/images/championship/compete.png',
       span: 'col-span-1 row-span-1',
       title: 'Upskill',
-      body: 'Building leadership, teamwork, communication, academic and intellectual growth, and other essential life skills for the future.'
+      body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
     }
   ];
 </script>
@@ -38,7 +38,7 @@
   <div class="container" style="padding: 120px 0;">
     <div class="champ-features-header">
       <h2 class="champ-features-title">The TEAMUP™ Development Programme</h2>
-      <p class="champ-features-sub">The heart of the BEEE experience is the TEAMUP™ Development Programme. Throughout the summer holiday period, participants engage in structured online learning, challenges, mentorship, and developmental activities before progressing to preliminary live chess matches that will culminate in an immersive live championship experience.</p>
+      <p class="champ-features-sub">A holistic approach to whole child development with a focus on Technology, Enterprise, Art, Mentorship and Upskilling.</p>
     </div>
     <div class="champ-bento">
       {#each features as feat, i}

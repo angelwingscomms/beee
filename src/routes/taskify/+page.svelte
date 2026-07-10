@@ -15,7 +15,9 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">Taskify™</h1>
         <p class="page-hero-sub">Digital Development Passport</p>
-        <p class="page-hero-body">A digital passport that records every participant's progress throughout the championship — tracking milestones, achievements, badges, certificates, and personal growth.</p>
+        <p class="page-hero-body">A digital Development Passport that tracks participant progress. Participants will not simply attend sessions—they will embark on a measurable development journey.</p>
+        <p class="page-hero-body">Every registered participant will receive access to a personal TASKIFY™ Development Passport.</p>
+        <p class="page-hero-body">Through a digital tracking system, participants will build their own TASKIFY™ Development Passport, record of milestones, badges, achievement points, certificates, valuable skills and recognition awards as they progress through various stages of the championship programme.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
@@ -40,33 +42,46 @@
 
   <section class="page-features" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
-      <h2 class="page-features-title">What Taskify Tracks</h2>
+      <h2 class="page-features-title">How Progress Is Measured</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <h3>Skills Developed</h3>
-          <p>Records strategic thinking, problem-solving, leadership, and communication skills as they are demonstrated throughout the programme.</p>
+          <h3>Skill Milestones</h3>
+          <p>Skill development milestones that track growth in strategic thinking, problem-solving, and leadership abilities.</p>
         </div>
         <div class="feature-card">
-          <h3>Badges Earned</h3>
-          <p>Participants earn digital badges for completing challenges, mastering concepts, and achieving milestones at every stage.</p>
+          <h3>Game Assessments</h3>
+          <p>Assessment on games played, providing measurable data on chess performance and improvement over time.</p>
         </div>
         <div class="feature-card">
-          <h3>Certificates</h3>
-          <p>Official certificates are awarded for programme completion, tournament performance, and special achievements.</p>
+          <h3>Innovation Challenges</h3>
+          <p>Innovation and creativity challenges that encourage participants to think outside the box and develop original solutions.</p>
         </div>
         <div class="feature-card">
-          <h3>Activities Log</h3>
-          <p>Every learning activity, mentorship session, and chess match is logged and visible in the participant's passport.</p>
+          <h3>Leadership Activities</h3>
+          <p>Leadership and teamwork activities that build collaboration, communication, and team management skills.</p>
         </div>
         <div class="feature-card">
-          <h3>Progress Analytics</h3>
-          <p>Visual dashboards show growth over time across multiple dimensions — chess skill, leadership, and personal development.</p>
+          <h3>Mentorship Participation</h3>
+          <p>Mentorship participation tracking to ensure consistent engagement with experienced educators and professionals.</p>
         </div>
         <div class="feature-card">
-          <h3>Parent Access</h3>
-          <p>Parents and guardians receive secure access to their child's Development Passport to follow their journey in real time.</p>
+          <h3>Project Completion</h3>
+          <p>Project completion records that demonstrate follow-through, dedication, and the ability to deliver results.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Attendance Records</h3>
+          <p>Attendance and consistency records that reward reliability and sustained participation throughout the programme.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Personal Growth</h3>
+          <p>Reflection and personal growth exercises that help participants develop self-awareness and a growth mindset.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Badges & Awards</h3>
+          <p>Badges earned and total championship accomplishments that celebrate every achievement along the journey.</p>
         </div>
       </div>
+      <p class="page-hero-body" style="margin-top: 48px;">This system provides participants and parents with a visible track record of achievement throughout the championship cycle.</p>
     </div>
   </section>
 
