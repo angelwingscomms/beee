@@ -6,10 +6,10 @@ import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  const env = event.platform?.env as Record<string, string> | undefined;
-  const google_id = env?.GOOGLE_ID ?? '';
-  const google_secret = env?.GOOGLE_SECRET ?? '';
-  const session_secret = env?.SECRET ?? '';
+  const env = event.platform?.env;
+  const google_id = await env?.GOOGLE_ID.get() ?? '';
+  const google_secret = await env?.GOOGLE_SECRET.get() ?? '';
+  const session_secret = await env?.SECRET.get() ?? '';
 
   const code = event.url.searchParams.get('code');
   const state = event.url.searchParams.get('state');

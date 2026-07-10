@@ -5,7 +5,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   const session_id = event.cookies.get('session');
   event.locals.user = null;
   if (session_id) {
-    const secret = event.platform?.env?.SECRET ?? '';
+    const secret = await event.platform?.env?.SECRET.get() ?? '';
     const s = await decode_session(session_id, secret);
     if (s) {
       event.locals.user = s.user;

@@ -1,10 +1,10 @@
 import { generateState, generateCodeVerifier, google_client } from '$lib/server/oauth';
 import type { RequestEvent } from '@sveltejs/kit';
 
-export function GET(event: RequestEvent): Response {
-  const env = event.platform?.env as Record<string, string> | undefined;
-  const id = env?.GOOGLE_ID ?? '';
-  const secret = env?.GOOGLE_SECRET ?? '';
+export async function GET(event: RequestEvent): Promise<Response> {
+  const env = event.platform?.env;
+  const id = await env?.GOOGLE_ID.get() ?? '';
+  const secret = await env?.GOOGLE_SECRET.get() ?? '';
   console.log('[google login] GOOGLE_ID:', id, 'GOOGLE_SECRET:', secret ? '***' : 'MISSING');
   const state = generateState();
   const verifier = generateCodeVerifier();
