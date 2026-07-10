@@ -5,6 +5,7 @@ export function GET(event: RequestEvent): Response {
   const env = event.platform?.env as Record<string, string> | undefined;
   const id = env?.GOOGLE_ID ?? '';
   const secret = env?.GOOGLE_SECRET ?? '';
+  console.log('[google login] GOOGLE_ID:', id, 'GOOGLE_SECRET:', secret ? '***' : 'MISSING');
   const state = generateState();
   const verifier = generateCodeVerifier();
   const url = google_client(event.url.origin, id, secret)
