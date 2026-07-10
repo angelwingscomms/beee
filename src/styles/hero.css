@@ -281,3 +281,368 @@
   padding-top: 20px;
   border-top: 1px solid rgba(250, 249, 245, 0.12);
 }
+
+/* ── ChampHero: The First Move ── */
+.champ-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--on-dark);
+}
+
+.champ-hero__blob {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 120% 100% at 0% 0%, var(--navy-blob) 0%, transparent 70%);
+}
+
+.champ-hero__particles-css {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 199, 44, 0.55), transparent),
+    radial-gradient(1px 1px at 48% 68%, rgba(250, 249, 245, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 78% 18%, rgba(255, 178, 0, 0.45), transparent),
+    radial-gradient(1px 1px at 88% 82%, rgba(93, 184, 166, 0.35), transparent),
+    radial-gradient(1px 1px at 32% 88%, rgba(255, 199, 44, 0.3), transparent);
+  animation: champ-particle-drift 18s linear infinite;
+}
+
+.champ-hero__grid {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .champ-hero__grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 3.5rem;
+  }
+}
+
+.champ-hero__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-hero, 'Space Grotesk'), var(--font-body);
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--accent-amber);
+}
+
+.champ-hero__sub {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-hero, 'Space Grotesk'), var(--font-body);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--on-dark);
+}
+
+.champ-hero__lead {
+  margin: 0 0 2rem;
+  max-width: 32rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(250, 249, 245, 0.72);
+}
+
+.champ-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--on-dark);
+}
+
+.champ-hero__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.champ-hero__meta-icon {
+  color: rgba(255, 178, 0, 0.7);
+  display: flex;
+}
+
+.champ-hero__venue {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: rgba(255, 178, 0, 0.8);
+}
+
+.champ-hero__venue svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.champ-hero__notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.9rem;
+}
+
+.champ-hero__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  color: rgba(250, 249, 245, 0.85);
+  line-height: 1.5;
+}
+
+.champ-hero__note--accent {
+  color: #eab308;
+  font-weight: 500;
+}
+
+.champ-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .champ-hero__actions {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.champ-hero__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 249, 245, 0.85);
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.champ-hero__btn-ghost:hover {
+  background: rgba(250, 249, 245, 0.08);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+.champ-hero__btn-ghost:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+.champ-hero__stage {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .champ-hero__stage {
+    min-height: 560px;
+  }
+}
+
+.champ-hero__canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 36rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(26, 43, 76, 0.25);
+  border: 1px solid rgba(250, 249, 245, 0.06);
+}
+
+.champ-hero__webgl {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .champ-hero__canvas-wrap {
+    aspect-ratio: 4 / 5;
+    max-width: 100%;
+  }
+}
+
+.champ-hero__canvas-wrap.is-3d {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 70%, rgba(26, 43, 76, 0.55), transparent 70%),
+    rgba(10, 15, 26, 0.4);
+}
+
+.champ-hero__fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.champ-hero__fallback-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.champ-hero__css-board {
+  position: absolute;
+  inset: 12% 10% 18%;
+  z-index: 0;
+  border-radius: 8px;
+  transform: rotateX(58deg) rotateZ(-36deg);
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(90deg, rgba(250, 249, 245, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(250, 249, 245, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 178, 0, 0.2), rgba(10, 15, 26, 0.9));
+  background-size: 12.5% 12.5%, 12.5% 12.5%, 100% 100%;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+  animation: champ-board-idle 6s ease-in-out infinite;
+}
+
+.champ-hero__glass {
+  position: absolute;
+  z-index: 12;
+  max-width: 280px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+.champ-hero__glass--e4 {
+  top: 8%;
+  right: 0;
+}
+
+.champ-hero__glass--task {
+  bottom: 10%;
+  left: 0;
+  max-width: 240px;
+}
+
+.champ-hero__glass-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.champ-hero__glass-label {
+  font-family: var(--font-code);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250, 249, 245, 0.55);
+}
+
+.champ-hero__glass p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--on-dark);
+}
+
+.champ-hero__glass-title {
+  font-size: 12px !important;
+  font-weight: 700;
+  margin-bottom: 0.5rem !important;
+}
+
+.champ-hero__bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(250, 249, 245, 0.15);
+  margin-bottom: 0.65rem;
+  overflow: hidden;
+}
+
+.champ-hero__bar-fill {
+  width: 75%;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent-amber);
+}
+
+.champ-hero__chips {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.champ-hero__chips span {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: rgba(250, 249, 245, 0.1);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .champ-hero__glass {
+    max-width: 200px;
+    padding: 0.75rem;
+  }
+  .champ-hero__glass p {
+    font-size: 11px;
+  }
+  .champ-hero__glass--e4 {
+    top: 4%;
+    right: -4px;
+  }
+  .champ-hero__glass--task {
+    bottom: 4%;
+    left: -4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .champ-hero__particles-css,
+  .champ-hero__css-board {
+    animation: none;
+  }
+  .champ-hero__glass {
+    transition: none;
+  }
+}
