@@ -1,3 +1,4 @@
+import { onMount } from 'svelte';
 import { inView, scroll } from 'motion';
 
 interface AxisScrollInfo {
@@ -38,23 +39,26 @@ function waapiAnim(node: HTMLElement, keyframes: Keyframe[], options?: KeyframeA
 export function motionFadeUp(node: HTMLElement, params?: MotionActionParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
-  const p = { stiffness: 200, damping: 25, ...params };
-  inView(node, () => {
-    waapiAnim(node, [
-      { opacity: 0, transform: 'translateY(26px)' },
-      { opacity: 1, transform: 'translateY(0)' },
-    ], { duration: 600, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+  onMount(() => {
+    return inView(node, () => {
+      waapiAnim(node, [
+        { opacity: 0, transform: 'translateY(26px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ], { duration: 600, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    });
   });
 }
 
 export function motionScaleIn(node: HTMLElement, params?: MotionActionParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
-  inView(node, () => {
-    waapiAnim(node, [
-      { opacity: 0, transform: 'scale(0.95)' },
-      { opacity: 1, transform: 'scale(1)' },
-    ], { duration: 500, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+  onMount(() => {
+    return inView(node, () => {
+      waapiAnim(node, [
+        { opacity: 0, transform: 'scale(0.95)' },
+        { opacity: 1, transform: 'scale(1)' },
+      ], { duration: 500, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    });
   });
 }
 
@@ -62,14 +66,17 @@ export function motionStagger(node: HTMLElement, params?: MotionActionParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
   const p = { delay: 0.1, ...params };
-  const children = Array.from(node.children) as HTMLElement[];
-  children.forEach((child, i) => {
-    inView(child, () => {
-      waapiAnim(child, [
-        { opacity: 0, transform: 'translateY(20px)' },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { duration: 500, delay: p.delay! * i, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
-    });
+  onMount(() => {
+    const children = Array.from(node.children) as HTMLElement[];
+    const stops = children.map((child, i) =>
+      inView(child, () => {
+        waapiAnim(child, [
+          { opacity: 0, transform: 'translateY(20px)' },
+          { opacity: 1, transform: 'translateY(0)' },
+        ], { duration: 500, delay: p.delay! * i, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+      })
+    );
+    return () => stops.forEach((s) => s());
   });
 }
 
@@ -87,9 +94,12 @@ export function motionSpring(node: HTMLElement, properties?: Partial<Record<stri
     }
   }
   if (keyframes.length === 1) return;
-  waapiAnim(node, keyframes, {
-    duration: 600,
-    easing: `cubic-bezier(${springToCubic(stiffness, damping)})`,
+  onMount(() => {
+    const anim = waapiAnim(node, keyframes, {
+      duration: 600,
+      easing: `cubic-bezier(${springToCubic(stiffness, damping)})`,
+    });
+    return () => anim.cancel();
   });
 }
 
@@ -115,15 +125,14 @@ export function motionMagnetic(node: HTMLElement) {
     node.style.transform = 'translate(0, 0)';
   };
 
-  node.addEventListener('mousemove', onMove);
-  node.addEventListener('mouseleave', onLeave);
-
-  return {
-    destroy() {
+  onMount(() => {
+    node.addEventListener('mousemove', onMove);
+    node.addEventListener('mouseleave', onLeave);
+    return () => {
       node.removeEventListener('mousemove', onMove);
       node.removeEventListener('mouseleave', onLeave);
-    },
-  };
+    };
+  });
 }
 
 type SlideDir = 'left' | 'right' | 'up' | 'down';
@@ -139,11 +148,13 @@ export function motionSlideEnter(node: HTMLElement, params?: SlideParams) {
     ? p.dir === 'up' ? `translateY(${p.distance}px)` : `translateY(${-p.distance}px)`
     : 'translateY(0)';
 
-  inView(node, () => {
-    waapiAnim(node, [
-      { opacity: 0, transform: `${tx} ${ty}` },
-      { opacity: 1, transform: 'translateX(0) translateY(0)' },
-    ], { duration: p.duration, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+  onMount(() => {
+    return inView(node, () => {
+      waapiAnim(node, [
+        { opacity: 0, transform: `${tx} ${ty}` },
+        { opacity: 1, transform: 'translateX(0) translateY(0)' },
+      ], { duration: p.duration, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    });
   });
 }
 
@@ -153,18 +164,18 @@ export function motionParallax(node: HTMLElement, params?: ParallaxParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
   const p = { speed: 0.3, offset: 0, ...params };
 
-  const stop = scroll(
-    (progress: number, info: ScrollInfo) => {
-      const rect = node.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const viewCenter = window.innerHeight / 2;
-      const dist = (center - viewCenter) / window.innerHeight;
-      node.style.transform = `translateY(${dist * p.speed * 100}px)`;
-    },
-    { axis: 'y' }
-  );
-
-  return { destroy: () => stop() };
+  onMount(() => {
+    return scroll(
+      (progress: number, info: ScrollInfo) => {
+        const rect = node.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const viewCenter = window.innerHeight / 2;
+        const dist = (center - viewCenter) / window.innerHeight;
+        node.style.transform = `translateY(${dist * p.speed * 100}px)`;
+      },
+      { axis: 'y' }
+    );
+  });
 }
 
 type RevealParams = { delay?: number; blur?: number };
@@ -173,11 +184,13 @@ export function motionReveal(node: HTMLElement, params?: RevealParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
   const p = { delay: 0, blur: 6, ...params };
 
-  inView(node, () => {
-    waapiAnim(node, [
-      { opacity: 0, filter: `blur(${p.blur}px)` },
-      { opacity: 1, filter: 'blur(0px)' },
-    ], { duration: 800, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+  onMount(() => {
+    return inView(node, () => {
+      waapiAnim(node, [
+        { opacity: 0, filter: `blur(${p.blur}px)` },
+        { opacity: 1, filter: 'blur(0px)' },
+      ], { duration: 800, delay: p.delay * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    });
   });
 }
 
@@ -186,15 +199,18 @@ type StaggeredParams = { delay?: number; stagger?: number; y?: number };
 export function motionStaggered(node: HTMLElement, params?: StaggeredParams) {
   if (prefersReducedMotion() || isTouchDevice()) return;
   const p = { delay: 0, stagger: 0.08, y: 20, ...params };
-  const children = Array.from(node.children) as HTMLElement[];
 
-  children.forEach((child, i) => {
-    inView(child, () => {
-      waapiAnim(child, [
-        { opacity: 0, transform: `translateY(${p.y}px)` },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { duration: 500, delay: (p.delay + p.stagger * i) * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
-    });
+  onMount(() => {
+    const children = Array.from(node.children) as HTMLElement[];
+    const stops = children.map((child, i) =>
+      inView(child, () => {
+        waapiAnim(child, [
+          { opacity: 0, transform: `translateY(${p.y}px)` },
+          { opacity: 1, transform: 'translateY(0)' },
+        ], { duration: 500, delay: (p.delay + p.stagger * i) * 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+      })
+    );
+    return () => stops.forEach((s) => s());
   });
 }
 

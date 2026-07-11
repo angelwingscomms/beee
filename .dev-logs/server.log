@@ -26,3 +26,64 @@ https://svelte.dev/e/svelte_component_deprecated
 https://svelte.dev/e/a11y_interactive_supports_focus
 9:48:28 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
 https://svelte.dev/e/a11y_click_events_have_key_events
+9:50:09 PM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte, /src/app.css
+9:50:09 PM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte
+9:50:20 PM [vite] (client) hmr update /src/app.css
+9:50:20 PM [vite] (ssr) page reload src/routes/+page.svelte
+9:50:39 PM [vite] (client) hmr update /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:50:39 PM [vite] (ssr) page reload src/lib/components/home/HomeAwards.svelte
+9:50:46 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:50:46 PM [vite] (ssr) page reload src/lib/actions/motion.ts
+9:51:12 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:51:12 PM [vite] (ssr) page reload src/lib/actions/motion.ts
+9:51:21 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:51:21 PM [vite] (ssr) page reload src/lib/actions/motion.ts
+9:51:30 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:51:30 PM [vite] (ssr) page reload src/lib/actions/motion.ts
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:52:02 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:52:02 PM [vite] (client) page reload .svelte-kit/generated/root.js
+9:52:02 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+9:52:02 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:52:24 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:52:24 PM [vite] (client) page reload .svelte-kit/generated/root.js
+9:52:24 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+9:52:24 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:52:51 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:52:51 PM [vite] (client) page reload .svelte-kit/generated/root.js
+9:52:51 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+9:52:51 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+9:53:01 PM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/lib/components/home/HomeAwards.svelte, /src/app.css
+9:53:01 PM [vite] (ssr) page reload src/lib/actions/motion.ts
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:53:21 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:53:21 PM [vite] (client) page reload .svelte-kit/generated/root.js
+9:53:21 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+9:53:21 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:53:34 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:53:34 PM [vite] (client) page reload .svelte-kit/generated/root.js
+9:53:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+9:53:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

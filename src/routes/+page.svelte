@@ -138,9 +138,9 @@
     </p>
 
     <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
-      <PlatformCard bg="#f5e6c8" title="E4&trade; CHESS COACH" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
-      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="is the participants digital record that documents measurable accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth indices and notable achievements throughout the championship journey." href="/taskify" />
+      <PlatformCard bg="#f5e6c8" title="E4™ CHESS COACH" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
+      <PlatformCard bg="#ffb200" title="TEAMUP™" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY™" body="is the participants digital record that documents measurable accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth indices and notable achievements throughout the championship journey." href="/taskify" />
     </div>
 
 

@@ -27,9 +27,10 @@
 
     <div use:motionStaggered={{ stagger: 0.06, y: 20 }} class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {#each awards as a}
+        {@const Icon = a.icon}
         <div class="group rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors hover:border-amber-400/40 hover:bg-white/[0.06]">
           <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-400/10 text-amber-400 transition-colors group-hover:bg-amber-400 group-hover:text-[#0A0F1A]">
-            <svelte:component this={a.icon} size={24} />
+            <Icon size={24} />
           </div>
           <h3 class="font-hero text-xl font-bold text-white mb-2">{a.title}</h3>
           <p class="font-['Inter'] text-gray-400 text-[15px] leading-relaxed">{a.body}</p>
