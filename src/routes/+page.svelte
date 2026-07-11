@@ -5,7 +5,6 @@
   import SplitText from 'gsap/SplitText';
   import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
-  import ChampAwards from '$lib/components/championship/ChampAwards.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -289,9 +288,6 @@
         </div>
     </div>
 </section>
-
-<!-- Section: Awards & Recognition -->
-<ChampAwards />
 
 <!-- Intro Bridge -->
 <section id="intro-cta" class="py-12 md:py-16 bg-navy">

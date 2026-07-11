@@ -51,3 +51,7 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/a11y_interactive_supports_focus
 9:09:34 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
 https://svelte.dev/e/a11y_click_events_have_key_events
+9:17:36 PM [vite] (client) hmr update /src/app.css
+9:17:36 PM [vite] (ssr) page reload src/lib/components/championship/ChampAwards.svelte
+9:17:36 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+9:17:36 PM [vite] (ssr) page reload src/routes/+page.svelte
