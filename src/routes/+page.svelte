@@ -5,6 +5,7 @@
   import SplitText from 'gsap/SplitText';
   import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import ChampAwards from '$lib/components/championship/ChampAwards.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -174,15 +175,15 @@
     <!-- Card 2: e4 Explanation -->
     <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-start overflow-hidden">
       <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-5">What Players Gain</h3>
+        <h3 class="font-hero text-xl font-bold text-white mb-5">Why Participate?</h3>
         <ul class="flex flex-col items-start gap-2.5 gain-list">
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Critical reasoning and problem-solving</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Leadership and collaboration</li>
           <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Resilience, self-discipline and confidence</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Confidence, self-discipline and resilience</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
         </ul>
       </div>
     </div>
@@ -289,6 +290,9 @@
     </div>
 </section>
 
+<!-- Section: Awards & Recognition -->
+<ChampAwards />
+
 <!-- Intro Bridge -->
 <section id="intro-cta" class="py-12 md:py-16 bg-navy">
   <div class="max-w-6xl mx-auto px-6">
@@ -317,7 +321,7 @@
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
   <a href="/register" class="block no-underline mym-link"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
-  <a href="/register" class="block mt-4 no-underline transition-colors text-[max(16px,1.8vw)] text-white hover:text-[#F27830]">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
+  <a href="/register" class="inline-block mt-4 no-underline bg-white text-[#0A0F1A] font-semibold rounded-full px-8 py-4 text-[max(16px,1.8vw)] transition-colors hover:bg-amber-400">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
 
 <style>

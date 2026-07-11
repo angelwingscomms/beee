@@ -112,9 +112,7 @@
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</Button>
-        <a href="/championship" class="bg-transparent border border-white/40 font-medium px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-colors w-full sm:w-auto text-center" style="color: #fff">
-          See How It Works
-        </a>
+        <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See How It Works</Button>
       </div>
 
       <button type="button" class="footer-affiliate mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Join As A Tournament Partner →</button>
@@ -184,8 +182,10 @@
   }
 
   .partner-title {
-    font-size: 1.4rem;
+    font-family: var(--font-hero);
+    font-size: 1.5rem;
     font-weight: 700;
+    color: var(--accent-amber);
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -199,13 +199,13 @@
   }
 
   .partner-btn {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    min-width: 70%;
     padding: 0.85rem 1rem;
     border-radius: 9999px;
     font-weight: 600;
     text-decoration: none;
-    margin-top: 0.75rem;
+    margin: 0.75rem auto 0;
   }
 
   .partner-btn-primary {

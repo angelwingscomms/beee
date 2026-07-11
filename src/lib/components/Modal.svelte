@@ -37,17 +37,18 @@
     background: #0f172a;
     border: 1px solid rgba(245, 158, 11, 0.4);
     border-radius: 1.5rem;
-    padding: 2.5rem 2rem;
+    padding: 3.25rem 2rem 2.5rem;
     color: #fff;
+    text-align: center;
   }
 
   .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.1rem;
+    right: 1.1rem;
     background: transparent;
     border: 0;
-    color: #fff;
+    color: var(--accent-amber);
     font-size: 1.1rem;
     cursor: pointer;
     line-height: 1;
