@@ -202,8 +202,6 @@
   </div>
 </section>
 
-<HomeAwards />
-
 <!-- Section 2: The Journey -->
 <section id="journey" class="min-h-screen py-12 md:py-16 bg-navy">
     <div class="framework-container">
@@ -292,6 +290,8 @@
     </div>
 </section>
 
+<HomeAwards />
+
 <!-- Intro Bridge -->
 <section id="intro-cta" class="py-12 md:py-16 bg-navy">
   <div class="max-w-6xl mx-auto px-6">
@@ -352,11 +352,11 @@
   .super-title {
     font-family: 'Space Grotesk', sans-serif;
     color: #ffb200;
-    font-size: 14px;
-    letter-spacing: 4px;
+    font-size: 28px;
+    letter-spacing: 8px;
     font-weight: 500;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
 
   .main-title {

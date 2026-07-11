@@ -64,9 +64,7 @@
     position: relative;
     overflow: hidden;
     padding: clamp(72px, 12vw, 160px) 0;
-    background:
-      radial-gradient(120% 80% at 50% -10%, #101a30 0%, transparent 55%),
-      var(--navy, #0A0F1A);
+    background: var(--navy, #0A0F1A);
     isolation: isolate;
   }
 
@@ -99,22 +97,22 @@
   .awards-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: 18px;
     font-family: 'Inter', sans-serif;
-    font-size: 12.5px;
+    font-size: 25px;
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #ffb200;
-    padding: 7px 16px;
+    padding: 14px 32px;
     border: 1px solid rgba(255, 178, 0, 0.28);
     border-radius: 9999px;
     background: rgba(255, 178, 0, 0.06);
   }
 
   .awards-eyebrow .dot {
-    width: 6px;
-    height: 6px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: #ffb200;
     box-shadow: 0 0 10px 2px rgba(255, 178, 0, 0.7);
