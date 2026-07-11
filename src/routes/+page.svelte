@@ -6,6 +6,7 @@
   import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
+  import HomeAwards from '$lib/components/home/HomeAwards.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -200,6 +201,8 @@
     </div>
   </div>
 </section>
+
+<HomeAwards />
 
 <!-- Section 2: The Journey -->
 <section id="journey" class="min-h-screen py-12 md:py-16 bg-navy">
