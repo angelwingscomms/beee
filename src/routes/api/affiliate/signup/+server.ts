@@ -8,7 +8,7 @@ import type { User } from '$lib/types';
 
 const sqids = new Sqids({ minLength: 6 });
 
-export const POST: RequestHandler = async ({ request, cookies }) => {
+export const POST: RequestHandler = async ({ request, cookies, platform }) => {
   const { email, password, name } = await request.json();
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -40,7 +40,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
   };
   await create(u, undefined, user_id);
 
-  const session = await encode_session({ id: user_id, name: u.n, email });
+  const secret = await platform?.env?.SECRET.get() ?? '';
+  const session = await encode_session({ id: user_id, name: u.n, email }, secret);
   cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
   return json({ success: true, redirect: '/affiliate/settings' });
