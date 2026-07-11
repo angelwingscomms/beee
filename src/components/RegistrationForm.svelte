@@ -2,6 +2,8 @@
 	import ConfirmationModal from './ConfirmationModal.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
+	import { dev } from '$app/environment';
+	import { REG_AMOUNT, REG_AMOUNT_DEV } from '$lib/constants';
 
 	let firstName = $state('');
 	let lastName = $state('');
@@ -19,7 +21,7 @@
 	let phoneErr = $state('');
 	let passwordErr = $state('');
 
-	const AMOUNT = 12500;
+	const AMOUNT = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
 
 	function clearErrors() {
 		firstNameErr = '';
@@ -181,7 +183,7 @@
 					</div>
 					<div class="price-band simple-price flex-1">
 						<span class="text-[20px] font-[500]" style="font-family:var(--font-display)">Registration fee</span>
-						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[9px]">₦12,500<span class="text-[18px] font-normal">per participant</span></strong>
+						<strong class="!inline-flex flex-wrap items-baseline gap-x-[3px] gap-y-[7px] -mt-[9px]">₦{AMOUNT.toLocaleString()}<span class="text-[18px] font-normal">per participant</span></strong>
 					</div>
 				</div>
 				<div class="teamup-card">

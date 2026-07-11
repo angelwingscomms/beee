@@ -14,3 +14,32 @@ Using secrets defined in .dev.vars
 Using secrets defined in .dev.vars
 *** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:842: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY (extended: SQLITE_BUSY_RECOVERY)
 stack: /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@32b9b6b /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fd3395 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@201e412 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fde94c /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fde3a2 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f9d512 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20188bf /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@201bc15 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f6f389 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c6855 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c6d78 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c483e /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@52c463e /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f56d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/beee/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260526.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f56024
+1:39:32 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+1:39:32 PM [vite] (ssr) page reload src/routes/+page.svelte
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+1:40:34 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+1:40:34 PM [vite] (client) page reload .svelte-kit/generated/root.js
+1:40:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+1:40:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+1:41:01 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+1:41:01 PM [vite] (client) page reload .svelte-kit/generated/root.js
+1:41:01 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+1:41:01 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+1:41:34 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+1:41:34 PM [vite] (client) page reload .svelte-kit/generated/root.js
+1:41:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+1:41:34 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

@@ -66,7 +66,7 @@ describe('Participant Registration', () => {
 	it('shows individual registration details', () => {
 		const form = readFileSync(resolve(process.cwd(), 'src/components/RegistrationForm.svelte'), 'utf8');
 		expect(form).toContain('Participants must be between 10 and 14 years of age.');
-		expect(form).toContain('₦12,500');
+		expect(form).toContain('AMOUNT.toLocaleString()');
 		expect(form).toContain('per participant');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
 		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');

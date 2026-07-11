@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
+  import { browser, dev } from '$app/environment';
   import { goto } from '$app/navigation';
   import regBg from '$lib/assets/images/register-bg.png?enhanced';
   import ConfirmationModal from '../../components/ConfirmationModal.svelte';
@@ -7,7 +7,7 @@
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
-  import { REG_AMOUNT } from '$lib/constants';
+  import { REG_AMOUNT, REG_AMOUNT_DEV, DISCOUNT_PCT } from '$lib/constants';
 
   let gf = $state('');
   let gl = $state('');
@@ -29,7 +29,11 @@
   let apiError = $state('');
   let registrationId = $state('');
 
-  const AMOUNT = REG_AMOUNT;
+  let acValid = $state<boolean | null>(null);
+  let acLoading = $state(false);
+
+  const baseAmount = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
+  let AMOUNT = $state(baseAmount);
 
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
@@ -38,11 +42,47 @@
     pw.trim().length >= 8
   );
 
+  let valTimer: ReturnType<typeof setTimeout> | undefined;
+  async function validateAffiliateCode(code: string) {
+    if (!code.trim()) {
+      acValid = null;
+      ace = '';
+      AMOUNT = baseAmount;
+      return;
+    }
+    acLoading = true;
+    try {
+      const r = await fetch('/api/validate-affiliate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: code.trim() })
+      });
+      const d = await r.json();
+      if (d.valid) {
+        acValid = true;
+        ace = '10% discount applied';
+        AMOUNT = d.amount;
+      } else {
+        acValid = false;
+        ace = 'Invalid affiliate code';
+        AMOUNT = baseAmount;
+      }
+    } catch {
+      acValid = null;
+      ace = '';
+      AMOUNT = baseAmount;
+    } finally {
+      acLoading = false;
+    }
+  }
+
   $effect(() => {
     if (browser) {
       const stored = localStorage.getItem('affiliate_c');
-      if (stored && !ac) ac = stored;
-      if (stored) ace = 'Registrations with an affiliate code get a 10% discount';
+      if (stored && !ac) {
+        ac = stored;
+        validateAffiliateCode(ac);
+      }
     }
   });
 
@@ -52,7 +92,15 @@
     const match = val.match(/[?&]c=([^&\s]+)/);
     if (match) val = match[1];
     ac = val;
-    ace = val ? 'Registrations with an affiliate code get a 10% discount' : '';
+    clearTimeout(valTimer);
+    if (!val) {
+      acValid = null;
+      ace = '';
+      AMOUNT = baseAmount;
+      return;
+    }
+    ace = 'Checking…';
+    valTimer = setTimeout(() => validateAffiliateCode(val), 400);
   }
 
   function clearErrors() {
@@ -189,12 +237,23 @@
             inputClass="!text-white placeholder:!text-white/30"
             oninput={handleAffiliateInput}
           />
-          {#if ac}
+          {#if acLoading}
             <div class="reg-discount-callout">
+              <span>Checking affiliate code…</span>
+            </div>
+          {:else if acValid}
+            <div class="reg-discount-callout valid">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>
               </svg>
-              <span>Registrations with an affiliate code get a 10% discount</span>
+              <span>10% discount applied — ₦{(baseAmount - AMOUNT).toLocaleString()} off</span>
+            </div>
+          {:else if acValid === false}
+            <div class="reg-discount-callout invalid">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1L4 15L8 11.5L12 15L8 1Z" fill="currentColor"/>
+              </svg>
+              <span>Invalid affiliate code</span>
             </div>
           {/if}
         </div>
@@ -362,7 +421,16 @@
     flex-shrink: 0;
     width: 16px;
     height: 16px;
+  }
+  .reg-discount-callout.valid svg {
     color: var(--success);
+  }
+  .reg-discount-callout.invalid {
+    background: rgba(255, 55, 45, 0.12);
+    color: #ff6b6b;
+  }
+  .reg-discount-callout.invalid svg {
+    color: #ff6b6b;
   }
   .reg-error {
     padding: 12px 16px;

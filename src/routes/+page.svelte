@@ -110,7 +110,7 @@
         "startDate": "2026-10-10",
         "endDate": "2026-10-10",
         "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
-        "offers": { "@type": "Offer", "price": "12500", "priceCurrency": "NGN" },
+        "offers": { "@type": "Offer", "price": "15000", "priceCurrency": "NGN" },
         "organizer": { "@type": "Organization", "name": "BEEE", "url": "https://beeeproject.com" }
       },
       {
