@@ -2,6 +2,7 @@ import { decodeIdToken } from 'arctic';
 import { google_client as get_google } from '$lib/server/oauth';
 import { encode_session } from '$lib/server/session';
 import { create, find_user_by_email, new_id } from '$lib/db';
+import { env_val } from '$lib/server/env';
 import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
 
@@ -11,9 +12,9 @@ export async function GET(event: RequestEvent): Promise<Response> {
   let session_secret = '';
   try {
     const env = event.platform?.env;
-    google_id = await env?.GOOGLE_ID.get() ?? '';
-    google_secret = await env?.GOOGLE_SECRET.get() ?? '';
-    session_secret = await env?.SECRET.get() ?? '';
+    google_id = await env_val(env, 'GOOGLE_ID');
+    google_secret = await env_val(env, 'GOOGLE_SECRET');
+    session_secret = await env_val(env, 'SECRET');
   } catch {
     return new Response(null, { status: 302, headers: { Location: '/' } });
   }

@@ -1,4 +1,5 @@
 import { generateState, generateCodeVerifier, google_client } from '$lib/server/oauth';
+import { env_val } from '$lib/server/env';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
@@ -6,8 +7,8 @@ export async function GET(event: RequestEvent): Promise<Response> {
   let secret = '';
   try {
     const env = event.platform?.env;
-    id = await env?.GOOGLE_ID.get() ?? '';
-    secret = await env?.GOOGLE_SECRET.get() ?? '';
+    id = await env_val(env, 'GOOGLE_ID');
+    secret = await env_val(env, 'GOOGLE_SECRET');
   } catch {
     return new Response(null, { status: 302, headers: { Location: '/' } });
   }
