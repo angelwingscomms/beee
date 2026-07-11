@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-  <title>e4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="e4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
+  <title>E4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
+  <meta name="description" content="E4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
@@ -24,7 +24,7 @@
       </div>
       <div class="page-hero-visual" use:motionFadeUp>
         <div class="page-hero-img-frame">
-          <img src="/images/e4-ui.png" alt="e4 AI Chess Coach interface" class="page-hero-img" />
+           <img src="/images/e4-ui.png" alt="E4 AI Chess Coach interface" class="page-hero-img" />
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
 
   <section class="page-features" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
-      <h2 class="page-features-title">Benefits of e4™</h2>
+      <h2 class="page-features-title">Benefits of E4™</h2>
       <div class="features-grid">
         <div class="feature-card">
           <h3>Guided AI Instruction</h3>

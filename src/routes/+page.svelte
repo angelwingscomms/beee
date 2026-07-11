@@ -155,7 +155,7 @@
     <h2 class="font-hero text-4xl md:text-5xl text-[#141413] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
     <div class="w-16 h-1 bg-amber-400 rounded-full mx-auto mb-16" aria-hidden="true"></div>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
-    <!-- Card 1: e4 -->
+    <!-- Card 1: E4 -->
     <div
       bind:this={bentoCardBase}
       role="button"
@@ -164,9 +164,9 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
+      <img src="/images/e4-ui.png" alt="E4 UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-2xl font-bold text-white mb-2">e4™</h3>
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">E4™</h3>
         <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
       </div>
     </div>

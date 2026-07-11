@@ -17,6 +17,9 @@ declare global {
     interface Platform {
       env: SecretsStoreEnv;
     }
+    interface PageState {
+      partner?: boolean;
+    }
   }
 }
 export {};

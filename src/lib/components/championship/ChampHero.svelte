@@ -3,6 +3,9 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import Button from '$lib/components/Button.svelte';
+  import Modal from '$lib/components/Modal.svelte';
+  import { pushState } from '$app/navigation';
+  import { page } from '$app/stores';
   import { dev } from '$app/environment';
   import { REG_AMOUNT, REG_AMOUNT_DEV } from '$lib/constants';
   const HERO_AMOUNT = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
@@ -114,7 +117,7 @@
         </a>
       </div>
 
-      <a href="/affiliate" class="footer-affiliate mt-6 inline-block">earn 10% rewards as tournament partner →</a>
+      <button type="button" class="footer-affiliate mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Join As A Tournament Partner →</button>
 
     </div>
 
@@ -128,11 +131,11 @@
         />
 
         <!-- feature-float-cards -->
-        <!-- e4 AI feedback card
+        <!-- E4 AI feedback card
         <div bind:this={float1} class="absolute -right-4 lg:-right-12 top-12 max-w-[280px] z-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-4 rounded-2xl flex flex-col gap-3">
           <div class="flex items-center gap-2">
             <span class="w-4 h-4 bg-amber-400/20 rounded flex items-center justify-center text-xs shrink-0">🧠</span>
-            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-wider">e4&#8482; AI</span>
+            <span class="text-[10px] text-gray-400 font-mono uppercase tracking-wider">E4&#8482; AI</span>
           </div>
           <p class="text-[13px] text-white leading-relaxed">
             Excellent strategic defense. Consider Knight to F3 to develop your center.
@@ -159,6 +162,14 @@
   </div>
 </section>
 
+{#if $page.state.partner}
+  <Modal onclose={() => history.back()}>
+    <h2 class="partner-title">Partner With Us &amp; Earn 10% Reward!</h2>
+    <p class="partner-body">Earn 10% for every registration completed through your unique referral link. Share BEEE Chess Championship 2026 with your school, club, or parent network today!</p>
+    <a href="/affiliate" class="partner-btn partner-btn-primary">Become an Affiliate</a>
+  </Modal>
+{/if}
+
 <style>
   .footer-affiliate {
     font-size: 16px;
@@ -170,5 +181,35 @@
 
   .footer-affiliate:hover {
     color: #ffffff;
+  }
+
+  .partner-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .partner-body {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  .partner-btn {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 0.75rem;
+  }
+
+  .partner-btn-primary {
+    background: #f59e0b;
+    color: #0f172a;
   }
 </style>

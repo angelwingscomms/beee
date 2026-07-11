@@ -307,3 +307,284 @@ https://svelte.dev/e/css_unused_selector
 7:08:03 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 7:08:10 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 7:08:10 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:09:18 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:09:18 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:09:18 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:09:18 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:11:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:11:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:14:24 PM [vite] (client) hmr update /src/routes/e4/+page.svelte, /src/app.css
+7:14:24 PM [vite] (ssr) page reload src/routes/e4/+page.svelte
+7:14:30 PM [vite] (client) hmr update /src/routes/e4/+page.svelte, /src/app.css
+7:14:30 PM [vite] (ssr) page reload src/routes/e4/+page.svelte
+7:14:36 PM [vite] (client) hmr update /src/app.css
+7:14:36 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:14:41 PM [vite] (client) hmr update /src/app.css
+7:14:41 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:14:52 PM [vite] (client) hmr update /src/app.css
+7:14:52 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:14:58 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:14:58 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:15:03 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+7:15:03 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:15:40 PM [vite-plugin-svelte] src/routes/register/+page.svelte:372:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:15:40 PM [vite-plugin-svelte] src/routes/register/+page.svelte:538:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+7:16:19 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:16:19 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:18:36 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:18:36 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:18:42 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:18:42 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:18:49 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:18:49 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:18:49 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:18:49 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:18:59 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:18:59 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+7:18:59 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:26:49 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:07 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:07 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:29:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+7:29:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:29:07 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:07 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:29:12 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:12 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:29:22 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:22 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:29:22 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:29:22 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:29:22 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:29:22 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:31:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:31:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:31:17 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:31:17 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:31:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:165:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:31:17 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:250:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:168:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:253:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:00 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:00 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+7:34:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:34:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:34:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:168:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:253:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:10 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:167:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:10 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:252:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:10 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:34:10 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:34:10 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:167:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:10 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:252:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:19 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:167:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:19 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:252:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:19 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:34:19 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:34:19 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:167:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:19 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:252:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:25 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:167:4 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:25 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:252:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:25 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+7:34:25 PM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+
+[1;31m[500] GET /[0m
+ReferenceError: showPartner is not defined
+    at eval (src/lib/components/championship/ChampHero.svelte:239:4)
+    at Renderer.child (node_modules/.vite/deps_ssr/dev-DcNQeHR9.js?v=73b8bc04:1325:18)
+    at Renderer.component (node_modules/.vite/deps_ssr/dev-DcNQeHR9.js?v=73b8bc04:1398:22)
+    at ChampHero (src/lib/components/championship/ChampHero.svelte:29:13)
+    at eval (src/routes/+page.svelte:169:37)
+    at Renderer.child (node_modules/.vite/deps_ssr/dev-DcNQeHR9.js?v=73b8bc04:1325:18)
+    at Renderer.component (node_modules/.vite/deps_ssr/dev-DcNQeHR9.js?v=73b8bc04:1398:22)
+    at _page (src/routes/+page.svelte:25:13)
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:186:2 Unused CSS selector ".partner-backdrop"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:197:2 Unused CSS selector ".partner-card"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:209:2 Unused CSS selector ".partner-close"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:249:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+7:34:30 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:186:2 Unused CSS selector ".partner-backdrop"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:197:2 Unused CSS selector ".partner-card"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:209:2 Unused CSS selector ".partner-close"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:249:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:186:2 Unused CSS selector ".partner-backdrop"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:197:2 Unused CSS selector ".partner-card"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:209:2 Unused CSS selector ".partner-close"
+https://svelte.dev/e/css_unused_selector
+7:34:30 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:249:2 Unused CSS selector ".partner-btn-secondary"
+https://svelte.dev/e/css_unused_selector
+7:34:45 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+7:34:45 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:34:55 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+7:34:55 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:35:26 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:35:26 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:35:26 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:35:26 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:35:39 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:35:39 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:35:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:35:39 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /[object%20Object][0m
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:36:10 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:36:10 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:36:10 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:36:10 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:36:31 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:36:31 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:36:31 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:36:31 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /[object%20Object][0m
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:37:05 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:37:05 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:37:05 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:37:05 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /[object%20Object][0m
+
+[1;31m[404] GET /[object%20Object][0m
+7:37:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:37:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+
+[1;31m[404] GET /[object%20Object][0m
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:37:40 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:37:40 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:37:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:37:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+
+[1;31m[404] GET /[object%20Object][0m
