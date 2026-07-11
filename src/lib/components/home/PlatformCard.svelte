@@ -3,7 +3,7 @@ let { bg, title, body, href }: { bg: string; title: string; body: string; href?:
 </script>
 
 <div class="col-span-12 md:col-span-4 rounded-3xl p-8 md:p-10 flex flex-col group" style="background:{bg}">
-  <h3 class="font-hero text-2xl font-bold text-[#141413] mb-4">{title}</h3>
+  <h3 class="font-hero text-2xl font-bold text-[#141413] mb-4">{@html title}</h3>
   <p class="font-['Inter'] text-[#141413]/80 text-[15px] leading-[1.65] font-normal mb-8" style="white-space:pre-line">{body}</p>
   {#if href}
     <a {href} class="learn-more mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#141413] no-underline">
