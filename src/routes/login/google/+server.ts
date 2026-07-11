@@ -9,7 +9,8 @@ export async function GET(event: RequestEvent): Promise<Response> {
     const env = event.platform?.env;
     id = await env_val(env, 'GOOGLE_ID');
     secret = await env_val(env, 'GOOGLE_SECRET');
-  } catch {
+  } catch (e) {
+    console.error('[google login] env error:', e);
     return new Response(null, { status: 302, headers: { Location: '/' } });
   }
   console.log('[google login] GOOGLE_ID:', id, 'GOOGLE_SECRET:', secret ? '***' : 'MISSING');

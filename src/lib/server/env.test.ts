@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { env_val } from '$lib/server/env';
+import { env } from '$env/dynamic/private';
 
 describe('env_val', () => {
-  it('returns empty string when env is undefined', async () => {
-    expect(await env_val(undefined, 'SECRET')).toBe('');
+  it('falls back to $env/dynamic/private when env is undefined', async () => {
+    expect(await env_val(undefined, 'SECRET')).toBe(env.SECRET ?? '');
   });
 
-  it('returns empty string when key missing', async () => {
-    expect(await env_val({}, 'SECRET')).toBe('');
+  it('returns empty string when key missing in both', async () => {
+    expect(await env_val({}, 'NO_SUCH_KEY_XYZ')).toBe('');
   });
 
   it('returns plain string (local dev .dev.vars)', async () => {

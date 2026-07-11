@@ -123,3 +123,187 @@ https://svelte.dev/e/css_unused_selector
 1:58:38 PM [vite] (client) page reload .svelte-kit/generated/root.js
 1:58:38 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
 1:58:38 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:29:27 PM [vite] (client) hmr update /src/app.css
+5:29:27 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:30:48 PM [vite] (client) hmr update /src/app.css
+5:30:48 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:31:47 PM [vite] .env changed, restarting server...
+5:31:47 PM [vite] server restarted.
+
+  ➜  Local:   http://localhost:5400/
+  ➜  Network: http://192.168.1.4:5400/
+  ➜  Network: http://172.19.0.1:5400/
+  ➜  Network: http://169.254.237.229:5400/
+  ➜  Network: http://169.254.41.142:5400/
+  ➜  Network: http://169.254.183.60:5400/
+  ➜  Network: http://169.254.44.47:5400/
+Using secrets defined in .dev.vars
+5:34:00 PM [vite] (client) hmr update /src/app.css
+5:34:00 PM [vite] (ssr) page reload src/routes/login/google/+server.ts
+[google login] env error: Error: Secret "GOOGLE_ID" not found
+    at env_val (/home/ed/i/beee/src/lib/server/env.ts:12:45)
+    at GET (/home/ed/i/beee/src/routes/login/google/+server.ts:13:47)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:55:4)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:54:70)
+    at resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:537:64)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:377:20)
+    at async Object.before_handle (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:574:14) {
+  [cause]: undefined
+}
+5:37:03 PM [vite] (client) hmr update /src/app.css
+5:37:03 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:37:28 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:37:28 PM [vite] (client) page reload .svelte-kit/generated/root.js
+5:37:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:37:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:39:32 PM [vite] (client) hmr update /src/app.css
+5:39:32 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:39:40 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:39:40 PM [vite] (client) page reload .svelte-kit/generated/root.js
+5:39:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:39:40 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:42:04 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:42:04 PM [vite] (client) page reload .svelte-kit/generated/root.js
+5:42:04 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:42:04 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+[google login] env error: Error: Secret "GOOGLE_ID" not found
+    at env_val (/home/ed/i/beee/src/lib/server/env.ts:13:45)
+    at GET (/home/ed/i/beee/src/routes/login/google/+server.ts:13:47)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:55:4)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:54:70)
+    at resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:537:64)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:377:20) {
+  [cause]: undefined
+}
+5:43:50 PM [vite] (client) hmr update /src/app.css
+5:43:50 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:43:54 PM [vite] (client) hmr update /src/app.css
+5:43:54 PM [vite] (ssr) page reload src/lib/server/env.ts
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/10.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+5:44:03 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+5:44:03 PM [vite] (client) page reload .svelte-kit/generated/root.js
+5:44:03 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+5:44:03 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+5:44:35 PM [vite] (client) hmr update /src/app.css
+5:44:35 PM [vite] (ssr) page reload src/lib/server/env.ts
+[google login] env error: Error: Secret "GOOGLE_ID" not found
+    at env_val (/home/ed/i/beee/src/lib/server/env.ts:13:45)
+    at GET (/home/ed/i/beee/src/routes/login/google/+server.ts:13:47)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:55:4)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:54:70)
+    at resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:537:64)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:377:20)
+    at async Object.before_handle (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:574:14) {
+  [cause]: undefined
+}
+5:45:57 PM [vite] (client) hmr update /src/app.css
+5:45:57 PM [vite] (ssr) page reload src/lib/server/env.ts
+[google login] env error: Error: Secret "GOOGLE_ID" not found
+    at env_val (/home/ed/i/beee/src/lib/server/env.ts:13:45)
+    at GET (/home/ed/i/beee/src/routes/login/google/+server.ts:13:47)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:55:4)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:54:70)
+    at resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:537:64)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:377:20)
+    at async Object.before_handle (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:574:14) {
+  [cause]: undefined
+}
+5:49:32 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+5:49:32 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+
+  ➜  Local:   http://localhost:5400/
+  ➜  Network: http://192.168.1.4:5400/
+  ➜  Network: http://172.19.0.1:5400/
+  ➜  Network: http://169.254.237.229:5400/
+  ➜  Network: http://169.254.41.142:5400/
+  ➜  Network: http://169.254.183.60:5400/
+  ➜  Network: http://169.254.44.47:5400/
+6:02:39 PM [vite-plugin-svelte] src/routes/register/+page.svelte:372:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+6:02:39 PM [vite-plugin-svelte] src/routes/register/+page.svelte:538:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+6:03:30 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:03:30 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:04:20 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:04:20 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:04:42 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:04:42 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:08:11 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:08:11 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:10:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:10:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:13:53 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:13:53 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:15:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:15:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:16:56 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:16:56 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:17:47 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:17:47 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:32:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:32:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:34:32 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:34:32 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:39:40 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:39:40 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:40:32 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:40:32 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:48:25 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:48:25 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:57:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:57:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:57:30 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+6:57:30 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:08:03 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:08:03 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+7:08:10 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+7:08:10 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte

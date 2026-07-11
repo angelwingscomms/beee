@@ -75,7 +75,7 @@
 
   <div class="max-w-[96rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
 
-    <div class="lg:col-span-5">
+    <div class="lg:col-span-4">
       <h1 class="hero-anim-elem font-hero text-sm lg:text-base font-semibold uppercase tracking-[0.14em] text-amber-400 mb-5">
         BEEE Spectacular Chess Championship Abuja 2026
       </h1>
@@ -84,33 +84,27 @@
         Your child.<br />One board.<br />A lifetime of advantage.
       </h2>
 
-      <p class="hero-anim-elem font-['Inter'] text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative youth development experience that combines competitive chess with AI-powered chess training, mentorship, and personal growth
+      <p class="hero-anim-elem font-['Inter'] text-[1.05rem] text-gray-300 leading-relaxed mb-8 max-w-lg">
+        A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
       </p>
 
       <div class="hero-anim-elem flex flex-col sm:flex-row gap-4 sm:gap-10 mb-10">
         <div class="flex items-center gap-3 text-lg">
           <svg class="w-[18px] h-[18px] text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
           <span class="text-white font-medium">10–14 years</span>
-        </div>
-        <div class="flex items-center gap-3 text-lg">
-          <svg class="w-[18px] h-[18px] text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
-          <span class="text-white font-medium">July 28 – October 2026</span>
-        </div>
-        <div class="flex items-center gap-3 text-lg">
-          <svg class="w-[18px] h-[18px] text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
+          <svg class="w-[18px] h-[18px] text-amber-400/70 ml-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
           <span class="text-white font-medium">₦{HERO_AMOUNT.toLocaleString()}</span>
         </div>
       </div>
 
-      <div class="hero-anim-elem flex items-center gap-2 mb-8 text-sm sm:text-base text-amber-400">
-        <svg class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z"/></svg>
-        <span>Preliminaries and Grand Finale<br />Venue: National Stadium, Abuja</span>
-      </div>
-
-      <div class="flex flex-col gap-2 mb-8 text-sm border-l-2 border-amber-400/60 pl-4">
-        <p class="leading-relaxed text-amber-400 font-medium">Online chess training and self development programs commence July 28, 2026</p>
-        <p class="leading-relaxed text-gray-300">Sign up early to give your child a richer, more rewarding championship experience.</p>
+      <div class="hero-anim-elem flex flex-col gap-2 mb-8 text-sm sm:text-base">
+        <p class="leading-relaxed text-amber-400 font-medium mb-2">The championship Timeline:</p>
+        <div class="flex flex-col gap-2 border-l-2 border-amber-400/60 pl-4">
+          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">July 28, 2026</span><br />Online coaching begins</p>
+          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">September 2026</span><br />Live Preliminary competitions hold</p>
+          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">October 2026</span><br />Top finalists advance to an elite, immersive Championship grand finale</p>
+        </div>
+        <p class="leading-relaxed text-gray-300 mt-2">Sign up early to give your child a richer, more rewarding championship experience.</p>
       </div>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
@@ -120,10 +114,12 @@
         </a>
       </div>
 
+      <a href="/affiliate" class="footer-affiliate mt-6 inline-block">earn 10% rewards as tournament partner →</a>
+
     </div>
 
-    <div class="lg:col-span-7 flex justify-center items-center" bind:this={imageWrapper}>
-      <div class="relative w-full max-w-xl aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
+    <div class="lg:col-span-8 flex justify-center items-center" bind:this={imageWrapper}>
+      <div class="relative w-full max-w-2xl aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
         <img
           src="/images/hero.png"
           alt="Student playing chess"
@@ -162,3 +158,17 @@
 
   </div>
 </section>
+
+<style>
+  .footer-affiliate {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-amber);
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .footer-affiliate:hover {
+    color: #ffffff;
+  }
+</style>
