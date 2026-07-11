@@ -55,3 +55,16 @@ https://svelte.dev/e/a11y_click_events_have_key_events
 9:17:36 PM [vite] (ssr) page reload src/lib/components/championship/ChampAwards.svelte
 9:17:36 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
 9:17:36 PM [vite] (ssr) page reload src/routes/+page.svelte
+9:21:45 PM [vite] (ssr) Error when evaluating SSR module /@fs//home/ed/i/beee/styles/globals.css?inline: Can't resolve 'tw-animate-css' in '/home/ed/i/beee/styles'
+  Plugin: @tailwindcss/vite:generate:serve
+  File: /home/ed/i/beee/styles/globals.css?inline
+      at finishWithoutResolve (/home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:942:18)
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:1034:14
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:1111:5
+      at eval (eval at create (/home/ed/i/beee/node_modules/.pnpm/tapable@2.3.3/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:1111:5
+      at eval (eval at create (/home/ed/i/beee/node_modules/.pnpm/tapable@2.3.3/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:27:1)
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:94:43
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:1111:5
+      at eval (eval at create (/home/ed/i/beee/node_modules/.pnpm/tapable@2.3.3/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+      at /home/ed/i/beee/node_modules/.pnpm/enhanced-resolve@5.22.0/node_modules/enhanced-resolve/lib/Resolver.js:1111:5
