@@ -274,7 +274,7 @@
 
       <aside class="reg-summary" use:motionFadeUp>
         <div class="reg-summary-price">
-          <span class="reg-amount">₦15,000</span>
+          <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
           <span class="reg-per">per participant</span>
         </div>
         <div class="reg-summary-deadline">
