@@ -1,5 +1,6 @@
 <script lang="ts">
   import { motionFadeUp } from '$lib/actions/motion';
+  import Button from '$lib/components/Button.svelte';
 
   interface Stage {
     num: number;
@@ -40,8 +41,8 @@ TASKIFY™ Development Passport`,
 - Confidence, Resilience, and Self-discipline
 - Academic excellence and a lifelong passion for learning`,
       img: '/images/championship/learn.png',
-      color: '#7C3AED',
-      colorLight: '#8B5CF6',
+      color: '#ffb200',
+      colorLight: '#e6a000',
       iconPath: 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z',
     },
     {
@@ -52,8 +53,8 @@ Preliminary Chess Championship Rounds
 
 Participants compete in the live qualifying stages.`,
       img: '/images/championship/compete.png',
-      color: '#B91C1C',
-      colorLight: '#DC2626',
+      color: '#ffb200',
+      colorLight: '#e6a000',
       iconPath: 'M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z',
     },
     {
@@ -62,8 +63,8 @@ Participants compete in the live qualifying stages.`,
       body: `Qualifying participants advance to higher levels of the championship competition with live elimination tournamens. 
 Elite qualifiers emerge.`,
       img: '/images/championship/develop.png',
-      color: '#15803D',
-      colorLight: '#22C55E',
+      color: '#ffb200',
+      colorLight: '#e6a000',
       iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
     },
     {
@@ -72,8 +73,8 @@ Elite qualifiers emerge.`,
       body: `Elite qualifiers  are trained for higher competence in the finalists competition. 
 They compete for finalists positions.`,
       img: '/images/championship/qualify.png',
-      color: '#CA8A04',
-      colorLight: '#EAB308',
+      color: '#ffb200',
+      colorLight: '#e6a000',
       iconPath: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
     },
     {
@@ -81,8 +82,8 @@ They compete for finalists positions.`,
       title: 'GRAND FINALE',
       body: `Finalists participate in an immersive championship experience, unlike conventional chess competitions.`,
       img: '/images/championship/grandfinale.png',
-      color: '#1A2744',
-      colorLight: '#2D4A7A',
+      color: '#0A0F1A',
+      colorLight: '#1A2B4C',
       iconPath: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
     },
   ];
@@ -148,6 +149,7 @@ They compete for finalists positions.`,
       <p class="cta-main">MAKE YOUR <span class="gold">MOVE</span></p>
       <p class="cta-motto"><span style="color:#fff">ASPIRE TO</span> <span class="gold">BEEE</span></p>
       <p class="cta-sub">BE EVERYTHING EXCELLENT EVERY <span class="gold">DAY</span></p>
+      <Button href="/register" class="champ-how-btn">Start Your Child's Journey</Button>
     </footer>
   </div>
 </section>
@@ -155,7 +157,7 @@ They compete for finalists positions.`,
 <style>
   .champ-how {
     position: relative;
-    background: #0A1628;
+    background: var(--navy);
     overflow-x: hidden;
     overflow: hidden;
   }
@@ -203,9 +205,9 @@ They compete for finalists positions.`,
   .champ-how-sub {
     margin: 16px 0 0;
     font-size: clamp(16px, 2.5vw, 20px);
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.5;
-    color: #fff;
+    color: rgba(250, 249, 245, 0.75);
   }
 
   .stage-band {
@@ -213,7 +215,7 @@ They compete for finalists positions.`,
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: stretch;
-    border: 2px solid var(--sc);
+    border: 1px solid color-mix(in srgb, var(--sc) 55%, transparent);
     border-radius: 16px;
     overflow: hidden;
     width: 90vw;
@@ -295,6 +297,7 @@ They compete for finalists positions.`,
     font-weight: 800;
     line-height: 1;
     color: var(--sc);
+    opacity: 0.9;
   }
 
   .stage-title {
@@ -307,10 +310,10 @@ They compete for finalists positions.`,
 
   .stage-body {
     margin: 0;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.6;
-    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #252523;
   }
 
   .chevron {
@@ -360,6 +363,12 @@ They compete for finalists positions.`,
     letter-spacing: 0.08em;
     color: #fff;
     margin: 0;
+  }
+
+  :global(.champ-how-btn) {
+    margin-top: 28px;
+    padding: 16px 36px;
+    font-size: 16px;
   }
 
   @media (max-width: 1023px) {

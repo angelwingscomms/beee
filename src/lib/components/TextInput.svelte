@@ -7,9 +7,9 @@
 		required = false,
 		value = $bindable(''),
 		oninput,
-			wrapperClass = '!bg-[var(--canvas)] !border-transparent',
+			wrapperClass = '!bg-white !border-[var(--hairline)]',
 			labelClass = '!text-muted',
-			inputClass = '!text-ink placeholder:!text-muted-soft',
+			inputClass = 'placeholder:!text-muted-soft',
 		error = '',
 		showToggle = false,
 	}: {
@@ -33,7 +33,7 @@
 </script>
 
 <div
-	class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:border-transparent transition-all duration-150 {wrapperClass}"
+	class="flex items-center w-full min-h-[40px] border border-[var(--hairline)] rounded-lg px-3.5 focus-within:!border-[var(--primary)] focus-within:shadow-[0_0_0_3px_rgba(242,120,48,0.18)] transition-all duration-150 {wrapperClass}"
 	class:!border-[var(--error)]={invalid}
 >
 	<label for={id} class="shrink-0 !text-[12px] !font-normal {labelClass} cursor-pointer select-none">{label}</label>
@@ -62,6 +62,10 @@
 {/if}
 
 <style>
+	input {
+		color: #141413;
+		-webkit-text-fill-color: #141413;
+	}
 	.field-msg {
 		margin: 6px 0 0;
 		font-size: 12px;

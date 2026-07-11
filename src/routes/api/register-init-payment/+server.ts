@@ -7,7 +7,7 @@ const AMOUNT_KOBO = 1_250_000;
 
 export const POST: RequestHandler = async ({ request, url }) => {
     const data = await request.json();
-    if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.school || !data.password) {
+    if (!data.firstName || !data.lastName || !data.email || !data.phone) {
         return json({ error: 'Missing required fields' }, { status: 400 });
     }
 

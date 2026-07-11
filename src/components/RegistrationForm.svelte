@@ -7,6 +7,7 @@
 	let lastName = $state('');
 	let email = $state('');
 	let phone = $state('+234');
+	let password = $state('');
 	let showConfirmation = $state(false);
 	let isProcessing = $state(false);
 	let apiError = $state('');
@@ -16,6 +17,7 @@
 	let lastNameErr = $state('');
 	let emailErr = $state('');
 	let phoneErr = $state('');
+	let passwordErr = $state('');
 
 	const AMOUNT = 12500;
 
@@ -24,6 +26,7 @@
 		lastNameErr = '';
 		emailErr = '';
 		phoneErr = '';
+		passwordErr = '';
 	}
 
 	function validateForm(): boolean {
@@ -50,6 +53,13 @@
 			phoneErr = 'Phone is required';
 			valid = false;
 		}
+		if (!password.trim()) {
+			passwordErr = 'Password is required';
+			valid = false;
+		} else if (password.trim().length < 6) {
+			passwordErr = 'Password must be at least 6 characters';
+			valid = false;
+		}
 
 		return valid;
 	}
@@ -74,7 +84,8 @@
 					firstName: firstName.trim(),
 					lastName: lastName.trim(),
 					email: email.trim(),
-					phone: phone.trim()
+					phone: phone.trim(),
+					password: password.trim()
 				})
 			});
 
@@ -227,14 +238,16 @@
 					<TextInput id="email" label="Email Address" type="email" bind:value={email} required wrapperClass="!bg-surface-card !border-transparent" error={emailErr} oninput={() => emailErr = ''} />
 				</div>
 				<div class="field field-full">
-					<PhoneInput
-						id="phone"
-						value={phone}
-						placeholder="Phone number"
-						theme
-						onChange={(v) => { phone = v; phoneErr = ''; }}
-					/>
-				</div>
+				<PhoneInput
+					id="phone"
+					value={phone}
+					placeholder="Phone number"
+					theme
+					onChange={(v) => { phone = v; phoneErr = ''; }}
+				/>
+			</div>
+			<div class="field">
+				<TextInput id="password" label="Password" type="password" bind:value={password} required wrapperClass="!bg-surface-card !border-transparent" error={passwordErr} oninput={() => passwordErr = ''} />
 			</section>
 
 			{#if apiError}

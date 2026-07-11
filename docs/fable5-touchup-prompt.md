@@ -24,7 +24,13 @@ The project's `AGENTS.md` says "never start the dev server." For THIS task only,
    - Accessibility & clarity
    - Brand fit (does it feel premium, trustworthy, exciting?)
 3. **Ponder each issue.** Why does it feel off? Root cause? What is the *smallest high-impact* change that fixes it? Think like a director who gets the most improvement from the fewest moves.
-4. **Write an EXTREMELY detailed improvement plan** — per page: concrete changes (what, exactly where, why, expected effect), at a level a developer can implement with no further questions. **Keep ALL existing copy, images, and general ideas/sections.** Restructure or restyle only.
+4. **Write an EXTREMELY detailed, implementation-ready plan** — per page: concrete changes with EXACT specifications so a cheaper model (Sonnet 5) can implement them with **zero guessing and no further questions**. For every single change you must provide:
+   - **Exact location:** the precise file + component + selector or line to modify (e.g. `src/lib/components/championship/ChampHero.svelte` → `.hero-title` rule, ~line 42).
+   - **Exact values:** concrete CSS properties, spacing (px/rem), color tokens from the navy `#0A0F1A` / amber `#ffb200` / cream `#faf9f5` palette, type sizes/weights/line-heights, contrast ratios — no vague words like "more spacing" or "tweak"; give numbers.
+   - **Before → after snippets:** the existing code/structure followed by the exact replacement code/structure, copy-paste ready.
+   - **Motion specs (where relevant):** exact trigger, duration (ms), easing curve, and the `prefers-reduced-motion` fallback.
+   - **The why + expected effect** for each.
+   **Keep ALL existing copy, images, and general ideas/sections.** Restructure or restyle only.
 
 ## Hard constraints
 - Do NOT rewrite or remove copy. Do NOT replace images. Do NOT change the general ideas/sections.
@@ -34,4 +40,4 @@ The project's `AGENTS.md` says "never start the dev server." For THIS task only,
 - Every suggestion must respect `prefers-reduced-motion` and mobile gracefully.
 
 ## Output
-Write the plan to `docs/fable5-touchup-plan.md`. One section per page: (a) what you saw (screenshot notes), (b) ranked critique, (c) detailed improvement plan (specific, implementable). End with a cross-site consistency checklist and a prioritized "do these first" list. Give the reason behind every recommendation; explain the design thinking simply, as if to a developer with no design training.
+Write the plan to `docs/fable5-touchup-plan.md`. One section per page: (a) what you saw (screenshot notes), (b) ranked critique, (c) detailed improvement plan with EXACT implementation specs — file:component:selector, exact numeric values, before→after code snippets, and motion specs + reduced-motion fallback. End with a cross-site consistency checklist and a prioritized "do these first" list. Give the reason behind every recommendation; explain the design thinking simply, as if to a developer with no design training.

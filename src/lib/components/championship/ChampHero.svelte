@@ -18,11 +18,12 @@
 
     tl.from('.hero-anim-elem', {
       y: 30,
-      opacity: 0,
+      autoAlpha: 0,
       duration: 0.8,
       stagger: 0.1,
       ease: 'power3.out',
       delay: 0.2,
+      clearProps: 'all',
     });
 
     if (imageWrapper) {
@@ -58,7 +59,7 @@
       trigger: imageWrapper,
       pin: true,
       start: 'top 15%',
-      end: () => '+=' + (imageWrapper?.offsetHeight ?? 500),
+      end: '+=45%',
       pinSpacing: true,
       onEnter: () => pinned = true,
       onLeaveBack: () => pinned = false,
@@ -72,11 +73,11 @@
   <div class="max-w-[96rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
 
     <div class="lg:col-span-5">
-      <h1 class="hero-anim-elem font-hero text-3xl lg:text-5xl font-bold text-amber-400 leading-[1.1] tracking-tight mb-4">
+      <h1 class="hero-anim-elem font-hero text-sm lg:text-base font-semibold uppercase tracking-[0.14em] text-amber-400 mb-5">
         BEEE Spectacular Chess Championship Abuja 2026
       </h1>
 
-      <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+      <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
         Your child.<br />One board.<br />A lifetime of advantage.
       </h2>
 
@@ -99,25 +100,19 @@
         </div>
       </div>
 
-      <div class="hero-anim-elem flex items-center gap-2 mb-8 text-base sm:text-lg text-amber-400/80">
+      <div class="hero-anim-elem flex items-center gap-2 mb-8 text-sm sm:text-base text-amber-400">
         <svg class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0 1 15 0Z"/></svg>
         <span>Preliminaries and Grand Finale<br />Venue: National Stadium, Abuja</span>
       </div>
 
-      <div class="flex flex-col gap-3 mb-8 text-sm">
-        <div class="flex items-start gap-2 text-yellow-500 font-medium">
-          <span class="mt-0.5">💻</span>
-          <p class="leading-relaxed">Online chess training and self development programs commence July 28, 2026</p>
-        </div>
-        <div class="flex items-start gap-2 text-gray-200">
-          <span class="mt-0.5">✨</span>
-          <p>Sign up early to give your child a richer, more rewarding championship experience.</p>
-        </div>
+      <div class="flex flex-col gap-2 mb-8 text-sm border-l-2 border-amber-400/60 pl-4">
+        <p class="leading-relaxed text-amber-400 font-medium">Online chess training and self development programs commence July 28, 2026</p>
+        <p class="leading-relaxed text-gray-300">Sign up early to give your child a richer, more rewarding championship experience.</p>
       </div>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
         <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</Button>
-        <a href="/championship" class="bg-transparent border border-white font-medium px-8 py-4 rounded-full hover:border-white transition-colors w-full sm:w-auto text-center" style="color: #fff">
+        <a href="/championship" class="bg-transparent border border-white/40 font-medium px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-colors w-full sm:w-auto text-center" style="color: #fff">
           See How It Works
         </a>
       </div>

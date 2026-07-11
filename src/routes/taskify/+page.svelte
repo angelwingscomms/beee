@@ -23,20 +23,7 @@
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
-      <div class="page-hero-visual" use:motionFadeUp>
-        <div class="hero-placeholder">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-              <path d="M9 11l2 2 4-4"/>
-              <path d="M9 16h6"/>
-              <path d="M9 19h6"/>
-            </svg>
-          </div>
-          <p class="placeholder-text">Track. Achieve. Grow.</p>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -46,39 +33,39 @@
       <div class="features-grid">
         <div class="feature-card">
           <h3>Skill Milestones</h3>
-          <p>Skill development milestones that track growth in strategic thinking, problem-solving, and leadership abilities.</p>
+          <p>Track growth in strategic thinking, problem-solving, and leadership.</p>
         </div>
         <div class="feature-card">
           <h3>Game Assessments</h3>
-          <p>Assessment on games played, providing measurable data on chess performance and improvement over time.</p>
+          <p>Measure chess performance and improvement through game data.</p>
         </div>
         <div class="feature-card">
           <h3>Innovation Challenges</h3>
-          <p>Innovation and creativity challenges that encourage participants to think outside the box and develop original solutions.</p>
+          <p>Solve creative challenges and develop original solutions.</p>
         </div>
         <div class="feature-card">
           <h3>Leadership Activities</h3>
-          <p>Leadership and teamwork activities that build collaboration, communication, and team management skills.</p>
+          <p>Build collaboration, communication, and team management skills.</p>
         </div>
         <div class="feature-card">
           <h3>Mentorship Participation</h3>
-          <p>Mentorship participation tracking to ensure consistent engagement with experienced educators and professionals.</p>
+          <p>Stay engaged with experienced educators and professionals.</p>
         </div>
         <div class="feature-card">
           <h3>Project Completion</h3>
-          <p>Project completion records that demonstrate follow-through, dedication, and the ability to deliver results.</p>
+          <p>Demonstrate follow-through and the ability to deliver results.</p>
         </div>
         <div class="feature-card">
           <h3>Attendance Records</h3>
-          <p>Attendance and consistency records that reward reliability and sustained participation throughout the programme.</p>
+          <p>Earn rewards for reliability and consistent participation.</p>
         </div>
         <div class="feature-card">
           <h3>Personal Growth</h3>
-          <p>Reflection and personal growth exercises that help participants develop self-awareness and a growth mindset.</p>
+          <p>Develop self-awareness and a growth mindset through reflection.</p>
         </div>
         <div class="feature-card">
           <h3>Badges & Awards</h3>
-          <p>Badges earned and total championship accomplishments that celebrate every achievement along the journey.</p>
+          <p>Celebrate every achievement with badges and recognition.</p>
         </div>
       </div>
       <p class="page-hero-body" style="margin-top: 48px;">This system provides participants and parents with a visible track record of achievement throughout the championship cycle.</p>
@@ -119,21 +106,19 @@
     z-index: 1;
     width: min(1200px, calc(100% - 64px));
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    display: flex;
+    justify-content: center;
     padding: 80px 0;
   }
 
   .page-hero-content { max-width: 540px; }
 
   .page-hero-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0;
     text-wrap: balance;
@@ -141,6 +126,7 @@
 
   .page-hero-sub {
     font-family: var(--font-display);
+    font-style: italic;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -169,45 +155,16 @@
     font-size: 15px;
   }
 
-  .page-hero-visual {
-    display: grid;
-    place-items: center;
-  }
 
-  .hero-placeholder {
-    width: min(100%, 360px);
-    aspect-ratio: 3/4;
-    border-radius: 16px;
-    background: var(--surface-card);
-    border: 1px solid var(--hairline);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .placeholder-icon {
-    color: var(--primary);
-    opacity: 0.6;
-  }
-
-  .placeholder-text {
-    font-family: var(--font-display);
-    font-size: 20px;
-    color: var(--body);
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
 
   .page-features {
     background: var(--surface-soft);
   }
 
   .page-features-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -218,32 +175,37 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: start;
   }
 
   .feature-card {
-    padding: 32px;
+    padding: 28px 32px 32px;
     border-radius: 16px;
     background: var(--surface-card);
     border: 1px solid var(--hairline);
+    border-top: 3px solid var(--primary);
     transition: transform 300ms ease, box-shadow 300ms ease;
   }
 
-  .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+  @media (prefers-reduced-motion: no-preference) {
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+    }
   }
 
   .feature-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
     margin: 0 0 8px;
   }
 
   .feature-card p {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.55;
     color: var(--body);
     margin: 0;
   }
@@ -253,9 +215,9 @@
   }
 
   .page-cta-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--ink);
     margin: 0;
   }
@@ -279,7 +241,6 @@
       padding: 64px 0;
     }
     .page-hero-content { max-width: none; }
-    .page-hero-visual { order: -1; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
 

@@ -258,7 +258,7 @@
   .reg-bg-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: linear-gradient(180deg, rgba(10, 15, 26, 0.82) 0%, rgba(10, 15, 26, 0.62) 40%, rgba(10, 15, 26, 0.70) 100%);
     pointer-events: none;
   }
   .reg-page > :not(.reg-bg-overlay) {
@@ -279,11 +279,11 @@
     margin: 0 0 8px;
   }
   .reg-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(2.6rem, 4vw, 3.8rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.06;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: white;
     margin: 0 0 10px;
   }
@@ -334,14 +334,14 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: rgba(250, 249, 245, 0.72);
   }
   .reg-divider::before,
   .reg-divider::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: var(--hairline);
+    background: rgba(250, 249, 245, 0.25);
   }
   .reg-affiliate-wrap {
     margin-top: -12px;
@@ -400,7 +400,7 @@
   .reg-amount {
     font-family: var(--font-display);
     font-size: clamp(2rem, 3vw, 2.6rem);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink);
     line-height: 1.05;
   }

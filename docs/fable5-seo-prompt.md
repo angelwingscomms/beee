@@ -24,7 +24,12 @@ The project's `AGENTS.md` says "never start the dev server." For THIS task only,
    - **Social sharing:** Open Graph + Twitter cards on every page for clean share previews.
    - **Measurement:** Google Search Console + GA4 wiring, conversion/event tracking for enrollment actions.
 4. **Ponder & prioritize.** Which gaps actually move rankings/discoverability for THIS site's keywords? Rank fixes by impact. What's the smallest change for the biggest local-search win?
-5. **Write an EXTREMELY detailed perfection plan** — per area: current state (from your inspection), ranked issues, and concrete fixes (exact file, exact change, why, expected effect), implementable with no further questions. **Keep all existing body copy and images** — SEO changes are meta/structural/alt/JSON-LD, not body rewrites (titles & meta descriptions may be written fresh).
+5. **Write an EXTREMELY detailed, implementation-ready perfection plan** — per area: current state (from your inspection), ranked issues, and concrete fixes with EXACT specifications so a cheaper model (Sonnet 5) can implement with **zero guessing and no further questions**. For every fix you must provide:
+   - **Exact location:** the precise file + where in it (e.g. `src/app.html` `<head>`, `svelte.config.js` `kit.prerender`, `src/routes/about/+page.ts` head block, `static/robots.txt`).
+   - **Exact code:** the current snippet (if any) → the exact proposed replacement — copy-paste ready. For structured data, give the full exact JSON-LD block. For meta/OG, give the exact `<meta>`/`<title>` strings. For config, the exact key/value.
+   - **Exact values/numbers:** target title lengths, meta description lengths, image dimensions/formats, CWV budgets, schema property values (name, address, geo, etc.).
+   - **The why + expected effect** for each.
+   **Keep all existing body copy and images** — SEO changes are meta/structural/alt/JSON-LD, not body rewrites (titles & meta descriptions may be written fresh).
 
 ## Hard constraints
 - Do NOT edit any source files. Output only a plan document.
@@ -33,4 +38,4 @@ The project's `AGENTS.md` says "never start the dev server." For THIS task only,
 - Plan must be implementation-ready for a cheaper model (Sonnet 5) to execute.
 
 ## Output
-Write the plan to `docs/fable5-seo-plan.md`. Structure: (1) Current SEO state per route (from inspection), (2) Ranked issue list, (3) Detailed fix plan per area (technical, performance/CWV, on-page, structured data, local, social, measurement), (4) A pre-launch SEO checklist, (5) A prioritized "do these first" list ranked by local-search impact. Give the reason behind every recommendation; explain SEO thinking simply, as if to a developer with no SEO background.
+Write the plan to `docs/fable5-seo-plan.md`. Structure: (1) Current SEO state per route (from inspection), (2) Ranked issue list, (3) Detailed fix plan per area (technical, performance/CWV, on-page, structured data, local, social, measurement) with EXACT implementation specs — file + location, current→proposed copy-paste code/JSON-LD/meta, exact numeric targets, (4) A pre-launch SEO checklist, (5) A prioritized "do these first" list ranked by local-search impact. Give the reason behind every recommendation; explain SEO thinking simply, as if to a developer with no SEO background.

@@ -3,7 +3,7 @@
   const features = [
     {
       img: '/images/technology-card.png',
-      span: 'col-span-1 row-span-1',
+      span: 'col-span-2 row-span-1',
       title: 'Technology',
       body: 'Using technology creatively and responsibly to solve problems and expand learning.'
     },
@@ -21,13 +21,13 @@
     },
     {
       img: '/images/championship/develop.png',
-      span: 'col-span-1 row-span-1',
+      span: 'col-span-2 row-span-1',
       title: 'Mentorship',
       body: 'Learning from experienced professionals, educators, and inspiring role models.'
     },
     {
       img: '/images/championship/compete.png',
-      span: 'col-span-1 row-span-1',
+      span: 'col-span-3 row-span-1',
       title: 'Upskill',
       body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
     }
@@ -63,9 +63,9 @@
   }
 
   .champ-features-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -74,6 +74,7 @@
 
   .champ-features-sub {
     font-family: var(--font-display);
+    font-style: italic;
     font-size: 20px;
     line-height: 1.3;
     color: var(--body);
@@ -93,7 +94,6 @@
     border-radius: 16px;
     overflow: hidden;
     background-color: var(--surface-card);
-    transition: transform 400ms ease;
   }
 
   .champ-bento-img {
@@ -104,8 +104,13 @@
     object-fit: cover;
   }
 
-  .champ-bento-card:hover {
-    transform: scale(1.02);
+  @media (prefers-reduced-motion: no-preference) {
+    .champ-bento-img {
+      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .champ-bento-card:hover .champ-bento-img {
+      transform: scale(1.05);
+    }
   }
 
   .champ-bento-card.col-span-2 {
@@ -119,12 +124,12 @@
   .champ-bento-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(10, 15, 26, 0.94) 0%, rgba(10, 15, 26, 0.40) 50%, transparent 72%);
     transition: background 400ms ease;
   }
 
   .champ-bento-card:hover .champ-bento-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(10, 15, 26, 0.85) 0%, rgba(10, 15, 26, 0.28) 45%, transparent 70%);
   }
 
   .champ-bento-content {
@@ -133,26 +138,28 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 32px;
+    padding: 36px;
     color: var(--on-dark);
   }
 
   .champ-bento-card-title {
     margin: 0;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.3;
+    font-family: var(--font-hero);
+    font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.15;
     letter-spacing: -0.01em;
     color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
   }
 
   .champ-bento-card-body {
-    margin: 6px 0 0;
-    font-size: 13px;
+    margin: 10px 0 0;
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 440px;
+    color: rgba(250, 249, 245, 0.92);
+    max-width: 480px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
   }
 
   @media (max-width: 767px) {

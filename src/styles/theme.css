@@ -17,6 +17,8 @@
   --color-muted: #6c6a64;
   --color-teal: #5db8a6;
   --color-amber: #ffb200;
+  --color-amber-400: #ffb200;   /* remap Tailwind amber-400 → brand amber */
+  --color-amber-500: #e6a000;   /* hover/darker step for amber surfaces */
 
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;

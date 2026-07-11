@@ -62,7 +62,7 @@
 		background: var(--canvas);
 		display: flex;
 		flex-direction: column;
-		gap: 144px;
+		gap: 64px;
 		padding-bottom: 144px;
 	}
 
@@ -75,12 +75,14 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		max-width: 860px;
 	}
 
 	.faq-list {
 		display: flex;
 		flex-direction: column;
 		gap: 27px;
+		max-width: 860px;
 	}
 
 	@media (max-width: 767px) {
@@ -91,17 +93,18 @@
 
 	.faq-cat-title {
 		margin: 0 0 4px;
-		color: var(--ink);
-		font-family: var(--font-display);
-		font-size: 22px;
-		font-weight: 500;
-		letter-spacing: -0.01em;
+		color: var(--muted);
+		font-family: var(--font-hero);
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 		line-height: 1.3;
 	}
 
 	@media (max-width: 767px) {
 		.faq-page {
-			gap: 96px;
+			gap: 48px;
 			padding-bottom: 96px;
 		}
 	}

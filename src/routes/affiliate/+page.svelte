@@ -164,11 +164,11 @@
     margin: 0 0 16px;
   }
   .affiliate-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0 0 20px;
   }
@@ -222,9 +222,9 @@
     top: 100px;
   }
   .affiliate-form-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--ink);
     margin: 0 0 4px;
   }

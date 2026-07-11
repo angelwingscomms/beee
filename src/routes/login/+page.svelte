@@ -90,20 +90,21 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: var(--bg);
+    background: var(--canvas);
   }
   .login-card {
     width: 100%;
     max-width: 400px;
-    background: var(--surface);
+    background: #ffffff;
+    box-shadow: 0 8px 40px rgba(20, 20, 19, 0.06);
     border-radius: 16px;
     padding: 2.5rem 2rem;
     border: 1px solid var(--hairline);
   }
   .login-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 0 4px;
     color: var(--ink);
   }
@@ -140,11 +141,16 @@
     transition: opacity 0.2s;
   }
   .login-btn:disabled {
-    opacity: 0.4;
+    background: var(--surface-card);
+    color: var(--muted);
     cursor: not-allowed;
   }
   .login-btn:not(:disabled):hover {
     opacity: 0.85;
+  }
+  .login-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
   .login-divider {
     display: flex;

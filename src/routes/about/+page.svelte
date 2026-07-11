@@ -21,18 +21,7 @@
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
-      <div class="page-hero-visual" use:motionFadeUp>
-        <div class="hero-placeholder">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="5"/>
-              <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
-              <path d="M12 3l1 2 2-1 1 2 2-1v2"/>
-            </svg>
-          </div>
-          <p class="placeholder-text">Discover. Develop. Excel.</p>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -106,21 +95,19 @@
     z-index: 1;
     width: min(1200px, calc(100% - 64px));
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    display: flex;
+    justify-content: center;
     padding: 80px 0;
   }
 
   .page-hero-content { max-width: 540px; }
 
   .page-hero-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0;
     text-wrap: balance;
@@ -128,6 +115,7 @@
 
   .page-hero-sub {
     font-family: var(--font-display);
+    font-style: italic;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -156,36 +144,7 @@
     font-size: 15px;
   }
 
-  .page-hero-visual {
-    display: grid;
-    place-items: center;
-  }
 
-  .hero-placeholder {
-    width: min(100%, 360px);
-    aspect-ratio: 3/4;
-    border-radius: 16px;
-    background: var(--surface-card);
-    border: 1px solid var(--hairline);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .placeholder-icon {
-    color: var(--primary);
-    opacity: 0.6;
-  }
-
-  .placeholder-text {
-    font-family: var(--font-display);
-    font-size: 20px;
-    color: var(--body);
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
 
   .page-belief {
     background: var(--surface-soft);
@@ -209,9 +168,9 @@
   }
 
   .page-features-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -222,25 +181,31 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: start;
   }
 
   .feature-card {
-    padding: 32px;
+    padding: 22px 24px 14px;
     border-radius: 16px;
     background: var(--surface-card);
     border: 1px solid var(--hairline);
+    border-top: 3px solid var(--primary);
     transition: transform 300ms ease, box-shadow 300ms ease;
+    align-self: start;
   }
 
-  .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+  @media (prefers-reduced-motion: no-preference) {
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+    }
   }
 
   .feature-card h3 {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 500;
+    font-family: var(--font-hero);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
     margin: 0 0 8px;
   }
@@ -257,9 +222,9 @@
   }
 
   .page-cta-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--ink);
     margin: 0;
   }
@@ -283,7 +248,6 @@
       padding: 64px 0;
     }
     .page-hero-content { max-width: none; }
-    .page-hero-visual { order: -1; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
 

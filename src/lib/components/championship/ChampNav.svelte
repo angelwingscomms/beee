@@ -160,7 +160,11 @@
 
   .champ-nav-name {
     letter-spacing: -0.02em;
-    color: var(--color-primary);
+    color: var(--ink);
+  }
+
+  :global(.dark) .champ-nav-name {
+    color: var(--on-dark);
   }
 
   .champ-nav-links {
@@ -175,9 +179,13 @@
     border-radius: 999px;
     font-size: 15px;
     font-weight: 500;
-    color: #fff;
+    color: var(--ink);
     text-decoration: none;
     transition: background 160ms ease, color 160ms ease;
+  }
+
+  :global(.dark) .champ-nav-links a {
+    color: var(--on-dark);
   }
 
   :global(.champ-nav-cta) {
@@ -189,6 +197,9 @@
   .champ-nav-links a:hover {
     color: var(--ink);
     background: var(--surface-card);
+  }
+  :global(.dark) .champ-nav-links a:hover {
+    color: #141413;
   }
   .champ-nav-links a.active {
     color: var(--primary);

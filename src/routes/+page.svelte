@@ -152,7 +152,8 @@
 
 <!-- Section 3: The Platform -->
 <section id="platform" class="py-20 px-6">
-    <h2 class="font-hero text-5xl text-amber-400 text-center mb-20 tracking-tight font-bold">Everything Your Child Needs</h2>
+    <h2 class="font-hero text-4xl md:text-5xl text-[#141413] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
+    <div class="w-16 h-1 bg-amber-400 rounded-full mx-auto mb-16" aria-hidden="true"></div>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
     <!-- Card 1: e4 -->
     <div
@@ -171,17 +172,17 @@
     </div>
 
     <!-- Card 2: e4 Explanation -->
-    <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-between">
+    <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-start overflow-hidden">
       <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-4">What Players Gain</h3>
+        <h3 class="font-hero text-xl font-bold text-white mb-5">What Players Gain</h3>
         <ul class="flex flex-col items-start gap-2.5 gain-list">
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Critical reasoning and problem-solving</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#5db8a6] rounded-full px-4 py-2 w-fit">Leadership and collaboration</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#cdb4f6] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug md:text-right bg-[#f6a5c0] rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug text-left bg-[#a3d9a5] rounded-full px-4 py-2 w-fit">Resilience, self-discipline and confidence</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Critical reasoning and problem-solving</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Leadership and collaboration</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Resilience, self-discipline and confidence</li>
         </ul>
       </div>
     </div>
@@ -216,7 +217,7 @@
                     <div class="line-v node-drop"></div>
                     <div class="card">
                         <div class="card-icon">
-                            <svg viewBox="0 0 64 64" width="48" height="48" fill="#FFC72C">
+                            <svg viewBox="0 0 64 64" width="48" height="48" fill="#ffb200">
                                 <path d="M32 30c5.5 0 10-4.5 10-10S37.5 10 32 10s-10 4.5-10 10 4.5 10 10 10zm0 5c-6.7 0-20 3.3-20 10v9h40v-9c0-6.7-13.3-10-20-10z"/>
                                 <path d="M14 26c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm0 4c-4.4 0-12 2-12 6v6h13v-5c0-1.7 1.1-4.2 3.8-6.1C17.3 30.3 15.8 30 14 30z"/>
                                 <path d="M50 26c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm0 4c-1.8 0-3.3.3-4.8.8 2.7 1.9 3.8 4.4 3.8 6.1v5h13v-6c0-4-7.6-6-12-6z"/>
@@ -231,9 +232,9 @@
                     <div class="line-v node-drop"></div>
                     <div class="card">
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#FFC72C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#ffb200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" fill="#FFC72C"></rect>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" fill="#ffb200"></rect>
                                 <path d="M9 11l2 2 4-4"></path>
                                 <path d="M9 16h6"></path>
                                 <path d="M9 19h6"></path>
@@ -248,7 +249,7 @@
                     <div class="line-v node-drop"></div>
                     <div class="card">
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24" width="45" height="45" fill="none" stroke="#FFC72C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" width="45" height="45" fill="none" stroke="#ffb200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="6" y="6" width="12" height="12" rx="1" ry="1"></rect>
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="12" y1="2" x2="12" y2="6"></line>
@@ -262,7 +263,7 @@
                                 <line x1="18" y1="8" x2="22" y2="8"></line>
                                 <line x1="18" y1="12" x2="22" y2="12"></line>
                                 <line x1="18" y1="16" x2="22" y2="16"></line>
-                                <text x="12" y="14" font-family="'Montserrat', sans-serif" font-weight="700" font-size="5.5" fill="#FFC72C" stroke="none" text-anchor="middle">AI</text>
+                                <text x="12" y="14" font-family="'Montserrat', sans-serif" font-weight="700" font-size="5.5" fill="#ffb200" stroke="none" text-anchor="middle">AI</text>
                             </svg>
                         </div>
                         <div class="card-title">E4 AI</div>
@@ -275,7 +276,7 @@
             <div class="line-v bottom-drop with-arrow"></div>
             <div class="bottom-card">
                 <div class="bottom-card-icon">
-                    <svg viewBox="0 0 512 512" width="45" height="45" fill="#FFC72C">
+                    <svg viewBox="0 0 512 512" width="45" height="45" fill="#ffb200">
                         <path d="M256 0c17.7 0 32 14.3 32 32V64h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H288v25.2c40 13.9 76.6 37 106.6 67H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32s14.3-32 32-32h21.4c30-30 66.5-53.1 106.6-67V128H192c-17.7 0-32-14.3-32-32s14.3-32 32-32h32V32c0-17.7 14.3-32 32-32zM80 352h352c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 96h352c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
                     </svg>
                 </div>
@@ -289,9 +290,9 @@
 </section>
 
 <!-- Intro Bridge -->
-<section id="intro-cta" class="py-16 md:py-24 bg-navy">
+<section id="intro-cta" class="py-12 md:py-16 bg-navy">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 bind:this={makeYourMove} class="font-hero text-[14vw] md:text-[10vw] text-amber-400 font-black leading-none tracking-tighter select-none">
+    <h2 bind:this={makeYourMove} class="font-hero text-[13vw] md:text-[9vw] text-amber-400 font-black leading-none tracking-tighter select-none text-balance">
       Make Your Move
     </h2>
   </div>
@@ -315,8 +316,8 @@
 
 <!-- Section 5: Footer -->
 <footer id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
-  <a href="/register" class="block no-underline"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
-  <a href="/register" class="block text-[1.8vw] mt-4 no-underline transition-colors" style="color:#fff">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
+  <a href="/register" class="block no-underline mym-link"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
+  <a href="/register" class="block mt-4 no-underline transition-colors text-[max(16px,1.8vw)] text-white hover:text-[#F27830]">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </footer>
 
 <style>
@@ -346,8 +347,8 @@
   }
 
   .super-title {
-    font-family: 'Montserrat', sans-serif;
-    color: #FFC72C;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #ffb200;
     font-size: 14px;
     letter-spacing: 4px;
     font-weight: 500;
@@ -356,7 +357,7 @@
   }
 
   .main-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: #FFFFFF;
     font-size: 46px;
     letter-spacing: 2px;
@@ -396,12 +397,12 @@
 
   .line-v {
     width: 0;
-    border-left: 2px dotted #FFC72C;
+    border-left: 1px dashed rgba(255, 178, 0, 0.5);
   }
 
   .line-h {
     height: 0;
-    border-top: 2px dotted #FFC72C;
+    border-top: 1px dashed rgba(255, 178, 0, 0.5);
     width: 530px;
   }
 
@@ -425,7 +426,7 @@
     left: -5px;
     border-width: 6px 4px 0 4px;
     border-style: solid;
-    border-color: #FFC72C transparent transparent transparent;
+    border-color: #ffb200 transparent transparent transparent;
   }
 
   .nodes-wrapper {
@@ -445,7 +446,8 @@
     width: 220px;
     height: 180px;
     background-color: #080c16;
-    border: 2px solid #FFC72C;
+    border: 1px solid rgba(255, 178, 0, 0.55);
+    box-shadow: 0 0 0 1px rgba(255, 178, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -466,7 +468,7 @@
   }
 
   .card-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 700;
@@ -486,7 +488,8 @@
     width: 480px;
     height: 95px;
     background-color: #080c16;
-    border: 2px solid #FFC72C;
+    border: 1px solid rgba(255, 178, 0, 0.55);
+    box-shadow: 0 0 0 1px rgba(255, 178, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -511,7 +514,7 @@
   }
 
   .bottom-card-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 700;
@@ -520,7 +523,7 @@
 
   .bottom-card-subtitle {
     font-family: 'Inter', sans-serif;
-    color: #FFC72C;
+    color: #ffb200;
     font-size: 14px;
     font-weight: 500;
   }
@@ -569,10 +572,10 @@
     }
 
     .line-h {
-      width: 2px;
+      width: 1px;
       height: 0;
       border-top: none;
-      border-left: 2px dotted #FFC72C;
+      border-left: 1px dashed rgba(255, 178, 0, 0.5);
     }
 
     .bottom-drop {
@@ -608,8 +611,9 @@
     .gain-list > li {
       width: auto;
     }
-    .gain-list > li:nth-child(even) {
-      align-self: flex-end;
-    }
   }
+
+  .mym-link h1 { transition: color 300ms ease; }
+  .mym-link:hover h1 { color: #F27830; }
+  @media (prefers-reduced-motion: reduce) { .mym-link h1 { transition: none; } }
 </style>

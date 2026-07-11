@@ -63,9 +63,8 @@
   .footer-inner {
     position: relative;
     z-index: 1;
-    margin: 0;
-    width: 100%;
-    padding-left: 80px;
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
   }
 
   .footer-top {
@@ -163,18 +162,18 @@
   .footer-affiliate {
     font-size: 16px;
     font-weight: 600;
-    color: #14d9c4;
+    color: var(--accent-amber);
     text-decoration: none;
     transition: color 160ms ease;
   }
 
   .footer-affiliate:hover {
-    color: #a8e8ff;
+    color: #ffffff;
   }
 
   .footer-copy {
     margin: 0;
-    color: var(--muted-soft);
+    color: var(--on-dark-soft);
   }
 
   @media (max-width: 767px) {
@@ -191,10 +190,6 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
-    }
-
-    .footer-inner {
-      padding-left: 24px;
     }
   }
 </style>

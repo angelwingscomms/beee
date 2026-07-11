@@ -82,8 +82,8 @@
 		display: block;
 		margin-bottom: 1rem;
 	}
-	.status-icon.success { color: #5db872; }
-	.status-icon.failed  { color: #e05c5c; }
+	.status-icon.success { color: var(--success); }
+	.status-icon.failed  { color: var(--error); }
 	.ref {
 		margin-top: 1rem;
 		font-size: 0.85rem;

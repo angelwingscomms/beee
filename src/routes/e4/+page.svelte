@@ -36,27 +36,27 @@
       <div class="features-grid">
         <div class="feature-card">
           <h3>Guided AI Instruction</h3>
-          <p>Gives guided AI instructions to help participants learn and improve at their own pace with personalised feedback.</p>
+          <p>Learn and improve at your own pace with personalised AI feedback.</p>
         </div>
         <div class="feature-card">
           <h3>Advanced Concepts Mentoring</h3>
-          <p>Mentors on advanced concepts in chess, helping players understand sophisticated strategies and tactical patterns.</p>
+          <p>Master sophisticated strategies and tactical patterns.</p>
         </div>
         <div class="feature-card">
           <h3>Grandmaster Technologies</h3>
-          <p>Exposes users to technologies employed by grandmasters to gain a competitive edge in their gameplay.</p>
+          <p>Access the technologies grandmasters use to gain a competitive edge.</p>
         </div>
         <div class="feature-card">
           <h3>Deep Game Analysis</h3>
-          <p>Provides deep game analysis, breaking down every move to reveal strengths, weaknesses, and areas for improvement.</p>
+          <p>Break down every move to reveal strengths and areas for improvement.</p>
         </div>
         <div class="feature-card">
           <h3>Virtual & Real Opponents</h3>
-          <p>Players can compete against both virtual and real opponents, building experience across different playing styles.</p>
+          <p>Play against AI or real opponents across different styles.</p>
         </div>
         <div class="feature-card">
           <h3>Custom Puzzles</h3>
-          <p>Players can train with custom puzzles auto-generated from real game mistakes, turning errors into learning opportunities.</p>
+          <p>Train with puzzles auto-generated from real game mistakes.</p>
         </div>
       </div>
     </div>
@@ -106,11 +106,11 @@
   .page-hero-content { max-width: 540px; }
 
   .page-hero-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--ink);
     margin: 0;
     text-wrap: balance;
@@ -118,6 +118,7 @@
 
   .page-hero-sub {
     font-family: var(--font-display);
+    font-style: italic;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -169,9 +170,9 @@
   }
 
   .page-features-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -182,31 +183,36 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: start;
   }
 
   .feature-card {
-    padding: 32px;
+    padding: 28px 32px 32px;
     border-radius: 16px;
     background: var(--surface-card);
     border: 1px solid var(--hairline);
+    border-top: 3px solid var(--primary);
     transition: transform 300ms ease, box-shadow 300ms ease;
   }
 
-  .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+  @media (prefers-reduced-motion: no-preference) {
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
+    }
   }
 
   .feature-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
     margin: 0 0 8px;
   }
 
   .feature-card p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
     color: var(--body);
     margin: 0;
@@ -217,9 +223,9 @@
   }
 
   .page-cta-title {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--ink);
     margin: 0;
   }
