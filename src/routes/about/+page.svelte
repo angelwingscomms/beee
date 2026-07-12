@@ -194,7 +194,7 @@
     align-self: start;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) {
     .feature-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);

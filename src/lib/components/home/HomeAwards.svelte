@@ -257,7 +257,7 @@
     pointer-events: none;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) {
     .award-card:hover {
       transform: translateY(-6px);
       background: linear-gradient(180deg, rgba(255, 178, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);

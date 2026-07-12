@@ -8,7 +8,7 @@
   let { children } = $props();
 
   let url = $derived($page.url);
-  let og_img = $derived(`https://beeeproject.com/og.png`);
+  let og_img = $derived($page.data.ogImage ?? `https://beeeproject.com/og.png`);
 
   $effect(() => {
     if (browser) {

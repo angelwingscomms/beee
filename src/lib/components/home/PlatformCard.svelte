@@ -14,7 +14,7 @@ let { bg, title, body, href }: { bg: string; title: string; body: string; href?:
 
 <style>
   .learn-more { border-bottom: 1px solid rgba(20, 20, 19, 0.35); padding-bottom: 2px; width: fit-content; }
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) {
     .learn-more-arrow { transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1); }
     .learn-more:hover .learn-more-arrow { transform: translateX(4px); }
   }

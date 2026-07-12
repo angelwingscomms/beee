@@ -217,3 +217,21 @@ https://svelte.dev/e/state_referenced_locally
 11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
 11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
 11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+12:05:51 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+12:05:58 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
+12:05:58 AM [vite] (ssr) page reload src/routes/+layout.svelte
+12:06:17 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+12:06:17 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+12:06:17 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+12:06:17 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+12:06:17 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+12:06:35 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+12:06:35 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+12:06:43 AM [vite] (client) hmr update /src/lib/components/home/Footer.svelte, /src/app.css
+12:06:43 AM [vite] (ssr) page reload src/lib/components/home/Footer.svelte
+12:06:51 AM [vite] (client) hmr update /src/lib/components/home/HomeAwards.svelte?svelte&type=style&lang.css, /src/app.css
+12:06:51 AM [vite] (ssr) page reload src/lib/components/home/HomeAwards.svelte
+12:06:57 AM [vite] (client) hmr update /src/routes/about/+page.svelte?svelte&type=style&lang.css, /src/app.css
+12:06:57 AM [vite] (ssr) page reload src/routes/about/+page.svelte
+12:07:10 AM [vite] (client) hmr update /src/lib/components/home/PlatformCard.svelte?svelte&type=style&lang.css, /src/app.css
+12:07:10 AM [vite] (ssr) page reload src/lib/components/home/PlatformCard.svelte

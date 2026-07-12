@@ -9,6 +9,8 @@
       { href: '/register', label: 'Registration' },
       { href: '/teamup', label: 'TEAMUP' },
       { href: '/faq', label: 'FAQ' },
+      { href: '/privacy', label: 'Privacy' },
+      { href: '/terms', label: 'Terms' },
     ].filter(l => l.href !== p);
   });
 </script>
