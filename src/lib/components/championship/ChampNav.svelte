@@ -1,10 +1,23 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
   import { slide } from 'svelte/transition';
   import Button from '$lib/components/Button.svelte';
 
   let open = $state(false);
   let path = $derived($page.url.pathname);
+  let user = $derived($page.data.user);
+  let logging_out = $state(false);
+
+  async function logout() {
+    logging_out = true;
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      await goto('/');
+    } finally {
+      logging_out = false;
+    }
+  }
 </script>
 
 <nav class="champ-nav">
@@ -24,6 +37,11 @@
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
     <Button href="/register" class="champ-nav-cta">Register</Button>
+    {#if user}
+      <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
+        {logging_out ? 'Signing out…' : 'Log out'}
+      </button>
+    {/if}
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu">
       <span class:open={open}></span>
     </button>
@@ -37,6 +55,9 @@
       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
       <a href="/affiliate" class:active={path === '/affiliate'} onclick={() => open = false}>Affiliates</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
+      {#if user}
+        <button class="champ-mobile-logout" onclick={() => { open = false; logout(); }}>Log out</button>
+      {/if}
     </div>
   {/if}
 </nav>
@@ -193,6 +214,50 @@
     padding: 10px 24px;
     font-size: 14px;
     white-space: nowrap;
+  }
+
+  .champ-nav-logout {
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+  }
+
+  .champ-nav-logout:hover {
+    background: var(--surface-card);
+  }
+
+  .champ-nav-logout:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  :global(.dark) .champ-nav-logout {
+    color: var(--on-dark);
+  }
+
+  .champ-mobile-logout {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: var(--body);
+    cursor: pointer;
+  }
+
+  .champ-mobile-logout:hover {
+    background: var(--surface-card);
+    color: var(--ink);
   }
   .champ-nav-links a:hover {
     color: var(--ink);

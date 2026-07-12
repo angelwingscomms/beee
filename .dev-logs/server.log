@@ -200,3 +200,13 @@ https://svelte.dev/e/state_referenced_locally
 [1;31m[404] GET /logo.svg[0m
 
 [1;31m[404] GET /logo.svg[0m
+11:45:27 PM [vite] (client) page reload index.html
+11:45:49 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:46:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+11:46:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:46:06 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+11:46:06 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:46:12 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte, /src/app.css
+11:46:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:46:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
+11:46:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
