@@ -1,9 +1,10 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { new_id, search_by_payload } from '$lib/db';
+import { new_id, create, search_by_payload } from '$lib/db';
 import { paystack_init } from '$lib/paystack';
 import { dev } from '$app/environment';
 import type { User } from '$lib/types';
+import type { Registration } from '$lib/types/registration';
 
 function get_base_amount(): number {
     return dev ? 150_000 : 1_500_000;
@@ -21,6 +22,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 
     let amount_kobo = get_base_amount();
     let discounted = false;
+    let ac: string | undefined;
 
     if (data.affiliateCode) {
         const affs = await search_by_payload<User>({ s: 'u', ac: data.affiliateCode });
@@ -30,29 +32,36 @@ export const POST: RequestHandler = async ({ request, url }) => {
         }
         amount_kobo = get_discounted_amount();
         discounted = true;
+        ac = data.affiliateCode;
     }
 
     const i = new_id();
     const p_name = `${data.firstName} ${data.lastName}`;
 
-    const reg_data: Record<string, unknown> = {
+    // Store the registration locally as PENDING, including the password.
+    // The password lives only in our own DB and is bcrypt-hashed on payment
+    // confirmation — it is NEVER sent to Paystack as transaction metadata.
+    const pending: Registration = {
         s: 'reg',
         fn: data.firstName,
         ln: data.lastName,
         sn: data.school,
         e: data.email,
         p: data.phone,
-        amt: amount_kobo
+        amt: amount_kobo,
+        st: 'pending',
+        v: 0,
+        d: Date.now(),
+        ac
     };
-    if (data.affiliateCode) {
-        reg_data.ac = data.affiliateCode;
-    }
     if (data.password) {
-        reg_data.pw = data.password;
+        pending.pw = data.password;
     }
+    await create(pending, undefined, i);
 
     const callback_url = `${url.origin}/payment/callback`;
-    const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, reg_data);
+    // Only a reference goes to Paystack — no PII, no password.
+    const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, { regId: i });
 
     return json({
         success: true,

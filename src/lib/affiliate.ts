@@ -3,10 +3,11 @@ import { get_bank_code, paystack_resolve_bank, paystack_create_recipient, paysta
 import { send_affiliate_notification } from '$lib/email';
 import { COMMISSION_PCT } from '$lib/constants';
 import type { User } from '$lib/types';
+import type { Registration } from '$lib/types/registration';
 import type { Payout } from '$lib/types/payout';
 
 export async function process_affiliate_payout(
-  reg_data: Record<string, unknown>,
+  reg_data: Registration,
   reg_id: string,
   platform?: App.Platform
 ): Promise<void> {

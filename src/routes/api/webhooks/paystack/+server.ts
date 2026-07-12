@@ -67,9 +67,15 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 			if (event.event === 'charge.success') {
 				const ref = event.data.reference as string;
 
+				// Load the local pending registration (password stored here, never in Paystack)
+				const reg = await get<Registration>(ref);
+				if (!reg) {
+					console.error(`Webhook charge.success: no local registration for ${ref}`);
+					return;
+				}
+
 				// Check if registration already exists (idempotent)
-				const existing = await get<Registration>(ref);
-				if (existing && existing.st === 'paid') {
+				if (reg.st === 'paid') {
 					console.log(`Webhook charge.success: ${ref} already paid, skipping`);
 					return;
 				}
@@ -81,15 +87,8 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 					return;
 				}
 
-				// Extract registration data from metadata
-				const reg_data = verified.metadata?.reg_data as Record<string, unknown> | undefined;
-				if (!reg_data) {
-					console.error(`Webhook charge.success: no reg_data in metadata for ${ref}`);
-					return;
-				}
-
-				// Anti-fraud: amount must match what we stored
-				const expected_amt = reg_data.amt as number;
+				// Anti-fraud: amount must match what we stored locally
+				const expected_amt = reg.amt;
 				if (verified.amount !== expected_amt) {
 					console.error(
 						`Webhook amount mismatch for ${ref}: expected ${expected_amt}, got ${verified.amount}`
@@ -97,40 +96,35 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 					return;
 				}
 
-				// // Look up school on Google Maps via Serper to verify it's a school
-				// const school_name = reg_data.sn as string;
-				// const v = await search_maps(school_name);
-				// console.log(`[webhook] Maps lookup for "${school_name}": v=${v}`);
-
-				// Write full registration to DB
+				// Write full registration to DB (no password persisted)
 			const payload: Registration = {
 				s: 'reg',
-				fn: reg_data.fn as string,
-				ln: reg_data.ln as string,
-				sn: reg_data.sn as string,
-				e: reg_data.e as string,
-				p: reg_data.p as string,
+				fn: reg.fn,
+				ln: reg.ln,
+				sn: reg.sn,
+				e: reg.e,
+				p: reg.p,
 				st: 'paid',
 				v: 0,
 				amt: expected_amt,
 				d: Date.now(),
 				ref: verified.reference,
-				ac: reg_data.ac as string | undefined
+				ac: reg.ac
 			};
 
 				await create(payload, undefined, ref);
 				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);
 
-				// Create or update player user account
-				const email = reg_data.e as string;
-				const pw = reg_data.pw as string | undefined;
+				// Create or update player user account (hash the password stored on the pending record)
+				const email = reg.e;
+				const pw = reg.pw;
 				let ph: string | undefined;
 				if (pw) ph = await bcrypt.hash(pw, 10);
-				const user_id = await find_or_create_player_user(email, `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(), ph);
+				const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
 				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
 
 				// Fire-and-forget affiliate payout
-				process_affiliate_payout(reg_data, ref, platform).catch(e =>
+				process_affiliate_payout(reg, ref, platform).catch(e =>
 					console.error(`[webhook payout] Failed for ${ref}:`, e)
 				);
 			}

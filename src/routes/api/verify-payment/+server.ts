@@ -42,8 +42,12 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 
 		const reg_id = data.registrationId || data.reference;
 		console.log(`[POST /api/verify-payment] Checking if registration already exists in DB: ${reg_id}`);
-		const existing = await get<Registration>(reg_id);
-		if (existing && existing.st === 'paid') {
+		const reg = await get<Registration>(reg_id);
+		if (!reg) {
+			console.error(`[POST /api/verify-payment] No local registration found for ${reg_id}`);
+			return json({ error: 'Registration not found' }, { status: 404 });
+		}
+		if (reg.st === 'paid') {
 			console.log(`[POST /api/verify-payment] Registration ${reg_id} is already paid (idempotent path)`);
 			return json({ success: true, status: 'success', message: 'Already verified' });
 		}
@@ -60,15 +64,8 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 			);
 		}
 
-		// Extract registration data from Paystack metadata (stored during init)
-		const reg_data = verified.metadata?.reg_data as Record<string, unknown> | undefined;
-		if (!reg_data) {
-			console.error(`[POST /api/verify-payment] No reg_data found in Paystack metadata for ${reg_id}`);
-			return json({ error: 'Registration data not found in payment metadata' }, { status: 500 });
-		}
-
-		// Anti-fraud: confirm amount matches what we init'd
-		const expected_amt = reg_data.amt as number;
+		// Anti-fraud: confirm amount matches what we stored locally
+		const expected_amt = reg.amt;
 		if (verified.amount !== expected_amt) {
 			console.error(
 				`[POST /api/verify-payment] Amount mismatch for ${reg_id}: expected ${expected_amt}, got ${verified.amount}`
@@ -76,44 +73,38 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 			return json({ error: 'Amount mismatch' }, { status: 400 });
 		}
 
-		// // Look up school on Google Maps via Serper to verify it's a school
-		// const school_name = reg_data.sn as string;
-		// console.log(`[POST /api/verify-payment] Searching maps for school: "${school_name}"...`);
-		// const v = await search_maps(school_name);
-		// console.log(`[POST /api/verify-payment] Maps lookup result for "${school_name}": v=${v}`);
-
-		// Write full registration to DB now that payment is confirmed
+		// Write full registration to DB now that payment is confirmed (no password persisted)
 		console.log(`[POST /api/verify-payment] Payment confirmed! Writing registration to DB for ID: ${reg_id}...`);
 		const payload: Registration = {
 			s: 'reg',
-			fn: reg_data.fn as string,
-			ln: reg_data.ln as string,
-			sn: reg_data.sn as string,
-			e: reg_data.e as string,
-			p: reg_data.p as string,
+			fn: reg.fn,
+			ln: reg.ln,
+			sn: reg.sn,
+			e: reg.e,
+			p: reg.p,
 			st: 'paid',
 			v: 0,
 			amt: expected_amt,
 			d: Date.now(),
 			ref: verified.reference,
-			ac: reg_data.ac as string | undefined
+			ac: reg.ac
 		};
 
 		await create(payload, undefined, reg_id);
 		console.log(`[POST /api/verify-payment] Registration written to DB successfully with status 'paid'`);
 
-		// Create or update player user account
-		const email = reg_data.e as string;
-		const pw = reg_data.pw as string | undefined;
+		// Create or update player user account (hash the password stored on the pending record)
+		const email = reg.e;
+		const pw = reg.pw;
 		let ph: string | undefined;
 		if (pw) ph = await bcrypt.hash(pw, 10);
-		const user_id = await find_or_create_player_user(email, `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(), ph);
+		const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
 
-		const session = await encode_session({ id: user_id, email, name: `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim() });
+		const session = await encode_session({ id: user_id, email, name: `${reg.fn || ''} ${reg.ln || ''}`.trim() });
 		cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
 		// Fire-and-forget affiliate payout
-		process_affiliate_payout(reg_data, reg_id, platform).catch(e =>
+		process_affiliate_payout(reg, reg_id, platform).catch(e =>
 			console.error(`[payout] Failed for ${reg_id}:`, e)
 		);
 
