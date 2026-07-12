@@ -210,3 +210,10 @@ https://svelte.dev/e/state_referenced_locally
 11:46:12 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
 11:46:23 PM [vite] (client) hmr update /src/lib/components/championship/ChampNav.svelte?svelte&type=style&lang.css, /src/app.css
 11:46:23 PM [vite] (ssr) page reload src/lib/components/championship/ChampNav.svelte
+11:51:51 PM [vite] (ssr) page reload src/routes/+page.svelte
+11:52:06 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:52:06 PM [vite] (ssr) page reload src/routes/+page.svelte
+11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/16.js
+11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/17.js
+11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+11:52:11 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
