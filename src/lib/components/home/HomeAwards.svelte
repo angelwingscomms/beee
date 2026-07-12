@@ -22,7 +22,6 @@
 </script>
 
 <section id="awards" class="awards">
-  <div class="awards-glow" aria-hidden="true"></div>
   <div class="awards-inner">
     <header class="awards-head" use:motionFadeUp>
       <span class="awards-eyebrow"><span class="dot"></span>Awards &amp; Recognition</span>
@@ -35,7 +34,7 @@
       <article class="award-feature" use:motionFadeUp>
         <div class="feature-shimmer" aria-hidden="true"></div>
         <div class="feature-top">
-          <span class="feature-icon"><feature.icon size={26} /></span>
+          <span class="feature-icon"><img src="/logo.svg" alt="BEEE" width="26" height="26" /></span>
           <span class="feature-kicker">{feature.kicker}</span>
         </div>
         <div class="feature-body">
@@ -66,19 +65,6 @@
     padding: clamp(72px, 12vw, 160px) 0;
     background: var(--navy, #0A0F1A);
     isolation: isolate;
-  }
-
-  .awards-glow {
-    position: absolute;
-    top: -20%;
-    left: 50%;
-    width: min(1100px, 120vw);
-    height: 600px;
-    transform: translateX(-50%);
-    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 178, 0, 0.10) 0%, transparent 70%);
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: -1;
   }
 
   .awards-inner {

@@ -204,10 +204,12 @@
 
 <!-- Section 2: The Journey -->
 <section id="journey" class="min-h-screen py-12 md:py-16 bg-navy">
+    <div class="journey-glow" aria-hidden="true"></div>
     <div class="framework-container">
         <div class="header">
-            <div class="super-title">The Championship Framework</div>
-            <div class="main-title">BEEE Project</div>
+            <div class="super-title"><span class="super-dot"></span>The Championship Framework</div>
+            <div class="main-title">BEEE <span class="main-shine">Project</span></div>
+            <p class="framework-lede">Three integrated pillars, one champion. Every element feeds into the BEEE experience.</p>
         </div>
         <div class="glow-divider"></div>
         <div class="tree-container">
@@ -217,6 +219,7 @@
                 <div class="node-column">
                     <div class="line-v node-drop"></div>
                     <div class="card">
+                        <span class="card-badge">01</span>
                         <div class="card-icon">
                             <svg viewBox="0 0 64 64" width="48" height="48" fill="#ffb200">
                                 <path d="M32 30c5.5 0 10-4.5 10-10S37.5 10 32 10s-10 4.5-10 10 4.5 10 10 10zm0 5c-6.7 0-20 3.3-20 10v9h40v-9c0-6.7-13.3-10-20-10z"/>
@@ -232,6 +235,7 @@
                 <div class="node-column">
                     <div class="line-v node-drop"></div>
                     <div class="card">
+                        <span class="card-badge">02</span>
                         <div class="card-icon">
                             <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#ffb200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -249,6 +253,7 @@
                 <div class="node-column">
                     <div class="line-v node-drop"></div>
                     <div class="card">
+                        <span class="card-badge">03</span>
                         <div class="card-icon">
                             <svg viewBox="0 0 24 24" width="45" height="45" fill="none" stroke="#ffb200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="6" y="6" width="12" height="12" rx="1" ry="1"></rect>
@@ -276,10 +281,9 @@
             <div class="line-h"></div>
             <div class="line-v bottom-drop with-arrow"></div>
             <div class="bottom-card">
+                <div class="bottom-shimmer" aria-hidden="true"></div>
                 <div class="bottom-card-icon">
-                    <svg viewBox="0 0 512 512" width="45" height="45" fill="#ffb200">
-                        <path d="M256 0c17.7 0 32 14.3 32 32V64h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H288v25.2c40 13.9 76.6 37 106.6 67H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32s14.3-32 32-32h21.4c30-30 66.5-53.1 106.6-67V128H192c-17.7 0-32-14.3-32-32s14.3-32 32-32h32V32c0-17.7 14.3-32 32-32zM80 352h352c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 96h352c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
-                    </svg>
+                    <img src="/logo.svg" alt="BEEE" width="45" height="45" />
                 </div>
                 <div class="bottom-card-text">
                     <div class="bottom-card-title">BEEE SPECTACULAR CHESS</div>
@@ -329,9 +333,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #101a30 0%, transparent 55%),
+      var(--navy, #0A0F1A);
+  }
+  #journey::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 178, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 178, 0, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask: radial-gradient(70% 55% at 50% 45%, #000 0%, transparent 75%);
+    mask: radial-gradient(70% 55% at 50% 45%, #000 0%, transparent 75%);
+    pointer-events: none;
+    z-index: -1;
   }
   #journey::-webkit-scrollbar {
     display: none;
+  }
+
+  .journey-glow {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    width: min(900px, 110vw);
+    height: 500px;
+    transform: translateX(-50%);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 178, 0, 0.10) 0%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: -1;
   }
 
   .framework-container {
@@ -350,22 +386,60 @@
   }
 
   .super-title {
-    font-family: 'Space Grotesk', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Inter', sans-serif;
     color: #ffb200;
-    font-size: 28px;
-    letter-spacing: 8px;
-    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 178, 0, 0.28);
+    border-radius: 9999px;
+    background: rgba(255, 178, 0, 0.06);
+  }
+
+  .super-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffb200;
+    box-shadow: 0 0 10px 2px rgba(255, 178, 0, 0.7);
   }
 
   .main-title {
     font-family: 'Space Grotesk', sans-serif;
     color: #FFFFFF;
-    font-size: 46px;
-    letter-spacing: 2px;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    letter-spacing: -0.02em;
     font-weight: 800;
     text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .main-shine {
+    background: linear-gradient(100deg, #ffb200 0%, #ffe08a 30%, #ffb200 60%, #d98f00 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite;
+  }
+
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+
+  .framework-lede {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    line-height: 1.6;
+    max-width: 460px;
+    margin: 18px auto 0;
   }
 
   .glow-divider {
@@ -373,7 +447,7 @@
     max-width: 650px;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 199, 44, 0.6), transparent);
-    margin: 15px auto 0;
+    margin: 34px auto 0;
     position: relative;
   }
 
@@ -395,18 +469,43 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 0;
+    margin-top: 34px;
   }
 
   .line-v {
-    width: 0;
-    border-left: 1px dashed rgba(255, 178, 0, 0.5);
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 178, 0, 0.15), rgba(255, 178, 0, 0.55));
+    position: relative;
+    overflow: hidden;
   }
 
   .line-h {
-    height: 0;
-    border-top: 1px dashed rgba(255, 178, 0, 0.5);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 178, 0, 0.5) 20%, rgba(255, 178, 0, 0.5) 80%, transparent);
     width: 530px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .line-v::after {
+      content: '';
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      height: 40%;
+      background: linear-gradient(180deg, transparent, #ffe08a, transparent);
+      filter: blur(1px);
+      animation: flow-down 2.6s ease-in-out infinite;
+    }
+    .top-drop::after { animation-delay: 0s; }
+    .node-drop::after { animation-delay: 0.5s; }
+    .bottom-drop::after { animation-delay: 1s; }
+  }
+
+  @keyframes flow-down {
+    0% { top: -50%; opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
   }
 
   .top-drop {
@@ -422,14 +521,16 @@
     position: relative;
   }
 
-  .with-arrow::after {
+  .with-arrow::before {
     content: '';
     position: absolute;
     bottom: -5px;
-    left: -5px;
-    border-width: 6px 4px 0 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px 5px 0 5px;
     border-style: solid;
     border-color: #ffb200 transparent transparent transparent;
+    filter: drop-shadow(0 0 6px rgba(255, 178, 0, 0.6));
   }
 
   .nodes-wrapper {
@@ -447,27 +548,77 @@
 
   .card {
     width: 220px;
-    height: 180px;
-    background-color: #080c16;
-    border: 1px solid rgba(255, 178, 0, 0.55);
-    box-shadow: 0 0 0 1px rgba(255, 178, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
-    border-radius: 12px;
+    height: 190px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%),
+      #080c16;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.6);
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 10px;
+    padding: 24px 14px;
     text-align: center;
     position: relative;
     z-index: 2;
+    overflow: hidden;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), border-color 400ms ease, box-shadow 400ms ease;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, rgba(255, 178, 0, 0.6), transparent 45%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 400ms ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: transparent;
+      box-shadow: 0 30px 60px -24px rgba(255, 178, 0, 0.35);
+    }
+    .card:hover::after { opacity: 1; }
+    .card:hover .card-badge { color: rgba(255, 178, 0, 0.55); }
+    .card:hover .card-icon {
+      transform: translateY(-2px) scale(1.06);
+      background: rgba(255, 178, 0, 0.16);
+    }
   }
 
   .card-icon {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: rgba(255, 178, 0, 0.09);
+    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), background 400ms ease;
   }
 
   .card-title {
@@ -481,7 +632,7 @@
 
   .card-subtitle {
     font-family: 'Inter', sans-serif;
-    color: #E2E2E2;
+    color: rgba(255, 255, 255, 0.55);
     font-size: 13px;
     line-height: 1.4;
     font-weight: 400;
@@ -489,24 +640,45 @@
 
   .bottom-card {
     width: 480px;
-    height: 95px;
-    background-color: #080c16;
-    border: 1px solid rgba(255, 178, 0, 0.55);
-    box-shadow: 0 0 0 1px rgba(255, 178, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
-    border-radius: 12px;
+    height: 100px;
+    background: radial-gradient(140% 160% at 0% 0%, #ffe08a 0%, #ffb200 42%, #f59e0b 100%);
+    border-radius: 18px;
+    box-shadow: 0 26px 60px -26px rgba(255, 178, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 35px;
-    gap: 25px;
+    padding: 0 36px;
+    gap: 22px;
     position: relative;
     z-index: 2;
+    overflow: hidden;
+  }
+
+  .bottom-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 48%, transparent 62%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bottom-card:hover .bottom-shimmer {
+      transform: translateX(120%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
   }
 
   .bottom-card-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: #000;
+    flex-shrink: 0;
+    position: relative;
   }
 
   .bottom-card-text {
@@ -514,21 +686,22 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    position: relative;
   }
 
   .bottom-card-title {
     font-family: 'Space Grotesk', sans-serif;
-    color: #FFFFFF;
+    color: #0A0F1A;
     font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
 
   .bottom-card-subtitle {
     font-family: 'Inter', sans-serif;
-    color: #ffb200;
+    color: rgba(10, 15, 26, 0.72);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   @media (max-width: 768px) {
@@ -549,8 +722,9 @@
 
     .card {
       width: 100%;
-      height: 140px;
-      padding: 14px 10px;
+      height: auto;
+      min-height: 160px;
+      padding: 22px 14px;
     }
 
     .card-title {
@@ -576,9 +750,8 @@
 
     .line-h {
       width: 1px;
-      height: 0;
-      border-top: none;
-      border-left: 1px dashed rgba(255, 178, 0, 0.5);
+      height: 24px;
+      background: linear-gradient(180deg, rgba(255, 178, 0, 0.15), rgba(255, 178, 0, 0.55));
     }
 
     .bottom-drop {

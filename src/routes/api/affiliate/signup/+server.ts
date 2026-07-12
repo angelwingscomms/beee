@@ -4,12 +4,12 @@ import bcrypt from 'bcryptjs';
 import Sqids from 'sqids';
 import { create, find_user_by_email, new_id } from '$lib/db';
 import { encode_session } from '$lib/server/session';
-import { env_val } from '$lib/server/env';
+import { env } from '$env/dynamic/private';
 import type { User } from '$lib/types';
 
 const sqids = new Sqids({ minLength: 6 });
 
-export const POST: RequestHandler = async ({ request, cookies, platform }) => {
+export const POST: RequestHandler = async ({ request, cookies }) => {
   const { email, password, name } = await request.json();
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -41,8 +41,7 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
   };
   await create(u, undefined, user_id);
 
-  const secret = await env_val(platform?.env, 'SECRET');
-  const session = await encode_session({ id: user_id, name: u.n, email }, secret);
+  const session = await encode_session({ id: user_id, name: u.n, email });
   cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
   return json({ success: true, redirect: '/affiliate/settings' });

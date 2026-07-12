@@ -2,22 +2,14 @@ import { decodeIdToken } from 'arctic';
 import { google_client as get_google } from '$lib/server/oauth';
 import { encode_session } from '$lib/server/session';
 import { create, find_user_by_email, new_id } from '$lib/db';
-import { env_val } from '$lib/server/env';
+import { env } from '$env/dynamic/private';
 import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  let google_id = '';
-  let google_secret = '';
-  let session_secret = '';
-  try {
-    const env = event.platform?.env;
-    google_id = await env_val(env, 'GOOGLE_ID');
-    google_secret = await env_val(env, 'GOOGLE_SECRET');
-    session_secret = await env_val(env, 'SECRET');
-  } catch {
-    return new Response(null, { status: 302, headers: { Location: '/' } });
-  }
+  const google_id = env.GOOGLE_ID;
+  const google_secret = env.GOOGLE_SECRET;
+  const session_secret = env.SECRET;
 
   const code = event.url.searchParams.get('code');
   const state = event.url.searchParams.get('state');
@@ -45,7 +37,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
       await create(u, undefined, user_id);
     }
 
-    const session = await encode_session({ id: user_id, name, picture, email }, session_secret);
+    const session = await encode_session({ id: user_id, name, picture, email });
     event.cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
     event.cookies.delete('oauth_state', { path: '/' });
     event.cookies.delete('oauth_verifier', { path: '/' });
