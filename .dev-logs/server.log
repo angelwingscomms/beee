@@ -163,3 +163,17 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 7:43:53 PM [vite-plugin-svelte] src/routes/register/+page.svelte:538:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:368:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:476:2 Unused CSS selector ".reg-summary-deadline"
+https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:534:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/routes/register/+page.svelte?svelte&type=style&lang.css, /src/app.css
+7:44:43 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:368:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:476:2 Unused CSS selector ".reg-summary-deadline"
+https://svelte.dev/e/css_unused_selector
+7:44:43 PM [vite-plugin-svelte] src/routes/register/+page.svelte:534:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector

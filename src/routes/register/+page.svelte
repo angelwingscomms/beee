@@ -277,10 +277,6 @@
           <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
           <span class="reg-per">per participant</span>
         </div>
-        <div class="reg-summary-deadline">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" rx="7.5" stroke="currentColor"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-linecap="round"/></svg>
-          Limited slots available
-        </div>
         <p class="reg-summary-note">Registration may be paid for by a parent or sponsor</p>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
