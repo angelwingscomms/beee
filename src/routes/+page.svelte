@@ -138,7 +138,7 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-4xl md:text-5xl text-[rgb(255,107,0)] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
     <div class="w-16 h-1 bg-[rgb(255,107,0)] rounded-full mx-auto mb-6" aria-hidden="true"></div>
-    <p class="font-['Inter'] text-gray-300 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning.</p>
+    <p class="font-['Inter'] text-gray-600 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning.</p>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
     <!-- Card 1: E4 -->
     <div
