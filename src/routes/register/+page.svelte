@@ -237,6 +237,7 @@
             inputClass="!text-white placeholder:!text-white/30"
             oninput={handleAffiliateInput}
           />
+          <p class="reg-affiliate-help">Registering with a partner code gives a 10% discount.</p>
           {#if acLoading}
             <div class="reg-discount-callout">
               <span>Checking affiliate code…</span>
@@ -399,6 +400,12 @@
   }
   .reg-affiliate-wrap {
     margin-top: -12px;
+  }
+  .reg-affiliate-help {
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.55);
   }
   .reg-discount-callout {
     display: flex;
