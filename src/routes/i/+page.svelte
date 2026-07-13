@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-    <title>Admin — BEEE TEAMUP</title>
+    <title>Admin — BEEE T.E.A.M.U.P.</title>
 </svelte:head>
 
 <div class="page-shell">

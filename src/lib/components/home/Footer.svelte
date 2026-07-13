@@ -7,7 +7,7 @@
     return [
       { href: '/', label: 'Home' },
       { href: '/register', label: 'Registration' },
-      { href: '/teamup', label: 'TEAMUP' },
+      { href: '/teamup', label: 'T.E.A.M.U.P.' },
       { href: '/faq', label: 'FAQ' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/terms', label: 'Terms' },

@@ -11,7 +11,7 @@
       <h1 class="hero-title">More Than A<br>Chess Championship</h1>
       <p class="hero-words">Compete. Develop. Excel.</p>
       <p class="hero-body">
-        Every participant gains access to the TEAMUP Development Programme,
+        Every participant gains access to the T.E.A.M.U.P. Development Programme,
         a unique journey that combines chess, innovation, leadership, mentorship,
         creativity, and personal growth.
       </p>

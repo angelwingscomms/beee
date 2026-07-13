@@ -7,7 +7,7 @@
   <div class="tu-cta-inner">
     <h2 class="tu-cta-title">Ready to develop beyond the board?</h2>
     <p class="tu-cta-body">
-      Join the BEEE Spectacular Chess Championship and unlock the full TEAMUP Development Programme — where every move builds a brighter future.
+      Join the BEEE Spectacular Chess Championship and unlock the full T.E.A.M.U.P. Development Programme — where every move builds a brighter future.
     </p>
     <Button href="/register" class="tu-cta-btn">Register Now</Button>
   </div>

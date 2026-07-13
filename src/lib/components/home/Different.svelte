@@ -10,7 +10,7 @@
       <p class="statement-strong">BEEE begins with a journey.</p>
     </div>
     <p class="different-body">
-      Every participant receives access to the <strong>TEAMUP Development Programme</strong>
+      Every participant receives access to the <strong>T.E.A.M.U.P. Development Programme</strong>
       and a digital <strong>Development Passport</strong> that records milestones, badges, projects,
       achievements, and personal growth throughout the championship cycle.
     </p>

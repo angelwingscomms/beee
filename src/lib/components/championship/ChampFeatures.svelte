@@ -37,7 +37,7 @@
 <section id="features" class="section-soft" use:motionStagger>
   <div class="container" style="padding: 120px 0;">
     <div class="champ-features-header">
-      <h2 class="champ-features-title">The TEAMUP™ Development Programme</h2>
+      <h2 class="champ-features-title">The T.E.A.M.U.P.™ Development Programme</h2>
       <p class="champ-features-sub">A holistic approach to whole child development with a focus on Technology, Enterprise, Art, Mentorship and Upskilling.</p>
     </div>
     <div class="champ-bento">

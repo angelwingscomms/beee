@@ -65,7 +65,7 @@
         <p class="affiliate-badge">Affiliate Program</p>
         <h1 class="affiliate-title">Share the Experience.<br>Earn Rewards.</h1>
         <p class="affiliate-intro">
-          Help families discover the BEEE TEAMUP programme and chess championship.
+          Help families discover the BEEE T.E.A.M.U.P. programme and chess championship.
           You earn 10% of every registration fee from players you refer.
         </p>
         <div class="affiliate-steps">

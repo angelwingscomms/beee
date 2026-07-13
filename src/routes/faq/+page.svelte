@@ -24,7 +24,7 @@
 
 <svelte:head>
 	<title>FAQ — BEEE Spectacular Chess Championship Abuja 2026</title>
-	<meta name="description" content="Frequently asked questions about the BEEE Spectacular Chess Championship Abuja 2026 and TEAMUP Development Programme — registration, participation, awards, and more." />
+	<meta name="description" content="Frequently asked questions about the BEEE Spectacular Chess Championship Abuja 2026 and T.E.A.M.U.P. Development Programme — registration, participation, awards, and more." />
 </svelte:head>
 
 <!-- SEO FAQPage schema -->

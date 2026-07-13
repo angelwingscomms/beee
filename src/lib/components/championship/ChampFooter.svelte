@@ -22,7 +22,7 @@
         </div>
         <div class="champ-footer-col">
           <strong>Programme</strong>
-          <a href="/teamup">TEAMUP</a>
+          <a href="/teamup">T.E.A.M.U.P.</a>
           <a href="/passport">Development Passport</a>
         </div>
         <div class="champ-footer-col">

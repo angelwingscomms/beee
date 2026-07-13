@@ -31,7 +31,7 @@
       <a href="/" class:active={path === '/'}>Home</a>
       <a href="/about" class:active={path === '/about'}>About</a>
       <a href="/e4" class:active={path === '/e4'}>E4</a>
-      <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
+      <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
       <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
       <a href="/affiliate" class:active={path === '/affiliate'}>Affiliates</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
@@ -51,7 +51,7 @@
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
       <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>
-      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
+      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>T.E.A.M.U.P.</a>
       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
       <a href="/affiliate" class:active={path === '/affiliate'} onclick={() => open = false}>Affiliates</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>

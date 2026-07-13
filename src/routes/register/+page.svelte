@@ -193,7 +193,7 @@
 
 <svelte:head>
   <title>Register — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="Register your child for the BEEE TEAMUP programme and Spectacular Chess Championship Abuja 2026." />
+  <meta name="description" content="Register your child for the BEEE T.E.A.M.U.P. programme and Spectacular Chess Championship Abuja 2026." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full reg-page" style="background: url({regBg.img.src}) center center / cover no-repeat fixed">

@@ -21,7 +21,7 @@
       <div class="champ-involved-col">
         <h3 class="champ-involved-title">Information for Schools</h3>
         <p class="champ-involved-text">Participating schools receive a unique registration code through which eligible players may enrol in the programme.</p>
-        <p class="champ-involved-text">The TEAMUP™ Development Programme complements summer learning by providing meaningful developmental opportunities that continue beyond the classroom.</p>
+        <p class="champ-involved-text">The T.E.A.M.U.P.™ Development Programme complements summer learning by providing meaningful developmental opportunities that continue beyond the classroom.</p>
       </div>
       <div class="champ-involved-col">
         <h3 class="champ-involved-title">Registration</h3>

@@ -83,14 +83,14 @@
 
 <svelte:head>
   <title>BEEE Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the TEAMUP programme. Summer 2026." />
+  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the T.E.A.M.U.P. programme. Summer 2026." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the TEAMUP programme.",
+        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the T.E.A.M.U.P. programme.",
         "startDate": "2026-10-10",
         "endDate": "2026-10-10",
         "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
@@ -103,7 +103,7 @@
         "name": "BEEE Spectacular Chess Championship",
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth chess championship with AI training, leadership mentorship, and the TEAMUP development programme for Abuja kids aged 10-14.",
+        "description": "Youth chess championship with AI training, leadership mentorship, and the T.E.A.M.U.P. development programme for Abuja kids aged 10-14.",
         "contactPoint": { "@type": "ContactPoint", "email": "info@beeeproject.com", "telephone": "+234-802-092-0872", "contactType": "customer service" }
       }
     ]
@@ -128,7 +128,7 @@
 
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
       <PlatformCard bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
-      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
+      <PlatformCard bg="#ffb200" title="T.E.A.M.U.P.&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
       <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="The participant's digital record documenting measurable accomplishments &mdash; badges, milestones, projects, certificates, skills, mentorship, leadership experiences and growth indices throughout the championship journey." href="/taskify" />
     </div>
   </div>
@@ -171,7 +171,7 @@
       </div>
     </div>
 
-    <!-- Card 3: TEAMUP -->
+    <!-- Card 3: T.E.A.M.U.P. -->
     <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
       <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
@@ -210,7 +210,7 @@
                                 <path d="M50 26c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm0 4c-1.8 0-3.3.3-4.8.8 2.7 1.9 3.8 4.4 3.8 6.1v5h13v-6c0-4-7.6-6-12-6z"/>
                             </svg>
                         </div>
-                        <div class="card-title">TEAMUP</div>
+                        <div class="card-title">T.E.A.M.U.P.</div>
                         <div class="card-subtitle">Community &<br>Partnerships</div>
                     </div>
                     <div class="line-v node-drop"></div>
