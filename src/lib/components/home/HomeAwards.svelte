@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Medal, BadgeCheck, FileText, Award, Sparkles, Users, Lightbulb, Star, School } from '@lucide/svelte';
   import { motionStaggered, motionFadeUp } from '$lib/actions/motion';
+  import Logo from '$lib/components/Logo.svelte';
 
   const feature = {
     icon: Sparkles,
@@ -34,7 +35,7 @@
       <article class="award-feature" use:motionFadeUp>
         <div class="feature-shimmer" aria-hidden="true"></div>
         <div class="feature-top">
-          <span class="feature-icon"><img src="/logo.svg" alt="BEEE" width="26" height="26" /></span>
+          <span class="feature-icon"><Logo color="#141413" width="50" height="50" /></span>
           <span class="feature-kicker">{feature.kicker}</span>
         </div>
         <div class="feature-body">
@@ -83,17 +84,25 @@
   .awards-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 18px;
+    gap: 12px;
     font-family: 'Inter', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #ffb200;
-    padding: 14px 32px;
+    padding: 10px 24px;
     border: 1px solid rgba(255, 178, 0, 0.28);
     border-radius: 9999px;
     background: rgba(255, 178, 0, 0.06);
+  }
+
+  @media (max-width: 640px) {
+    .awards-eyebrow {
+      font-size: 14px;
+      gap: 6px;
+      padding: 6px 14px;
+    }
   }
 
   .awards-eyebrow .dot {
@@ -189,10 +198,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
     border-radius: 16px;
-    background: #0A0F1A;
     color: #ffb200;
     flex-shrink: 0;
   }

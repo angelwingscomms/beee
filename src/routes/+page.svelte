@@ -7,6 +7,7 @@
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
   import HomeAwards from '$lib/components/home/HomeAwards.svelte';
+  import Logo from '$lib/components/Logo.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -130,7 +131,7 @@
 <ChampHero />
 
 <!-- Section: What Makes BEEE Different -->
-<section id="diff-section" class="py-32 md:py-48 bg-navy">
+<section id="diff-section" class="bg-navy">
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
@@ -153,8 +154,8 @@
 
 <!-- Section 3: The Platform -->
 <section id="platform" class="py-20 px-6">
-    <h2 class="font-hero text-4xl md:text-5xl text-[#141413] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
-    <div class="w-16 h-1 bg-amber-400 rounded-full mx-auto mb-16" aria-hidden="true"></div>
+    <h2 class="font-hero text-4xl md:text-5xl text-[rgb(255,107,0)] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
+    <div class="w-16 h-1 bg-[rgb(255,107,0)] rounded-full mx-auto mb-16" aria-hidden="true"></div>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
     <!-- Card 1: E4 -->
     <div
@@ -283,7 +284,7 @@
             <div class="bottom-card">
                 <div class="bottom-shimmer" aria-hidden="true"></div>
                 <div class="bottom-card-icon">
-                    <img src="/logo.svg" alt="BEEE" width="45" height="45" />
+                    <Logo color="#141413" width="50" height="50" />
                 </div>
                 <div class="bottom-card-text">
                     <div class="bottom-card-title">BEEE SPECTACULAR CHESS</div>
@@ -676,7 +677,6 @@
     width: 60px;
     height: 60px;
     border-radius: 15px;
-    background: #000;
     flex-shrink: 0;
     position: relative;
   }
