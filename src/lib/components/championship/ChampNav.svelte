@@ -33,7 +33,7 @@
       <a href="/e4" class:active={path === '/e4'}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
       <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
-      <a href="/affiliate" class:active={path === '/affiliate'}>Affiliates</a>
+      <a href="/partner" class:active={path === '/partner'}>Partners</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
     <Button href="/register" class="champ-nav-cta">Register</Button>
@@ -53,7 +53,7 @@
       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>T.E.A.M.U.P.</a>
       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
-      <a href="/affiliate" class:active={path === '/affiliate'} onclick={() => open = false}>Affiliates</a>
+      <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
       {#if user}
         <button class="champ-mobile-logout" onclick={() => { open = false; logout(); }}>Log out</button>

@@ -19,7 +19,7 @@
 
     <section class="legal-section">
       <h2>2. Registration and fees</h2>
-      <p>Registration requires payment of the stated participation fee via our payment partner, Paystack. Registration is confirmed only once payment is successfully verified. Fees are per the amount shown at checkout and may vary if an affiliate discount code is applied.</p>
+      <p>Registration requires payment of the stated participation fee via our payment partner, Paystack. Registration is confirmed only once payment is successfully verified. Fees are per the amount shown at checkout and may vary if an partner discount code is applied.</p>
     </section>
 
     <section class="legal-section">
@@ -43,8 +43,8 @@
     </section>
 
     <section class="legal-section">
-      <h2>7. Affiliate programme</h2>
-      <p>Affiliates earn commissions on valid registrations made using their code, paid to the bank details they provide. We may withhold or reverse commissions linked to fraud, refunds, or terms violations.</p>
+      <h2>7. Partner programme</h2>
+      <p>Partners earn commissions on valid registrations made using their code, paid to the bank details they provide. We may withhold or reverse commissions linked to fraud, refunds, or terms violations.</p>
     </section>
 
     <section class="legal-section">

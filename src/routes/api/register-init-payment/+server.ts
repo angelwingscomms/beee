@@ -24,15 +24,15 @@ export const POST: RequestHandler = async ({ request, url }) => {
     let discounted = false;
     let ac: string | undefined;
 
-    if (data.affiliateCode) {
-        const affs = await search_by_payload<User>({ s: 'u', ac: data.affiliateCode });
+    if (data.partnerCode) {
+        const affs = await search_by_payload<User>({ s: 'u', ac: data.partnerCode });
         const valid = affs.some(u => u.c?.includes('fab'));
         if (!valid) {
-            return json({ error: 'Invalid affiliate code' }, { status: 400 });
+            return json({ error: 'Invalid partner code' }, { status: 400 });
         }
         amount_kobo = get_discounted_amount();
         discounted = true;
-        ac = data.affiliateCode;
+        ac = data.partnerCode;
     }
 
     const i = new_id();

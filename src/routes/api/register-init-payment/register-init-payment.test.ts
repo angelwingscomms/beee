@@ -38,13 +38,13 @@ function mock_handler(body: Record<string, unknown>) {
     return { request: req, url: new URL('http://localhost/api/register-init-payment') };
 }
 
-describe('register-init-payment affiliate code validation', () => {
+describe('register-init-payment partner code validation', () => {
     beforeEach(() => {
         mock_dev = false;
         mockUsers.length = 0;
     });
 
-    it('accepts registration without affiliate code', async () => {
+    it('accepts registration without partner code', async () => {
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
@@ -54,38 +54,38 @@ describe('register-init-payment affiliate code validation', () => {
         expect(d.success).toBe(true);
     });
 
-    it('rejects invalid affiliate code with 400 error', async () => {
+    it('rejects invalid partner code with 400 error', async () => {
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
             phone: '+234801234567', school: 'Test School', password: 'password123',
-            affiliateCode: 'INVALID_CODE'
+            partnerCode: 'INVALID_CODE'
         }) as any);
         expect(res.status).toBe(400);
         const d = await res.json();
-        expect(d.error).toBe('Invalid affiliate code');
+        expect(d.error).toBe('Invalid partner code');
     });
 
-    it('rejects non-affiliate code that exists in DB', async () => {
+    it('rejects non-partner code that exists in DB', async () => {
         mockUsers.push({ s: 'u', ac: 'PLAYER1', c: ['rpb'] });
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
             phone: '+234801234567', school: 'Test School', password: 'password123',
-            affiliateCode: 'PLAYER1'
+            partnerCode: 'PLAYER1'
         }) as any);
         expect(res.status).toBe(400);
         const d = await res.json();
-        expect(d.error).toBe('Invalid affiliate code');
+        expect(d.error).toBe('Invalid partner code');
     });
 
-    it('accepts valid affiliate code and returns discounted amount', async () => {
+    it('accepts valid partner code and returns discounted amount', async () => {
         mockUsers.push({ s: 'u', ac: 'AFF123', c: ['fab'] });
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
             phone: '+234801234567', school: 'Test School', password: 'password123',
-            affiliateCode: 'AFF123'
+            partnerCode: 'AFF123'
         }) as any);
         expect(res.status).toBe(200);
         const d = await res.json();
@@ -94,7 +94,7 @@ describe('register-init-payment affiliate code validation', () => {
         expect(d.amount).toBe(1_350_000);
     });
 
-    it('returns full amount without affiliate code', async () => {
+    it('returns full amount without partner code', async () => {
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'Jane', lastName: 'Doe', email: 'jane@example.com',
@@ -116,14 +116,14 @@ describe('register-init-payment affiliate code validation', () => {
         expect(d.amount).toBe(150_000);
     });
 
-    it('applies discount on valid affiliate code in dev mode', async () => {
+    it('applies discount on valid partner code in dev mode', async () => {
         mock_dev = true;
         mockUsers.push({ s: 'u', ac: 'DEV_AFF', c: ['fab'] });
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'Dev', lastName: 'User', email: 'dev@example.com',
             phone: '+234801234569', school: 'Dev School', password: 'password123',
-            affiliateCode: 'DEV_AFF'
+            partnerCode: 'DEV_AFF'
         }) as any);
         const d = await res.json();
         expect(d.amount).toBe(135_000);

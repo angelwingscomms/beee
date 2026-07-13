@@ -19,7 +19,7 @@
 
     <section class="legal-section">
       <h2>2. Data we collect</h2>
-      <p>When you register or create an account we collect: your name, email address, phone number, school or organisation, and a password (stored hashed, never in plain text). If you register a team we also collect player names and team details. Affiliates additionally provide bank account details needed to pay commissions.</p>
+      <p>When you register or create an account we collect: your name, email address, phone number, school or organisation, and a password (stored hashed, never in plain text). If you register a team we also collect player names and team details. Partners additionally provide bank account details needed to pay commissions.</p>
       <p>If you sign in with Google, we receive your name, email, and profile picture from Google. We do not receive your Google password.</p>
     </section>
 
@@ -29,7 +29,7 @@
         <li>To create and manage your account and registrations.</li>
         <li>To process payments through our payment partner, Paystack.</li>
         <li>To communicate with you about the Championship (confirmations, schedules, results).</li>
-        <li>To pay affiliate commissions to the bank details you provide.</li>
+        <li>To pay partner commissions to the bank details you provide.</li>
         <li>To improve our programmes and prevent fraud.</li>
       </ul>
     </section>
@@ -41,7 +41,7 @@
 
     <section class="legal-section">
       <h2>5. Cookies and local storage</h2>
-      <p>We use a session cookie to keep you signed in, and browser local storage to remember your theme preference and any affiliate referral code. You can clear these at any time in your browser settings; doing so will sign you out.</p>
+      <p>We use a session cookie to keep you signed in, and browser local storage to remember your theme preference and any partner referral code. You can clear these at any time in your browser settings; doing so will sign you out.</p>
     </section>
 
     <section class="legal-section">
@@ -56,7 +56,7 @@
 
     <section class="legal-section">
       <h2>8. Data retention</h2>
-      <p>We keep registration and account data for as long as your account exists and for a reasonable period afterwards to meet legal and operational obligations. Affiliate bank details are removed when an affiliate account is closed.</p>
+      <p>We keep registration and account data for as long as your account exists and for a reasonable period afterwards to meet legal and operational obligations. Partner bank details are removed when an partner account is closed.</p>
     </section>
 
     <section class="legal-section">

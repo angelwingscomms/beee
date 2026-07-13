@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
 import { create, get, find_or_create_player_user } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
-import { process_affiliate_payout, reconcile_transfer_payout } from '$lib/affiliate';
+import { process_partner_payout, reconcile_transfer_payout } from '$lib/partner';
 import type { Registration } from '$lib/types/registration';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
@@ -64,7 +64,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		const process = async () => {
 			console.log(`[POST /api/webhooks/paystack] [async process] Starting process for event: ${event.event}`);
 			try {
-				// Reconcile affiliate payout terminal status from transfer events.
+				// Reconcile partner payout terminal status from transfer events.
 				if (event.event === 'transfer.success' || event.event === 'transfer.failed' || event.event === 'transfer.reversed') {
 					const ref = event.data.reference as string;
 					const st = event.event === 'transfer.success' ? 'success' : event.event === 'transfer.reversed' ? 'reversed' : 'failed';
@@ -132,8 +132,8 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 				const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
 				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
 
-				// Fire-and-forget affiliate payout
-				process_affiliate_payout(reg, ref, platform).catch(e =>
+				// Fire-and-forget partner payout
+				process_partner_payout(reg, ref, platform).catch(e =>
 					console.error(`[webhook payout] Failed for ${ref}:`, e)
 				);
 			}

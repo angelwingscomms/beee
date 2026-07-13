@@ -18,7 +18,7 @@ vi.mock('$lib/db', () => ({
     }),
 }));
 
-describe('validate-affiliate endpoint', () => {
+describe('validate-partner endpoint', () => {
     beforeEach(() => {
         mock_dev = false;
         mockUsers.length = 0;
@@ -26,7 +26,7 @@ describe('validate-affiliate endpoint', () => {
 
     it('returns valid=false for non-existent code', async () => {
         const { POST } = await import('./+server');
-        const req = new Request('http://localhost/api/validate-affiliate', {
+        const req = new Request('http://localhost/api/validate-partner', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: 'NONEXISTENT' })
@@ -36,10 +36,10 @@ describe('validate-affiliate endpoint', () => {
         expect(d.valid).toBe(false);
     });
 
-    it('returns valid=false for a code that exists but is not an affiliate', async () => {
+    it('returns valid=false for a code that exists but is not an partner', async () => {
         mockUsers.push({ s: 'u', ac: 'PLAYER1', c: ['rpb'] });
         const { POST } = await import('./+server');
-        const req = new Request('http://localhost/api/validate-affiliate', {
+        const req = new Request('http://localhost/api/validate-partner', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: 'PLAYER1' })
@@ -49,10 +49,10 @@ describe('validate-affiliate endpoint', () => {
         expect(d.valid).toBe(false);
     });
 
-    it('returns valid=true for a valid affiliate code', async () => {
+    it('returns valid=true for a valid partner code', async () => {
         mockUsers.push({ s: 'u', ac: 'AFF123', c: ['fab'] });
         const { POST } = await import('./+server');
-        const req = new Request('http://localhost/api/validate-affiliate', {
+        const req = new Request('http://localhost/api/validate-partner', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: 'AFF123' })
@@ -65,7 +65,7 @@ describe('validate-affiliate endpoint', () => {
     it('includes amount and full_amount in response for valid code', async () => {
         mockUsers.push({ s: 'u', ac: 'AFF456', c: ['fab'] });
         const { POST } = await import('./+server');
-        const req = new Request('http://localhost/api/validate-affiliate', {
+        const req = new Request('http://localhost/api/validate-partner', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: 'AFF456' })
@@ -79,7 +79,7 @@ describe('validate-affiliate endpoint', () => {
 
     it('returns valid=false for empty code', async () => {
         const { POST } = await import('./+server');
-        const req = new Request('http://localhost/api/validate-affiliate', {
+        const req = new Request('http://localhost/api/validate-partner', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code: '' })

@@ -7,9 +7,9 @@ import type { User } from '$lib/types';
 const sqids = new Sqids({ minLength: 6 });
 
 export const load: PageServerLoad = async ({ locals }) => {
-  if (!locals.user) throw redirect(302, '/login/google?next=/affiliate/settings');
+  if (!locals.user) throw redirect(302, '/login/google?next=/partner/settings');
   const user = await get<User>(locals.user.id);
-  if (!user) throw redirect(302, '/login/google?next=/affiliate/settings');
+  if (!user) throw redirect(302, '/login/google?next=/partner/settings');
 
   let c = user.c ?? [];
   let ac = user.ac;

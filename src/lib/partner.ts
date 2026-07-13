@@ -1,6 +1,6 @@
 import { search_by_payload, create, get } from '$lib/db';
 import { get_bank_code, paystack_resolve_bank, paystack_create_recipient, paystack_transfer, paystack_balance } from '$lib/paystack';
-import { send_affiliate_notification } from '$lib/email';
+import { send_partner_notification } from '$lib/email';
 import { COMMISSION_PCT } from '$lib/constants';
 import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
@@ -8,7 +8,7 @@ import type { Payout } from '$lib/types/payout';
 
 const MAX_ATTEMPTS = 5;
 
-export async function process_affiliate_payout(
+export async function process_partner_payout(
   reg_data: Registration,
   reg_id: string,
   platform?: App.Platform
@@ -16,17 +16,17 @@ export async function process_affiliate_payout(
   const ac = reg_data.ac as string | undefined;
   if (!ac) return;
 
-  // Find affiliate by code
+  // Find partner by code
   const affs = await search_by_payload<User>({ s: 'u', ac });
-  const aff = affs.find(u => u.c?.includes('fab')) as (User & { i: string }) | undefined;
-  if (!aff) {
-    console.log(`[payout] No affiliate found for code ${ac} (reg ${reg_id})`);
+  const partner = affs.find(u => u.c?.includes('fab')) as (User & { i: string }) | undefined;
+  if (!partner) {
+    console.log(`[payout] No partner found for code ${ac} (reg ${reg_id})`);
     return;
   }
 
-  const aff_id = aff.i;
-  if (!aff_id) {
-    console.log(`[payout] Affiliate for ${ac} has no ID`);
+  const partner_id = partner.i;
+  if (!partner_id) {
+    console.log(`[payout] Partner for ${ac} has no ID`);
     return;
   }
 
@@ -34,16 +34,16 @@ export async function process_affiliate_payout(
   // collapse to a single record and a repeat call is a no-op.
   const pid = `po_${reg_id}`;
 
-  // Self-referral guard: an affiliate must not earn commission on their own signup.
-  if (reg_data.e && aff.e && reg_data.e.toLowerCase() === aff.e.toLowerCase()) {
+  // Self-referral guard: an partner must not earn commission on their own signup.
+  if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
     console.log(`[payout] Self-referral blocked for ${ac} (reg ${reg_id})`);
-    await store_payout(reg_id, aff_id, ac, 0, 'blocked_self', undefined, undefined, 'self-referral', 1, pid);
+    await store_payout(reg_id, partner_id, ac, 0, 'blocked_self', undefined, undefined, 'self-referral', 1, pid);
     return;
   }
 
   // Check bank details
-  if (!aff.ba || !aff.bn) {
-    console.log(`[payout] Affiliate ${aff_id} (${ac}) has no bank details configured`);
+  if (!partner.ba || !partner.bn) {
+    console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details configured`);
     return;
   }
 
@@ -54,7 +54,7 @@ export async function process_affiliate_payout(
     return;
   }
 
-  await run_payout(reg_data, reg_id, aff, aff_id, ac, pid, platform, 1);
+  await run_payout(reg_data, reg_id, partner, partner_id, ac, pid, platform, 1);
 }
 
 /**
@@ -81,9 +81,9 @@ export async function retry_failed_payouts(
     }
     const reg = await get<Registration>(p.reg_id);
     if (!reg) { console.error(`[payout] Retry: no registration ${p.reg_id}`); failed++; continue; }
-    const affs = await search_by_payload<User>({ s: 'u', i: p.aff_id });
-    const aff = affs[0] as (User & { i: string }) | undefined;
-    if (!aff) { console.error(`[payout] Retry: no affiliate ${p.aff_id}`); failed++; continue; }
+    const affs = await search_by_payload<User>({ s: 'u', i: p.partner_id });
+    const partner = affs[0] as (User & { i: string }) | undefined;
+    if (!partner) { console.error(`[payout] Retry: no partner ${p.partner_id}`); failed++; continue; }
 
     // Gate on balance so we don't waste an attempt when funds are low.
     const bal = await paystack_balance();
@@ -94,7 +94,7 @@ export async function retry_failed_payouts(
 
     retried++;
     const before = p.st;
-    await run_payout(reg, p.reg_id, aff, p.aff_id, p.ac, `po_${p.reg_id}`, platform, at);
+    await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, `po_${p.reg_id}`, platform, at);
     const updated = await get<Payout>(`po_${p.reg_id}`);
     if (updated?.st === 'success') succeeded++;
     else if (updated?.st === 'failed' && before !== 'failed') failed++;
@@ -110,30 +110,30 @@ export async function retry_failed_payouts(
 async function run_payout(
   reg: Registration,
   reg_id: string,
-  aff: User & { i: string },
-  aff_id: string,
+  partner: User & { i: string },
+  partner_id: string,
   ac: string,
   pid: string,
   platform: App.Platform | undefined,
   at: number
 ): Promise<void> {
   // Mark in-progress (overwrites any prior failed/processing state for this pid).
-  await store_payout(reg_id, aff_id, ac, 0, 'processing', `po-${reg_id}`, undefined, undefined, at, pid);
+  await store_payout(reg_id, partner_id, ac, 0, 'processing', `po-${reg_id}`, undefined, undefined, at, pid);
 
-  const bank_code = aff.bk || get_bank_code(aff.bn || '');
+  const bank_code = partner.bk || get_bank_code(partner.bn || '');
   if (!bank_code) {
-    console.log(`[payout] Unknown bank: ${aff.bn} (code: ${aff.bk}) for affiliate ${aff_id}`);
-    await store_failed_payout(reg_id, aff_id, ac, `Unknown bank: ${aff.bn}`, at, pid);
+    console.log(`[payout] Unknown bank: ${partner.bn} (code: ${partner.bk}) for partner ${partner_id}`);
+    await store_failed_payout(reg_id, partner_id, ac, `Unknown bank: ${partner.bn}`, at, pid);
     return;
   }
 
   let account_name: string;
   try {
-    const resolved = await paystack_resolve_bank(aff.ba as string, bank_code);
+    const resolved = await paystack_resolve_bank(partner.ba as string, bank_code);
     account_name = resolved.account_name;
   } catch (e) {
-    console.error(`[payout] Bank resolve failed for ${aff_id}:`, e);
-    await store_failed_payout(reg_id, aff_id, ac, `Bank resolve failed: ${(e as Error).message}`, at, pid);
+    console.error(`[payout] Bank resolve failed for ${partner_id}:`, e);
+    await store_failed_payout(reg_id, partner_id, ac, `Bank resolve failed: ${(e as Error).message}`, at, pid);
     return;
   }
 
@@ -142,10 +142,10 @@ async function run_payout(
 
   let recipient: { recipient_code: string; active: boolean };
   try {
-    recipient = await paystack_create_recipient(account_name, aff.ba as string, bank_code);
+    recipient = await paystack_create_recipient(account_name, partner.ba as string, bank_code);
   } catch (e) {
-    console.error(`[payout] Create recipient failed for ${aff_id}:`, e);
-    await store_failed_payout(reg_id, aff_id, ac, `Recipient failed: ${(e as Error).message}`, at, pid);
+    console.error(`[payout] Create recipient failed for ${partner_id}:`, e);
+    await store_failed_payout(reg_id, partner_id, ac, `Recipient failed: ${(e as Error).message}`, at, pid);
     return;
   }
 
@@ -153,18 +153,18 @@ async function run_payout(
   try {
     transfer = await paystack_transfer(recipient.recipient_code, amt_kobo, `Commission: ${reg_id}`, `po-${reg_id}`);
   } catch (e) {
-    console.error(`[payout] Transfer failed for ${aff_id}:`, e);
-    await store_payout(reg_id, aff_id, ac, amt_kobo, 'failed', `po-${reg_id}`, undefined, (e as Error).message, at, pid);
+    console.error(`[payout] Transfer failed for ${partner_id}:`, e);
+    await store_payout(reg_id, partner_id, ac, amt_kobo, 'failed', `po-${reg_id}`, undefined, (e as Error).message, at, pid);
     return;
   }
 
-  await store_payout(reg_id, aff_id, ac, amt_kobo, transfer.status === 'success' ? 'success' : 'pending', `po-${reg_id}`, transfer.transfer_code, undefined, at, pid);
+  await store_payout(reg_id, partner_id, ac, amt_kobo, transfer.status === 'success' ? 'success' : 'pending', `po-${reg_id}`, transfer.transfer_code, undefined, at, pid);
 
   try {
     const player_name = `${reg.fn || ''} ${reg.ln || ''}`.trim() || 'A player';
-    await send_affiliate_notification(platform, aff.e, aff.n || 'Affiliate', amt_kobo, total_kobo, player_name);
+    await send_partner_notification(platform, partner.e, partner.n || 'Partner', amt_kobo, total_kobo, player_name);
   } catch (e) {
-    console.error(`[payout] Email notification failed for ${aff_id}:`, e);
+    console.error(`[payout] Email notification failed for ${partner_id}:`, e);
   }
 }
 
@@ -182,13 +182,13 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   await create({ ...p, st }, undefined, `po_${p.reg_id}`);
 }
 
-async function store_failed_payout(reg_id: string, aff_id: string, ac: string, err: string, at: number, pid: string): Promise<void> {
-  await store_payout(reg_id, aff_id, ac, 0, 'failed', `po-${reg_id}`, undefined, err, at, pid);
+async function store_failed_payout(reg_id: string, partner_id: string, ac: string, err: string, at: number, pid: string): Promise<void> {
+  await store_payout(reg_id, partner_id, ac, 0, 'failed', `po-${reg_id}`, undefined, err, at, pid);
 }
 
 async function store_payout(
   reg_id: string,
-  aff_id: string,
+  partner_id: string,
   ac: string,
   amt: number,
   st: Payout['st'],
@@ -198,7 +198,7 @@ async function store_payout(
   at?: number,
   pid?: string
 ): Promise<void> {
-  const p: Payout = { s: 'po', reg_id, aff_id, ac, amt, st, d: Date.now() };
+  const p: Payout = { s: 'po', reg_id, partner_id, ac, amt, st, d: Date.now() };
   if (ref) p.ref = ref;
   if (tr) p.tr = tr;
   if (err) p.err = err;

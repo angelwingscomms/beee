@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import { create, get, find_or_create_player_user } from '$lib/db';
 import { paystack_verify } from '$lib/paystack';
 import { encode_session } from '$lib/server/session';
-import { process_affiliate_payout } from '$lib/affiliate';
+import { process_partner_payout } from '$lib/partner';
 import type { Registration } from '$lib/types/registration';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
@@ -103,8 +103,8 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 		const session = await encode_session({ id: user_id, email, name: `${reg.fn || ''} ${reg.ln || ''}`.trim() });
 		cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
-		// Fire-and-forget affiliate payout
-		process_affiliate_payout(reg, reg_id, platform).catch(e =>
+		// Fire-and-forget partner payout
+		process_partner_payout(reg, reg_id, platform).catch(e =>
 			console.error(`[payout] Failed for ${reg_id}:`, e)
 		);
 

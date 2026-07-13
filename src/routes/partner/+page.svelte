@@ -34,7 +34,7 @@
     isProcessing = true;
     apiError = '';
     try {
-      const r = await fetch('/api/affiliate/signup', {
+      const r = await fetch('/api/partner/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), password, name: email.trim().split('@')[0] })
@@ -54,26 +54,26 @@
 </script>
 
 <svelte:head>
-  <title>Affiliate Program — BEEE</title>
-  <meta name="description" content="Join the BEEE Affiliate Program. Earn 10% commission on every registration you refer." />
+  <title>Partner Program — BEEE</title>
+  <meta name="description" content="Join the BEEE Partner Program. Earn 10% commission on every registration you refer." />
 </svelte:head>
 
-<div class="affiliate-page">
-  <section class="affiliate-hero" use:motionFadeUp>
-    <div class="affiliate-grid">
-      <div class="affiliate-info">
-        <p class="affiliate-badge">Affiliate Program</p>
-        <h1 class="affiliate-title">Share the Experience.<br>Earn Rewards.</h1>
-        <p class="affiliate-intro">
+<div class="partner-page">
+  <section class="partner-hero" use:motionFadeUp>
+    <div class="partner-grid">
+      <div class="partner-info">
+        <p class="partner-badge">Partner Program</p>
+        <h1 class="partner-title">Share the Experience.<br>Earn Rewards.</h1>
+        <p class="partner-intro">
           Help families discover the BEEE T.E.A.M.U.P. programme and chess championship.
           You earn 10% of every registration fee from players you refer.
         </p>
-        <div class="affiliate-steps">
+        <div class="partner-steps">
           <div class="step">
             <span class="step-num">1</span>
             <div>
               <strong>Share Your Link</strong>
-              <p>Get your unique affiliate code after signing up. Share it with parents, schools, and community.</p>
+              <p>Get your unique partner code after signing up. Share it with parents, schools, and community.</p>
             </div>
           </div>
           <div class="step">
@@ -92,12 +92,12 @@
           </div>
         </div>
       </div>
-      <div class="affiliate-form-wrap">
-        <div class="affiliate-card">
-          <h2 class="affiliate-form-title">Become an Affiliate</h2>
-          <p class="affiliate-form-sub">Set up your account in under a minute.</p>
+      <div class="partner-form-wrap">
+        <div class="partner-card">
+          <h2 class="partner-form-title">Become an Partner</h2>
+          <p class="partner-form-sub">Set up your account in under a minute.</p>
           <form novalidate onsubmit={handleSubmit}>
-            <div class="affiliate-fields">
+            <div class="partner-fields">
               <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
                 oninput={() => eme = ''}
                 wrapperClass="!bg-white !border-[var(--hairline)]"
@@ -115,22 +115,22 @@
                 inputClass="!text-ink placeholder:!text-muted-soft" />
             </div>
             {#if apiError}
-              <div class="affiliate-error" role="alert">{apiError}</div>
+              <div class="partner-error" role="alert">{apiError}</div>
             {/if}
-            <button type="submit" class="button-primary affiliate-submit" disabled={!allValid || isProcessing}>
+            <button type="submit" class="button-primary partner-submit" disabled={!allValid || isProcessing}>
               {#if isProcessing}
                 <span class="spinner" aria-hidden="true"></span> Creating account...
               {:else}
-                Become an Affiliate
+                Become an Partner
               {/if}
             </button>
           </form>
-          <div class="affiliate-divider"><span>or</span></div>
-          <a href="/login/google?next=/affiliate/settings" class="button-secondary affiliate-google">
+          <div class="partner-divider"><span>or</span></div>
+          <a href="/login/google?next=/partner/settings" class="button-secondary partner-google">
             Continue with Google
           </a>
-          <p class="affiliate-signin">
-            Already an affiliate? <a href="/login/google?next=/affiliate/settings">Sign in</a>
+          <p class="partner-signin">
+            Already an partner? <a href="/login/google?next=/partner/settings">Sign in</a>
           </p>
         </div>
       </div>
@@ -139,14 +139,14 @@
 </div>
 
 <style>
-  .affiliate-page {
+  .partner-page {
     background: var(--canvas);
     min-height: 100vh;
   }
-  .affiliate-hero {
+  .partner-hero {
     padding: 140px 0 80px;
   }
-  .affiliate-grid {
+  .partner-grid {
     display: grid;
     grid-template-columns: 1fr 420px;
     gap: 64px;
@@ -154,8 +154,8 @@
     width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
   }
-  .affiliate-info {}
-  .affiliate-badge {
+  .partner-info {}
+  .partner-badge {
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -163,7 +163,7 @@
     color: var(--primary);
     margin: 0 0 16px;
   }
-  .affiliate-title {
+  .partner-title {
     font-family: var(--font-hero);
     font-size: clamp(2.2rem, 3.5vw, 3.2rem);
     font-weight: 700;
@@ -172,14 +172,14 @@
     color: var(--ink);
     margin: 0 0 20px;
   }
-  .affiliate-intro {
+  .partner-intro {
     font-size: 16px;
     line-height: 1.6;
     color: var(--body);
     margin: 0 0 40px;
     max-width: 480px;
   }
-  .affiliate-steps {
+  .partner-steps {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -214,31 +214,31 @@
     color: var(--muted);
     margin: 0;
   }
-  .affiliate-card {
+  .partner-card {
     background: var(--surface-soft);
     border-radius: 16px;
     padding: 36px;
     position: sticky;
     top: 100px;
   }
-  .affiliate-form-title {
+  .partner-form-title {
     font-family: var(--font-hero);
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 4px;
   }
-  .affiliate-form-sub {
+  .partner-form-sub {
     font-size: 14px;
     color: var(--muted);
     margin: 0 0 24px;
   }
-  .affiliate-fields {
+  .partner-fields {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  .affiliate-error {
+  .partner-error {
     margin: 16px 0 0;
     padding: 12px 16px;
     border-radius: 8px;
@@ -247,13 +247,13 @@
     font-size: 13px;
     line-height: 1.4;
   }
-  .affiliate-submit {
+  .partner-submit {
     width: 100%;
     margin-top: 20px;
     padding: 14px 24px;
     font-size: 15px;
   }
-  .affiliate-divider {
+  .partner-divider {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -261,37 +261,37 @@
     font-size: 13px;
     color: var(--muted);
   }
-  .affiliate-divider::before,
-  .affiliate-divider::after {
+  .partner-divider::before,
+  .partner-divider::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--hairline);
   }
-  .affiliate-google {
+  .partner-google {
     width: 100%;
     justify-content: center;
     text-decoration: none;
   }
-  .affiliate-signin {
+  .partner-signin {
     margin: 20px 0 0;
     text-align: center;
     font-size: 13px;
     color: var(--muted);
   }
-  .affiliate-signin a {
+  .partner-signin a {
     color: var(--primary);
     text-decoration: underline;
   }
   @media (max-width: 860px) {
-    .affiliate-grid {
+    .partner-grid {
       grid-template-columns: 1fr;
       gap: 40px;
     }
-    .affiliate-card {
+    .partner-card {
       position: static;
     }
-    .affiliate-hero {
+    .partner-hero {
       padding: 120px 0 60px;
     }
   }

@@ -43,7 +43,7 @@
   );
 
   let valTimer: ReturnType<typeof setTimeout> | undefined;
-  async function validateAffiliateCode(code: string) {
+  async function validatePartnerCode(code: string) {
     if (!code.trim()) {
       acValid = null;
       ace = '';
@@ -52,7 +52,7 @@
     }
     acLoading = true;
     try {
-      const r = await fetch('/api/validate-affiliate', {
+      const r = await fetch('/api/validate-partner', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code.trim() })
@@ -64,7 +64,7 @@
         AMOUNT = d.amount;
       } else {
         acValid = false;
-        ace = 'Invalid affiliate code';
+        ace = 'Invalid partner code';
         AMOUNT = baseAmount;
       }
     } catch {
@@ -78,15 +78,15 @@
 
   $effect(() => {
     if (browser) {
-      const stored = localStorage.getItem('affiliate_c');
+      const stored = localStorage.getItem('partner_c');
       if (stored && !ac) {
         ac = stored;
-        validateAffiliateCode(ac);
+        validatePartnerCode(ac);
       }
     }
   });
 
-  function handleAffiliateInput(e: Event) {
+  function handlePartnerInput(e: Event) {
     const input = e.target as HTMLInputElement;
     let val = input.value.trim();
     const match = val.match(/[?&]c=([^&\s]+)/);
@@ -100,7 +100,7 @@
       return;
     }
     ace = 'Checking…';
-    valTimer = setTimeout(() => validateAffiliateCode(val), 400);
+    valTimer = setTimeout(() => validatePartnerCode(val), 400);
   }
 
   function clearErrors() {
@@ -147,7 +147,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim(), password: pw, affiliateCode: ac.trim() || undefined })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: ph.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -223,24 +223,24 @@
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
 
-        <div class="reg-divider">Affiliate Code</div>
+        <div class="reg-divider">Partner Code</div>
 
-        <div class="reg-affiliate-wrap">
+        <div class="reg-partner-wrap">
           <TextInput
             id="ac"
-            label="Affiliate code (optional)"
+            label="Partner code (optional)"
             placeholder="Paste your code or link"
             bind:value={ac}
             error={ace}
             wrapperClass="!bg-white/10 !border-white/20"
             labelClass="!text-white/60"
             inputClass="!text-white placeholder:!text-white/30"
-            oninput={handleAffiliateInput}
+            oninput={handlePartnerInput}
           />
-          <p class="reg-affiliate-help">Registering with a partner code gives a 10% discount.</p>
+          <p class="reg-partner-help">Registering with a partner code gives a 10% discount.</p>
           {#if acLoading}
             <div class="reg-discount-callout">
-              <span>Checking affiliate code…</span>
+              <span>Checking partner code…</span>
             </div>
           {:else if acValid}
             <div class="reg-discount-callout valid">
@@ -254,7 +254,7 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L4 15L8 11.5L12 15L8 1Z" fill="currentColor"/>
               </svg>
-              <span>Invalid affiliate code</span>
+              <span>Invalid partner code</span>
             </div>
           {/if}
         </div>
@@ -398,10 +398,10 @@
     height: 1px;
     background: rgba(250, 249, 245, 0.25);
   }
-  .reg-affiliate-wrap {
+  .reg-partner-wrap {
     margin-top: -12px;
   }
-  .reg-affiliate-help {
+  .reg-partner-help {
     margin: 6px 0 0;
     font-size: 13px;
     line-height: 1.4;

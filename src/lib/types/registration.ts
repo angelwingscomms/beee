@@ -11,6 +11,6 @@ export interface Registration {
 	d: number;
 	amt: number;
 	ref?: string;
-	ac?: string; // affiliate code
+	ac?: string; // partner code
 	pw?: string; // transient: only on the pending record, hashed on payment confirmation. Never sent to Paystack.
 }

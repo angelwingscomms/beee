@@ -36,7 +36,7 @@
         <span class="contact-sep">|</span>
         <span>+234 802 092 0872</span>
       </div>
-      <a href="/affiliate" class="footer-affiliate">Join As A Tournament Partner →</a>
+      <a href="/partner" class="footer-partner">Join As A Tournament Partner →</a>
       <p class="footer-copy">&copy; 2026 BEEE Spectacular Chess Championship</p>
     </div>
   </div>
@@ -161,7 +161,7 @@
     color: rgba(250, 249, 245, 0.2);
   }
 
-  .footer-affiliate {
+  .footer-partner {
     font-size: 16px;
     font-weight: 600;
     color: var(--accent-amber);
@@ -169,7 +169,7 @@
     transition: color 160ms ease;
   }
 
-  .footer-affiliate:hover {
+  .footer-partner:hover {
     color: #ffffff;
   }
 

@@ -4,8 +4,8 @@ export interface User {
   p?: string;   // bcrypt password hash (null for Google-only users)
   n?: string;   // display name
   pic?: string; // Google profile picture URL
-  c?: string[]; // classifications: 'fab' (affiliate), 'rpb' (player)
-  ac?: string;  // affiliate code (sqids)
+  c?: string[]; // classifications: 'fab' (partner), 'rpb' (player)
+  ac?: string;  // partner code (sqids)
   ba?: string;  // bank account number
   bn?: string;  // bank name
   bk?: string;  // bank code

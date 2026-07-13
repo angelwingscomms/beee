@@ -21,7 +21,7 @@
       copied = true;
       setTimeout(() => { copied = false; }, 2000);
     } catch {
-      const el = document.getElementById('affiliate-code-text');
+      const el = document.getElementById('partner-code-text');
       if (el) {
         const range = document.createRange();
         range.selectNodeContents(el);
@@ -51,7 +51,7 @@
     if (!validateBank()) return;
     isSaving = true; saveMsg = '';
     try {
-      const r = await fetch('/api/affiliate/settings', {
+      const r = await fetch('/api/partner/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ba: ba.trim(), bn, bk })
@@ -71,17 +71,17 @@
 </script>
 
 <svelte:head>
-  <title>Affiliate Settings — BEEE</title>
+  <title>Partner Settings — BEEE</title>
 </svelte:head>
 
 <div class="settings-page">
   <section class="container" style="padding: 140px 0 80px; max-width: 640px;">
-    <h1 class="settings-title">Affiliate Settings</h1>
+    <h1 class="settings-title">Partner Settings</h1>
 
     <div class="settings-card">
-      <h2 class="settings-card-title">Your Affiliate Code</h2>
+      <h2 class="settings-card-title">Your Partner Code</h2>
       <div class="code-row">
-        <span class="code-value" id="affiliate-code-text">{data.ac || '—'}</span>
+        <span class="code-value" id="partner-code-text">{data.ac || '—'}</span>
         <button class="button-secondary code-copy-btn" onclick={copyCode} disabled={!data.ac}>
           {copied ? 'Copied!' : 'Copy'}
         </button>

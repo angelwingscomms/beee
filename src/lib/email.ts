@@ -4,7 +4,7 @@ function fmt_kobo(k: number): string {
   return '₦' + (k / 100).toLocaleString('en-NG', { minimumFractionDigits: 2 });
 }
 
-export async function send_affiliate_notification(
+export async function send_partner_notification(
   platform: App.Platform | undefined,
   to_email: string,
   recipient_name: string,
@@ -12,7 +12,7 @@ export async function send_affiliate_notification(
   total_kobo: number,
   player_name: string
 ): Promise<void> {
-  const subject = 'You received a commission payout — BEEE Affiliate Program';
+  const subject = 'You received a commission payout — BEEE Partner Program';
   const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +33,7 @@ export async function send_affiliate_notification(
     <div class="logo">BEEE</div>
     <div class="card">
       <p>Hi ${recipient_name},</p>
-      <p>A registration was completed using your affiliate code. You've earned a commission!</p>
+      <p>A registration was completed using your partner code. You've earned a commission!</p>
       <div class="amt">${fmt_kobo(commission_kobo)}</div>
       <div class="label">Player</div>
       <div class="detail">${player_name}</div>

@@ -60,7 +60,7 @@ export const cs: FaqC[] = [
 			{ q: 'How can parents support participants?', a: 'Parents can monitor progress through the Development Passport, encourage participation, and support learning activities throughout the programme.' },
 			{ q: 'How will schools benefit?', a: 'Schools gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and student achievement.' },
 			{ q: 'How will progress be tracked?', a: 'Progress is tracked through the participant\'s T.E.A.M.U.P. Development Passport, which records attendance, milestones, badges, assessment results, and other achievements.' },
-			{ q: 'Why should my school partner with BEEE?', a: 'Affiliate schools may complement their summer activities with the T.E.A.M.U.P. programme and benefit from its developmental opportunities.' },
+			{ q: 'Why should my school partner with BEEE?', a: 'Partner schools may complement their summer activities with the T.E.A.M.U.P. programme and benefit from its developmental opportunities.' },
 			{ q: 'What is expected of participating schools?', a: 'Participating schools are expected to support student registration, encourage engagement with the T.E.A.M.U.P. programme, facilitate participation in competition stages, and celebrate student achievements throughout the championship.' },
 		]
 	},

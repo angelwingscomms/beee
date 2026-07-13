@@ -13,7 +13,7 @@
   $effect(() => {
     if (browser) {
       const c = $page.url.searchParams.get('c');
-      if (c) localStorage.setItem('affiliate_c', c);
+      if (c) localStorage.setItem('partner_c', c);
     }
   });
 </script>

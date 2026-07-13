@@ -68,7 +68,7 @@
         <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See How It Works</Button>
       </div>
 
-      <button type="button" class="footer-affiliate mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Join As A Tournament Partner →</button>
+      <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Join As A Tournament Partner →</button>
 
     </div>
 
@@ -117,12 +117,12 @@
   <Modal onclose={() => history.back()}>
     <h2 class="partner-title">Partner With Us &amp; Earn 10% Reward!</h2>
     <p class="partner-body">Earn 10% for every registration completed through your unique referral link. Share BEEE Chess Championship 2026 with your school, club, or parent network today!</p>
-    <a href="/affiliate" class="partner-btn partner-btn-primary">Become an Affiliate</a>
+    <a href="/partner" class="partner-btn partner-btn-primary">Become an Partner</a>
   </Modal>
 {/if}
 
 <style>
-  .footer-affiliate {
+  .footer-partner {
     font-size: 16px;
     font-weight: 600;
     color: var(--accent-amber);
@@ -130,7 +130,7 @@
     transition: color 160ms ease;
   }
 
-  .footer-affiliate:hover {
+  .footer-partner:hover {
     color: #ffffff;
   }
 

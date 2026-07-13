@@ -9,7 +9,7 @@ const OG: Record<string, string> = {
   '/taskify': 'https://beeeproject.com/images/championship/bento_passport.png',
   '/championship': 'https://beeeproject.com/images/championship/cta-bg.png',
   '/why-beee': 'https://beeeproject.com/images/championship/about-new.png',
-  '/affiliate': 'https://beeeproject.com/images/championship/mentorship.png',
+  '/partner': 'https://beeeproject.com/images/championship/mentorship.png',
   '/faq': 'https://beeeproject.com/og.png',
   '/privacy': 'https://beeeproject.com/og.png',
   '/terms': 'https://beeeproject.com/og.png',
