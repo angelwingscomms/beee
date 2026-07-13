@@ -12,6 +12,9 @@ __v0_jsx-dev-runtime.ts
 .dev.vars
 .dev.vars*
 
+# Dev logs
+.dev-logs/
+
 # SvelteKit generated types
 .svelte-kit/
 .wrangler/

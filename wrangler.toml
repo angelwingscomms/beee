@@ -3,8 +3,10 @@ main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat_v2"]
 
-# Required secrets in Secrets Store (create via wrangler secrets-store):
-# GOOGLE_ID, GOOGLE_SECRET, SECRET
+# All secrets in Secrets Store (store 45748cb1c67946df943075fa14cb8815):
+# GOOGLE_ID, GOOGLE_SECRET, SECRET, PAYSTACK_TEST,
+# PAYSTACK_SECRET_KEY_TEST, PAYSTACK_SECRET_KEY_LIVE,
+# QDRANT_KEY, QDRANT_URL, GEMINI, PASSWORD
 
 [[secrets_store_secrets]]
 binding = "GOOGLE_ID"
@@ -20,6 +22,41 @@ secret_name = "GOOGLE_SECRET"
 binding = "SECRET"
 store_id = "45748cb1c67946df943075fa14cb8815"
 secret_name = "SECRET"
+
+[[secrets_store_secrets]]
+binding = "PAYSTACK_TEST"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "PAYSTACK_TEST"
+
+[[secrets_store_secrets]]
+binding = "PAYSTACK_SECRET_KEY_TEST"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "PAYSTACK_SECRET_KEY_TEST"
+
+[[secrets_store_secrets]]
+binding = "PAYSTACK_SECRET_KEY_LIVE"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "PAYSTACK_SECRET_KEY_LIVE"
+
+[[secrets_store_secrets]]
+binding = "QDRANT_KEY"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "QDRANT_KEY"
+
+[[secrets_store_secrets]]
+binding = "QDRANT_URL"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "QDRANT_URL"
+
+[[secrets_store_secrets]]
+binding = "GEMINI"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "GEMINI"
+
+[[secrets_store_secrets]]
+binding = "PASSWORD"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "PASSWORD"
 
 [assets]
 binding = "ASSETS"

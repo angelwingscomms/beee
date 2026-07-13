@@ -6,6 +6,13 @@ interface SecretsStoreEnv {
   GOOGLE_ID: SecretsStoreSecret;
   GOOGLE_SECRET: SecretsStoreSecret;
   SECRET: SecretsStoreSecret;
+  PAYSTACK_TEST: SecretsStoreSecret;
+  PAYSTACK_SECRET_KEY_TEST: SecretsStoreSecret;
+  PAYSTACK_SECRET_KEY_LIVE: SecretsStoreSecret;
+  QDRANT_KEY: SecretsStoreSecret;
+  QDRANT_URL: SecretsStoreSecret;
+  GEMINI: SecretsStoreSecret;
+  PASSWORD: SecretsStoreSecret;
   [key: string]: unknown;
 }
 

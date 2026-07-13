@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs';
 import Sqids from 'sqids';
 import { create, find_user_by_email, new_id } from '$lib/db';
 import { encode_session } from '$lib/server/session';
-import { env } from '$env/dynamic/private';
 import type { User } from '$lib/types';
 
 const sqids = new Sqids({ minLength: 6 });

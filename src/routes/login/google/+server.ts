@@ -1,10 +1,10 @@
 import { generateState, generateCodeVerifier, google_client } from '$lib/server/oauth';
-import { env } from '$env/dynamic/private';
+import { get_secret } from '$lib/server/secrets';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  const id = env.GOOGLE_ID;
-  const secret = env.GOOGLE_SECRET;
+  const id = await get_secret('GOOGLE_ID');
+  const secret = await get_secret('GOOGLE_SECRET');
   console.log('[google login] GOOGLE_ID:', id, 'GOOGLE_SECRET:', secret ? '***' : 'MISSING');
   const state = generateState();
   const verifier = generateCodeVerifier();

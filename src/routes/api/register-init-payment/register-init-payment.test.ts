@@ -17,6 +17,8 @@ vi.mock('$lib/db', () => ({
         }
         return [];
     }),
+    create: vi.fn(async () => 'mock-reg-id-123'),
+    get: vi.fn(async () => null),
 }));
 
 vi.mock('$lib/paystack', () => ({

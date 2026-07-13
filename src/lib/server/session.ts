@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/private';
+import { get_secret } from '$lib/server/secrets';
 
 function b64(s: string): string {
   return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -11,7 +11,7 @@ function ub64(s: string): string {
 }
 
 async function get_key(): Promise<CryptoKey> {
-  const secret = new TextEncoder().encode(env.SECRET).slice(0, 32);
+  const secret = new TextEncoder().encode(await get_secret('SECRET')).slice(0, 32);
   return crypto.subtle.importKey('raw', secret, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify']);
 }
 

@@ -46,7 +46,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 	const signature = request.headers.get('x-paystack-signature') ?? '';
 	console.log(`[POST /api/webhooks/paystack] Signature header: ${signature}`);
 
-	if (!signature || !verify_webhook_sig(raw, signature)) {
+	if (!signature || !(await verify_webhook_sig(raw, signature))) {
 		console.warn('[POST /api/webhooks/paystack] Paystack webhook: invalid or missing signature');
 		return new Response('Unauthorized', { status: 401 });
 	}

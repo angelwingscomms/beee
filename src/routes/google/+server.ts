@@ -2,14 +2,13 @@ import { decodeIdToken } from 'arctic';
 import { google_client as get_google } from '$lib/server/oauth';
 import { encode_session } from '$lib/server/session';
 import { create, find_user_by_email, new_id } from '$lib/db';
-import { env } from '$env/dynamic/private';
+import { get_secret } from '$lib/server/secrets';
 import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  const google_id = env.GOOGLE_ID;
-  const google_secret = env.GOOGLE_SECRET;
-  const session_secret = env.SECRET;
+  const google_id = await get_secret('GOOGLE_ID');
+  const google_secret = await get_secret('GOOGLE_SECRET');
 
   const code = event.url.searchParams.get('code');
   const state = event.url.searchParams.get('state');
