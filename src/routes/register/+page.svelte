@@ -268,7 +268,6 @@
         <div class="reg-fine">
           <p>Qualification slots are limited and will be allocated on a first-completed-registration basis</p>
           <p>Participants must be between 10 and 14 years of age</p>
-          <p>Sponsorship of participants is by parents or other interested sponsor</p>
         </div>
       </form>
 
