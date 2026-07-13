@@ -268,7 +268,6 @@
         <div class="reg-fine">
           <p>Participants must be between 10 and 14 years of age</p>
           <p>Online coaching begins July 2026</p>
-          <p>Sign up early to give your child a richer, more rewarding championship experience.</p>
         </div>
       </form>
 
@@ -277,6 +276,7 @@
           <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
           <span class="reg-per">per participant</span>
         </div>
+        <p class="reg-summary-note">Sign up early to give your child a richer, more rewarding championship experience.</p>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div>
