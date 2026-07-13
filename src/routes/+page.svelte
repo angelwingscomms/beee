@@ -122,7 +122,7 @@
         What makes the BEEE Championship <span class="text-amber-400">different?</span>
       </h2>
       <p class="lg:col-span-4 font-['Inter'] text-gray-400 text-base md:text-lg leading-relaxed">
-        The championship goes beyond chess &mdash; an integrated development ecosystem built on three proprietary platforms of learning.
+        The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
       </p>
     </div>
 
