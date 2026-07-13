@@ -251,15 +251,34 @@ export async function paystack_create_recipient(name: string, account_number: st
   return body.data as { recipient_code: string; active: boolean };
 }
 
-export async function paystack_transfer(recipient_code: string, amount_kobo: number, reason: string): Promise<{ transfer_code: string; status: string }> {
+export async function paystack_transfer(
+  recipient_code: string,
+  amount_kobo: number,
+  reason: string,
+  reference?: string
+): Promise<{ transfer_code: string; status: string }> {
   const secret_key = await get_secret_key();
+  const body_json: Record<string, unknown> = {
+    source: 'balance',
+    amount: amount_kobo,
+    recipient: recipient_code,
+    reason
+  };
+  if (reference) body_json.reference = reference;
   const res = await fetch(`${BASE}/transfer`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ source: 'balance', amount: amount_kobo, recipient: recipient_code, reason })
+    body: JSON.stringify(body_json)
   });
   if (!res.ok) {
     const err = await res.text();
+    // Paystack enforces unique transfer references. A duplicate means a prior
+    // attempt already created the disbursement — treat as idempotent success
+    // so concurrent verify-payment + webhook paths never double-pay.
+    if (reference && /reference.*(already|exist|used)|transfer.*(already|exist)/i.test(err)) {
+      console.log(`[paystack_transfer] Duplicate reference ${reference}, treating as already paid`);
+      return { transfer_code: reference, status: 'success' };
+    }
     throw new Error(`Transfer failed: ${err}`);
   }
   const body = await res.json();

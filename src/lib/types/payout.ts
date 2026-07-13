@@ -7,6 +7,6 @@ export interface Payout {
   ref?: string;
   tr?: string;
   d: number;
-  st: 'pending' | 'success' | 'failed';
+  st: 'pending' | 'success' | 'failed' | 'processing' | 'blocked_self';
   err?: string;
 }

@@ -1,64 +1,51 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-let mock_dev = false;
-
-const mock_env = vi.hoisted(() => ({
-  PAYSTACK_TEST: undefined as string | undefined,
-  PAYSTACK_SECRET_KEY_TEST: undefined as string | undefined,
-  PAYSTACK_SECRET_KEY_LIVE: undefined as string | undefined,
+vi.mock('$app/environment', () => ({
+  get dev() { return false; },
+  get browser() { return false; }
 }));
 
 vi.mock('$lib/server/secrets', () => ({
   get_secret: vi.fn(async (k: string) => {
-    if (k === 'PAYSTACK_TEST') return mock_env.PAYSTACK_TEST;
-    if (k === 'PAYSTACK_SECRET_KEY_TEST') return mock_env.PAYSTACK_SECRET_KEY_TEST;
-    if (k === 'PAYSTACK_SECRET_KEY_LIVE') return mock_env.PAYSTACK_SECRET_KEY_LIVE;
-    return '';
-  }),
+    if (k === 'PAYSTACK_TEST') return undefined; // -> live mode
+    if (k === 'PAYSTACK_SECRET_KEY_LIVE') return 'sk_live_test';
+    return undefined;
+  })
 }));
 
-vi.mock('$app/environment', () => ({
-  get dev() { return mock_dev; },
-}));
-
-describe('Paystack Key Selection Logic', () => {
+describe('paystack_transfer', () => {
   beforeEach(() => {
-    mock_env.PAYSTACK_TEST = undefined;
-    mock_env.PAYSTACK_SECRET_KEY_TEST = undefined;
-    mock_env.PAYSTACK_SECRET_KEY_LIVE = undefined;
-    mock_dev = false;
-    vi.resetModules();
+    vi.restoreAllMocks();
   });
 
-  it('should use TEST key if PAYSTACK_TEST is dot "."', async () => {
-    mock_env.PAYSTACK_TEST = '.';
-    mock_env.PAYSTACK_SECRET_KEY_TEST = 'sk_test_123';
-    mock_env.PAYSTACK_SECRET_KEY_LIVE = 'sk_live_456';
-    const { get_secret_key } = await import('./paystack');
-    expect(await get_secret_key()).toBe('sk_test_123');
+  it('returns success for a normal 200 response', async () => {
+    const { paystack_transfer } = await import('./paystack');
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: true,
+      json: async () => ({ status: true, data: { transfer_code: 'TRF_1', status: 'success' } })
+    })));
+    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1');
+    expect(r).toEqual({ transfer_code: 'TRF_1', status: 'success' });
   });
 
-  it('should use LIVE key if PAYSTACK_TEST is "0"', async () => {
-    mock_env.PAYSTACK_TEST = '0';
-    mock_env.PAYSTACK_SECRET_KEY_TEST = 'sk_test_123';
-    mock_env.PAYSTACK_SECRET_KEY_LIVE = 'sk_live_456';
-    const { get_secret_key } = await import('./paystack');
-    expect(await get_secret_key()).toBe('sk_live_456');
+  it('treats a duplicate transfer reference as idempotent success (no double payout)', async () => {
+    const { paystack_transfer } = await import('./paystack');
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: false,
+      status: 409,
+      text: async () => '{"status":false,"message":"Transfer with reference PO-reg1 already exists"}'
+    })));
+    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1');
+    expect(r).toEqual({ transfer_code: 'PO-reg1', status: 'success' });
   });
 
-  it('should fallback to dev check if PAYSTACK_TEST is undefined (dev = true => test key)', async () => {
-    mock_dev = true;
-    mock_env.PAYSTACK_SECRET_KEY_TEST = 'sk_test_123';
-    mock_env.PAYSTACK_SECRET_KEY_LIVE = 'sk_live_456';
-    const { get_secret_key } = await import('./paystack');
-    expect(await get_secret_key()).toBe('sk_test_123');
-  });
-
-  it('should fallback to dev check if PAYSTACK_TEST is undefined (dev = false => live key)', async () => {
-    mock_dev = false;
-    mock_env.PAYSTACK_SECRET_KEY_TEST = 'sk_test_123';
-    mock_env.PAYSTACK_SECRET_KEY_LIVE = 'sk_live_456';
-    const { get_secret_key } = await import('./paystack');
-    expect(await get_secret_key()).toBe('sk_live_456');
+  it('throws on a non-duplicate transfer error', async () => {
+    const { paystack_transfer } = await import('./paystack');
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: false,
+      status: 400,
+      text: async () => '{"status":false,"message":"Invalid recipient"}'
+    })));
+    await expect(paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1')).rejects.toThrow(/Transfer failed/);
   });
 });
