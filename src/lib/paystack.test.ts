@@ -24,7 +24,7 @@ describe('paystack_transfer', () => {
       ok: true,
       json: async () => ({ status: true, data: { transfer_code: 'TRF_1', status: 'success' } })
     })));
-    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1');
+    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'po-reg1');
     expect(r).toEqual({ transfer_code: 'TRF_1', status: 'success' });
   });
 
@@ -33,10 +33,10 @@ describe('paystack_transfer', () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({
       ok: false,
       status: 409,
-      text: async () => '{"status":false,"message":"Transfer with reference PO-reg1 already exists"}'
+      text: async () => '{"status":false,"message":"Transfer with reference po-reg1 already exists"}'
     })));
-    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1');
-    expect(r).toEqual({ transfer_code: 'PO-reg1', status: 'success' });
+    const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'po-reg1');
+    expect(r).toEqual({ transfer_code: 'po-reg1', status: 'success' });
   });
 
   it('throws on a non-duplicate transfer error', async () => {
@@ -46,6 +46,6 @@ describe('paystack_transfer', () => {
       status: 400,
       text: async () => '{"status":false,"message":"Invalid recipient"}'
     })));
-    await expect(paystack_transfer('RCP_1', 10000, 'Commission', 'PO-reg1')).rejects.toThrow(/Transfer failed/);
+    await expect(paystack_transfer('RCP_1', 10000, 'Commission', 'po-reg1')).rejects.toThrow(/Transfer failed/);
   });
 });

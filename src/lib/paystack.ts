@@ -287,6 +287,25 @@ export async function paystack_transfer(
 }
 
 /**
+ * Fetch the available Paystack balance (kobo). Returns 0 if unavailable.
+ * Used to gate payouts so we don't burn a retry attempt on insufficient funds.
+ */
+export async function paystack_balance(): Promise<number> {
+  const secret_key = await get_secret_key();
+  try {
+    const res = await fetch(`${BASE}/balance`, {
+      headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' }
+    });
+    if (!res.ok) return 0;
+    const body = await res.json();
+    const row = (body.data || []).find((b: { currency: string }) => b.currency === 'NGN') || body.data?.[0];
+    return row ? Number(row.balance) || 0 : 0;
+  } catch {
+    return 0;
+  }
+}
+
+/**
  * Verify the HMAC SHA512 signature on an incoming Paystack webhook.
  * raw_body must be the raw request body string — not a parsed object.
  */

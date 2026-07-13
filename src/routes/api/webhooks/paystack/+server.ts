@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
 import { create, get, find_or_create_player_user } from '$lib/db';
 import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
-import { process_affiliate_payout } from '$lib/affiliate';
+import { process_affiliate_payout, reconcile_transfer_payout } from '$lib/affiliate';
 import type { Registration } from '$lib/types/registration';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
@@ -61,10 +61,19 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		return new Response('Bad Request', { status: 400 });
 	}
 
-	const process = async () => {
-		console.log(`[POST /api/webhooks/paystack] [async process] Starting process for event: ${event.event}`);
-		try {
-			if (event.event === 'charge.success') {
+		const process = async () => {
+			console.log(`[POST /api/webhooks/paystack] [async process] Starting process for event: ${event.event}`);
+			try {
+				// Reconcile affiliate payout terminal status from transfer events.
+				if (event.event === 'transfer.success' || event.event === 'transfer.failed' || event.event === 'transfer.reversed') {
+					const ref = event.data.reference as string;
+					const st = event.event === 'transfer.success' ? 'success' : event.event === 'transfer.reversed' ? 'reversed' : 'failed';
+					console.log(`[POST /api/webhooks/paystack] Transfer event ${event.event} for ref ${ref} -> ${st}`);
+					await reconcile_transfer_payout(ref, st);
+					return;
+				}
+
+				if (event.event === 'charge.success') {
 				const ref = event.data.reference as string;
 
 				// Load the local pending registration (password stored here, never in Paystack)

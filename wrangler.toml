@@ -1,5 +1,5 @@
 name = 'beee'
-main = ".svelte-kit/cloudflare/_worker.js"
+main = "./worker.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat_v2"]
 
@@ -57,6 +57,17 @@ secret_name = "GEMINI"
 binding = "PASSWORD"
 store_id = "45748cb1c67946df943075fa14cb8815"
 secret_name = "PASSWORD"
+
+[[secrets_store_secrets]]
+binding = "CRON_SECRET"
+store_id = "45748cb1c67946df943075fa14cb8815"
+secret_name = "CRON_SECRET"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[vars]
+APP_URL = "https://beeeproject.com"
 
 [assets]
 binding = "ASSETS"

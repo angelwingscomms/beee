@@ -7,6 +7,7 @@ export interface Payout {
   ref?: string;
   tr?: string;
   d: number;
-  st: 'pending' | 'success' | 'failed' | 'processing' | 'blocked_self';
+  st: 'pending' | 'success' | 'failed' | 'processing' | 'blocked_self' | 'reversed';
+  at?: number; // retry attempt count
   err?: string;
 }
