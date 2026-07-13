@@ -127,9 +127,9 @@
     </div>
 
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
-      <PlatformCard index="01" tag="AI Coach" bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
-      <PlatformCard index="02" tag="Leadership" bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard index="03" tag="Progress" bg="#7ec8e3" title="TASKIFY&trade;" body="The participant's digital record documenting measurable accomplishments &mdash; badges, milestones, projects, certificates, skills, mentorship, leadership experiences and growth indices throughout the championship journey." href="/taskify" />
+      <PlatformCard bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
+      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="The participant's digital record documenting measurable accomplishments &mdash; badges, milestones, projects, certificates, skills, mentorship, leadership experiences and growth indices throughout the championship journey." href="/taskify" />
     </div>
   </div>
 </section>

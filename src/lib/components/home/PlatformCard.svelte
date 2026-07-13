@@ -1,16 +1,9 @@
 <script lang="ts">
-let { bg, title, body, href, index = '', tag = '' }: { bg: string; title: string; body: string; href?: string; index?: string; tag?: string } = $props();
+let { bg, title, body, href }: { bg: string; title: string; body: string; href?: string } = $props();
 </script>
 
 <div class="platform-card col-span-12 md:col-span-4 relative overflow-hidden rounded-[1.75rem] p-8 md:p-10 flex flex-col" style="background:{bg}">
   <span class="deco-orb" aria-hidden="true"></span>
-
-  <div class="relative z-10 flex items-center justify-between mb-8">
-    <span class="font-hero text-sm font-bold tracking-[0.2em] text-[#141413]/45">{index}</span>
-    {#if tag}
-      <span class="font-hero text-[10px] font-bold uppercase tracking-[0.18em] text-[#141413]/60 border border-[#141413]/20 rounded-full px-3 py-1">{tag}</span>
-    {/if}
-  </div>
 
   <h3 class="relative z-10 font-hero text-2xl md:text-[1.75rem] font-bold text-[#141413] leading-tight mb-4">{@html title}</h3>
   <p class="relative z-10 font-['Inter'] text-[#141413]/75 text-[15px] leading-[1.7] font-normal mb-8" style="white-space:pre-line">{body}</p>
