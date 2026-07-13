@@ -27,7 +27,7 @@
     <header class="awards-head" use:motionFadeUp>
       <span class="awards-eyebrow"><span class="dot"></span>Awards &amp; Recognition</span>
       <h2 class="awards-title">Honours worth<br /><span class="shine">competing for</span></h2>
-      <p class="awards-sub">Every participant plays for more than the championship award. A full spectrum of honours celebrates chess skill, personal growth, leadership, and school spirit.</p>
+      <p class="awards-sub">Every participant plays for more than the championship award. A full spectrum of honours celebrates chess skill, personal growth, leadership, and team spirit.</p>
     </header>
 
     <div class="awards-grid">
