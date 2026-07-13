@@ -134,7 +134,7 @@
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
-      The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms.
+      The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
     </p>
 
     <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
