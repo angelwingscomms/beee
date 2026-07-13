@@ -113,23 +113,28 @@
 <ChampHero />
 
 <!-- Section: What Makes BEEE Different -->
-<section id="diff-section" class="bg-navy pt-20 md:pt-28">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
-    <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
-      The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
-    </p>
+<section id="diff-section" class="relative bg-navy pt-24 md:pt-36 pb-24 md:pb-32 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 90% 60% at 100% 0%, #1A2B4C 0%, transparent 60%)" aria-hidden="true"></div>
 
-    <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
-      <PlatformCard bg="#f5e6c8" title="E4&trade; CHESS COACH" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
-      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="is the participants digital record that documents measurable accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth indices and notable achievements throughout the championship journey." href="/taskify" />
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="flex items-center gap-4 mb-8">
+      <span class="h-px w-12 bg-amber-400"></span>
+      <span class="font-hero text-xs md:text-sm font-semibold uppercase tracking-[0.22em] text-amber-400">The Ecosystem</span>
     </div>
 
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end mb-16 md:mb-20">
+      <h2 class="lg:col-span-8 font-hero text-4xl md:text-6xl lg:text-[4.25rem] text-white font-bold tracking-[-0.02em] leading-[1.02]">
+        What makes the BEEE Championship <span class="text-amber-400">different?</span>
+      </h2>
+      <p class="lg:col-span-4 font-['Inter'] text-gray-400 text-base md:text-lg leading-relaxed">
+        The championship goes beyond chess &mdash; an integrated development ecosystem built on three proprietary platforms of learning.
+      </p>
+    </div>
 
-
-    <!-- School Benefits -->
-    <div class="border-t border-white/10 pt-14">
+    <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
+      <PlatformCard index="01" tag="AI Coach" bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
+      <PlatformCard index="02" tag="Leadership" bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
+      <PlatformCard index="03" tag="Progress" bg="#7ec8e3" title="TASKIFY&trade;" body="The participant's digital record documenting measurable accomplishments &mdash; badges, milestones, projects, certificates, skills, mentorship, leadership experiences and growth indices throughout the championship journey." href="/taskify" />
     </div>
   </div>
 </section>
