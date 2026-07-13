@@ -18,7 +18,6 @@
   let philosophyText: HTMLElement | undefined = $state();
   let philosophyAltText: HTMLElement | undefined = $state();
   let makeYourMove: HTMLElement | undefined = $state();
-  let diffCardsParent: HTMLElement | undefined = $state();
 
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -73,23 +72,6 @@
       },
     });
 
-    let animatedDiff = false;
-    onScroll({
-      target: '#diff-section',
-      enter: 'top 75%',
-      onEnter: () => {
-        if (animatedDiff || !diffCardsParent) return;
-        animatedDiff = true;
-        animate(diffCardsParent.children, {
-          opacity: [0, 1],
-          translateY: [60, 0],
-          delay: ((_el: any, i: number) => i * 150) as any,
-          duration: 800,
-          easing: 'easeOutCubic',
-        });
-      },
-    });
-
   });
 
   function onBentoHover(enter: boolean) {
@@ -138,7 +120,7 @@
       The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
     </p>
 
-    <div bind:this={diffCardsParent} class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
+    <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
       <PlatformCard bg="#f5e6c8" title="E4&trade; CHESS COACH" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
       <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
       <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="is the participants digital record that documents measurable accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth indices and notable achievements throughout the championship journey." href="/taskify" />

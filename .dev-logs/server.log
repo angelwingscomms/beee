@@ -23,3 +23,9 @@ https://svelte.dev/e/a11y_click_events_have_key_events
 https://svelte.dev/e/css_unused_selector
 5:39:11 PM [vite-plugin-svelte] src/routes/register/+page.svelte:538:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+5:43:03 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:43:03 PM [vite] (ssr) page reload src/routes/+page.svelte
+5:43:10 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:43:10 PM [vite] (ssr) page reload src/routes/+page.svelte
+5:43:17 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+5:43:17 PM [vite] (ssr) page reload src/routes/+page.svelte
