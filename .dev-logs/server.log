@@ -37,3 +37,5 @@ https://svelte.dev/e/css_unused_selector
 6:01:59 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
 6:02:07 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
 6:02:07 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+6:04:27 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+6:04:27 PM [vite] (ssr) page reload src/routes/+page.svelte

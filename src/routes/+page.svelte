@@ -113,7 +113,7 @@
 <ChampHero />
 
 <!-- Section: What Makes BEEE Different -->
-<section id="diff-section" class="bg-navy">
+<section id="diff-section" class="bg-navy pt-20 md:pt-28">
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="font-hero text-4xl md:text-6xl text-white font-bold tracking-tight mb-4">What Makes The BEEE Championship Different?</h2>
     <p class="font-['Inter'] text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
