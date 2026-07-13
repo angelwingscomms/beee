@@ -227,3 +227,46 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 7:47:18 PM [vite-plugin-svelte] src/routes/register/+page.svelte:533:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+Error in search_by_payload: ApiError: Bad Request
+    at Object.fun [as scrollPoints] (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+openapi-typescript-fetch@1.2.6/node_modules/@qdrant/openapi-typescript-fetch/dist/esm/fetcher.js:169:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async QdrantClient.scroll (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+js-client-rest@1.18.0_typescript@6.0.3/node_modules/@qdrant/js-client-rest/dist/esm/qdrant-client.js:337:26)
+    at async search_by_payload (/home/ed/i/beee/src/lib/db/index.ts:154:14)
+    at async POST (/home/ed/i/beee/src/routes/api/validate-affiliate/+server.ts:19:15)
+    at async render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=73b8bc04:54:20)
+    at async resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:537:17)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=73b8bc04:377:20)
+    at async Object.before_handle (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:574:14) {
+  headers: Headers {
+    'content-encoding': 'br',
+    'content-type': 'application/json',
+    date: 'Mon, 13 Jul 2026 18:58:27 GMT',
+    vary: 'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+    'transfer-encoding': 'chunked'
+  },
+  url: 'https://a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io:6333/collections/i/points/scroll',
+  status: 400,
+  statusText: 'Bad Request',
+  data: {
+    status: {
+      error: 'Bad request: Index required but not found for "ac" of one of the following types: [keyword]. Help: Create an index for this key or use a different filter.'
+    },
+    time: 0.000001534
+  }
+}
+arg: { s: 'u', ac: 'gttrrrreee' } undefined undefined undefined
+
+[1;31m[500] POST /api/validate-affiliate[0m
+Error: Bad Request
+    at Object.fun [as scrollPoints] (file:/home/ed/i/beee/node_modules/.pnpm/@qdrant+openapi-typescript-fetch@1.2.6/node_modules/@qdrant/openapi-typescript-fetch/dist/esm/fetcher.js:169:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async QdrantClient.scroll (file:/home/ed/i/beee/node_modules/.pnpm/@qdrant+js-client-rest@1.18.0_typescript@6.0.3/node_modules/@qdrant/js-client-rest/dist/esm/qdrant-client.js:337:26)
+    at async search_by_payload (src/lib/db/index.ts:194:17)
+    at async POST (src/routes/api/validate-affiliate/+server.ts:17:18)
+8:26:04 PM [vite-plugin-svelte] src/routes/register/+page.svelte:367:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+8:26:04 PM [vite-plugin-svelte] src/routes/register/+page.svelte:475:2 Unused CSS selector ".reg-summary-deadline"
+https://svelte.dev/e/css_unused_selector
+8:26:04 PM [vite-plugin-svelte] src/routes/register/+page.svelte:533:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
