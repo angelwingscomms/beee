@@ -266,7 +266,6 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Qualification slots are limited and will be allocated on a first-completed-registration basis</p>
           <p>Participants must be between 10 and 14 years of age</p>
           <p>Online coaching begins July 2026</p>
           <p>Sign up early to give your child a richer, more rewarding championship experience.</p>
