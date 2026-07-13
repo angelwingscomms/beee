@@ -256,7 +256,7 @@
                                 <text x="12" y="14" font-family="'Montserrat', sans-serif" font-weight="700" font-size="5.5" fill="#ffb200" stroke="none" text-anchor="middle">AI</text>
                             </svg>
                         </div>
-                        <div class="card-title">E4 AI</div>
+                        <div class="card-title">E4</div>
                         <div class="card-subtitle">Intelligence &<br>Innovation</div>
                     </div>
                     <div class="line-v node-drop"></div>
