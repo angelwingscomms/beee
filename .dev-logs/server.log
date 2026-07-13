@@ -139,3 +139,13 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 7:05:09 PM [vite-plugin-svelte] src/routes/register/+page.svelte:537:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+7:09:17 PM [vite-plugin-svelte] src/routes/register/+page.svelte:373:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:09:17 PM [vite-plugin-svelte] src/routes/register/+page.svelte:539:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+7:09:17 PM [vite] (client) hmr update /src/routes/register/+page.svelte, /src/app.css
+7:09:17 PM [vite] (ssr) page reload src/routes/register/+page.svelte
+7:09:17 PM [vite-plugin-svelte] src/routes/register/+page.svelte:373:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+7:09:17 PM [vite-plugin-svelte] src/routes/register/+page.svelte:539:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
