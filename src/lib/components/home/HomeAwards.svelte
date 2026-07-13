@@ -7,7 +7,7 @@
     icon: Sparkles,
     kicker: 'The signature honour',
     title: 'T.E.A.M.U.P.™ Excellence Awards',
-    body: 'The highest recognition — celebrating whole-child excellence across Technology, Enterprise, Art, Mentorship and Upskill.'
+    body: 'Celebrating whole child excellence, outstanding performers will win cash prizes and be awarded a variety of honours.'
   };
 
   const awards = [

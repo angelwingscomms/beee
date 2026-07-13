@@ -81,3 +81,5 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 6:52:57 PM [vite-plugin-svelte] src/routes/register/+page.svelte:538:2 Unused CSS selector ".reg-bul"
 https://svelte.dev/e/css_unused_selector
+6:58:20 PM [vite] (client) hmr update /src/lib/components/home/HomeAwards.svelte, /src/app.css
+6:58:20 PM [vite] (ssr) page reload src/lib/components/home/HomeAwards.svelte
