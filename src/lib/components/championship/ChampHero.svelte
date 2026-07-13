@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import Button from '$lib/components/Button.svelte';
   import Modal from '$lib/components/Modal.svelte';
   import { pushState } from '$app/navigation';
@@ -10,19 +9,10 @@
   import { REG_AMOUNT, REG_AMOUNT_DEV } from '$lib/constants';
   const HERO_AMOUNT = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  let imageWrapper: HTMLElement | undefined = $state();
-  let float1: HTMLElement | undefined = $state();
-  let float2: HTMLElement | undefined = $state();
-  let pinned = $state(false);
-
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const tl = gsap.timeline();
-
-    tl.from('.hero-anim-elem', {
+    gsap.from('.hero-anim-elem', {
       y: 30,
       autoAlpha: 0,
       duration: 0.8,
@@ -30,45 +20,6 @@
       ease: 'power3.out',
       delay: 0.2,
       clearProps: 'all',
-    });
-
-    if (imageWrapper) {
-      tl.from(imageWrapper, {
-        scale: 0.95,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'expo.out',
-      }, 0);
-    }
-
-    const floats = [float1, float2].filter((f): f is HTMLElement => f != null);
-
-    if (floats.length) tl.from(floats, {
-      y: 20,
-      opacity: 0,
-      duration: 1,
-      ease: 'elastic.out(1, 0.5)',
-    }, 0.8);
-
-    floats.forEach((el) => {
-      gsap.to(el, {
-        y: 10,
-        duration: 3,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-        delay: 2,
-      });
-    });
-
-    ScrollTrigger.create({
-      trigger: imageWrapper,
-      pin: true,
-      start: 'top 15%',
-      end: '+=45%',
-      pinSpacing: true,
-      onEnter: () => pinned = true,
-      onLeaveBack: () => pinned = false,
     });
   });
 </script>
@@ -121,7 +72,7 @@
 
     </div>
 
-    <div class="lg:col-span-8 flex justify-center items-center" bind:this={imageWrapper}>
+    <div class="lg:col-span-8 flex justify-center items-center">
       <div class="relative w-full max-w-2xl aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
         <img
           src="/images/hero.png"
