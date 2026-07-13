@@ -117,11 +117,6 @@
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 90% 60% at 100% 0%, #1A2B4C 0%, transparent 60%)" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="flex items-center gap-4 mb-8">
-      <span class="h-px w-12 bg-amber-400"></span>
-      <span class="font-hero text-xs md:text-sm font-semibold uppercase tracking-[0.22em] text-amber-400">The Ecosystem</span>
-    </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end mb-16 md:mb-20">
       <h2 class="lg:col-span-8 font-hero text-4xl md:text-6xl lg:text-[4.25rem] text-white font-bold tracking-[-0.02em] leading-[1.02]">
         What makes the BEEE Championship <span class="text-amber-400">different?</span>
