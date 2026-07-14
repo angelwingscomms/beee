@@ -61,7 +61,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 
     const callback_url = `${url.origin}/payment/callback`;
     // Only a reference goes to Paystack — no PII, no password.
-    const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, { regId: i });
+    const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i });
 
     return json({
         success: true,
