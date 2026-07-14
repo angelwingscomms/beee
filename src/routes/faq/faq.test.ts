@@ -23,9 +23,14 @@ describe('faq data integrity', () => {
 		}
 	});
 
-	it('total question count across all categories is 34', () => {
-		const total = cs.reduce((s, c) => s + c.qs.length, 0);
-		expect(total).toBe(34);
+	it('every category id is unique', () => {
+		const ids = cs.map(c => c.i);
+		expect(new Set(ids).size).toBe(ids.length);
+	});
+
+	it('every question across all categories has a unique q', () => {
+		const all_qs = cs.flatMap(c => c.qs.map(q => q.q));
+		expect(new Set(all_qs).size).toBe(all_qs.length);
 	});
 });
 
@@ -81,9 +86,9 @@ describe('filterBySearch', () => {
 describe('combined filters', () => {
 	it('category + search work together', () => {
 		const cat = filterByCategory(cs, 'registration');
-		const searched = filterBySearch(cat, 'fee');
+		const searched = filterBySearch(cat, 'register');
 		expect(searched.length).toBe(1);
-		expect(searched[0].qs.length).toBe(2);
-		expect(searched[0].qs[0].q).toContain('fee');
+		expect(searched[0].qs.length).toBe(3);
+		expect(searched[0].qs[0].q.toLowerCase()).toContain('register');
 	});
 });

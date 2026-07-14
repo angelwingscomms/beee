@@ -15,9 +15,7 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">Taskify™</h1>
         <p class="page-hero-sub">Digital Development Passport</p>
-        <p class="page-hero-body">A digital Development Passport that tracks participant progress. Participants will not simply attend sessions—they will embark on a measurable development journey.</p>
-        <p class="page-hero-body">Every registered participant will receive access to a personal TASKIFY™ Development Passport.</p>
-        <p class="page-hero-body">Through a digital tracking system, participants will build their own TASKIFY™ Development Passport, record of milestones, badges, achievement points, certificates, valuable skills and recognition awards as they progress through various stages of the championship programme.</p>
+        <p class="page-hero-body">Participants will not simply attend sessions—they will embark on a measurable development journey, building their own record of accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth and all notable achievements.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
@@ -126,7 +124,6 @@
 
   .page-hero-sub {
     font-family: var(--font-display);
-    font-style: italic;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -138,6 +135,7 @@
   .page-hero-body {
     font-size: 17px;
     line-height: 1.65;
+    font-style: normal;
     color: var(--body);
     margin: 24px 0 0;
   }

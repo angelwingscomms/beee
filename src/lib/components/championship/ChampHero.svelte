@@ -68,7 +68,7 @@
         <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See How It Works</Button>
       </div>
 
-      <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Join As A Tournament Partner →</button>
+      <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Become a Tournament Partner →</button>
 
     </div>
 

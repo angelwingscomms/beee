@@ -270,6 +270,7 @@
           <p>Participants must be between 10 and 14 years of age</p>
           <p>Online coaching begins July 2026</p>
         </div>
+        <p class="reg-login-link">Already registered? <a href="/login">Log in</a></p>
       </form>
 
       <aside class="reg-summary" use:motionFadeUp>
@@ -540,6 +541,20 @@
   .reg-bul {
     margin: 0 6px;
     color: var(--hairline);
+  }
+  .reg-login-link {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 4px 0 0;
+  }
+  .reg-login-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .reg-login-link a:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 860px) {

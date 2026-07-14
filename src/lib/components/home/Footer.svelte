@@ -36,7 +36,7 @@
         <span class="contact-sep">|</span>
         <span>+234 802 092 0872</span>
       </div>
-      <a href="/partner" class="footer-partner">Join As A Tournament Partner →</a>
+      <a href="/partner" class="footer-partner">Become a Tournament Partner →</a>
       <p class="footer-copy">&copy; 2026 BEEE Spectacular Chess Championship</p>
     </div>
   </div>

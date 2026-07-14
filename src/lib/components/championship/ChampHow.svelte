@@ -31,15 +31,12 @@ TASKIFY™ Development Passport`,
     {
       num: 2,
       title: 'LEARN',
-      body: `Participants train on the E4™ chess app, T.E.A.M.U.P.™ activities, and build their TASKIFY development passport in:
-
-- Strategic thinking and decision-making
-- Critical reasoning and problem-solving
-- Creativity and innovation
-- Leadership and teamwork
-- Communication and interpersonal skills
-- Confidence, Resilience, and Self-discipline
-- Academic excellence and a lifelong passion for learning`,
+      body: `Participants train on:
+✔ AI-powered chess coaching
+✔ Leadership and life-skills development
+✔ Interactive Challenges
+✔ Creativity workshops
+✔ A championship exp beyond the chessboard`,
       img: '/images/championship/learn.png',
       color: '#ffb200',
       colorLight: '#e6a000',

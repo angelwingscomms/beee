@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
-  import { slide } from 'svelte/transition';
+
   import Button from '$lib/components/Button.svelte';
 
   let open = $state(false);
@@ -47,7 +47,7 @@
     </button>
   </div>
   {#if open}
-    <div class="champ-mobile-menu" transition:slide={{ duration: 200 }}>
+    <div class="champ-mobile-menu">
       <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
       <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>

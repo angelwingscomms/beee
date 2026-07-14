@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { FaqQ } from '$lib/data/faq';
 
-	let { qs, category_label = '' }: { qs: FaqQ[]; category_label?: string } = $props();
+	let { qs, category_label = '', cat_id = '' }: { qs: FaqQ[]; category_label?: string; cat_id?: string } = $props();
 	let open = $state<number | null>(null);
 
 	function toggle(i: number) {
@@ -9,38 +9,37 @@
 	}
 </script>
 
-<div class="accordion" role="region" aria-label={category_label ? `${category_label} questions` : 'FAQ questions'}>
-	{#each qs as item, i}
-		<div class="accordion-item" class:accordion-open={open === i}>
-			<button
-				class="accordion-trigger"
-				onclick={() => toggle(i)}
-				aria-expanded={open === i}
-				aria-controls="faq-answer-{i}"
-				id="faq-question-{i}"
-			>
-				<span class="accordion-q">{item.q}</span>
-				<svg class="accordion-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-					<path d="M4.5 6.75l4.5 4.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-			</button>
-			<div
-				id="faq-answer-{i}"
-				role="region"
-				aria-labelledby="faq-question-{i}"
-				class="accordion-panel"
-				class:accordion-panel-open={open === i}
-				style="--content-height: {item.a.length}px"
-			>
-				<div class="accordion-answer">
-					<p>{item.a}</p>
+{#if qs.length > 0}
+	<div class="accordion" role="region" aria-label={category_label ? `${category_label} questions` : 'FAQ questions'}>
+		{#each qs as item, i}
+			<div class="accordion-item" class:accordion-open={open === i}>
+				<button
+					class="accordion-trigger"
+					onclick={() => toggle(i)}
+					aria-expanded={open === i}
+					aria-controls="faq-answer-{cat_id}-{i}"
+					id="faq-question-{cat_id}-{i}"
+				>
+					<span class="accordion-q">{item.q}</span>
+					<svg class="accordion-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+						<path d="M4.5 6.75l4.5 4.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				<div
+					id="faq-answer-{cat_id}-{i}"
+					role="region"
+					aria-labelledby="faq-question-{cat_id}-{i}"
+					class="accordion-panel"
+					class:accordion-panel-open={open === i}
+				>
+					<div class="accordion-answer">
+						<p>{item.a}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/each}
-</div>
-
-{#if qs.length === 0}
+		{/each}
+	</div>
+{:else}
 	<p class="no-results">No questions match your search. Try a different term.</p>
 {/if}
 

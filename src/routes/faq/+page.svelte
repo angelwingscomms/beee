@@ -42,7 +42,7 @@
 		{#each filtered as c}
 			<div class="faq-category">
 				<h2 class="faq-cat-title" id="cat-{c.i}">{c.n}</h2>
-				<FaqAccordion qs={c.qs} category_label={c.n} />
+				<FaqAccordion qs={c.qs} category_label={c.n} cat_id={c.i} />
 			</div>
 		{/each}
 
@@ -63,6 +63,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 64px;
+		padding-top: 36px;
 		padding-bottom: 144px;
 	}
 
