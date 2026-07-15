@@ -36,32 +36,6 @@
       </div>
     {/if}
 
-    <section class="dash-section">
-      <div class="dash-section-head">
-        <h2 class="dash-section-title">E4™ Chess Coach</h2>
-      </div>
-      {#if data.e4}
-        <div class="dash-e4">
-          <div class="dash-e4-stats">
-            <div class="dash-stat">
-              <span class="dash-stat-num">{data.e4.balance.toLocaleString()}</span>
-              <span class="dash-stat-label">Tokens</span>
-            </div>
-            <div class="dash-stat">
-              <span class="dash-stat-num">{data.e4.games}</span>
-              <span class="dash-stat-label">Games saved{e4_since ? ` · since ${e4_since}` : ''}</span>
-            </div>
-          </div>
-          <a class="dash-e4-btn" href={data.e4Url}>Open E4™ Chess Coach →</a>
-        </div>
-      {:else}
-        <div class="dash-e4 dash-e4--empty">
-          <p class="dash-empty">Link your chess coach account to track games and tokens here.</p>
-          <a class="dash-e4-btn" href={data.e4Url}>Connect E4™ with Google →</a>
-        </div>
-      {/if}
-    </section>
-
     <div class="dash-actions">
       <a href="/register" class="dash-btn">Register Another</a>
       <a href="/" class="dash-btn dash-btn--outline">Home</a>
