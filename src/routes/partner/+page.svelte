@@ -151,6 +151,7 @@
   .partner-page {
     background: var(--canvas);
     min-height: 100vh;
+    overflow-x: hidden;
   }
   .partner-hero {
     padding: 140px 0 80px;
@@ -163,7 +164,12 @@
     width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
   }
-  .partner-info {}
+  .partner-info {
+    min-width: 0;
+  }
+  .partner-form-wrap {
+    min-width: 0;
+  }
   .partner-badge {
     font-size: 13px;
     font-weight: 600;
@@ -229,6 +235,7 @@
     padding: 36px;
     position: sticky;
     top: 100px;
+    max-width: 100%;
   }
   .partner-form-title {
     font-family: var(--font-hero);
