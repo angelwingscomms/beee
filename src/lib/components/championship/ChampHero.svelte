@@ -116,7 +116,7 @@
 {#if $page.state.partner}
   <Modal onclose={() => history.back()}>
     <h2 class="partner-title">Partner With Us &amp; Earn 10% Reward!</h2>
-    <p class="partner-body">Earn 10% for every registration completed through your unique referral link. Share BEEE Chess Championship 2026 with your school, club, or parent network today!</p>
+    <p class="partner-body">Earn 10% for every registration completed through your unique referral link. Share BEEE Spectacular Chess Championship 2026 with your school, club, or parent network today!</p>
     <a href="/partner" class="partner-btn partner-btn-primary">Become a Partner</a>
   </Modal>
 {/if}
