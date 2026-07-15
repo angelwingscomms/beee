@@ -4,9 +4,10 @@
 // server (PAYSTACK_BASE_URL points here). Run with: node e2e/paystack-mock.mjs
 import { createServer } from 'node:http';
 import { createHmac } from 'node:crypto';
+import { loadEnv } from './env.mjs';
 
 const PORT = process.env.PAYSTACK_MOCK_PORT || 8788;
-const SECRET = process.env.SECRET || 'test-secret-key';
+const SECRET = process.env.SECRET || loadEnv().PAYSTACK_SECRET_KEY_TEST || 'test-secret-key';
 
 // reference -> { amount, email, metadata }
 const txns = new Map();
@@ -33,7 +34,7 @@ const server = createServer((req, res) => {
 
     // Initialize: remember amount so verify returns the same value.
     if (method === 'POST' && url === '/transaction/initialize') {
-      const ref = (p.metadata && p.metadata.regId) || `ref_${Date.now()}`;
+      const ref = p.reference || `ref_${Date.now()}`;
       txns.set(ref, { amount: p.amount, email: p.email, metadata: p.metadata || {} });
       return json(res, 200, {
         status: true,

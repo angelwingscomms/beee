@@ -1,8 +1,8 @@
 import { test, expect, request } from '@playwright/test';
 import { createHmac } from 'node:crypto';
+import { loadEnv } from './env.mjs';
 
-const SECRET = 'test-secret-key';
-const BASE = process.env.BASE_URL || 'http://localhost:5400';
+const SECRET = loadEnv().PAYSTACK_SECRET_KEY_TEST || 'test-secret-key';
 
 function sign(body: string): string {
   return createHmac('sha512', SECRET).update(body).digest('hex');
