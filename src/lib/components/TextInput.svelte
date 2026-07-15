@@ -8,8 +8,8 @@
 		value = $bindable(''),
 		oninput,
 			wrapperClass = '',
-			labelClass = '!text-muted',
-			inputClass = 'placeholder:!text-muted-soft',
+			labelClass = '!text-white',
+			inputClass = 'placeholder:!text-white/60',
 		error = '',
 		showToggle = false,
 	}: {
@@ -160,8 +160,8 @@
 	}
 
 	input {
-		color: #141413;
-		-webkit-text-fill-color: #141413;
+		color: #ffffff;
+		-webkit-text-fill-color: #ffffff;
 	}
 	.field-msg {
 		margin: 6px 0 0;
