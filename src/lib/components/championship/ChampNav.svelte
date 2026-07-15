@@ -28,7 +28,6 @@
       <span class="champ-nav-name">BEEE</span>
     </a>
     <div class="champ-nav-links">
-      <a href="/" class:active={path === '/'}>Home</a>
       <a href="/about" class:active={path === '/about'}>About</a>
       <a href="/e4" class:active={path === '/e4'}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
@@ -50,7 +49,6 @@
   </div>
   {#if open}
     <div class="champ-mobile-menu">
-      <a href="/" class:active={path === '/'} onclick={() => open = false}>Home</a>
       <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>E4</a>
       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>T.E.A.M.U.P.</a>

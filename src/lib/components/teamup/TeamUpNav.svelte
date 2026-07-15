@@ -12,7 +12,6 @@
       <span class="tu-nav-name">BEEE</span>
     </a>
     <div class="tu-nav-links">
-      <a href="/">Home</a>
       <a href="/championship">Championship</a>
       <a href="/teamup" class="active">T.E.A.M.U.P.</a>
       <a href="/register">Register</a>
@@ -25,7 +24,6 @@
   </div>
   {#if open}
     <div class="tu-mobile-menu" transition:slide={{ duration: 200 }}>
-      <a href="/" onclick={() => open = false}>Home</a>
       <a href="/championship" onclick={() => open = false}>Championship</a>
       <a href="/teamup" class="active" onclick={() => open = false}>T.E.A.M.U.P.</a>
       <a href="/register" onclick={() => open = false}>Register</a>
