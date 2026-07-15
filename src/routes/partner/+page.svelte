@@ -1,7 +1,12 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { dev } from '$app/environment';
   import { motionFadeUp } from '$lib/actions/motion';
+  import { MIN_TRANSFER_AMNT, DEV_REG_FEE } from '$lib/constants';
   import TextInput from '$lib/components/TextInput.svelte';
+
+  const payout_naira = (MIN_TRANSFER_AMNT / 100).toLocaleString();
+  const fee_naira = (DEV_REG_FEE / 100).toLocaleString();
 
   let email = $state('');
   let password = $state('');
@@ -66,7 +71,11 @@
         <h1 class="partner-title">Share the Experience.<br>Earn Rewards.</h1>
         <p class="partner-intro">
           Help families discover the BEEE T.E.A.M.U.P. programme and chess championship.
-          You earn 10% of every registration fee from players you refer.
+          {#if dev}
+            In test mode you receive a ₦{payout_naira} payout for every referral — players pay the ₦{fee_naira} test fee.
+          {:else}
+            You earn 10% of every registration fee from players you refer.
+          {/if}
         </p>
         <div class="partner-steps">
           <div class="step">
@@ -80,14 +89,14 @@
             <span class="step-num">2</span>
             <div>
               <strong>They Register</strong>
-              <p>When someone registers using your code, they get a 10% discount automatically applied.</p>
+              <p>{#if dev}When someone registers using your code, they pay the ₦{fee_naira} test fee.{:else}When someone registers using your code, they get a 10% discount automatically applied.{/if}</p>
             </div>
           </div>
           <div class="step">
             <span class="step-num">3</span>
             <div>
               <strong>You Get Paid</strong>
-              <p>After payment is confirmed, 10% of the registration fee is sent directly to your bank account.</p>
+              <p>{#if dev}After payment is confirmed, ₦{payout_naira} is sent directly to your bank account.{:else}After payment is confirmed, 10% of the registration fee is sent directly to your bank account.{/if}</p>
             </div>
           </div>
         </div>

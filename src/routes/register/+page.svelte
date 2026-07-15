@@ -7,7 +7,7 @@
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
-  import { REG_AMOUNT, REG_AMOUNT_DEV, DISCOUNT_PCT } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE, DISCOUNT_PCT } from '$lib/constants';
 
   let gf = $state('');
   let gl = $state('');
@@ -34,7 +34,7 @@
   let acValid = $state<boolean | null>(null);
   let acLoading = $state(false);
 
-  const baseAmount = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
+  const baseAmount = dev ? DEV_REG_FEE : REG_AMOUNT;
   let AMOUNT = $state(baseAmount);
 
   let allValid = $derived(
@@ -249,7 +249,7 @@
             <div class="reg-discount-callout">
               <span>Checking partner code…</span>
             </div>
-          {:else if acValid}
+          {:else if acValid && (baseAmount - AMOUNT) > 0}
             <div class="reg-discount-callout valid">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>

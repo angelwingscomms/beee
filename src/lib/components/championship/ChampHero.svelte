@@ -6,9 +6,9 @@
   import { pushState } from '$app/navigation';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, REG_AMOUNT_DEV } from '$lib/constants';
-  const HERO_AMOUNT = dev ? REG_AMOUNT_DEV : REG_AMOUNT;
+  import { REG_AMOUNT, DEV_REG_FEE } from '$lib/constants';
 
+  const HERO_AMOUNT = dev ? DEV_REG_FEE : REG_AMOUNT;
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
