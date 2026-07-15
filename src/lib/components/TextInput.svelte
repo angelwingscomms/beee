@@ -159,14 +159,7 @@
 		background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
 	}
 
-	label {
-		color: #ffffff !important;
-	}
 
-	input {
-		color: #ffffff;
-		-webkit-text-fill-color: #ffffff;
-	}
 	.field-msg {
 		margin: 6px 0 0;
 		font-size: 12px;
