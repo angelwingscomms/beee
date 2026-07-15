@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import bcrypt from 'bcryptjs';
 import { MIN_PMNT_AMNT, MIN_TRANSFER_AMNT } from '$lib/constants';
 
 let mock_dev = false;
@@ -9,6 +10,7 @@ vi.mock('$app/environment', () => ({
 }));
 
 const mockUsers: Array<{ s: string; ac: string; c?: string[] }> = [];
+let lastCreate: any = null;
 
 vi.mock('$lib/db', () => ({
     new_id: vi.fn(() => 'mock-reg-id-123'),
@@ -18,7 +20,7 @@ vi.mock('$lib/db', () => ({
         }
         return [];
     }),
-    create: vi.fn(async () => 'mock-reg-id-123'),
+    create: vi.fn(async (payload: any) => { lastCreate = payload; return 'mock-reg-id-123'; }),
     get: vi.fn(async () => null),
 }));
 
@@ -43,6 +45,7 @@ describe('register-init-payment partner code validation', () => {
     beforeEach(() => {
         mock_dev = false;
         mockUsers.length = 0;
+        lastCreate = null;
     });
 
     it('accepts registration without partner code', async () => {
@@ -129,5 +132,45 @@ describe('register-init-payment partner code validation', () => {
         const d = await res.json();
         expect(d.amount).toBe(MIN_PMNT_AMNT + MIN_TRANSFER_AMNT);
         expect(d.discounted).toBe(true);
+    });
+
+    it('B5: never stores the password as plaintext — it is bcrypt-hashed', async () => {
+        const { POST } = await import('./+server');
+        await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
+            phone: '+234801234567', school: 'Test School', password: 'password123'
+        }) as any);
+        expect(lastCreate).not.toBeNull();
+        expect(lastCreate.pw).toBeDefined();
+        expect(lastCreate.pw).not.toBe('password123');
+        expect(lastCreate.pw.startsWith('$2')).toBe(true);
+        expect(await bcrypt.compare('password123', lastCreate.pw)).toBe(true);
+    });
+
+    it('B8: rejects an invalid email with 400', async () => {
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'not-an-email',
+            phone: '+234801234567', school: 'Test School', password: 'password123'
+        }) as any);
+        expect(res.status).toBe(400);
+    });
+
+    it('B8: rejects an invalid phone with 400', async () => {
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
+            phone: '123', school: 'Test School', password: 'password123'
+        }) as any);
+        expect(res.status).toBe(400);
+    });
+
+    it('B8: rejects a too-short password with 400', async () => {
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
+            phone: '+234801234567', school: 'Test School', password: '123'
+        }) as any);
+        expect(res.status).toBe(400);
     });
 });

@@ -15,8 +15,13 @@ vi.mock('$lib/db', () => ({
   search_by_payload: vi.fn(async (filter: Record<string, unknown>) => {
     if (filter.s === 'u' && filter.ac) return mockUsers.filter(u => u.ac === filter.ac);
     if (filter.s === 'u' && filter.i) return mockUsers.filter(u => u.i === filter.i);
-    if (filter.s === 'po' && filter.st === 'failed') return [...store.values()].filter(p => p.s === 'po' && p.st === 'failed');
-    if (filter.s === 'po' && filter.ref) return [...store.values()].filter(p => p.s === 'po' && p.ref === filter.ref);
+    if (filter.s === 'po') {
+      return [...store.values()].filter(p =>
+        p.s === 'po' &&
+        (filter.st === undefined || p.st === filter.st) &&
+        (filter.ref === undefined || p.ref === filter.ref)
+      );
+    }
     return [];
   }),
   get: vi.fn(async (id: string) => store.get(id) ?? null),
@@ -151,5 +156,52 @@ describe('reconcile_transfer_payout', () => {
     store.set('po_regX', { s: 'po', reg_id: 'regX', partner_id: 'aff1', ac: 'AFF123', amt: 135_000, st: 'pending', ref: 'po-regX', at: 1, d: Date.now() });
     await reconcile_transfer_payout('po-regX', 'success');
     expect(store.get('po_regX').st).toBe('success');
+  });
+});
+
+describe('bug regressions', () => {
+  beforeEach(() => {
+    store.clear();
+    mockUsers.length = 0;
+    mockUsers.push({ ...AFF });
+    mock_transfer.mockReset();
+    mock_transfer.mockResolvedValue({ transfer_code: 'TRF_1', status: 'success' });
+  });
+
+  it('B2: missing bank details records a retryable failed payout (no silent loss)', async () => {
+    const { process_partner_payout } = await import('./partner');
+    mockUsers.length = 0;
+    mockUsers.push({ s: 'u', i: 'aff_nobank', ac: 'AFF123', c: ['fab'], e: 'partner@example.com', n: 'Partner' });
+    await process_partner_payout(reg(), 'reg_nb', undefined);
+    const rec = store.get('po_reg_nb');
+    expect(rec).toBeTruthy();
+    expect(rec.st).toBe('failed');
+    expect(mock_transfer).not.toHaveBeenCalled();
+  });
+
+  it('B3: retry_failed_payouts also retries stuck processing payouts', async () => {
+    const { retry_failed_payouts } = await import('./partner');
+    store.set('po_proc', { s: 'po', reg_id: 'regProc', partner_id: 'aff1', ac: 'AFF123', amt: 135_000, st: 'processing', ref: 'po-regProc', at: 1, d: Date.now() });
+    store.set('regProc', reg({ amt: 1_350_000 }));
+    const res = await retry_failed_payouts(undefined);
+    expect(res.retried).toBe(1);
+    expect(mock_transfer).toHaveBeenCalled();
+  });
+
+  it('B9: missing registration amount records failed (no NaN transfer)', async () => {
+    const { process_partner_payout } = await import('./partner');
+    await process_partner_payout(reg({ amt: undefined as any }), 'regNaN', undefined);
+    const rec = store.get('po_regNaN');
+    expect(rec.st).toBe('failed');
+    expect(mock_transfer).not.toHaveBeenCalled();
+  });
+
+  it('B12: reconcile updates the exact payout when refs are duplicated', async () => {
+    const { reconcile_transfer_payout } = await import('./partner');
+    store.set('po_regA', { s: 'po', reg_id: 'regA', partner_id: 'aff1', ac: 'AFF123', amt: 1, st: 'pending', ref: 'po-regA', at: 1, d: Date.now() });
+    store.set('po_regB', { s: 'po', reg_id: 'regB', partner_id: 'aff1', ac: 'AFF123', amt: 1, st: 'pending', ref: 'po-regA', at: 1, d: Date.now() });
+    await reconcile_transfer_payout('po-regA', 'success');
+    expect(store.get('po_regA').st).toBe('success');
+    expect(store.get('po_regB').st).toBe('pending');
   });
 });

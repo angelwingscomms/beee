@@ -82,9 +82,9 @@ export async function retry_failed_payouts(
 ): Promise<{ scanned: number; retried: number; succeeded: number; failed: number }> {
   // Retry both terminal `failed` and any left stuck in `processing` (e.g. a
   // transfer call that succeeded but whose webhook never arrived).
-  const failed = await search_by_payload<Payout>({ s: 'po', st: 'failed' }, undefined, 200);
-  const processing = await search_by_payload<Payout>({ s: 'po', st: 'processing' }, undefined, 200);
-  const stuck = [...failed, ...processing];
+  const failedRows = await search_by_payload<Payout>({ s: 'po', st: 'failed' }, undefined, 200);
+  const processingRows = await search_by_payload<Payout>({ s: 'po', st: 'processing' }, undefined, 200);
+  const stuck = [...failedRows, ...processingRows];
   let retried = 0, succeeded = 0, failed = 0;
   for (const p of stuck) {
     const at = (p.at ?? 0) + 1;
