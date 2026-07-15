@@ -1,26 +1,42 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import bcrypt from 'bcryptjs';
 import { new_id, create, search_by_payload } from '$lib/db';
 import { paystack_init } from '$lib/paystack';
 import { dev } from '$app/environment';
-import { DEV_REG_FEE } from '$lib/constants';
+import { DEV_REG_FEE, REG_AMOUNT, DISCOUNT_PCT } from '$lib/constants';
 import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 // In dev, the registration fee is the smallest payable unit: the minimum
 // Paystack charge plus the minimum Paystack transfer (sent to the affiliate).
+// In production, pricing is a single source of truth: REG_AMOUNT (naira) and
+// DISCOUNT_PCT.
 function get_base_amount(): number {
-    return dev ? DEV_REG_FEE : 1_500_000;
+    return dev ? DEV_REG_FEE : REG_AMOUNT * 100;
 }
 
 function get_discounted_amount(): number {
-    return dev ? DEV_REG_FEE : 1_350_000;
+    return dev ? DEV_REG_FEE : Math.round(REG_AMOUNT * 100 * (1 - DISCOUNT_PCT / 100));
 }
 
 export const POST: RequestHandler = async ({ request, url }) => {
     const data = await request.json();
     if (!data.firstName || !data.lastName || !data.email || !data.phone) {
         return json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Server-side validation (the UI validates too, but never trust the client).
+    if (!EMAIL_RE.test(data.email)) {
+        return json({ error: 'Invalid email' }, { status: 400 });
+    }
+    if (!/^\+?\d{7,15}$/.test(String(data.phone).replace(/[\s()-]/g, ''))) {
+        return json({ error: 'Invalid phone' }, { status: 400 });
+    }
+    if (data.password && String(data.password).length < 6) {
+        return json({ error: 'Password too short' }, { status: 400 });
     }
 
     let amount_kobo = get_base_amount();
@@ -58,7 +74,9 @@ export const POST: RequestHandler = async ({ request, url }) => {
         ac
     };
     if (data.password) {
-        pending.pw = data.password;
+        // Hash immediately so the password never rests in the DB as plaintext.
+        // verify-payment reuses this hash directly.
+        pending.pw = await bcrypt.hash(data.password, 10);
     }
     await create(pending, undefined, i);
 

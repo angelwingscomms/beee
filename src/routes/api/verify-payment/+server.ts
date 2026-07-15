@@ -93,11 +93,11 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 		await create(payload, undefined, reg_id);
 		console.log(`[POST /api/verify-payment] Registration written to DB successfully with status 'paid'`);
 
-		// Create or update player user account (hash the password stored on the pending record)
+		// Create or update player user account. The pending record already holds
+		// a bcrypt hash of the password (set at registration init), so reuse it
+		// directly — the plaintext password never touches the DB.
 		const email = reg.e;
-		const pw = reg.pw;
-		let ph: string | undefined;
-		if (pw) ph = await bcrypt.hash(pw, 10);
+		const ph = reg.pw;
 		const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
 
 		const session = await encode_session({ id: user_id, email, name: `${reg.fn || ''} ${reg.ln || ''}`.trim() });

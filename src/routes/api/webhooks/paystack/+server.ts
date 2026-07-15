@@ -124,12 +124,11 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 				await create(payload, undefined, ref);
 				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);
 
-				// Create or update player user account (hash the password stored on the pending record)
-				const email = reg.e;
-				const pw = reg.pw;
-				let ph: string | undefined;
-				if (pw) ph = await bcrypt.hash(pw, 10);
-				const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
+			// Create or update player user account. The pending record already
+			// holds a bcrypt hash of the password (set at registration init).
+			const email = reg.e;
+			const ph = reg.pw;
+			const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
 				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
 
 				// Fire-and-forget partner payout

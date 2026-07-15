@@ -118,6 +118,36 @@ var worker_default = {
     }
     pragma = res.headers.get("cache-control") || "";
     return pragma && res.status < 400 ? c(req, res, ctx) : res;
+  },
+  /**
+   * Cloudflare Cron Trigger entrypoint (wrangler `crons: ['*/15 * * * *']`).
+   * Forwards to the retry-payouts endpoint so failed/stuck partner payouts
+   * are retried automatically in production.
+   * @param {ScheduledEvent} event
+   * @param {any} env2
+   * @param {ExecutionContext} ctx
+   */
+  async scheduled(event, env2, ctx) {
+    await initialized;
+    const secret = env2.CRON_SECRET;
+    const headers = { "content-type": "application/json" };
+    if (secret) headers["x-cron-secret"] = secret;
+    const req = new Request("https://cron.local/api/cron/retry-payouts", {
+      method: "POST",
+      headers
+    });
+    const res = await server.respond(req, {
+      platform: {
+        env: env2,
+        ctx,
+        context: ctx,
+        // @ts-expect-error see fetch handler above
+        caches,
+        cf: undefined
+      },
+      getClientAddress: () => ""
+    });
+    await res.text().catch(() => {});
   }
 };
 export {

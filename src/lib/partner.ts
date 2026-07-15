@@ -52,9 +52,12 @@ export async function process_partner_payout(
     return;
   }
 
-  // Check bank details
+  // Check bank details. Persist a retryable record instead of silently
+  // dropping the commission — once the partner adds bank details the cron
+  // retry (retry_failed_payouts) will pick it up.
   if (!partner.ba || !partner.bn) {
-    console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details configured`);
+    console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details configured — recording retryable failure`);
+    await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
     return;
   }
 
@@ -77,11 +80,11 @@ export async function process_partner_payout(
 export async function retry_failed_payouts(
   platform?: App.Platform
 ): Promise<{ scanned: number; retried: number; succeeded: number; failed: number }> {
-  const stuck = await search_by_payload<Payout>(
-    { s: 'po', st: 'failed' },
-    undefined,
-    200
-  );
+  // Retry both terminal `failed` and any left stuck in `processing` (e.g. a
+  // transfer call that succeeded but whose webhook never arrived).
+  const failed = await search_by_payload<Payout>({ s: 'po', st: 'failed' }, undefined, 200);
+  const processing = await search_by_payload<Payout>({ s: 'po', st: 'processing' }, undefined, 200);
+  const stuck = [...failed, ...processing];
   let retried = 0, succeeded = 0, failed = 0;
   for (const p of stuck) {
     const at = (p.at ?? 0) + 1;
@@ -149,6 +152,11 @@ async function run_payout(
   }
 
   const total_kobo = reg.amt as number;
+  if (!total_kobo || Number.isNaN(total_kobo)) {
+    console.error(`[payout] Missing/invalid registration amount for ${reg_id} — cannot compute commission`);
+    await store_failed_payout(reg_id, partner_id, ac, 'Missing registration amount', at, pid);
+    return;
+  }
   const amt_kobo = payout_amount(total_kobo, dev);
 
   let recipient: { recipient_code: string; active: boolean };
@@ -184,6 +192,15 @@ async function run_payout(
  * (transfer.success / transfer.failed / transfer.reversed).
  */
 export async function reconcile_transfer_payout(ref: string, st: Payout['st']): Promise<void> {
+  // The transfer reference is `po-<reg_id>`; resolve the exact payout record
+  // by registration id rather than relying on list[0] (which is unsafe if
+  // multiple payouts ever shared a reference).
+  const reg_id = ref.startsWith('po-') ? ref.slice(3) : ref;
+  const existing = await get<Payout>(`po_${reg_id}`);
+  if (existing) {
+    await create({ ...existing, st }, undefined, `po_${reg_id}`);
+    return;
+  }
   const list = await search_by_payload<Payout>({ s: 'po', ref });
   const p = list[0];
   if (!p) {

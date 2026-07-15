@@ -12,7 +12,14 @@ function mask(s: string): string {
   return s.length < 12 ? s : s.substring(0, 6) + '...' + s.slice(-4);
 }
 
-const BASE = 'https://api.paystack.co';
+let _base: string | null = null;
+
+async function resolve_base(): Promise<string> {
+	if (_base === null) {
+		_base = (await get_secret('PAYSTACK_BASE_URL')) || 'https://api.paystack.co';
+	}
+	return _base;
+}
 
 export interface PaystackInitResult {
   authorization_url: string;
@@ -91,7 +98,7 @@ export async function paystack_init(
       metadata.reg_data = reg_data;
     }
 
-    const res = await fetch(`${BASE}/transaction/initialize`, {
+    const res = await fetch(`${await resolve_base()}/transaction/initialize`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${secret_key}`,
@@ -141,7 +148,7 @@ export async function paystack_verify(
 
   try {
     const res = await fetch(
-      `${BASE}/transaction/verify/${encodeURIComponent(reference)}`,
+      `${await resolve_base()}/transaction/verify/${encodeURIComponent(reference)}`,
       {
         headers: {
           Authorization: `Bearer ${secret_key}`,
@@ -221,7 +228,7 @@ export function get_bank_code(bn: string): string | null {
 
 export async function paystack_resolve_bank(account_number: string, bank_code: string): Promise<{ account_name: string }> {
   const secret_key = await get_secret_key();
-  const res = await fetch(`${BASE}/bank/resolve`, {
+  const res = await fetch(`${await resolve_base()}/bank/resolve`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ account_number, bank_code })
@@ -237,7 +244,7 @@ export async function paystack_resolve_bank(account_number: string, bank_code: s
 
 export async function paystack_create_recipient(name: string, account_number: string, bank_code: string): Promise<{ recipient_code: string; active: boolean }> {
   const secret_key = await get_secret_key();
-  const res = await fetch(`${BASE}/transferrecipient`, {
+  const res = await fetch(`${await resolve_base()}/transferrecipient`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ type: 'nuban', name, account_number, bank_code, currency: 'NGN' })
@@ -265,7 +272,7 @@ export async function paystack_transfer(
     reason
   };
   if (reference) body_json.reference = reference;
-  const res = await fetch(`${BASE}/transfer`, {
+  const res = await fetch(`${await resolve_base()}/transfer`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body_json)
@@ -293,7 +300,7 @@ export async function paystack_transfer(
 export async function paystack_balance(): Promise<number> {
   const secret_key = await get_secret_key();
   try {
-    const res = await fetch(`${BASE}/balance`, {
+    const res = await fetch(`${await resolve_base()}/balance`, {
       headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' }
     });
     if (!res.ok) return 0;
