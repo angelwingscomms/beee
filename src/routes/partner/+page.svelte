@@ -135,11 +135,11 @@
             </button>
           </form>
           <div class="partner-divider"><span>or</span></div>
-          <a href="/login/google?next=/partner/settings" class="button-secondary partner-google">
+          <a href="/login/google?next=/dashboard/partner" class="button-secondary partner-google">
             Continue with Google
           </a>
           <p class="partner-signin">
-            Already a partner? <a href="/login/google?next=/partner/settings">Sign in</a>
+            Already a partner? <a href="/login/google?next=/dashboard/partner">Sign in</a>
           </p>
         </div>
       </div>

@@ -71,12 +71,12 @@
 </script>
 
 <svelte:head>
-  <title>Partner Settings — BEEE</title>
+  <title>Partner Dashboard — BEEE</title>
 </svelte:head>
 
 <div class="settings-page">
   <section class="container" style="padding: 140px 0 80px; max-width: 640px;">
-    <h1 class="settings-title">Partner Settings</h1>
+    <h1 class="settings-title">Partner Dashboard</h1>
 
     <div class="settings-card">
       <h2 class="settings-card-title">Your Partner Code</h2>

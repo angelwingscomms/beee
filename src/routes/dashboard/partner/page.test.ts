@@ -3,9 +3,9 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { banks } from '$lib/data/banks';
 
-const page = readFileSync(resolve(process.cwd(), 'src/routes/partner/settings/+page.svelte'), 'utf8');
+const page = readFileSync(resolve(process.cwd(), 'src/routes/dashboard/partner/+page.svelte'), 'utf8');
 const server = readFileSync(resolve(process.cwd(), 'src/routes/api/partner/settings/+server.ts'), 'utf8');
-const page_server = readFileSync(resolve(process.cwd(), 'src/routes/partner/settings/+page.server.ts'), 'utf8');
+const page_server = readFileSync(resolve(process.cwd(), 'src/routes/dashboard/partner/+page.server.ts'), 'utf8');
 
 describe('partner settings page', () => {
   it('imports BankSelect', () => {

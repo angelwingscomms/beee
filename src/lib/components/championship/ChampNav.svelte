@@ -36,7 +36,9 @@
       <a href="/partner" class:active={path === '/partner'}>Partners</a>
       <a href="/faq" class:active={path === '/faq'}>FAQs</a>
     </div>
-    <Button href="/register" class="champ-nav-cta">Register</Button>
+    {#if !user}
+      <Button href="/register" class="champ-nav-cta">Register</Button>
+    {/if}
     {#if user}
       <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
         {logging_out ? 'Signing out…' : 'Log out'}

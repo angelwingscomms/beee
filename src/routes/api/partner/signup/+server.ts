@@ -22,7 +22,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
   if (existing) {
     return json({
       error: 'An account with this email already exists.',
-      signInUrl: '/login/google?next=/partner/settings'
+      signInUrl: '/login/google?next=/dashboard/partner'
     }, { status: 409 });
   }
 
@@ -43,5 +43,5 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
   const session = await encode_session({ id: user_id, name: u.n, email });
   cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
-  return json({ success: true, redirect: '/partner/settings' });
+  return json({ success: true, redirect: '/dashboard/partner' });
 };
