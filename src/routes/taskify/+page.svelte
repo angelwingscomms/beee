@@ -15,7 +15,7 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">Taskify™</h1>
         <p class="page-hero-sub">Digital Development Passport</p>
-        <p class="page-hero-body">Participants will not simply attend sessions—they will embark on this measurable development journey, building their own record of accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth and all notable achievements.</p>
+        <p class="page-hero-body">A Development Passport that grants digital access to all platforms and provides a tangible way for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Get Started</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
