@@ -71,7 +71,7 @@ export interface DashboardData {
 
 async function load_e4(email: string): Promise<E4Link | null> {
 	try {
-		const eu = await search_by_payload<{ i: string; d?: number }>({ s: 'u', m: email });
+		const eu = await search_by_payload<{ i: string; d?: number }>({ s: 'u', e: email });
 		if (!eu.length) return null;
 		const sub = eu[0].i.replace(/^u_/, '');
 		const bal = await search_by_payload<{ t?: number }>({ u: sub }, ['t'], 50);

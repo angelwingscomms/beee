@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { derive_badges } from './load';
 import type { Registration } from '$lib/types/registration';
 
@@ -39,5 +39,26 @@ describe('load_dashboard', () => {
 		}
 		expect(thrown).not.toBeNull();
 		expect(thrown?.status).toBe(302);
+	});
+});
+
+describe('load_e4', () => {
+	it('looks up the user by email (e), not the session field (m)', async () => {
+		const { load_dashboard } = await import('./load');
+		const calls: Record<string, unknown>[] = [];
+		vi.spyOn(await import('$lib/db'), 'search_by_payload').mockImplementation(
+			async (filter: Record<string, unknown>) => {
+				calls.push(filter);
+				if (filter.s === 'u' && filter.e === 'e4@b.co') return [{ i: 'u_abc', d: 123 } as any];
+				if (filter.u === 'abc' && !('s' in filter)) return [{ t: 50 } as any];
+				if (filter.s === 'g' && filter.u === 'abc')
+					return [{ s: 'g', u: 'abc' } as any, { s: 'g', u: 'abc' } as any];
+				return [] as any;
+			}
+		);
+		const out = await load_dashboard({ user: { id: 'u_abc', email: 'e4@b.co' } } as App.Locals);
+		expect(calls.some((c) => c.s === 'u' && c.e === 'e4@b.co' && !('m' in c))).toBe(true);
+		expect(out.e4).toEqual({ joined: 123, balance: 50, games: 2 });
+		vi.restoreAllMocks();
 	});
 });
