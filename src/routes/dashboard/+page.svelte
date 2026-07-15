@@ -38,24 +38,6 @@
 
     <section class="dash-section">
       <div class="dash-section-head">
-        <h2 class="dash-section-title">TASKIFY Development Passport</h2>
-        <a href="/taskify" class="dash-link">View →</a>
-      </div>
-      <div class="dash-passport">
-        {#each data.badges as b}
-          <div class="dash-badge" class:dash-badge--done={b.done}>
-            <span class="dash-badge-dot"></span>
-            <div class="dash-badge-text">
-              <strong>{b.label}</strong>
-              <span>{b.hint}</span>
-            </div>
-          </div>
-        {/each}
-      </div>
-    </section>
-
-    <section class="dash-section">
-      <div class="dash-section-head">
         <h2 class="dash-section-title">E4™ Chess Coach</h2>
       </div>
       {#if data.e4}
@@ -178,46 +160,6 @@
     color: var(--muted);
     margin: 0;
   }
-  .dash-passport {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .dash-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 10px;
-    background: var(--surface-soft);
-    border: 1px solid var(--hairline);
-    opacity: 0.55;
-  }
-  .dash-badge--done {
-    opacity: 1;
-    border-color: rgba(93, 184, 114, 0.4);
-  }
-  .dash-badge-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--hairline);
-    flex-shrink: 0;
-  }
-  .dash-badge--done .dash-badge-dot {
-    background: #5db872;
-  }
-  .dash-badge-text { display: flex; flex-direction: column; }
-  .dash-badge-text strong {
-    font-family: var(--font-registration);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .dash-badge-text span {
-    font-size: 12px;
-    color: var(--muted);
-  }
   .dash-e4 {
     padding: 18px;
     border-radius: 12px;
@@ -281,7 +223,4 @@
     color: var(--body-strong);
   }
   .dash-btn--outline:hover { background: var(--surface-soft); }
-  @media (max-width: 560px) {
-    .dash-passport { grid-template-columns: 1fr; }
-  }
 </style>

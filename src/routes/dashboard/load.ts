@@ -65,7 +65,6 @@ export interface DashboardData {
 	profile: DashboardProfile | null;
 	registrations: Registration[];
 	e4: E4Link | null;
-	badges: Badge[];
 	e4Url: string;
 }
 
@@ -91,7 +90,6 @@ export async function load_dashboard(locals: App.Locals): Promise<DashboardData>
 	const profile = (await find_user_by_email(email)) as (User & { i: string }) | undefined;
 	const registrations = await search_by_payload<Registration>({ s: 'reg', e: email });
 	const e4 = await load_e4(email);
-	const badges = derive_badges(registrations, profile ? (profile as DashboardProfile) : null, e4);
 	const base = (dyn.E4_URL as string) || E4_URL;
 	const e4Url = `${base}/login/google`;
 
@@ -100,7 +98,6 @@ export async function load_dashboard(locals: App.Locals): Promise<DashboardData>
 		profile: profile ? (profile as DashboardProfile) : null,
 		registrations,
 		e4,
-		badges,
 		e4Url
 	};
 }
