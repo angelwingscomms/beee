@@ -131,4 +131,17 @@ describe('verify-payment', () => {
         const res = await POST({ request, cookies, platform } as any);
         expect(res.status).toBe(404);
     });
+
+    it('B15: replay of a paid registration cannot trigger a second payout', async () => {
+        verify.mockResolvedValue({ status: 'success', reference: REG_ID, amount: 1_350_000, customer: { email: '' }, metadata: {} });
+        const { POST } = await import('./+server');
+        const { request: r1, cookies: c1, platform: p1 } = handler({ reference: REG_ID, registrationId: REG_ID });
+        await POST({ request: r1, cookies: c1, platform: p1 } as any);
+        payout.mockClear();
+        // Same reference replayed (attacker re-sends the callback) — must be a no-op.
+        const { request: r2, cookies: c2, platform: p2 } = handler({ reference: REG_ID, registrationId: REG_ID });
+        const res2 = await POST({ request: r2, cookies: c2, platform: p2 } as any);
+        expect(res2.status).toBe(200);
+        expect(payout).not.toHaveBeenCalled();
+    });
 });

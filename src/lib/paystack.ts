@@ -4,6 +4,7 @@
 import { dev } from '$app/environment';
 import { createHmac } from 'crypto';
 import { get_secret } from '$lib/server/secrets';
+import { banks } from '$lib/data/banks';
 
 console.log('[paystack] module loaded');
 
@@ -180,48 +181,20 @@ export async function paystack_verify(
   }
 }
 
-// ── Bank code map ──────────────────────────────────────────
+// ── Bank code resolution ──────────────────────────────────
+// Single source of truth: the canonical list in src/lib/data/banks.ts (the
+// same data the partner settings UI uses). Resolving by bank name + aliases
+// keeps payouts consistent with what the UI shows.
 
-const BANK_CODES: Record<string, string> = {
-  'access bank': '044',
-  'access bank (diamond)': '063',
-  'citibank': '023',
-  'ecobank': '050',
-  'fidelity bank': '070',
-  'first bank': '011',
-  'first city monument bank': '214',
-  'fcmb': '214',
-  'globus bank': '001',
-  'guaranty trust bank': '058',
-  'gtbank': '058',
-  'heritage bank': '030',
-  'jaiz bank': '301',
-  'keystone bank': '082',
-  'kuda bank': '50211',
-  'kuda': '50211',
-  'moniepoint': '50515',
-  'opay': '100004',
-  'palmpay': '50563',
-  'parallex bank': '526',
-  'polaris bank': '076',
-  'providus bank': '101',
-  'stanbic ibtc bank': '221',
-  'stanbic ibtc': '221',
-  'standard chartered bank': '068',
-  'sterling bank': '232',
-  'suntrust bank': '100',
-  'titan trust bank': '102',
-  'union bank': '032',
-  'united bank for africa': '033',
-  'uba': '033',
-  'unity bank': '215',
-  'wema bank': '035',
-  'zenith bank': '057',
-};
+const BANK_LOOKUP: Record<string, string> = {};
+for (const b of banks) {
+  BANK_LOOKUP[b.n.trim().toLowerCase()] = b.c;
+  for (const alias of b.a) BANK_LOOKUP[alias.trim().toLowerCase()] = b.c;
+}
 
 export function get_bank_code(bn: string): string | null {
   const key = bn.trim().toLowerCase().replace(/\s+/g, ' ');
-  return BANK_CODES[key] || null;
+  return BANK_LOOKUP[key] || null;
 }
 
 // ── Transfer API ───────────────────────────────────────────

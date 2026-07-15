@@ -131,4 +131,26 @@ describe('integration: register → payment → immediate partner payout', () =>
         const payout = db.store.get(`po_${init.registrationId}`);
         expect(payout.amt).toBe(Math.round(amt * 0.1));
     });
+
+    it('B10: verify-payment and webhook firing concurrently do not create two payout records', async () => {
+        seedPartner();
+        const init = await register('AFF123');
+        const amt = init.amount;
+        ps.controls.verify.mockImplementation(async (r: string) => ({ status: 'success', reference: r, amount: amt, customer: { email: '' }, metadata: {} }));
+        // Fire both entry points at the same registration simultaneously.
+        await Promise.all([verify(init.registrationId), webhookCharge(init.registrationId)]);
+        await flush();
+        const reg = db.store.get(init.registrationId);
+        expect(reg.st).toBe('paid');
+        // Exactly one payout document exists (get/set overwrites under the race).
+        const payouts = [...db.store.keys()].filter(k => k.startsWith('po_'));
+        expect(payouts.length).toBe(1);
+        const payout = db.store.get(`po_${init.registrationId}`);
+        expect(payout.st).toBe('success');
+        // Every transfer (if two fired) reuses the SAME reference → Paystack's
+        // duplicate-reference dedupe prevents a double credit.
+        const calls = ps.controls.transfer.mock.calls;
+        expect(calls.length).toBeGreaterThanOrEqual(1);
+        for (const c of calls) expect(c[3]).toBe(`po-${init.registrationId}`);
+    });
 });

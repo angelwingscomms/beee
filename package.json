@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
+    "test:e2e": "playwright test -c e2e/playwright.config.ts",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run --pool=threads"
   },
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
+    "@playwright/test": "^1.49.0",
     "@sveltejs/adapter-auto": "^7.0.1",
     "@sveltejs/adapter-cloudflare": "^7.2.8",
     "@sveltejs/enhanced-img": "^0.11.0",

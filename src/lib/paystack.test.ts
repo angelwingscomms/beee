@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { get_bank_code } from './paystack';
 
 vi.mock('$app/environment', () => ({
   get dev() { return false; },
@@ -47,5 +48,23 @@ describe('paystack_transfer', () => {
       text: async () => '{"status":false,"message":"Invalid recipient"}'
     })));
     await expect(paystack_transfer('RCP_1', 10000, 'Commission', 'po-reg1')).rejects.toThrow(/Transfer failed/);
+  });
+});
+
+describe('get_bank_code (B6: single source of truth via banks.ts)', () => {
+  it('resolves canonical codes that match the UI list, not the old divergent map', () => {
+    expect(get_bank_code('Globus Bank')).toBe('00103');
+    expect(get_bank_code('PalmPay')).toBe('999991');
+    expect(get_bank_code('OPay')).toBe('999992');
+  });
+
+  it('resolves by alias and is case/space insensitive', () => {
+    expect(get_bank_code('access bank')).toBe('044');
+    expect(get_bank_code('  GTBank ')).toBe('058');
+    expect(get_bank_code('United Bank for Africa')).toBe('033');
+  });
+
+  it('returns null for an unknown bank', () => {
+    expect(get_bank_code('Not A Real Bank')).toBeNull();
   });
 });

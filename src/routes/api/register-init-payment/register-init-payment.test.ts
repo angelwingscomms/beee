@@ -173,4 +173,24 @@ describe('register-init-payment partner code validation', () => {
         }) as any);
         expect(res.status).toBe(400);
     });
+
+    it('B13: schoolEmail in the request is not persisted (dead field stays inert)', async () => {
+        const { POST } = await import('./+server');
+        await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
+            phone: '+234801234567', school: 'Test School', password: 'password123',
+            schoolEmail: 'teacher@example.com'
+        }) as any);
+        expect(lastCreate.schoolEmail).toBeUndefined();
+    });
+
+    it('B14: client-supplied `v` is ignored — server owns the field (dead field is not an input vector)', async () => {
+        const { POST } = await import('./+server');
+        await POST(mock_handler({
+            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
+            phone: '+234801234567', school: 'Test School', password: 'password123',
+            v: 99
+        }) as any);
+        expect(lastCreate.v).toBe(0);
+    });
 });

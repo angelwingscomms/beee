@@ -204,4 +204,16 @@ describe('bug regressions', () => {
     expect(store.get('po_regA').st).toBe('success');
     expect(store.get('po_regB').st).toBe('pending');
   });
+
+  // B11: cross-email self-referral. Email-match self-referral IS blocked (see
+  // the "blocks self-referral" test above). But a partner registering a second
+  // account under a DIFFERENT email is currently NOT detected — that requires
+  // authenticated linking. Documented here as a known limitation pending the
+  // product decision; the assertion pins the CURRENT permissive behavior.
+  it('B11: cross-email self-referral is currently allowed (known gap — needs auth to prevent)', async () => {
+    const { process_partner_payout } = await import('./partner');
+    await process_partner_payout(reg({ e: 'other-alt@example.com' }), 'reg_xemail', undefined);
+    expect(mock_transfer).toHaveBeenCalledTimes(1);
+    expect(store.get('po_reg_xemail').st).toBe('success');
+  });
 });
