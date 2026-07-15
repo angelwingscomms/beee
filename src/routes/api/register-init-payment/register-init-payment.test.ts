@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { MIN_PMNT_AMNT, MIN_TRANSFER_AMNT } from '$lib/constants';
 
 let mock_dev = false;
 
@@ -105,7 +106,7 @@ describe('register-init-payment partner code validation', () => {
         expect(d.discounted).toBe(false);
     });
 
-    it('uses dev pricing in dev mode (1500 NGN = 150000 kobo)', async () => {
+    it('uses dev pricing = min payment + min transfer in dev mode', async () => {
         mock_dev = true;
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
@@ -113,10 +114,10 @@ describe('register-init-payment partner code validation', () => {
             phone: '+234801234569', school: 'Dev School', password: 'password123'
         }) as any);
         const d = await res.json();
-        expect(d.amount).toBe(150_000);
+        expect(d.amount).toBe(MIN_PMNT_AMNT + MIN_TRANSFER_AMNT);
     });
 
-    it('applies discount on valid partner code in dev mode', async () => {
+    it('applies same dev fee on valid partner code in dev mode', async () => {
         mock_dev = true;
         mockUsers.push({ s: 'u', ac: 'DEV_AFF', c: ['fab'] });
         const { POST } = await import('./+server');
@@ -126,7 +127,7 @@ describe('register-init-payment partner code validation', () => {
             partnerCode: 'DEV_AFF'
         }) as any);
         const d = await res.json();
-        expect(d.amount).toBe(135_000);
+        expect(d.amount).toBe(MIN_PMNT_AMNT + MIN_TRANSFER_AMNT);
         expect(d.discounted).toBe(true);
     });
 });

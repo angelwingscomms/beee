@@ -3,15 +3,18 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { new_id, create, search_by_payload } from '$lib/db';
 import { paystack_init } from '$lib/paystack';
 import { dev } from '$app/environment';
+import { MIN_PMNT_AMNT, MIN_TRANSFER_AMNT } from '$lib/constants';
 import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
 
+// In dev, the registration fee is the smallest payable unit: the minimum
+// Paystack charge plus the minimum Paystack transfer (sent to the affiliate).
 function get_base_amount(): number {
-    return dev ? 150_000 : 1_500_000;
+    return dev ? MIN_PMNT_AMNT + MIN_TRANSFER_AMNT : 1_500_000;
 }
 
 function get_discounted_amount(): number {
-    return dev ? 135_000 : 1_350_000;
+    return dev ? MIN_PMNT_AMNT + MIN_TRANSFER_AMNT : 1_350_000;
 }
 
 export const POST: RequestHandler = async ({ request, url }) => {

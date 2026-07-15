@@ -1,5 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Registration } from '$lib/types/registration';
+import { MIN_TRANSFER_AMNT } from '$lib/constants';
+
+let mock_dev = false;
+
+vi.mock('$app/environment', () => ({
+    get dev() { return mock_dev; },
+    get browser() { return false; },
+}));
 
 const store = new Map<string, any>();
 
@@ -82,15 +90,25 @@ describe('process_partner_payout', () => {
     expect(rec.st).toBe('failed');
   });
 
-  it('stores the payout as success after a real transfer', async () => {
-    const { process_partner_payout } = await import('./partner');
-    await process_partner_payout(reg(), 'reg4', undefined);
-    const rec = store.get('po_reg4');
-    expect(rec.st).toBe('success');
-    expect(rec.ref).toBe('po-reg4');
-    expect(rec.tr).toBe('TRF_1');
-    expect(rec.amt).toBe(135_000);
-  });
+    it('stores the payout as success after a real transfer', async () => {
+      const { process_partner_payout } = await import('./partner');
+      await process_partner_payout(reg(), 'reg4', undefined);
+      const rec = store.get('po_reg4');
+      expect(rec.st).toBe('success');
+      expect(rec.ref).toBe('po-reg4');
+      expect(rec.tr).toBe('TRF_1');
+      expect(rec.amt).toBe(135_000);
+    });
+
+    it('transfers the minimum transfer amount to the affiliate in dev mode', async () => {
+      mock_dev = true;
+      const { process_partner_payout } = await import('./partner');
+      // tiny reg fee so a commission % would fall below Paystack's transfer floor
+      await process_partner_payout(reg({ amt: 15_000 }), 'regDev', undefined);
+      expect(mock_transfer).toHaveBeenCalledWith('RCP_1', MIN_TRANSFER_AMNT, 'Commission: regDev', 'po-regDev');
+      const rec = store.get('po_regDev');
+      expect(rec.amt).toBe(MIN_TRANSFER_AMNT);
+    });
 });
 
 describe('retry_failed_payouts', () => {

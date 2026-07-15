@@ -1,12 +1,23 @@
 import { search_by_payload, create, get } from '$lib/db';
 import { get_bank_code, paystack_resolve_bank, paystack_create_recipient, paystack_transfer, paystack_balance } from '$lib/paystack';
 import { send_partner_notification } from '$lib/email';
-import { COMMISSION_PCT } from '$lib/constants';
+import { COMMISSION_PCT, MIN_TRANSFER_AMNT } from '$lib/constants';
+import { dev } from '$app/environment';
 import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
 import type { Payout } from '$lib/types/payout';
 
 const MAX_ATTEMPTS = 5;
+
+/**
+ * Commission paid to an affiliate for a registration. In dev we always pay the
+ * minimum Paystack transfer amount (a tiny dev reg fee would otherwise compute
+ * a commission below Paystack's transfer floor). In production we pay a
+ * percentage of the registration amount.
+ */
+export function payout_amount(total_kobo: number, is_dev: boolean): number {
+  return is_dev ? MIN_TRANSFER_AMNT : Math.round(total_kobo * COMMISSION_PCT / 100);
+}
 
 export async function process_partner_payout(
   reg_data: Registration,
@@ -138,7 +149,7 @@ async function run_payout(
   }
 
   const total_kobo = reg.amt as number;
-  const amt_kobo = Math.round(total_kobo * COMMISSION_PCT / 100);
+  const amt_kobo = payout_amount(total_kobo, dev);
 
   let recipient: { recipient_code: string; active: boolean };
   try {
