@@ -12,4 +12,7 @@ export const MIN_TRANSFER_AMNT = 4000;
 
 // In dev a registration costs exactly the minimum payment + minimum transfer
 // (₦90), and the affiliate is paid the minimum transfer (₦40).
+// DEV_REG_FEE is in kobo (for the Paystack APIs); DEV_REG_FEE_NAIRA is in
+// naira for direct UI display (the UI does not divide by 100).
 export const DEV_REG_FEE = MIN_PMNT_AMNT + MIN_TRANSFER_AMNT;
+export const DEV_REG_FEE_NAIRA = DEV_REG_FEE / 100;

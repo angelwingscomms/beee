@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { DEV_REG_FEE_NAIRA } from '$lib/constants';
 
 let mock_dev = false;
 
@@ -87,5 +88,21 @@ describe('validate-partner endpoint', () => {
         const res = await POST({ request: req } as any);
         const d = await res.json();
         expect(d.valid).toBe(false);
+    });
+
+    it('returns the naira dev fee (₦90) with no discount in dev mode', async () => {
+        mock_dev = true;
+        mockUsers.push({ s: 'u', ac: 'AFFDEV', c: ['fab'] });
+        const { POST } = await import('./+server');
+        const req = new Request('http://localhost/api/validate-partner', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: 'AFFDEV' })
+        });
+        const res = await POST({ request: req } as any);
+        const d = await res.json();
+        expect(d.valid).toBe(true);
+        expect(d.amount).toBe(DEV_REG_FEE_NAIRA);
+        expect(d.full_amount).toBe(DEV_REG_FEE_NAIRA);
     });
 });

@@ -3,7 +3,7 @@
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 	import { dev } from '$app/environment';
-	import { REG_AMOUNT, DEV_REG_FEE } from '$lib/constants';
+	import { REG_AMOUNT, DEV_REG_FEE_NAIRA } from '$lib/constants';
 
 	let firstName = $state('');
 	let lastName = $state('');
@@ -21,7 +21,7 @@
 	let phoneErr = $state('');
 	let passwordErr = $state('');
 
-	const AMOUNT = dev ? DEV_REG_FEE : REG_AMOUNT;
+	const AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
 	function clearErrors() {
 		firstNameErr = '';

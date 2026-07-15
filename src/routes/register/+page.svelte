@@ -7,7 +7,7 @@
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
-  import { REG_AMOUNT, DEV_REG_FEE, DISCOUNT_PCT } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
 
   let gf = $state('');
   let gl = $state('');
@@ -34,7 +34,7 @@
   let acValid = $state<boolean | null>(null);
   let acLoading = $state(false);
 
-  const baseAmount = dev ? DEV_REG_FEE : REG_AMOUNT;
+  const baseAmount = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
   let AMOUNT = $state(baseAmount);
 
   let allValid = $derived(
