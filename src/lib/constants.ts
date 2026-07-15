@@ -6,7 +6,7 @@ export const REG_AMOUNT_DEV = 1500;
 export const DISCOUNT_PCT = 10;
 export const COMMISSION_PCT = 10;
 
-// Paystack minimums (NGN, in kobo). Payment min charge = ₦50; transfer floor
-// not formally published for NGN, so ₦100 is used as a safe valid test minimum.
+// Paystack minimums (NGN, in kobo). Payment min charge = ₦50; dev affiliate
+// transfer floor set to ₦40.
 export const MIN_PMNT_AMNT = 5000;
-export const MIN_TRANSFER_AMNT = 10000;
+export const MIN_TRANSFER_AMNT = 4000;
