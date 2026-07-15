@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/logo.svg" type="image/svg+xml" />
@@ -8,10 +8,7 @@
 		<script>
 			(function() {
 				try {
-					var d = document.documentElement;
-					if (localStorage.getItem('beee-theme') === 'dark' || (!localStorage.getItem('beee-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-						d.classList.add('dark');
-					}
+					document.documentElement.classList.add('dark');
 				} catch(e) {}
 			})();
 		</script>

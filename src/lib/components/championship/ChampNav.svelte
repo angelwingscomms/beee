@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
@@ -9,16 +8,6 @@
   let path = $derived($page.url.pathname);
   let user = $derived($page.data.user);
   let logging_out = $state(false);
-
-  let theme = $state<'light' | 'dark'>('light');
-  if (browser) {
-    theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  }
-  function toggle_theme() {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    try { localStorage.setItem('beee-theme', theme); } catch (e) {}
-  }
 
   async function logout() {
     logging_out = true;
@@ -55,13 +44,6 @@
         {logging_out ? 'Signing out…' : 'Log out'}
       </button>
     {/if}
-    <button class="champ-theme-btn" onclick={toggle_theme} aria-label="Toggle light or dark mode">
-      {#if theme === 'dark'}
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      {:else}
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
-      {/if}
-    </button>
     <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu" aria-expanded={open}>
       <span></span>
     </button>
@@ -346,31 +328,6 @@
   .champ-mobile-btn span::before { top: -6px; }
   .champ-mobile-btn span::after { top: 6px; }
 
-  .champ-theme-btn {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    background: var(--canvas);
-    color: var(--ink);
-    margin-left: auto;
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: background 160ms ease, color 160ms ease;
-  }
-
-  .champ-theme-btn:hover {
-    background: var(--surface-card);
-  }
-
-  :global(.dark) .champ-theme-btn {
-    color: var(--on-dark);
-  }
-
   .champ-mobile-menu {
     display: grid;
     gap: 8px;
@@ -410,8 +367,10 @@
       padding: 0 20px;
       gap: 16px;
     }
-    :global(.champ-nav-cta) {
-      margin-left: 0;
+    :global(.champ-nav-cta),
+    .champ-nav-dash,
+    .champ-nav-logout {
+      margin-left: auto;
     }
     .champ-nav-logo {
       width: 30px;
