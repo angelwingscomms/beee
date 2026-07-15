@@ -39,6 +39,7 @@
       <Button href="/register" class="champ-nav-cta">Register</Button>
     {/if}
     {#if user}
+      <a href="/dashboard" class="champ-nav-dash">Dashboard</a>
       <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
         {logging_out ? 'Signing out…' : 'Log out'}
       </button>
@@ -56,6 +57,7 @@
       <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQs</a>
       {#if user}
+        <a href="/dashboard" onclick={() => open = false}>Dashboard</a>
         <button class="champ-mobile-logout" onclick={() => { open = false; logout(); }}>Log out</button>
       {/if}
     </div>
@@ -215,6 +217,20 @@
     font-size: 14px;
     white-space: nowrap;
   }
+
+  .champ-nav-dash {
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: var(--ink);
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .champ-nav-dash:hover { opacity: 0.85; }
 
   .champ-nav-logout {
     min-height: 44px;

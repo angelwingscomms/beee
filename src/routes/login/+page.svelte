@@ -44,7 +44,12 @@
         isProcessing = false;
         return;
       }
-      goto(next);
+      isProcessing = false;
+      try {
+        await goto(next);
+      } catch {
+        window.location.href = next;
+      }
     } catch {
       apiError = 'Network error. Please try again.';
       isProcessing = false;
