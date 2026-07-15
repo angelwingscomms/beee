@@ -7,7 +7,7 @@
 		required = false,
 		value = $bindable(''),
 		oninput,
-			wrapperClass = '!bg-white !border-[var(--hairline)]',
+			wrapperClass = '!bg-[linear-gradient(135deg,rgba(255,255,255,0.95)_0%,rgba(248,247,242,0.85)_50%,rgba(255,255,255,0.92)_100%)] !backdrop-blur-[32px] !border-[var(--hairline)]',
 			labelClass = '!text-muted',
 			inputClass = 'placeholder:!text-muted-soft',
 		error = '',

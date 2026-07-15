@@ -307,7 +307,7 @@
 
 <!-- Section 5: Final CTA -->
 <section id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
-  <a href="/register" class="block no-underline mym-link"><h1 class="font-hero text-[8vw] text-white leading-none tracking-tighter">Make Your Move.</h1></a>
+  <a href="/register" class="block no-underline mym-link"><h1 class="font-hero text-[8vw] text-yellow-400 leading-none tracking-tighter">Make Your Move.</h1></a>
   <a href="/register" class="inline-block mt-4 no-underline bg-white text-[#0A0F1A] font-semibold rounded-full px-8 py-4 text-[max(16px,1.8vw)] transition-colors hover:bg-amber-400">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </section>
 
