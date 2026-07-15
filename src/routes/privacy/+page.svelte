@@ -56,7 +56,7 @@
 
     <section class="legal-section">
       <h2>8. Data retention</h2>
-      <p>We keep registration and account data for as long as your account exists and for a reasonable period afterwards to meet legal and operational obligations. Partner bank details are removed when an partner account is closed.</p>
+      <p>We keep registration and account data for as long as your account exists and for a reasonable period afterwards to meet legal and operational obligations. Partner bank details are removed when a partner account is closed.</p>
     </section>
 
     <section class="legal-section">

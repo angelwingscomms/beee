@@ -37,7 +37,7 @@ describe('validate-partner endpoint', () => {
         expect(d.valid).toBe(false);
     });
 
-    it('returns valid=false for a code that exists but is not an partner', async () => {
+    it('returns valid=false for a code that exists but is not a partner', async () => {
         mockUsers.push({ s: 'u', ac: 'PLAYER1', c: ['rpb'] });
         const { POST } = await import('./+server');
         const req = new Request('http://localhost/api/validate-partner', {

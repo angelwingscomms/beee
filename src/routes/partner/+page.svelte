@@ -103,7 +103,7 @@
       </div>
       <div class="partner-form-wrap">
         <div class="partner-card">
-          <h2 class="partner-form-title">Become an Partner</h2>
+          <h2 class="partner-form-title">Become a Partner</h2>
           <p class="partner-form-sub">Set up your account in under a minute.</p>
           <form novalidate onsubmit={handleSubmit}>
             <div class="partner-fields">
@@ -130,7 +130,7 @@
               {#if isProcessing}
                 <span class="spinner" aria-hidden="true"></span> Creating account...
               {:else}
-                Become an Partner
+                Become a Partner
               {/if}
             </button>
           </form>
@@ -139,7 +139,7 @@
             Continue with Google
           </a>
           <p class="partner-signin">
-            Already an partner? <a href="/login/google?next=/partner/settings">Sign in</a>
+            Already a partner? <a href="/login/google?next=/partner/settings">Sign in</a>
           </p>
         </div>
       </div>

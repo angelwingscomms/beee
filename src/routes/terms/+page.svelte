@@ -19,7 +19,7 @@
 
     <section class="legal-section">
       <h2>2. Registration and fees</h2>
-      <p>Registration requires payment of the stated participation fee via our payment partner, Paystack. Registration is confirmed only once payment is successfully verified. Fees are per the amount shown at checkout and may vary if an partner discount code is applied.</p>
+      <p>Registration requires payment of the stated participation fee via our payment partner, Paystack. Registration is confirmed only once payment is successfully verified. Fees are per the amount shown at checkout and may vary if a partner discount code is applied.</p>
     </section>
 
     <section class="legal-section">

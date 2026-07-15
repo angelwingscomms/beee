@@ -45,7 +45,7 @@ export async function process_partner_payout(
   // collapse to a single record and a repeat call is a no-op.
   const pid = `po_${reg_id}`;
 
-  // Self-referral guard: an partner must not earn commission on their own signup.
+  // Self-referral guard: a partner must not earn commission on their own signup.
   if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
     console.log(`[payout] Self-referral blocked for ${ac} (reg ${reg_id})`);
     await store_payout(reg_id, partner_id, ac, 0, 'blocked_self', undefined, undefined, 'self-referral', 1, pid);
