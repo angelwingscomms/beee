@@ -124,9 +124,26 @@
       </form>
     </div>
 
-    <div class="settings-card settings-card-muted">
-      <h2 class="settings-card-title">Your Referrals</h2>
-      <p class="stats-placeholder">Stats coming once the program launches.</p>
+    <div class="settings-card">
+      <h2 class="settings-card-title">Registered Users</h2>
+      <p class="settings-card-sub">Players who registered using your partner code.</p>
+      {#if data.registrations.length}
+        <div class="reg-list">
+          {#each data.registrations as reg}
+            <div class="reg-row">
+              <div class="reg-name">{reg.fn || ''} {reg.ln || ''}{#if reg.sn} <span class="reg-school">{reg.sn}</span>{/if}</div>
+              <div class="reg-meta">
+                <span class="reg-email">{reg.e}</span>
+                <span class="reg-badge" class:reg-badge--paid={reg.st === 'paid'}>
+                  {reg.st === 'paid' ? 'Paid' : 'Pending'}
+                </span>
+              </div>
+            </div>
+          {/each}
+        </div>
+      {:else}
+        <p class="stats-placeholder">No users have registered with your code yet.</p>
+      {/if}
     </div>
   </section>
 </div>
@@ -148,9 +165,6 @@
     border-radius: 16px;
     padding: 28px;
     margin-bottom: 20px;
-  }
-  .settings-card-muted {
-    opacity: 0.6;
   }
   .settings-card-title {
     font-size: 16px;
@@ -231,6 +245,58 @@
     color: var(--muted);
     font-size: 14px;
     margin: 12px 0 0;
+  }
+  .reg-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .reg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--canvas);
+  }
+  .reg-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .reg-school {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .reg-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .reg-email {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .reg-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(242, 120, 48, 0.1);
+    color: var(--primary);
+    white-space: nowrap;
+  }
+  .reg-badge--paid {
+    background: rgba(93, 184, 114, 0.12);
+    color: #5db872;
+  }
+  @media (max-width: 560px) {
+    .reg-row { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
   @media (max-width: 767px) {
     .settings-card { padding: 20px; }

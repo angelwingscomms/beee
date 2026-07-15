@@ -38,31 +38,6 @@
 
     <section class="dash-section">
       <div class="dash-section-head">
-        <h2 class="dash-section-title">T.E.A.M.U.P.</h2>
-        <a href="/teamup" class="dash-link">About →</a>
-      </div>
-      {#if data.registrations.length}
-        <div class="dash-regs">
-          {#each data.registrations as reg}
-            <div class="dash-reg">
-              <div class="dash-reg-top">
-                <span class="dash-reg-name">{reg.fn || ''} {reg.ln || ''}</span>
-                <span class="dash-reg-badge" class:dash-reg-badge--paid={reg.st === 'paid'}>
-                  {reg.st === 'paid' ? 'Paid' : 'Pending'}
-                </span>
-              </div>
-              {#if reg.sn}<p class="dash-reg-school">{reg.sn}</p>{/if}
-              {#if reg.ref}<p class="dash-reg-ref">Ref: <code>{reg.ref}</code></p>{/if}
-            </div>
-          {/each}
-        </div>
-      {:else}
-        <p class="dash-empty">No championship registration yet.</p>
-      {/if}
-    </section>
-
-    <section class="dash-section">
-      <div class="dash-section-head">
         <h2 class="dash-section-title">TASKIFY Development Passport</h2>
         <a href="/taskify" class="dash-link">View →</a>
       </div>
@@ -198,51 +173,6 @@
     text-decoration: none;
   }
   .dash-link:hover { text-decoration: underline; }
-  .dash-regs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .dash-reg {
-    padding: 14px 16px;
-    border-radius: 10px;
-    background: var(--surface-soft);
-  }
-  .dash-reg-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .dash-reg-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--body-strong);
-  }
-  .dash-reg-badge {
-    font-family: var(--font-registration);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: rgba(242, 120, 48, 0.1);
-    color: var(--primary);
-  }
-  .dash-reg-badge--paid {
-    background: rgba(93, 184, 114, 0.12);
-    color: #5db872;
-  }
-  .dash-reg-school {
-    font-size: 13px;
-    color: var(--body);
-    margin: 4px 0 0;
-  }
-  .dash-reg-ref {
-    font-size: 12px;
-    color: var(--muted);
-    margin: 4px 0 0;
-  }
-  .dash-reg-ref code { font-size: 12px; }
   .dash-empty {
     font-size: 14px;
     color: var(--muted);
