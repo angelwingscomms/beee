@@ -110,17 +110,17 @@
               <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
                 oninput={() => eme = ''}
                 wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-[var(--muted)]"
+                labelClass="!text-[var(--ink)]"
                 inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
               <TextInput id="af-pw" label="Password" type="password" bind:value={password} required error={pwe}
                 oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle
                 wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-[var(--muted)]"
+                labelClass="!text-[var(--ink)]"
                 inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
               <TextInput id="af-cpw" label="Confirm Password" type="password" bind:value={confirmPassword} required error={cpe}
                 oninput={() => cpe = ''} showToggle
                 wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-[var(--muted)]"
+                labelClass="!text-[var(--ink)]"
                 inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
             </div>
             {#if apiError}
