@@ -12,5 +12,6 @@ export interface Registration {
 	amt: number;
 	ref?: string;
 	ac?: string; // partner code
+	pp?: string; // proprietor phone number
 	pw?: string; // transient: only on the pending record, hashed on payment confirmation. Never sent to Paystack.
 }

@@ -67,6 +67,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         sn: data.school,
         e: data.email,
         p: data.phone,
+        pp: data.proprietorPhone,
         amt: amount_kobo,
         st: 'pending',
         v: 0,

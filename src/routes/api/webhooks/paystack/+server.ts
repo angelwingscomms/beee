@@ -113,6 +113,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 				sn: reg.sn,
 				e: reg.e,
 				p: reg.p,
+				pp: reg.pp,
 				st: 'paid',
 				v: 0,
 				amt: expected_amt,

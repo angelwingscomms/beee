@@ -13,7 +13,7 @@
   let gl = $state('');
   let em = $state('');
   let sc = $state('');
-  let se = $state('');
+  let proprietor_phone = $state('+234');
   let ph = $state('+234');
   let pw = $state('');
   let ac = $state('');
@@ -21,7 +21,7 @@
   let gle = $state('');
   let eme = $state('');
   let sce = $state('');
-  let see = $state('');
+  let proprietor_phone_error = $state('');
   let phe = $state('');
   let pwe = $state('');
   let ace = $state('');
@@ -40,8 +40,7 @@
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
-    sc.trim() && se.trim() &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(se.trim()) &&
+    sc.trim() && proprietor_phone.trim() && proprietor_phone.trim() !== '+234' &&
     ph.trim() && ph.trim() !== '+234' &&
     pw.trim().length >= 8
   );
@@ -108,7 +107,7 @@
   }
 
   function clearErrors() {
-    gfe = ''; gle = ''; eme = ''; sce = ''; see = ''; phe = ''; pwe = '';
+    gfe = ''; gle = ''; eme = ''; sce = ''; proprietor_phone_error = ''; phe = ''; pwe = '';
   }
 
   function validateForm(): boolean {
@@ -120,8 +119,7 @@
     if (!em.trim()) { eme = 'Required'; v = false; }
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
     if (!sc.trim()) { sce = 'Required'; v = false; }
-    if (!se.trim()) { see = 'Required'; v = false; }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(se.trim())) { see = 'Invalid email'; v = false; }
+    if (!proprietor_phone.trim() || proprietor_phone.trim() === '+234') { proprietor_phone_error = 'Required'; v = false; }
     if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
     if (!pw || pw.length < 8) { pwe = 'Min 8 characters'; v = false; }
     return v;
@@ -153,7 +151,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), schoolEmail: se.trim(), phone: ph.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: ph.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -224,7 +222,7 @@
             <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
-          <TextInput id="se" label="School email" type="email" bind:value={se} required error={see} oninput={() => see = ''} />
+          <PhoneInput id="proprietor_phone" value={proprietor_phone} placeholder="Proprietor phone number" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
           <TextInput id="em" label="Parent's Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
           <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} showToggle />
           <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
