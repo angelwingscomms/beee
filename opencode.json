@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@different-ai/opencode-browser"],
+  "plugin": ["@different-ai/opencode-browser", "opencode-chrome-annotation@latest"],
   "attachment": {
     "image": {
       "auto_resize": true,
