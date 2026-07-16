@@ -48,24 +48,24 @@
 }
 
 .display-xl {
-  max-width: 680px;
-  font-size: 48px;
-  line-height: 1.1;
+  max-width: 780px;
+  font-size: var(--fs-display-2xl);
+  line-height: 1.05;
 }
 
 .display-lg {
-  font-size: 48px;
-  line-height: 1.1;
+  font-size: var(--fs-display-xl);
+  line-height: 1.08;
 }
 
 .display-md {
-  font-size: 36px;
-  line-height: 1.15;
+  font-size: var(--fs-display-lg);
+  line-height: 1.12;
 }
 
 .display-sm {
-  font-size: 28px;
-  line-height: 1.2;
+  font-size: var(--fs-display-md);
+  line-height: 1.18;
 }
 
 .championship-title {
