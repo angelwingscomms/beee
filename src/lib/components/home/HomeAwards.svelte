@@ -7,7 +7,7 @@
     icon: Sparkles,
     kicker: 'The signature honour',
     title: 'T.E.A.M.U.P.™ Excellence Awards',
-    body: 'Celebrating whole child excellence — outstanding performance will win prizes and be awarded a variety of honours.'
+    body: 'Celebrating whole child excellence — outstanding performers will be awarded with a variety of honors.'
   };
 
   const awards = [
