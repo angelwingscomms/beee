@@ -129,7 +129,7 @@
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
       <PlatformCard bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
       <PlatformCard bg="#ffb200" title="T.E.A.M.U.P.&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="Participants receive a Development Passport that grants digital access to embark on a measurable developmental journey. It documents progress and provides a tangible way for parents to track their children's growth beyond their chess Elo rating." href="/taskify" />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="A Development Passport that grants digital access to all platforms and provides a tangible way for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating." href="/taskify" />
     </div>
   </div>
 </section>
