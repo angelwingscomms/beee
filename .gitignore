@@ -30,3 +30,6 @@ playwright-report/
 
 # git worktrees
 .worktrees/
+
+# superpowers scratch state (progress ledgers, etc.)
+.superpowers/
