@@ -102,26 +102,51 @@ function springToCubic(stiffness: number, damping: number): string {
 export function motionMagnetic(node: HTMLElement) {
   if (prefersReducedMotion() || isTouchDevice()) return;
 
+  let tx = 0;
+  let ty = 0;
+  let pressed = false;
+
+  const apply = () => {
+    node.style.transform = `translate(${tx}px, ${ty}px) scale(${pressed ? 0.97 : 1})`;
+  };
+
   const onMove = (e: MouseEvent) => {
     const rect = node.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / 8;
-    const dy = (e.clientY - cy) / 8;
-    node.style.transform = `translate(${dx}px, ${dy}px)`;
+    tx = (e.clientX - cx) / 8;
+    ty = (e.clientY - cy) / 8;
+    apply();
   };
 
   const onLeave = () => {
-    node.style.transform = 'translate(0, 0)';
+    tx = 0;
+    ty = 0;
+    pressed = false;
+    apply();
+  };
+
+  const onDown = () => {
+    pressed = true;
+    apply();
+  };
+
+  const onUp = () => {
+    pressed = false;
+    apply();
   };
 
   node.addEventListener('mousemove', onMove);
   node.addEventListener('mouseleave', onLeave);
+  node.addEventListener('mousedown', onDown);
+  node.addEventListener('mouseup', onUp);
 
   return {
     destroy() {
       node.removeEventListener('mousemove', onMove);
       node.removeEventListener('mouseleave', onLeave);
+      node.removeEventListener('mousedown', onDown);
+      node.removeEventListener('mouseup', onUp);
     },
   };
 }
