@@ -103,6 +103,10 @@
     .champ-nav-links a::after {
       transition: none;
     }
+
+    .champ-nav-inner {
+      transition: none;
+    }
   }
 
   .champ-nav-bg {
@@ -192,6 +196,7 @@
     gap: 32px;
     width: 100%;
     padding: 0 24px;
+    transition: height 240ms ease;
   }
 
   .champ-nav-brand {

@@ -23,4 +23,15 @@ describe('cards.css shared card treatment', () => {
     const transitionCount = (block.match(/transition:/g) || []).length;
     expect(transitionCount).toBe(1);
   });
+
+  it('gates feature-card hover transforms behind prefers-reduced-motion in the existing reduced-motion block', () => {
+    const reduced_motion_block = css.slice(
+      css.indexOf('@media (prefers-reduced-motion: reduce) {'),
+      css.indexOf('.price-band {')
+    );
+    expect(reduced_motion_block).toContain('.feature-card:hover {\n    transform: none;\n  }');
+    expect(reduced_motion_block).toContain('.feature-card:hover .spike-mark {\n    transform: none;\n  }');
+    const reduced_motion_block_count = (css.match(/@media \(prefers-reduced-motion: reduce\)/g) || []).length;
+    expect(reduced_motion_block_count).toBe(1);
+  });
 });

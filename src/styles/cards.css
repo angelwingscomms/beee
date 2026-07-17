@@ -82,6 +82,13 @@
     opacity: 1;
     transform: none;
   }
+
+  .feature-card:hover {
+    transform: none;
+  }
+  .feature-card:hover .spike-mark {
+    transform: none;
+  }
 }
 
 .price-band {

@@ -17,6 +17,14 @@ describe('ChampNav scroll-aware condense', () => {
   it('condenses top offset and width when scrolled', () => {
     expect(nav).toContain('.champ-nav.scrolled {\n    top: 12px;\n    width: min(1080px, calc(100% - 32px));\n  }');
   });
+
+  it('animates the nav inner height alongside the scroll-condense', () => {
+    expect(nav).toContain('transition: height 240ms ease;');
+  });
+
+  it('gates the nav inner height transition behind prefers-reduced-motion', () => {
+    expect(nav).toContain('.champ-nav-inner {\n      transition: none;\n    }');
+  });
 });
 
 describe('ChampNav active link indicator', () => {
