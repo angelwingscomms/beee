@@ -45,9 +45,12 @@
 <style>
   .footer {
     position: relative;
-    padding: 56px 0 40px;
-    background: var(--color-navy);
+    padding: 72px 0 40px;
+    background:
+      radial-gradient(1100px 460px at 12% -15%, color-mix(in srgb, var(--navy-blob) 55%, transparent), transparent 70%),
+      var(--color-navy);
     color: var(--on-dark-soft);
+    overflow: hidden;
   }
 
   .footer::before {
@@ -70,21 +73,21 @@
   }
 
   .footer-top {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 40px;
   }
 
   .footer-event {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: var(--fs-display-md);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.12;
     letter-spacing: -0.01em;
     color: var(--on-dark);
     margin: 0;
-    max-width: 540px;
+    max-width: 620px;
   }
 
   .footer-motto {
@@ -111,17 +114,27 @@
   }
 
   .footer-nav a {
+    display: inline-block;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.4;
     color: var(--on-dark-soft);
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms ease, transform 160ms ease;
     white-space: nowrap;
   }
 
-  .footer-nav a:hover {
-    color: var(--primary);
+  @media (hover: hover) {
+    .footer-nav a:hover {
+      color: var(--primary);
+      transform: translateX(2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-nav a {
+      transition: color 160ms ease;
+    }
   }
 
   .footer-divider {
@@ -184,7 +197,7 @@
     }
 
     .footer-top {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 20px;
     }
 
