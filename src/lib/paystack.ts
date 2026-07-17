@@ -201,33 +201,47 @@ export function get_bank_code(bn: string): string | null {
 
 export async function paystack_resolve_bank(account_number: string, bank_code: string): Promise<{ account_name: string }> {
   const secret_key = await get_secret_key();
+  console.log(`[paystack_resolve_bank] resolving account ${account_number ? account_number.slice(0, 4) + '...' : 'EMPTY'} bank_code=${bank_code}`);
   const res = await fetch(`${await resolve_base()}/bank/resolve`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ account_number, bank_code })
   });
+  console.log(`[paystack_resolve_bank] response status: ${res.status} ${res.statusText}`);
   if (!res.ok) {
     const err = await res.text();
+    console.error(`[paystack_resolve_bank] error body:`, err);
     throw new Error(`Bank resolve failed: ${err}`);
   }
   const body = await res.json();
-  if (!body.status) throw new Error(`Bank resolve error: ${body.message}`);
+  if (!body.status) {
+    console.error(`[paystack_resolve_bank] status false:`, body.message);
+    throw new Error(`Bank resolve error: ${body.message}`);
+  }
+  console.log(`[paystack_resolve_bank] resolved account_name=${body.data?.account_name}`);
   return body.data as { account_name: string };
 }
 
 export async function paystack_create_recipient(name: string, account_number: string, bank_code: string): Promise<{ recipient_code: string; active: boolean }> {
   const secret_key = await get_secret_key();
+  console.log(`[paystack_create_recipient] creating for ${name} account ${account_number ? account_number.slice(0, 4) + '...' : 'EMPTY'} bank_code=${bank_code}`);
   const res = await fetch(`${await resolve_base()}/transferrecipient`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ type: 'nuban', name, account_number, bank_code, currency: 'NGN' })
   });
+  console.log(`[paystack_create_recipient] response status: ${res.status} ${res.statusText}`);
   if (!res.ok) {
     const err = await res.text();
+    console.error(`[paystack_create_recipient] error body:`, err);
     throw new Error(`Create recipient failed: ${err}`);
   }
   const body = await res.json();
-  if (!body.status) throw new Error(`Create recipient error: ${body.message}`);
+  if (!body.status) {
+    console.error(`[paystack_create_recipient] status false:`, body.message);
+    throw new Error(`Create recipient error: ${body.message}`);
+  }
+  console.log(`[paystack_create_recipient] recipient_code=${body.data?.recipient_code} active=${body.data?.active}`);
   return body.data as { recipient_code: string; active: boolean };
 }
 
@@ -238,6 +252,12 @@ export async function paystack_transfer(
   reference?: string
 ): Promise<{ transfer_code: string; status: string }> {
   const secret_key = await get_secret_key();
+  console.log(`[paystack_transfer] initiating transfer`, {
+    recipient_code,
+    amount_kobo,
+    reason,
+    reference: reference || '(none)'
+  });
   const body_json: Record<string, unknown> = {
     source: 'balance',
     amount: amount_kobo,
@@ -250,6 +270,7 @@ export async function paystack_transfer(
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body_json)
   });
+  console.log(`[paystack_transfer] response status: ${res.status} ${res.statusText}`);
   if (!res.ok) {
     const err = await res.text();
     // Paystack enforces unique transfer references. A duplicate means a prior
@@ -259,10 +280,15 @@ export async function paystack_transfer(
       console.log(`[paystack_transfer] Duplicate reference ${reference}, treating as already paid`);
       return { transfer_code: reference, status: 'success' };
     }
+    console.error(`[paystack_transfer] error body:`, err);
     throw new Error(`Transfer failed: ${err}`);
   }
   const body = await res.json();
-  if (!body.status) throw new Error(`Transfer error: ${body.message}`);
+  if (!body.status) {
+    console.error(`[paystack_transfer] status false:`, body.message);
+    throw new Error(`Transfer error: ${body.message}`);
+  }
+  console.log(`[paystack_transfer] OK transfer_code=${body.data?.transfer_code} status=${body.data?.status}`);
   return body.data as { transfer_code: string; status: string };
 }
 
@@ -272,15 +298,20 @@ export async function paystack_transfer(
  */
 export async function paystack_balance(): Promise<number> {
   const secret_key = await get_secret_key();
+  console.log(`[paystack_balance] fetching available balance`);
   try {
     const res = await fetch(`${await resolve_base()}/balance`, {
       headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' }
     });
+    console.log(`[paystack_balance] response status: ${res.status} ${res.statusText}`);
     if (!res.ok) return 0;
     const body = await res.json();
     const row = (body.data || []).find((b: { currency: string }) => b.currency === 'NGN') || body.data?.[0];
-    return row ? Number(row.balance) || 0 : 0;
-  } catch {
+    const bal = row ? Number(row.balance) || 0 : 0;
+    console.log(`[paystack_balance] NGN balance = ${bal} kobo`);
+    return bal;
+  } catch (e) {
+    console.error(`[paystack_balance] exception:`, e);
     return 0;
   }
 }

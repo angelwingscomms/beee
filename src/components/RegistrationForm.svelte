@@ -77,8 +77,12 @@
 		isProcessing = true;
 		apiError = '';
 		let auth_url = '';
+		console.log('[registration] confirmPayment started');
 
 		try {
+			console.log('[registration] POST /api/register-init-payment', {
+				firstName, lastName, email, phone, hasPassword: !!password
+			});
 			const r = await fetch('/api/register-init-payment', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -90,37 +94,59 @@
 					password: password.trim()
 				})
 			});
+			console.log('[registration] init response status:', r.status, r.statusText);
 
 			if (!r.ok) {
 				const e = await r.json().catch(() => ({}));
+				console.error('[registration] init failed:', e);
 				throw new Error(e.error || 'Payment initialization failed');
 			}
 
 			const d = await r.json();
+			console.log('[registration] init response data:', {
+				success: d.success,
+				hasAccessCode: !!d.access_code,
+				hasAuthUrl: !!d.authorization_url,
+				registrationId: d.registrationId,
+				amount: d.amount,
+				discounted: d.discounted
+			});
 			if (!d.access_code) throw new Error('Invalid response from payment gateway');
 			registrationId = d.registrationId;
 			auth_url = d.authorization_url;
 
+			console.log('[registration] loading Paystack inline SDK...');
 			const PaystackPop = (await import('@paystack/inline-js')).default;
 			const popup = new PaystackPop();
-			const fb = setTimeout(() => { window.location.href = auth_url; }, 15000);
+			console.log('[registration] Paystack popup created, resuming transaction', d.access_code);
+			const fb = setTimeout(() => {
+				console.warn('[registration] popup fallback timer fired -> redirect to', auth_url);
+				window.location.href = auth_url;
+			}, 15000);
 			popup.resumeTransaction(d.access_code, {
-				onLoad: () => clearTimeout(fb),
+				onLoad: () => {
+					clearTimeout(fb);
+					console.log('[registration] Paystack popup onLoad');
+				},
 				onSuccess: (tx) => {
 					clearTimeout(fb);
+					console.log('[registration] Paystack onSuccess', { reference: tx.reference });
 					window.location.href = `/payment/callback?reference=${tx.reference}`;
 				},
 				onCancel: () => {
 					clearTimeout(fb);
+					console.log('[registration] Paystack onCancel');
 					isProcessing = false;
 				},
 				onError: () => {
 					clearTimeout(fb);
+					console.error('[registration] Paystack onError -> fallback redirect');
 					window.location.href = auth_url;
 				}
 			});
 		} catch (error) {
 			if (auth_url) {
+				console.warn('[registration] error but auth_url present -> fallback redirect');
 				window.location.href = auth_url;
 			} else {
 				const msg = error instanceof Error ? error.message : 'Unknown error';

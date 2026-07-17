@@ -8,32 +8,44 @@
 	let error_msg = $state('');
 
 	$effect(() => {
+		console.log('[payment-callback] effect ran, reference=', data.reference);
 		if (!data.reference) {
 			payment_state = 'failed';
 			error_msg = 'No payment reference found.';
+			console.warn('[payment-callback] no reference -> failed');
 			return;
 		}
 		verify(data.reference);
 	});
 
   async function verify(reference: string) {
+    console.log('[payment-callback] verify start, reference=', reference);
     try {
+      console.log('[payment-callback] POST /api/verify-payment', { reference, registrationId: reference });
       const res = await fetch('/api/verify-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ reference, registrationId: reference })
       });
+      console.log('[payment-callback] verify response status:', res.status, res.statusText);
       const body = await res.json();
+      console.log('[payment-callback] verify response body:', body);
       if (!res.ok || !body.success) {
+        console.error('[payment-callback] verify failed:', body.error);
         throw new Error(body.error || 'Verification failed');
       }
       payment_state = 'success';
+      console.log('[payment-callback] payment SUCCESS, redirect=', body.redirect);
       if (body.redirect) {
-        setTimeout(() => { window.location.href = body.redirect; }, 2000);
+        setTimeout(() => {
+          console.log('[payment-callback] redirecting to', body.redirect);
+          window.location.href = body.redirect;
+        }, 2000);
       }
     } catch (err) {
       payment_state = 'failed';
       error_msg = err instanceof Error ? err.message : 'Verification failed';
+      console.error('[payment-callback] error:', err);
     }
   }
 </script>

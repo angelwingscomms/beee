@@ -23,8 +23,22 @@ function get_discounted_amount(): number {
 }
 
 export const POST: RequestHandler = async ({ request, url }) => {
+    console.log(`[register-init-payment] === NEW REQUEST ===`);
+    console.log(`[register-init-payment] dev=${dev}`);
     const data = await request.json();
+    console.log(`[register-init-payment] payload:`, {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        hasPassword: !!data.password,
+        passwordLen: data.password ? String(data.password).length : 0,
+        partnerCode: data.partnerCode || null
+    });
     if (!data.firstName || !data.lastName || !data.email || !data.phone) {
+        console.warn(`[register-init-payment] Rejected: missing required field`, {
+            firstName: !!data.firstName, lastName: !!data.lastName, email: !!data.email, phone: !!data.phone
+        });
         return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -36,6 +50,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         return json({ error: 'Invalid phone' }, { status: 400 });
     }
     if (data.password && String(data.password).length < 6) {
+        console.warn(`[register-init-payment] Rejected: password too short (${String(data.password).length})`);
         return json({ error: 'Password too short' }, { status: 400 });
     }
 
@@ -44,17 +59,24 @@ export const POST: RequestHandler = async ({ request, url }) => {
     let ac: string | undefined;
 
     if (data.partnerCode) {
+        console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} — looking up affiliate`);
         const affs = await search_by_payload<User>({ s: 'u', ac: data.partnerCode });
         const valid = affs.some(u => u.c?.includes('fab'));
+        console.log(`[register-init-payment] affiliate candidates found: ${affs.length}, valid(fab): ${valid}`);
         if (!valid) {
+            console.warn(`[register-init-payment] Rejected: invalid partner code ${data.partnerCode}`);
             return json({ error: 'Invalid partner code' }, { status: 400 });
         }
         amount_kobo = get_discounted_amount();
         discounted = true;
         ac = data.partnerCode;
+        console.log(`[register-init-payment] discount applied: amount_kobo now ${amount_kobo}`);
+    } else {
+        console.log(`[register-init-payment] no partner code — using base amount_kobo ${amount_kobo}`);
     }
 
     const i = new_id();
+    console.log(`[register-init-payment] generated registration id: ${i}`);
     const p_name = `${data.firstName} ${data.lastName}`;
 
     // Store the registration locally as PENDING, including the password.
@@ -77,13 +99,19 @@ export const POST: RequestHandler = async ({ request, url }) => {
     if (data.password) {
         // Hash immediately so the password never rests in the DB as plaintext.
         // verify-payment reuses this hash directly.
+        console.log(`[register-init-payment] bcrypt-hashing password for ${i}...`);
         pending.pw = await bcrypt.hash(data.password, 10);
+        console.log(`[register-init-payment] password hashed for ${i}`);
     }
+    console.log(`[register-init-payment] writing PENDING registration to DB: ${i}`);
     await create(pending, undefined, i);
+    console.log(`[register-init-payment] PENDING registration written: ${i}`);
 
     const callback_url = `${url.origin}/payment/callback`;
     // Only a reference goes to Paystack — no PII, no password.
+    console.log(`[register-init-payment] calling paystack_init for ${i} | email=${data.email} amount_kobo=${amount_kobo} callback=${callback_url}`);
     const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i });
+    console.log(`[register-init-payment] paystack_init OK for ${i} | authorization_url=${result.authorization_url ? 'present' : 'MISSING'} access_code=${result.access_code ? 'present' : 'MISSING'} reference=${result.reference}`);
 
     return json({
         success: true,
