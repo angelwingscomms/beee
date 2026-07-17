@@ -86,7 +86,7 @@
 		max-width: 860px;
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.faq-list {
 			gap: 20px;
 		}
@@ -103,7 +103,7 @@
 		line-height: 1.3;
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.faq-page {
 			gap: 48px;
 			padding-bottom: 96px;

@@ -82,7 +82,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .different {
       padding: 64px 0;
     }

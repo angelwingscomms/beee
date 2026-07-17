@@ -101,7 +101,7 @@
     font-size: 14px;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .champ-involved-grid {
       grid-template-columns: 1fr 1fr;
       gap: 40px;
@@ -111,7 +111,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-involved-grid {
       grid-template-columns: 1fr;
       gap: 40px;

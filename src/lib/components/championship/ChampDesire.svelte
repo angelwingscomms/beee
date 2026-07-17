@@ -145,7 +145,7 @@
     margin: 16px 0 0;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .champ-desire-inner {
       gap: 56px;
     }
@@ -160,7 +160,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-desire-inner {
       grid-template-columns: 1fr;
       gap: 36px;

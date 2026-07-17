@@ -1,0 +1,14 @@
+/*
+ * Sitewide breakpoint scale, consumed via postcss-custom-media.
+ * Use directly in any <style> block, no import needed:
+ *   @media (--sm-down) { ... }
+ *   @media (--sm-up) and (--md-down) { ... }
+ * Values match the convention already used across the codebase before
+ * this file existed (mobile ~767, tablet ~1023, wide desktop ~1439).
+ */
+@custom-media --sm-down (max-width: 767px);
+@custom-media --sm-up (min-width: 768px);
+@custom-media --md-down (max-width: 1023px);
+@custom-media --md-up (min-width: 1024px);
+@custom-media --lg-down (max-width: 1439px);
+@custom-media --lg-up (min-width: 1440px);

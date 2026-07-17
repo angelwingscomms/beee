@@ -125,7 +125,7 @@
     max-width: 520px;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .passport {
       padding: 64px 0;
     }
@@ -138,7 +138,7 @@
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (--sm-up) and (--md-down) {
     .passport-grid {
       grid-template-columns: repeat(2, 1fr);
     }

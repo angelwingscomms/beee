@@ -5,12 +5,14 @@
 	let {
 		value = '',
 		id,
+		label = '',
 		placeholder = '',
 		theme = false,
 		onChange
 	}: {
 		value?: string;
 		id?: string;
+		label?: string;
 		placeholder?: string;
 		theme?: boolean;
 		onChange?: (v: string) => void;
@@ -137,6 +139,9 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="phone-input-wrapper" onclick={(e) => e.stopPropagation()} onkeydown={handleKeydown}>
+	{#if label}
+		<label class="phone-label" for={id}>{label}</label>
+	{/if}
 	<div class="phone-field-row" class:invalid={lenErr} class:warn={lenWarn}>
 		<div class="pi-bg"></div>
 		<div class="country-select">
@@ -223,6 +228,16 @@
 	.phone-input-wrapper {
 		position: relative;
 		width: 100%;
+	}
+
+	.phone-label {
+		display: block;
+		margin-bottom: 6px;
+		font-size: 12px;
+		font-weight: normal;
+		color: var(--body-strong);
+		cursor: pointer;
+		user-select: none;
 	}
 
 	.phone-field-row {

@@ -78,7 +78,7 @@
 		color: var(--on-primary);
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.faq-contact {
 			padding: 0 0 64px;
 		}

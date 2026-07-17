@@ -130,7 +130,7 @@
 		}
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.accordion-trigger {
 			font-size: 15px;
 			padding: 16px 0;

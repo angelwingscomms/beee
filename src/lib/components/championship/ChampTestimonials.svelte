@@ -178,7 +178,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-testimonial-quote {
       font-size: 1.15rem;
     }

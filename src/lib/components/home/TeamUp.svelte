@@ -142,7 +142,7 @@
     max-width: 560px;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .teamup {
       padding: 64px 0;
     }

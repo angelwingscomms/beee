@@ -129,7 +129,7 @@
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
       <PlatformCard bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
       <PlatformCard bg="#ffb200" title="T.E.A.M.U.P.&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="A Development Passport that grants digital access to all platforms and provides a tangible way for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating." href="/taskify" />
+      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="A Development Passport that grants digital access to all platforms and provides tangible documentation of participants activities for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating." href="/taskify" />
     </div>
   </div>
 </section>
@@ -138,7 +138,7 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-4xl md:text-5xl text-[rgb(255,107,0)] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
     <div class="w-16 h-1 bg-[rgb(255,107,0)] rounded-full mx-auto mb-6" aria-hidden="true"></div>
-    <p class="font-['Inter'] text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning.</p>
+    <p class="font-['Inter'] font-bold text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning.</p>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
     <!-- Card 1: E4 -->
     <div
@@ -687,7 +687,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 768px) {
+  @media (--sm-down) {
     .tree-container {
       padding: 0 16px;
     }
@@ -766,7 +766,7 @@
   .gain-list > li {
     width: 100%;
   }
-  @media (min-width: 768px) {
+  @media (--sm-up) {
     .gain-list > li {
       width: auto;
     }

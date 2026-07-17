@@ -221,7 +221,7 @@
     margin-top: 12px !important;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .passport-bento {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -236,7 +236,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-passport-title {
       font-size: clamp(1.4rem, 5vw, 1.8rem);
     }

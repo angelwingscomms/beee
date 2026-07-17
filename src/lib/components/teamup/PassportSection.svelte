@@ -185,7 +185,7 @@
     margin: 0;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .passport-grid-wrap {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -198,7 +198,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .passport-sec {
       padding: 80px 0;
     }

@@ -59,7 +59,7 @@
 		background: var(--primary-active);
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.faq-tabs {
 			overflow-x: auto;
 			flex-wrap: nowrap;

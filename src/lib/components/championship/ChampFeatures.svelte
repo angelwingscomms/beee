@@ -74,7 +74,6 @@
 
   .champ-features-sub {
     font-family: var(--font-display);
-    font-style: italic;
     font-size: 20px;
     line-height: 1.3;
     color: var(--body);
@@ -162,7 +161,7 @@
     text-shadow: 0 1px 8px rgba(0,0,0,0.3);
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-bento {
       grid-template-columns: 1fr;
     }

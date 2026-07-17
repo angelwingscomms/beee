@@ -137,7 +137,7 @@
     font-size: 13px;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-footer-top {
       flex-direction: column;
       gap: 32px;

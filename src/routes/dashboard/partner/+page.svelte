@@ -298,7 +298,7 @@
   @media (max-width: 560px) {
     .reg-row { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .settings-card { padding: 20px; }
     .code-value { font-size: 22px; }
   }

@@ -155,7 +155,7 @@
     pointer-events: none;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .tu-hero-inner {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -172,7 +172,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .tu-hero-title {
       font-size: clamp(2rem, 8vw, 2.8rem);
     }

@@ -184,7 +184,7 @@
     margin: 0 auto;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .pillars-grid {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -194,7 +194,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .pillars {
       padding: 80px 0;
     }

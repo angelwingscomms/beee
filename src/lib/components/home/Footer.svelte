@@ -178,7 +178,7 @@
     color: var(--on-dark-soft);
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .footer {
       padding: 40px 0 32px;
     }

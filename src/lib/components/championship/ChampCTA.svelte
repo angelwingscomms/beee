@@ -127,7 +127,6 @@
     font-size: 15px;
     line-height: 1.5;
     color: rgba(250, 249, 245, 0.5);
-    font-style: italic;
   }
 
   .champ-cta-actions {
@@ -172,7 +171,7 @@
     transform: scale(1.03);
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-cta-body {
       padding: 80px 0 80px 24px;
     }

@@ -59,7 +59,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .tu-cta-inner {
       padding: 48px 28px;
     }

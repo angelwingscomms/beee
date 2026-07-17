@@ -142,7 +142,7 @@
     color: var(--muted-soft);
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .tu-footer {
       padding: 64px 0 40px;
       margin-top: 80px;

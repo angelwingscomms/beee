@@ -33,6 +33,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^4.0.0",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@playwright/test": "^1.49.0",
     "@sveltejs/adapter-auto": "^7.0.1",
@@ -48,6 +49,8 @@
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "jsdom": "^29.1.1",
+    "postcss": "^8.5.19",
+    "postcss-custom-media": "^12.0.1",
     "svelte-check": "^4.4.8",
     "tailwindcss": "^4",
     "typescript": "^6",

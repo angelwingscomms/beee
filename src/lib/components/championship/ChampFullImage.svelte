@@ -78,7 +78,7 @@
     max-width: 640px;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-full-img {
       height: 56vh;
       min-height: 340px;

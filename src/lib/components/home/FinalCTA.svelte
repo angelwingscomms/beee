@@ -53,7 +53,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .cta-card {
       padding: 40px 28px;
     }

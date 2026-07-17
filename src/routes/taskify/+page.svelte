@@ -232,7 +232,7 @@
     font-size: 16px;
   }
 
-  @media (max-width: 1024px) {
+  @media (--md-down) {
     .page-hero-inner {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -242,7 +242,7 @@
     .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .page-hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
     .page-hero-body { font-size: 15px; }
     .features-grid { grid-template-columns: 1fr; }

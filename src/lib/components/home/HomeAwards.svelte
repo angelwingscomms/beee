@@ -7,7 +7,7 @@
     icon: Sparkles,
     kicker: 'The signature honour',
     title: 'T.E.A.M.U.P.™ Excellence Awards',
-    body: 'Celebrating whole child excellence — outstanding performers will be awarded with a variety of honors.'
+    body: 'Celebrating whole child excellence — rewarding with a variety of honors.'
   };
 
   const awards = [
@@ -225,9 +225,10 @@
 
   .feature-text {
     font-family: 'Inter', sans-serif;
-    font-size: 15.5px;
+    font-size: 16px;
+    font-weight: 600;
     line-height: 1.6;
-    color: rgba(10, 15, 26, 0.78);
+    color: #0A0F1A;
     margin: 0;
     max-width: 34ch;
   }
@@ -329,7 +330,7 @@
     .award-cards { grid-template-columns: repeat(3, 1fr); }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .award-cards { grid-template-columns: repeat(2, 1fr); }
     .award-feature { padding: 32px; }
   }

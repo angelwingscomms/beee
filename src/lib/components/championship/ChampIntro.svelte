@@ -47,7 +47,7 @@
     color: var(--body);
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-intro {
       padding: 64px 0;
     }

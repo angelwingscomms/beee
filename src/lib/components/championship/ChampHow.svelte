@@ -368,7 +368,7 @@ They compete for finalists positions.`,
     font-size: 16px;
   }
 
-  @media (max-width: 1023px) {
+  @media (--md-down) {
     .champ-how-inner {
       padding: 100px 16px 40px;
     }

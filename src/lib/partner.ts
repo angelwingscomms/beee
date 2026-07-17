@@ -7,6 +7,8 @@ import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
 import type { Payout } from '$lib/types/payout';
 
+export { gen_partner_code } from '$lib/partner_code';
+
 const MAX_ATTEMPTS = 5;
 
 /**

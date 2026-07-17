@@ -29,7 +29,7 @@
 		line-height: 1.55;
 	}
 
-	@media (max-width: 767px) {
+	@media (--sm-down) {
 		.faq-hero {
 			padding: 64px 0 0;
 		}

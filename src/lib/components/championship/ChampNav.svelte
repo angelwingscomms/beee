@@ -21,32 +21,34 @@
 </script>
 
 <nav class="champ-nav" class:open>
-  <div class="champ-nav-bg"></div>
-  <div class="champ-nav-inner container">
-    <a href="/" class="champ-nav-brand">
-      <img src="/logo.svg" alt="BEEE — Building Exceptional Experiences Through Education" class="champ-nav-logo" />
-      <span class="champ-nav-name">BEEE</span>
-    </a>
-    <div class="champ-nav-links">
-      <a href="/about" class:active={path === '/about'}>About</a>
-      <a href="/e4" class:active={path === '/e4'}>E4</a>
-      <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
-      <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
-      <a href="/partner" class:active={path === '/partner'}>Partners</a>
-      <a href="/faq" class:active={path === '/faq'}>FAQs</a>
-    </div>
-    {#if !user}
-      <Button href="/register" class="champ-nav-cta">Register</Button>
-    {/if}
-    {#if user}
-      <a href="/dashboard" class="champ-nav-dash">Dashboard</a>
-      <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
-        {logging_out ? 'Signing out…' : 'Log out'}
+  <div class="champ-nav-bar">
+    <div class="champ-nav-bg"></div>
+    <div class="champ-nav-inner container">
+      <a href="/" class="champ-nav-brand">
+        <img src="/logo.svg" alt="BEEE — Building Exceptional Experiences Through Education" class="champ-nav-logo" />
+        <span class="champ-nav-name">BEEE</span>
+      </a>
+      <div class="champ-nav-links">
+        <a href="/about" class:active={path === '/about'}>About</a>
+        <a href="/e4" class:active={path === '/e4'}>E4</a>
+        <a href="/teamup" class:active={path === '/teamup'}>T.E.A.M.U.P.</a>
+        <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
+        <a href="/partner" class:active={path === '/partner'}>Partners</a>
+        <a href="/faq" class:active={path === '/faq'}>FAQs</a>
+      </div>
+      {#if !user}
+        <Button href="/register" class="champ-nav-cta">Register</Button>
+      {/if}
+      {#if user}
+        <a href="/dashboard" class="champ-nav-dash">Dashboard</a>
+        <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
+          {logging_out ? 'Signing out…' : 'Log out'}
+        </button>
+      {/if}
+      <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu" aria-expanded={open}>
+        <span></span>
       </button>
-    {/if}
-    <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu" aria-expanded={open}>
-      <span></span>
-    </button>
+    </div>
   </div>
   {#if open}
     <div class="champ-mobile-menu">
@@ -72,6 +74,10 @@
     translate: -50% 0;
     z-index: 50;
     width: min(1200px, calc(100% - 32px));
+  }
+
+  .champ-nav-bar {
+    position: relative;
     border-radius: 999px;
     isolation: isolate;
   }
@@ -355,7 +361,7 @@
     color: var(--ink);
   }
 
-  @media (max-width: 767px) {
+  @media (--md-down) {
     .champ-nav-links {
       display: none;
     }

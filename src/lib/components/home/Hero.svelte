@@ -91,7 +91,7 @@
     margin-top: 36px;
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .hero-title {
       font-size: 34px;
     }

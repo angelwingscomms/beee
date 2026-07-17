@@ -102,7 +102,6 @@
     padding: 0;
     border: none;
     font-family: var(--font-display-hero);
-    font-style: italic;
     font-variation-settings: 'opsz' 40, 'SOFT' 50, 'WONK' 0;
     font-size: var(--fs-quote);
     color: var(--color-brand);
@@ -159,13 +158,13 @@
     min-height: auto;
   }
 
-  @media (min-width: 1440px) {
+  @media (--lg-up) {
     .champ-about-text {
       padding-right: var(--space-6);
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .champ-about-pin {
       padding: 80px 0 48px;
     }

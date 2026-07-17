@@ -8,6 +8,7 @@
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
   import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
+  import { gen_partner_code } from '$lib/partner_code';
 
   let gf = $state('');
   let gl = $state('');
@@ -18,6 +19,39 @@
   let pw = $state('');
   let ac = $state('');
   let gfe = $state('');
+
+  const dummy_ac = gen_partner_code();
+  const ac_examples = [`beeeproject.com/partner/${dummy_ac}`, dummy_ac];
+  let ac_placeholder = $state(ac_examples[0]);
+  let ac_fading = $state(false);
+  let ac_field_el = $state<HTMLDivElement | null>(null);
+  let ac_label_w = $state(0);
+  function measure_ac_label() {
+    const wrap = ac_field_el?.querySelector('.ti-wrap');
+    const lbl = ac_field_el?.querySelector('label');
+    if (!wrap || !lbl) return;
+    const wrapRect = wrap.getBoundingClientRect();
+    const lblRect = lbl.getBoundingClientRect();
+    ac_label_w = lblRect.right - wrapRect.left + 12;
+  }
+  $effect(() => {
+    measure_ac_label();
+    if (typeof window !== 'undefined') window.addEventListener('resize', measure_ac_label);
+    return () => window.removeEventListener('resize', measure_ac_label);
+  });
+  $effect(() => {
+    if (ac.trim()) return;
+    let i = 0;
+    const t = setInterval(() => {
+      ac_fading = true;
+      setTimeout(() => {
+        i = (i + 1) % ac_examples.length;
+        ac_placeholder = ac_examples[i];
+        ac_fading = false;
+      }, 300);
+    }, 3000);
+    return () => clearInterval(t);
+  });
   let gle = $state('');
   let eme = $state('');
   let sce = $state('');
@@ -222,26 +256,31 @@
             <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
-          <PhoneInput id="proprietor_phone" value={proprietor_phone} placeholder="Proprietor phone number" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
+          <PhoneInput id="proprietor_phone" label="Proprietor's phone number" value={proprietor_phone} placeholder="Proprietor's phone number" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
+          <PhoneInput id="ph" label="Parent's phone number" value={ph} placeholder="Parent's phone number" onChange={(v) => { ph = v; phe = ''; }} />
           <TextInput id="em" label="Parent's Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
           <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} showToggle />
-          <PhoneInput id="ph" value={ph} placeholder="Phone number" theme onChange={(v) => { ph = v; phe = ''; }} />
         </fieldset>
 
         <div class="reg-divider">Partner Code</div>
 
         <div class="reg-partner-wrap">
-          <TextInput
-            id="ac"
-            label="Partner code (optional)"
-            placeholder="Paste your code or link"
-            bind:value={ac}
-            error={ace}
-            wrapperClass="!bg-white/10 !border-white/20"
-            labelClass="!text-white/60"
-            inputClass="!text-white placeholder:!text-white/30"
-            oninput={handlePartnerInput}
-          />
+          <div class="reg-partner-field" bind:this={ac_field_el}>
+            <TextInput
+              id="ac"
+              label="Partner code (optional)"
+              placeholder=""
+              bind:value={ac}
+              error={ace}
+              wrapperClass="!bg-white/10 !border-white/20"
+              labelClass="!text-white/60"
+              inputClass="!text-white placeholder:!text-white/30"
+              oninput={handlePartnerInput}
+            />
+            {#if !ac.trim()}
+              <span class="reg-partner-ph" class:fading={ac_fading} style="left: {ac_label_w}px">{ac_placeholder}</span>
+            {/if}
+          </div>
           <p class="reg-partner-help">Registering with a partner code gives a 10% discount.</p>
           {#if acLoading}
             <div class="reg-discount-callout">
@@ -273,7 +312,7 @@
         </Button>
         <div class="reg-fine">
           <p>Participants must be between 10 and 14 years of age</p>
-          <p>Online coaching begins July 2026</p>
+          <p>Online coaching begins July 28 2026</p>
         </div>
         <p class="reg-login-link">Already registered? <a href="/login">Log in</a></p>
       </form>
@@ -412,6 +451,23 @@
     font-size: 13px;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.55);
+  }
+  .reg-partner-field {
+    position: relative;
+  }
+  .reg-partner-ph {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    transition: opacity 300ms ease;
+  }
+  .reg-partner-ph.fading {
+    opacity: 0;
   }
   .reg-discount-callout {
     display: flex;
@@ -562,7 +618,7 @@
     text-decoration: underline;
   }
 
-  @media (max-width: 860px) {
+  @media (--md-down) {
     .reg-grid {
       grid-template-columns: 1fr;
       gap: 32px;

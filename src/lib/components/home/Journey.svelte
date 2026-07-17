@@ -98,7 +98,7 @@
     text-align: center;
   }
 
-  @media (min-width: 1024px) {
+  @media (--md-up) {
     .journey-flow {
       flex-direction: row;
       gap: 16px;
@@ -112,7 +112,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (--sm-down) {
     .journey {
       padding: 64px 0;
     }
