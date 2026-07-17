@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
   import { onMount } from 'svelte';
 
   onMount(async () => {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
     } catch {}
+    await invalidateAll();
     goto('/');
   });
 </script>

@@ -15,6 +15,6 @@ const OG: Record<string, string> = {
   '/terms': 'https://beeeproject.com/og.png',
 };
 
-export const load: LayoutLoad = ({ route }) => {
-  return { ogImage: OG[route.id ?? '/'] ?? 'https://beeeproject.com/og.png' };
+export const load: LayoutLoad = ({ route, data }) => {
+  return { ...data, ogImage: OG[route.id ?? '/'] ?? 'https://beeeproject.com/og.png' };
 };

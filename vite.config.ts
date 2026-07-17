@@ -7,6 +7,9 @@ export default defineConfig({
 	plugins: [enhancedImages(), tailwindcss(), sveltekit()],
 	server: {
 		port: 5173,
+		watch: {
+			ignored: ['**/.codebase-memory/**', '**/.dev-logs/**', '**/node_modules/**', '**/.git/**'],
+		},
 	},
 	optimizeDeps: {
 		exclude: ['svelte-chess'],

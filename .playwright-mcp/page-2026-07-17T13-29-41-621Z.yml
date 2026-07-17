@@ -1,0 +1,74 @@
+- generic [ref=f144e2]:
+  - link "Skip to main content" [ref=f144e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=f144e4]:
+    - generic [ref=f144e7]:
+      - link "BEEE — Building Exceptional Experiences Through Education BEEE" [ref=f144e8] [cursor=pointer]:
+        - /url: /
+        - img "BEEE — Building Exceptional Experiences Through Education" [ref=f144e9]
+        - generic [ref=f144e10]: BEEE
+      - generic [ref=f144e11]:
+        - link "About" [ref=f144e12] [cursor=pointer]:
+          - /url: /about
+        - link "E4" [ref=f144e13] [cursor=pointer]:
+          - /url: /e4
+        - link "T.E.A.M.U.P." [ref=f144e14] [cursor=pointer]:
+          - /url: /teamup
+        - link "Taskify" [ref=f144e15] [cursor=pointer]:
+          - /url: /taskify
+        - link "Partners" [ref=f144e16] [cursor=pointer]:
+          - /url: /partner
+        - link "FAQs" [ref=f144e17] [cursor=pointer]:
+          - /url: /faq
+      - link "Register" [ref=f144e18] [cursor=pointer]:
+        - /url: /register
+  - main [ref=f144e19]:
+    - generic [ref=f144e21]:
+      - heading "Welcome back" [level=1] [ref=f144e22]
+      - paragraph [ref=f144e23]: Sign in to your BEEE account
+      - generic [ref=f144e24]:
+        - generic [ref=f144e25]:
+          - generic [ref=f144e27] [cursor=pointer]: Email
+          - textbox "Email" [ref=f144e28]:
+            - /placeholder: ""
+        - generic [ref=f144e29]:
+          - generic [ref=f144e31] [cursor=pointer]: Password
+          - textbox "Password" [ref=f144e32]:
+            - /placeholder: ""
+          - button "Show password" [ref=f144e33] [cursor=pointer]
+        - button "Sign In" [disabled] [ref=f144e37]
+      - generic [ref=f144e38]: or
+      - link "Sign in with Google" [ref=f144e40] [cursor=pointer]:
+        - /url: /login/google?next=%2F
+      - paragraph [ref=f144e46]:
+        - text: New to BEEE?
+        - link "Register" [ref=f144e47] [cursor=pointer]:
+          - /url: /register
+  - generic [ref=f144e49]:
+    - generic [ref=f144e50]:
+      - generic [ref=f144e51]:
+        - paragraph [ref=f144e52]: BEEE Spectacular Chess Championship Abuja 2026
+        - paragraph [ref=f144e53]: Aspire to BEEE
+        - paragraph [ref=f144e54]: Be Everything Excellent Every Day
+      - navigation [ref=f144e55]:
+        - link "Home" [ref=f144e56] [cursor=pointer]:
+          - /url: /
+        - link "Registration" [ref=f144e57] [cursor=pointer]:
+          - /url: /register
+        - link "T.E.A.M.U.P." [ref=f144e58] [cursor=pointer]:
+          - /url: /teamup
+        - link "FAQ" [ref=f144e59] [cursor=pointer]:
+          - /url: /faq
+        - link "Privacy" [ref=f144e60] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=f144e61] [cursor=pointer]:
+          - /url: /terms
+    - generic [ref=f144e63]:
+      - generic [ref=f144e64]:
+        - link "info@beeeproject.com" [ref=f144e65] [cursor=pointer]:
+          - /url: mailto:info@beeeproject.com
+        - generic [ref=f144e66]: "|"
+        - generic [ref=f144e67]: +234 802 092 0872
+      - link "Become a Tournament Partner →" [ref=f144e68] [cursor=pointer]:
+        - /url: /partner
+      - paragraph [ref=f144e69]: © 2026 BEEE Spectacular Chess Championship

@@ -386,6 +386,11 @@
       animation: none;
     }
   }
+  @media (--sm-down) {
+    .champ-nav-logout {
+      display: none;
+    }
+  }
   @media (max-width: 400px) {
     .champ-nav-inner {
       padding: 0 12px;

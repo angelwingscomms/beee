@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
   import { page } from '$app/stores';
   import TextInput from '$lib/components/TextInput.svelte';
 
@@ -46,6 +46,7 @@
       }
       isProcessing = false;
       try {
+        await invalidateAll();
         await goto(next);
       } catch {
         window.location.href = next;

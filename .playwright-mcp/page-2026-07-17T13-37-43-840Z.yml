@@ -1,0 +1,192 @@
+- generic [ref=f16e2]:
+  - link "Skip to main content" [ref=f16e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=f16e4]:
+    - generic [ref=f16e7]:
+      - link "BEEE — Building Exceptional Experiences Through Education BEEE" [ref=f16e8] [cursor=pointer]:
+        - /url: /
+        - img "BEEE — Building Exceptional Experiences Through Education" [ref=f16e9]
+        - generic [ref=f16e10]: BEEE
+      - link "Dashboard" [ref=f16e11] [cursor=pointer]:
+        - /url: /dashboard
+      - button "Menu" [ref=f16e12] [cursor=pointer]
+  - main [ref=f16e14]:
+    - generic [ref=f16e16]:
+      - generic [ref=f16e17]:
+        - heading "BEEE Spectacular Chess Championship Abuja 2026" [level=1] [ref=f16e18]
+        - heading "Your child. One board. A lifetime of advantage." [level=2] [ref=f16e19]: Your child.One board.A lifetime of advantage.
+        - paragraph [ref=f16e20]: A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
+        - generic [ref=f16e21]:
+          - generic [ref=f16e22]: 10–14 years
+          - generic [ref=f16e26]: ₦90
+        - generic [ref=f16e31]:
+          - paragraph [ref=f16e32]: "The championship Timeline:"
+          - generic [ref=f16e33]:
+            - paragraph [ref=f16e34]: July 28, 2026Online coaching begins
+            - paragraph [ref=f16e35]: September 2026Live Preliminary competitions hold
+            - paragraph [ref=f16e36]: October 2026Top finalists advance to an elite, immersive Championship grand finale
+          - paragraph [ref=f16e37]: Sign up early to give your child a richer, more rewarding championship experience.
+        - generic [ref=f16e38]:
+          - link "Start Your Child's Journey" [ref=f16e39] [cursor=pointer]:
+            - /url: /register
+          - link "See How It Works" [ref=f16e40] [cursor=pointer]:
+            - /url: /championship
+        - button "Become a Tournament Partner →" [ref=f16e41] [cursor=pointer]
+      - img "Student playing chess" [ref=f16e44]
+    - generic [ref=f16e46]:
+      - generic [ref=f16e47]:
+        - heading "What makes the BEEE Championship different?" [level=2] [ref=f16e48]
+        - paragraph [ref=f16e49]: The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
+      - generic [ref=f16e50]:
+        - generic [ref=f16e51]:
+          - heading "E4™ Chess Coach" [level=3] [ref=f16e52]
+          - paragraph [ref=f16e53]: Learn, Analyze, Master E4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice.
+          - link "Learn More" [ref=f16e54] [cursor=pointer]:
+            - /url: /e4
+            - generic [ref=f16e56]: →
+        - generic [ref=f16e57]:
+          - heading "T.E.A.M.U.P.™" [level=3] [ref=f16e58]
+          - paragraph [ref=f16e59]: A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child.
+          - link "Learn More" [ref=f16e60] [cursor=pointer]:
+            - /url: /teamup
+            - generic [ref=f16e62]: →
+        - generic [ref=f16e63]:
+          - heading "TASKIFY™" [level=3] [ref=f16e64]
+          - paragraph [ref=f16e65]: A Development Passport that grants digital access to all platforms and provides tangible documentation of participants activities for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating.
+          - link "Learn More" [ref=f16e66] [cursor=pointer]:
+            - /url: /taskify
+            - generic [ref=f16e68]: →
+    - generic [ref=f16e69]:
+      - heading "Everything Your Child Needs" [level=2] [ref=f16e70]
+      - paragraph [ref=f16e72]: Enrich their summer holiday with a structured blend of online learning.
+      - generic [ref=f16e73]:
+        - button [ref=f16e74]:
+          - img "E4 UI" [ref=f16e75]
+          - generic [ref=f16e76]:
+            - heading "E4™" [level=3] [ref=f16e77]
+            - paragraph [ref=f16e78]: Real-time AI mentoring and move analysis.
+        - generic [ref=f16e80]:
+          - heading "Why Participate?" [level=3] [ref=f16e81]
+          - list [ref=f16e82]:
+            - listitem [ref=f16e83]: Strategic thinking and decision-making
+            - listitem [ref=f16e84]: Critical reasoning and problem-solving
+            - listitem [ref=f16e85]: Creativity and innovation
+            - listitem [ref=f16e86]: Leadership and collaboration
+            - listitem [ref=f16e87]: Communication and interpersonal skills
+            - listitem [ref=f16e88]: Confidence, self-discipline and resilience
+            - listitem [ref=f16e89]: Academic excellence and lifelong passion for learning
+        - generic [ref=f16e92]:
+          - paragraph [ref=f16e93]: Technology.Enterprise.Art.Mentorship.UPskill.
+          - link "Learn More →" [ref=f16e94] [cursor=pointer]:
+            - /url: /teamup
+            - text: Learn More
+            - generic [ref=f16e95]: →
+    - generic [ref=f16e97]:
+      - generic [ref=f16e98]:
+        - generic [ref=f16e99]: The Championship Framework
+        - generic [ref=f16e101]: BEEE Project
+        - paragraph [ref=f16e102]: Three integrated pillars, one champion. Every element feeds into the BEEE experience.
+      - generic [ref=f16e104]:
+        - generic [ref=f16e107]:
+          - generic [ref=f16e110]:
+            - generic [ref=f16e111]: "01"
+            - generic [ref=f16e117]: T.E.A.M.U.P.
+            - generic [ref=f16e118]: Community &Partnerships
+          - generic [ref=f16e122]:
+            - generic [ref=f16e123]: "02"
+            - generic [ref=f16e129]: TASKIFY
+            - generic [ref=f16e130]: Organization &Operations
+          - generic [ref=f16e134]:
+            - generic [ref=f16e135]: "03"
+            - img [ref=f16e137]:
+              - generic [ref=f16e139]: AI
+            - generic [ref=f16e140]: E4
+            - generic [ref=f16e141]: Intelligence &Innovation
+        - generic [ref=f16e158]:
+          - generic [ref=f16e159]: BEEE SPECTACULAR CHESS
+          - generic [ref=f16e160]: Empowering Minds. Building Champions.
+    - generic [ref=f16e162]:
+      - generic [ref=f16e163]:
+        - generic [ref=f16e164]: Awards & Recognition
+        - heading "Honours worth competing for" [level=2] [ref=f16e166]: Honours worthcompeting for
+        - paragraph [ref=f16e167]: Every participant plays for more than the championship award. A full spectrum of honours celebrates chess skill, personal growth, leadership, and team spirit.
+      - generic [ref=f16e168]:
+        - article [ref=f16e169]:
+          - generic [ref=f16e170]: The signature honour
+          - generic [ref=f16e184]:
+            - heading "T.E.A.M.U.P.™ Excellence Awards" [level=3] [ref=f16e185]
+            - paragraph [ref=f16e186]: Celebrating whole child excellence — rewarding with a variety of honors.
+        - generic [ref=f16e187]:
+          - article [ref=f16e188]:
+            - generic [ref=f16e189]: "01"
+            - heading "Medals & Awards" [level=3] [ref=f16e197]
+            - paragraph [ref=f16e198]: Top performers honoured across competitive categories.
+          - article [ref=f16e199]:
+            - generic [ref=f16e200]: "02"
+            - heading "Badges of Competence" [level=3] [ref=f16e205]
+            - paragraph [ref=f16e206]: Verified skills, milestones, and proficiencies.
+          - article [ref=f16e207]:
+            - generic [ref=f16e208]: "03"
+            - heading "Certificates of Participation" [level=3] [ref=f16e213]
+            - paragraph [ref=f16e214]: Recognition for every child who joins the journey.
+          - article [ref=f16e215]:
+            - generic [ref=f16e216]: "04"
+            - heading "Certificates of Achievement" [level=3] [ref=f16e221]
+            - paragraph [ref=f16e222]: For measurable growth and accomplishment.
+          - article [ref=f16e223]:
+            - generic [ref=f16e224]: "05"
+            - heading "Leadership Recognition" [level=3] [ref=f16e231]
+            - paragraph [ref=f16e232]: For those who step up and lead by example.
+          - article [ref=f16e233]:
+            - generic [ref=f16e234]: "06"
+            - heading "Innovation & Creativity" [level=3] [ref=f16e238]
+            - paragraph [ref=f16e239]: Honouring original thinking and design.
+          - article [ref=f16e240]:
+            - generic [ref=f16e241]: "07"
+            - heading "Special Merit Awards" [level=3] [ref=f16e245]
+            - paragraph [ref=f16e246]: Distinctive individual contribution.
+          - article [ref=f16e247]:
+            - generic [ref=f16e248]: "08"
+            - heading "School Recognition" [level=3] [ref=f16e255]
+            - paragraph [ref=f16e256]: Celebrating participation and collective spirit.
+    - heading "Make Your Move" [level=2] [ref=f16e259]
+    - heading "Chess is not the destination. It's the platform." [level=2] [ref=f16e261]:
+      - generic [ref=f16e262]: Chess is not the destination.
+      - generic [ref=f16e263]: It's the platform.
+    - heading "Chess is where they learn. Life is where they lead." [level=2] [ref=f16e265]:
+      - generic [ref=f16e266]: Chess is where they learn.
+      - generic [ref=f16e267]: Life is where they lead.
+    - generic [ref=f16e268]:
+      - link [ref=f16e269] [cursor=pointer]:
+        - /url: /register
+        - heading "Make Your Move." [level=1] [ref=f16e270]
+      - link "Start Your Child's Journey →" [ref=f16e271] [cursor=pointer]:
+        - /url: /register
+        - text: Start Your Child's Journey
+        - generic [ref=f16e272]: →
+  - generic [ref=f16e274]:
+    - generic [ref=f16e275]:
+      - generic [ref=f16e276]:
+        - paragraph [ref=f16e277]: BEEE Spectacular Chess Championship Abuja 2026
+        - paragraph [ref=f16e278]: Aspire to BEEE
+        - paragraph [ref=f16e279]: Be Everything Excellent Every Day
+      - navigation [ref=f16e280]:
+        - link "Registration" [ref=f16e281] [cursor=pointer]:
+          - /url: /register
+        - link "T.E.A.M.U.P." [ref=f16e282] [cursor=pointer]:
+          - /url: /teamup
+        - link "FAQ" [ref=f16e283] [cursor=pointer]:
+          - /url: /faq
+        - link "Privacy" [ref=f16e284] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=f16e285] [cursor=pointer]:
+          - /url: /terms
+    - generic [ref=f16e287]:
+      - generic [ref=f16e288]:
+        - link "info@beeeproject.com" [ref=f16e289] [cursor=pointer]:
+          - /url: mailto:info@beeeproject.com
+        - generic [ref=f16e290]: "|"
+        - generic [ref=f16e291]: +234 802 092 0872
+      - link "Become a Tournament Partner →" [ref=f16e292] [cursor=pointer]:
+        - /url: /partner
+      - paragraph [ref=f16e293]: © 2026 BEEE Spectacular Chess Championship
