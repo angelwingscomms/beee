@@ -1,13 +1,22 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
   import Button from '$lib/components/Button.svelte';
 
   let open = $state(false);
+  let scrolled = $state(false);
   let path = $derived($page.url.pathname);
   let user = $derived($page.data.user);
   let logging_out = $state(false);
+
+  onMount(() => {
+    const on_scroll = () => { scrolled = window.scrollY > 24; };
+    on_scroll();
+    window.addEventListener('scroll', on_scroll, { passive: true });
+    return () => window.removeEventListener('scroll', on_scroll);
+  });
 
   async function logout() {
     logging_out = true;
@@ -20,7 +29,7 @@
   }
 </script>
 
-<nav class="champ-nav" class:open>
+<nav class="champ-nav" class:open class:scrolled>
   <div class="champ-nav-bg"></div>
   <div class="champ-nav-inner container">
     <a href="/" class="champ-nav-brand">
@@ -74,6 +83,22 @@
     width: min(1200px, calc(100% - 32px));
     border-radius: 999px;
     isolation: isolate;
+    transition: top 240ms ease, width 240ms ease;
+  }
+
+  .champ-nav.scrolled {
+    top: 12px;
+    width: min(1080px, calc(100% - 32px));
+  }
+
+  .champ-nav.scrolled .champ-nav-inner {
+    height: 48px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .champ-nav {
+      transition: none;
+    }
   }
 
   .champ-nav-bg {
@@ -198,6 +223,7 @@
   }
 
   .champ-nav-links a {
+    position: relative;
     padding: 10px 22px;
     border-radius: 999px;
     font-size: 15px;
@@ -205,6 +231,30 @@
     color: var(--ink);
     text-decoration: none;
     transition: background 160ms ease, color 160ms ease;
+  }
+
+  .champ-nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 6px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease;
+  }
+
+  .champ-nav-links a.active::after {
+    transform: scaleX(1);
+  }
+
+  @media (hover: hover) {
+    .champ-nav-links a:hover::after {
+      transform: scaleX(1);
+    }
   }
 
   :global(.dark) .champ-nav-links a {
@@ -284,8 +334,6 @@
   }
   .champ-nav-links a.active {
     color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 8px;
     background: transparent;
   }
 

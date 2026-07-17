@@ -1,0 +1,31 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { describe, expect, it } from 'vitest';
+
+const nav = readFileSync(resolve(process.cwd(), 'src/lib/components/championship/ChampNav.svelte'), 'utf8');
+
+describe('ChampNav scroll-aware condense', () => {
+  it('tracks a scrolled state via a scroll listener', () => {
+    expect(nav).toContain('let scrolled = $state(false);');
+    expect(nav).toContain("window.addEventListener('scroll', on_scroll, { passive: true });");
+  });
+
+  it('applies the scrolled class to the nav root', () => {
+    expect(nav).toContain('<nav class="champ-nav" class:open class:scrolled>');
+  });
+
+  it('condenses top offset and width when scrolled', () => {
+    expect(nav).toContain('.champ-nav.scrolled {\n    top: 12px;\n    width: min(1080px, calc(100% - 32px));\n  }');
+  });
+});
+
+describe('ChampNav active link indicator', () => {
+  it('uses an animated underline instead of a static border-bottom', () => {
+    expect(nav).toContain('.champ-nav-links a::after {');
+    expect(nav).toContain('.champ-nav-links a.active::after {\n    transform: scaleX(1);\n  }');
+  });
+
+  it('gates the hover underline behind (hover: hover)', () => {
+    expect(nav).toContain('@media (hover: hover) {\n    .champ-nav-links a:hover::after {');
+  });
+});
