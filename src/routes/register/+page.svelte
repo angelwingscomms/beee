@@ -618,6 +618,36 @@
     text-decoration: underline;
   }
 
+  :global(.phone-label) {
+    color: white !important;
+  }
+  :global(.phone-field-row .pi-bg) {
+    background: rgba(255,255,255,0.95) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  :global(.phone-field-row .pi-bg::before),
+  :global(.phone-field-row .pi-bg::after) {
+    display: none !important;
+  }
+  :global(.country-trigger) {
+    color: #1a1a1a !important;
+  }
+  :global(.country-trigger .country-abbr) {
+    color: #1a1a1a !important;
+  }
+  :global(.country-trigger .country-code-label) {
+    color: #555 !important;
+  }
+  :global(.country-trigger .chevron) {
+    color: #999 !important;
+  }
+  :global(.phone-input) {
+    color: #1a1a1a !important;
+  }
+
   @media (--md-down) {
     .reg-grid {
       grid-template-columns: 1fr;
