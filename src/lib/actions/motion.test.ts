@@ -1,8 +1,10 @@
+// @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { motionMagnetic } from './motion';
 
 beforeEach(() => {
   vi.stubGlobal('matchMedia', vi.fn().mockReturnValue({ matches: false }));
+  delete (window as any).ontouchstart;
 });
 
 afterEach(() => {
