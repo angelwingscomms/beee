@@ -28,4 +28,8 @@ describe('ChampNav active link indicator', () => {
   it('gates the hover underline behind (hover: hover)', () => {
     expect(nav).toContain('@media (hover: hover) {\n    .champ-nav-links a:hover::after {');
   });
+
+  it('gates the underline transition behind prefers-reduced-motion', () => {
+    expect(nav).toContain('.champ-nav-links a::after {\n      transition: none;\n    }');
+  });
 });

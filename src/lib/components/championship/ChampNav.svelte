@@ -99,6 +99,10 @@
     .champ-nav {
       transition: none;
     }
+
+    .champ-nav-links a::after {
+      transition: none;
+    }
   }
 
   .champ-nav-bg {
