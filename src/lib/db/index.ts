@@ -412,7 +412,7 @@ export async function find_or_create_player_user(email: string, name: string, pa
     return existing.i;
   }
   const user_id = new_id();
-  const u: User = { s: 'u', e: email, n: name, d: Date.now(), c: ['rpb'] };
+  const u: User = { s: 'u', e: email, d: Date.now(), c: ['rpb'] };
   if (password_hash) u.p = password_hash;
   await create(u, undefined, user_id);
   return user_id;

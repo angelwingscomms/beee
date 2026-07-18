@@ -36,6 +36,8 @@
       }
       payment_state = 'success';
       console.log('[payment-callback] payment SUCCESS, redirect=', body.redirect);
+      try { localStorage.setItem('active_reg', reference); } catch {}
+      console.log('[payment-callback] set active_reg=', reference);
       if (body.redirect) {
         setTimeout(() => {
           console.log('[payment-callback] redirecting to', body.redirect);

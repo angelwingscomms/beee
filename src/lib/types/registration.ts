@@ -1,5 +1,6 @@
 export interface Registration {
 	s: 'reg';
+	i?: string;
 	fn?: string; // first name (individual) or school name
 	ln?: string; // last name (individual) or school name
 	e: string;  // email

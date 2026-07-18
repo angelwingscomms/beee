@@ -162,18 +162,6 @@
   async function handleSubmit() {
     if (!validateForm()) return;
     apiError = '';
-    // Check if user already exists
-    try {
-      const r = await fetch('/api/user/check?email=' + encodeURIComponent(em.trim()));
-      const d = await r.json();
-      if (d.exists) {
-        apiError = 'An account with this email already exists. Redirecting to login…';
-        setTimeout(() => goto('/login?email=' + encodeURIComponent(em.trim()) + '&next=/register'), 1500);
-        return;
-      }
-    } catch {
-      // Proceed even if check fails
-    }
     showConfirmation = true;
   }
 
@@ -621,31 +609,23 @@
   :global(.phone-label) {
     color: white !important;
   }
-  :global(.phone-field-row .pi-bg) {
-    background: rgba(255,255,255,0.95) !important;
-    border-color: rgba(255,255,255,0.3) !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-  :global(.phone-field-row .pi-bg::before),
-  :global(.phone-field-row .pi-bg::after) {
-    display: none !important;
-  }
   :global(.country-trigger) {
-    color: #1a1a1a !important;
+    color: #fff !important;
   }
   :global(.country-trigger .country-abbr) {
-    color: #1a1a1a !important;
+    color: #fff !important;
   }
   :global(.country-trigger .country-code-label) {
-    color: #555 !important;
+    color: rgba(255,255,255,0.7) !important;
   }
   :global(.country-trigger .chevron) {
-    color: #999 !important;
+    color: rgba(255,255,255,0.6) !important;
   }
   :global(.phone-input) {
-    color: #1a1a1a !important;
+    color: #fff !important;
+  }
+  :global(.phone-input::placeholder) {
+    color: rgba(255,255,255,0.4) !important;
   }
 
   @media (--md-down) {

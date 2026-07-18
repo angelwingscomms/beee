@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
+  import { browser } from '$app/environment';
   import type { PageProps } from './$types';
+  import type { Registration } from '$lib/types/registration';
 
   let { data }: PageProps = $props();
 
@@ -8,6 +10,30 @@
   let is_upgrading = $state(false);
 
   const is_partner = $derived(data.profile?.c?.includes('fab') ?? false);
+
+  const paid_regs = $derived((data.registrations ?? []).filter((r) => r.st === 'paid'));
+  let active_id = $state<string>('');
+
+  const active_reg = $derived<Registration | undefined>(
+    paid_regs.find((r) => r.i === active_id) ?? paid_regs[0]
+  );
+
+  $effect(() => {
+    if (!browser) return;
+    const ids = paid_regs.map((r) => r.i);
+    const stored = localStorage.getItem('active_reg') || '';
+    active_id = ids.includes(stored) ? stored : (ids[0] ?? '');
+  });
+
+  async function switch_reg(e: Event) {
+    const id = (e.target as HTMLSelectElement).value;
+    active_id = id;
+    try { localStorage.setItem('active_reg', id); } catch {}
+    await invalidateAll();
+  }
+
+  const reg_label = (r: Registration) =>
+    `${r.fn ?? ''} ${r.ln ?? ''}`.trim() + (r.sn ? ` · ${r.sn}` : '');
 
   async function become_partner() {
     is_upgrading = true;
@@ -44,6 +70,29 @@
         <span class="dash-chip">{data.user.email}</span>
         {#if data.profile.c?.includes('rpb')}<span class="dash-chip dash-chip--accent">Player</span>{/if}
         {#if is_partner}<span class="dash-chip dash-chip--accent">Partner</span>{/if}
+      </div>
+    {/if}
+
+    {#if paid_regs.length > 1}
+      <div class="reg-switch">
+        <label for="reg-select" class="reg-switch-label">Active registration</label>
+        <select id="reg-select" class="reg-select" value={active_id} onchange={switch_reg}>
+          {#each paid_regs as r (r.i)}
+            <option value={r.i}>{reg_label(r)}</option>
+          {/each}
+        </select>
+      </div>
+    {/if}
+
+    {#if active_reg}
+      <div class="reg-detail">
+        <h2 class="reg-detail-name">{reg_label(active_reg) || 'Registration'}</h2>
+        <dl class="reg-detail-grid">
+          {#if active_reg.sn}<div><dt>School</dt><dd>{active_reg.sn}</dd></div>{/if}
+          {#if active_reg.p}<div><dt>Phone</dt><dd>{active_reg.p}</dd></div>{/if}
+          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'paid' ? 'Paid' : 'Pending'}</dd></div>
+          {#if active_reg.ref}<div><dt>Reference</dt><dd><code>{active_reg.ref}</code></dd></div>{/if}
+        </dl>
       </div>
     {/if}
 
@@ -165,6 +214,74 @@
     color: var(--body-strong);
   }
   .dash-btn--outline:hover { background: var(--surface-soft); }
+  .reg-switch {
+    margin: 20px 0 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .reg-switch-label {
+    font-family: var(--font-registration);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .reg-select {
+    appearance: none;
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: var(--surface-soft);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    font-family: var(--font-registration);
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+  .reg-detail {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    background: var(--surface-soft);
+  }
+  .reg-detail-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .reg-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px 20px;
+    margin: 0;
+  }
+  .reg-detail-grid dt {
+    font-family: var(--font-registration);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .reg-detail-grid dd {
+    margin: 0;
+    font-family: var(--font-registration);
+    font-size: 14px;
+    color: var(--body-strong);
+  }
+  .reg-detail-grid code {
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .reg-detail-status {
+    color: var(--success);
+    font-weight: 600;
+  }
   .modal-backdrop {
     position: fixed;
     inset: 0;
