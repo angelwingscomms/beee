@@ -12,6 +12,7 @@
 - Naming: always snake_case for vars/functions; make db payload, type defs, request JSON and page load return value keys always single letters.
 - Stored enum/status values: use single-character values (e.g. reg `st`: `r`=pending, `i`=paid; payout `st`: `r`=pending, `s`=success, `f`=failed, `p`=processing, `b`=blocked_self, `v`=reversed). Map to full labels only when displaying.
 - DB/Qdrant: Multi-tenancy, single collection 'i'; tenant-id on payload field `s`
+- Qdrant point IDs MUST be a valid UUID or unsigned integer — never a string with letters/prefixes (e.g. `po_<id>` is rejected with 400 "not a valid point ID"). Derive a deterministic UUID from a business key (e.g. SHA-1 hash of `payout:<reg_id>`) so idempotency still holds.
 - Conciseness: no vars for single-use; code minimally
 - never start the dev server
 - where necessary (e.g for non-trivial updates), always write failing unit and e2e tests before implementing a feature/fix and then run tests after implementing

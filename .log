@@ -1,0 +1,332 @@
+
+> beee-teamup-chess-tournament@0.1.0 dev /home/ed/i/beee
+> vite --host --port 5400
+
+
+  VITE v8.0.14  ready in 1425 ms
+
+  ➜  Local:   http://localhost:5400/
+  ➜  Network: http://192.168.1.2:5400/
+  ➜  Network: http://172.19.0.1:5400/
+  ➜  Network: http://169.254.68.60:5400/
+  ➜  Network: http://169.254.120.63:5400/
+  ➜  Network: http://169.254.198.246:5400/
+  ➜  Network: http://169.254.66.33:5400/
+  ➜  press h + enter to show help
+Using secrets defined in .dev.vars
+10:07:43 AM [vite-plugin-svelte] src/routes/register/+page.svelte:401:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+10:07:43 AM [vite-plugin-svelte] src/routes/register/+page.svelte:532:2 Unused CSS selector ".reg-summary-deadline"
+https://svelte.dev/e/css_unused_selector
+10:07:43 AM [vite-plugin-svelte] src/routes/register/+page.svelte:590:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+[paystack] module loaded
+[register-init-payment] === NEW REQUEST ===
+[register-init-payment] dev=true
+[register-init-payment] payload: {
+  firstName: 'gold',
+  lastName: 'edem hogan',
+  email: 'i@i.com',
+  phone: '+2349017743168',
+  hasPassword: true,
+  passwordLen: 9,
+  partnerCode: 'IoP7SNOvcOM'
+}
+[register-init-payment] partner code supplied: IoP7SNOvcOM — looking up affiliate
+Error in search_by_payload: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo EAI_AGAIN a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3001,
+    code: 'EAI_AGAIN',
+    syscall: 'getaddrinfo',
+    hostname: 'a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io'
+  }
+}
+arg: { s: 'u', ac: 'IoP7SNOvcOM' } undefined undefined undefined
+
+[1;31m[500] POST /api/register-init-payment[0m
+TypeError: fetch failed
+[register-init-payment] === NEW REQUEST ===
+[register-init-payment] dev=true
+[register-init-payment] payload: {
+  firstName: 'gold',
+  lastName: 'edem hogan',
+  email: 'i@i.com',
+  phone: '+2349017743168',
+  hasPassword: true,
+  passwordLen: 9,
+  partnerCode: 'IoP7SNOvcOM'
+}
+[register-init-payment] partner code supplied: IoP7SNOvcOM — looking up affiliate
+Error in search_by_payload: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo EAI_AGAIN a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3001,
+    code: 'EAI_AGAIN',
+    syscall: 'getaddrinfo',
+    hostname: 'a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io'
+  }
+}
+arg: { s: 'u', ac: 'IoP7SNOvcOM' } undefined undefined undefined
+
+[1;31m[500] POST /api/register-init-payment[0m
+TypeError: fetch failed
+[register-init-payment] === NEW REQUEST ===
+[register-init-payment] dev=true
+[register-init-payment] payload: {
+  firstName: 'gold',
+  lastName: 'edem hogan',
+  email: 'i@i.com',
+  phone: '+2349017743168',
+  hasPassword: true,
+  passwordLen: 9,
+  partnerCode: 'IoP7SNOvcOM'
+}
+[register-init-payment] partner code supplied: IoP7SNOvcOM — looking up affiliate
+[register-init-payment] affiliate candidates found: 1, valid(fab): true
+[register-init-payment] discount applied: amount_kobo now 9000
+[register-init-payment] generated registration id: ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[register-init-payment] bcrypt-hashing password for ebb00a60-29e6-4b44-a20a-88ed6ddbe713...
+[register-init-payment] password hashed for ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[register-init-payment] writing PENDING registration to DB: ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[register-init-payment] PENDING registration written: ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[register-init-payment] calling paystack_init for ebb00a60-29e6-4b44-a20a-88ed6ddbe713 | email=i@i.com amount_kobo=9000 callback=http://localhost:5400/payment/callback
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_init] Starting transaction initialize {
+  email: 'i@i.com',
+  amount_kobo: 9000,
+  registration_id: 'ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  p_name: 'gold edem hogan',
+  callback_url: 'http://localhost:5400/payment/callback',
+  has_reg_data: true,
+  secret_key_preview: 'sk_live_25...'
+}
+[paystack_init] Response status: 200 OK
+[paystack_init] Success response body: {"status":true,"message":"Authorization URL created","data":{"authorization_url":"https://checkout.paystack.com/8pi7zdcnigfkc5e","access_code":"8pi7zdcnigfkc5e","reference":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713"}}
+[register-init-payment] paystack_init OK for ebb00a60-29e6-4b44-a20a-88ed6ddbe713 | authorization_url=present access_code=present reference=ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[POST /api/verify-payment] Received payment verification request
+[POST /api/verify-payment] Request body: {"reference":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713","registrationId":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713"}
+[confirm] ═══ confirm START ═══ reference=ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[confirm] Verifying with Paystack reference=ebb00a60-29e6-4b44-a20a-88ed6ddbe713...
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_verify] Starting transaction verification {
+  reference: 'ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  secret_key_preview: 'sk_live_25...'
+}
+[paystack_verify] Response status: 200 OK
+[paystack_verify] Success response body: {"status":true,"message":"Verification successful","data":{"id":6368661135,"domain":"live","status":"success","reference":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713","receipt_number":"GIPS  MMS8SP","amount":9000,"message":null,"gateway_response":"Approved","gateway_response_code":"approved","response_code":"00","paid_at":"2026-07-18T09:14:27.000Z","created_at":"2026-07-18T09:11:19.000Z","channel":"card","currency":"NGN","ip_address":"102.91.93.9","metadata":{"registration_id":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713","p_name":"gold edem hogan","custom_fields":[{"display_name":"Participant Name","variable_name":"p_name","value":"gold edem hogan"},{"display_name":"Registration ID","variable_name":"registration_id","value":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713"}],"reg_data":{"a":"beee","regId":"ebb00a60-29e6-4b44-a20a-88ed6ddbe713"}},"log":{"start_time":1784365889,"time_spent":179,"attempts":2,"errors":0,"success":true,"mobile":false,"input":[],"history":[{"type":"input","message":"Filled this field: card number","time":140},{"type":"action","message":"User switched transaction currency to NGN","time":141},{"type":"input","message":"Filled this field: card expiry","time":143},{"type":"input","message":"Filled this field: card cvv","time":150},{"type":"action","message":"Attempted to pay with card","time":150},{"type":"auth","message":"Authentication Required: pin","time":151},{"type":"action","message":"Attempted to pay with card","time":153},{"type":"auth","message":"Authentication Required: otp","time":158},{"type":"success","message":"Successfully paid with card","time":179}]},"fees":135,"fees_split":null,"authorization":{"authorization_code":"AUTH_sj9yzoi77v","bin":"539983","last4":"8167","exp_month":"09","exp_year":"2029","channel":"card","card_type":"mastercard debit","bank":"Guaranty Trust Bank","country_code":"NG","brand":"mastercard","reusable":true,"signature":"SIG_RNPa4Gn8tsDVTUW7yE33","account_name":"EDEM HOGAN EDWARDGOLD","receiver_bank_account_number":null,"receiver_bank":null},"customer":{"id":383663968,"first_name":null,"last_name":null,"email":"i@i.com","customer_code":"CUS_l6h3w7vbmgl01wt","phone":null,"metadata":null,"risk_action":"default","international_format_phone":null},"plan":null,"split":{},"order_id":null,"paidAt":"2026-07-18T09:14:27.000Z","createdAt":"2026-07-18T09:11:19.000Z","requested_amount":9000,"pos_transaction_data":null,"source":null,"fees_breakdown":[{"amount":135,"formula":null,"type":"paystack"}],"connect":null,"transaction_date":"2026-07-18T09:11:19.000Z","plan_object":{},"subaccount":{}}}
+[confirm] Payment verified. Flipping reg ebb00a60-29e6-4b44-a20a-88ed6ddbe713 to paid (in-place).
+[find_or_create_player_user] START email=i@i.com name="gold edem hogan" has_password_hash=true
+[find_or_create_player_user] Existing user found id=a1dabb9a-a079-4df4-8714-18873b4ee1d6 classifications=["rpb"]
+[find_or_create_player_user] User a1dabb9a-a079-4df4-8714-18873b4ee1d6 already has 'rpb' — no change
+[find_or_create_player_user] END (reused) id=a1dabb9a-a079-4df4-8714-18873b4ee1d6
+[confirm] Player user ensured: a1dabb9a-a079-4df4-8714-18873b4ee1d6
+[confirm] Firing partner payout (fire-and-forget) for ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[payout] ═══ process_partner_payout START ═══ reg_id=ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[payout] reg summary: {
+  reg_id: 'ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  email: 'i@i.com',
+  name: 'gold edem hogan',
+  amt_kobo: 9000,
+  status: 'r',
+  partner_code: 'IoP7SNOvcOM',
+  is_dev: true
+}
+[payout] Looking up partner user by code ac=IoP7SNOvcOM (s:'u')...
+[payout] await START: search_by_payload({s:'u',ac:IoP7SNOvcOM)
+[confirm] ═══ confirm END ═══ reference=ebb00a60-29e6-4b44-a20a-88ed6ddbe713 ok=true
+[payout] Found 1 user(s) with ac=IoP7SNOvcOM; filtering for 'fab' classification
+[payout] Partner resolved: {
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  email: '1440fl@gmail.com',
+  name: 'gold',
+  has_bank_account: true,
+  bank_name: 'Guaranty Trust Bank',
+  bank_code: '058'
+}
+[payout] Deterministic payout record id: po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 (transfer ref will be po-ebb00a60-29e6-4b44-a20a-88ed6ddbe713)
+[payout] Self-referral check passed (reg=i@i.com != partner=1440fl@gmail.com).
+[payout] Bank details present. Proceeding to idempotency check.
+[payout] await START: get(payout po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713)
+[payout] Idempotency check passed (no existing record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713). Invoking run_payout attempt=1.
+[payout] ── run_payout START ── reg=ebb00a60-29e6-4b44-a20a-88ed6ddbe713 partner=4c59cae9-2b01-4f69-b894-6d50fab00fdd ac=IoP7SNOvcOM attempt=1 pid=po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[payout] Step 1/6: marking record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 as 'p' (ref=po-ebb00a60-29e6-4b44-a20a-88ed6ddbe713)
+[payout] store_payout: writing record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 {
+  reg_id: 'ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  ac: 'IoP7SNOvcOM',
+  amt: 0,
+  st: 'p',
+  ref: 'po-ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  tr: null,
+  err: null,
+  at: 1
+}
+[payout] await START: store_payout('p') po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+[payout] store_payout: FAILED to store record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713: ApiError: Bad Request
+    at Object.fun [as upsertPoints] (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+openapi-typescript-fetch@1.2.6/node_modules/@qdrant/openapi-typescript-fetch/dist/esm/fetcher.js:169:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async QdrantClient.upsert (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+js-client-rest@1.18.0_typescript@6.0.3/node_modules/@qdrant/js-client-rest/dist/esm/qdrant-client.js:622:26)
+    at async create (/home/ed/i/beee/src/lib/db/index.ts:83:2)
+    at async store_payout (/home/ed/i/beee/src/lib/partner.ts:403:3)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:27:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:248:2)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:127:3) {
+  headers: Headers {
+    'content-encoding': 'br',
+    'content-type': 'application/json',
+    date: 'Sat, 18 Jul 2026 09:14:32 GMT',
+    vary: 'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+    'transfer-encoding': 'chunked'
+  },
+  url: 'https://a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io:6333/collections/i/points?wait=true',
+  status: 400,
+  statusText: 'Bad Request',
+  data: {
+    status: {
+      error: 'Format error in JSON body: value po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 is not a valid point ID, valid values are either an unsigned integer or a UUID'
+    },
+    time: 0
+  }
+}
+[payout] Step 2/6: resolving bank code — partner.bk=058 partner.bn=Guaranty Trust Bank
+[payout] Bank code resolved to 058
+[payout] Step 3/6: resolving bank account (ba=1013... code=058) via Paystack
+[payout] await START: paystack_resolve_bank(058)
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_resolve_bank] resolving account 1013... bank_code=058
+[paystack_resolve_bank] response status: 404 Not Found
+[paystack_resolve_bank] error body: 
+[payout] Bank resolve FAILED for 4c59cae9-2b01-4f69-b894-6d50fab00fdd: Error: Bank resolve failed: 
+    at paystack_resolve_bank (/home/ed/i/beee/src/lib/paystack.ts:173:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:27:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:260:20)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:127:3)
+[payout] store_payout: writing record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 {
+  reg_id: 'ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  ac: 'IoP7SNOvcOM',
+  amt: 0,
+  st: 'f',
+  ref: 'po-ebb00a60-29e6-4b44-a20a-88ed6ddbe713',
+  tr: null,
+  err: 'Bank resolve failed: Bank resolve failed: ',
+  at: 1
+}
+[payout] store_payout: FAILED to store record po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713: ApiError: Bad Request
+    at Object.fun [as upsertPoints] (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+openapi-typescript-fetch@1.2.6/node_modules/@qdrant/openapi-typescript-fetch/dist/esm/fetcher.js:169:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async QdrantClient.upsert (file:///home/ed/i/beee/node_modules/.pnpm/@qdrant+js-client-rest@1.18.0_typescript@6.0.3/node_modules/@qdrant/js-client-rest/dist/esm/qdrant-client.js:622:26)
+    at async create (/home/ed/i/beee/src/lib/db/index.ts:83:2)
+    at async store_payout (/home/ed/i/beee/src/lib/partner.ts:403:3)
+    at async store_failed_payout (/home/ed/i/beee/src/lib/partner.ts:375:2)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:265:3)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:127:3) {
+  headers: Headers {
+    'content-encoding': 'br',
+    'content-type': 'application/json',
+    date: 'Sat, 18 Jul 2026 09:14:33 GMT',
+    vary: 'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+    'transfer-encoding': 'chunked'
+  },
+  url: 'https://a154ee19-467b-41d1-9fb8-91139b49b0a0.eu-west-2-0.aws.cloud.qdrant.io:6333/collections/i/points?wait=true',
+  status: 400,
+  statusText: 'Bad Request',
+  data: {
+    status: {
+      error: 'Format error in JSON body: value po_ebb00a60-29e6-4b44-a20a-88ed6ddbe713 is not a valid point ID, valid values are either an unsigned integer or a UUID'
+    },
+    time: 0
+  }
+}
+[payout] ═══ process_partner_payout END ═══ reg_id=ebb00a60-29e6-4b44-a20a-88ed6ddbe713
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:114:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:114:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:115:4 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:115:4 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:114:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:114:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:115:4 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+10:14:35 AM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:115:4 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+10:16:16 AM [vite] (client) hmr update /src/app.css
+10:16:16 AM [vite] (ssr) page reload src/lib/partner.ts
+10:16:24 AM [vite] (client) hmr update /src/app.css
+10:16:24 AM [vite] (ssr) page reload src/lib/partner.ts
+10:16:51 AM [vite] (client) hmr update /src/app.css
+10:16:51 AM [vite] (ssr) page reload src/lib/partner.ts
+10:17:14 AM [vite] (client) hmr update /src/app.css
+10:17:14 AM [vite] (ssr) page reload src/lib/partner.ts
+10:18:33 AM [vite-plugin-svelte] src/routes/login/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+10:18:34 AM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+10:18:34 AM [vite-plugin-svelte] src/lib/components/Modal.svelte:10:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+10:18:54 AM [vite-plugin-svelte] src/routes/register/+page.svelte:401:2 Unused CSS selector ".reg-legend"
+https://svelte.dev/e/css_unused_selector
+10:18:54 AM [vite-plugin-svelte] src/routes/register/+page.svelte:532:2 Unused CSS selector ".reg-summary-deadline"
+https://svelte.dev/e/css_unused_selector
+10:18:54 AM [vite-plugin-svelte] src/routes/register/+page.svelte:590:2 Unused CSS selector ".reg-bul"
+https://svelte.dev/e/css_unused_selector
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/12.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:25:45 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:25:45 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:25:45 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:25:45 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:25:53 AM [vite] (client) hmr update /src/app.css
+10:25:53 AM [vite] (ssr) page reload src/lib/partner.ts
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/12.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:26:02 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:26:02 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:26:02 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:26:02 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/12.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/14.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/18.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+10:26:21 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+10:26:21 AM [vite] (client) page reload .svelte-kit/generated/root.js
+10:26:21 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+10:26:21 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

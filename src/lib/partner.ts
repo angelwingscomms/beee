@@ -11,7 +11,7 @@ export { gen_partner_code } from '$lib/partner_code';
 
 const MAX_ATTEMPTS = 5;
 
-// ponytail: wrap an await so a hung Qdrant/Paystack call logs + throws instead of
+// ponytail: wrap an await so a hung Qdrant/Paystart call logs + throws instead of
 // silently killing the request. 20s ceiling; raise if a real call legitimately takes longer.
 async function with_timeout<T>(label: string, ms: number, fn: Promise<T>): Promise<T> {
   console.log(`[payout] await START: ${label}`);
@@ -21,6 +21,23 @@ async function with_timeout<T>(label: string, ms: number, fn: Promise<T>): Promi
   } finally {
     clearTimeout(t);
   }
+}
+
+// Qdrant point IDs must be a UUID or uint. Derive a deterministic v5-style UUID
+// from reg_id so the payout record id is stable (same reg -> same point, idempotent).
+export async function payout_point_id(reg_id: string): Promise<string> {
+  const sha = (globalThis.crypto?.subtle)
+    ? await globalThis.crypto.subtle.digest('SHA-1', new TextEncoder().encode(`payout:${reg_id}`))
+    : null;
+  let hex: string;
+  if (sha) {
+    hex = [...new Uint8Array(sha)].map(b => b.toString(16).padStart(2, '0')).join('');
+  } else {
+    let h = 0;
+    for (let i = 0; i < reg_id.length; i++) h = (h * 31 + reg_id.charCodeAt(i)) >>> 0;
+    hex = h.toString(16).padStart(32, '0').repeat(1).padEnd(32, '0').slice(0, 32);
+  }
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-5${hex.slice(13, 16)}-8${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
 }
 
 /**
@@ -91,7 +108,7 @@ export async function process_partner_payout(
 
     // Deterministic payout record id so concurrent verify-payment + webhook paths
     // collapse to a single record and a repeat call is a no-op.
-    const pid = `po_${reg_id}`;
+    const pid = await payout_point_id(reg_id);
     console.log(`[payout] Deterministic payout record id: ${pid} (transfer ref will be po-${reg_id})`);
 
     // Self-referral guard: a partner must not earn commission on their own signup.
@@ -203,14 +220,15 @@ export async function retry_failed_payouts(
     retried++;
     const before = p.st;
     console.log(`[payout] Retry: invoking run_payout for reg ${p.reg_id} attempt=${at}`);
+    const pid = await payout_point_id(p.reg_id);
     try {
-      await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, `po_${p.reg_id}`, platform, at);
+      await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, pid, platform, at);
     } catch (e) {
       console.error(`[payout] Retry: run_payout THREW for reg ${p.reg_id} attempt=${at}:`, e);
     }
     let updated: Payout | null = null;
     try {
-      updated = await get<Payout>(`po_${p.reg_id}`);
+      updated = await get<Payout>(pid);
     } catch (e) {
       console.error(`[payout] Retry: DB ERROR reading result for reg ${p.reg_id}:`, e);
     }
@@ -325,26 +343,27 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   // by registration id rather than relying on list[0] (which is unsafe if
   // multiple payouts ever shared a reference).
   const reg_id = ref.startsWith('po-') ? ref.slice(3) : ref;
-  console.log(`[payout] Reconcile: derived reg_id=${reg_id}, looking up record po_${reg_id}`);
+  const pid = await payout_point_id(reg_id);
+  console.log(`[payout] Reconcile: derived reg_id=${reg_id}, looking up record ${pid}`);
   let existing: Payout | null = null;
   try {
-    existing = await with_timeout(`get(reconcile po_${reg_id})`, 20000, get<Payout>(`po_${reg_id}`));
+    existing = await with_timeout(`get(reconcile ${pid})`, 20000, get<Payout>(pid));
   } catch (e) {
-    console.error(`[payout] Reconcile: DB ERROR looking up record po_${reg_id}:`, e);
+    console.error(`[payout] Reconcile: DB ERROR looking up record ${pid}:`, e);
     return;
   }
   if (existing) {
-    console.log(`[payout] Reconcile: found record po_${reg_id} (current st=${existing.st}) -> updating to ${st}`);
+    console.log(`[payout] Reconcile: found record ${pid} (current st=${existing.st}) -> updating to ${st}`);
     try {
-      await with_timeout(`create(reconcile ${st}) po_${reg_id}`, 20000, create({ ...existing, st }, undefined, `po_${reg_id}`));
+      await with_timeout(`create(reconcile ${st}) ${pid}`, 20000, create({ ...existing, st }, undefined, pid));
     } catch (e) {
-      console.error(`[payout] Reconcile: DB ERROR writing record po_${reg_id}:`, e);
+      console.error(`[payout] Reconcile: DB ERROR writing record ${pid}:`, e);
       return;
     }
-    console.log(`[payout] Reconcile: record po_${reg_id} updated to ${st}. END`);
+    console.log(`[payout] Reconcile: record ${pid} updated to ${st}. END`);
     return;
   }
-  console.log(`[payout] Reconcile: no direct record po_${reg_id}; falling back to search by ref=${ref}`);
+  console.log(`[payout] Reconcile: no direct record ${pid}; falling back to search by ref=${ref}`);
   let list: Payout[] = [];
   try {
     list = await search_by_payload<Payout>({ s: 'po', ref });
@@ -359,7 +378,7 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   }
   console.log(`[payout] Reconcile: matched payout for reg ${p.reg_id} via ref search -> updating to ${st}`);
   try {
-    await create({ ...p, st }, undefined, `po_${p.reg_id}`);
+    await create({ ...p, st }, undefined, await payout_point_id(p.reg_id));
   } catch (e) {
     console.error(`[payout] Reconcile: DB ERROR writing record po_${p.reg_id}:`, e);
     return;

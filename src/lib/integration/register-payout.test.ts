@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createQdrantStore, createPaystackMock } from '../../test/harness';
+import { payout_point_id } from '../../lib/partner';
 
 // Full-flow integration: real register-init-payment + verify-payment/webhook +
 // real partner payout, with Paystack + Qdrant mocked.
@@ -81,7 +82,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         expect(reg.st).toBe('i');
         const user = [...db.store.values()].find(u => u.s === 'u' && u.e === 'player@example.com');
         expect(user.c).toContain('rpb');
-        const payout = db.store.get(`po_${init.registrationId}`);
+        const payout = db.store.get(await payout_point_id(init.registrationId));
         expect(payout).toBeTruthy();
         expect(payout.st).toBe('s');
         expect(payout.amt).toBe(5400); // TEMP flat N54 prod payout (partner.ts payout_amount)
@@ -97,7 +98,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         await flush();
         const reg = db.store.get(init.registrationId);
         expect(reg.st).toBe('i');
-        const payout = db.store.get(`po_${init.registrationId}`);
+        const payout = db.store.get(await payout_point_id(init.registrationId));
         expect(payout.st).toBe('s');
         expect(payout.amt).toBe(5400);
     });
@@ -108,7 +109,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         const amt = init.amount;
         ps.controls.verify.mockImplementation(async (r: string) => ({ status: 'success', reference: r, amount: amt, customer: { email: '' }, metadata: {} }));
         await verify(init.registrationId);
-        const failed = db.store.get(`po_${init.registrationId}`);
+        const failed = db.store.get(await payout_point_id(init.registrationId));
         expect(failed.st).toBe('f');
         expect(ps.controls.transfer).not.toHaveBeenCalled();
         // Partner adds bank details, then the cron retry runs.
@@ -128,7 +129,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         ps.controls.verify.mockImplementation(async (r: string) => ({ status: 'success', reference: r, amount: amt, customer: { email: '' }, metadata: {} }));
         await verify(init.registrationId);
         await flush();
-        const payout = db.store.get(`po_${init.registrationId}`);
+        const payout = db.store.get(await payout_point_id(init.registrationId));
         expect(payout.amt).toBe(5400);
     });
 
@@ -143,9 +144,9 @@ describe('integration: register → payment → immediate partner payout', () =>
         const reg = db.store.get(init.registrationId);
         expect(reg.st).toBe('i');
         // Exactly one payout document exists (get/set overwrites under the race).
-        const payouts = [...db.store.keys()].filter(k => k.startsWith('po_'));
+        const payouts = [...db.store.values()].filter(r => r.s === 'po');
         expect(payouts.length).toBe(1);
-        const payout = db.store.get(`po_${init.registrationId}`);
+        const payout = db.store.get(await payout_point_id(init.registrationId));
         expect(payout.st).toBe('s');
         // Every transfer (if two fired) reuses the SAME reference → Paystack's
         // duplicate-reference dedupe prevents a double credit.
