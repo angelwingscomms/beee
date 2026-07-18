@@ -8,6 +8,23 @@ import { banks } from '$lib/data/banks';
 
 console.log('[paystack] module loaded');
 
+// All Paystack payment channels we offer. Passing the full list on
+// transaction/initialize makes the Checkout show every method (card, bank
+// transfer, USSD, QR, mobile money, EFT, PayAttitude) instead of defaulting
+// to card only. Channels unsupported in a given country are simply hidden by
+// Paystack — safe to list them all.
+const PAYMENT_CHANNELS = [
+  'card',
+  'bank',
+  'ussd',
+  'qr',
+  'mobile_money',
+  'bank_transfer',
+  'eft',
+  'payattitude',
+  'apple_pay'
+];
+
 function mask(s: string): string {
   if (!s) return '(empty)';
   return s.length < 12 ? s : s.substring(0, 6) + '...' + s.slice(-4);
@@ -110,6 +127,7 @@ export async function paystack_init(
         amount: amount_kobo,
         reference: registration_id,
         callback_url,
+        channels: PAYMENT_CHANNELS,
         metadata: JSON.stringify(metadata)
       })
     });
