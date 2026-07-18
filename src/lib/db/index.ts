@@ -3,13 +3,10 @@
 import { collection, default_user_fields } from '$lib/constants';
 import type { User } from '$lib/types';
 import { embed } from '$lib/util/embed';
-import { new_id } from '$lib/util/new_id';
-import type { PushSubscription } from 'web-push';
 import { get_qdrant } from '$lib/db/get_qdrant';
 
-export const notif_debug = (msg: string) => {
-  // console.debug(`[PUSH DEBUG] ${msg}`);
-};
+// ponytail: inlined former $lib/util/new_id shim (was one line of randomUUID).
+export const new_id = (): string => crypto.randomUUID();
 
 export type PayloadFilter = Record<string, unknown>;
 
@@ -28,21 +25,13 @@ export async function getfirst<T>(
 }
 
 // Utility functions
-export { new_id } from '$lib/util/new_id';
 
 export const set = async (
   id: string,
   payload: Record<string, unknown>
 ) => {
-  if ('ps' in payload) {
-    const psList =
-      payload.ps as unknown as PushSubscription[];
-    notif_debug(
-      `Setting ps for id: ${id}, length=${psList ? psList.length : 0}`
-    );
-  }
   const q = await get_qdrant();
-  await q.setPayload('i', {
+  await q.setPayload(collection, {
     wait: true,
     payload,
     points: [id]
@@ -286,9 +275,6 @@ export async function get<T>(
   with_vector?: boolean
 ): Promise<T | null> {
   try {
-    if (payload === 'ps') {
-      notif_debug(`Fetching ps for id: ${id}`);
-    }
     const q = await get_qdrant();
     const result = await q.retrieve(collection, {
       ids: [id],
@@ -311,13 +297,6 @@ export async function get<T>(
             exp < now
           );
         }).length;
-        notif_debug(
-          `Fetched ps for ${id}: total=${psList.length}, expired=${expiredCount}`
-        );
-      } else {
-        notif_debug(
-          `Fetched ps for ${id}: no list or empty`
-        );
       }
     }
 

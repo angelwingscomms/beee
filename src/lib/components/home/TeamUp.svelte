@@ -4,7 +4,7 @@
 
 <section class="teamup">
   <div class="container teamup-inner">
-    <h2 class="teamup-title">T.E.A.M.U.P.</h2>
+    <h2 class="teamup-title">TEAMUP</h2>
     <p class="teamup-sub">Developing young thinkers beyond the chessboard.</p>
     <div class="pillar-grid" use:motionStaggered={{ stagger: 0.08, y: 20 }}>
       <div class="pillar-card">

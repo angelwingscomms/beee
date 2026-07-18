@@ -15,9 +15,9 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">Taskify™</h1>
         <p class="page-hero-sub">Digital Development Passport</p>
-        <p class="page-hero-body">Participants will not simply attend sessions—they will embark on this measurable development journey, building their own record of accomplishments in badges earned, milestones attained, projects completed, certificates obtained, skills developed, mentorship participation, leadership experiences, developmental growth and all notable achievements.</p>
+        <p class="page-hero-body">Your child doesn't just attend — every badge, milestone, project, and certificate is recorded in their own Taskify™ passport. By the Grand Finale, they'll have a documented record of what they built, won, and learned.</p>
         <div class="page-hero-actions">
-          <Button href="/register" class="page-hero-btn">Get Started</Button>
+          <Button href="/register" class="page-hero-btn">Register your child →</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>

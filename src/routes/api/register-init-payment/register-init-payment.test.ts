@@ -97,7 +97,7 @@ describe('register-init-payment partner code validation', () => {
         const d = await res.json();
         expect(d.success).toBe(true);
         expect(d.discounted).toBe(true);
-        expect(d.amount).toBe(5_670);
+        expect(d.amount).toBe(1_350_000);
     });
 
     it('returns full amount without partner code', async () => {
@@ -107,7 +107,7 @@ describe('register-init-payment partner code validation', () => {
             phone: '+234801234568', school: 'Test School', password: 'password123'
         }) as any);
         const d = await res.json();
-        expect(d.amount).toBe(6_300);
+        expect(d.amount).toBe(1_500_000);
         expect(d.discounted).toBe(false);
     });
 

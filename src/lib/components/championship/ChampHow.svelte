@@ -18,11 +18,11 @@
       title: 'REGISTRATION',
       body: `Participants register and gain access to:
 
-E4™ CHESS COACH
+e4™ Chess Coach
 
-T.E.A.M.U.P.™ and
+TEAMUP™ and
 
-TASKIFY™ Development Passport`,
+Taskify™ Development Passport`,
       img: '/images/championship/register.png',
       color: '#F27830',
       colorLight: '#F69A64',
@@ -36,7 +36,7 @@ TASKIFY™ Development Passport`,
 ✔ Leadership and life-skills development
 ✔ Interactive Challenges
 ✔ Creativity workshops
-✔ A championship exp beyond the chessboard`,
+✔ A championship experience beyond the chessboard`,
       img: '/images/championship/learn.png',
       color: '#ffb200',
       colorLight: '#e6a000',
@@ -57,7 +57,7 @@ Participants compete in the live qualifying stages.`,
     {
       num: 4,
       title: 'EVOLVE',
-      body: `Qualifying participants advance to higher levels of the championship competition with live elimination tournamens. 
+      body: `Qualifying participants advance to higher levels of the championship competition with live elimination tournaments.
 Elite qualifiers emerge.`,
       img: '/images/championship/develop.png',
       color: '#ffb200',
@@ -67,8 +67,7 @@ Elite qualifiers emerge.`,
     {
       num: 5,
       title: 'QUALIFY',
-      body: `Elite qualifiers  are trained for higher competence in the finalists competition. 
-They compete for finalists positions.`,
+      body: `The top qualifiers get advanced training, then face off for the finalist spots.`,
       img: '/images/championship/qualify.png',
       color: '#ffb200',
       colorLight: '#e6a000',

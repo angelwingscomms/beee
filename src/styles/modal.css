@@ -100,3 +100,12 @@
   background: var(--surface-soft);
   padding: 20px 32px;
 }
+
+.modal-secure-note {
+  margin: 0;
+  padding: 0 32px 20px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}

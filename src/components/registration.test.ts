@@ -69,7 +69,7 @@ describe('Participant Registration', () => {
 		expect(form).toContain('AMOUNT.toLocaleString()');
 		expect(form).toContain('per participant');
 		expect(form).toContain('Sponsorship of participants is by parents or other interested sponsor.');
-		expect(form).toContain('Registration closes on June 18, 2026, or earlier if available placement slots are filled.');
+		expect(form).toContain('Registration closes once available slots are filled — places are limited.');
 		expect(form).toContain('class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.');
 	});
 });

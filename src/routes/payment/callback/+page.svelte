@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import Hex3 from '$lib/components/loaders/hex/hex-3.svelte';
 
 	let { data }: PageProps = $props();
 
@@ -53,13 +52,13 @@
 </script>
 
 <svelte:head>
-	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} — BEEE T.E.A.M.U.P.</title>
+	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} — BEEE TEAMUP</title>
 </svelte:head>
 
 <main class="callback-shell">
 	<div class="callback-card">
 		{#if payment_state === 'verifying'}
-			<Hex3 size={32} dotSize={4} speed={1.2} bloom color="var(--primary)" />
+			<div class="loader" aria-hidden="true">Loading…</div>
 			<h1>Verifying payment…</h1>
 			<p>Please wait while we confirm your payment with Paystack.</p>
 		{:else if payment_state === 'success'}
@@ -72,6 +71,7 @@
 			<div class="status-icon failed" aria-hidden="true">✗</div>
 			<h1>Payment Failed</h1>
 			<p>{error_msg || 'Something went wrong. Please try again.'}</p>
+			<p class="ref">No money left your account? Try again, or email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> and we'll sort it out.</p>
 			<a href="/" class="button-primary">Try Again</a>
 		{/if}
 	</div>
@@ -95,6 +95,17 @@
 		font-size: 4rem;
 		display: block;
 		margin-bottom: 1rem;
+	}
+	.loader {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--primary);
+		margin-bottom: 1rem;
+		animation: pulse 1.2s ease-in-out infinite;
+	}
+	@keyframes pulse {
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 1; }
 	}
 	.status-icon.success { color: var(--success); }
 	.status-icon.failed  { color: var(--error); }

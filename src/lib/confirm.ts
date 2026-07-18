@@ -6,6 +6,7 @@
 import { get, edit_point, find_or_create_player_user } from '$lib/db';
 import { paystack_verify } from '$lib/paystack';
 import { process_partner_payout } from '$lib/partner';
+import { send_registration_confirmation } from '$lib/email';
 import type { Registration } from '$lib/types/registration';
 
 export interface ConfirmResult {
@@ -53,6 +54,11 @@ export async function confirm(reference: string, platform?: App.Platform): Promi
 	console.log(`[confirm] Firing partner payout (fire-and-forget) for ${reference}`);
 	process_partner_payout(reg, reference, platform).catch(e =>
 		console.error(`[confirm] payout failed for ${reference}:`, e)
+	);
+
+	console.log(`[confirm] Firing registration confirmation email (fire-and-forget) for ${reference}`);
+	send_registration_confirmation(platform, email, name || 'Your player', reg.amt, verified.reference).catch(e =>
+		console.error(`[confirm] confirmation email failed for ${reference}:`, e)
 	);
 
 	console.log(`[confirm] ═══ confirm END ═══ reference=${reference} ok=true`);

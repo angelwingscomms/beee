@@ -1,7 +1,7 @@
 export const collection = 'i';
 export const default_user_fields = ['t', 'p', 'd', 'q', 's', 'x'];
 export const E4_URL = 'https://e4.beeeproject.com';
-export const REG_AMOUNT = 63; // TEMP: prod fee set to ₦63 (dev-equivalent) — revert to 15000 after testing
+export const REG_AMOUNT = 15000;
 export const DISCOUNT_PCT = 10;
 export const COMMISSION_PCT = 10;
 

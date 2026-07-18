@@ -233,7 +233,7 @@
 
 <svelte:head>
   <title>Register — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="Register your child for the BEEE T.E.A.M.U.P. programme and Spectacular Chess Championship Abuja 2026." />
+  <meta name="description" content="Register your child for the BEEE TEAMUP programme and Spectacular Chess Championship Abuja 2026." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full reg-page" style="background: url({regBg.img.src}) center center / cover no-repeat fixed">
@@ -241,7 +241,7 @@
   <section class="reg-header" use:motionFadeUp>
     <div class="container">
       <p class="reg-event">BEEE Spectacular Chess Championship</p>
-      <h1 class="reg-title">Abuja 2026</h1>
+      <h1 class="reg-title">Register for Abuja 2026</h1>
     </div>
   </section>
 
@@ -259,16 +259,17 @@
         novalidate
         onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}
       >
+        <p class="reg-login-link">Already registered? <a href="/login">Log in</a></p>
         <fieldset class="reg-fieldset">
           <div class="reg-row">
             <TextInput id="gf" label="First name" bind:value={gf} required error={gfe} oninput={() => gfe = ''} />
             <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
-          <PhoneInput id="proprietor_phone" label="Proprietor's phone number" value={proprietor_phone} placeholder="Proprietor's phone number" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
+          <PhoneInput id="proprietor_phone" label="School proprietor's phone — used to verify your school's participation" value={proprietor_phone} placeholder="School proprietor's phone" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
           <PhoneInput id="ph" label="Parent's phone number" value={ph} placeholder="Parent's phone number" onChange={(v) => { ph = v; phe = ''; }} />
           {#if !loggedInUser}
-            <TextInput id="em" label="Parent's Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
+            <TextInput id="em" label="Parent's email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
             <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} showToggle />
           {/if}
         </fieldset>
@@ -322,10 +323,8 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Participants must be between 10 and 14 years of age</p>
-          <p>Online coaching begins July 28 2026</p>
+          <p>Online coaching began July 28, 2026 — players get access immediately on registration.</p>
         </div>
-        <p class="reg-login-link">Already registered? <a href="/login">Log in</a></p>
       </form>
 
       <aside class="reg-summary" use:motionFadeUp>
@@ -333,12 +332,12 @@
           <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
           <span class="reg-per">per participant</span>
         </div>
-        <p class="reg-summary-note">Sign up early to give your child a richer, more rewarding championship experience.</p>
+        <p class="reg-summary-note">Slots are limited — and coaching is underway, so registering now gives your child the longest run.</p>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div>
             <strong>Age requirement</strong>
-            <p>Participants must be between 10 and 14 years old (born 2011–2015)</p>
+            <p>Participants must be between 10 and 14 years old.</p>
           </div>
         </div>
       </aside>
@@ -630,9 +629,10 @@
   }
   .reg-login-link {
     font-family: var(--font-registration);
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 4px 0 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 16px;
+    line-height: 1.4;
   }
   .reg-login-link a {
     color: var(--primary);

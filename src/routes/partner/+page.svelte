@@ -2,11 +2,14 @@
   import { goto } from '$app/navigation';
   import { dev } from '$app/environment';
   import { motionFadeUp } from '$lib/actions/motion';
-  import { MIN_TRANSFER_AMNT, DEV_REG_FEE } from '$lib/constants';
+  import { MIN_TRANSFER_AMNT, DEV_REG_FEE, REG_AMOUNT, DISCOUNT_PCT, COMMISSION_PCT } from '$lib/constants';
   import TextInput from '$lib/components/TextInput.svelte';
 
   const payout_naira = (MIN_TRANSFER_AMNT / 100).toLocaleString();
   const fee_naira = (DEV_REG_FEE / 100).toLocaleString();
+  // Commissions are only paid on referred registrations, which always carry the
+  // partner discount — so the 10% commission is of the discounted fee, not the full one.
+  const commission_naira = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100) * COMMISSION_PCT / 100).toLocaleString();
 
   let email = $state('');
   let password = $state('');
@@ -59,22 +62,22 @@
 </script>
 
 <svelte:head>
-  <title>Partner Program — BEEE</title>
-  <meta name="description" content="Join the BEEE Partner Program. Earn 10% commission on every registration you refer." />
+  <title>Partner Programme — BEEE</title>
+  <meta name="description" content="Join the BEEE Partner Programme. Earn ₦{commission_naira} per registration you refer." />
 </svelte:head>
 
 <div class="partner-page">
   <section class="partner-hero" use:motionFadeUp>
     <div class="partner-grid">
       <div class="partner-info">
-        <p class="partner-badge">Partner Program</p>
+        <p class="partner-badge">Partner Programme</p>
         <h1 class="partner-title">Share the Experience.<br>Earn Rewards.</h1>
         <p class="partner-intro">
-          Help families discover the BEEE T.E.A.M.U.P. programme and chess championship.
+          Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.
           {#if dev}
             In test mode you receive a ₦{payout_naira} payout for every referral — players pay the ₦{fee_naira} test fee.
           {:else}
-            You earn 10% of every registration fee from players you refer.
+            You earn ₦{commission_naira} per registration you refer.
           {/if}
         </p>
         <div class="partner-steps">
@@ -96,7 +99,7 @@
             <span class="step-num">3</span>
             <div>
               <strong>You Get Paid</strong>
-              <p>{#if dev}After payment is confirmed, ₦{payout_naira} is sent directly to your bank account.{:else}After payment is confirmed, 10% of the registration fee is sent directly to your bank account.{/if}</p>
+              <p>{#if dev}After payment is confirmed, ₦{payout_naira} is sent directly to your bank account.{:else}After payment is confirmed, ₦{commission_naira} is sent directly to your bank account.{/if}</p>
             </div>
           </div>
         </div>

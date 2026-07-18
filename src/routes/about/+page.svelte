@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-  <title>BEEE® — Be Everything Excellent Every Day</title>
-  <meta name="description" content="BEEE® is an integrated learning and development platform combining innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence." />
+  <title>BEEE — Be Everything Excellent Every Day</title>
+  <meta name="description" content="BEEE is an integrated learning and development platform combining innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
@@ -15,9 +15,9 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">BEEE®</h1>
         <p class="page-hero-sub">A Vision and Mission Beyond Chess</p>
-        <p class="page-hero-body">BEEE® (Be Everything Excellent Every Day) is an integrated learning and development platform that combines innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence and empower individuals to discover their potential, develop their abilities, and excel in education, leadership, enterprise, and life.</p>
+        <p class="page-hero-body">BEEE (Be Everything Excellent Every Day) is a learning and development platform for young people. We combine structured programmes, digital tools, and mentorship so students grow in education, leadership, and life.</p>
         <div class="page-hero-actions">
-          <Button href="/register" class="page-hero-btn">Get Started</Button>
+          <Button href="/register" class="page-hero-btn">Register your child →</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
@@ -28,22 +28,22 @@
   <section class="page-belief" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
       <div class="belief-content">
-        <p class="belief-text">We believe that every individual possesses extraordinary potential waiting to be discovered and developed. By providing opportunities for purposeful learning, mentorship, innovation, and meaningful engagement, BEEE® seeks to nurture a generation of thinkers, innovators, leaders, and changemakers equipped with the discipline, confidence, resilience, critical thinking, and problem-solving skills needed to thrive in an ever-changing world.</p>
+        <p class="belief-text">We believe every young person has extraordinary potential. Our job is to give it structure: purposeful learning, real mentors, and real challenges.</p>
       </div>
     </div>
   </section>
 
   <section class="page-features" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
-      <h2 class="page-features-title">Benefits of BEEE® Programmes</h2>
+      <h2 class="page-features-title">Benefits of BEEE Programmes</h2>
       <div class="features-grid">
         <div class="feature-card">
           <h3>Structured Learning</h3>
-          <p>Participation in structured learning and development programmes designed to build skills and character.</p>
+          <p>A 10-week guided programme with weekly goals, not a drop-in activity.</p>
         </div>
         <div class="feature-card">
           <h3>Achievement Tracking</h3>
-          <p>Tracking of achievements, with recognition for personal growth, skills development, and outstanding accomplishments across BEEE® programmes.</p>
+          <p>Tracking of achievements, with recognition for personal growth, skills development, and outstanding accomplishments across BEEE programmes.</p>
         </div>
         <div class="feature-card">
           <h3>Network & Collaborate</h3>

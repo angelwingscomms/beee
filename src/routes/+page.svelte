@@ -3,7 +3,6 @@
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import SplitText from 'gsap/SplitText';
-  import { animate, onScroll } from 'animejs';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
   import HomeAwards from '$lib/components/home/HomeAwards.svelte';
@@ -17,8 +16,6 @@
   let bentoUI: HTMLElement | undefined = $state();
   let philosophyText: HTMLElement | undefined = $state();
   let philosophyAltText: HTMLElement | undefined = $state();
-  let makeYourMove: HTMLElement | undefined = $state();
-
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -55,23 +52,6 @@
       });
     }
 
-    let animatedMakeYourMove = false;
-    onScroll({
-      target: '#intro-cta',
-      enter: 'top 75%',
-      onEnter: () => {
-        if (animatedMakeYourMove || !makeYourMove) return;
-        animatedMakeYourMove = true;
-        animate(makeYourMove, {
-          opacity: [0, 1],
-          translateY: [80, 0],
-          scale: [0.95, 1],
-          duration: 1200,
-          easing: 'easeOutCubic',
-        });
-      },
-    });
-
   });
 
   function onBentoHover(enter: boolean) {
@@ -83,14 +63,14 @@
 
 <svelte:head>
   <title>BEEE Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the T.E.A.M.U.P. programme. Summer 2026." />
+  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the TEAMUP programme. Summer 2026." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Event",
         "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the T.E.A.M.U.P. programme.",
+        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the TEAMUP programme.",
         "startDate": "2026-10-10",
         "endDate": "2026-10-10",
         "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
@@ -103,7 +83,7 @@
         "name": "BEEE Spectacular Chess Championship",
         "url": "https://beeeproject.com",
         "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth chess championship with AI training, leadership mentorship, and the T.E.A.M.U.P. development programme for Abuja kids aged 10-14.",
+        "description": "Youth chess championship with AI training, leadership mentorship, and the TEAMUP development programme for Abuja kids aged 10-14.",
         "contactPoint": { "@type": "ContactPoint", "email": "info@beeeproject.com", "telephone": "+234-802-092-0872", "contactType": "customer service" }
       }
     ]
@@ -122,14 +102,14 @@
         What makes the BEEE Championship <span class="text-amber-400">different?</span>
       </h2>
       <p class="lg:col-span-4 font-['Inter'] text-gray-400 text-base md:text-lg leading-relaxed">
-        The championship goes beyond chess. It is an integrated development ecosystem built on three proprietary platforms of learning.
+        The championship goes beyond chess. One championship, three tools that work together.
       </p>
     </div>
 
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
-      <PlatformCard bg="#f5e6c8" title="E4&trade; Chess Coach" body={"Learn, Analyze, Master\n\nE4 is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice."} href="/e4" />
-      <PlatformCard bg="#ffb200" title="T.E.A.M.U.P.&trade;" body="A holistic leadership development programme centred on Technology, Enterprise, Art, Mentorship, and Upskilling, designed to nurture the whole child." href="/teamup" />
-      <PlatformCard bg="#7ec8e3" title="TASKIFY&trade;" body="A Development Passport that grants digital access to all platforms and provides tangible documentation of participants activities for parents to track milestones, achievements, badges, certificates, and personal growth beyond their child's chess Elo rating." href="/taskify" />
+      <PlatformCard bg="#f5e6c8" title="e4&trade;" body="Your child's AI chess coach: live analysis, training, and practice." href="/e4" />
+      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="The development programme: Technology, Enterprise, Art, Mentorship, Upskill." href="/teamup" label="Explore TEAMUP™ →" />
+      <PlatformCard bg="#7ec8e3" title="Taskify&trade;" body="The digital passport recording every badge, milestone, and certificate." href="/taskify" />
     </div>
   </div>
 </section>
@@ -138,9 +118,9 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-4xl md:text-5xl text-[rgb(255,107,0)] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
     <div class="w-16 h-1 bg-[rgb(255,107,0)] rounded-full mx-auto mb-6" aria-hidden="true"></div>
-    <p class="font-['Inter'] font-bold text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning.</p>
+    <p class="font-['Inter'] font-bold text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning, mentorship, and competitive chess.</p>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
-    <!-- Card 1: E4 -->
+    <!-- Card 1: e4 -->
     <div
       bind:this={bentoCardBase}
       role="button"
@@ -149,9 +129,9 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/e4-ui.png" alt="E4 UI" class="absolute inset-0 w-full h-full object-cover" />
+      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute bottom-0 left-0 p-8 z-20">
-        <h3 class="font-hero text-2xl font-bold text-white mb-2">E4™</h3>
+        <h3 class="font-hero text-2xl font-bold text-white mb-2">e4</h3>
         <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
       </div>
     </div>
@@ -161,18 +141,15 @@
       <div class="relative z-10">
         <h3 class="font-hero text-xl font-bold text-white mb-5">Why Participate?</h3>
         <ul class="flex flex-col items-start gap-2.5 gain-list">
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Strategic thinking and decision-making</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Critical reasoning and problem-solving</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Creativity and innovation</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Leadership and collaboration</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Communication and interpersonal skills</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Confidence, self-discipline and resilience</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Academic excellence and lifelong passion for learning</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Trains with an AI coach that reviews every game they play</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Learns leadership and public speaking in weekly TEAMUP workshops</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Competes live in September's preliminaries — and maybe October's Grand Finale</li>
+          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Finishes the summer with a Taskify passport of badges, certificates, and skills</li>
         </ul>
       </div>
     </div>
 
-    <!-- Card 3: T.E.A.M.U.P. -->
+    <!-- Card 3: TEAMUP -->
     <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
       <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
@@ -180,7 +157,7 @@
         <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
           <span class="text-white">T</span>echnology.<br /><span class="text-white">E</span>nterprise.<br /><span class="text-white">A</span>rt.<br /><span class="text-white">M</span>entorship.<br /><span class="text-white">U</span><span class="text-white">P</span>skill.
         </p>
-        <a href="/teamup" class="block text-sm md:text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Learn More <span style="display:inline-block;vertical-align:middle"> →</span></a>
+        <a href="/teamup" class="block text-sm md:text-[1.5vw] mt-3 no-underline transition-colors" style="color: #fff">Explore TEAMUP™ <span style="display:inline-block;vertical-align:middle"> →</span></a>
       </div>
     </div>
   </div>
@@ -211,8 +188,8 @@
                                 <path d="M50 26c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm0 4c-1.8 0-3.3.3-4.8.8 2.7 1.9 3.8 4.4 3.8 6.1v5h13v-6c0-4-7.6-6-12-6z"/>
                             </svg>
                         </div>
-                        <div class="card-title">T.E.A.M.U.P.</div>
-                        <div class="card-subtitle">Community &<br>Partnerships</div>
+                        <div class="card-title">TEAMUP</div>
+                        <div class="card-subtitle">Leadership &<br>Life Skills</div>
                     </div>
                     <div class="line-v node-drop"></div>
                 </div>
@@ -229,8 +206,8 @@
                                 <path d="M9 19h6"></path>
                             </svg>
                         </div>
-                        <div class="card-title">TASKIFY</div>
-                        <div class="card-subtitle">Organization &<br>Operations</div>
+                        <div class="card-title">Taskify</div>
+                        <div class="card-subtitle">Badges &<br>Milestones</div>
                     </div>
                     <div class="line-v node-drop"></div>
                 </div>
@@ -256,8 +233,8 @@
                                 <text x="12" y="14" font-family="'Montserrat', sans-serif" font-weight="700" font-size="5.5" fill="#ffb200" stroke="none" text-anchor="middle">AI</text>
                             </svg>
                         </div>
-                        <div class="card-title">E4</div>
-                        <div class="card-subtitle">Intelligence &<br>Innovation</div>
+                        <div class="card-title">e4</div>
+                        <div class="card-subtitle">AI Chess<br>Coaching</div>
                     </div>
                     <div class="line-v node-drop"></div>
                 </div>
@@ -271,7 +248,6 @@
                 </div>
                 <div class="bottom-card-text">
                     <div class="bottom-card-title">BEEE SPECTACULAR CHESS</div>
-                    <div class="bottom-card-subtitle">Empowering Minds. Building Champions.</div>
                 </div>
             </div>
         </div>
@@ -280,20 +256,11 @@
 
 <HomeAwards />
 
-<!-- Intro Bridge -->
-<section id="intro-cta" class="py-12 md:py-16 bg-navy">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 bind:this={makeYourMove} class="font-hero text-[13vw] md:text-[9vw] text-amber-400 font-black leading-none tracking-tighter select-none text-balance">
-      Make Your Move
-    </h2>
-  </div>
-</section>
-
 <!-- Section 4: Philosophy -->
 <section id="philosophy" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">
   <h2 bind:this={philosophyText} class="split-text-target font-hero text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-[#0A0F1A] font-black text-center tracking-tighter leading-[0.9]">
     <span class="block">Chess is not the destination.</span>
-    <span class="block">It's the platform.</span>
+    <span class="block">It is the platform.</span>
   </h2>
 </section>
 

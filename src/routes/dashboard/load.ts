@@ -39,11 +39,11 @@ export function derive_badges(
 		},
 		{
 			label: 'Payment Confirmed',
-			done: registrations.some((r) => r.st === 'paid'),
+			done: registrations.some((r) => r.st === 'i'),
 			hint: 'Registration fee paid'
 		},
 		{
-			label: 'T.E.A.M.U.P. Enrolled',
+			label: 'TEAMUP Enrolled',
 			done: classes.includes('rpb'),
 			hint: 'Qualified for the development stage'
 		},
@@ -53,7 +53,7 @@ export function derive_badges(
 			hint: 'BEEE referral partner'
 		},
 		{
-			label: 'E4 Linked',
+			label: 'e4 Linked',
 			done: !!e4,
 			hint: 'Connected chess coach account'
 		}

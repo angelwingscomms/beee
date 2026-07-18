@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-  <title>E4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="E4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
+  <title>e4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
+  <meta name="description" content="e4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
 </svelte:head>
 
 <div class="overflow-x-hidden w-full max-w-full">
@@ -13,18 +13,18 @@
     <div class="page-hero-bg"></div>
     <div class="page-hero-inner">
       <div class="page-hero-content" use:motionFadeUp>
-        <h1 class="page-hero-title">E4™</h1>
+        <h1 class="page-hero-title">e4™</h1>
         <p class="page-hero-sub">AI Chess Coach</p>
         <p class="page-hero-body">An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice.</p>
-        <p class="page-hero-body">E4 can predict every move, analyse mistakes, answer questions and improve players' level through voice prompts and text.</p>
+        <p class="page-hero-body">e4 analyses every move as your child plays — flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
         <div class="page-hero-actions">
-          <Button href="/register" class="page-hero-btn">Get Started</Button>
+          <Button href="/register" class="page-hero-btn">Register your child →</Button>
           <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
       <div class="page-hero-visual" use:motionFadeUp>
         <div class="page-hero-img-frame">
-           <img src="/images/e4-ui.png" alt="E4 AI Chess Coach interface" class="page-hero-img" />
+           <img src="/images/e4-ui.png" alt="e4 AI Chess Coach interface" class="page-hero-img" />
         </div>
       </div>
     </div>
@@ -32,19 +32,19 @@
 
   <section class="page-features" use:motionFadeUp>
     <div class="container" style="padding: 120px 0;">
-      <h2 class="page-features-title">Benefits of E4™</h2>
+      <h2 class="page-features-title">Benefits of e4™</h2>
       <div class="features-grid">
         <div class="feature-card">
           <h3>Guided AI Instruction</h3>
           <p>Learn and improve at your own pace with personalised AI feedback.</p>
         </div>
         <div class="feature-card">
-          <h3>Advanced Concepts Mentoring</h3>
+          <h3>Step-by-step strategy coaching</h3>
           <p>Master sophisticated strategies and tactical patterns.</p>
         </div>
         <div class="feature-card">
-          <h3>Grandmaster Technologies</h3>
-          <p>Access the technologies grandmasters use to gain a competitive edge.</p>
+          <h3>Train like the pros</h3>
+          <p>The same engine-backed analysis top players prepare with.</p>
         </div>
         <div class="feature-card">
           <h3>Deep Game Analysis</h3>
@@ -65,7 +65,7 @@
   <section class="page-cta" use:motionFadeUp>
     <div class="container" style="padding: 120px 0; text-align: center;">
       <h2 class="page-cta-title">Ready to Train Smarter?</h2>
-      <p class="page-cta-body">Give your child the edge of AI-powered chess coaching.</p>
+      <p class="page-cta-body">Give your child an edge with AI-powered chess coaching.</p>
       <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
     </div>
   </section>

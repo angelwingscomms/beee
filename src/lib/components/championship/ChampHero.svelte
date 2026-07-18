@@ -6,9 +6,11 @@
   import { pushState } from '$app/navigation';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
+  // Commissions are only paid on referred (discounted) registrations — see partner/+page.svelte.
+  const COMMISSION_NAIRA = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100) * COMMISSION_PCT / 100);
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -35,11 +37,15 @@
       </h1>
 
       <h2 class="hero-anim-elem font-hero text-5xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
-        Your child.<br />One board.<br />A lifetime of advantage.
+        Chess is where they learn.<br />Life is where they lead.
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-[1.05rem] text-gray-300 leading-relaxed mb-8 max-w-lg">
         A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
+      </p>
+
+      <p class="hero-anim-elem font-['Inter'] text-sm text-amber-400/90 mb-8 max-w-lg">
+        Ages 10–14 · Abuja · Coaching underway · Finale: National Stadium, October 10, 2026 · ₦{HERO_AMOUNT.toLocaleString()}
       </p>
 
       <div class="hero-anim-elem flex flex-col gap-3 mb-10">
@@ -57,18 +63,19 @@
         <p class="leading-relaxed text-amber-400 font-medium mb-2">The championship Timeline:</p>
         <div class="flex flex-col gap-2 border-l-2 border-amber-400/60 pl-4">
           <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">July 28, 2026</span><br />Online coaching begins</p>
+          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">Aug–Sep 2026</span><br />TEAMUP development</p>
           <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">September 2026</span><br />Live Preliminary competitions hold</p>
-          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">October 2026</span><br />Top finalists advance to an elite, immersive Championship grand finale</p>
+          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">October 10, 2026</span><br />Top finalists advance to an elite, immersive Championship grand finale</p>
         </div>
-        <p class="leading-relaxed text-gray-300 mt-2">Sign up early to give your child a richer, more rewarding championship experience.</p>
+        <p class="leading-relaxed text-gray-300 mt-2">Slots are limited — and coaching is underway, so registering now gives your child the longest run.</p>
       </div>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
-        <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Start Your Child's Journey</Button>
-        <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See How It Works</Button>
+        <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Register your child — ₦{HERO_AMOUNT.toLocaleString()}</Button>
+        <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See how it works</Button>
       </div>
 
-      <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Become a Tournament Partner →</button>
+      <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Become a Partner →</button>
 
     </div>
 
@@ -115,8 +122,8 @@
 
 {#if $page.state.partner}
   <Modal onclose={() => history.back()}>
-    <h2 class="partner-title">Partner With Us &amp; Earn 10% Reward!</h2>
-    <p class="partner-body">Earn 10% for every registration completed through your unique referral link. Share BEEE Spectacular Chess Championship 2026 with your school, club, or parent network today!</p>
+    <h2 class="partner-title">Partner With Us &amp; Earn Rewards!</h2>
+    <p class="partner-body">Earn ₦{COMMISSION_NAIRA.toLocaleString()} for every registration completed through your unique referral link. Share BEEE Spectacular Chess Championship 2026 with your school, club, or parent network today!</p>
     <a href="/partner" class="partner-btn partner-btn-primary">Become a Partner</a>
   </Modal>
 {/if}

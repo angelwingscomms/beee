@@ -22,7 +22,10 @@ vi.mock('$lib/partner', () => ({
     process_partner_payout: (...a: any[]) => process_payout(...a),
     reconcile_transfer_payout: (...a: any[]) => reconcile(...a)
 }));
-vi.mock('$lib/email', () => ({ send_partner_notification: vi.fn(async () => {}) }));
+vi.mock('$lib/email', () => ({
+    send_partner_notification: vi.fn(async () => {}),
+    send_registration_confirmation: vi.fn(async () => {})
+}));
 
 const REG_ID = 'reg_webhook_1';
 const PW_HASH = await bcrypt.hash('password123', 10);

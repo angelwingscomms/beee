@@ -1,5 +1,5 @@
 <script lang="ts">
-let { bg, title, body, href }: { bg: string; title: string; body: string; href?: string } = $props();
+let { bg, title, body, href, label = 'Learn More' }: { bg: string; title: string; body: string; href?: string; label?: string } = $props();
 </script>
 
 <div class="platform-card col-span-12 md:col-span-4 relative overflow-hidden rounded-[1.75rem] p-8 md:p-10 flex flex-col" style="background:{bg}">
@@ -8,7 +8,7 @@ let { bg, title, body, href }: { bg: string; title: string; body: string; href?:
 
   {#if href}
     <a {href} class="learn-more relative z-10 mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#141413] no-underline">
-      <span class="learn-more-label">Learn More</span>
+      <span class="learn-more-label">{label}</span>
       <span class="learn-more-arrow" aria-hidden="true">&rarr;</span>
     </a>
   {/if}

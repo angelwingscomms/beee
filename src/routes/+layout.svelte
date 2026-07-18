@@ -19,18 +19,18 @@
 </script>
 
 <svelte:head>
-  <title>BEEE — Building Exceptional Experiences Through Education</title>
-  <meta name="description" content="BEEE T.E.A.M.U.P. youth development programme and Spectacular Chess Championship." />
+  <title>BEEE — Be Everything Excellent Every Day</title>
+  <meta name="description" content="BEEE TEAMUP™ youth development programme and Spectacular Chess Championship." />
   <link rel="canonical" href={`https://beeeproject.com${url.pathname}`} />
-  <meta property="og:title" content="BEEE — Building Exceptional Experiences Through Education" />
-  <meta property="og:description" content="BEEE T.E.A.M.U.P. youth development programme and Spectacular Chess Championship." />
+  <meta property="og:title" content="BEEE — Be Everything Excellent Every Day" />
+  <meta property="og:description" content="BEEE TEAMUP™ youth development programme and Spectacular Chess Championship." />
   <meta property="og:url" content={`https://beeeproject.com${url.pathname}`} />
   <meta property="og:type" content="website" />
   <meta property="og:image" content={og_img} />
   <meta property="og:locale" content="en_NG" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BEEE — Building Exceptional Experiences Through Education" />
-  <meta name="twitter:description" content="BEEE T.E.A.M.U.P. youth development programme and Spectacular Chess Championship." />
+  <meta name="twitter:title" content="BEEE — Be Everything Excellent Every Day" />
+  <meta name="twitter:description" content="BEEE TEAMUP™ youth development programme and Spectacular Chess Championship." />
   <meta name="twitter:image" content={og_img} />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>

@@ -1,7 +1,7 @@
 import { decodeIdToken } from 'arctic';
 import { google_client as get_google } from '$lib/server/oauth';
 import { encode_session } from '$lib/server/session';
-import { create, find_user_by_email, new_id } from '$lib/db';
+import { create, find_user_by_email } from '$lib/db';
 import { get_secret } from '$lib/server/secrets';
 import type { User } from '$lib/types';
 import type { RequestEvent } from '@sveltejs/kit';
@@ -31,7 +31,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
     if (existing) {
       user_id = existing.i;
     } else {
-      user_id = new_id();
+      user_id = crypto.randomUUID();
       const u: User = { s: 'u', e: email, n: name, pic: picture, d: Date.now() };
       await create(u, undefined, user_id);
     }

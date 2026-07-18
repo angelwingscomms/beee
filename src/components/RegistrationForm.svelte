@@ -58,8 +58,8 @@
 		if (!password.trim()) {
 			passwordErr = 'Password is required';
 			valid = false;
-		} else if (password.trim().length < 6) {
-			passwordErr = 'Password must be at least 6 characters';
+		} else if (password.trim().length < 8) {
+			passwordErr = 'Password must be at least 8 characters';
 			valid = false;
 		}
 
@@ -165,7 +165,7 @@
 <main class="page-shell simple-home" aria-labelledby="event-title">
 	<section class="container simple-home-grid">
 		<div class="event-intro">
-			<a class="brand-lockup" href="/" aria-label="BEEE T.E.A.M.U.P. Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
+			<a class="brand-lockup" href="/" aria-label="BEEE TEAMUP Home" style="flex-direction:row;flex-wrap:wrap;gap:10px;align-items:flex-end">
 				<span class="logo-chip" style="display:flex;flex-direction:row;align-items:flex-start">
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
@@ -178,7 +178,7 @@
   <span class="text-[20px] font-championship" style="color:white">Abuja 2026</span>
 </h1>
 
-			<p class="welcome-text">Welcome to a unique championship experience that redefines engagement among young minds.</p>
+			<p class="welcome-text">Register your player for the 2026 Championship. Coaching is underway — your child gets access the day you register.</p>
 
 			<div class="cards-row">
 				<div class="flex flex-col gap-4">
@@ -187,15 +187,22 @@
 						<div class="journey-steps">
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">June 2026</span>
-									<span class="journey-name">Preliminary Rounds</span>
+									<span class="journey-date">July 28, 2026</span>
+									<span class="journey-name">Online Coaching Begins</span>
 								</div>
 							</div>
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">July/August 2026</span>
-									<span class="journey-name">BEEE T.E.A.M.U.P. Development</span>
+									<span class="journey-date">Aug&ndash;Sep 2026</span>
+									<span class="journey-name">TEAMUP Development</span>
+								</div>
+							</div>
+							<div class="journey-arrow"></div>
+							<div class="journey-step">
+								<div class="journey-body">
+									<span class="journey-date">September 2026</span>
+									<span class="journey-name">Live Preliminaries</span>
 								</div>
 							</div>
 							<div class="journey-arrow"></div>
@@ -214,14 +221,14 @@
 				</div>
 				<div class="teamup-card">
 					<div class="flex items-baseline gap-x-2">
-					<h3 class="teamup-heading">About BEEE T.E.A.M.U.P.</h3>
+					<h3 class="teamup-heading">About BEEE TEAMUP</h3>
 					<span class="relative inline-flex items-end shrink-0">
 						<img src="/flower-gear.png" alt="" class="teamup-icon" />
 						<sup class="absolute top-0 -right-2.5 text-[6.5px] leading-none font-semibold" style="color:var(--primary)">TM</sup>
 					</span>
 				</div>
-					<p class="teamup-tagline">Technology &middot; Enterprise &middot; Art &middot; Mentorship &middot; Upskill Project</p>
-					<p class="teamup-text">BEEE T.E.A.M.U.P. is the championship's Development Stage where qualifying participants will be exposed to:</p>
+					<p class="teamup-tagline">Technology, Enterprise, Art, Mentorship, Upskill</p>
+					<p class="teamup-text">BEEE TEAMUP is the championship's Development Stage where qualifying participants will be exposed to:</p>
 					<ul class="teamup-list">
 						<li>Advanced Chess Development</li>
 						<li>Creativity &amp; Innovation</li>
@@ -234,7 +241,7 @@
 
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
-				<li class="border-l-2 border-primary pl-3">Registration closes on June 18, 2026, or earlier if available placement slots are filled.</li>
+				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled — places are limited.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>

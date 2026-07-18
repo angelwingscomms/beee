@@ -6,8 +6,8 @@
     let p = $page.url.pathname;
     return [
       { href: '/', label: 'Home' },
-      { href: '/register', label: 'Registration' },
-      { href: '/teamup', label: 'T.E.A.M.U.P.' },
+      { href: '/register', label: 'Register' },
+      { href: '/teamup', label: 'TEAMUP' },
       { href: '/faq', label: 'FAQ' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/terms', label: 'Terms' },
@@ -36,7 +36,7 @@
         <span class="contact-sep">|</span>
         <span>+234 802 092 0872</span>
       </div>
-      <a href="/partner" class="footer-partner">Become a Tournament Partner →</a>
+      <a href="/partner" class="footer-partner">Become a Partner →</a>
       <p class="footer-copy">&copy; 2026 BEEE Spectacular Chess Championship</p>
     </div>
   </div>

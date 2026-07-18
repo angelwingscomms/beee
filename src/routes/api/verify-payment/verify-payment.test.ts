@@ -29,7 +29,10 @@ vi.mock('$lib/partner', () => ({
     process_partner_payout: (...a: any[]) => payout(...a)
 }));
 
-vi.mock('$lib/email', () => ({ send_partner_notification: vi.fn(async () => {}) }));
+vi.mock('$lib/email', () => ({
+    send_partner_notification: vi.fn(async () => {}),
+    send_registration_confirmation: vi.fn(async () => {})
+}));
 
 vi.mock('$lib/server/session', () => ({
     encode_session: vi.fn(async () => 'mock-session-token')

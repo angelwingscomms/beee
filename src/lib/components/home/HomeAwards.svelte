@@ -6,7 +6,7 @@
   const feature = {
     icon: Sparkles,
     kicker: 'The signature honour',
-    title: 'T.E.A.M.U.P.™ Excellence Awards',
+    title: 'TEAMUP™ Excellence Awards',
     body: 'Celebrating whole child excellence — rewarding with a variety of honors.'
   };
 

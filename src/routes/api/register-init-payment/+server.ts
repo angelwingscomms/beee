@@ -54,7 +54,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         return json({ error: 'Invalid phone' }, { status: 400 });
     }
     // Password only required for brand-new (logged-out) registrations.
-    if (!sessionEmail && data.password && String(data.password).length < 6) {
+    if (!sessionEmail && data.password && String(data.password).length < 8) {
         console.warn(`[register-init-payment] Rejected: password too short (${String(data.password).length})`);
         return json({ error: 'Password too short' }, { status: 400 });
     }

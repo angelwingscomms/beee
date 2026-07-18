@@ -22,7 +22,7 @@ export const POST: RequestHandler = async ({ request }) => {
     // In a real app, you would send an email using a service like SendGrid, Mailgun, etc.
     // const emailResult = await sendEmail({
     //   to: data.email,
-    //   subject: 'BEEE T.E.A.M.U.P. Chess Tournament - Registration Confirmed',
+    //   subject: 'BEEE TEAMUP Chess Tournament - Registration Confirmed',
     //   html: generateConfirmationEmail({
     //     schoolName: data.schoolName,
     //     registrationId: data.registrationId,
@@ -41,13 +41,13 @@ export const POST: RequestHandler = async ({ request }) => {
     console.log('[v0] Email content:');
     console.log(`
       ═══════════════════════════════════════════
-      BEEE T.E.A.M.U.P. Chess Tournament
+      BEEE TEAMUP Chess Tournament
       Registration Confirmation
       ═══════════════════════════════════════════
       
       Dear ${data.schoolName},
       
-      Thank you for registering for BEEE T.E.A.M.U.P. Chess Tournament!
+      Thank you for registering for BEEE TEAMUP Chess Tournament!
       
       Registration Details:
       - Registration ID: ${data.registrationId}
@@ -59,7 +59,7 @@ export const POST: RequestHandler = async ({ request }) => {
       instructions via email regarding tournament dates and rules.
       
       Best regards,
-      BEEE T.E.A.M.U.P. Organization
+      BEEE TEAMUP Organization
       ═══════════════════════════════════════════
     `);
 

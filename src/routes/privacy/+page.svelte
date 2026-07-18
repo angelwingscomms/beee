@@ -36,7 +36,7 @@
 
     <section class="legal-section">
       <h2>4. Payments</h2>
-      <p>Payments are processed by Paystack (a Flutterwave-adjacent Nigerian payment processor). We send Paystack the information needed to charge you and confirm your registration. We do not store your card or bank details on our servers. Paystack's own privacy policy governs how they handle that data.</p>
+      <p>Payments are processed by Paystack, a Nigerian payment processor. We send Paystack the information needed to charge you and confirm your registration. We do not store your card or bank details on our servers. Paystack's own privacy policy governs how they handle that data.</p>
     </section>
 
     <section class="legal-section">

@@ -68,9 +68,10 @@
 					<span class="spinner" aria-hidden="true"></span>
 					Processing
 				{:else}
-					Confirm and Pay
+					Confirm &amp; Pay {formatCurrency(AMOUNT)}
 				{/if}
 			</Button>
 		</div>
+		<p class="modal-secure-note">Payments processed securely by Paystack.</p>
 	</div>
 </div>

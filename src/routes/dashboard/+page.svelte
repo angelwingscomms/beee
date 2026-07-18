@@ -12,17 +12,17 @@
 
   const is_partner = $derived(data.profile?.c?.includes('fab') ?? false);
 
-  const paid_regs = $derived((data.registrations ?? []).filter((r) => r.st === 'paid'));
+  const all_regs = $derived(data.registrations ?? []);
   let active_id = $state<string>('');
 
   const active_reg = $derived<Registration | undefined>(
-    paid_regs.find((r) => r.i === active_id) ?? paid_regs[0]
+    all_regs.find((r) => r.i === active_id) ?? all_regs[0]
   );
 
   $effect(() => {
     if (!browser) return;
     active_id = resolve_active_reg(
-      paid_regs.map((r) => r.i ?? ''),
+      all_regs.map((r) => r.i ?? ''),
       localStorage.getItem('active_reg')
     );
   });
@@ -75,11 +75,11 @@
       </div>
     {/if}
 
-    {#if paid_regs.length > 1}
+    {#if all_regs.length > 1}
       <div class="reg-switch">
         <label for="reg-select" class="reg-switch-label">Active registration</label>
         <select id="reg-select" class="reg-select" value={active_id} onchange={switch_reg}>
-          {#each paid_regs as r (r.i)}
+          {#each all_regs as r (r.i)}
             <option value={r.i}>{reg_label(r)}</option>
           {/each}
         </select>
@@ -92,7 +92,7 @@
         <dl class="reg-detail-grid">
           {#if active_reg.sn}<div><dt>School</dt><dd>{active_reg.sn}</dd></div>{/if}
           {#if active_reg.p}<div><dt>Phone</dt><dd>{active_reg.p}</dd></div>{/if}
-          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'paid' ? 'Paid' : 'Pending'}</dd></div>
+          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'i' ? 'Paid' : 'Pending'}</dd></div>
           {#if active_reg.ref}<div><dt>Reference</dt><dd><code>{active_reg.ref}</code></dd></div>{/if}
         </dl>
       </div>
@@ -105,7 +105,7 @@
       {:else}
         <button class="dash-btn dash-btn--outline" onclick={() => (show_modal = true)}>Become a partner</button>
       {/if}
-      <a href="https://e4.bproject.com" class="dash-btn dash-btn--outline" target="_blank" rel="noopener">E4™ Chess Coach →</a>
+      <a href="https://e4.bproject.com" class="dash-btn dash-btn--outline" target="_blank" rel="noopener">e4™ Chess Coach →</a>
     </div>
   </div>
 </div>
@@ -116,7 +116,7 @@
       <h2 class="modal-title">Become a BEEE partner?</h2>
       <p class="modal-body">
         Share your partner link to earn rewards on every player you refer. Ready to join the
-        partner program?
+        partner programme?
       </p>
       <div class="modal-actions">
         <button class="dash-btn dash-btn--outline" onclick={() => (show_modal = false)}>Not now</button>
