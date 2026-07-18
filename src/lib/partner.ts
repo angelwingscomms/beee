@@ -128,7 +128,11 @@ export async function process_partner_payout(
       await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
       return;
     }
-    console.log(`[payout] Bank details present. Proceeding to idempotency check.`);
+    console.log(`[payout] Bank details present:`, {
+      ba: partner.ba ?? '(none)',
+      bn: partner.bn ?? '(none)',
+      bk: partner.bk ?? '(none)'
+    }, '— proceeding to idempotency check.');
 
     // Idempotency: skip if a record already exists for this registration.
     let existing: Payout | null = null;
@@ -272,7 +276,7 @@ async function run_payout(
 
   let account_name: string;
   try {
-    console.log(`[payout] Step 3/6: resolving bank account (ba=${partner.ba ? String(partner.ba).slice(0, 4) + '...' : 'EMPTY'} code=${bank_code}) via Paystack`);
+    console.log(`[payout] Step 3/6: resolving bank account ba=${partner.ba ?? 'EMPTY'} bn=${partner.bn ?? 'EMPTY'} code=${bank_code} via Paystack`);
     const resolved = await with_timeout(`paystack_resolve_bank(${bank_code})`, 20000, paystack_resolve_bank(partner.ba as string, bank_code));
     account_name = resolved.account_name;
     console.log(`[payout] Account resolved: account_name="${account_name}"`);
