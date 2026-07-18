@@ -107,12 +107,12 @@ describe('process_partner_payout', () => {
       expect(rec.amt).toBe(5400);
     });
 
-    it('transfers the minimum transfer amount to the affiliate in dev mode', async () => {
+    it('transfers the flat N54 payout to the affiliate in dev mode', async () => {
       mock_dev = true;
       const { process_partner_payout } = await import('./partner');
       await process_partner_payout(reg({ amt: 15_000 }), 'regDev', undefined);
-      expect(mock_transfer).toHaveBeenCalledWith('RCP_1', MIN_TRANSFER_AMNT, 'Commission: regDev', 'po-regDev');
-      expect((await store.get(await pid('regDev'))).amt).toBe(MIN_TRANSFER_AMNT);
+      expect(mock_transfer).toHaveBeenCalledWith('RCP_1', 5400, 'Commission: regDev', 'po-regDev');
+      expect((await store.get(await pid('regDev'))).amt).toBe(5400);
     });
 });
 

@@ -46,10 +46,9 @@ export async function payout_point_id(reg_id: string): Promise<string> {
  * a commission below Paystack's transfer floor). In production we pay a
  * percentage of the registration amount.
  */
-export function payout_amount(total_kobo: number, is_dev: boolean): number {
-  // TEMP: prod payout flattened to N54 for testing while reg fee is N90. Revert to
+export function payout_amount(total_kobo: number, _is_dev: boolean): number {
+  // TEMP: payout flattened to N54 for testing while reg fee is N90. Revert to
   // percentage below once REG_AMOUNT is back to 15000.
-  if (is_dev) return MIN_TRANSFER_AMNT;
   // return Math.round(total_kobo * COMMISSION_PCT / 100);
   return 5400;
 }
