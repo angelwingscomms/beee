@@ -403,18 +403,26 @@ export const find_user_by_email = async (
 };
 
 export async function find_or_create_player_user(email: string, name: string, password_hash?: string): Promise<string> {
+  console.log(`[find_or_create_player_user] START email=${email} name="${name}" has_password_hash=${!!password_hash}`);
   const existing = await find_user_by_email(email) as (User & { i: string }) | undefined;
   if (existing) {
+    console.log(`[find_or_create_player_user] Existing user found id=${existing.i} classifications=${JSON.stringify(existing.c || [])}`);
     if (!existing.c?.includes('rpb')) {
       const c = [...(existing.c || []), 'rpb'];
+      console.log(`[find_or_create_player_user] Adding 'rpb' classification to ${existing.i} -> ${JSON.stringify(c)}`);
       await edit_point(existing.i, { c, e: existing.e, s: 'u' });
+    } else {
+      console.log(`[find_or_create_player_user] User ${existing.i} already has 'rpb' — no change`);
     }
+    console.log(`[find_or_create_player_user] END (reused) id=${existing.i}`);
     return existing.i;
   }
   const user_id = new_id();
+  console.log(`[find_or_create_player_user] No existing user — creating new player id=${user_id} c=['rpb'] password_set=${!!password_hash}`);
   const u: User = { s: 'u', e: email, d: Date.now(), c: ['rpb'] };
   if (password_hash) u.p = password_hash;
   await create(u, undefined, user_id);
+  console.log(`[find_or_create_player_user] END (created) id=${user_id}`);
   return user_id;
 }
 
