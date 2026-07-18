@@ -40,7 +40,7 @@
 	<label for={id} class="shrink-0 !text-[12px] !font-normal {labelClass} cursor-pointer select-none">{label}</label>
 	<input
 		{id}
-		class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 !text-[12px] {inputClass}"
+		class="flex-1 min-w-0 border-none bg-transparent outline-none focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 py-1.5 !text-[12px] !text-white {inputClass}"
 		type={inputType}
 		{placeholder}
 		{required}
@@ -73,18 +73,17 @@
 		inset: 0;
 		border-radius: inherit;
 		z-index: -1;
-		background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,247,242,0.85) 50%, rgba(255,255,255,0.92) 100%);
-		backdrop-filter: blur(32px) saturate(1.5);
-		-webkit-backdrop-filter: blur(32px) saturate(1.5);
-		border: 1px solid rgba(255, 255, 255, 0.5);
+		background: linear-gradient(135deg, rgba(30, 29, 26, 0.6) 0%, rgba(24, 23, 21, 0.45) 50%, rgba(30, 29, 26, 0.55) 100%);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(36px) saturate(1.3);
+		-webkit-backdrop-filter: blur(36px) saturate(1.3);
 		box-shadow:
-			0 8px 40px rgba(0, 0, 0, 0.04),
-			0 2px 12px rgba(255, 255, 255, 0.3),
-			inset 0 1px 0 rgba(255, 255, 255, 0.85),
-			inset 0 -1px 0 rgba(255, 255, 255, 0.2),
-			inset 1px 0 0 rgba(255, 255, 255, 0.15),
-			inset -1px 0 0 rgba(255, 255, 255, 0.15),
-			0 0 60px rgba(255, 255, 255, 0.15);
+			0 8px 40px rgba(0, 0, 0, 0.35),
+			0 0 40px rgba(255, 255, 255, 0.03),
+			inset 0 1px 0 rgba(255, 255, 255, 0.08),
+			inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+			inset 1px 0 0 rgba(255, 255, 255, 0.05),
+			inset -1px 0 0 rgba(255, 255, 255, 0.05);
 		overflow: hidden;
 		transition: border-color 150ms ease;
 	}
@@ -97,9 +96,9 @@
 		background: linear-gradient(
 			105deg,
 			transparent 15%,
-			rgba(255, 255, 255, 0.35) 32%,
-			rgba(255, 255, 255, 0.6) 38%,
-			rgba(255, 255, 255, 0.35) 44%,
+			rgba(255, 255, 255, 0.04) 32%,
+			rgba(255, 255, 255, 0.08) 38%,
+			rgba(255, 255, 255, 0.04) 44%,
 			transparent 60%
 		);
 		background-size: 220% 100%;
@@ -112,7 +111,7 @@
 		position: absolute;
 		inset: 0;
 		border-radius: inherit;
-		background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+		background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
 		pointer-events: none;
 	}
 
@@ -128,35 +127,6 @@
 
 	.ti-wrap.invalid .ti-bg {
 		border-color: var(--error);
-	}
-
-	:global(.dark) .ti-bg {
-		background: linear-gradient(135deg, rgba(30, 29, 26, 0.6) 0%, rgba(24, 23, 21, 0.45) 50%, rgba(30, 29, 26, 0.55) 100%);
-		border-color: rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(36px) saturate(1.3);
-		-webkit-backdrop-filter: blur(36px) saturate(1.3);
-		box-shadow:
-			0 8px 40px rgba(0, 0, 0, 0.35),
-			0 0 40px rgba(255, 255, 255, 0.03),
-			inset 0 1px 0 rgba(255, 255, 255, 0.08),
-			inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-			inset 1px 0 0 rgba(255, 255, 255, 0.05),
-			inset -1px 0 0 rgba(255, 255, 255, 0.05);
-	}
-
-	:global(.dark) .ti-bg::before {
-		background: linear-gradient(
-			105deg,
-			transparent 15%,
-			rgba(255, 255, 255, 0.04) 32%,
-			rgba(255, 255, 255, 0.08) 38%,
-			rgba(255, 255, 255, 0.04) 44%,
-			transparent 60%
-		);
-	}
-
-	:global(.dark) .ti-bg::after {
-		background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
 	}
 
 
