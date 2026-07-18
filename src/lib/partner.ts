@@ -31,79 +31,95 @@ export async function process_partner_payout(
   platform?: App.Platform
 ): Promise<void> {
   console.log(`[payout] ═══ process_partner_payout START ═══ reg_id=${reg_id}`);
-  console.log(`[payout] reg summary:`, {
-    reg_id,
-    email: reg_data.e,
-    name: `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(),
-    amt_kobo: reg_data.amt,
-    status: reg_data.st,
-    partner_code: reg_data.ac || null,
-    is_dev: dev
-  });
-  const ac = reg_data.ac as string | undefined;
-  if (!ac) {
-    console.log(`[payout] No partner code on reg ${reg_id} — nothing to pay out. STOP.`);
-    return;
+  try {
+    console.log(`[payout] reg summary:`, {
+      reg_id,
+      email: reg_data.e,
+      name: `${reg_data.fn || ''} ${reg_data.ln || ''}`.trim(),
+      amt_kobo: reg_data.amt,
+      status: reg_data.st,
+      partner_code: reg_data.ac || null,
+      is_dev: dev
+    });
+    const ac = reg_data.ac as string | undefined;
+    if (!ac) {
+      console.log(`[payout] No partner code on reg ${reg_id} — nothing to pay out. STOP.`);
+      return;
+    }
+
+    // Find partner by code
+    console.log(`[payout] Looking up partner user by code ac=${ac} (s:'u')...`);
+    let affs: User[] = [];
+    try {
+      affs = await search_by_payload<User>({ s: 'u', ac });
+    } catch (e) {
+      console.error(`[payout] DB ERROR looking up partner by code ac=${ac} (reg ${reg_id}):`, e);
+      return;
+    }
+    console.log(`[payout] Found ${affs.length} user(s) with ac=${ac}; filtering for 'fab' classification`);
+    const partner = affs.find(u => u.c?.includes('fab')) as (User & { i: string }) | undefined;
+    if (!partner) {
+      console.log(`[payout] No partner found for code ${ac} (reg ${reg_id}) — STOP.`);
+      return;
+    }
+
+    const partner_id = partner.i;
+    if (!partner_id) {
+      console.log(`[payout] Partner for ${ac} has no ID — STOP.`);
+      return;
+    }
+    console.log(`[payout] Partner resolved:`, {
+      partner_id,
+      email: partner.e,
+      name: partner.n || '(none)',
+      has_bank_account: !!partner.ba,
+      bank_name: partner.bn || '(none)',
+      bank_code: partner.bk || '(none)'
+    });
+
+    // Deterministic payout record id so concurrent verify-payment + webhook paths
+    // collapse to a single record and a repeat call is a no-op.
+    const pid = `po_${reg_id}`;
+    console.log(`[payout] Deterministic payout record id: ${pid} (transfer ref will be po-${reg_id})`);
+
+    // Self-referral guard: a partner must not earn commission on their own signup.
+    if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
+      console.log(`[payout] Self-referral DETECTED (reg email == partner email) for ${ac} (reg ${reg_id}) — blocking commission.`);
+      await store_payout(reg_id, partner_id, ac, 0, 'b', undefined, undefined, 'self-referral', 1, pid);
+      console.log(`[payout] Stored 'blocked_self' record ${pid}. STOP.`);
+      return;
+    }
+    console.log(`[payout] Self-referral check passed (reg=${reg_data.e} != partner=${partner.e}).`);
+
+    // Check bank details. Persist a retryable record instead of silently
+    // dropping the commission — once the partner adds bank details the cron
+    // retry (retry_failed_payouts) will pick it up.
+    if (!partner.ba || !partner.bn) {
+      console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details (ba=${!!partner.ba}, bn=${!!partner.bn}) — recording retryable failure and STOP.`);
+      await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
+      return;
+    }
+    console.log(`[payout] Bank details present. Proceeding to idempotency check.`);
+
+    // Idempotency: skip if a record already exists for this registration.
+    let existing: Payout | null = null;
+    try {
+      existing = await get<Payout>(pid);
+    } catch (e) {
+      console.error(`[payout] DB ERROR checking existing payout record ${pid} (reg ${reg_id}):`, e);
+      return;
+    }
+    if (existing) {
+      console.log(`[payout] Idempotency HIT: record ${pid} already exists (st=${existing.st}) — skipping. STOP.`);
+      return;
+    }
+    console.log(`[payout] Idempotency check passed (no existing record ${pid}). Invoking run_payout attempt=1.`);
+
+    await run_payout(reg_data, reg_id, partner, partner_id, ac, pid, platform, 1);
+    console.log(`[payout] ═══ process_partner_payout END ═══ reg_id=${reg_id}`);
+  } catch (e) {
+    console.error(`[payout] UNCAUGHT ERROR in process_partner_payout for reg ${reg_id}:`, e);
   }
-
-  // Find partner by code
-  console.log(`[payout] Looking up partner user by code ac=${ac} (s:'u')...`);
-  const affs = await search_by_payload<User>({ s: 'u', ac });
-  console.log(`[payout] Found ${affs.length} user(s) with ac=${ac}; filtering for 'fab' classification`);
-  const partner = affs.find(u => u.c?.includes('fab')) as (User & { i: string }) | undefined;
-  if (!partner) {
-    console.log(`[payout] No partner found for code ${ac} (reg ${reg_id}) — STOP.`);
-    return;
-  }
-
-  const partner_id = partner.i;
-  if (!partner_id) {
-    console.log(`[payout] Partner for ${ac} has no ID — STOP.`);
-    return;
-  }
-  console.log(`[payout] Partner resolved:`, {
-    partner_id,
-    email: partner.e,
-    name: partner.n || '(none)',
-    has_bank_account: !!partner.ba,
-    bank_name: partner.bn || '(none)',
-    bank_code: partner.bk || '(none)'
-  });
-
-  // Deterministic payout record id so concurrent verify-payment + webhook paths
-  // collapse to a single record and a repeat call is a no-op.
-  const pid = `po_${reg_id}`;
-  console.log(`[payout] Deterministic payout record id: ${pid} (transfer ref will be po-${reg_id})`);
-
-  // Self-referral guard: a partner must not earn commission on their own signup.
-  if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
-    console.log(`[payout] Self-referral DETECTED (reg email == partner email) for ${ac} (reg ${reg_id}) — blocking commission.`);
-    await store_payout(reg_id, partner_id, ac, 0, 'b', undefined, undefined, 'self-referral', 1, pid);
-    console.log(`[payout] Stored 'blocked_self' record ${pid}. STOP.`);
-    return;
-  }
-  console.log(`[payout] Self-referral check passed (reg=${reg_data.e} != partner=${partner.e}).`);
-
-  // Check bank details. Persist a retryable record instead of silently
-  // dropping the commission — once the partner adds bank details the cron
-  // retry (retry_failed_payouts) will pick it up.
-  if (!partner.ba || !partner.bn) {
-    console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details (ba=${!!partner.ba}, bn=${!!partner.bn}) — recording retryable failure and STOP.`);
-    await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
-    return;
-  }
-  console.log(`[payout] Bank details present. Proceeding to idempotency check.`);
-
-  // Idempotency: skip if a record already exists for this registration.
-  const existing = await get<Payout>(pid);
-  if (existing) {
-    console.log(`[payout] Idempotency HIT: record ${pid} already exists (st=${existing.st}) — skipping. STOP.`);
-    return;
-  }
-  console.log(`[payout] Idempotency check passed (no existing record ${pid}). Invoking run_payout attempt=1.`);
-
-  await run_payout(reg_data, reg_id, partner, partner_id, ac, pid, platform, 1);
-  console.log(`[payout] ═══ process_partner_payout END ═══ reg_id=${reg_id}`);
 }
 
 /**
@@ -118,8 +134,18 @@ export async function retry_failed_payouts(
   // Retry both terminal `failed` and any left stuck in `processing` (e.g. a
   // transfer call that succeeded but whose webhook never arrived).
   console.log(`[payout] ═══ retry_failed_payouts START ═══`);
-    const failedRows = await search_by_payload<Payout>({ s: 'po', st: 'f' }, undefined, 200);
-  const processingRows = await search_by_payload<Payout>({ s: 'po', st: 'p' }, undefined, 200);
+  let failedRows: Payout[] = [];
+  let processingRows: Payout[] = [];
+  try {
+    failedRows = await search_by_payload<Payout>({ s: 'po', st: 'f' }, undefined, 200);
+  } catch (e) {
+    console.error(`[payout] Retry: DB ERROR scanning failed payouts:`, e);
+  }
+  try {
+    processingRows = await search_by_payload<Payout>({ s: 'po', st: 'p' }, undefined, 200);
+  } catch (e) {
+    console.error(`[payout] Retry: DB ERROR scanning processing payouts:`, e);
+  }
   const stuck = [...failedRows, ...processingRows];
   console.log(`[payout] Scan: ${failedRows.length} failed + ${processingRows.length} processing = ${stuck.length} candidate(s) to retry`);
   let retried = 0, succeeded = 0, failed = 0;
@@ -131,16 +157,31 @@ export async function retry_failed_payouts(
       failed++;
       continue;
     }
-    const reg = await get<Registration>(p.reg_id);
+    let reg: Registration | null = null;
+    try {
+      reg = await get<Registration>(p.reg_id);
+    } catch (e) {
+      console.error(`[payout] Retry: DB ERROR loading registration ${p.reg_id}:`, e);
+    }
     if (!reg) { console.error(`[payout] Retry: no registration ${p.reg_id} — skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded registration ${p.reg_id} (amt=${reg.amt} email=${reg.e})`);
-    const affs = await search_by_payload<User>({ s: 'u', i: p.partner_id });
+    let affs: User[] = [];
+    try {
+      affs = await search_by_payload<User>({ s: 'u', i: p.partner_id });
+    } catch (e) {
+      console.error(`[payout] Retry: DB ERROR loading partner ${p.partner_id}:`, e);
+    }
     const partner = affs[0] as (User & { i: string }) | undefined;
     if (!partner) { console.error(`[payout] Retry: no partner ${p.partner_id} — skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded partner ${p.partner_id} (${partner.e})`);
 
     // Gate on balance so we don't waste an attempt when funds are low.
-    const bal = await paystack_balance();
+    let bal = 0;
+    try {
+      bal = await paystack_balance();
+    } catch (e) {
+      console.error(`[payout] Retry: Paystack balance check FAILED for reg ${p.reg_id}:`, e);
+    }
     console.log(`[payout] Retry: Paystack balance=${bal} kobo, needed=${p.amt + 10000} kobo (payout ${p.amt} + 10000 buffer)`);
     if (bal > 0 && bal < p.amt + 10000) {
       console.log(`[payout] Retry DEFERRED for reg ${p.reg_id}: balance ${bal} below threshold — not consuming an attempt`);
@@ -150,8 +191,17 @@ export async function retry_failed_payouts(
     retried++;
     const before = p.st;
     console.log(`[payout] Retry: invoking run_payout for reg ${p.reg_id} attempt=${at}`);
-    await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, `po_${p.reg_id}`, platform, at);
-    const updated = await get<Payout>(`po_${p.reg_id}`);
+    try {
+      await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, `po_${p.reg_id}`, platform, at);
+    } catch (e) {
+      console.error(`[payout] Retry: run_payout THREW for reg ${p.reg_id} attempt=${at}:`, e);
+    }
+    let updated: Payout | null = null;
+    try {
+      updated = await get<Payout>(`po_${p.reg_id}`);
+    } catch (e) {
+      console.error(`[payout] Retry: DB ERROR reading result for reg ${p.reg_id}:`, e);
+    }
     console.log(`[payout] Retry: reg ${p.reg_id} status ${before} -> ${updated?.st ?? 'unknown'}`);
     if (updated?.st === 's') succeeded++;
     else if (updated?.st === 'f' && before !== 'f') failed++;
@@ -259,22 +309,44 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   // multiple payouts ever shared a reference).
   const reg_id = ref.startsWith('po-') ? ref.slice(3) : ref;
   console.log(`[payout] Reconcile: derived reg_id=${reg_id}, looking up record po_${reg_id}`);
-  const existing = await get<Payout>(`po_${reg_id}`);
+  let existing: Payout | null = null;
+  try {
+    existing = await get<Payout>(`po_${reg_id}`);
+  } catch (e) {
+    console.error(`[payout] Reconcile: DB ERROR looking up record po_${reg_id}:`, e);
+    return;
+  }
   if (existing) {
     console.log(`[payout] Reconcile: found record po_${reg_id} (current st=${existing.st}) -> updating to ${st}`);
-    await create({ ...existing, st }, undefined, `po_${reg_id}`);
+    try {
+      await create({ ...existing, st }, undefined, `po_${reg_id}`);
+    } catch (e) {
+      console.error(`[payout] Reconcile: DB ERROR writing record po_${reg_id}:`, e);
+      return;
+    }
     console.log(`[payout] Reconcile: record po_${reg_id} updated to ${st}. END`);
     return;
   }
   console.log(`[payout] Reconcile: no direct record po_${reg_id}; falling back to search by ref=${ref}`);
-  const list = await search_by_payload<Payout>({ s: 'po', ref });
+  let list: Payout[] = [];
+  try {
+    list = await search_by_payload<Payout>({ s: 'po', ref });
+  } catch (e) {
+    console.error(`[payout] Reconcile: DB ERROR searching by ref=${ref}:`, e);
+    return;
+  }
   const p = list[0];
   if (!p) {
     console.log(`[payout] Reconcile: no payout for transfer ref ${ref} — nothing to reconcile. END`);
     return;
   }
   console.log(`[payout] Reconcile: matched payout for reg ${p.reg_id} via ref search -> updating to ${st}`);
-  await create({ ...p, st }, undefined, `po_${p.reg_id}`);
+  try {
+    await create({ ...p, st }, undefined, `po_${p.reg_id}`);
+  } catch (e) {
+    console.error(`[payout] Reconcile: DB ERROR writing record po_${p.reg_id}:`, e);
+    return;
+  }
   console.log(`[payout] Reconcile: record po_${p.reg_id} updated to ${st}. END`);
 }
 

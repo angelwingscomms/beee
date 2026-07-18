@@ -102,7 +102,7 @@ describe('process_partner_payout', () => {
       expect(rec.st).toBe('s');
       expect(rec.ref).toBe('po-reg4');
       expect(rec.tr).toBe('TRF_1');
-      expect(rec.amt).toBe(135_000);
+      expect(rec.amt).toBe(5400);
     });
 
     it('transfers the minimum transfer amount to the affiliate in dev mode', async () => {

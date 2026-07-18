@@ -84,7 +84,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         const payout = db.store.get(`po_${init.registrationId}`);
         expect(payout).toBeTruthy();
         expect(payout.st).toBe('s');
-        expect(payout.amt).toBe(810); // 10% of 8100 (discounted ₦90 fee) net
+        expect(payout.amt).toBe(5400); // TEMP flat N54 prod payout (partner.ts payout_amount)
         expect(ps.controls.transfer).toHaveBeenCalledTimes(1);
     });
 
@@ -99,7 +99,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         expect(reg.st).toBe('i');
         const payout = db.store.get(`po_${init.registrationId}`);
         expect(payout.st).toBe('s');
-        expect(payout.amt).toBe(810);
+        expect(payout.amt).toBe(5400);
     });
 
     it('I4: partner with no bank → retryable failed payout, recovered after bank added + retry', async () => {
@@ -121,7 +121,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         expect(ps.controls.transfer).toHaveBeenCalledTimes(1);
     });
 
-    it('I5: commission is exactly 10% of the net amount actually paid', async () => {
+    it('I5: payout amount is the configured flat payout (5400 kobo, TEMP)', async () => {
         seedPartner();
         const init = await register('AFF123');
         const amt = init.amount;
@@ -129,7 +129,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         await verify(init.registrationId);
         await flush();
         const payout = db.store.get(`po_${init.registrationId}`);
-        expect(payout.amt).toBe(Math.round(amt * 0.1));
+        expect(payout.amt).toBe(5400);
     });
 
     it('B10: verify-payment and webhook firing concurrently do not create two payout records', async () => {
