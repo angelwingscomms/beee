@@ -1,6 +1,4 @@
-import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = ({ locals }) => {
-	if (locals.user) throw redirect(302, '/dashboard');
-};
+// ponytail: logged-in users register additional players, not redirected.
+export const load: PageServerLoad = () => {};
