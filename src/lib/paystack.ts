@@ -202,16 +202,16 @@ export function get_bank_code(bn: string): string | null {
 export async function paystack_resolve_bank(account_number: string, bank_code: string): Promise<{ account_name: string }> {
   const secret_key = await get_secret_key();
   console.log(`[paystack_resolve_bank] resolving account ${account_number ? account_number.slice(0, 4) + '...' : 'EMPTY'} bank_code=${bank_code}`);
-  const res = await fetch(`${await resolve_base()}/bank/resolve`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ account_number, bank_code })
+  const url = `${await resolve_base()}/bank/resolve?account_number=${encodeURIComponent(account_number)}&bank_code=${encodeURIComponent(bank_code)}`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${secret_key}` }
   });
   console.log(`[paystack_resolve_bank] response status: ${res.status} ${res.statusText}`);
   if (!res.ok) {
     const err = await res.text();
     console.error(`[paystack_resolve_bank] error body:`, err);
-    throw new Error(`Bank resolve failed: ${err}`);
+    throw new Error(`Bank resolve failed (${res.status}): ${err}`);
   }
   const body = await res.json();
   if (!body.status) {
