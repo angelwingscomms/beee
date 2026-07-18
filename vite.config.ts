@@ -14,8 +14,8 @@ export default defineConfig({
 	optimizeDeps: {
 		exclude: ['svelte-chess'],
 	},
-	test: {
-		// e2e specs live under e2e/ and run via Playwright, not vitest.
-		exclude: ['e2e/**', 'node_modules/**', 'dist/**'],
-	},
+		test: {
+			// e2e specs live under e2e/ and run via Playwright, not vitest.
+			exclude: ['e2e/**', 'node_modules/**', 'dist/**', '.worktrees/**'],
+		},
 });

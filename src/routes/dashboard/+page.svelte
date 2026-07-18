@@ -3,6 +3,7 @@
   import { browser } from '$app/environment';
   import type { PageProps } from './$types';
   import type { Registration } from '$lib/types/registration';
+  import { resolve_active_reg } from '$lib/active_reg';
 
   let { data }: PageProps = $props();
 
@@ -20,9 +21,10 @@
 
   $effect(() => {
     if (!browser) return;
-    const ids = paid_regs.map((r) => r.i);
-    const stored = localStorage.getItem('active_reg') || '';
-    active_id = ids.includes(stored) ? stored : (ids[0] ?? '');
+    active_id = resolve_active_reg(
+      paid_regs.map((r) => r.i ?? ''),
+      localStorage.getItem('active_reg')
+    );
   });
 
   async function switch_reg(e: Event) {

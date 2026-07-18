@@ -11,6 +11,7 @@ vi.mock('$app/environment', () => ({
 
 const mockUsers: Array<{ s: string; ac: string; c?: string[] }> = [];
 let lastCreate: any = null;
+const createdRecords: any[] = [];
 
 vi.mock('$lib/db', () => ({
     new_id: vi.fn(() => 'mock-reg-id-123'),
@@ -20,7 +21,7 @@ vi.mock('$lib/db', () => ({
         }
         return [];
     }),
-    create: vi.fn(async (payload: any) => { lastCreate = payload; return 'mock-reg-id-123'; }),
+    create: vi.fn(async (payload: any) => { lastCreate = payload; createdRecords.push(payload); return 'mock-reg-id-123'; }),
     get: vi.fn(async () => null),
 }));
 
@@ -46,6 +47,7 @@ describe('register-init-payment partner code validation', () => {
         mock_dev = false;
         mockUsers.length = 0;
         lastCreate = null;
+        createdRecords.length = 0;
     });
 
     it('accepts registration without partner code', async () => {
@@ -192,5 +194,22 @@ describe('register-init-payment partner code validation', () => {
             v: 99
         }) as any);
         expect(lastCreate.v).toBe(0);
+    });
+
+    it('allows a parent to register a second kid with the same email (two distinct reg records)', async () => {
+        const { POST } = await import('./+server');
+        const body = {
+            firstName: 'Kid', lastName: 'One', email: 'mom@example.com',
+            phone: '+234801234567', school: 'School A', password: 'password123'
+        };
+        const a = await POST(mock_handler({ ...body, school: 'School A' }) as any);
+        const b = await POST(mock_handler({ ...body, school: 'School B' }) as any);
+        expect((await a.json()).success).toBe(true);
+        expect((await b.json()).success).toBe(true);
+        const regs = createdRecords.filter((r) => r.s === 'reg' && r.e === 'mom@example.com');
+        expect(regs.length).toBe(2);
+        expect(regs[0].sn).toBe('School A');
+        expect(regs[1].sn).toBe('School B');
+        expect(regs[0]).not.toBe(regs[1]);
     });
 });
