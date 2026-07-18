@@ -44,33 +44,12 @@
         A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
       </p>
 
-      <p class="hero-anim-elem font-['Inter'] text-sm text-amber-400/90 mb-8 max-w-lg">
-        Ages 10–14 · Abuja · Coaching underway · Finale: National Stadium, October 10, 2026 · ₦{HERO_AMOUNT.toLocaleString()}
+      <p class="hero-anim-elem venue-line">
+        <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+        <span>National Stadium, Abuja — October 10, 2026</span>
       </p>
 
-      <div class="hero-anim-elem flex flex-col gap-3 mb-10">
-        <div class="flex items-center gap-3 text-lg">
-          <svg class="w-[18px] h-[18px] text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
-          <span class="text-white font-medium">10–14 years</span>
-        </div>
-        <div class="flex items-center gap-3 text-lg">
-          <svg class="w-[18px] h-[18px] text-amber-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
-          <span class="text-white font-medium">₦{HERO_AMOUNT.toLocaleString()}</span>
-        </div>
-      </div>
-
-      <div class="hero-anim-elem flex flex-col gap-2 mb-8 text-sm sm:text-base">
-        <p class="leading-relaxed text-amber-400 font-medium mb-2">The championship Timeline:</p>
-        <div class="flex flex-col gap-2 border-l-2 border-amber-400/60 pl-4">
-          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">July 28, 2026</span><br />Online coaching begins</p>
-          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">Aug–Sep 2026</span><br />TEAMUP development</p>
-          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">September 2026</span><br />Live Preliminary competitions hold</p>
-          <p class="leading-relaxed text-gray-300"><span class="text-amber-400 font-medium">October 10, 2026</span><br />Top finalists advance to an elite, immersive Championship grand finale</p>
-        </div>
-        <p class="leading-relaxed text-gray-300 mt-2">Slots are limited — and coaching is underway, so registering now gives your child the longest run.</p>
-      </div>
-
-      <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row">
+      <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row mt-8">
         <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Register your child — ₦{HERO_AMOUNT.toLocaleString()}</Button>
         <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See how it works</Button>
       </div>
@@ -129,6 +108,21 @@
 {/if}
 
 <style>
+  .venue-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #d1d5db;
+    margin-bottom: 8px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    max-width: 420px;
+  }
+
   .footer-partner {
     font-size: 16px;
     font-weight: 600;
@@ -140,8 +134,6 @@
   .footer-partner:hover {
     color: #ffffff;
   }
-
-  .partner-title {
     font-family: var(--font-hero);
     font-size: 1.5rem;
     font-weight: 700;
