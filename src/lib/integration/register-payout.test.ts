@@ -10,7 +10,7 @@ const ps = createPaystackMock();
 vi.mock('$app/environment', () => ({ get dev() { return false; }, get browser() { return false; } }));
 vi.mock('$lib/db', () => ({
     create: db.create, get: db.get, find_or_create_player_user: db.find_or_create_player_user,
-    search_by_payload: db.search_by_payload, new_id: db.new_id
+    search_by_payload: db.search_by_payload, new_id: db.new_id, edit_point: db.edit_point
 }));
 vi.mock('$lib/paystack', () => ({
     paystack_init: ps.mock.paystack_init,
@@ -78,13 +78,13 @@ describe('integration: register → payment → immediate partner payout', () =>
         await verify(init.registrationId);
         await flush();
         const reg = db.store.get(init.registrationId);
-        expect(reg.st).toBe('paid');
+        expect(reg.st).toBe('i');
         const user = [...db.store.values()].find(u => u.s === 'u' && u.e === 'player@example.com');
         expect(user.c).toContain('rpb');
         const payout = db.store.get(`po_${init.registrationId}`);
         expect(payout).toBeTruthy();
-        expect(payout.st).toBe('success');
-        expect(payout.amt).toBe(135_000); // 10% of 1_350_000 net
+        expect(payout.st).toBe('s');
+        expect(payout.amt).toBe(810); // 10% of 8100 (discounted ₦90 fee) net
         expect(ps.controls.transfer).toHaveBeenCalledTimes(1);
     });
 
@@ -96,10 +96,10 @@ describe('integration: register → payment → immediate partner payout', () =>
         await webhookCharge(init.registrationId);
         await flush();
         const reg = db.store.get(init.registrationId);
-        expect(reg.st).toBe('paid');
+        expect(reg.st).toBe('i');
         const payout = db.store.get(`po_${init.registrationId}`);
-        expect(payout.st).toBe('success');
-        expect(payout.amt).toBe(135_000);
+        expect(payout.st).toBe('s');
+        expect(payout.amt).toBe(810);
     });
 
     it('I4: partner with no bank → retryable failed payout, recovered after bank added + retry', async () => {
@@ -109,7 +109,7 @@ describe('integration: register → payment → immediate partner payout', () =>
         ps.controls.verify.mockImplementation(async (r: string) => ({ status: 'success', reference: r, amount: amt, customer: { email: '' }, metadata: {} }));
         await verify(init.registrationId);
         const failed = db.store.get(`po_${init.registrationId}`);
-        expect(failed.st).toBe('failed');
+        expect(failed.st).toBe('f');
         expect(ps.controls.transfer).not.toHaveBeenCalled();
         // Partner adds bank details, then the cron retry runs.
         const partner = db.store.get('aff1');
@@ -141,12 +141,12 @@ describe('integration: register → payment → immediate partner payout', () =>
         await Promise.all([verify(init.registrationId), webhookCharge(init.registrationId)]);
         await flush();
         const reg = db.store.get(init.registrationId);
-        expect(reg.st).toBe('paid');
+        expect(reg.st).toBe('i');
         // Exactly one payout document exists (get/set overwrites under the race).
         const payouts = [...db.store.keys()].filter(k => k.startsWith('po_'));
         expect(payouts.length).toBe(1);
         const payout = db.store.get(`po_${init.registrationId}`);
-        expect(payout.st).toBe('success');
+        expect(payout.st).toBe('s');
         // Every transfer (if two fired) reuses the SAME reference → Paystack's
         // duplicate-reference dedupe prevents a double credit.
         const calls = ps.controls.transfer.mock.calls;

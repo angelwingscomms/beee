@@ -91,7 +91,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         p: data.phone,
         pp: data.proprietorPhone,
         amt: amount_kobo,
-        st: 'pending',
+        st: 'r',
         v: 0,
         d: Date.now(),
         ac

@@ -6,6 +6,10 @@
     let { data, form }: PageProps = $props();
 
     let selectedReg: Registration | null = $state(null);
+
+    const st_label = (st: string | undefined) =>
+        st === 'i' ? 'Paid' : st === 'r' ? 'Pending' : (st ?? '');
+    const is_paid = (st: string | undefined) => st === 'i';
 </script>
 
 <svelte:head>
@@ -34,7 +38,7 @@
                                 <td>{reg.fn} {reg.ln}</td>
                                 <td>{reg.e}</td>
                                 <td>{reg.p}</td>
-                                <td><span class="badge-pill" class:paid={reg.st === 'paid'} class:pending={reg.st !== 'paid'}>{reg.st}</span></td>
+                                <td><span class="badge-pill" class:paid={is_paid(reg.st)} class:pending={!is_paid(reg.st)}>{st_label(reg.st)}</span></td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
                             </tr>
@@ -97,7 +101,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Status</span>
-                    <span><span class="badge-pill" class:paid={selectedReg.st === 'paid'} class:pending={selectedReg.st !== 'paid'}>{selectedReg.st}</span></span>
+                    <span><span class="badge-pill" class:paid={is_paid(selectedReg.st)} class:pending={!is_paid(selectedReg.st)}>{st_label(selectedReg.st)}</span></span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Date</span>

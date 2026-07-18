@@ -74,7 +74,7 @@ export async function process_partner_payout(
   // Self-referral guard: a partner must not earn commission on their own signup.
   if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
     console.log(`[payout] Self-referral DETECTED (reg email == partner email) for ${ac} (reg ${reg_id}) — blocking commission.`);
-    await store_payout(reg_id, partner_id, ac, 0, 'blocked_self', undefined, undefined, 'self-referral', 1, pid);
+    await store_payout(reg_id, partner_id, ac, 0, 'b', undefined, undefined, 'self-referral', 1, pid);
     console.log(`[payout] Stored 'blocked_self' record ${pid}. STOP.`);
     return;
   }
@@ -114,8 +114,8 @@ export async function retry_failed_payouts(
   // Retry both terminal `failed` and any left stuck in `processing` (e.g. a
   // transfer call that succeeded but whose webhook never arrived).
   console.log(`[payout] ═══ retry_failed_payouts START ═══`);
-  const failedRows = await search_by_payload<Payout>({ s: 'po', st: 'failed' }, undefined, 200);
-  const processingRows = await search_by_payload<Payout>({ s: 'po', st: 'processing' }, undefined, 200);
+    const failedRows = await search_by_payload<Payout>({ s: 'po', st: 'f' }, undefined, 200);
+  const processingRows = await search_by_payload<Payout>({ s: 'po', st: 'p' }, undefined, 200);
   const stuck = [...failedRows, ...processingRows];
   console.log(`[payout] Scan: ${failedRows.length} failed + ${processingRows.length} processing = ${stuck.length} candidate(s) to retry`);
   let retried = 0, succeeded = 0, failed = 0;
@@ -149,8 +149,8 @@ export async function retry_failed_payouts(
     await run_payout(reg, p.reg_id, partner, p.partner_id, p.ac, `po_${p.reg_id}`, platform, at);
     const updated = await get<Payout>(`po_${p.reg_id}`);
     console.log(`[payout] Retry: reg ${p.reg_id} status ${before} -> ${updated?.st ?? 'unknown'}`);
-    if (updated?.st === 'success') succeeded++;
-    else if (updated?.st === 'failed' && before !== 'failed') failed++;
+    if (updated?.st === 's') succeeded++;
+    else if (updated?.st === 'f' && before !== 'f') failed++;
   }
   const summary = { scanned: stuck.length, retried, succeeded, failed };
   console.log(`[payout] ═══ retry_failed_payouts END ═══`, summary);
@@ -174,8 +174,8 @@ async function run_payout(
 ): Promise<void> {
   console.log(`[payout] ── run_payout START ── reg=${reg_id} partner=${partner_id} ac=${ac} attempt=${at} pid=${pid}`);
   // Mark in-progress (overwrites any prior failed/processing state for this pid).
-  console.log(`[payout] Step 1/6: marking record ${pid} as 'processing' (ref=po-${reg_id})`);
-  await store_payout(reg_id, partner_id, ac, 0, 'processing', `po-${reg_id}`, undefined, undefined, at, pid);
+  console.log(`[payout] Step 1/6: marking record ${pid} as 'p' (ref=po-${reg_id})`);
+  await store_payout(reg_id, partner_id, ac, 0, 'p', `po-${reg_id}`, undefined, undefined, at, pid);
 
   console.log(`[payout] Step 2/6: resolving bank code — partner.bk=${partner.bk || '(none)'} partner.bn=${partner.bn || '(none)'}`);
   const bank_code = partner.bk || get_bank_code(partner.bn || '');
@@ -225,11 +225,11 @@ async function run_payout(
     console.log(`[payout] Transfer initiated: transfer_code=${transfer.transfer_code} status=${transfer.status}`);
   } catch (e) {
     console.error(`[payout] Transfer FAILED for ${partner_id}:`, e);
-    await store_payout(reg_id, partner_id, ac, amt_kobo, 'failed', `po-${reg_id}`, undefined, (e as Error).message, at, pid);
+    await store_payout(reg_id, partner_id, ac, amt_kobo, 'f', `po-${reg_id}`, undefined, (e as Error).message, at, pid);
     return;
   }
 
-  const final_st = transfer.status === 'success' ? 'success' : 'pending';
+  const final_st = transfer.status === 'success' ? 's' : 'r';
   console.log(`[payout] Storing final record ${pid} st=${final_st} (transfer status was '${transfer.status}')`);
   await store_payout(reg_id, partner_id, ac, amt_kobo, final_st, `po-${reg_id}`, transfer.transfer_code, undefined, at, pid);
 
@@ -275,7 +275,7 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
 }
 
 async function store_failed_payout(reg_id: string, partner_id: string, ac: string, err: string, at: number, pid: string): Promise<void> {
-  await store_payout(reg_id, partner_id, ac, 0, 'failed', `po-${reg_id}`, undefined, err, at, pid);
+    await store_payout(reg_id, partner_id, ac, 0, 'f', `po-${reg_id}`, undefined, err, at, pid);
 }
 
 async function store_payout(

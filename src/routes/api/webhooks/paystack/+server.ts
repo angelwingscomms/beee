@@ -1,10 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import bcrypt from 'bcryptjs';
-import { create, get, find_or_create_player_user } from '$lib/db';
-import { verify_webhook_sig, paystack_verify } from '$lib/paystack';
-import { process_partner_payout, reconcile_transfer_payout } from '$lib/partner';
-import type { Registration } from '$lib/types/registration';
+import { verify_webhook_sig } from '$lib/paystack';
+import { reconcile_transfer_payout } from '$lib/partner';
+import { confirm } from '$lib/confirm';
 
 // async function search_maps(q: string): Promise<0 | 1 | 2> {
 // 	try {
@@ -67,7 +65,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 				// Reconcile partner payout terminal status from transfer events.
 				if (event.event === 'transfer.success' || event.event === 'transfer.failed' || event.event === 'transfer.reversed') {
 					const ref = event.data.reference as string;
-					const st = event.event === 'transfer.success' ? 'success' : event.event === 'transfer.reversed' ? 'reversed' : 'failed';
+					const st = event.event === 'transfer.success' ? 's' : event.event === 'transfer.reversed' ? 'v' : 'f';
 					console.log(`[POST /api/webhooks/paystack] Transfer event ${event.event} for ref ${ref} -> ${st}`);
 					await reconcile_transfer_payout(ref, st);
 					return;
@@ -75,67 +73,8 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 
 				if (event.event === 'charge.success') {
 				const ref = event.data.reference as string;
-
-				// Load the local pending registration (password stored here, never in Paystack)
-				const reg = await get<Registration>(ref);
-				if (!reg) {
-					console.error(`Webhook charge.success: no local registration for ${ref}`);
-					return;
-				}
-
-				// Check if registration already exists (idempotent)
-				if (reg.st === 'paid') {
-					console.log(`Webhook charge.success: ${ref} already paid, skipping`);
-					return;
-				}
-
-				// Double-verify with Paystack API (never trust webhook payload alone)
-				const verified = await paystack_verify(ref);
-				if (verified.status !== 'success') {
-					console.error(`Webhook: verify returned ${verified.status} for ${ref}`);
-					return;
-				}
-
-				// Anti-fraud: amount must match what we stored locally
-				const expected_amt = reg.amt;
-				if (verified.amount !== expected_amt) {
-					console.error(
-						`Webhook amount mismatch for ${ref}: expected ${expected_amt}, got ${verified.amount}`
-					);
-					return;
-				}
-
-				// Write full registration to DB (no password persisted)
-			const payload: Registration = {
-				s: 'reg',
-				fn: reg.fn,
-				ln: reg.ln,
-				sn: reg.sn,
-				e: reg.e,
-				p: reg.p,
-				pp: reg.pp,
-				st: 'paid',
-				v: 0,
-				amt: expected_amt,
-				d: Date.now(),
-				ref: verified.reference,
-				ac: reg.ac
-			};
-
-				await create(payload, undefined, ref);
-				console.log(`Webhook charge.success: registration ${ref} created with status 'paid'`);
-
-			// Create or update player user account. The pending record already
-			// holds a bcrypt hash of the password (set at registration init).
-			const email = reg.e;
-			const ph = reg.pw;
-			const user_id = await find_or_create_player_user(email, `${reg.fn || ''} ${reg.ln || ''}`.trim(), ph);
-				console.log(`Webhook charge.success: user ${user_id} created/updated for ${email}`);
-
-				// Fire-and-forget partner payout
-				process_partner_payout(reg, ref, platform).catch(e =>
-					console.error(`[webhook payout] Failed for ${ref}:`, e)
-				);
+				console.log(`[POST /api/webhooks/paystack] charge.success for ${ref} -> confirm()`);
+				await confirm(ref, platform);
 			}
 		} catch (err) {
 			console.error('Webhook processing error:', err);

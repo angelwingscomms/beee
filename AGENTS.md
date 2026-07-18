@@ -10,6 +10,7 @@
 ##  Code Style
 
 - Naming: always snake_case for vars/functions; make db payload, type defs, request JSON and page load return value keys always single letters.
+- Stored enum/status values: use single-character values (e.g. reg `st`: `r`=pending, `i`=paid; payout `st`: `r`=pending, `s`=success, `f`=failed, `p`=processing, `b`=blocked_self, `v`=reversed). Map to full labels only when displaying.
 - DB/Qdrant: Multi-tenancy, single collection 'i'; tenant-id on payload field `s`
 - Conciseness: no vars for single-use; code minimally
 - never start the dev server

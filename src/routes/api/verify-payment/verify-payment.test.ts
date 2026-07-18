@@ -15,6 +15,7 @@ vi.mock('$lib/server/secrets', () => ({
 vi.mock('$lib/db', () => ({
     create: db.create,
     get: db.get,
+    edit_point: db.edit_point,
     find_or_create_player_user: db.find_or_create_player_user,
     search_by_payload: db.search_by_payload,
     new_id: db.new_id
@@ -41,7 +42,7 @@ function seedPending(ac?: string) {
     db.store.clear();
     db.store.set(REG_ID, {
         s: 'reg', fn: 'Play', ln: 'Er', e: 'player@example.com', p: '+234801234567',
-        st: 'pending', v: 0, d: Date.now(), amt: 1_350_000, ac, pw: PW_HASH, i: REG_ID
+        st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac, pw: PW_HASH, i: REG_ID
     });
 }
 
@@ -66,7 +67,7 @@ describe('verify-payment', () => {
         const { request, cookies, platform } = handler({ reference: REG_ID, registrationId: REG_ID });
         const res = await POST({ request, cookies, platform } as any);
         expect(res.status).toBe(402);
-        expect(db.store.get(REG_ID).st).toBe('pending');
+        expect(db.store.get(REG_ID).st).toBe('r');
     });
 
     it('P7: rejects amount mismatch (400) — anti-fraud', async () => {
@@ -75,7 +76,7 @@ describe('verify-payment', () => {
         const { request, cookies, platform } = handler({ reference: REG_ID, registrationId: REG_ID });
         const res = await POST({ request, cookies, platform } as any);
         expect(res.status).toBe(400);
-        expect(db.store.get(REG_ID).st).toBe('pending');
+        expect(db.store.get(REG_ID).st).toBe('r');
     });
 
     it('P8: on success writes paid reg (no pw), creates rpb user, sets cookie', async () => {
@@ -85,7 +86,7 @@ describe('verify-payment', () => {
         const res = await POST({ request, cookies, platform } as any);
         expect(res.status).toBe(200);
         const reg = db.store.get(REG_ID);
-        expect(reg.st).toBe('paid');
+        expect(reg.st).toBe('i');
         expect(reg.pw).toBeUndefined();
         const user = [...db.store.values()].find(u => u.s === 'u' && u.e === 'player@example.com');
         expect(user.c).toContain('rpb');

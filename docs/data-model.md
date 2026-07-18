@@ -16,7 +16,7 @@ erDiagram
         string sn "school name"
         string p "phone"
         number amt "amount in kobo"
-        string st "pending | paid"
+        string st "r | i  (r=pending, i=paid)"
         number v "0 | 1 | 2"
         number d "created ms"
         string ref "paystack reference"

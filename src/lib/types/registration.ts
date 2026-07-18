@@ -7,7 +7,7 @@ export interface Registration {
 	p: string;  // phone
 	sn?: string; // school name
 	ps?: unknown; // players
-	st: 'pending' | 'paid';
+	st: 'r' | 'i'; // r=pending, i=paid
 	v: 0 | 1 | 2;
 	d: number;
 	amt: number;

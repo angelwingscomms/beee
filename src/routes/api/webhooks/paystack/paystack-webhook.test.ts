@@ -10,7 +10,7 @@ let reconcile: any = vi.fn(async () => {});
 
 vi.mock('$app/environment', () => ({ get dev() { return false; }, get browser() { return false; } }));
 vi.mock('$lib/db', () => ({
-    create: db.create, get: db.get, find_or_create_player_user: db.find_or_create_player_user,
+    create: db.create, get: db.get, edit_point: db.edit_point, find_or_create_player_user: db.find_or_create_player_user,
     search_by_payload: db.search_by_payload, new_id: db.new_id
 }));
 vi.mock('$lib/paystack', () => ({
@@ -32,7 +32,7 @@ function seedPending() {
     db.store.clear();
     db.store.set(REG_ID, {
         s: 'reg', fn: 'Play', ln: 'Er', e: 'player@example.com', p: '+234801234567',
-        st: 'pending', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', pw: PW_HASH, i: REG_ID
+        st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', pw: PW_HASH, i: REG_ID
     });
 }
 
@@ -66,7 +66,7 @@ describe('Paystack webhook /api/webhooks/paystack', () => {
         const res = await POST({ request: post({ event: 'charge.success', data: { reference: REG_ID } }) } as any);
         expect(res.status).toBe(200);
         await flush();
-        expect(db.store.get(REG_ID).st).toBe('paid');
+        expect(db.store.get(REG_ID).st).toBe('i');
         const user = [...db.store.values()].find(u => u.s === 'u' && u.e === 'player@example.com');
         expect(user.c).toContain('rpb');
         expect(process_payout).toHaveBeenCalledTimes(1);
@@ -89,7 +89,7 @@ describe('Paystack webhook /api/webhooks/paystack', () => {
         const res = await POST({ request: post({ event: 'charge.success', data: { reference: REG_ID } }) } as any);
         expect(res.status).toBe(200);
         await flush();
-        expect(db.store.get(REG_ID).st).toBe('pending');
+        expect(db.store.get(REG_ID).st).toBe('r');
         expect(process_payout).not.toHaveBeenCalled();
     });
 
@@ -98,21 +98,21 @@ describe('Paystack webhook /api/webhooks/paystack', () => {
         const res = await POST({ request: post({ event: 'transfer.success', data: { reference: 'po-regX' } }) } as any);
         expect(res.status).toBe(200);
         await flush();
-        expect(reconcile).toHaveBeenCalledWith('po-regX', 'success');
+        expect(reconcile).toHaveBeenCalledWith('po-regX', 's');
     });
 
     it('W7: transfer.failed reconciles the payout to failed', async () => {
         const { POST } = await import('./+server');
         await POST({ request: post({ event: 'transfer.failed', data: { reference: 'po-regX' } }) } as any);
         await flush();
-        expect(reconcile).toHaveBeenCalledWith('po-regX', 'failed');
+        expect(reconcile).toHaveBeenCalledWith('po-regX', 'f');
     });
 
     it('W8: transfer.reversed reconciles the payout to reversed', async () => {
         const { POST } = await import('./+server');
         await POST({ request: post({ event: 'transfer.reversed', data: { reference: 'po-regX' } }) } as any);
         await flush();
-        expect(reconcile).toHaveBeenCalledWith('po-regX', 'reversed');
+        expect(reconcile).toHaveBeenCalledWith('po-regX', 'v');
     });
 
     it('W9: a throwing payout does not crash the handler (fire-and-forget)', async () => {
