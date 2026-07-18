@@ -74,12 +74,21 @@
 
   const loggedInUser = $derived($page.data.user);
 
+  // ponytail: when logged in, the reg is under the session parent — no email/pw entry needed.
+  $effect(() => {
+    if (loggedInUser?.email) {
+      em = loggedInUser.email;
+      pw = '';
+    }
+  });
+
   let allValid = $derived(
-    gf.trim() && gl.trim() && em.trim() &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) &&
-    sc.trim() && proprietor_phone.trim() && proprietor_phone.trim() !== '+234' &&
+    gf.trim() && gl.trim() && sc.trim() &&
+    proprietor_phone.trim() && proprietor_phone.trim() !== '+234' &&
     ph.trim() && ph.trim() !== '+234' &&
-    pw.trim().length >= 8
+    (loggedInUser
+      ? true // email + password come from the logged-in parent session
+      : em.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim()) && pw.trim().length >= 8)
   );
 
   let valTimer: ReturnType<typeof setTimeout> | undefined;
@@ -153,12 +162,14 @@
     let v = true;
     if (!gf.trim()) { gfe = 'Required'; v = false; }
     if (!gl.trim()) { gle = 'Required'; v = false; }
-    if (!em.trim()) { eme = 'Required'; v = false; }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
+    if (!loggedInUser) {
+      if (!em.trim()) { eme = 'Required'; v = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())) { eme = 'Invalid email'; v = false; }
+      if (!pw || pw.length < 8) { pwe = 'Min 8 characters'; v = false; }
+    }
     if (!sc.trim()) { sce = 'Required'; v = false; }
     if (!proprietor_phone.trim() || proprietor_phone.trim() === '+234') { proprietor_phone_error = 'Required'; v = false; }
     if (!ph.trim() || ph.trim() === '+234') { phe = 'Required'; v = false; }
-    if (!pw || pw.length < 8) { pwe = 'Min 8 characters'; v = false; }
     return v;
   }
 
@@ -256,8 +267,10 @@
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
           <PhoneInput id="proprietor_phone" label="Proprietor's phone number" value={proprietor_phone} placeholder="Proprietor's phone number" onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
           <PhoneInput id="ph" label="Parent's phone number" value={ph} placeholder="Parent's phone number" onChange={(v) => { ph = v; phe = ''; }} />
-          <TextInput id="em" label="Parent's Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
-          <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} showToggle />
+          {#if !loggedInUser}
+            <TextInput id="em" label="Parent's Email" type="email" bind:value={em} required error={eme} oninput={() => eme = ''} />
+            <TextInput id="pw" label="Password" type="password" bind:value={pw} required error={pwe} oninput={() => pwe = ''} showToggle />
+          {/if}
         </fieldset>
 
         <div class="reg-divider">Partner Code</div>

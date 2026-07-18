@@ -22,34 +22,39 @@ function get_discounted_amount(): number {
     return dev ? DEV_REG_FEE : Math.round(REG_AMOUNT * 100 * (1 - DISCOUNT_PCT / 100));
 }
 
-export const POST: RequestHandler = async ({ request, url }) => {
+export const POST: RequestHandler = async ({ request, url, locals }) => {
     console.log(`[register-init-payment] === NEW REQUEST ===`);
     console.log(`[register-init-payment] dev=${dev}`);
     const data = await request.json();
+    // ponytail: a logged-in parent registers under their own session email; password not required.
+    const sessionEmail = locals?.user?.email;
+    const email = sessionEmail || data.email;
     console.log(`[register-init-payment] payload:`, {
         firstName: data.firstName,
         lastName: data.lastName,
-        email: data.email,
+        email,
         phone: data.phone,
         hasPassword: !!data.password,
         passwordLen: data.password ? String(data.password).length : 0,
-        partnerCode: data.partnerCode || null
+        partnerCode: data.partnerCode || null,
+        loggedIn: !!sessionEmail
     });
-    if (!data.firstName || !data.lastName || !data.email || !data.phone) {
+    if (!data.firstName || !data.lastName || !email || !data.phone) {
         console.warn(`[register-init-payment] Rejected: missing required field`, {
-            firstName: !!data.firstName, lastName: !!data.lastName, email: !!data.email, phone: !!data.phone
+            firstName: !!data.firstName, lastName: !!data.lastName, email: !!email, phone: !!data.phone
         });
         return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     // Server-side validation (the UI validates too, but never trust the client).
-    if (!EMAIL_RE.test(data.email)) {
+    if (!EMAIL_RE.test(email)) {
         return json({ error: 'Invalid email' }, { status: 400 });
     }
     if (!/^\+?\d{7,15}$/.test(String(data.phone).replace(/[\s()-]/g, ''))) {
         return json({ error: 'Invalid phone' }, { status: 400 });
     }
-    if (data.password && String(data.password).length < 6) {
+    // Password only required for brand-new (logged-out) registrations.
+    if (!sessionEmail && data.password && String(data.password).length < 6) {
         console.warn(`[register-init-payment] Rejected: password too short (${String(data.password).length})`);
         return json({ error: 'Password too short' }, { status: 400 });
     }
@@ -87,7 +92,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         fn: data.firstName,
         ln: data.lastName,
         sn: data.school,
-        e: data.email,
+        e: email,
         p: data.phone,
         pp: data.proprietorPhone,
         amt: amount_kobo,
@@ -109,8 +114,8 @@ export const POST: RequestHandler = async ({ request, url }) => {
 
     const callback_url = `${url.origin}/payment/callback`;
     // Only a reference goes to Paystack — no PII, no password.
-    console.log(`[register-init-payment] calling paystack_init for ${i} | email=${data.email} amount_kobo=${amount_kobo} callback=${callback_url}`);
-    const result = await paystack_init(data.email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i });
+    console.log(`[register-init-payment] calling paystack_init for ${i} | email=${email} amount_kobo=${amount_kobo} callback=${callback_url}`);
+    const result = await paystack_init(email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i });
     console.log(`[register-init-payment] paystack_init OK for ${i} | authorization_url=${result.authorization_url ? 'present' : 'MISSING'} access_code=${result.access_code ? 'present' : 'MISSING'} reference=${result.reference}`);
 
     return json({
