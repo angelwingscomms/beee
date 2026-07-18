@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
 
   import Button from '$lib/components/Button.svelte';
 
@@ -13,6 +13,7 @@
     logging_out = true;
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
+      await invalidateAll();
       await goto('/');
     } finally {
       logging_out = false;

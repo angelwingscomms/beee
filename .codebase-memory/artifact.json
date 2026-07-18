@@ -1,11 +1,11 @@
 {
     "schema_version": 1,
-    "commit": "74ab9896e0daef6b0bfb14cca2d96c0ada2d208b",
-    "indexed_at": "2026-07-18T05:05:20Z",
+    "commit": "323984c61823c0d0abe31dc62e7e424a6f03a139",
+    "indexed_at": "2026-07-18T08:55:45Z",
     "project": "home-ed-i-beee",
-    "nodes": 3452,
-    "edges": 12296,
+    "nodes": 3507,
+    "edges": 12320,
     "original_size": 12058624,
-    "compressed_size": 2527352,
+    "compressed_size": 2538009,
     "compression_level": 3
 }

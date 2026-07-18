@@ -11,6 +11,18 @@ export { gen_partner_code } from '$lib/partner_code';
 
 const MAX_ATTEMPTS = 5;
 
+// ponytail: wrap an await so a hung Qdrant/Paystack call logs + throws instead of
+// silently killing the request. 20s ceiling; raise if a real call legitimately takes longer.
+async function with_timeout<T>(label: string, ms: number, fn: Promise<T>): Promise<T> {
+  console.log(`[payout] await START: ${label}`);
+  const t = setTimeout(() => console.error(`[payout] TIMEOUT (${ms}ms) on: ${label}`), ms);
+  try {
+    return await fn;
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 /**
  * Commission paid to an affiliate for a registration. In dev we always pay the
  * minimum Paystack transfer amount (a tiny dev reg fee would otherwise compute
@@ -51,7 +63,7 @@ export async function process_partner_payout(
     console.log(`[payout] Looking up partner user by code ac=${ac} (s:'u')...`);
     let affs: User[] = [];
     try {
-      affs = await search_by_payload<User>({ s: 'u', ac });
+      affs = await with_timeout(`search_by_payload({s:'u',ac:${ac})`, 20000, search_by_payload<User>({ s: 'u', ac }));
     } catch (e) {
       console.error(`[payout] DB ERROR looking up partner by code ac=${ac} (reg ${reg_id}):`, e);
       return;
@@ -104,7 +116,7 @@ export async function process_partner_payout(
     // Idempotency: skip if a record already exists for this registration.
     let existing: Payout | null = null;
     try {
-      existing = await get<Payout>(pid);
+      existing = await with_timeout(`get(payout ${pid})`, 20000, get<Payout>(pid));
     } catch (e) {
       console.error(`[payout] DB ERROR checking existing payout record ${pid} (reg ${reg_id}):`, e);
       return;
@@ -159,7 +171,7 @@ export async function retry_failed_payouts(
     }
     let reg: Registration | null = null;
     try {
-      reg = await get<Registration>(p.reg_id);
+      reg = await with_timeout(`get(reg ${p.reg_id})`, 20000, get<Registration>(p.reg_id));
     } catch (e) {
       console.error(`[payout] Retry: DB ERROR loading registration ${p.reg_id}:`, e);
     }
@@ -167,7 +179,7 @@ export async function retry_failed_payouts(
     console.log(`[payout] Retry: loaded registration ${p.reg_id} (amt=${reg.amt} email=${reg.e})`);
     let affs: User[] = [];
     try {
-      affs = await search_by_payload<User>({ s: 'u', i: p.partner_id });
+      affs = await with_timeout(`search_by_payload({s:'u',i:${p.partner_id})`, 20000, search_by_payload<User>({ s: 'u', i: p.partner_id }));
     } catch (e) {
       console.error(`[payout] Retry: DB ERROR loading partner ${p.partner_id}:`, e);
     }
@@ -178,7 +190,7 @@ export async function retry_failed_payouts(
     // Gate on balance so we don't waste an attempt when funds are low.
     let bal = 0;
     try {
-      bal = await paystack_balance();
+      bal = await with_timeout(`paystack_balance()`, 20000, paystack_balance());
     } catch (e) {
       console.error(`[payout] Retry: Paystack balance check FAILED for reg ${p.reg_id}:`, e);
     }
@@ -229,7 +241,7 @@ async function run_payout(
   console.log(`[payout] ── run_payout START ── reg=${reg_id} partner=${partner_id} ac=${ac} attempt=${at} pid=${pid}`);
   // Mark in-progress (overwrites any prior failed/processing state for this pid).
   console.log(`[payout] Step 1/6: marking record ${pid} as 'p' (ref=po-${reg_id})`);
-  await store_payout(reg_id, partner_id, ac, 0, 'p', `po-${reg_id}`, undefined, undefined, at, pid);
+  await with_timeout(`store_payout('p') ${pid}`, 20000, store_payout(reg_id, partner_id, ac, 0, 'p', `po-${reg_id}`, undefined, undefined, at, pid));
 
   console.log(`[payout] Step 2/6: resolving bank code — partner.bk=${partner.bk || '(none)'} partner.bn=${partner.bn || '(none)'}`);
   const bank_code = partner.bk || get_bank_code(partner.bn || '');
@@ -243,7 +255,7 @@ async function run_payout(
   let account_name: string;
   try {
     console.log(`[payout] Step 3/6: resolving bank account (ba=${partner.ba ? String(partner.ba).slice(0, 4) + '...' : 'EMPTY'} code=${bank_code}) via Paystack`);
-    const resolved = await paystack_resolve_bank(partner.ba as string, bank_code);
+    const resolved = await with_timeout(`paystack_resolve_bank(${bank_code})`, 20000, paystack_resolve_bank(partner.ba as string, bank_code));
     account_name = resolved.account_name;
     console.log(`[payout] Account resolved: account_name="${account_name}"`);
   } catch (e) {
@@ -264,7 +276,7 @@ async function run_payout(
   let recipient: { recipient_code: string; active: boolean };
   try {
     console.log(`[payout] Step 5/6: creating Paystack transfer recipient for "${account_name}"`);
-    recipient = await paystack_create_recipient(account_name, partner.ba as string, bank_code);
+    recipient = await with_timeout(`paystack_create_recipient()`, 20000, paystack_create_recipient(account_name, partner.ba as string, bank_code));
     console.log(`[payout] Recipient created: recipient_code=${recipient.recipient_code} active=${recipient.active}`);
   } catch (e) {
     console.error(`[payout] Create recipient FAILED for ${partner_id}:`, e);
@@ -275,7 +287,7 @@ async function run_payout(
   let transfer: { transfer_code: string; status: string };
   try {
     console.log(`[payout] Step 6/6: initiating transfer of ${amt_kobo} kobo to ${recipient.recipient_code} (ref=po-${reg_id})`);
-    transfer = await paystack_transfer(recipient.recipient_code, amt_kobo, `Commission: ${reg_id}`, `po-${reg_id}`);
+    transfer = await with_timeout(`paystack_transfer(${amt_kobo})`, 20000, paystack_transfer(recipient.recipient_code, amt_kobo, `Commission: ${reg_id}`, `po-${reg_id}`));
     console.log(`[payout] Transfer initiated: transfer_code=${transfer.transfer_code} status=${transfer.status}`);
   } catch (e) {
     console.error(`[payout] Transfer FAILED for ${partner_id}:`, e);
@@ -285,12 +297,17 @@ async function run_payout(
 
   const final_st = transfer.status === 'success' ? 's' : 'r';
   console.log(`[payout] Storing final record ${pid} st=${final_st} (transfer status was '${transfer.status}')`);
-  await store_payout(reg_id, partner_id, ac, amt_kobo, final_st, `po-${reg_id}`, transfer.transfer_code, undefined, at, pid);
+  await with_timeout(`store_payout(final ${final_st}) ${pid}`, 20000, store_payout(reg_id, partner_id, ac, amt_kobo, final_st, `po-${reg_id}`, transfer.transfer_code, undefined, at, pid));
+  if (final_st === 's') {
+    console.log(`[payout] ✅ PAYOUT SUCCESS: transferred ${(amt_kobo / 100).toFixed(2)} NGN to partner ${partner_id} (ac=${ac}, ${account_name}); transfer_code=${transfer.transfer_code} ref=po-${reg_id}; record ${pid} st='s'`);
+  } else {
+    console.log(`[payout] ⏳ PAYOUT PENDING: Paystack accepted transfer but status='${transfer.status}' (not yet 'success'); record ${pid} st='r' awaiting webhook reconcile`);
+  }
 
   try {
     const player_name = `${reg.fn || ''} ${reg.ln || ''}`.trim() || 'A player';
     console.log(`[payout] Sending partner notification email to ${partner.e} (player="${player_name}" commission=${amt_kobo} total=${total_kobo})`);
-    await send_partner_notification(platform, partner.e, partner.n || 'Partner', amt_kobo, total_kobo, player_name);
+    await with_timeout(`send_partner_notification()`, 20000, send_partner_notification(platform, partner.e, partner.n || 'Partner', amt_kobo, total_kobo, player_name));
     console.log(`[payout] Partner notification email dispatched to ${partner.e}`);
   } catch (e) {
     console.error(`[payout] Email notification FAILED for ${partner_id}:`, e);
@@ -311,7 +328,7 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   console.log(`[payout] Reconcile: derived reg_id=${reg_id}, looking up record po_${reg_id}`);
   let existing: Payout | null = null;
   try {
-    existing = await get<Payout>(`po_${reg_id}`);
+    existing = await with_timeout(`get(reconcile po_${reg_id})`, 20000, get<Payout>(`po_${reg_id}`));
   } catch (e) {
     console.error(`[payout] Reconcile: DB ERROR looking up record po_${reg_id}:`, e);
     return;
@@ -319,7 +336,7 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   if (existing) {
     console.log(`[payout] Reconcile: found record po_${reg_id} (current st=${existing.st}) -> updating to ${st}`);
     try {
-      await create({ ...existing, st }, undefined, `po_${reg_id}`);
+      await with_timeout(`create(reconcile ${st}) po_${reg_id}`, 20000, create({ ...existing, st }, undefined, `po_${reg_id}`));
     } catch (e) {
       console.error(`[payout] Reconcile: DB ERROR writing record po_${reg_id}:`, e);
       return;
