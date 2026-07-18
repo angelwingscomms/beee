@@ -7,6 +7,7 @@
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
+  import { page } from '$app/stores';
   import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
   import { gen_partner_code } from '$lib/partner_code';
 
@@ -70,6 +71,8 @@
 
   const baseAmount = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
   let AMOUNT = $state(baseAmount);
+
+  const loggedInUser = $derived($page.data.user);
 
   let allValid = $derived(
     gf.trim() && gl.trim() && em.trim() &&
@@ -232,6 +235,13 @@
   </section>
 
   <section class="reg-body">
+    {#if loggedInUser}
+      <div class="container">
+        <div class="reg-loggedin-note">
+          Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong> — you're registering another player.
+        </div>
+      </div>
+    {/if}
     <div class="container reg-grid">
       <form
         class="reg-form"
@@ -383,6 +393,20 @@
     grid-template-columns: 1fr 360px;
     gap: 48px;
     align-items: start;
+  }
+  .reg-loggedin-note {
+    margin: 0 0 24px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: rgba(93, 184, 166, 0.12);
+    color: #6fe0c4;
+    font-family: var(--font-registration);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .reg-loggedin-note strong {
+    color: #8ff0d8;
+    font-weight: 600;
   }
 
   .reg-form {
