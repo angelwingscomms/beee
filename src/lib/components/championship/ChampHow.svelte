@@ -15,68 +15,42 @@
   const stages: Stage[] = [
     {
       num: 1,
-      title: 'REGISTRATION',
-      body: `Participants register and gain access to:
-
-e4™ Chess Coach
-
-TEAMUP™ and
-
-Taskify™ Development Passport`,
-      img: '/images/championship/register.png',
-      color: '#F27830',
-      colorLight: '#F69A64',
-      iconPath: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
-    },
-    {
-      num: 2,
-      title: 'LEARN',
-      body: `Participants train on:
+      title: 'ONLINE TRAINING & COACHING',
+      body: `July 28 – August 29, 2026.
+Registration unlocks e4™ AI chess coaching, TEAMUP™, and the Taskify™ Development Passport.
 ✔ AI-powered chess coaching
 ✔ Leadership and life-skills development
-✔ Interactive Challenges
-✔ Creativity workshops
-✔ A championship experience beyond the chessboard`,
+✔ Interactive challenges and creativity workshops`,
       img: '/images/championship/learn.png',
-      color: '#ffb200',
-      colorLight: '#e6a000',
+      color: '#F27830',
+      colorLight: '#F69A64',
       iconPath: 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z',
     },
     {
-      num: 3,
-      title: 'COMPETE',
+      num: 2,
+      title: 'PRELIMINARY ROUNDS',
       body: `September 2026.
-Preliminary Chess Championship Rounds 
-
-Participants compete in the live qualifying stages.`,
+Participants compete in the live preliminary qualifying rounds of the championship.`,
       img: '/images/championship/compete.png',
       color: '#ffb200',
       colorLight: '#e6a000',
       iconPath: 'M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z',
     },
     {
-      num: 4,
-      title: 'EVOLVE',
-      body: `Qualifying participants advance to higher levels of the championship competition with live elimination tournaments.
-Elite qualifiers emerge.`,
-      img: '/images/championship/develop.png',
-      color: '#ffb200',
-      colorLight: '#e6a000',
-      iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
-    },
-    {
-      num: 5,
-      title: 'QUALIFY',
-      body: `The top qualifiers get advanced training, then face off for the finalist spots.`,
+      num: 3,
+      title: 'ELITE STAGE',
+      body: `Qualifiers advance through live elimination tournaments and advanced training.
+The top performers face off for the finalist spots.`,
       img: '/images/championship/qualify.png',
       color: '#ffb200',
       colorLight: '#e6a000',
       iconPath: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
     },
     {
-      num: 6,
+      num: 4,
       title: 'GRAND FINALE',
-      body: `Finalists participate in an immersive championship experience, unlike conventional chess competitions.`,
+      body: `October 2026.
+Finalists participate in an immersive championship experience, unlike conventional chess competitions.`,
       img: '/images/championship/grandfinale.png',
       color: '#0A0F1A',
       colorLight: '#1A2B4C',
