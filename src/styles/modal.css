@@ -16,6 +16,7 @@
   border-radius: 16px;
   background: var(--canvas);
   color: var(--body);
+  box-shadow: 0 24px 70px rgba(10, 15, 26, 0.28), 0 4px 16px rgba(10, 15, 26, 0.12);
 }
 
 .modal-header {

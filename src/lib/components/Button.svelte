@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { motionMagnetic } from '$lib/actions/motion';
+
   let {
     href,
     disabled = false,
@@ -25,11 +27,11 @@
 </script>
 
 {#if href}
-  <a {href} class="btn {className}" style={bg_style}>
+  <a {href} class="btn {className}" style={bg_style} use:motionMagnetic>
     {#if children}{@render children()}{:else}Register Now{/if}
   </a>
 {:else}
-  <button {disabled} {onclick} class="btn {className}" style={bg_style}>
+  <button {disabled} {onclick} class="btn {className}" style={bg_style} use:motionMagnetic>
     {#if children}{@render children()}{:else}Register{/if}
   </button>
 {/if}

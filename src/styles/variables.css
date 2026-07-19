@@ -1,21 +1,6 @@
 :root {
-  --gold: var(--accent-amber);
-  --text: var(--on-dark);
-  --muted-dark: var(--on-dark-soft);
-  --ink-dark: var(--ink);
-  --cream: var(--canvas);
-  --panel: var(--surface-dark-elevated);
-  --panel-strong: var(--surface-dark-elevated);
-  --line: rgba(255, 255, 255, 0.10);
-  --gold-dark: var(--accent-amber);
-  --green: var(--accent-teal);
-
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.10);
   --glass-blur: 16px;
   --noise-opacity: 0.03;
-  --cursor-size: 24px;
-  --sticky-cta-z: 90;
 
   --primary: #F27830;
   --primary-active: #BD5E25;
@@ -74,4 +59,15 @@
   --space-5: 48px;
   --space-6: 72px;
   --radius-pill: 999px;
+
+  /* Fluid editorial display scale — headline sizes that scale with viewport */
+  --fs-display-2xl: clamp(3rem, 1.4rem + 7vw, 7.5rem);
+  --fs-display-xl: clamp(2.5rem, 1.4rem + 5vw, 5.75rem);
+  --fs-display-lg: clamp(2.125rem, 1.4rem + 3.2vw, 4rem);
+  --fs-display-md: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);
+  --fs-display-sm: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+
+  --space-0: 4px;
+  --space-7: 96px;
+  --space-8: 128px;
 }

@@ -19,6 +19,7 @@ BEEE (Be Everything Excellent Every Day) — youth chess championship + developm
 - `--font-body: 'Inter'` — body copy (loaded via Google Fonts in `src/styles/fonts.css`).
 - `--font-registration: 'SN Pro'` — forms / registration.
 - Pairing: Space Grotesk + Inter for the modern marketing feel; Cormorant for accent moments.
+- Fluid display scale — `--fs-display-2xl` (48–120px) through `--fs-display-sm` (22–28px), each a `clamp()` that grows with viewport width. Use these for headline type instead of hardcoding pixel `font-size`s.
 
 ## Principles
 
