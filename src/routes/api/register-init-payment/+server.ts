@@ -29,6 +29,10 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     // ponytail: a logged-in parent registers under their own session email; password not required.
     const sessionEmail = locals?.user?.email;
     const email = data.email || sessionEmail;
+    // When logged in, the parent phone isn't collected on the form (it's hidden) —
+    // reuse the phone we already have on file from registration.
+    const sessionPhone = locals?.user?.ph;
+    const phone = sessionEmail ? (sessionPhone || data.phone) : data.phone;
     console.log(`[register-init-payment] payload:`, {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -39,7 +43,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         partnerCode: data.partnerCode || null,
         loggedIn: !!sessionEmail
     });
-    if (!data.firstName || !data.lastName || !email || !data.phone) {
+    if (!data.firstName || !data.lastName || !email || !phone) {
         console.warn(`[register-init-payment] Rejected: missing required field`, {
             firstName: !!data.firstName, lastName: !!data.lastName, email: !!email, phone: !!data.phone
         });
@@ -50,7 +54,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     if (!EMAIL_RE.test(email)) {
         return json({ error: 'Invalid email' }, { status: 400 });
     }
-    if (!/^\+?\d{7,15}$/.test(String(data.phone).replace(/[\s()-]/g, ''))) {
+    if (!/^\+?\d{7,15}$/.test(String(phone).replace(/[\s()-]/g, ''))) {
         return json({ error: 'Invalid phone' }, { status: 400 });
     }
     // Password only required for brand-new (logged-out) registrations.
@@ -93,7 +97,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         ln: data.lastName,
         sn: data.school,
         e: email,
-        p: data.phone,
+        p: phone,
         pp: data.proprietorPhone,
         amt: amount_kobo,
         st: 'r',

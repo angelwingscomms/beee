@@ -78,6 +78,10 @@
 
   const loggedInUser = $derived($page.data.user);
 
+  // When logged in the parent-phone field is hidden, so use the phone we already
+  // have on file from registration instead of the empty/invalid placeholder.
+  let parentPhone = $derived(loggedInUser?.ph || ph);
+
   // ponytail: when logged in, the reg is under the session parent — no email/pw entry needed.
   $effect(() => {
     if (loggedInUser?.email) {
@@ -131,7 +135,10 @@
       const d = await r.json();
       if (d.valid) {
         acValid = true;
-        ace = '10% discount applied';
+        // The green discount callout already shows the applied discount — no
+        // need for a duplicate helper line here (and error styling would turn
+        // the input border red on success).
+        ace = '';
         AMOUNT = d.amount;
       } else {
         acValid = false;
@@ -211,7 +218,7 @@
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: ph.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
+        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: parentPhone.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
@@ -407,7 +414,7 @@
     lastName={gl}
     school={sc}
     email={em}
-    phone={ph}
+    phone={parentPhone}
     {AMOUNT}
     onConfirm={confirmPayment}
     onCancel={closeConfirmation}

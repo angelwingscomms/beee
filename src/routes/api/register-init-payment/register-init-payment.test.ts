@@ -33,13 +33,13 @@ vi.mock('$lib/paystack', () => ({
     })),
 }));
 
-function mock_handler(body: Record<string, unknown>) {
+function mock_handler(body: Record<string, unknown>, locals?: { user?: { email?: string; ph?: string } }) {
     const req = new Request('http://localhost/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
     });
-    return { request: req, url: new URL('http://localhost/api/register-init-payment') };
+    return { request: req, url: new URL('http://localhost/api/register-init-payment'), locals };
 }
 
 describe('register-init-payment partner code validation', () => {
@@ -211,5 +211,29 @@ describe('register-init-payment partner code validation', () => {
         expect(regs[0].sn).toBe('School A');
         expect(regs[1].sn).toBe('School B');
         expect(regs[0]).not.toBe(regs[1]);
+    });
+
+    it('logged-in user: falls back to stored phone when the form phone is the empty placeholder', async () => {
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({
+            firstName: 'Kid', lastName: 'Two', school: 'School C',
+            // no email, no phone — both should come from the session user
+        }, { user: { email: 'mom@example.com', ph: '+2348011112222' } }) as any);
+        expect(res.status).toBe(200);
+        const d = await res.json();
+        expect(d.success).toBe(true);
+        // Stored phone is used even though the client sent none.
+        expect(lastCreate.p).toBe('+2348011112222');
+        expect(lastCreate.e).toBe('mom@example.com');
+    });
+
+    it('logged-in user: rejects when no stored phone is available', async () => {
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({
+            firstName: 'Kid', lastName: 'Two', school: 'School C'
+        }, { user: { email: 'nophone@example.com' } }) as any);
+        expect(res.status).toBe(400);
+        const d = await res.json();
+        expect(d.error).toBe('Missing required fields');
     });
 });
