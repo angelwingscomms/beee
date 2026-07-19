@@ -28,7 +28,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     const data = await request.json();
     // ponytail: a logged-in parent registers under their own session email; password not required.
     const sessionEmail = locals?.user?.email;
-    const email = sessionEmail || data.email;
+    const email = data.email || sessionEmail;
     console.log(`[register-init-payment] payload:`, {
         firstName: data.firstName,
         lastName: data.lastName,

@@ -35,7 +35,7 @@
       <article class="award-feature" use:motionFadeUp>
         <div class="feature-shimmer" aria-hidden="true"></div>
         <div class="feature-top">
-          <span class="feature-icon"><Logo color="#141413" width="50" height="50" /></span>
+          <span class="feature-icon"><Logo color="#141413" width={50} height={50} /></span>
           <span class="feature-kicker">{feature.kicker}</span>
         </div>
         <div class="feature-body">

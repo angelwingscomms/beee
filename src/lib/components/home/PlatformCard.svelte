@@ -3,8 +3,8 @@ let { bg, title, body, href, label = 'Learn More' }: { bg: string; title: string
 </script>
 
 <div class="platform-card col-span-12 md:col-span-4 relative overflow-hidden rounded-[1.75rem] p-8 md:p-10 flex flex-col" style="background:{bg}">
-  <h3 class="relative z-10 font-hero text-2xl md:text-[1.75rem] font-bold text-[#141413] leading-tight mb-4">{@html title}</h3>
-  <p class="relative z-10 font-['Inter'] text-[#141413]/75 text-[15px] leading-[1.7] font-normal mb-8" style="white-space:pre-line">{body}</p>
+  <h3 class="relative z-10 font-hero text-3xl md:text-[2.25rem] font-extrabold text-[#141413] leading-tight mb-4">{@html title}</h3>
+  <p class="relative z-10 font-['Inter'] text-[#141413]/80 text-[17px] md:text-[18px] leading-[1.6] font-medium mb-8" style="white-space:pre-line">{body}</p>
 
   {#if href}
     <a {href} class="learn-more relative z-10 mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#141413] no-underline">

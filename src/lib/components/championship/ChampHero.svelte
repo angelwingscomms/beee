@@ -134,6 +134,8 @@
   .footer-partner:hover {
     color: #ffffff;
   }
+
+  .partner-title {
     font-family: var(--font-hero);
     font-size: 1.5rem;
     font-weight: 700;

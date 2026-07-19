@@ -4,6 +4,7 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import SplitText from 'gsap/SplitText';
   import ChampHero from '$lib/components/championship/ChampHero.svelte';
+  import HomeJourney from '$lib/components/home/HomeJourney.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
   import HomeAwards from '$lib/components/home/HomeAwards.svelte';
   import Logo from '$lib/components/Logo.svelte';
@@ -92,6 +93,8 @@
 
 <ChampHero />
 
+<HomeJourney />
+
 <!-- Section: What Makes BEEE Different -->
 <section id="diff-section" class="relative bg-navy pt-24 md:pt-36 pb-24 md:pb-32 overflow-hidden">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 90% 60% at 100% 0%, #1A2B4C 0%, transparent 60%)" aria-hidden="true"></div>
@@ -108,7 +111,7 @@
 
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
       <PlatformCard bg="#f5e6c8" title="e4&trade;" body="Your child's AI chess coach: live analysis, training, and practice." href="/e4" />
-      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="The development programme: Technology, Enterprise, Art, Mentorship, Upskill." href="/teamup" label="Explore TEAMUP™ →" />
+      <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="The development programme: Technology, Enterprise, Art, Mentorship, Upskill." href="/teamup" label="Explore TEAMUP™" />
       <PlatformCard bg="#7ec8e3" title="Taskify&trade;" body="The digital passport recording every badge, milestone, and certificate." href="/taskify" />
     </div>
   </div>
@@ -244,7 +247,7 @@
             <div class="bottom-card">
                 <div class="bottom-shimmer" aria-hidden="true"></div>
                 <div class="bottom-card-icon">
-                    <Logo color="#141413" width="50" height="50" />
+                    <Logo color="#141413" width={50} height={50} />
                 </div>
                 <div class="bottom-card-text">
                     <div class="bottom-card-title">BEEE SPECTACULAR CHESS</div>

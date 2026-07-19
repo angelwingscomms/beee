@@ -134,8 +134,8 @@
               <div class="reg-name">{reg.fn || ''} {reg.ln || ''}{#if reg.sn} <span class="reg-school">{reg.sn}</span>{/if}</div>
               <div class="reg-meta">
                 <span class="reg-email">{reg.e}</span>
-                <span class="reg-badge" class:reg-badge--paid={reg.st === 'paid'}>
-                  {reg.st === 'paid' ? 'Paid' : 'Pending'}
+                <span class="reg-badge" class:reg-badge--paid={reg.st === 'i'}>
+                  {reg.st === 'i' ? 'Paid' : 'Pending'}
                 </span>
               </div>
             </div>

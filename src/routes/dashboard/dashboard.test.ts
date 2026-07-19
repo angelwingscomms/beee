@@ -6,7 +6,7 @@ const reg = (st: Registration['st']): Registration => ({ s: 'reg', e: 'a@b.co', 
 
 describe('derive_badges', () => {
 	it('marks Registered + Payment Confirmed from a paid registration', () => {
-		const b = derive_badges([reg('paid')], null, null);
+		const b = derive_badges([reg('i')], null, null);
 		expect(b.find((x) => x.label === 'Registered')?.done).toBe(true);
 		expect(b.find((x) => x.label === 'Payment Confirmed')?.done).toBe(true);
 	});
@@ -66,9 +66,9 @@ describe('load_e4', () => {
 describe('load_dashboard multi-kid (same parent email)', () => {
   it('returns all registrations for the parent email, including multiple paid', async () => {
     const { load_dashboard } = await import('./load');
-    const paidA = { s: 'reg', i: 'reg_a', e: 'mom@b.co', fn: 'Kid', ln: 'A', sn: 'School1', st: 'paid', p: '', amt: 0, v: 0, d: 0 } as any;
-    const paidB = { s: 'reg', i: 'reg_b', e: 'mom@b.co', fn: 'Kid', ln: 'B', sn: 'School2', st: 'paid', p: '', amt: 0, v: 0, d: 0 } as any;
-    const pending = { s: 'reg', i: 'reg_c', e: 'mom@b.co', fn: 'Kid', ln: 'C', sn: 'School3', st: 'pending', p: '', amt: 0, v: 0, d: 0 } as any;
+    const paidA = { s: 'reg', i: 'reg_a', e: 'mom@b.co', fn: 'Kid', ln: 'A', sn: 'School1', st: 'i', p: '', amt: 0, v: 0, d: 0 } as any;
+    const paidB = { s: 'reg', i: 'reg_b', e: 'mom@b.co', fn: 'Kid', ln: 'B', sn: 'School2', st: 'i', p: '', amt: 0, v: 0, d: 0 } as any;
+    const pending = { s: 'reg', i: 'reg_c', e: 'mom@b.co', fn: 'Kid', ln: 'C', sn: 'School3', st: 'r', p: '', amt: 0, v: 0, d: 0 } as any;
     const profile = { s: 'u', i: 'u_mom', e: 'mom@b.co', c: ['rpb'], d: 0 } as any;
     vi.spyOn(await import('$lib/db'), 'search_by_payload').mockImplementation(
       async (filter: Record<string, unknown>) => {
@@ -80,7 +80,7 @@ describe('load_dashboard multi-kid (same parent email)', () => {
     );
     const out = await load_dashboard({ user: { id: 'u_mom', email: 'mom@b.co' } } as App.Locals);
     expect(out.registrations.length).toBe(3);
-    expect(out.registrations.filter((r) => r.st === 'paid').length).toBe(2);
+    expect(out.registrations.filter((r) => r.st === 'i').length).toBe(2);
     expect(out.registrations.map((r) => r.i).sort()).toEqual(['reg_a', 'reg_b', 'reg_c']);
     vi.restoreAllMocks();
   });

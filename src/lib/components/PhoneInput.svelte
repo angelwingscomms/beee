@@ -8,6 +8,7 @@
 		label = '',
 		placeholder = '',
 		theme = false,
+		valid = $bindable(false),
 		onChange
 	}: {
 		value?: string;
@@ -15,6 +16,7 @@
 		label?: string;
 		placeholder?: string;
 		theme?: boolean;
+		valid?: boolean;
 		onChange?: (v: string) => void;
 	} = $props();
 
@@ -89,6 +91,15 @@
 			search = '';
 			requestAnimationFrame(() => searchRef?.focus());
 		}
+	});
+
+	// Expose validity to the parent so a form's submit button can stay disabled
+	// until the phone number is actually valid (non-empty, digits-only, correct length).
+	$effect(() => {
+		valid =
+			digitsOnly.length > 0 &&
+			!hasNonDigits &&
+			(!lenRange || (digitsOnly.length >= lenRange[0] && digitsOnly.length <= lenRange[1]));
 	});
 
 	function selectCountry(c: Country) {

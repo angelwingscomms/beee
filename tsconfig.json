@@ -3,5 +3,5 @@
 	"compilerOptions": {
 		"skipLibCheck": true
 	},
-	"exclude": ["e2e/**", "node_modules/**", ".svelte-kit/**", "build/**"]
+	"exclude": ["e2e/**", "node_modules/**", "build/**"]
 }

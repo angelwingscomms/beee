@@ -49,6 +49,11 @@ export default defineConfig({
       timeout: 120_000,
       env: {
         PAYSTACK_BASE_URL: `http://localhost:${MOCK_PORT}`,
+        // Run the dev server in Paystack TEST mode so it authenticates against
+        // the mock (and the spec's webhook signing) with the test key. In dev
+        // this falls back to `dev`, but .env pins PAYSTACK_TEST=0 (live), so we
+        // set it explicitly to keep e2e deterministic and key-aligned.
+        PAYSTACK_TEST: '.',
         SECRET: WEBHOOK_SECRET,
       },
     },

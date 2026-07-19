@@ -99,6 +99,7 @@
     {/if}
 
     <div class="dash-actions">
+      <a href="/dashboard/settings" class="dash-btn dash-btn--outline">Settings</a>
       <a href="/register" class="dash-btn">Register another player</a>
       {#if is_partner}
         <a href="/dashboard/partner" class="dash-btn dash-btn--outline">Partner dashboard →</a>

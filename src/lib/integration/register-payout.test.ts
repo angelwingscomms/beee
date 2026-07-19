@@ -1,12 +1,17 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, beforeAll } from 'vitest';
 import { createQdrantStore, createPaystackMock } from '../../test/harness';
-import { payout_point_id } from '../../lib/partner';
+import type { payout_point_id as payout_point_id_t } from '../../lib/partner';
 
 // Full-flow integration: real register-init-payment + verify-payment/webhook +
 // real partner payout, with Paystack + Qdrant mocked.
+// payout_point_id is imported dynamically below (not statically) so that this
+// module's own `db`/`ps` are initialized before `$lib/partner` pulls in the
+// `$lib/db` mock factory, which reads from `db` — a static top-level import
+// here would hit that mock factory before `const db = ...` runs (TDZ error).
 
 const db = createQdrantStore();
 const ps = createPaystackMock();
+let payout_point_id!: typeof payout_point_id_t;
 
 vi.mock('$app/environment', () => ({ get dev() { return false; }, get browser() { return false; } }));
 vi.mock('$lib/db', () => ({
@@ -64,6 +69,10 @@ async function webhookCharge(regId: string) {
 }
 
 describe('integration: register → payment → immediate partner payout', () => {
+    beforeAll(async () => {
+        ({ payout_point_id } = await import('../../lib/partner'));
+    });
+
     beforeEach(() => {
         db.reset();
         for (const c of Object.values(ps.controls)) c.mockClear();
