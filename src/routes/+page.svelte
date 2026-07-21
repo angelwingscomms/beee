@@ -116,7 +116,7 @@
         What makes the BEEE Championship <span class="text-amber-400">different?</span>
       </h2>
       <p class="lg:col-span-4 font-['Inter'] text-gray-400 text-base md:text-lg leading-relaxed">
-        The championship goes beyond chess. One championship, three tools that work together.
+        The championship goes beyond chess. One championship, three proprietary platforms that work together.
       </p>
     </div>
 
