@@ -61,7 +61,7 @@ export function derive_badges(
 }
 
 export interface DashboardData {
-	user: { id: string; name?: string; email?: string; picture?: string };
+	user: { id: string; name?: string; email?: string; picture?: string; ph?: string[] };
 	profile: DashboardProfile | null;
 	registrations: Registration[];
 	e4: E4Link | null;
@@ -94,7 +94,7 @@ export async function load_dashboard(locals: App.Locals): Promise<DashboardData>
 	const e4Url = `${base}/login/google`;
 
 	return {
-		user: { id: user.id, name: user.name, email: user.email, picture: user.picture },
+		user: { id: user.id, name: user.name, email: user.email, picture: user.picture, ph: user.ph },
 		profile: profile ? (profile as DashboardProfile) : null,
 		registrations,
 		e4,

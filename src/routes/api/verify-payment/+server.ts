@@ -25,7 +25,7 @@ import { confirm } from '$lib/confirm';
 // 	}
 // }
 
-export const POST: RequestHandler = async ({ request, cookies, platform }) => {
+export const POST: RequestHandler = async ({ request, cookies, platform, locals }) => {
 	console.log(`[POST /api/verify-payment] Received payment verification request`);
 	try {
 		const data = await request.json();
@@ -36,7 +36,7 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 			return json({ error: 'Missing reference' }, { status: 400 });
 		}
 
-		const r = await confirm(data.reference, platform);
+		const r = await confirm(data.reference, platform, locals?.user?.ph);
 		if (!r.ok) {
 			const code = r.code ?? 500;
 			console.warn(`[POST /api/verify-payment] confirm failed (${code}): ${r.error}`);
@@ -47,7 +47,7 @@ export const POST: RequestHandler = async ({ request, cookies, platform }) => {
 			return json({ success: true, status: 'success', message: 'Already verified' });
 		}
 
-		const session = await encode_session({ id: r.user_id!, email: r.email!, name: r.name! });
+		const session = await encode_session({ id: r.user_id!, email: r.email!, name: r.name!, ph: r.ph });
 		cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
 		return json({ success: true, status: 'success', message: 'Payment verified and registration confirmed', redirect: '/dashboard', userId: r.user_id });

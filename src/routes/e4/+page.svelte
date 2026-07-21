@@ -19,7 +19,6 @@
         <p class="page-hero-body">e4 analyses every move as your child plays — flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
-          <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
       <div class="page-hero-visual" use:motionFadeUp>

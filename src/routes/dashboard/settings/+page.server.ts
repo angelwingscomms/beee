@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	return {
 		email: user?.e ?? email,
 		name: user?.n,
-		phone: user?.ph,
+		phone: user?.ph?.[0],
 		picture: user?.pic
 	};
 };

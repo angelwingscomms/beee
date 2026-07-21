@@ -91,7 +91,7 @@
         <h2 class="reg-detail-name">{reg_label(active_reg) || 'Registration'}</h2>
         <dl class="reg-detail-grid">
           {#if active_reg.sn}<div><dt>School</dt><dd>{active_reg.sn}</dd></div>{/if}
-          {#if active_reg.p}<div><dt>Phone</dt><dd>{active_reg.p}</dd></div>{/if}
+          {#if data.user?.ph?.length}<div><dt>Phone</dt><dd>{data.user.ph.join(', ')}</dd></div>{/if}
           <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'i' ? 'Paid' : 'Pending'}</dd></div>
           {#if active_reg.ref}<div><dt>Reference</dt><dd><code>{active_reg.ref}</code></dd></div>{/if}
         </dl>

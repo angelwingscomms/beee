@@ -29,10 +29,10 @@
 <section class="min-h-screen relative overflow-hidden flex items-center bg-navy">
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 120% 100% at 0% 0%, #1A2B4C 0%, transparent 70%)"></div>
 
-  <div class="max-w-[96rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-12 relative z-10">
+  <div class="max-w-[96rem] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-24 pb-20 relative z-10">
 
     <div class="lg:col-span-4">
-      <h1 class="hero-anim-elem font-hero text-sm lg:text-base font-semibold uppercase tracking-[0.14em] text-amber-400 mb-5">
+      <h1 class="hero-anim-elem font-hero text-xl sm:text-3xl lg:text-3xl font-bold uppercase tracking-[0.08em] text-amber-400 mb-5 leading-tight">
         BEEE Spectacular Chess Championship Abuja 2026
       </h1>
 
@@ -49,9 +49,14 @@
         <span>National Stadium, Abuja — October 10, 2026</span>
       </p>
 
-      <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row mt-8">
-        <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Register your child — ₦{HERO_AMOUNT.toLocaleString()}</Button>
-        <Button href="/championship" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See how it works</Button>
+      <p class="hero-anim-elem venue-line">
+        <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
+        <span>₦{HERO_AMOUNT.toLocaleString()} — all-inclusive registration</span>
+      </p>
+
+      <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row mt-6">
+        <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Register Your Child</Button>
+        <Button href="/teamup" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See how it works</Button>
       </div>
 
       <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Become a Partner →</button>
@@ -103,7 +108,7 @@
   <Modal onclose={() => history.back()}>
     <h2 class="partner-title">Partner With Us &amp; Earn Rewards!</h2>
     <p class="partner-body">Earn ₦{COMMISSION_NAIRA.toLocaleString()} for every registration completed through your unique referral link. Share BEEE Spectacular Chess Championship 2026 with your school, club, or parent network today!</p>
-    <a href="/partner" class="partner-btn partner-btn-primary">Become a Partner</a>
+    <a href="/partner" class="partner-btn partner-btn-primary">Get Your Personalised Registration Link</a>
   </Modal>
 {/if}
 

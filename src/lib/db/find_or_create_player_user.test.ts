@@ -78,4 +78,12 @@ describe('find_or_create_player_user (real)', () => {
 		expect(u.c).toContain('fab');
 		expect(u.c).toContain('rpb');
 	});
+
+	it('stores the parent phone as a string[] on the user', async () => {
+		const { find_or_create_player_user } = await import('./index');
+		const id = await find_or_create_player_user('ph@b.co', 'Kid', undefined, ['2348012345678']);
+		const u = store.get(id);
+		expect(Array.isArray(u.ph)).toBe(true);
+		expect(u.ph).toEqual(['2348012345678']);
+	});
 });

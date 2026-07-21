@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { derive_badges } from './load';
 import type { Registration } from '$lib/types/registration';
 
-const reg = (st: Registration['st']): Registration => ({ s: 'reg', e: 'a@b.co', p: '', st }) as Registration;
+const reg = (st: Registration['st']): Registration => ({ s: 'reg', e: 'a@b.co', st }) as Registration;
 
 describe('derive_badges', () => {
 	it('marks Registered + Payment Confirmed from a paid registration', () => {

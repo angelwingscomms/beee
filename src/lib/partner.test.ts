@@ -57,7 +57,7 @@ const AFF = {
 };
 
 function reg(over: Partial<any> = {}): Registration {
-  return { s: 'reg', e: 'player@example.com', fn: 'Play', ln: 'Er', p: '+234801234567', st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', ...over };
+  return { s: 'reg', e: 'player@example.com', fn: 'Play', ln: 'Er', pp: '+234801234567', st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', ...over };
 }
 
 describe('process_partner_payout', () => {

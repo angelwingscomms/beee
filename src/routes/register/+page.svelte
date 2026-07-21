@@ -79,14 +79,18 @@
   const loggedInUser = $derived($page.data.user);
 
   // When logged in the parent-phone field is hidden, so use the phone we already
-  // have on file from registration instead of the empty/invalid placeholder.
-  let parentPhone = $derived(loggedInUser?.ph || ph);
+  // have on file from the session (stored without '+') instead of the empty placeholder.
+  let parentPhone = $derived(loggedInUser?.ph?.[0] ? '+' + loggedInUser.ph[0] : ph);
+  // Show the editable parent-phone field only when a valid phone is already on
+  // the account; otherwise it stays hidden and resolves at confirmation time.
+  const hasValidAccountPhone = $derived(!!loggedInUser?.ph?.[0]?.match(/^\d{7,15}$/));
 
   // ponytail: when logged in, the reg is under the session parent — no email/pw entry needed.
   $effect(() => {
     if (loggedInUser?.email) {
       em = loggedInUser.email;
       pw = '';
+      if (loggedInUser.ph?.[0]) ph = '+' + loggedInUser.ph[0];
     }
   });
 
@@ -100,7 +104,7 @@
           gl = data.gl || '';
           sc = data.sc || '';
           proprietor_phone = data.proprietor_phone || '+234';
-          ph = data.ph || '+234';
+          ph = (data.user?.ph?.[0] ? '+' + data.user.ph[0] : data.ph) || '+234';
           ac = data.ac || '';
         } catch {}
         sessionStorage.removeItem('reg_form_data');
@@ -156,9 +160,13 @@
 
   $effect(() => {
     if (browser) {
+      // Prefill from the ?c= query param (e.g. /register?c=CODE or the
+      // /i/CODE redirect) directly, falling back to a previously stored code.
+      const fromUrl = $page.url.searchParams.get('c');
       const stored = localStorage.getItem('partner_c');
-      if (stored && !ac) {
-        ac = stored;
+      const code = (fromUrl || stored || '').trim();
+      if (code && !ac) {
+        ac = code;
         validatePartnerCode(ac);
       }
     }
@@ -167,7 +175,7 @@
   function handlePartnerInput(e: Event) {
     const input = e.target as HTMLInputElement;
     let val = input.value.trim();
-    const match = val.match(/[?&]c=([^&\s]+)/);
+    const match = val.match(/(?:[?&]c=|[/]i[/])([^&\/?#\s]+)/);
     if (match) val = match[1];
     ac = val;
     clearTimeout(valTimer);
@@ -214,14 +222,25 @@
     isProcessing = true;
     apiError = '';
     let auth_url = '';
+    // A logged-in parent has no editable phone field; the '+' dial code alone
+    // is a placeholder, not a real number — send it empty so the server leaves
+    // the phone to be resolved at confirmation time (not a bogus '+234').
+    const phoneToSend = (parentPhone.trim() === '+234' || parentPhone.trim() === '') ? '' : parentPhone.trim();
+    const payload = { firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: phoneToSend, school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined };
+    // ponytail: verbose diagnostics so a 400 "Invalid phone" is debuggable from the browser.
+    console.log('[register] confirmPayment payload:', payload);
+    console.log('[register] loggedInUser:', loggedInUser);
+    console.log('[register] loggedInUser.ph:', loggedInUser?.ph);
+    console.log('[register] resolved parentPhone:', parentPhone, '| ph field:', ph, '| ph_valid:', ph_valid);
     try {
       const r = await fetch('/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: parentPhone.trim(), school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined })
+        body: JSON.stringify(payload)
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
+        console.warn('[register] register-init-payment rejected:', r.status, e);
         throw new Error(e.error || 'Payment initialization failed');
       }
       const d = await r.json();
@@ -320,7 +339,7 @@
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
           <PhoneInput id="proprietor_phone" label="School proprietor's phone — used to verify your school's participation" value={proprietor_phone} placeholder="School proprietor's phone" bind:valid={proprietor_phone_valid} onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
-          {#if !loggedInUser}
+          {#if !loggedInUser || hasValidAccountPhone}
             <PhoneInput id="ph" label="Parent's phone number" value={ph} placeholder="Parent's phone number" bind:valid={ph_valid} onChange={(v) => { ph = v; phe = ''; }} />
           {/if}
           {#if !loggedInUser || useDifferentEmail}

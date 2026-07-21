@@ -11,7 +11,6 @@
       </div>
       <nav class="tu-footer-nav">
         <a href="/">Home</a>
-        <a href="/championship">Championship</a>
         <a href="/teamup">TEAMUP</a>
         <a href="/register">Registration</a>
         <a href="/faq">FAQ</a>

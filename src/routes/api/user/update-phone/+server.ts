@@ -9,7 +9,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!locals.user) return json({ error: 'Not authenticated' }, { status: 401 });
 
 	const { phone } = await request.json();
-	if (!phone || !PHONE_RE.test(String(phone).replace(/[\s()-]/g, ''))) {
+	const normalized = String(phone ?? '').replace(/[\s()-]/g, '').replace(/^\+/, '');
+	if (!phone || !PHONE_RE.test(normalized)) {
 		return json({ error: 'Invalid phone number' }, { status: 400 });
 	}
 
@@ -17,7 +18,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	const user = await find_user_by_email(email) as (User & { i: string }) | undefined;
 	if (!user) return json({ error: 'User not found' }, { status: 404 });
 
-	await edit_point(user.i, { ph: phone, e: user.e, s: 'u' });
+	// ponytail: User.ph is string[]; settings edits the single stored number.
+	await edit_point(user.i, { ph: [normalized], e: user.e, s: 'u' });
 
 	return json({ success: true });
 };

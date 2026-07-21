@@ -15,15 +15,15 @@ async function get_key(): Promise<CryptoKey> {
   return crypto.subtle.importKey('raw', secret, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify']);
 }
 
-export async function encode_session(data: { id: string; name?: string; picture?: string; email?: string }): Promise<string> {
-  const p = { u: data.id, n: data.name, p: data.picture, m: data.email, e: Date.now() + 604800000 };
+export async function encode_session(data: { id: string; name?: string; picture?: string; email?: string; ph?: string[] }): Promise<string> {
+  const p = { u: data.id, n: data.name, p: data.picture, m: data.email, t: data.ph, e: Date.now() + 604800000 };
   const raw = b64(JSON.stringify(p));
   const k = await get_key();
   const sig = await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(raw));
   return raw + '.' + b64(String.fromCharCode(...new Uint8Array(sig)));
 }
 
-export async function decode_session(c: string | undefined | null): Promise<{ user: { id: string; name?: string; picture?: string; email?: string } } | null> {
+export async function decode_session(c: string | undefined | null): Promise<{ user: { id: string; name?: string; picture?: string; email?: string; ph?: string[] } } | null> {
   if (!c) return null;
   const [raw, sig] = c.split('.');
   if (!raw || !sig) return null;
@@ -34,7 +34,7 @@ export async function decode_session(c: string | undefined | null): Promise<{ us
     if (!valid) return null;
     const p = JSON.parse(ub64(raw));
     if (p.e < Date.now()) return null;
-    return { user: { id: p.u, name: p.n, picture: p.p, email: p.m } };
+    return { user: { id: p.u, name: p.n, picture: p.p, email: p.m, ph: p.t } };
   } catch {
     return null;
   }

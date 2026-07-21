@@ -29,6 +29,17 @@
       scrollTrigger: { trigger: '#platform', start: 'top 80%' },
     });
 
+    gsap.from('.gain-list > li', {
+      x: -28,
+      opacity: 0,
+      duration: 0.55,
+      stagger: 0.12,
+      delay: 0.35,
+      ease: 'power3.out',
+      clearProps: 'transform,opacity',
+      scrollTrigger: { trigger: '#platform', start: 'top 80%' },
+    });
+
     if (philosophyText) {
       const split = new SplitText(philosophyText, { type: 'words' });
       gsap.from(split.words, {
@@ -140,14 +151,34 @@
     </div>
 
     <!-- Card 2: e4 Explanation -->
-    <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-start overflow-hidden">
+    <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-center overflow-hidden">
       <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-5">Why Participate?</h3>
-        <ul class="flex flex-col items-start gap-2.5 gain-list">
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Trains with an AI coach that reviews every game they play</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full px-4 py-2 w-fit">Learns leadership and public speaking in weekly TEAMUP workshops</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full px-4 py-2 w-fit">Competes live in September's preliminaries — and maybe October's Grand Finale</li>
-          <li class="font-['Inter'] text-[#141413] text-sm font-semibold leading-snug bg-amber-400 rounded-full px-4 py-2 w-fit">Finishes the summer with a Taskify passport of badges, certificates, and skills</li>
+        <h3 class="font-hero text-xl font-bold text-white mb-5">Why Participate<span class="text-amber-400">?</span></h3>
+        <ul class="flex flex-col items-start gap-2.5 md:gap-3 lg:gap-2.5 gain-list">
+          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-amber-400 rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+            </span>
+            <span>Trains with an AI coach that reviews every game they play</span>
+          </li>
+          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+            </span>
+            <span>Learns leadership and public speaking in weekly TEAMUP workshops</span>
+          </li>
+          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </span>
+            <span>Competes live in September's preliminaries — and maybe October's Grand Finale</span>
+          </li>
+          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-amber-400 rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+            </span>
+            <span>Finishes the summer with a Taskify passport of badges, certificates, and skills</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -735,10 +766,24 @@
   }
   .gain-list > li {
     width: 100%;
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease;
+  }
+  .gain-list > li:nth-child(odd) { transform: rotate(-0.6deg); }
+  .gain-list > li:nth-child(even) { transform: rotate(0.6deg); }
+  .gain-list > li:hover {
+    transform: rotate(0deg) translateX(5px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
   @media (--sm-up) {
     .gain-list > li {
       width: auto;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gain-list > li,
+    .gain-list > li:hover {
+      transform: none;
+      transition: none;
     }
   }
 

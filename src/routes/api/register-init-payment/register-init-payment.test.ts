@@ -33,7 +33,7 @@ vi.mock('$lib/paystack', () => ({
     })),
 }));
 
-function mock_handler(body: Record<string, unknown>, locals?: { user?: { email?: string; ph?: string } }) {
+function mock_handler(body: Record<string, unknown>, locals?: { user?: { email?: string; ph?: string[] } }) {
     const req = new Request('http://localhost/api/register-init-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -218,22 +218,24 @@ describe('register-init-payment partner code validation', () => {
         const res = await POST(mock_handler({
             firstName: 'Kid', lastName: 'Two', school: 'School C',
             // no email, no phone — both should come from the session user
-        }, { user: { email: 'mom@example.com', ph: '+2348011112222' } }) as any);
+        }, { user: { email: 'mom@example.com', ph: ['2348011112222'] } }) as any);
         expect(res.status).toBe(200);
         const d = await res.json();
         expect(d.success).toBe(true);
-        // Stored phone is used even though the client sent none.
-        expect(lastCreate.p).toBe('+2348011112222');
+        // Phone is no longer stored on the Registration — it lives on the User.
+        expect(lastCreate.p).toBeUndefined();
         expect(lastCreate.e).toBe('mom@example.com');
     });
 
-    it('logged-in user: rejects when no stored phone is available', async () => {
+    it('logged-in user: proceeds without a form/session phone (resolved at confirmation)', async () => {
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'Kid', lastName: 'Two', school: 'School C'
         }, { user: { email: 'nophone@example.com' } }) as any);
-        expect(res.status).toBe(400);
+        expect(res.status).toBe(200);
         const d = await res.json();
-        expect(d.error).toBe('Missing required fields');
+        expect(d.success).toBe(true);
+        // No phone stored on the Registration — it lives on the User, set at confirm.
+        expect(lastCreate.p).toBeUndefined();
     });
 });

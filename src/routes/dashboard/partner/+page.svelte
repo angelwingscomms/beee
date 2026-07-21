@@ -1,6 +1,7 @@
 <script lang="ts">
   import BankSelect from '$lib/components/BankSelect.svelte';
   import type { PageData } from './$types';
+  import { invalidateAll } from '$app/navigation';
 
   let { data }: { data: PageData } = $props();
 
@@ -14,10 +15,46 @@
 
   let copied = $state(false);
 
+  // ── Custom partner code ──────────────────────────────────
+  let customCode = $state('');
+  let customCodeError = $state('');
+  let customCodeMsg = $state('');
+  let isSavingCode = $state(false);
+
+  async function saveCustomCode(e: Event) {
+    e.preventDefault();
+    if (!customCode.trim()) {
+      customCodeError = 'Enter a code first';
+      return;
+    }
+    isSavingCode = true;
+    customCodeError = '';
+    customCodeMsg = '';
+    try {
+      const r = await fetch('/api/partner/set-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: customCode.trim() })
+      });
+      const d = await r.json().catch(() => ({}));
+      if (r.ok) {
+        customCodeMsg = `Saved! Your partner code is now ${d.code}`;
+        customCode = '';
+        await invalidateAll();
+      } else {
+        customCodeError = d.error || 'Could not save that code';
+      }
+    } catch {
+      customCodeError = 'Network error — please try again';
+    } finally {
+      isSavingCode = false;
+    }
+  }
+
   async function copyCode() {
     if (!data.ac) return;
     try {
-      await navigator.clipboard.writeText(`https://beeeproject.com/register?c=${data.ac}`);
+      await navigator.clipboard.writeText(`https://beeeproject.com/i/${data.ac}`);
       copied = true;
       setTimeout(() => { copied = false; }, 2000);
     } catch {
@@ -87,7 +124,32 @@
         </button>
       </div>
       <p class="code-label">Share this link to earn commissions:</p>
-      <code class="code-url">https://beeeproject.com/register?c={data.ac || '{code}'}</code>
+      <code class="code-url">https://beeeproject.com/i/{data.ac || '{code}'}</code>
+    </div>
+
+    <div class="settings-card">
+      <h2 class="settings-card-title">Set a Custom Partner Code</h2>
+      <p class="settings-card-sub">Replace the random code above with one of your own. It must be unique and pass a quick check so it sounds right when shared.</p>
+      <form onsubmit={saveCustomCode}>
+        <div class="field">
+          <label for="customCode">Custom code</label>
+          <input id="customCode" class="text-input" type="text" bind:value={customCode}
+            placeholder="e.g. chesskids" maxlength={24} autocapitalize="off" autocomplete="off" spellcheck={false}
+            oninput={() => { customCodeError = ''; customCodeMsg = ''; }}
+          />
+          {#if customCodeError}<p class="field-msg field-error">{customCodeError}</p>{/if}
+        </div>
+        <div class="settings-save-row">
+          <button type="submit" class="button-primary" disabled={isSavingCode}>
+            {#if isSavingCode}
+              <span class="spinner" aria-hidden="true"></span> Saving...
+            {:else}
+              Set Custom Code
+            {/if}
+          </button>
+          {#if customCodeMsg}<span class="save-success">{customCodeMsg}</span>{/if}
+        </div>
+      </form>
     </div>
 
     <div class="settings-card">

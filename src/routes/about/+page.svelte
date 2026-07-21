@@ -18,7 +18,6 @@
         <p class="page-hero-body">BEEE (Be Everything Excellent Every Day) is a learning and development platform for young people. We combine structured programmes, digital tools, and mentorship so students grow in education, leadership, and life.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
-          <a href="/championship" class="button-secondary page-hero-btn">View Championship</a>
         </div>
       </div>
 

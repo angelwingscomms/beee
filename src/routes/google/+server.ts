@@ -36,7 +36,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
       await create(u, undefined, user_id);
     }
 
-    const session = await encode_session({ id: user_id, name, picture, email });
+    const session = await encode_session({ id: user_id, name, picture, email, ph: existing?.ph });
     event.cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
     event.cookies.delete('oauth_state', { path: '/' });
     event.cookies.delete('oauth_verifier', { path: '/' });

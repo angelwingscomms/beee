@@ -1,67 +1,147 @@
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Button from '$lib/components/Button.svelte';
+  import { dev } from '$app/environment';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA } from '$lib/constants';
+
+  const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
+
   const steps = [
-    { num: 1, title: 'Online Training & Coaching', sub: 'July 28 – August 29, 2026', img: '/images/championship/learn.png' },
-    { num: 2, title: 'Preliminary Championship Rounds', sub: 'September 2026', img: '/images/championship/compete.png' },
-    { num: 3, title: 'Elite Stage', sub: 'Top qualifiers advance', img: '/images/championship/qualify.png' },
-    { num: 4, title: 'Championship Grand Finale', sub: 'October 2026', img: '/images/championship/grandfinale.png' },
+    { num: 1, title: 'Online Training & Coaching', sub: 'Jul 28 – Aug 29, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport — all online, all included.', img: '/images/championship/learn.png', alt: 'Child using the e4 AI chess coach on a tablet' },
+    { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.png', alt: 'Students competing at qualifying-round chess boards' },
+    { num: 3, title: 'Elite Stage', sub: 'Sep \u2013 Oct 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.png', alt: 'Coaches and players reviewing a game in the elite stage' },
+    { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience \u2014 staged, filmed, and celebrated like nothing in conventional chess.', img: '/images/championship/grandfinale.png', alt: 'The championship grand finale stage' },
   ];
+
+  let sectionEl: HTMLElement;
+  let triggers: ScrollTrigger[] = [];
+
+  onMount(() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Card stagger reveal
+    const stepEls = sectionEl.querySelectorAll<HTMLElement>('.hj-step');
+    const revealTween = gsap.from(stepEls, {
+      y: 40,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: sectionEl,
+        start: 'top 75%',
+      },
+    });
+    if (revealTween.scrollTrigger) triggers.push(revealTween.scrollTrigger);
+  });
+
+  onDestroy(() => {
+    triggers.forEach((t) => t.kill());
+  });
 </script>
 
-<section class="relative bg-navy py-16 md:py-20 px-6" aria-labelledby="home-journey-heading">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-10 md:mb-14">
-      <h2 id="home-journey-heading" class="font-hero text-3xl md:text-5xl text-white font-bold tracking-[-0.02em]">
+<section
+  bind:this={sectionEl}
+  class="relative bg-navy px-6 py-20 md:py-28"
+  aria-labelledby="home-journey-heading"
+>
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(26,43,76,.6) 0%, transparent 70%)"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-14 md:mb-20">
+      <h2
+        id="home-journey-heading"
+        class="font-hero text-white font-bold tracking-[-0.02em]"
+        style="font-size: var(--fs-display-md)"
+      >
         Your <span class="text-amber-400">Championship</span> Journey
       </h2>
+      <p class="mt-4 text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        From first online lesson to the grand finale stage.
+      </p>
     </div>
 
-    <div class="hj-track flex flex-col md:flex-row items-stretch gap-3 md:gap-2">
+    <!-- Cards: 2x2 grid, alternating text-first / image-first -->
+    <ol class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
       {#each steps as step, i}
-        <div class="hj-card relative flex-1 rounded-3xl overflow-hidden border border-white/10">
-          <img src={step.img} alt="" loading={i === 0 ? 'eager' : 'lazy'} class="absolute inset-0 w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent"></div>
-          <div class="relative z-10 h-full flex flex-col justify-end p-5">
-            <span class="font-hero text-2xl font-extrabold text-amber-400 leading-none mb-1">{step.num}</span>
-            <h3 class="font-hero text-white font-bold text-base leading-tight mb-1">{step.title}</h3>
-            <p class="text-white/75 text-sm leading-snug">{step.sub}</p>
+        {@const textFirst = i % 2 === 0}
+        <li class="hj-step">
+          <div
+            class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] flex flex-col h-full transition-[border-color,background-color] duration-300"
+          >
+            {#if textFirst}
+              <!-- Text block -->
+              <div class="p-5 lg:p-7 flex flex-col gap-3 flex-1 bg-[#f5e6c8]">
+                <div class="flex items-center gap-3">
+                  <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
+                  <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
+                    <span class="sr-only">Step {step.num} — </span>{step.sub}
+                  </p>
+                </div>
+                <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>
+                <p class="text-[#141413]/70 text-sm leading-relaxed">{step.body}</p>
+              </div>
+              <!-- Image -->
+              <div class="relative aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src={step.img}
+                  alt={step.alt}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
+                />
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0F1A]/70 to-transparent" aria-hidden="true"></div>
+              </div>
+            {:else}
+              <!-- Image -->
+              <div class="relative aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src={step.img}
+                  alt={step.alt}
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
+                />
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0F1A]/70 to-transparent" aria-hidden="true"></div>
+              </div>
+              <!-- Text block -->
+              <div class="p-5 lg:p-7 flex flex-col gap-3 flex-1 bg-[#f5e6c8]">
+                <div class="flex items-center gap-3">
+                  <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
+                  <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
+                    <span class="sr-only">Step {step.num} — </span>{step.sub}
+                  </p>
+                </div>
+                <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>
+                <p class="text-[#141413]/70 text-sm leading-relaxed">{step.body}</p>
+              </div>
+            {/if}
           </div>
-        </div>
-        {#if i < steps.length - 1}
-          <div class="hj-chevron flex items-center justify-center text-amber-400 shrink-0" aria-hidden="true">
-            <svg class="hj-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </div>
-        {/if}
+        </li>
       {/each}
-    </div>
+    </ol>
 
-    <div class="text-center mt-8 md:mt-10">
-      <a href="/championship" class="font-hero text-sm md:text-base font-semibold text-amber-400 hover:text-white transition-colors">
-        See the full championship journey &rarr;
-      </a>
+    <!-- CTA -->
+    <div class="mt-12 md:mt-16 text-center">
+      <p class="text-white/60 text-sm mb-4">The journey starts with registration.</p>
+      <Button href="/register" class="px-8 py-4 text-base">
+        Register your child — ₦{HERO_AMOUNT.toLocaleString()}
+      </Button>
     </div>
   </div>
 </section>
 
 <style>
-  .hj-card {
-    aspect-ratio: 3 / 4;
-  }
-
-  .hj-chevron-icon {
-    width: 20px;
-    height: 20px;
-    transform: rotate(90deg);
-  }
-
-  @media (--md-up) {
-    .hj-card {
-      aspect-ratio: 3 / 4;
-    }
-
-    .hj-chevron-icon {
-      transform: rotate(0deg);
+  /* Hover media query via CSS (Tailwind doesn't handle @media hover cleanly) */
+  @media (hover: hover) {
+    .hj-step .group:hover {
+      border-color: rgba(255, 178, 0, 0.4);
+      background: rgba(255, 255, 255, 0.06);
     }
   }
 </style>

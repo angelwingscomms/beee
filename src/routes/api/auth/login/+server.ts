@@ -23,7 +23,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
   const user_id = existing.i;
 
-  const session = await encode_session({ id: user_id, name: existing.n, picture: existing.pic, email });
+  const session = await encode_session({ id: user_id, name: existing.n, picture: existing.pic, email, ph: existing.ph });
   cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
 
   return json({ success: true, user: { id: user_id, email, name: existing.n, picture: existing.pic } });

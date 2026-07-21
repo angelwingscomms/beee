@@ -4,7 +4,6 @@ export interface Registration {
 	fn?: string; // first name (individual) or school name
 	ln?: string; // last name (individual) or school name
 	e: string;  // email
-	p: string;  // phone
 	sn?: string; // school name
 	ps?: unknown; // players
 	st: 'r' | 'i'; // r=pending, i=paid
@@ -13,6 +12,6 @@ export interface Registration {
 	amt: number;
 	ref?: string;
 	ac?: string; // partner code
-	pp?: string; // proprietor phone number
+	pp?: string; // proprietor phone number (school verification)
 	pw?: string; // transient: only on the pending record, hashed on payment confirmation. Never sent to Paystack.
 }

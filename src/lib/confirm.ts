@@ -4,6 +4,7 @@
 // the player user, and fires the partner payout. Idempotent via the st guard.
 
 import { get, edit_point, find_or_create_player_user } from '$lib/db';
+import type { User } from '$lib/types';
 import { paystack_verify } from '$lib/paystack';
 import { process_partner_payout } from '$lib/partner';
 import { send_registration_confirmation } from '$lib/email';
@@ -16,10 +17,11 @@ export interface ConfirmResult {
 	user_id?: string;
 	email?: string;
 	name?: string;
+	ph?: string[];
 	error?: string;
 }
 
-export async function confirm(reference: string, platform?: App.Platform): Promise<ConfirmResult> {
+export async function confirm(reference: string, platform?: App.Platform, phones?: string[]): Promise<ConfirmResult> {
 	console.log(`[confirm] ═══ confirm START ═══ reference=${reference}`);
 	const reg = await get<Registration>(reference);
 	if (!reg) {
@@ -48,8 +50,17 @@ export async function confirm(reference: string, platform?: App.Platform): Promi
 
 	const email = reg.e;
 	const name = `${reg.fn || ''} ${reg.ln || ''}`.trim();
-	const user_id = await find_or_create_player_user(email, name, reg.pw);
+
+	// The parent phone travels through Paystack metadata (no phone on the stored
+	// Registration), so read it back from the verified transaction; fall back to
+	// the session user's phones (e.g. already-populated account).
+	const metaPhone = (verified.metadata?.reg_data as { phone?: string } | undefined)?.phone;
+	const resolvedPhones = phones?.length ? phones : (metaPhone ? [metaPhone] : undefined);
+	console.log(`[confirm] phone resolution: sessionPhones=${phones ?? 'null'} metaPhone=${metaPhone ?? 'null'} -> resolvedPhones=${resolvedPhones ?? 'null'}`);
+	const user_id = await find_or_create_player_user(email, name, reg.pw, resolvedPhones);
 	console.log(`[confirm] Player user ensured: ${user_id}`);
+	const user = await get<User>(user_id);
+	const ph = user?.ph;
 
 	console.log(`[confirm] Firing partner payout (fire-and-forget) for ${reference}`);
 	process_partner_payout(reg, reference, platform).catch(e =>
@@ -62,5 +73,5 @@ export async function confirm(reference: string, platform?: App.Platform): Promi
 	);
 
 	console.log(`[confirm] ═══ confirm END ═══ reference=${reference} ok=true`);
-	return { ok: true, status: 'success', user_id, email, name };
+	return { ok: true, status: 'success', user_id, email, name, ph };
 }

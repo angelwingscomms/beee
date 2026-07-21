@@ -13,13 +13,14 @@ interface SecretsStoreEnv {
   QDRANT_URL: SecretsStoreSecret;
   GEMINI: SecretsStoreSecret;
   PASSWORD: SecretsStoreSecret;
+  GROQ: SecretsStoreSecret;
   [key: string]: unknown;
 }
 
 declare global {
   namespace App {
     interface Locals {
-      user: { id: string; name?: string; picture?: string; email?: string; ph?: string } | null;
+      user: { id: string; name?: string; picture?: string; email?: string; ph?: string[] } | null;
     }
     interface Platform {
       env: SecretsStoreEnv;

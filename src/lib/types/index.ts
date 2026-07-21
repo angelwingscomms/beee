@@ -4,7 +4,7 @@ export interface User {
   p?: string;   // bcrypt password hash (null for Google-only users)
   n?: string;   // display name
   pic?: string; // Google profile picture URL
-  ph?: string;  // phone number
+  ph?: string[];  // phone numbers, each a full dialed number without '+', e.g. '2348012345678'
   c?: string[]; // classifications: 'fab' (partner), 'rpb' (player)
   ac?: string;  // partner code (sqids)
   ba?: string;  // bank account number

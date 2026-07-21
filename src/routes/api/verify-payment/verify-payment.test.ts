@@ -54,7 +54,7 @@ function handler(body: Record<string, unknown>) {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
     });
     const cookies = { set: vi.fn() } as any;
-    return { request, cookies, platform: {} as any };
+    return { request, cookies, platform: {} as any, locals: { user: undefined } };
 }
 
 describe('verify-payment', () => {

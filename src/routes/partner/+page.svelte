@@ -70,7 +70,7 @@
   <section class="partner-hero" use:motionFadeUp>
     <div class="partner-grid">
       <div class="partner-info">
-        <p class="partner-badge">Partner Programme</p>
+        <p class="partner-badge">BEEE PARTNER PROGRAMME</p>
         <h1 class="partner-title">Share the Experience.<br>Earn Rewards.</h1>
         <p class="partner-intro">
           Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.

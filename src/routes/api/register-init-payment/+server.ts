@@ -23,16 +23,21 @@ function get_discounted_amount(): number {
 }
 
 export const POST: RequestHandler = async ({ request, url, locals }) => {
+ try {
     console.log(`[register-init-payment] === NEW REQUEST ===`);
     console.log(`[register-init-payment] dev=${dev}`);
     const data = await request.json();
     // ponytail: a logged-in parent registers under their own session email; password not required.
     const sessionEmail = locals?.user?.email;
     const email = data.email || sessionEmail;
-    // When logged in, the parent phone isn't collected on the form (it's hidden) —
-    // reuse the phone we already have on file from registration.
-    const sessionPhone = locals?.user?.ph;
-    const phone = sessionEmail ? (sessionPhone || data.phone) : data.phone;
+    // The parent phone lives on the User (string[] of full dialed numbers, no '+').
+    // When logged in the field is hidden, so reuse the first stored number; otherwise
+    // take the form value and strip the leading '+'.
+    const toStored = (v: string) => String(v).replace(/[\s()-]/g, '').replace(/^\+/, '');
+    const sessionPhone = locals?.user?.ph?.[0];
+    const phone = sessionEmail
+        ? (sessionPhone || (data.phone ? toStored(data.phone) : ''))
+        : (data.phone ? toStored(data.phone) : '');
     console.log(`[register-init-payment] payload:`, {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -43,18 +48,31 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         partnerCode: data.partnerCode || null,
         loggedIn: !!sessionEmail
     });
-    if (!data.firstName || !data.lastName || !email || !phone) {
+    console.log(`[register-init-payment] phone resolution: sessionEmail=${sessionEmail ?? 'null'} sessionPhone=${sessionPhone ?? 'null'} dataPhone=${data.phone ?? 'null'} -> resolved phone="${phone}"`);
+    if (!data.firstName || !data.lastName || !email) {
         console.warn(`[register-init-payment] Rejected: missing required field`, {
-            firstName: !!data.firstName, lastName: !!data.lastName, email: !!email, phone: !!data.phone
+            firstName: !!data.firstName, lastName: !!data.lastName, email: !!email, phone: !!phone
         });
+        return json({ error: 'Missing required fields' }, { status: 400 });
+    }
+    // A bare dial code ('+234' -> '234') is a placeholder, not a real number.
+    const phoneReal = phone && !/^\d{1,3}$/.test(phone) ? phone : '';
+    console.log(`[register-init-payment] normalized phone: raw="${phone}" real="${phoneReal}"`);
+    // Logged-out registrations must supply a phone on the form. For logged-in
+    // parents the field is hidden — the phone resolves later from the session
+    // or the Paystack metadata at confirmation time.
+    if (!sessionEmail && !phoneReal) {
+        console.warn(`[register-init-payment] Rejected: missing phone for logged-out registration`);
         return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     // Server-side validation (the UI validates too, but never trust the client).
     if (!EMAIL_RE.test(email)) {
+        console.warn(`[register-init-payment] Rejected: invalid email "${email}"`);
         return json({ error: 'Invalid email' }, { status: 400 });
     }
-    if (!/^\+?\d{7,15}$/.test(String(phone).replace(/[\s()-]/g, ''))) {
+    if (phoneReal && !/^\d{7,15}$/.test(phoneReal)) {
+        console.warn(`[register-init-payment] Rejected: invalid phone "${phoneReal}" (from sessionPhone=${sessionPhone ?? 'null'}, dataPhone=${data.phone ?? 'null'}, sessionEmail=${sessionEmail ?? 'null'})`);
         return json({ error: 'Invalid phone' }, { status: 400 });
     }
     // Password only required for brand-new (logged-out) registrations.
@@ -68,8 +86,13 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     let ac: string | undefined;
 
     if (data.partnerCode) {
-        console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} — looking up affiliate`);
-        const affs = await search_by_payload<User>({ s: 'u', ac: data.partnerCode });
+        // Normalize like /api/validate-partner: a pasted share link
+        // (/i/<code> or ?c=<code>) should still resolve.
+        const raw = String(data.partnerCode).trim();
+        const m = raw.match(/\/i\/([^/?#\s]+)/);
+        const code = m ? m[1] : raw;
+        console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} (normalized: ${code}) — looking up affiliate`);
+        const affs = await search_by_payload<User>({ s: 'u', ac: code });
         const valid = affs.some(u => u.c?.includes('fab'));
         console.log(`[register-init-payment] affiliate candidates found: ${affs.length}, valid(fab): ${valid}`);
         if (!valid) {
@@ -78,7 +101,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         }
         amount_kobo = get_discounted_amount();
         discounted = true;
-        ac = data.partnerCode;
+        ac = code;
         console.log(`[register-init-payment] discount applied: amount_kobo now ${amount_kobo}`);
     } else {
         console.log(`[register-init-payment] no partner code — using base amount_kobo ${amount_kobo}`);
@@ -97,7 +120,6 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         ln: data.lastName,
         sn: data.school,
         e: email,
-        p: phone,
         pp: data.proprietorPhone,
         amt: amount_kobo,
         st: 'r',
@@ -119,7 +141,8 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     const callback_url = `${url.origin}/payment/callback`;
     // Only a reference goes to Paystack — no PII, no password.
     console.log(`[register-init-payment] calling paystack_init for ${i} | email=${email} amount_kobo=${amount_kobo} callback=${callback_url}`);
-    const result = await paystack_init(email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i });
+    const result = await paystack_init(email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i, phone: phoneReal });
+    console.log(`[register-init-payment] phone sent to Paystack metadata: "${phoneReal}"`);
     console.log(`[register-init-payment] paystack_init OK for ${i} | authorization_url=${result.authorization_url ? 'present' : 'MISSING'} access_code=${result.access_code ? 'present' : 'MISSING'} reference=${result.reference}`);
 
     return json({
@@ -131,4 +154,12 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         amount: amount_kobo,
         discounted
     });
+ } catch (err) {
+    console.error('[register-init-payment] UNCAUGHT ERROR:', err);
+    console.error('[register-init-payment] stack:', (err as Error)?.stack);
+    return json(
+        { error: 'Server error', detail: (err as Error)?.message || String(err) },
+        { status: 500 }
+    );
+  }
 };

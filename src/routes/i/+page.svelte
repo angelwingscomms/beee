@@ -37,7 +37,7 @@
                             <tr class="clickable" onclick={() => selectedReg = reg}>
                                 <td>{reg.fn} {reg.ln}</td>
                                 <td>{reg.e}</td>
-                                <td>{reg.p}</td>
+                                <td>{form.phonesByEmail[reg.e] ?? '—'}</td>
                                 <td><span class="badge-pill" class:paid={is_paid(reg.st)} class:pending={!is_paid(reg.st)}>{st_label(reg.st)}</span></td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Phone</span>
-                    <span>{selectedReg.p}</span>
+                    <span>{form?.phonesByEmail?.[selectedReg.e] ?? '—'}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Amount</span>
