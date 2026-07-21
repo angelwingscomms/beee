@@ -24,6 +24,9 @@ const config = {
 		alias: {
 			$components: 'src/components',
 			$lib: 'src/lib'
+		},
+		prerender: {
+			handleHttpError: 'warn'
 		}
 	}
 };
