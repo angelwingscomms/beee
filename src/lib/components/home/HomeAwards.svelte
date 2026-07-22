@@ -7,7 +7,7 @@
     icon: Sparkles,
     kicker: 'The signature honour',
     title: 'TEAMUP™ Excellence Awards',
-    body: 'Celebrating whole child excellence — rewarding with a variety of honors.'
+    body: 'Celebrating whole child excellence, rewarding with a variety of honors.'
   };
 
   const awards = [

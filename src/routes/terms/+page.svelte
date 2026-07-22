@@ -2,11 +2,6 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
-<svelte:head>
-  <title>Terms of Service — BEEE</title>
-  <meta name="description" content="The terms that apply when you register for or participate in the BEEE Spectacular Chess Championship Abuja 2026." />
-</svelte:head>
-
 <div class="legal">
   <div class="container legal-inner">
     <h1 class="legal-title">Terms of Service</h1>

@@ -12,10 +12,6 @@
     const is_paid = (st: string | undefined) => st === 'i';
 </script>
 
-<svelte:head>
-    <title>Admin — BEEE T.E.A.M.U.P.</title>
-</svelte:head>
-
 <div class="page-shell">
     <div class="container" style="padding-top:72px;padding-bottom:72px">
         {#if form?.success}
@@ -37,7 +33,7 @@
                             <tr class="clickable" onclick={() => selectedReg = reg}>
                                 <td>{reg.fn} {reg.ln}</td>
                                 <td>{reg.e}</td>
-                                <td>{form.phonesByEmail[reg.e] ?? '—'}</td>
+                                <td>{form.phonesByEmail[reg.e] ?? ','}</td>
                                 <td><span class="badge-pill" class:paid={is_paid(reg.st)} class:pending={!is_paid(reg.st)}>{st_label(reg.st)}</span></td>
                                 <td>₦{(reg.amt / 100).toLocaleString()}</td>
                                 <td>{new Date(reg.d).toLocaleDateString()}</td>
@@ -93,7 +89,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Phone</span>
-                    <span>{form?.phonesByEmail?.[selectedReg.e] ?? '—'}</span>
+                    <span>{form?.phonesByEmail?.[selectedReg.e] ?? ','}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Amount</span>

@@ -6,10 +6,6 @@
   if (!user) goto('/login?next=/profile');
 </script>
 
-<svelte:head>
-  <title>Profile — BEEE</title>
-</svelte:head>
-
 <div class="shell">
   <div class="card">
     <h1>Profile</h1>

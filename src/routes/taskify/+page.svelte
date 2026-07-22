@@ -3,11 +3,6 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
-<svelte:head>
-  <title>Taskify™ Digital Passport — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="Taskify™ is a digital development passport that tracks participant progress, milestones, achievements, badges, and growth throughout the championship." />
-</svelte:head>
-
 <div class="overflow-x-hidden w-full max-w-full">
   <section class="page-hero">
     <div class="page-hero-bg"></div>
@@ -15,7 +10,7 @@
       <div class="page-hero-content" use:motionFadeUp>
         <h1 class="page-hero-title">Taskify™</h1>
         <p class="page-hero-sub">Digital Development Passport</p>
-        <p class="page-hero-body">Your child doesn't just attend — every badge, milestone, project, and certificate is recorded in their own Taskify™ passport. By the Grand Finale, they'll have a documented record of what they built, won, and learned.</p>
+        <p class="page-hero-body">Your child doesn't just attend , every badge, milestone, project, and certificate is recorded in their own Taskify™ passport. By the Grand Finale, they'll have a documented record of what they built, won, and learned.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
         </div>
@@ -25,7 +20,7 @@
   </section>
 
   <section class="page-features" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0;">
+    <div class="container" style="padding: 64px 0;">
       <h2 class="page-features-title">How Progress Is Measured</h2>
       <div class="features-grid">
         <div class="feature-card">
@@ -70,7 +65,7 @@
   </section>
 
   <section class="page-cta" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0; text-align: center;">
+    <div class="container" style="padding: 64px 0; text-align: center;">
       <h2 class="page-cta-title">Start Building Their Record</h2>
       <p class="page-cta-body">Every achievement deserves to be documented and celebrated.</p>
       <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
@@ -81,7 +76,6 @@
 <style>
   .page-hero {
     position: relative;
-    min-height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -105,7 +99,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 80px 0;
+    padding: 56px 0;
   }
 
   .page-hero-content { max-width: 540px; }
@@ -124,9 +118,9 @@
   .page-hero-sub {
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.01em;
-    color: var(--body);
+    color: var(--ink);
     margin: 20px 0 0;
     line-height: 1.4;
   }
@@ -135,7 +129,7 @@
     font-size: 17px;
     line-height: 1.65;
     font-style: normal;
-    color: var(--body);
+    color: var(--ink);
     margin: 24px 0 0;
   }
 
@@ -234,8 +228,8 @@
   @media (--md-down) {
     .page-hero-inner {
       grid-template-columns: 1fr;
-      gap: 48px;
-      padding: 64px 0;
+      gap: 40px;
+      padding: 40px 0;
     }
     .page-hero-content { max-width: none; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }

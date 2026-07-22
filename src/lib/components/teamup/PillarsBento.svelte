@@ -14,7 +14,7 @@
   <div class="pillars-inner">
     <div class="pillars-header" use:motionFadeUp>
       <h2 class="pillars-title">Five Pillars</h2>
-      <p class="pillars-sub">Together, these five pillars help participants grow as thinkers, creators, leaders, and problem-solvers — both on and beyond the chessboard.</p>
+      <p class="pillars-sub">Together, these five pillars help participants grow as thinkers, creators, leaders, and problem-solvers , both on and beyond the chessboard.</p>
     </div>
     <div class="pillars-grid" use:motionStaggered={{ stagger: 0.1, y: 24 }}>
       {#each pillars as p}

@@ -60,7 +60,7 @@ describe('find_or_create_player_user (real)', () => {
 		expect(u.p).toBe('hash');
 	});
 
-	it('reuses the same user for a second kid (same email) — no duplicate', async () => {
+	it('reuses the same user for a second kid (same email) , no duplicate', async () => {
 		const { find_or_create_player_user } = await import('./index');
 		const id1 = await find_or_create_player_user('mom@b.co', 'Kid A');
 		const id2 = await find_or_create_player_user('mom@b.co', 'Kid B');

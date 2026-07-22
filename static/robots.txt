@@ -1,4 +1,32 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /account
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /login
+Disallow: /logout
+Disallow: /design
+Disallow: /payment/
+Disallow: /i
+Disallow: /google/
+Disallow: /*?c=
+
+# AI answer engines — allowed. Per Google's 2026 guidance, generative-search
+# visibility rests on the same crawlable-content foundations as classic SEO.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: https://beeeproject.com/sitemap.xml

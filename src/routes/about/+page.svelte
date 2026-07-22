@@ -3,11 +3,6 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
-<svelte:head>
-  <title>BEEE — Be Everything Excellent Every Day</title>
-  <meta name="description" content="BEEE is an integrated learning and development platform combining innovative programmes, digital tools, mentorship, and immersive experiences to inspire excellence." />
-</svelte:head>
-
 <div class="overflow-x-hidden w-full max-w-full">
   <section class="page-hero">
     <div class="page-hero-bg"></div>
@@ -25,7 +20,7 @@
   </section>
 
   <section class="page-belief" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0;">
+    <div class="container" style="padding: 56px 0;">
       <div class="belief-content">
         <p class="belief-text">We believe every young person has extraordinary potential. Our job is to give it structure: purposeful learning, real mentors, and real challenges.</p>
       </div>
@@ -33,7 +28,7 @@
   </section>
 
   <section class="page-features" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0;">
+    <div class="container" style="padding: 64px 0;">
       <h2 class="page-features-title">Benefits of BEEE Programmes</h2>
       <div class="features-grid">
         <div class="feature-card">
@@ -61,7 +56,7 @@
   </section>
 
   <section class="page-cta" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0; text-align: center;">
+    <div class="container" style="padding: 64px 0; text-align: center;">
       <h2 class="page-cta-title">Aspire to BEEE</h2>
       <p class="page-cta-body">Be Everything Excellent Every Day. Start your journey today.</p>
       <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
@@ -72,7 +67,6 @@
 <style>
   .page-hero {
     position: relative;
-    min-height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -96,7 +90,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 80px 0;
+    padding: 56px 0;
   }
 
   .page-hero-content { max-width: 540px; }
@@ -115,9 +109,9 @@
   .page-hero-sub {
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.01em;
-    color: var(--body);
+    color: var(--ink);
     margin: 20px 0 0;
     line-height: 1.4;
   }
@@ -125,7 +119,7 @@
   .page-hero-body {
     font-size: 17px;
     line-height: 1.65;
-    color: var(--body);
+    color: var(--ink);
     margin: 24px 0 0;
   }
 
@@ -242,8 +236,8 @@
   @media (--md-down) {
     .page-hero-inner {
       grid-template-columns: 1fr;
-      gap: 48px;
-      padding: 64px 0;
+      gap: 40px;
+      padding: 40px 0;
     }
     .page-hero-content { max-width: none; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }

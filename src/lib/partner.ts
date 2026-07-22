@@ -71,7 +71,7 @@ export async function process_partner_payout(
     });
     const ac = reg_data.ac as string | undefined;
     if (!ac) {
-      console.log(`[payout] No partner code on reg ${reg_id} — nothing to pay out. STOP.`);
+      console.log(`[payout] No partner code on reg ${reg_id} , nothing to pay out. STOP.`);
       return;
     }
 
@@ -87,13 +87,13 @@ export async function process_partner_payout(
     console.log(`[payout] Found ${affs.length} user(s) with ac=${ac}; filtering for 'fab' classification`);
     const partner = affs.find(u => u.c?.includes('fab')) as (User & { i: string }) | undefined;
     if (!partner) {
-      console.log(`[payout] No partner found for code ${ac} (reg ${reg_id}) — STOP.`);
+      console.log(`[payout] No partner found for code ${ac} (reg ${reg_id}) , STOP.`);
       return;
     }
 
     const partner_id = partner.i;
     if (!partner_id) {
-      console.log(`[payout] Partner for ${ac} has no ID — STOP.`);
+      console.log(`[payout] Partner for ${ac} has no ID , STOP.`);
       return;
     }
     console.log(`[payout] Partner resolved:`, {
@@ -112,7 +112,7 @@ export async function process_partner_payout(
 
     // Self-referral guard: a partner must not earn commission on their own signup.
     if (reg_data.e && partner.e && reg_data.e.toLowerCase() === partner.e.toLowerCase()) {
-      console.log(`[payout] Self-referral DETECTED (reg email == partner email) for ${ac} (reg ${reg_id}) — blocking commission.`);
+      console.log(`[payout] Self-referral DETECTED (reg email == partner email) for ${ac} (reg ${reg_id}) , blocking commission.`);
       await store_payout(reg_id, partner_id, ac, 0, 'b', undefined, undefined, 'self-referral', 1, pid);
       console.log(`[payout] Stored 'blocked_self' record ${pid}. STOP.`);
       return;
@@ -120,10 +120,10 @@ export async function process_partner_payout(
     console.log(`[payout] Self-referral check passed (reg=${reg_data.e} != partner=${partner.e}).`);
 
     // Check bank details. Persist a retryable record instead of silently
-    // dropping the commission — once the partner adds bank details the cron
+    // dropping the commission , once the partner adds bank details the cron
     // retry (retry_failed_payouts) will pick it up.
     if (!partner.ba || !partner.bn) {
-      console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details (ba=${!!partner.ba}, bn=${!!partner.bn}) — recording retryable failure and STOP.`);
+      console.log(`[payout] Partner ${partner_id} (${ac}) has no bank details (ba=${!!partner.ba}, bn=${!!partner.bn}) , recording retryable failure and STOP.`);
       await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
       return;
     }
@@ -131,7 +131,7 @@ export async function process_partner_payout(
       ba: partner.ba ?? '(none)',
       bn: partner.bn ?? '(none)',
       bk: partner.bk ?? '(none)'
-    }, '— proceeding to idempotency check.');
+    }, ', proceeding to idempotency check.');
 
     // Idempotency: skip if a record already exists for this registration.
     let existing: Payout | null = null;
@@ -142,7 +142,7 @@ export async function process_partner_payout(
       return;
     }
     if (existing) {
-      console.log(`[payout] Idempotency HIT: record ${pid} already exists (st=${existing.st}) — skipping. STOP.`);
+      console.log(`[payout] Idempotency HIT: record ${pid} already exists (st=${existing.st}) , skipping. STOP.`);
       return;
     }
     console.log(`[payout] Idempotency check passed (no existing record ${pid}). Invoking run_payout attempt=1.`);
@@ -195,7 +195,7 @@ export async function retry_failed_payouts(
     } catch (e) {
       console.error(`[payout] Retry: DB ERROR loading registration ${p.reg_id}:`, e);
     }
-    if (!reg) { console.error(`[payout] Retry: no registration ${p.reg_id} — skipping`); failed++; continue; }
+    if (!reg) { console.error(`[payout] Retry: no registration ${p.reg_id} , skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded registration ${p.reg_id} (amt=${reg.amt} email=${reg.e})`);
     let affs: User[] = [];
     try {
@@ -204,7 +204,7 @@ export async function retry_failed_payouts(
       console.error(`[payout] Retry: DB ERROR loading partner ${p.partner_id}:`, e);
     }
     const partner = affs[0] as (User & { i: string }) | undefined;
-    if (!partner) { console.error(`[payout] Retry: no partner ${p.partner_id} — skipping`); failed++; continue; }
+    if (!partner) { console.error(`[payout] Retry: no partner ${p.partner_id} , skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded partner ${p.partner_id} (${partner.e})`);
 
     // Gate on balance so we don't waste an attempt when funds are low.
@@ -216,7 +216,7 @@ export async function retry_failed_payouts(
     }
     console.log(`[payout] Retry: Paystack balance=${bal} kobo, needed=${p.amt + 10000} kobo (payout ${p.amt} + 10000 buffer)`);
     if (bal > 0 && bal < p.amt + 10000) {
-      console.log(`[payout] Retry DEFERRED for reg ${p.reg_id}: balance ${bal} below threshold — not consuming an attempt`);
+      console.log(`[payout] Retry DEFERRED for reg ${p.reg_id}: balance ${bal} below threshold , not consuming an attempt`);
       continue;
     }
 
@@ -264,10 +264,10 @@ async function run_payout(
   console.log(`[payout] Step 1/6: marking record ${pid} as 'p' (ref=po-${reg_id})`);
   await with_timeout(`store_payout('p') ${pid}`, 20000, store_payout(reg_id, partner_id, ac, 0, 'p', `po-${reg_id}`, undefined, undefined, at, pid));
 
-  console.log(`[payout] Step 2/6: resolving bank code — partner.bk=${partner.bk || '(none)'} partner.bn=${partner.bn || '(none)'}`);
+  console.log(`[payout] Step 2/6: resolving bank code , partner.bk=${partner.bk || '(none)'} partner.bn=${partner.bn || '(none)'}`);
   const bank_code = partner.bk || get_bank_code(partner.bn || '');
   if (!bank_code) {
-    console.log(`[payout] Unknown bank: ${partner.bn} (code: ${partner.bk}) for partner ${partner_id} — FAIL`);
+    console.log(`[payout] Unknown bank: ${partner.bn} (code: ${partner.bk}) for partner ${partner_id} , FAIL`);
     await store_failed_payout(reg_id, partner_id, ac, `Unknown bank: ${partner.bn}`, at, pid);
     return;
   }
@@ -287,12 +287,12 @@ async function run_payout(
 
   const total_kobo = reg.amt as number;
   if (!total_kobo || Number.isNaN(total_kobo)) {
-    console.error(`[payout] Missing/invalid registration amount for ${reg_id} (amt=${reg.amt}) — cannot compute commission — FAIL`);
+    console.error(`[payout] Missing/invalid registration amount for ${reg_id} (amt=${reg.amt}) , cannot compute commission , FAIL`);
     await store_failed_payout(reg_id, partner_id, ac, 'Missing registration amount', at, pid);
     return;
   }
   const amt_kobo = payout_amount(total_kobo, dev);
-  console.log(`[payout] Step 4/6: commission computed — total=${total_kobo} kobo, is_dev=${dev}, commission_pct=${COMMISSION_PCT}% -> payout=${amt_kobo} kobo`);
+  console.log(`[payout] Step 4/6: commission computed , total=${total_kobo} kobo, is_dev=${dev}, commission_pct=${COMMISSION_PCT}% -> payout=${amt_kobo} kobo`);
 
   let recipient: { recipient_code: string; active: boolean };
   try {
@@ -376,7 +376,7 @@ export async function reconcile_transfer_payout(ref: string, st: Payout['st']): 
   }
   const p = list[0];
   if (!p) {
-    console.log(`[payout] Reconcile: no payout for transfer ref ${ref} — nothing to reconcile. END`);
+    console.log(`[payout] Reconcile: no payout for transfer ref ${ref} , nothing to reconcile. END`);
     return;
   }
   console.log(`[payout] Reconcile: matched payout for reg ${p.reg_id} via ref search -> updating to ${st}`);

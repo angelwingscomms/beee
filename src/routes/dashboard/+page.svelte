@@ -51,10 +51,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Dashboard — BEEE</title>
-</svelte:head>
-
 <div class="dash-shell">
   <div class="dash-card">
     <header class="dash-head">

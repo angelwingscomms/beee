@@ -1,19 +1,18 @@
 import type { LayoutLoad } from './$types';
+import { SITE_URL } from '$lib/seo';
 
+/** Purpose-built 1200x630 cards — the declared og:image:width/height must match the file. */
 const OG: Record<string, string> = {
-  '/': 'https://beeeproject.com/og.png',
-  '/register': 'https://beeeproject.com/register-bg.png',
-  '/about': 'https://beeeproject.com/images/championship/about-bg.png',
-  '/e4': 'https://beeeproject.com/e4-ui.png',
-  '/teamup': 'https://beeeproject.com/images/championship/technology.png',
-  '/taskify': 'https://beeeproject.com/images/championship/bento_passport.png',
-  '/why-beee': 'https://beeeproject.com/images/championship/about-new.png',
-  '/partner': 'https://beeeproject.com/images/championship/mentorship.png',
-  '/faq': 'https://beeeproject.com/og.png',
-  '/privacy': 'https://beeeproject.com/og.png',
-  '/terms': 'https://beeeproject.com/og.png',
+  '/': `${SITE_URL}/og.png`,
+  '/register': `${SITE_URL}/og/register.jpg`,
+  '/about': `${SITE_URL}/og/about.jpg`,
+  '/e4': `${SITE_URL}/og/e4.jpg`,
+  '/teamup': `${SITE_URL}/og/teamup.jpg`,
+  '/taskify': `${SITE_URL}/og/taskify.jpg`,
+  '/why-beee': `${SITE_URL}/og/why-beee.jpg`,
+  '/partner': `${SITE_URL}/og/partner.jpg`,
 };
 
 export const load: LayoutLoad = ({ route, data }) => {
-  return { ...data, ogImage: OG[route.id ?? '/'] ?? 'https://beeeproject.com/og.png' };
+  return { ...data, ogImage: OG[route.id ?? '/'] ?? `${SITE_URL}/og.png` };
 };

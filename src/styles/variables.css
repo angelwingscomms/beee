@@ -60,7 +60,7 @@
   --space-6: 72px;
   --radius-pill: 999px;
 
-  /* Fluid editorial display scale — headline sizes that scale with viewport */
+  /* Fluid editorial display scale , headline sizes that scale with viewport */
   --fs-display-2xl: clamp(3rem, 1.4rem + 7vw, 7.5rem);
   --fs-display-xl: clamp(2.5rem, 1.4rem + 5vw, 5.75rem);
   --fs-display-lg: clamp(2.125rem, 1.4rem + 3.2vw, 4rem);

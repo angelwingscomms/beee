@@ -1,4 +1,4 @@
-// Shared Paystack utilities — server-side only
+// Shared Paystack utilities , server-side only
 // All amounts are in kobo (NGN × 100)
 
 import { dev } from '$app/environment';
@@ -12,7 +12,7 @@ console.log('[paystack] module loaded');
 // transaction/initialize makes the Checkout show every method (card, bank
 // transfer, USSD, QR, mobile money, EFT, PayAttitude) instead of defaulting
 // to card only. Channels unsupported in a given country are simply hidden by
-// Paystack — safe to list them all.
+// Paystack , safe to list them all.
 const PAYMENT_CHANNELS = [
   'card',
   'bank',
@@ -292,7 +292,7 @@ export async function paystack_transfer(
   if (!res.ok) {
     const err = await res.text();
     // Paystack enforces unique transfer references. A duplicate means a prior
-    // attempt already created the disbursement — treat as idempotent success
+    // attempt already created the disbursement , treat as idempotent success
     // so concurrent verify-payment + webhook paths never double-pay.
     if (reference && /reference.*(already|exist|used)|transfer.*(already|exist)/i.test(err)) {
       console.log(`[paystack_transfer] Duplicate reference ${reference}, treating as already paid`);
@@ -336,7 +336,7 @@ export async function paystack_balance(): Promise<number> {
 
 /**
  * Verify the HMAC SHA512 signature on an incoming Paystack webhook.
- * raw_body must be the raw request body string — not a parsed object.
+ * raw_body must be the raw request body string , not a parsed object.
  */
 export async function verify_webhook_sig(
   raw_body: string,

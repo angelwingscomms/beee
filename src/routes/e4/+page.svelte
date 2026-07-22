@@ -3,11 +3,6 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
-<svelte:head>
-  <title>e4™ AI Chess Coach — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="e4™ is an AI-powered chess coaching platform that provides real-time move analysis, personalised training, and game insights." />
-</svelte:head>
-
 <div class="overflow-x-hidden w-full max-w-full">
   <section class="page-hero">
     <div class="page-hero-bg"></div>
@@ -16,21 +11,29 @@
         <h1 class="page-hero-title">e4™</h1>
         <p class="page-hero-sub">AI Chess Coach</p>
         <p class="page-hero-body">An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice.</p>
-        <p class="page-hero-body">e4 analyses every move as your child plays — flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
+        <p class="page-hero-body">e4 analyses every move as your child plays , flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
         </div>
       </div>
       <div class="page-hero-visual" use:motionFadeUp>
         <div class="page-hero-img-frame">
-           <img src="/images/e4-ui.png" alt="e4 AI Chess Coach interface" class="page-hero-img" />
+           <img
+             src="/images/e4-ui.webp"
+             alt="The e4 AI chess coach interface showing live move analysis for a young player"
+             class="page-hero-img"
+             width="1536"
+             height="1024"
+             fetchpriority="high"
+             decoding="async"
+           />
         </div>
       </div>
     </div>
   </section>
 
   <section class="page-features" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0;">
+    <div class="container" style="padding: 64px 0;">
       <h2 class="page-features-title">Benefits of e4™</h2>
       <div class="features-grid">
         <div class="feature-card">
@@ -62,7 +65,7 @@
   </section>
 
   <section class="page-cta" use:motionFadeUp>
-    <div class="container" style="padding: 120px 0; text-align: center;">
+    <div class="container" style="padding: 64px 0; text-align: center;">
       <h2 class="page-cta-title">Ready to Train Smarter?</h2>
       <p class="page-cta-body">Give your child an edge with AI-powered chess coaching.</p>
       <Button href="/register" class="page-cta-btn">Start Your Child's Journey</Button>
@@ -73,7 +76,6 @@
 <style>
   .page-hero {
     position: relative;
-    min-height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -97,9 +99,9 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 56px;
     align-items: center;
-    padding: 80px 0;
+    padding: 56px 0;
   }
 
   .page-hero-content { max-width: 540px; }
@@ -118,9 +120,9 @@
   .page-hero-sub {
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.01em;
-    color: var(--body);
+    color: var(--ink);
     margin: 20px 0 0;
     line-height: 1.4;
   }
@@ -128,7 +130,7 @@
   .page-hero-body {
     font-size: 17px;
     line-height: 1.65;
-    color: var(--body);
+    color: var(--ink);
     margin: 24px 0 0;
   }
 
@@ -243,8 +245,8 @@
   @media (--md-down) {
     .page-hero-inner {
       grid-template-columns: 1fr;
-      gap: 48px;
-      padding: 64px 0;
+      gap: 40px;
+      padding: 40px 0;
     }
     .page-hero-content { max-width: none; }
     .page-hero-visual { order: -1; }

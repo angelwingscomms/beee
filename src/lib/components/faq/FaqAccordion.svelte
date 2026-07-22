@@ -46,14 +46,45 @@
 <style>
 	.accordion {
 		display: grid;
-		gap: 0;
+		gap: 8px;
 	}
 
 	.accordion-item {
-		border-top: 1px solid var(--hairline-soft);
+		position: relative;
+		background: var(--canvas);
+		border: 1px solid var(--hairline-soft);
+		border-radius: 12px;
+		padding: 0 20px;
+		transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
 	}
 
+	.accordion-item::before {
+		content: '';
+		position: absolute;
+		top: 8px;
+		bottom: 8px;
+		left: 0;
+		width: 3px;
+		border-radius: 3px;
+		background: var(--primary);
+		transform: scaleY(0);
+		transform-origin: center;
+		transition: transform 200ms ease;
+	}
 
+	.accordion-item:hover {
+		border-color: var(--hairline);
+		box-shadow: var(--shadow-soft);
+		transform: translateY(-1px);
+	}
+
+	.accordion-open {
+		background: color-mix(in srgb, var(--surface-card) 55%, var(--canvas));
+	}
+
+	.accordion-open::before {
+		transform: scaleY(1);
+	}
 
 	.accordion-trigger {
 		display: flex;
@@ -66,14 +97,19 @@
 		background: transparent;
 		color: var(--ink);
 		text-align: left;
-		font-size: 16px;
-		font-weight: 500;
+		font-family: var(--font-hero);
+		font-size: 17px;
+		font-weight: 600;
 		line-height: 1.45;
 		cursor: pointer;
 		transition: color 160ms ease;
 	}
 
 	.accordion-trigger:hover {
+		color: var(--primary);
+	}
+
+	.accordion-open .accordion-trigger {
 		color: var(--primary);
 	}
 
@@ -84,11 +120,12 @@
 	.accordion-chevron {
 		flex-shrink: 0;
 		color: var(--muted);
-		transition: transform 240ms ease;
+		transition: transform 240ms ease, color 160ms ease;
 	}
 
 	.accordion-open .accordion-chevron {
 		transform: rotate(180deg);
+		color: var(--primary);
 	}
 
 	.accordion-panel {
@@ -107,10 +144,10 @@
 
 	.accordion-answer p {
 		margin: 0 0 20px;
-		color: var(--body);
-		font-size: 15px;
-		line-height: 1.65;
-		max-width: 680px;
+		color: var(--body-strong);
+		font-size: 16px;
+		line-height: 1.7;
+		max-width: 62ch;
 	}
 
 	.no-results {
@@ -128,9 +165,22 @@
 		.accordion-chevron {
 			transition: none;
 		}
+
+		.accordion-item,
+		.accordion-item::before {
+			transition: none;
+		}
+
+		.accordion-item:hover {
+			transform: none;
+		}
 	}
 
 	@media (--sm-down) {
+		.accordion-item {
+			padding: 0 16px;
+		}
+
 		.accordion-trigger {
 			font-size: 15px;
 			padding: 16px 0;

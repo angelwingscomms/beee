@@ -9,8 +9,9 @@
   import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
-  // Commissions are only paid on referred (discounted) registrations — see partner/+page.svelte.
+  // Commissions are only paid on referred (discounted) registrations , see partner/+page.svelte.
   const COMMISSION_NAIRA = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100) * COMMISSION_PCT / 100);
+
   onMount(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -24,6 +25,15 @@
       clearProps: 'all',
     });
   });
+
+  function partnerAnim(el: HTMLElement) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gsap.fromTo(
+      el.querySelectorAll('.partner-anim'),
+      { y: 24, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.12, ease: 'power3.out', delay: 0.35 },
+    );
+  }
 </script>
 
 <section class="min-h-screen relative overflow-hidden flex items-center bg-navy">
@@ -44,19 +54,34 @@
         A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
       </p>
 
-      <p class="hero-anim-elem venue-line">
-        <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-        <span>National Stadium, Abuja — October 10, 2026</span>
-      </p>
+      <div class="hero-anim-elem schedule-card">
+        <div class="schedule-row">
+          <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <div>
+            <p class="schedule-title">Coaching and Training</p>
+            <p class="schedule-sub">Online &middot; August 1 to August 29, 2026</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <div>
+            <p class="schedule-title">Preliminaries and Grand Finale</p>
+            <p class="schedule-sub">Live &middot; September to October, 2026</p>
+            <p class="schedule-sub">National Stadium, Abuja</p>
+          </div>
+        </div>
+      </div>
 
       <p class="hero-anim-elem venue-line">
         <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
-        <span>₦{HERO_AMOUNT.toLocaleString()} — all-inclusive registration</span>
+        <span>₦{HERO_AMOUNT.toLocaleString()} , all-inclusive registration</span>
       </p>
+
+      <p class="hero-anim-elem schedule-note">Register early to give your child a richer, more rewarding championship experience.</p>
 
       <div class="hero-anim-elem flex gap-4 flex-col sm:flex-row mt-6">
         <Button href="/register" class="px-8 py-4 w-full sm:w-auto text-base">Register Your Child</Button>
-        <Button href="/teamup" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">See how it works</Button>
+        <Button href="/teamup" bg="0" class="px-8 py-4 w-full sm:w-auto text-base">More Than A Championship</Button>
       </div>
 
       <button type="button" class="footer-partner mt-6 inline-block bg-transparent border-0 cursor-pointer" onclick={() => pushState('', { partner: true })}>Become a Partner →</button>
@@ -66,10 +91,13 @@
     <div class="lg:col-span-8 flex justify-center items-center">
       <div class="relative w-full max-w-2xl aspect-square lg:aspect-[4/5] rounded-3xl overflow-visible">
         <img
-          src="/images/hero.png"
-          alt="Student playing chess"
+          src="/images/hero.webp"
+          alt="A young chess player aged 10 to 14 making a move at the BEEE Spectacular Chess Championship in Abuja"
           class="object-cover rounded-3xl w-full h-full"
+          width="1600"
+          height="900"
           fetchpriority="high"
+          decoding="async"
         />
 
         <!-- feature-float-cards -->
@@ -105,11 +133,42 @@
 </section>
 
 {#if $page.state.partner}
-  <Modal onclose={() => history.back()}>
-    <h2 class="partner-title">Partner With Us &amp; Earn Rewards!</h2>
-    <p class="partner-body">Earn ₦{COMMISSION_NAIRA.toLocaleString()} for every registration completed through your unique referral link. Share BEEE Spectacular Chess Championship 2026 with your school, club, or parent network today!</p>
-    <a href="/partner" class="partner-btn partner-btn-primary">Get Your Personalised Registration Link</a>
-  </Modal>
+<Modal onclose={() => history.back()}>
+  <div use:partnerAnim>
+    <div class="partner-icon-wrap partner-anim">
+      <svg class="partner-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" stroke="url(#pg)" stroke-width="1.5"/>
+        <path d="M16 28c0-4 3-7 8-7s8 3 8 7v2H16v-2Z" stroke="url(#pg)" stroke-width="1.3" stroke-linejoin="round"/>
+        <circle cx="24" cy="17" r="4" stroke="url(#pg)" stroke-width="1.3"/>
+        <path d="M24 10v2M24 32v2M12 24h2M34 24h2" stroke="url(#pg)" stroke-width="1.3" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="pg" x1="8" y1="8" x2="40" y2="40">
+            <stop stop-color="#ffb200"/>
+            <stop offset="1" stop-color="#f59e0b"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <p class="partner-eyebrow partner-anim">BEEE&#8482; Partner Programme</p>
+    <h2 class="partner-title partner-anim">Share the Experience.<br>Earn Rewards.</h2>
+
+    <p class="partner-reward partner-anim">
+      <span class="partner-reward-amount">&#8358;{COMMISSION_NAIRA.toLocaleString()}</span>
+      <span class="partner-reward-unit">per registration</span>
+    </p>
+
+    <p class="partner-body partner-anim">Help families discover the BEEE&#8482; Spectacular Chess Championship, and get paid for every participant that registers with your link.</p>
+
+    <ol class="partner-steps partner-anim">
+      <li><span class="partner-step-num">1</span>Get your link</li>
+      <li><span class="partner-step-num">2</span>They register</li>
+      <li><span class="partner-step-num">3</span>You get paid</li>
+    </ol>
+
+    <a href="/partner" class="partner-btn partner-btn-primary partner-anim">Get Your Personalised Link</a>
+  </div>
+</Modal>
 {/if}
 
 <style>
@@ -128,6 +187,63 @@
     max-width: 420px;
   }
 
+  .schedule-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 420px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .schedule-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .schedule-row + .schedule-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .schedule-icon {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: #fbbf24;
+    flex-shrink: 0;
+  }
+
+  .schedule-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .schedule-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #9ca3af;
+    margin: 2px 0 0;
+    line-height: 1.45;
+  }
+
+  .schedule-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #fbbf24;
+    opacity: 0.9;
+    max-width: 420px;
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+
   .footer-partner {
     font-size: 16px;
     font-weight: 600;
@@ -140,35 +256,142 @@
     color: #ffffff;
   }
 
+  .partner-icon-wrap {
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: rgba(255, 178, 0, 0.08);
+    box-shadow: 0 0 0 1px rgba(255, 178, 0, 0.18) inset;
+  }
+
+  .partner-icon {
+    display: block;
+  }
+
+  .partner-eyebrow {
+    font-family: var(--font-championship);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-amber);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
   .partner-title {
     font-family: var(--font-hero);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-amber);
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.25rem;
     text-align: center;
+    line-height: 1.15;
+  }
+
+  .partner-title-sub {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-amber);
+    opacity: 0.8;
+  }
+
+  .partner-reward {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin: 1.25rem 0 0;
+  }
+
+  .partner-reward-amount {
+    font-family: var(--font-hero);
+    font-size: clamp(2.5rem, 12vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent-amber);
+  }
+
+  .partner-reward-unit {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #94a3b8;
   }
 
   .partner-body {
-    color: #cbd5e1;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 1rem auto 0;
     text-align: center;
+    max-width: 30ch;
+  }
+
+  .partner-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 0.5rem;
+    list-style: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .partner-steps li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #cbd5e1;
+  }
+
+  .partner-step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 178, 0, 0.35);
+    background: rgba(255, 178, 0, 0.08);
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 700;
   }
 
   .partner-btn {
-    display: inline-block;
-    min-width: 70%;
-    padding: 0.85rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 75%;
+    padding: 0.85rem 1.5rem;
     border-radius: 9999px;
     font-weight: 600;
+    font-size: 0.95rem;
     text-decoration: none;
-    margin: 0.75rem auto 0;
+    margin: 1.5rem auto 0;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
   }
 
   .partner-btn-primary {
-    background: #f59e0b;
+    background: linear-gradient(135deg, #ffb200 0%, #f59e0b 100%);
     color: #0f172a;
+    box-shadow: 0 4px 20px rgba(255, 178, 0, 0.25);
+  }
+
+  .partner-btn-primary:hover {
+    box-shadow: 0 6px 28px rgba(255, 178, 0, 0.4);
+    transform: scale(1.02);
   }
 </style>

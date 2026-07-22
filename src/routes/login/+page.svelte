@@ -58,10 +58,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Login — BEEE</title>
-</svelte:head>
-
 <div class="login-shell">
   <div class="login-card">
     <h1 class="login-title">Welcome back</h1>

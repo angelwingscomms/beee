@@ -15,7 +15,6 @@
   let gl = $state('');
   let em = $state('');
   let sc = $state('');
-  let proprietor_phone = $state('+234');
   let ph = $state('+234');
   let pw = $state('');
   let ac = $state('');
@@ -58,8 +57,6 @@
   let gle = $state('');
   let eme = $state('');
   let sce = $state('');
-  let proprietor_phone_error = $state('');
-  let proprietor_phone_valid = $state(false);
   let phe = $state('');
   let ph_valid = $state(false);
   let pwe = $state('');
@@ -85,7 +82,7 @@
   // the account; otherwise it stays hidden and resolves at confirmation time.
   const hasValidAccountPhone = $derived(!!loggedInUser?.ph?.[0]?.match(/^\d{7,15}$/));
 
-  // ponytail: when logged in, the reg is under the session parent — no email/pw entry needed.
+  // ponytail: when logged in, the reg is under the session parent , no email/pw entry needed.
   $effect(() => {
     if (loggedInUser?.email) {
       em = loggedInUser.email;
@@ -103,7 +100,6 @@
           gf = data.gf || '';
           gl = data.gl || '';
           sc = data.sc || '';
-          proprietor_phone = data.proprietor_phone || '+234';
           ph = (data.user?.ph?.[0] ? '+' + data.user.ph[0] : data.ph) || '+234';
           ac = data.ac || '';
         } catch {}
@@ -114,7 +110,6 @@
 
   let allValid = $derived(
     gf.trim() && gl.trim() && sc.trim() &&
-    proprietor_phone_valid &&
     (loggedInUser || ph_valid) &&
     (loggedInUser && !useDifferentEmail
       ? true
@@ -139,7 +134,7 @@
       const d = await r.json();
       if (d.valid) {
         acValid = true;
-        // The green discount callout already shows the applied discount — no
+        // The green discount callout already shows the applied discount , no
         // need for a duplicate helper line here (and error styling would turn
         // the input border red on success).
         ace = '';
@@ -190,7 +185,7 @@
   }
 
   function clearErrors() {
-    gfe = ''; gle = ''; eme = ''; sce = ''; proprietor_phone_error = ''; phe = ''; pwe = '';
+    gfe = ''; gle = ''; eme = ''; sce = ''; phe = ''; pwe = '';
   }
 
   function validateForm(): boolean {
@@ -207,7 +202,6 @@
       if (!pw || pw.length < 8) { pwe = 'Min 8 characters'; v = false; }
     }
     if (!sc.trim()) { sce = 'Required'; v = false; }
-    if (!proprietor_phone.trim() || proprietor_phone.trim() === '+234') { proprietor_phone_error = 'Required'; v = false; }
     if (!loggedInUser && (!ph.trim() || ph.trim() === '+234')) { phe = 'Required'; v = false; }
     return v;
   }
@@ -223,10 +217,10 @@
     apiError = '';
     let auth_url = '';
     // A logged-in parent has no editable phone field; the '+' dial code alone
-    // is a placeholder, not a real number — send it empty so the server leaves
+    // is a placeholder, not a real number , send it empty so the server leaves
     // the phone to be resolved at confirmation time (not a bogus '+234').
     const phoneToSend = (parentPhone.trim() === '+234' || parentPhone.trim() === '') ? '' : parentPhone.trim();
-    const payload = { firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), proprietorPhone: proprietor_phone.trim(), phone: phoneToSend, school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined };
+    const payload = { firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: phoneToSend, school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined };
     // ponytail: verbose diagnostics so a 400 "Invalid phone" is debuggable from the browser.
     console.log('[register] confirmPayment payload:', payload);
     console.log('[register] loggedInUser:', loggedInUser);
@@ -279,7 +273,7 @@
   function continueWithGoogle() {
     googleRedirecting = true;
     sessionStorage.setItem('reg_form_data', JSON.stringify({
-      gf, gl, sc, proprietor_phone, ph, ac
+      gf, gl, sc, ph, ac
     }));
     window.location.href = '/login/google?next=/register';
   }
@@ -297,11 +291,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Register — BEEE Spectacular Chess Championship Abuja 2026</title>
-  <meta name="description" content="Register your child for the BEEE TEAMUP programme and Spectacular Chess Championship Abuja 2026." />
-</svelte:head>
-
 <div class="overflow-x-hidden w-full max-w-full reg-page" style="background: url({regBg.img.src}) center center / cover no-repeat fixed">
   <div class="reg-bg-overlay"></div>
   <section class="reg-header" use:motionFadeUp>
@@ -315,7 +304,7 @@
     {#if loggedInUser}
       <div class="container">
         <div class="reg-loggedin-note">
-          Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong> — you're registering another player.
+          Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong> , you're registering another player.
           <button type="button" class="reg-not-you" onclick={logoutGoogle}>Not you?</button>
         </div>
         <div class="reg-different-email">
@@ -338,7 +327,6 @@
             <TextInput id="gl" label="Last name" bind:value={gl} required error={gle} oninput={() => gle = ''} />
           </div>
           <TextInput id="sc" label="School name" bind:value={sc} required error={sce} oninput={() => sce = ''} />
-          <PhoneInput id="proprietor_phone" label="School proprietor's phone — used to verify your school's participation" value={proprietor_phone} placeholder="School proprietor's phone" bind:valid={proprietor_phone_valid} onChange={(v) => { proprietor_phone = v; proprietor_phone_error = ''; }} />
           {#if !loggedInUser || hasValidAccountPhone}
             <PhoneInput id="ph" label="Parent's phone number" value={ph} placeholder="Parent's phone number" bind:valid={ph_valid} onChange={(v) => { ph = v; phe = ''; }} />
           {/if}
@@ -374,7 +362,7 @@
               <span class="reg-partner-ph" class:fading={ac_fading} style="left: {ac_label_w}px">{ac_placeholder}</span>
             {/if}
           </div>
-          <p class="reg-partner-help">Registering with a partner code gives a 10% discount.</p>
+          <p class="reg-partner-help">Register through a Partner Registration Link and enjoy a 10% discount.</p>
           {#if acLoading}
             <div class="reg-discount-callout">
               <span>Checking partner code…</span>
@@ -384,7 +372,7 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>
               </svg>
-              <span>10% discount applied — ₦{(baseAmount - AMOUNT).toLocaleString()} off</span>
+              <span>10% discount applied , ₦{(baseAmount - AMOUNT).toLocaleString()} off</span>
             </div>
           {:else if acValid === false}
             <div class="reg-discount-callout invalid">
@@ -404,7 +392,7 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Online coaching began July 28, 2026 — players get access immediately on registration.</p>
+          <p>Online coaching begins 1 August 2026, players get access immediately on registration.</p>
         </div>
       </form>
 
@@ -413,7 +401,7 @@
           <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
           <span class="reg-per">per participant</span>
         </div>
-        <p class="reg-summary-note">Slots are limited — and coaching is underway, so registering now gives your child the longest run.</p>
+        <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 29 August 2026. However, early registration is encouraged to give your child a richer learning experience, and the opportunity to enjoy the complete coaching and training experience.</p>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div>

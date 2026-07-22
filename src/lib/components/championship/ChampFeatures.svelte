@@ -2,49 +2,57 @@
   import { motionStagger } from '$lib/actions/motion';
   const features = [
     {
-      img: '/images/technology-card.png',
+      img: '/images/technology-card.webp',
       span: 'col-span-2 row-span-1',
       title: 'Technology',
       body: 'Using technology creatively and responsibly to solve problems and expand learning.'
     },
     {
-      img: '/images/enterprise.jpeg',
+      img: '/images/enterprise.webp',
       span: 'col-span-1 row-span-1',
       title: 'Enterprise',
       body: 'Developing initiative, innovation and practical problem-solving skills.'
     },
     {
-      img: '/images/championship/grandfinale.png',
+      img: '/images/championship/grandfinale.webp',
       span: 'col-span-1 row-span-1',
       title: 'Art',
       body: 'Encouraging creativity, imagination, communication, and design thinking.'
     },
     {
-      img: '/images/championship/develop.png',
+      img: '/images/championship/develop.webp',
       span: 'col-span-2 row-span-1',
       title: 'Mentorship',
       body: 'Learning from experienced professionals, educators, and inspiring role models.'
     },
     {
-      img: '/images/championship/compete.png',
+      img: '/images/championship/compete.webp',
       span: 'col-span-3 row-span-1',
       title: 'Upskill',
-      body: 'Building leadership, teamwork, communication, and other essential life skills for the future.'
+      body: 'Building leadership, teamwork, strategic reasoning and other essential life skills for the future.'
     }
   ];
 </script>
 
 <section id="features" class="section-soft" use:motionStagger>
-  <div class="container" style="padding: 120px 0;">
+  <div class="container" style="padding: 64px 0;">
     <div class="champ-features-header">
       <h2 class="champ-features-title">The TEAMUP™ Development Programme</h2>
-      <p class="champ-features-sub">A holistic approach to developing every child, with a focus on Technology, Enterprise, Art, Mentorship and Upskilling.</p>
+      <p class="champ-features-sub">A holistic approach to developing every child , building skills that last.</p>
     </div>
     <div class="champ-bento">
       {#each features as feat, i}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div class="champ-bento-card {feat.span}">
-          <img src={feat.img} alt="" class="champ-bento-img" />
+          <img
+            src={feat.img}
+            alt="{feat.title} , {feat.body}"
+            class="champ-bento-img"
+            loading="lazy"
+            decoding="async"
+            width="1600"
+            height="900"
+          />
           <div class="champ-bento-overlay"></div>
           <div class="champ-bento-content">
             <h3 class="champ-bento-card-title">{feat.title}</h3>
@@ -74,9 +82,9 @@
 
   .champ-features-sub {
     font-family: var(--font-display);
-    font-size: 20px;
-    line-height: 1.3;
-    color: var(--body);
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink);
     margin: 12px 0 0;
   }
 

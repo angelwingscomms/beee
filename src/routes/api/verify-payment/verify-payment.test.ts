@@ -73,7 +73,7 @@ describe('verify-payment', () => {
         expect(db.store.get(REG_ID).st).toBe('r');
     });
 
-    it('P7: rejects amount mismatch (400) — anti-fraud', async () => {
+    it('P7: rejects amount mismatch (400) , anti-fraud', async () => {
         verify.mockResolvedValue({ status: 'success', reference: REG_ID, amount: 999, customer: { email: '' }, metadata: {} });
         const { POST } = await import('./+server');
         const { request, cookies, platform } = handler({ reference: REG_ID, registrationId: REG_ID });
@@ -115,7 +115,7 @@ describe('verify-payment', () => {
         expect(user.p).not.toBe('password123');
     });
 
-    it('P9: is idempotent — a second call on a paid reg returns success without re-firing payout', async () => {
+    it('P9: is idempotent , a second call on a paid reg returns success without re-firing payout', async () => {
         verify.mockResolvedValue({ status: 'success', reference: REG_ID, amount: 1_350_000, customer: { email: '' }, metadata: {} });
         const { POST } = await import('./+server');
         const { request: r1, cookies: c1, platform: p1 } = handler({ reference: REG_ID, registrationId: REG_ID });
@@ -142,7 +142,7 @@ describe('verify-payment', () => {
         const { request: r1, cookies: c1, platform: p1 } = handler({ reference: REG_ID, registrationId: REG_ID });
         await POST({ request: r1, cookies: c1, platform: p1 } as any);
         payout.mockClear();
-        // Same reference replayed (attacker re-sends the callback) — must be a no-op.
+        // Same reference replayed (attacker re-sends the callback) , must be a no-op.
         const { request: r2, cookies: c2, platform: p2 } = handler({ reference: REG_ID, registrationId: REG_ID });
         const res2 = await POST({ request: r2, cookies: c2, platform: p2 } as any);
         expect(res2.status).toBe(200);

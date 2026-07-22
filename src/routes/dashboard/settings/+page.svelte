@@ -32,10 +32,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Settings — BEEE</title>
-</svelte:head>
-
 <div class="shell">
   <div class="card">
     <h1 class="title">Settings</h1>

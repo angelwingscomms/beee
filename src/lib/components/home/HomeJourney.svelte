@@ -9,10 +9,10 @@
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
   const steps = [
-    { num: 1, title: 'Online Training & Coaching', sub: 'Jul 28 – Aug 29, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport — all online, all included.', img: '/images/championship/learn.png', alt: 'Child using the e4 AI chess coach on a tablet' },
-    { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.png', alt: 'Students competing at qualifying-round chess boards' },
-    { num: 3, title: 'Elite Stage', sub: 'Sep \u2013 Oct 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.png', alt: 'Coaches and players reviewing a game in the elite stage' },
-    { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience \u2014 staged, filmed, and celebrated like nothing in conventional chess.', img: '/images/championship/grandfinale.png', alt: 'The championship grand finale stage' },
+    { num: 1, title: 'Online Training & Coaching', sub: 'Jul 28 – Aug 29, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport , all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
+    { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
+    { num: 3, title: 'Elite Stage', sub: 'Sep \u2013 Oct 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
+    { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
   ];
 
   let sectionEl: HTMLElement;
@@ -82,11 +82,11 @@
                 <div class="flex items-center gap-3">
                   <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
                   <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
-                    <span class="sr-only">Step {step.num} — </span>{step.sub}
+                    <span class="sr-only">Step {step.num} , </span>{step.sub}
                   </p>
                 </div>
                 <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>
-                <p class="text-[#141413]/70 text-sm leading-relaxed">{step.body}</p>
+                <p class="text-[#141413]/75 text-base leading-relaxed">{step.body}</p>
               </div>
               <!-- Image -->
               <div class="relative aspect-[16/10] w-full overflow-hidden">
@@ -114,11 +114,11 @@
                 <div class="flex items-center gap-3">
                   <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
                   <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
-                    <span class="sr-only">Step {step.num} — </span>{step.sub}
+                    <span class="sr-only">Step {step.num} , </span>{step.sub}
                   </p>
                 </div>
                 <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>
-                <p class="text-[#141413]/70 text-sm leading-relaxed">{step.body}</p>
+                <p class="text-[#141413]/75 text-base leading-relaxed">{step.body}</p>
               </div>
             {/if}
           </div>
@@ -128,10 +128,34 @@
 
     <!-- CTA -->
     <div class="mt-12 md:mt-16 text-center">
-      <p class="text-white/60 text-sm mb-4">The journey starts with registration.</p>
       <Button href="/register" class="px-8 py-4 text-base">
-        Register your child — ₦{HERO_AMOUNT.toLocaleString()}
+        Register your child
       </Button>
+      <div class="mt-8 md:mt-10 max-w-xl mx-auto rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+        <div class="flex items-center justify-center gap-2.5">
+          <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2" />
+          </svg>
+          <p class="text-white text-sm md:text-base font-semibold">
+            Online coaching and training
+          </p>
+        </div>
+        <p class="mt-1 text-amber-400 font-hero font-bold text-lg md:text-xl">
+          28 July 2026 &ndash; 29 Aug. 2026
+        </p>
+        <div class="mt-5 pt-5 border-t border-white/10 space-y-3 text-left">
+          <p class="text-white/70 text-sm md:text-base leading-relaxed">
+            Registration closes <span class="text-amber-400 font-semibold">29 Aug. 2026</span>.
+          </p>
+          <p class="text-white/70 text-sm md:text-base leading-relaxed">
+            Participants may join the championship at any time during the period of Online Training.
+          </p>
+          <p class="text-white/70 text-sm md:text-base leading-relaxed">
+            The earlier you register, the more time your child has to learn and improve.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

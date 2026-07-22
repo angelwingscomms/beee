@@ -6,7 +6,7 @@ import type { payout_point_id as payout_point_id_t } from '../../lib/partner';
 // real partner payout, with Paystack + Qdrant mocked.
 // payout_point_id is imported dynamically below (not statically) so that this
 // module's own `db`/`ps` are initialized before `$lib/partner` pulls in the
-// `$lib/db` mock factory, which reads from `db` — a static top-level import
+// `$lib/db` mock factory, which reads from `db` , a static top-level import
 // here would hit that mock factory before `const db = ...` runs (TDZ error).
 
 const db = createQdrantStore();

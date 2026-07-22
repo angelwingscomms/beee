@@ -45,7 +45,7 @@
         customCodeError = d.error || 'Could not save that code';
       }
     } catch {
-      customCodeError = 'Network error — please try again';
+      customCodeError = 'Network error , please try again';
     } finally {
       isSavingCode = false;
     }
@@ -107,10 +107,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Partner Dashboard — BEEE</title>
-</svelte:head>
-
 <div class="settings-page">
   <section class="container" style="padding: 140px 0 80px; max-width: 640px;">
     <h1 class="settings-title">Partner Dashboard</h1>
@@ -118,7 +114,7 @@
     <div class="settings-card">
       <h2 class="settings-card-title">Your Partner Code</h2>
       <div class="code-row">
-        <span class="code-value" id="partner-code-text">{data.ac || '—'}</span>
+        <span class="code-value" id="partner-code-text">{data.ac || ','}</span>
         <button class="button-secondary code-copy-btn" onclick={copyCode} disabled={!data.ac}>
           {copied ? 'Copied!' : 'Copy'}
         </button>

@@ -74,31 +74,22 @@
 </script>
 
 <svelte:head>
-  <title>BEEE Chess Championship Abuja 2026 — More Than a Chess Championship</title>
-  <meta name="description" content="Chess, leadership, and life skills for Abuja kids aged 10–14. AI training, mentorship, and the TEAMUP programme. Summer 2026." />
   <script type="application/ld+json">{
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Event",
-        "name": "BEEE Spectacular Chess Championship Abuja 2026",
-        "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the TEAMUP programme.",
-        "startDate": "2026-10-10",
-        "endDate": "2026-10-10",
-        "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
-        "offers": { "@type": "Offer", "price": "15000", "priceCurrency": "NGN" },
-        "organizer": { "@type": "Organization", "name": "BEEE", "url": "https://beeeproject.com" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://beeeproject.com#organization",
-        "name": "BEEE Spectacular Chess Championship",
-        "url": "https://beeeproject.com",
-        "logo": "https://beeeproject.com/logo.png",
-        "description": "Youth chess championship with AI training, leadership mentorship, and the TEAMUP development programme for Abuja kids aged 10-14.",
-        "contactPoint": { "@type": "ContactPoint", "email": "info@beeeproject.com", "telephone": "+234-802-092-0872", "contactType": "customer service" }
-      }
-    ]
+    "@type": "Event",
+    "@id": "https://beeeproject.com/#championship-2026",
+    "name": "BEEE Spectacular Chess Championship Abuja 2026",
+    "description": "Chess, leadership, and life skills for Abuja kids aged 10-14. AI training, mentorship, and the TEAMUP programme.",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://beeeproject.com/og.png",
+    "url": "https://beeeproject.com/",
+    "location": { "@type": "Place", "name": "Abuja", "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" } },
+    "offers": { "@type": "Offer", "price": "15000", "priceCurrency": "NGN", "availability": "https://schema.org/InStock", "url": "https://beeeproject.com/register", "validFrom": "2026-01-01" },
+    "organizer": { "@id": "https://beeeproject.com/#organization" },
+    "performer": { "@id": "https://beeeproject.com/#organization" }
   }</script>
 </svelte:head>
 
@@ -115,7 +106,7 @@
       <h2 class="lg:col-span-8 font-hero text-4xl md:text-6xl lg:text-[4.25rem] text-white font-bold tracking-[-0.02em] leading-[1.02]">
         What makes the BEEE Championship <span class="text-amber-400">different?</span>
       </h2>
-      <p class="lg:col-span-4 font-['Inter'] text-gray-400 text-base md:text-lg leading-relaxed">
+      <p class="lg:col-span-4 font-['Inter'] text-white/90 text-lg md:text-xl font-semibold leading-relaxed">
         The championship goes beyond chess. One championship, three proprietary platforms that work together.
       </p>
     </div>
@@ -123,7 +114,7 @@
     <div class="grid grid-cols-12 gap-5 md:gap-6 auto-rows-[minmax(320px,auto)]">
       <PlatformCard bg="#f5e6c8" title="e4&trade;" body="Your child's AI chess coach: live analysis, training, and practice." href="/e4" />
       <PlatformCard bg="#ffb200" title="TEAMUP&trade;" body="The development programme: Technology, Enterprise, Art, Mentorship, Upskill." href="/teamup" label="Explore TEAMUP™" />
-      <PlatformCard bg="#7ec8e3" title="Taskify&trade;" body="The digital passport recording every badge, milestone, and certificate." href="/taskify" />
+      <PlatformCard bg="#7ec8e3" title="Taskify&trade;" body="The digital passport recording every badge, milestone, and certificate won." href="/taskify" />
     </div>
   </div>
 </section>
@@ -143,7 +134,15 @@
       onmouseenter={() => onBentoHover(true)}
       onmouseleave={() => onBentoHover(false)}
     >
-      <img src="/images/e4-ui.png" alt="e4 UI" class="absolute inset-0 w-full h-full object-cover" />
+      <img
+        src="/images/e4-ui.webp"
+        alt="The e4 AI chess coach analysing a game move by move"
+        class="absolute inset-0 w-full h-full object-cover"
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="absolute bottom-0 left-0 p-8 z-20">
         <h3 class="font-hero text-2xl font-bold text-white mb-2">e4</h3>
         <p class="font-['Inter'] text-gray-300 text-lg">Real-time AI mentoring and move analysis.</p>
@@ -153,31 +152,31 @@
     <!-- Card 2: e4 Explanation -->
     <div bind:this={bentoCard2} class="col-span-12 md:col-span-12 lg:col-span-4 bg-[#1A2B4C] rounded-3xl border border-amber-400/30 relative group p-8 flex flex-col justify-center overflow-hidden">
       <div class="relative z-10">
-        <h3 class="font-hero text-xl font-bold text-white mb-5">Why Participate<span class="text-amber-400">?</span></h3>
+        <h3 class="font-hero text-xl font-bold text-white mb-5">What Your Child <span class="text-amber-400">Gains</span></h3>
         <ul class="flex flex-col items-start gap-2.5 md:gap-3 lg:gap-2.5 gain-list">
           <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-amber-400 rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
             </span>
-            <span>Trains with an AI coach that reviews every game they play</span>
+            <span>Trains daily with an AI coach that reviews every move</span>
           </li>
           <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#7ec8e3] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
             </span>
-            <span>Learns leadership and public speaking in weekly TEAMUP workshops</span>
-          </li>
-          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
-            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-            </span>
-            <span>Competes live in September's preliminaries — and maybe October's Grand Finale</span>
+            <span>Builds leadership and public speaking skills, every week</span>
           </li>
           <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-amber-400 rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
             </span>
-            <span>Finishes the summer with a Taskify passport of badges, certificates, and skills</span>
+            <span>Leaves the summer with badges, certificates, and proof of growth</span>
+          </li>
+          <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </span>
+            <span>Compete live for a place in the Championship Grand Finale</span>
           </li>
         </ul>
       </div>
@@ -185,7 +184,15 @@
 
     <!-- Card 3: TEAMUP -->
     <div bind:this={bentoCard1} class="col-span-12 h-[450px] bg-white/5 rounded-3xl overflow-hidden relative group flex items-center">
-      <img src="/images/bento-mentorship-candid.png" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <img
+        src="/images/bento-mentorship-candid.webp"
+        alt="A mentor coaching young participants in the BEEE TEAMUP programme"
+        class="absolute inset-0 w-full h-full object-cover"
+        width="1600"
+        height="900"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A]/80 via-[#0A0F1A]/40 to-transparent z-10"></div>
       <div class="relative z-20 ml-12 max-w-xl">
         <p class="font-hero text-amber-400 text-3xl md:text-5xl font-bold leading-tight tracking-tight">
@@ -308,7 +315,7 @@
 
 <!-- Section 5: Final CTA -->
 <section id="contact" class="py-20 px-6 bg-navy border-t border-white/10">
-  <a href="/register" class="block no-underline mym-link"><h1 class="font-hero text-[8vw] text-yellow-400 leading-none tracking-tighter">Make Your Move.</h1></a>
+  <a href="/register" class="block no-underline mym-link"><span class="block font-hero text-[8vw] text-yellow-400 leading-none tracking-tighter">Make Your Move.</span></a>
   <a href="/register" class="inline-block mt-4 no-underline bg-white text-[#0A0F1A] font-semibold rounded-full px-8 py-4 text-[max(16px,1.8vw)] transition-colors hover:bg-amber-400">Start Your Child's Journey <span style="display:inline-block;vertical-align:middle"> →</span></a>
 </section>
 

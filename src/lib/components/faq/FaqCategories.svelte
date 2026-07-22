@@ -34,29 +34,33 @@
 		display: inline-flex;
 		align-items: center;
 		padding: 8px 16px;
-		border: none;
+		border: 1px solid var(--hairline);
 		border-radius: 8px;
-		background: var(--surface-card);
+		background: transparent;
 		color: var(--ink);
 		font-size: 13px;
 		font-weight: 500;
 		line-height: 1.4;
 		white-space: nowrap;
 		cursor: pointer;
-		transition: background 160ms ease, color 160ms ease;
+		transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 	}
 
 	.tab:hover {
-		background: color-mix(in srgb, var(--surface-card) 88%, var(--primary));
+		border-color: var(--primary);
+		color: var(--primary);
 	}
 
 	.tab-active {
+		border-color: var(--primary);
 		background: var(--primary);
 		color: var(--on-primary);
 	}
 
 	.tab-active:hover {
 		background: var(--primary-active);
+		border-color: var(--primary-active);
+		color: var(--on-primary);
 	}
 
 	@media (--sm-down) {

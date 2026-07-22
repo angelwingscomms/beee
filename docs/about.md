@@ -1,14 +1,14 @@
-# BEEE® Spectacular Chess Championship Abuja 2026 — Complete Reference
+# BEEE® Spectacular Chess Championship Abuja 2026 yay, Complete Reference
 
 > **BEEE** = **B**e **E**verything **E**xcellent **E**very Day
 
-This document is the authoritative source for **everything** about the BEEE Spectacular Chess Championship Abuja 2026 — the event, its programmes, participants, registration, partners, design, and technical implementation. Anyone (human or AI) reading this should be able to speak about the championship with complete authority.
+This document is the authoritative source for **everything** about the BEEE Spectacular Chess Championship Abuja 2026 , the event, its programmes, participants, registration, partners, design, and technical implementation. Anyone (human or AI) reading this should be able to speak about the championship with complete authority.
 
 ---
 
 ## 1. Overview
 
-The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth development experience that combines competitive chess with AI-powered learning, leadership development, mentorship, and personal growth. It is **not just a chess tournament** — it is a structured developmental journey for children aged **10–14 years** in Abuja, Nigeria.
+The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth development experience that combines competitive chess with AI-powered learning, leadership development, mentorship, and personal growth. It is **not just a chess tournament** , it is a structured developmental journey for children aged **10–14 years** in Abuja, Nigeria.
 
 **Tagline:** *More Than a Chess Championship*
 **Philosophy:**
@@ -24,7 +24,7 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Organiser** | BEEE (Be Everything Excellent Every Day) |
 | **Age range** | 10–14 years (grouped: 10–11 and 12–14) |
 | **Venue** | National Stadium, Abuja |
-| **Grand Finale date** | October 10, 2026 |
+| **Grand Finale date** | October 2026 |
 | **Online coaching begins** | July 28, 2026 |
 | **Live preliminaries** | September 2026 |
 | **Registration fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
@@ -38,9 +38,9 @@ Unlike conventional chess championships that end with a trophy, BEEE participant
 
 | Platform | Role |
 |---|---|
-| **e4™** | AI chess coach — real-time move analysis, personalised training, game insights |
-| **TEAMUP™** | Development programme — Technology, Enterprise, Art, Mentorship, Upskill |
-| **Taskify™** | Digital Development Passport — tracks milestones, badges, certificates |
+| **e4™** | AI chess coach , real-time move analysis, personalised training, game insights |
+| **TEAMUP™** | Development programme , Technology, Enterprise, Art, Mentorship, Upskill |
+| **Taskify™** | Digital Development Passport , records every badge, milestone, and certificate won |
 
 These three tools work together: e4 trains the chess mind, TEAMUP develops the whole child, and Taskify documents the journey.
 
@@ -79,7 +79,7 @@ The championship follows a structured **5-stage pathway**:
 - Participants develop collaboration, coordination, strategic communication, and teamwork
 - Finalists compete for championship positions
 
-### Stage 5: Grand Finale (October 10, 2026)
+### Stage 5: Grand Finale (October 2026)
 - Immersive live championship experience at National Stadium, Abuja
 - Staged, filmed, and celebrated unlike conventional chess competitions
 - Finalists compete for championship honours
@@ -89,7 +89,7 @@ The championship follows a structured **5-stage pathway**:
 
 ## 3. The Three Platforms
 
-### 3.1 e4™ — AI Chess Coach
+### 3.1 e4™ , AI Chess Coach
 
 e4 is an AI-assisted chess learning platform where players compete against a virtual opponent while being mentored by an AI coach.
 
@@ -98,7 +98,7 @@ e4 is an AI-assisted chess learning platform where players compete against a vir
 - Analyses mistakes in real time
 - Answers questions via **voice and text**
 - Provides step-by-step strategy coaching
-- Deep game analysis — breaks down every move
+- Deep game analysis , breaks down every move
 - Plays against AI or real opponents
 - Auto-generates custom puzzles from real game mistakes
 - Same engine-backed analysis top players use
@@ -108,7 +108,7 @@ e4 is an AI-assisted chess learning platform where players compete against a vir
 - Master sophisticated strategies and tactical patterns
 - Train like the pros with engine-backed analysis
 
-### 3.2 TEAMUP™ — Development Programme
+### 3.2 TEAMUP™ , Development Programme
 
 TEAMUP stands for **T**echnology, **E**nterprise, **A**rt, **M**entorship, **U**pskill. It is the developmental component designed to help participants grow beyond the chessboard.
 
@@ -132,7 +132,7 @@ TEAMUP stands for **T**echnology, **E**nterprise, **A**rt, **M**entorship, **U**
 
 Participants are automatically enrolled upon registration (strongly encouraged but not compulsory).
 
-### 3.3 Taskify™ — Digital Development Passport
+### 3.3 Taskify™ , Digital Development Passport
 
 A digital record of every participant's developmental journey throughout the championship cycle.
 
@@ -193,11 +193,10 @@ Every participant plays for more than the championship title. A full spectrum of
 - **First name** (parent/guardian)
 - **Last name** (parent/guardian)
 - **School name** (of the participant)
-- **School proprietor's phone** — used to verify school participation
-- **Parent's phone number** — with international country code selector
-- **Parent's email** — or sign in with Google
-- **Password** — minimum 8 characters
-- **Partner code** (optional) — enter a partner's referral code for 10% discount
+- **Parent's phone number** , with international country code selector
+- **Parent's email** , or sign in with Google
+- **Password** , minimum 8 characters
+- **Partner code** (optional) , enter a partner's referral code for 10% discount
 
 ### 5.3 Registration Fee
 - **Standard:** ₦15,000 per participant
@@ -208,7 +207,8 @@ Every participant plays for more than the championship title. A full spectrum of
 ### 5.4 Partner Code System
 - A partner code entered during registration provides a **10% discount**
 - The code is validated in real time via `/api/validate-partner`
-- The discount is visible immediately as a green callout: "10% discount applied — ₦1,500 off"
+- The discount is visible immediately as a green callout: "10% discount applied , ₦1,500 off"
+- Helper text under the partner code input reads: "Register through a Partner Registration Link and enjoy a 10% discount."
 - Invalid codes show an error message
 
 ### 5.5 Registration Confirmation Flow
@@ -223,8 +223,8 @@ Every participant plays for more than the championship title. A full spectrum of
 
 ### 5.6 Requirements
 - Participants must be **between 10 and 14 years old**
-- No prior chess experience required — categories support different skill levels
-- Nothing to bring — all equipment is provided
+- No prior chess experience required , categories support different skill levels
+- Nothing to bring , all equipment is provided
 - Registration closes once slots are filled
 
 ### 5.7 Multiple Registrations
@@ -251,10 +251,10 @@ Partners earn commissions on valid registrations made using their unique referra
 
 ### 6.3 Partner Dashboard
 Partners get access to:
-- **Partner code display** — their unique referral code and shareable link (`https://beeeproject.com/i/{code}`)
-- **Custom code** — ability to set a personalised partner code (e.g. "chesskids")
-- **Bank account settings** — where payouts are sent (account number, bank selection)
-- **Registered users list** — all players who registered using their code, showing name, school, email, and payment status
+- **Partner code display** , their unique referral code and shareable link (`https://beeeproject.com/i/{code}`)
+- **Custom code** , ability to set a personalised partner code (e.g. "chesskids")
+- **Bank account settings** , where payouts are sent (account number, bank selection)
+- **Registered users list** , all players who registered using their code, showing name, school, email, and payment status
 
 ### 6.4 Partner Signup
 - Can sign up with **email/password** or **Google OAuth**
@@ -277,9 +277,9 @@ Partners get access to:
 | **Both** | `c: ['rpb', 'fab']` | A parent who is also a partner |
 
 ### 7.3 Dashboard
-- `/dashboard` — Shows active registration, player info, status, partner status, links to settings and e4
-- `/dashboard/settings` — Update phone number
-- `/dashboard/partner` — Partner code, custom code setup, bank details, referred users
+- `/dashboard` , Shows active registration, player info, status, partner status, links to settings and e4
+- `/dashboard/settings` , Update phone number
+- `/dashboard/partner` , Partner code, custom code setup, bank details, referred users
 
 ---
 
@@ -330,9 +330,9 @@ These outcomes come from:
 ## 10. Communication
 
 Official communication channels:
-- **Email** — info@beeeproject.com
-- **Phone** — +234 802 092 0872
-- **WhatsApp** — via the championship coordination team
+- **Email** , info@beeeproject.com
+- **Phone** , +234 802 092 0872
+- **WhatsApp** , via the championship coordination team
 - **SMS**
 - **Online participant portals**
 - Social: @thebeeeproject (Instagram, Facebook, YouTube), beeeproject (X/Twitter)
@@ -435,14 +435,14 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 | **Welcome** | Open Sans (400) |
 
 ### 12.4 Visual Patterns
-- **Frosted glass** — nav bar with backdrop-blur and animated sheen
-- **Noise texture** — SVG fractal noise overlay on dark/soft sections
-- **Custom scrollbar** — thin orange `#F27830` scrollbar
-- **Custom cursor** — orange circle with hover expansion (hides native cursor)
-- **Spike mark** — cross-shaped decorative element used on feature cards
-- **Dark mode** — full `.dark` class palette toggle
-- **Animations** — GSAP ScrollTrigger, SplitText word reveals, staggered entrances, magnetic button hover, floating drift animations
-- **Responsive** — breakpoints at 768px (sm), 1024px (md), 1440px (lg)
+- **Frosted glass** , nav bar with backdrop-blur and animated sheen
+- **Noise texture** , SVG fractal noise overlay on dark/soft sections
+- **Custom scrollbar** , thin orange `#F27830` scrollbar
+- **Custom cursor** , orange circle with hover expansion (hides native cursor)
+- **Spike mark** , cross-shaped decorative element used on feature cards
+- **Dark mode** , full `.dark` class palette toggle
+- **Animations** , GSAP ScrollTrigger, SplitText word reveals, staggered entrances, magnetic button hover, floating drift animations
+- **Responsive** , breakpoints at 768px (sm), 1024px (md), 1440px (lg)
 
 ### 12.5 Component Patterns
 - **Buttons:** Pill-shaped, gradient orange primary, frosted-glass secondary, dark variant
@@ -459,13 +459,13 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 
-1. **General** — What is the championship, who can participate, age categories, venue, dates, equipment
-2. **Registration** — How to register, school registration, direct parent registration, deadline, fees, refund policy
-3. **TEAMUP** — What it is, when it begins, activities, compulsory or optional
-4. **Passport** — What is Taskify, what's recorded, parent access, importance, access for registered players
-5. **Competition** — How the championship works (6 stages), what happens after registration, certificates
-6. **Awards** — School awards, what participants can win
-7. **Parents & Schools** — Parent support, school benefits, progress tracking, partnership, school expectations
+1. **General** , What is the championship, who can participate, age categories, venue, dates, equipment
+2. **Registration** , How to register, school registration, direct parent registration, deadline, fees, refund policy
+3. **TEAMUP** , What it is, when it begins, activities, compulsory or optional
+4. **Passport** , What is Taskify, what's recorded, parent access, importance, access for registered players
+5. **Competition** , How the championship works (6 stages), what happens after registration, certificates
+6. **Awards** , School awards, what participants can win
+7. **Parents & Schools** , Parent support, school benefits, progress tracking, partnership, school expectations
 
 ---
 
@@ -474,7 +474,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 ### Public Pages
 | Route | Purpose |
 |---|---|
-| `/` | Homepage — hero, journey, platform cards, awards, philosophy, CTA |
+| `/` | Homepage , hero, journey, platform cards, awards, philosophy, CTA |
 | `/about` | About BEEE |
 | `/why-beee` | Why BEEE / About section (shared component) |
 | `/e4` | e4 AI Chess Coach feature page |
@@ -499,9 +499,9 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 ### Dashboard Pages
 | Route | Purpose |
 |---|---|
-| `/dashboard` | Main dashboard — registrations, status, actions |
-| `/dashboard/partner` | Partner dashboard — code, bank details, referred users |
-| `/dashboard/settings` | Account settings — update phone |
+| `/dashboard` | Main dashboard , registrations, status, actions |
+| `/dashboard/partner` | Partner dashboard , code, bank details, referred users |
+| `/dashboard/settings` | Account settings , update phone |
 
 ### Payment
 | Route | Purpose |
@@ -511,7 +511,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 ### Admin
 | Route | Purpose |
 |---|---|
-| `/i` | Admin — password-protected registration table |
+| `/i` | Admin , password-protected registration table |
 
 ---
 
@@ -539,22 +539,22 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 |---|---|
 | **BEEE** | Be Everything Excellent Every Day |
 | **e4™** | AI-powered chess coaching platform |
-| **TEAMUP™** | Technology, Enterprise, Art, Mentorship, Upskill — development programme |
+| **TEAMUP™** | Technology, Enterprise, Art, Mentorship, Upskill , development programme |
 | **Taskify™** | Digital Development Passport tracking milestones and achievements |
 | **Paystack** | Nigerian payment processor handling all transactions |
 | **Qdrant** | Vector database used as the primary datastore |
 | **Partner** | Referral affiliate earning commissions on registrations |
 | **Reg Point** | A registration record in the database |
 | **User Point** | A user account record in the database |
-| **Grand Finale** | The championship's culminating live event on October 10, 2026 |
+| **Grand Finale** | The championship's culminating live event in October 2026 |
 
 ---
 
 ## 17. Related Documents
 
-- `docs/data-model.md` — Detailed Qdrant data model, entity diagram, lifecycle
-- `docs/champ.md` — Original championship prospectus document
-- `src/lib/data/faq.ts` — All FAQ questions and answers (single source of truth)
+- `docs/data-model.md` , Detailed Qdrant data model, entity diagram, lifecycle
+- `docs/champ.md` , Original championship prospectus document
+- `src/lib/data/faq.ts` , All FAQ questions and answers (single source of truth)
 
 ---
 

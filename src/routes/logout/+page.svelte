@@ -11,10 +11,6 @@
   });
 </script>
 
-<svelte:head>
-  <title>Signing out — BEEE</title>
-</svelte:head>
-
 <div class="shell">
   <p>Signing out…</p>
 </div>

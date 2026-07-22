@@ -58,11 +58,6 @@
 }`;
 </script>
 
-<svelte:head>
-  <title>Design System — BEEE</title>
-  <meta name="robots" content="noindex" />
-</svelte:head>
-
 <div class="page-shell">
   <nav class="top-nav">
     <div class="container nav-inner">

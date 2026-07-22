@@ -25,23 +25,23 @@ export async function confirm(reference: string, platform?: App.Platform, phones
 	console.log(`[confirm] ═══ confirm START ═══ reference=${reference}`);
 	const reg = await get<Registration>(reference);
 	if (!reg) {
-		console.warn(`[confirm] No local registration for ${reference} — 404`);
+		console.warn(`[confirm] No local registration for ${reference} , 404`);
 		return { ok: false, code: 404, error: 'Registration not found' };
 	}
 	if (reg.st === 'i') {
-		console.log(`[confirm] ${reference} already paid (idempotent) — STOP`);
+		console.log(`[confirm] ${reference} already paid (idempotent) , STOP`);
 		return { ok: true, status: 'already' };
 	}
 
 	console.log(`[confirm] Verifying with Paystack reference=${reference}...`);
 	const verified = await paystack_verify(reference);
 	if (verified.status !== 'success') {
-		console.warn(`[confirm] Paystack verify not successful: ${verified.status} — 402`);
+		console.warn(`[confirm] Paystack verify not successful: ${verified.status} , 402`);
 		return { ok: false, code: 402, error: `Payment not successful: ${verified.status}` };
 	}
 
 	if (verified.amount !== reg.amt) {
-		console.error(`[confirm] Amount mismatch for ${reference}: expected ${reg.amt}, got ${verified.amount} — 400`);
+		console.error(`[confirm] Amount mismatch for ${reference}: expected ${reg.amt}, got ${verified.amount} , 400`);
 		return { ok: false, code: 400, error: 'Amount mismatch' };
 	}
 

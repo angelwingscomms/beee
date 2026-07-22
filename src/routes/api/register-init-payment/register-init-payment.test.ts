@@ -136,7 +136,7 @@ describe('register-init-payment partner code validation', () => {
         expect(d.discounted).toBe(true);
     });
 
-    it('B5: never stores the password as plaintext — it is bcrypt-hashed', async () => {
+    it('B5: never stores the password as plaintext , it is bcrypt-hashed', async () => {
         const { POST } = await import('./+server');
         await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
@@ -186,7 +186,7 @@ describe('register-init-payment partner code validation', () => {
         expect(lastCreate.schoolEmail).toBeUndefined();
     });
 
-    it('B14: client-supplied `v` is ignored — server owns the field (dead field is not an input vector)', async () => {
+    it('B14: client-supplied `v` is ignored , server owns the field (dead field is not an input vector)', async () => {
         const { POST } = await import('./+server');
         await POST(mock_handler({
             firstName: 'John', lastName: 'Doe', email: 'john@example.com',
@@ -217,12 +217,12 @@ describe('register-init-payment partner code validation', () => {
         const { POST } = await import('./+server');
         const res = await POST(mock_handler({
             firstName: 'Kid', lastName: 'Two', school: 'School C',
-            // no email, no phone — both should come from the session user
+            // no email, no phone , both should come from the session user
         }, { user: { email: 'mom@example.com', ph: ['2348011112222'] } }) as any);
         expect(res.status).toBe(200);
         const d = await res.json();
         expect(d.success).toBe(true);
-        // Phone is no longer stored on the Registration — it lives on the User.
+        // Phone is no longer stored on the Registration , it lives on the User.
         expect(lastCreate.p).toBeUndefined();
         expect(lastCreate.e).toBe('mom@example.com');
     });
@@ -235,7 +235,7 @@ describe('register-init-payment partner code validation', () => {
         expect(res.status).toBe(200);
         const d = await res.json();
         expect(d.success).toBe(true);
-        // No phone stored on the Registration — it lives on the User, set at confirm.
+        // No phone stored on the Registration , it lives on the User, set at confirm.
         expect(lastCreate.p).toBeUndefined();
     });
 });

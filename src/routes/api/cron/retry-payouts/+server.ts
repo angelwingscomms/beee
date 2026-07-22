@@ -22,7 +22,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
     console.warn(`[cron/retry-payouts] REJECTED: CRON_SECRET not configured in production`);
     return json({ error: 'CRON_SECRET not configured' }, { status: 401 });
   } else {
-    console.log(`[cron/retry-payouts] dev mode with no CRON_SECRET — allowing`);
+    console.log(`[cron/retry-payouts] dev mode with no CRON_SECRET , allowing`);
   }
 
   console.log(`[cron/retry-payouts] invoking retry_failed_payouts...`);

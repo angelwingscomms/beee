@@ -395,7 +395,7 @@ export async function find_or_create_player_user(email: string, name: string, pa
     return existing.i;
   }
   const user_id = new_id();
-  console.log(`[find_or_create_player_user] No existing user — creating new player id=${user_id} c=['rpb'] password_set=${!!password_hash}`);
+  console.log(`[find_or_create_player_user] No existing user , creating new player id=${user_id} c=['rpb'] password_set=${!!password_hash}`);
   const u: User = { s: 'u', e: email, d: Date.now(), c: ['rpb'] };
   if (password_hash) u.p = password_hash;
   if (phones?.length) u.ph = phones;

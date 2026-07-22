@@ -59,7 +59,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     const phoneReal = phone && !/^\d{1,3}$/.test(phone) ? phone : '';
     console.log(`[register-init-payment] normalized phone: raw="${phone}" real="${phoneReal}"`);
     // Logged-out registrations must supply a phone on the form. For logged-in
-    // parents the field is hidden — the phone resolves later from the session
+    // parents the field is hidden , the phone resolves later from the session
     // or the Paystack metadata at confirmation time.
     if (!sessionEmail && !phoneReal) {
         console.warn(`[register-init-payment] Rejected: missing phone for logged-out registration`);
@@ -91,7 +91,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         const raw = String(data.partnerCode).trim();
         const m = raw.match(/\/i\/([^/?#\s]+)/);
         const code = m ? m[1] : raw;
-        console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} (normalized: ${code}) — looking up affiliate`);
+        console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} (normalized: ${code}) , looking up affiliate`);
         const affs = await search_by_payload<User>({ s: 'u', ac: code });
         const valid = affs.some(u => u.c?.includes('fab'));
         console.log(`[register-init-payment] affiliate candidates found: ${affs.length}, valid(fab): ${valid}`);
@@ -104,7 +104,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         ac = code;
         console.log(`[register-init-payment] discount applied: amount_kobo now ${amount_kobo}`);
     } else {
-        console.log(`[register-init-payment] no partner code — using base amount_kobo ${amount_kobo}`);
+        console.log(`[register-init-payment] no partner code , using base amount_kobo ${amount_kobo}`);
     }
 
     const i = new_id();
@@ -113,14 +113,13 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
 
     // Store the registration locally as PENDING, including the password.
     // The password lives only in our own DB and is bcrypt-hashed on payment
-    // confirmation — it is NEVER sent to Paystack as transaction metadata.
+    // confirmation , it is NEVER sent to Paystack as transaction metadata.
     const pending: Registration = {
         s: 'reg',
         fn: data.firstName,
         ln: data.lastName,
         sn: data.school,
         e: email,
-        pp: data.proprietorPhone,
         amt: amount_kobo,
         st: 'r',
         v: 0,
@@ -139,7 +138,7 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     console.log(`[register-init-payment] PENDING registration written: ${i}`);
 
     const callback_url = `${url.origin}/payment/callback`;
-    // Only a reference goes to Paystack — no PII, no password.
+    // Only a reference goes to Paystack , no PII, no password.
     console.log(`[register-init-payment] calling paystack_init for ${i} | email=${email} amount_kobo=${amount_kobo} callback=${callback_url}`);
     const result = await paystack_init(email, amount_kobo, i, p_name, callback_url, { a: 'beee', regId: i, phone: phoneReal });
     console.log(`[register-init-payment] phone sent to Paystack metadata: "${phoneReal}"`);

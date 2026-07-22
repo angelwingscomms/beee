@@ -3,6 +3,11 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
+<svelte:head>
+  <title>{$page.status === 404 ? 'Page not found' : 'Something went wrong'} | BEEE</title>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <section class="err">
   <p class="err-code">{$page.status}</p>
   <h1 class="err-title">{$page.status === 404 ? 'This square is empty.' : 'Something went wrong.'}</h1>

@@ -8,7 +8,7 @@
   const payout_naira = (MIN_TRANSFER_AMNT / 100).toLocaleString();
   const fee_naira = (DEV_REG_FEE / 100).toLocaleString();
   // Commissions are only paid on referred registrations, which always carry the
-  // partner discount — so the 10% commission is of the discounted fee, not the full one.
+  // partner discount , so the 10% commission is of the discounted fee, not the full one.
   const commission_naira = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100) * COMMISSION_PCT / 100).toLocaleString();
 
   let email = $state('');
@@ -61,11 +61,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Partner Programme — BEEE</title>
-  <meta name="description" content="Join the BEEE Partner Programme. Earn ₦{commission_naira} per registration you refer." />
-</svelte:head>
-
 <div class="partner-page">
   <section class="partner-hero" use:motionFadeUp>
     <div class="partner-grid">
@@ -75,7 +70,7 @@
         <p class="partner-intro">
           Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.
           {#if dev}
-            In test mode you receive a ₦{payout_naira} payout for every referral — players pay the ₦{fee_naira} test fee.
+            In test mode you receive a ₦{payout_naira} payout for every referral , players pay the ₦{fee_naira} test fee.
           {:else}
             You earn ₦{commission_naira} per registration you refer.
           {/if}

@@ -170,7 +170,7 @@
 				<img src="/logo.svg" alt="BEEE" />
 				<span class="logo-tm">TM</span>
 			</span>
-			<span id="brand-tagline" class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700;display:block;line-height:1"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<img src="/tick.png" alt="" style="display:inline-block;width:1.1em;height:auto;vertical-align:baseline;line-height:0;margin:0 -0.54em 0 0">cellent</span> <span style="color:var(--primary)">Every Day</span></span>
+			<span id="brand-tagline" class="text-[20px]" style="font-family:'GC Bumble',sans-serif;font-weight:700;display:block;line-height:1"><span style="color:var(--ink)">Be</span> <span style="color:var(--primary)">Everything</span> <span style="color:var(--ink)">E<img src="/tick.webp" alt="" style="display:inline-block;width:1.1em;height:auto;vertical-align:baseline;line-height:0;margin:0 -0.54em 0 0">cellent</span> <span style="color:var(--primary)">Every Day</span></span>
 			</a>
 
 			<h1 id="event-title" class="championship-title flex flex-col">
@@ -178,7 +178,7 @@
   <span class="text-[20px] font-championship" style="color:white">Abuja 2026</span>
 </h1>
 
-			<p class="welcome-text">Register your player for the 2026 Championship. Coaching is underway — your child gets access the day you register.</p>
+			<p class="welcome-text">Register your player for the 2026 Championship. Coaching is underway , your child gets access the day you register.</p>
 
 			<div class="cards-row">
 				<div class="flex flex-col gap-4">
@@ -208,7 +208,7 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">October 10, 2026</span>
+									<span class="journey-date">October 2026</span>
 									<span class="journey-name">Championship Grand Finale</span>
 								</div>
 							</div>
@@ -223,7 +223,7 @@
 					<div class="flex items-baseline gap-x-2">
 					<h3 class="teamup-heading">About BEEE TEAMUP</h3>
 					<span class="relative inline-flex items-end shrink-0">
-						<img src="/flower-gear.png" alt="" class="teamup-icon" />
+						<img src="/flower-gear.webp" alt="" class="teamup-icon" />
 						<sup class="absolute top-0 -right-2.5 text-[6.5px] leading-none font-semibold" style="color:var(--primary)">TM</sup>
 					</span>
 				</div>
@@ -241,7 +241,7 @@
 
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
-				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled — places are limited.</li>
+				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled , places are limited.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>

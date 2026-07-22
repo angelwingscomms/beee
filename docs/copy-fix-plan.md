@@ -72,7 +72,7 @@ Current: "T.E.A.M.U.P. — Community & Partnerships · TASKIFY — Organization 
 
 > e4™ — Your child's AI chess coach: live analysis, training, and practice.
 > TEAMUP™ — The development programme: Technology, Enterprise, Art, Mentorship, Upskill.
-> Taskify™ — The digital passport recording every badge, milestone, and certificate.
+> Taskify™ — The digital passport recording every badge, milestone, and certificate won.
 
 And "It is an integrated development ecosystem built on three proprietary platforms of learning." → "One championship, three tools that work together."
 

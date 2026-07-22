@@ -11,7 +11,7 @@
         <h2 class="champ-about-title">Why BEEE?</h2>
       </div>
       <div class="champ-about-text">
-        <p class="champ-about-intro">Every child holds extraordinary potential. We build strategic thinkers, confident leaders, and lifelong learners — one move at a time.</p>
+        <p class="champ-about-intro">Every child holds extraordinary potential. We build strategic thinkers, confident leaders, and lifelong learners , one move at a time.</p>
         <blockquote class="champ-about-quote">Chess is not the destination. It is the platform.</blockquote>
         <div class="champ-about-vision">
           <span class="champ-about-eyebrow">OUR VISION</span>

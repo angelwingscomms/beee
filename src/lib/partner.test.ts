@@ -57,7 +57,7 @@ const AFF = {
 };
 
 function reg(over: Partial<any> = {}): Registration {
-  return { s: 'reg', e: 'player@example.com', fn: 'Play', ln: 'Er', pp: '+234801234567', st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', ...over };
+  return { s: 'reg', e: 'player@example.com', fn: 'Play', ln: 'Er', st: 'r', v: 0, d: Date.now(), amt: 1_350_000, ac: 'AFF123', ...over };
 }
 
 describe('process_partner_payout', () => {
@@ -204,10 +204,10 @@ describe('bug regressions', () => {
 
   // B11: cross-email self-referral. Email-match self-referral IS blocked (see
   // the "blocks self-referral" test above). But a partner registering a second
-  // account under a DIFFERENT email is currently NOT detected — that requires
+  // account under a DIFFERENT email is currently NOT detected , that requires
   // authenticated linking. Documented here as a known limitation pending the
   // product decision; the assertion pins the CURRENT permissive behavior.
-  it('B11: cross-email self-referral is currently allowed (known gap — needs auth to prevent)', async () => {
+  it('B11: cross-email self-referral is currently allowed (known gap , needs auth to prevent)', async () => {
     const { process_partner_payout } = await import('./partner');
     await process_partner_payout(reg({ e: 'other-alt@example.com' }), 'reg_xemail', undefined);
     expect(mock_transfer).toHaveBeenCalledTimes(1);

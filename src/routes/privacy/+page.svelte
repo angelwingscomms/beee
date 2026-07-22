@@ -2,11 +2,6 @@
   import Button from '$lib/components/Button.svelte';
 </script>
 
-<svelte:head>
-  <title>Privacy Policy — BEEE</title>
-  <meta name="description" content="How BEEE collects, uses, and protects your personal data when you register for the BEEE Spectacular Chess Championship Abuja 2026." />
-</svelte:head>
-
 <div class="legal">
   <div class="container legal-inner">
     <h1 class="legal-title">Privacy Policy</h1>

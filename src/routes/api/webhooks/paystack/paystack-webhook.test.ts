@@ -75,7 +75,7 @@ describe('Paystack webhook /api/webhooks/paystack', () => {
         expect(process_payout).toHaveBeenCalledTimes(1);
     });
 
-    it('W4: charge.success is idempotent — a second delivery does not double-create', async () => {
+    it('W4: charge.success is idempotent , a second delivery does not double-create', async () => {
         verify.mockResolvedValue({ status: 'success', reference: REG_ID, amount: 1_350_000, customer: { email: '' }, metadata: {} });
         const { POST } = await import('./+server');
         await POST({ request: post({ event: 'charge.success', data: { reference: REG_ID } }) } as any);

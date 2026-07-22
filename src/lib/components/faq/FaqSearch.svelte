@@ -53,10 +53,10 @@
 		align-items: center;
 		width: 100%;
 		max-width: 480px;
-		height: 48px;
+		height: 52px;
 		border-radius: 10px;
 		border: 1px solid var(--hairline);
-		background: var(--canvas);
+		background: var(--surface-card);
 		transition: border-color 160ms ease, box-shadow 160ms ease;
 	}
 
