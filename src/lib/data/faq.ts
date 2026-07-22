@@ -16,7 +16,7 @@ export const cs: FaqC[] = [
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
 			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
 			{ q: 'Where is the championship held?', a: 'National Stadium Abuja.' },
-			{ q: 'What are the championship dates?', a: 'Online coaching is underway, with live preliminary competitions in September and the Championship Grand Finale on October 10, 2026.' },
+			{ q: 'What are the championship dates?', a: 'Online coaching runs from 1st to 29th August, with live preliminary competitions in September and the Championship Grand Finale in October 2026.' },
 			{ q: 'What should participants bring to the championship?', a: 'Nothing. All equipment is provided.' },
 		]
 	},
@@ -24,8 +24,8 @@ export const cs: FaqC[] = [
 		i: 'registration', n: 'Registration', qs: [
 			{ q: 'How do I register?', a: 'Complete registration through the official championship registration portal at /register.' },
 			{ q: 'Can a school register multiple participants?', a: 'Yes. Schools can register multiple eligible students.' },
-			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register — you don’t need to go through a school.' },
-			{ q: 'Is there a registration deadline?', a: 'Yes. Registration closes once available slots are filled — places are limited.' },
+			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register , you don’t need to go through a school.' },
+			{ q: 'Is there a registration deadline?', a: 'Registration closes 29 Aug. 2026. Participants may join the championship at any time during the period of Online Training. The earlier you register, the more time your child has to learn and improve.' },
 			{ q: 'Is there a registration fee?', a: `Yes. The registration fee is ₦${REG_AMOUNT.toLocaleString()}. Participants with a partner code pay ₦${discounted_amount.toLocaleString()}.` },
 			{ q: 'What is the refund policy?', a: 'Fees are non-refundable, except if BEEE cancels the event. See our Terms for details.' },
 		]
@@ -34,12 +34,12 @@ export const cs: FaqC[] = [
 		i: 'teamup', n: 'TEAMUP', qs: [
 			{ q: 'What is TEAMUP?', a: 'TEAMUP stands for Technology, Enterprise, Art, Mentorship, and Upskill. It is the developmental component of the championship designed to help participants grow beyond the chessboard.' },
 			{ q: 'When does TEAMUP begin?', a: 'Participants gain access to the programme immediately after successful registration.' },
-			{ q: 'What activities are included?', a: 'Activities include mentored learning, chess training, leadership exercises, innovation challenges, collaborative projects, personal development activities, project-based challenges, and assessments and milestone tracking.' },
+			{ q: 'What activities are included?', a: 'Activities include mentored learning, chess training, leadership exercises, innovation challenges, collaborative projects, personal development activities, project-based challenges, assessments and milestone tracking.' },
 			{ q: 'Is participation in TEAMUP compulsory?', a: 'No, but it is strongly encouraged as it forms an important part of the championship experience.' },
 		]
 	},
 	{
-		i: 'passport', n: 'Passport', qs: [
+		i: 'passport', n: 'Taskify', qs: [
 			{ q: 'What is the Taskify™ Development Passport?', a: 'The Development Passport is a digital record of a participant\'s developmental journey throughout the championship cycle.' },
 			{ q: 'What information is recorded in the passport?', a: 'The passport contains attendance records, developmental milestones, achievement badges, skills acquired, assessment results, project participation, leadership activities, mentorship engagement, certificates earned, and other notable accomplishments.' },
 			{ q: 'Can parents access the passport?', a: 'Yes. Parents and guardians will have access to their child\'s Development Passport and progress records.' },
@@ -48,8 +48,16 @@ export const cs: FaqC[] = [
 		]
 	},
 	{
+		i: 'e4', n: 'e4', qs: [
+			{ q: 'What is e4™?', a: 'e4™ is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice for every participant.' },
+			{ q: 'How does e4 help my child improve?', a: 'e4 analyses every move as your child plays , flagging mistakes, suggesting better plans, and answering questions by voice or text.' },
+			{ q: 'What are the benefits of e4?', a: 'e4 offers guided AI instruction, step-by-step strategy coaching, engine-backed game analysis, virtual and real opponents, and custom puzzles generated from your child\'s own games.' },
+			{ q: 'When do participants get access to e4?', a: 'Registration unlocks e4 AI chess coaching immediately, alongside the TEAMUP programme and the Taskify Development Passport.' },
+		]
+	},
+	{
 		i: 'competition', n: 'Competition', qs: [
-			{ q: 'How does the championship work?', a: 'The championship follows six stages: (1) Registration — participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn — participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete — live preliminary chess championship rounds held in September 2026. (4) Evolve — qualifying participants advance through elimination tournaments. (5) Qualify — elite qualifiers train for finalist positions. (6) Grand Finale — finalists participate in the immersive championship experience.' },
+			{ q: 'How does the championship work?', a: 'The championship follows six stages: (1) Registration , participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn , participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete , live preliminary chess championship rounds held in September 2026. (4) Evolve , qualifying participants advance through elimination tournaments. (5) Qualify , elite qualifiers train for finalist positions. (6) Grand Finale , finalists participate in the immersive championship experience.' },
 			{ q: 'What happens after registration?', a: 'Participants begin the TEAMUP Development Programme and prepare for championship activities and competition stages.' },
 			{ q: 'Are certificates issued?', a: 'Yes. Participants receive certificates of participation, achievement, and other forms of recognition.' },
 		]
@@ -63,7 +71,7 @@ export const cs: FaqC[] = [
 	{
 		i: 'parents', n: 'Parents & Schools', qs: [
 			{ q: 'How can parents support participants?', a: 'Parents can monitor progress through the Development Passport, encourage participation, and support learning activities throughout the programme.' },
-			{ q: 'How will schools benefit?', a: 'Schools gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and student achievement.' },
+			{ q: 'How will parents benefit?', a: 'Children gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and other meaningful achievements.' },
 			{ q: 'How will progress be tracked?', a: 'Progress is tracked through the participant\'s Taskify Development Passport, which records attendance, milestones, badges, assessment results, and other achievements.' },
 			{ q: 'Why should my school partner with BEEE?', a: 'In addition to enhancing your school\'s summer holiday programme with a unique blend of learning, leadership development, and competitive chess, participating schools enjoy partnership benefits, recognition opportunities, and dedicated support throughout the championship. Schools interested in becoming participating institutions are encouraged to contact the Championship Coordination Team for full partnership details.' },
 			{ q: 'What is expected of participating schools?', a: 'Participating schools are expected to support student registration, encourage engagement with the TEAMUP programme, facilitate participation in competition stages, and celebrate student achievements throughout the championship.' },

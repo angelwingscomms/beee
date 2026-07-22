@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { cs, filterBySearch, filterByCategory } from '$lib/data/faq';
 
 describe('faq data integrity', () => {
-	it('has 7 categories', () => {
-		expect(cs.length).toBe(7);
+	it('has 8 categories', () => {
+		expect(cs.length).toBe(8);
 	});
 
 	it('every category has an id, name, and questions', () => {
@@ -88,7 +88,7 @@ describe('combined filters', () => {
 		const cat = filterByCategory(cs, 'registration');
 		const searched = filterBySearch(cat, 'register');
 		expect(searched.length).toBe(1);
-		expect(searched[0].qs.length).toBe(3);
+		expect(searched[0].qs.length).toBe(4);
 		expect(searched[0].qs[0].q.toLowerCase()).toContain('register');
 	});
 });
