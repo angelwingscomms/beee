@@ -16,7 +16,7 @@
   let section: HTMLElement | undefined = $state();
   let l1: HTMLElement | undefined = $state();
   let l2: HTMLElement | undefined = $state();
-  let labels: HTMLElement[] = [];
+  let labels: HTMLElement[] = $state([]);
   let exitLink: HTMLElement | undefined = $state();
 
   onMount(() => {

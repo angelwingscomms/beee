@@ -14,7 +14,7 @@
   ];
 
   let list: HTMLElement | undefined = $state();
-  let rows: HTMLElement[] = [];
+  let rows: HTMLElement[] = $state([]);
   let activeIndex = $state(0);
 
   onMount(() => {

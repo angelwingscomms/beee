@@ -121,6 +121,7 @@
     position: relative;
     z-index: var(--z-content);
     padding-top: 28svh;
+    padding-bottom: 140px;
   }
 
   @media (--sm-down) {

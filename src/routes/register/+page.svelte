@@ -454,6 +454,7 @@
   .reg-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-auto-flow: dense;
     gap: var(--gutter);
     align-items: start;
   }

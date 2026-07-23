@@ -21,8 +21,8 @@
   let hexOutline: SVGPolygonElement | undefined = $state();
   let hexFill: SVGPolygonElement | undefined = $state();
   let beamEl: HTMLElement | undefined = $state();
-  let threadEls: HTMLElement[] = [];
-  let cloneEls: HTMLElement[] = [];
+  let threadEls: HTMLElement[] = $state([]);
+  let cloneEls: HTMLElement[] = $state([]);
 
   onMount(() => {
     if (typeof sessionStorage === 'undefined' || sessionStorage.getItem('beee_intro') === '1') {
