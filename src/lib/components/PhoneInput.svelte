@@ -243,10 +243,13 @@
 
 	.phone-label {
 		display: block;
-		margin-bottom: 6px;
-		font-size: 12px;
-		font-weight: normal;
-		color: var(--body-strong);
+		margin-bottom: 8px;
+		font-family: var(--font-mono);
+		font-size: var(--fs-micro);
+		font-weight: 500;
+		letter-spacing: var(--ls-mono);
+		text-transform: uppercase;
+		color: var(--muted);
 		cursor: pointer;
 		user-select: none;
 	}
@@ -256,68 +259,22 @@
 		gap: 0;
 		position: relative;
 		isolation: isolate;
-		border-radius: 8px;
+		border-radius: 12px;
+		background: color-mix(in srgb, var(--cloud-dim) 60%, transparent);
+		border: 1px solid var(--hairline);
+		transition: border-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
 	}
 
-	/* Frosted-glass background matching TextInput's .ti-bg */
 	.pi-bg {
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-		z-index: -1;
-		background: linear-gradient(135deg, rgba(30, 29, 26, 0.6) 0%, rgba(24, 23, 21, 0.45) 50%, rgba(30, 29, 26, 0.55) 100%);
-		backdrop-filter: blur(36px) saturate(1.3);
-		-webkit-backdrop-filter: blur(36px) saturate(1.3);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		box-shadow:
-			0 8px 40px rgba(0, 0, 0, 0.35),
-			0 0 40px rgba(255, 255, 255, 0.03),
-			inset 0 1px 0 rgba(255, 255, 255, 0.08),
-			inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-			inset 1px 0 0 rgba(255, 255, 255, 0.05),
-			inset -1px 0 0 rgba(255, 255, 255, 0.05);
-		overflow: hidden;
-		transition: border-color 150ms ease;
+		display: none;
 	}
 
-	.pi-bg::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-			background: linear-gradient(
-				105deg,
-				transparent 15%,
-				rgba(255, 255, 255, 0.04) 32%,
-				rgba(255, 255, 255, 0.08) 38%,
-				rgba(255, 255, 255, 0.04) 44%,
-				transparent 60%
-			);
-			background-size: 220% 100%;
-		animation: pi-sheen 5s ease-in-out infinite;
-		pointer-events: none;
+	.phone-field-row:focus-within {
+		border-color: var(--beam);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--beam) 20%, transparent);
 	}
 
-	.pi-bg::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-		background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
-		pointer-events: none;
-	}
-
-	@keyframes pi-sheen {
-		0% { background-position: 170% 0; }
-		50% { background-position: -70% 0; }
-		100% { background-position: 170% 0; }
-	}
-
-	.phone-field-row:focus-within .pi-bg {
-		border-color: var(--primary);
-	}
-
-	.invalid .pi-bg {
+	.invalid {
 		border-color: var(--error);
 	}
 
@@ -332,7 +289,7 @@
 		gap: 6px;
 		height: 40px;
 		padding: 0 10px;
-		border-radius: 8px 0 0 8px;
+		border-radius: 12px 0 0 12px;
 		background: transparent;
 		color: var(--ink);
 		cursor: pointer;
@@ -340,7 +297,6 @@
 		line-height: 40px;
 		outline: none;
 		white-space: nowrap;
-		color: #fff;
 	}
 
 	.country-trigger.error {
@@ -357,7 +313,7 @@
 		font-weight: 500;
 		font-size: 13px;
 		line-height: 40px;
-		color: #fff;
+		color: var(--muted);
 	}
 
 	.chevron {
@@ -470,11 +426,10 @@
 		min-width: 0;
 		height: 40px;
 		padding: 0 14px;
-		border-radius: 0 8px 8px 0;
+		border-radius: 0 12px 12px 0;
 		background: transparent;
-		color: #fff;
-		font-size: 12px;
-		line-height: 40px;
+		color: var(--ink);
+		font: 500 16px/40px var(--font-sans);
 		outline: none;
 	}
 

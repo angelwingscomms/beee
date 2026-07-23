@@ -55,24 +55,26 @@
 	<title>Payment {payment_state === 'success' ? 'Confirmed' : payment_state === 'failed' ? 'Failed' : 'Verifying'} , BEEE TEAMUP</title>
 </svelte:head>
 
-<main class="callback-shell">
+<main class="callback-shell rv-field-cloud">
 	<div class="callback-card">
 		{#if payment_state === 'verifying'}
-			<div class="loader" aria-hidden="true">Loading…</div>
-			<h1>Verifying payment…</h1>
-			<p>Please wait while we confirm your payment with Paystack.</p>
+			<svg class="hex-spinner" viewBox="0 0 96 96" width="24" height="24" aria-hidden="true">
+				<polygon points="94,48 71,87.84 25,87.84 2,48 25,8.16 71,8.16" fill="none" stroke="var(--beam)" stroke-width="4" />
+			</svg>
+			<h1 class="rv-d3">Verifying payment…</h1>
+			<p class="rv-body">Please wait while we confirm your payment with Paystack.</p>
 		{:else if payment_state === 'success'}
 			<div class="status-icon success" aria-hidden="true">✓</div>
-			<h1>Registration Confirmed!</h1>
-			<p>Your payment was successful. A confirmation email will be sent to you shortly.</p>
-			<p class="ref">Reference: <code>{data.reference}</code></p>
-			<a href="/" class="button-primary">Back to Home</a>
+			<h1 class="rv-d3">Registration Confirmed!</h1>
+			<p class="rv-body">Your payment was successful. A confirmation email will be sent to you shortly.</p>
+			<p class="rv-micro ref">Reference: <code>{data.reference}</code></p>
+			<a href="/" class="rv-btn rv-btn--beam felt">Back to Home</a>
 		{:else}
 			<div class="status-icon failed" aria-hidden="true">✗</div>
-			<h1>Payment Failed</h1>
-			<p>{error_msg || 'Something went wrong. Please try again.'}</p>
-			<p class="ref">No money left your account? Try again, or email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> and we'll sort it out.</p>
-			<a href="/" class="button-primary">Try Again</a>
+			<h1 class="rv-d3">Payment Failed</h1>
+			<p class="rv-body">{error_msg || 'Something went wrong. Please try again.'}</p>
+			<p class="rv-micro ref">No money left your account? Try again, or email <a href="mailto:info@beeeproject.com" class="rv-link">info@beeeproject.com</a> and we'll sort it out.</p>
+			<a href="/" class="rv-btn rv-btn--beam felt">Try Again</a>
 		{/if}
 	</div>
 </main>
@@ -96,26 +98,20 @@
 		display: block;
 		margin-bottom: 1rem;
 	}
-	.loader {
-		font-size: 1.5rem;
-		font-weight: 600;
-		color: var(--primary);
-		margin-bottom: 1rem;
-		animation: pulse 1.2s ease-in-out infinite;
+	.hex-spinner {
+		margin: 0 auto 1rem;
+		animation: hex-spin 1.6s linear infinite;
 	}
-	@keyframes pulse {
-		0%, 100% { opacity: 0.4; }
-		50% { opacity: 1; }
+	@keyframes hex-spin {
+		to { transform: rotate(360deg); }
 	}
 	.status-icon.success { color: var(--success); }
 	.status-icon.failed  { color: var(--error); }
 	.ref {
 		margin-top: 1rem;
-		font-size: 0.85rem;
-		opacity: 0.7;
+		color: var(--muted);
 	}
-	.button-primary {
-		display: inline-block;
+	.rv-btn {
 		margin-top: 1.5rem;
 	}
 </style>

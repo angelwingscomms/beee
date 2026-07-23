@@ -1,12 +1,10 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
   import { goto, invalidateAll } from '$app/navigation';
-  import regBg from '$lib/assets/images/register-bg.png?enhanced';
   import ConfirmationModal from '../../components/ConfirmationModal.svelte';
   import PhoneInput from '$lib/components/PhoneInput.svelte';
   import TextInput from '$lib/components/TextInput.svelte';
   import { motionFadeUp } from '$lib/actions/motion';
-  import Button from '$lib/components/Button.svelte';
   import { page } from '$app/stores';
   import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
   import { gen_partner_code } from '$lib/partner_code';
@@ -291,18 +289,18 @@
   }
 </script>
 
-<div class="overflow-x-hidden w-full max-w-full reg-page" style="background: url({regBg.img.src}) center center / cover no-repeat fixed">
-  <div class="reg-bg-overlay"></div>
-  <section class="reg-header" use:motionFadeUp>
-    <div class="container">
-      <p class="reg-event">BEEE Spectacular Chess Championship</p>
-      <h1 class="reg-title">Register for Abuja 2026</h1>
+<div class="overflow-x-hidden w-full max-w-full reg-page rv-field-cloud">
+  <section class="reg-header rv-section rv-section--flush" use:motionFadeUp>
+    <div class="rv-wrap">
+      <p class="rv-micro reg-event">REGISTRATION · ABUJA 2026</p>
+      <h1 class="rv-d2 reg-title">Take your seat.</h1>
+      <p class="rv-body-lg reg-sub">Three minutes, one form, and every platform unlocks.</p>
     </div>
   </section>
 
   <section class="reg-body">
     {#if loggedInUser}
-      <div class="container">
+      <div class="rv-wrap">
         <div class="reg-loggedin-note">
           Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong> , you're registering another player.
           <button type="button" class="reg-not-you" onclick={logoutGoogle}>Not you?</button>
@@ -314,7 +312,7 @@
         </div>
       </div>
     {/if}
-    <div class="container reg-grid">
+    <div class="rv-wrap reg-grid">
       <form
         class="reg-form"
         novalidate
@@ -353,9 +351,6 @@
               placeholder=""
               bind:value={ac}
               error={ace}
-              wrapperClass="!bg-white/10 !border-white/20"
-              labelClass="!text-white/60"
-              inputClass="!text-white placeholder:!text-white/30"
               oninput={handlePartnerInput}
             />
             {#if !ac.trim()}
@@ -368,7 +363,7 @@
               <span>Checking partner code…</span>
             </div>
           {:else if acValid && (baseAmount - AMOUNT) > 0}
-            <div class="reg-discount-callout valid">
+            <div class="rv-callout-ok reg-discount-callout valid">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>
               </svg>
@@ -385,31 +380,32 @@
         </div>
 
         {#if apiError}
-          <div class="reg-error" role="alert">{apiError}</div>
+          <div class="rv-error-text reg-error" role="alert">{apiError}</div>
         {/if}
 
-        <Button class="reg-submit" disabled={!allValid}>
-          Register
-        </Button>
+        <button type="submit" class="rv-btn rv-btn--beam rv-btn--big felt reg-submit" disabled={!allValid}>
+          Register &amp; continue to payment
+        </button>
         <div class="reg-fine">
-          <p>Online coaching begins 1 August 2026, players get access immediately on registration.</p>
+          <p class="rv-micro">Online coaching begins 1 August 2026, players get access immediately on registration.</p>
         </div>
       </form>
 
       <aside class="reg-summary" use:motionFadeUp>
+        <p class="rv-micro reg-summary-eyebrow">REGISTRATION · ABUJA 2026</p>
         <div class="reg-summary-price">
-          <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
-          <span class="reg-per">per participant</span>
+          <span class="rv-title rv-num reg-amount">₦{baseAmount.toLocaleString()}</span>
+          <span class="rv-micro reg-per">per participant</span>
         </div>
         <div class="reg-summary-note-wrap">
-          <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 29 August 2026.</p>
-          <p class="reg-summary-note">However, early registration is encouraged to give your child a richer and more rewarding learning experience and the opportunity to benefit from the complete coaching and training programme.</p>
+          <p class="rv-body reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 29 August 2026.</p>
+          <p class="rv-body reg-summary-note">However, early registration is encouraged to give your child a richer and more rewarding learning experience and the opportunity to benefit from the complete coaching and training programme.</p>
         </div>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div>
-            <strong>Age requirement</strong>
-            <p>Participants must be between 10 and 14 years old.</p>
+            <strong class="rv-title">Age requirement</strong>
+            <p class="rv-body">Participants must be between 10 and 14 years old.</p>
           </div>
         </div>
       </aside>
@@ -437,63 +433,45 @@
     position: relative;
     min-height: 100vh;
   }
-  .reg-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(10, 15, 26, 0.82) 0%, rgba(10, 15, 26, 0.62) 40%, rgba(10, 15, 26, 0.70) 100%);
-    pointer-events: none;
-  }
-  .reg-page > :not(.reg-bg-overlay) {
-    position: relative;
-    z-index: 1;
-  }
   .reg-header {
-    padding: 140px 0 0;
+    padding: calc(var(--section-pad) + 72px) 0 0;
     text-align: left;
   }
   .reg-event {
-    font-family: var(--font-registration);
-    font-size: clamp(13px, 1.2vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary);
+    color: var(--beam);
     margin: 0 0 8px;
   }
   .reg-title {
-    font-family: var(--font-hero);
-    font-size: clamp(2.6rem, 4vw, 3.8rem);
-    font-weight: 700;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
-    color: white;
-    margin: 0 0 10px;
+    margin: 0;
+  }
+  .reg-sub {
+    color: var(--muted);
+    margin-top: var(--space-3);
   }
   .reg-body {
-    padding: 56px 0 80px;
+    padding: var(--space-6) 0 var(--space-8);
   }
   .reg-grid {
     display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 48px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
     align-items: start;
   }
   .reg-loggedin-note {
     margin: 0 0 24px;
     padding: 14px 18px;
     border-radius: 10px;
-    background: rgba(93, 184, 166, 0.12);
-    color: #6fe0c4;
-    font-family: var(--font-registration);
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    color: var(--body-strong);
     font-size: 14px;
     line-height: 1.45;
   }
   .reg-loggedin-note strong {
-    color: #8ff0d8;
     font-weight: 600;
   }
 
   .reg-form {
+    grid-column: span 12;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -506,16 +484,6 @@
     flex-direction: column;
     gap: 12px;
   }
-  .reg-legend {
-    font-family: var(--font-registration);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 0;
-    margin-bottom: 4px;
-  }
   .reg-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -525,19 +493,19 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    font-family: var(--font-registration);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+    font-size: var(--fs-micro);
+    font-weight: 500;
+    letter-spacing: var(--ls-mono);
     text-transform: uppercase;
-    color: rgba(250, 249, 245, 0.72);
+    color: var(--muted);
   }
   .reg-divider::before,
   .reg-divider::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(250, 249, 245, 0.25);
+    background: var(--hairline);
   }
   .reg-partner-wrap {
     margin-top: -12px;
@@ -546,7 +514,7 @@
     margin: 6px 0 0;
     font-size: 13px;
     line-height: 1.4;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--muted);
   }
   .reg-partner-field {
     position: relative;
@@ -559,7 +527,7 @@
     align-items: center;
     pointer-events: none;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--muted-soft);
     transition: opacity 300ms ease;
   }
   .reg-partner-ph.fading {
@@ -570,12 +538,6 @@
     align-items: center;
     gap: 8px;
     margin-top: 8px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: rgba(93, 184, 114, 0.12);
-    color: #7ddf8a;
-    font-size: 13px;
-    line-height: 1.4;
   }
   .reg-discount-callout svg {
     flex-shrink: 0;
@@ -586,39 +548,33 @@
     color: var(--success);
   }
   .reg-discount-callout.invalid {
-    background: rgba(255, 55, 45, 0.12);
-    color: #ff6b6b;
+    border: 1px solid color-mix(in srgb, var(--error) 45%, transparent);
+    background: color-mix(in srgb, var(--error) 10%, transparent);
+    color: var(--error);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
   }
   .reg-discount-callout.invalid svg {
-    color: #ff6b6b;
-  }
-  .reg-error {
-    padding: 12px 16px;
-    border-radius: 8px;
-    background: rgba(255, 55, 45, 0.08);
     color: var(--error);
-    font-family: var(--font-registration);
-    font-size: 13px;
-    line-height: 1.4;
   }
   :global(.reg-submit) {
     width: 100%;
-    padding: 16px 24px;
-    font-family: var(--font-registration);
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
   }
 
   .reg-summary {
-    background: var(--surface-soft);
-    border-radius: 16px;
-    padding: 32px;
+    grid-column: span 12;
+    background: var(--cloud-dim);
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: sticky;
     top: 100px;
+  }
+  .reg-summary-eyebrow {
+    color: var(--beam);
   }
   .reg-summary-price {
     display: flex;
@@ -626,25 +582,10 @@
     gap: 2px;
   }
   .reg-amount {
-    font-family: var(--font-display);
     font-size: clamp(2rem, 3vw, 2.6rem);
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.05;
   }
   .reg-per {
-    font-family: var(--font-registration);
-    font-size: 14px;
     color: var(--muted);
-  }
-  .reg-summary-deadline {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-registration);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--body-strong);
   }
   .reg-summary-note-wrap {
     display: flex;
@@ -652,9 +593,6 @@
     gap: 4px;
   }
   .reg-summary-note {
-    font-family: var(--font-registration);
-    font-size: 13px;
-    line-height: 1.5;
     color: var(--muted);
     margin: 0;
   }
@@ -663,27 +601,19 @@
     gap: 12px;
     padding: 16px;
     border-radius: 10px;
-    background: rgba(242, 120, 48, 0.08);
+    background: color-mix(in srgb, var(--beam) 8%, transparent);
     color: var(--body-strong);
   }
   .reg-age-callout svg {
     flex-shrink: 0;
     margin-top: 2px;
-    color: var(--primary);
+    color: var(--beam);
   }
   .reg-age-callout strong {
     display: block;
-    font-family: var(--font-registration);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
     margin-bottom: 4px;
   }
   .reg-age-callout p {
-    font-family: var(--font-registration);
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--body);
     margin: 0;
   }
 
@@ -694,25 +624,17 @@
     margin: 16px 0 0;
   }
   .reg-fine p {
-    font-family: var(--font-registration);
-    font-size: 13px;
-    line-height: 1.5;
-    color: white;
+    color: var(--muted);
     margin: 0;
   }
-  .reg-bul {
-    margin: 0 6px;
-    color: var(--hairline);
-  }
   .reg-login-link {
-    font-family: var(--font-registration);
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--muted);
     margin: 0 0 16px;
     line-height: 1.4;
   }
   .reg-login-link a {
-    color: var(--primary);
+    color: var(--beam);
     font-weight: 600;
     text-decoration: none;
   }
@@ -720,33 +642,11 @@
     text-decoration: underline;
   }
 
-  :global(.phone-label) {
-    color: white !important;
-  }
-  :global(.country-trigger) {
-    color: #fff !important;
-  }
-  :global(.country-trigger .country-abbr) {
-    color: #fff !important;
-  }
-  :global(.country-trigger .country-code-label) {
-    color: rgba(255,255,255,0.7) !important;
-  }
-  :global(.country-trigger .chevron) {
-    color: rgba(255,255,255,0.6) !important;
-  }
-  :global(.phone-input) {
-    color: #fff !important;
-  }
-  :global(.phone-input::placeholder) {
-    color: rgba(255,255,255,0.4) !important;
-  }
-
   .reg-google-divider {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--muted);
     font-size: 13px;
     font-weight: 500;
   }
@@ -755,7 +655,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--hairline);
   }
   .reg-google-btn {
     display: flex;
@@ -764,18 +664,18 @@
     gap: 10px;
     width: 100%;
     padding: 12px 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.85);
-    font-family: var(--font-registration);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-sans);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: border-color var(--dur-micro) var(--ease-out);
   }
   .reg-google-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--beam);
   }
   .reg-google-btn:disabled {
     opacity: 0.5;
@@ -784,8 +684,7 @@
   .reg-not-you {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-family: var(--font-registration);
+    color: var(--muted);
     font-size: 13px;
     text-decoration: underline;
     cursor: pointer;
@@ -793,7 +692,7 @@
     margin-left: 8px;
   }
   .reg-not-you:hover {
-    color: #fff;
+    color: var(--ink);
   }
   .reg-different-email {
     margin: -16px 0 24px;
@@ -801,36 +700,27 @@
   .reg-different-email-btn {
     background: none;
     border: none;
-    color: var(--primary);
-    font-family: var(--font-registration);
+    color: var(--beam);
     font-size: 13px;
     text-decoration: underline;
     cursor: pointer;
     padding: 0;
   }
   .reg-different-email-btn:hover {
-    color: #8ff0d8;
+    color: var(--beam-active);
   }
 
-  @media (--md-down) {
-    .reg-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
+  @media (--md-up) {
     .reg-summary {
-      order: -1;
-      position: static;
+      grid-column: 1 / span 5;
     }
-    .reg-body {
-      padding: 40px 0 60px;
+    .reg-form {
+      grid-column: 6 / span 7;
     }
   }
   @media (max-width: 480px) {
     .reg-row {
       grid-template-columns: 1fr;
-    }
-    .reg-header {
-      padding: 120px 0 0;
     }
   }
 </style>

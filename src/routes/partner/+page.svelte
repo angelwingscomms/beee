@@ -112,20 +112,11 @@
         <form novalidate onsubmit={handleSubmit}>
           <div class="partner-fields">
             <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
-              oninput={() => eme = ''}
-              wrapperClass="!bg-white !border-[var(--hairline)]"
-              labelClass="!text-white"
-              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+              oninput={() => eme = ''} />
             <TextInput id="af-pw" label="Password" type="password" bind:value={password} required error={pwe}
-              oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle
-              wrapperClass="!bg-white !border-[var(--hairline)]"
-              labelClass="!text-white"
-              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+              oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle />
             <TextInput id="af-cpw" label="Confirm Password" type="password" bind:value={confirmPassword} required error={cpe}
-              oninput={() => cpe = ''} showToggle
-              wrapperClass="!bg-white !border-[var(--hairline)]"
-              labelClass="!text-white"
-              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+              oninput={() => cpe = ''} showToggle />
           </div>
           {#if apiError}
             <div class="rv-error-text partner-error" role="alert">{apiError}</div>

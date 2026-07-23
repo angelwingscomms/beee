@@ -51,58 +51,61 @@
   }
 </script>
 
-<div class="dash-shell">
-  <div class="dash-card">
-    <header class="dash-head">
-      <div>
-        <h1 class="dash-title">Welcome{data.user?.name ? `, ${data.user.name}` : ''}</h1>
-        <p class="dash-sub">Your BEEE player dashboard</p>
-      </div>
-      {#if data.user?.picture}
-        <img class="dash-avatar" src={data.user.picture} alt="" />
+<div class="dash-shell rv-field-cloud">
+  <div class="rv-wrap">
+    <div class="dash-card">
+      <header class="dash-head">
+        <div>
+          <p class="rv-micro dash-eyebrow">YOUR DASHBOARD</p>
+          <h1 class="rv-d3 dash-title">Welcome{data.user?.name ? `, ${data.user.name}` : ''}</h1>
+          <p class="rv-body dash-sub">Your BEEE player dashboard</p>
+        </div>
+        {#if data.user?.picture}
+          <img class="dash-avatar" src={data.user.picture} alt="" />
+        {/if}
+      </header>
+
+      {#if data.profile}
+        <div class="dash-profile">
+          <span class="rv-micro dash-chip">{data.user.email}</span>
+          {#if data.profile.c?.includes('rpb')}<span class="rv-micro dash-chip dash-chip--accent">Player</span>{/if}
+          {#if is_partner}<span class="rv-micro dash-chip dash-chip--accent">Partner</span>{/if}
+        </div>
       {/if}
-    </header>
 
-    {#if data.profile}
-      <div class="dash-profile">
-        <span class="dash-chip">{data.user.email}</span>
-        {#if data.profile.c?.includes('rpb')}<span class="dash-chip dash-chip--accent">Player</span>{/if}
-        {#if is_partner}<span class="dash-chip dash-chip--accent">Partner</span>{/if}
-      </div>
-    {/if}
-
-    {#if all_regs.length > 1}
-      <div class="reg-switch">
-        <label for="reg-select" class="reg-switch-label">Active registration</label>
-        <select id="reg-select" class="reg-select" value={active_id} onchange={switch_reg}>
-          {#each all_regs as r (r.i)}
-            <option value={r.i}>{reg_label(r)}</option>
-          {/each}
-        </select>
-      </div>
-    {/if}
-
-    {#if active_reg}
-      <div class="reg-detail">
-        <h2 class="reg-detail-name">{reg_label(active_reg) || 'Registration'}</h2>
-        <dl class="reg-detail-grid">
-          {#if active_reg.sn}<div><dt>School</dt><dd>{active_reg.sn}</dd></div>{/if}
-          {#if data.user?.ph?.length}<div><dt>Phone</dt><dd>{data.user.ph.join(', ')}</dd></div>{/if}
-          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'i' ? 'Paid' : 'Pending'}</dd></div>
-          {#if active_reg.ref}<div><dt>Reference</dt><dd><code>{active_reg.ref}</code></dd></div>{/if}
-        </dl>
-      </div>
-    {/if}
-
-    <div class="dash-actions">
-      <a href="/dashboard/settings" class="dash-btn dash-btn--outline">Settings</a>
-      <a href="/register" class="dash-btn">Register another player</a>
-      {#if is_partner}
-        <a href="/dashboard/partner" class="dash-btn dash-btn--outline">Partner dashboard →</a>
-      {:else}
-        <button class="dash-btn dash-btn--outline" onclick={() => (show_modal = true)}>Become a partner</button>
+      {#if all_regs.length > 1}
+        <div class="reg-switch">
+          <label for="reg-select" class="rv-label">Active registration</label>
+          <select id="reg-select" class="rv-input reg-select" value={active_id} onchange={switch_reg}>
+            {#each all_regs as r (r.i)}
+              <option value={r.i}>{reg_label(r)}</option>
+            {/each}
+          </select>
+        </div>
       {/if}
-      <a href="https://e4.bproject.com" class="dash-btn dash-btn--outline" target="_blank" rel="noopener">e4™ Chess Coach →</a>
+
+      {#if active_reg}
+        <div class="reg-detail">
+          <h2 class="rv-title reg-detail-name">{reg_label(active_reg) || 'Registration'}</h2>
+          <dl class="reg-detail-grid">
+            {#if active_reg.sn}<div><dt class="rv-micro">School</dt><dd class="rv-body">{active_reg.sn}</dd></div>{/if}
+            {#if data.user?.ph?.length}<div><dt class="rv-micro">Phone</dt><dd class="rv-body">{data.user.ph.join(', ')}</dd></div>{/if}
+            <div><dt class="rv-micro">Status</dt><dd class="rv-body reg-detail-status" class:is-pending={active_reg.st !== 'i'}>{active_reg.st === 'i' ? 'Paid' : 'Pending'}</dd></div>
+            {#if active_reg.ref}<div><dt class="rv-micro">Reference</dt><dd class="rv-body"><code>{active_reg.ref}</code></dd></div>{/if}
+          </dl>
+        </div>
+      {/if}
+
+      <div class="dash-actions">
+        <a href="/dashboard/settings" class="rv-btn rv-btn--ghost felt">Settings</a>
+        <a href="/register" class="rv-btn rv-btn--beam felt">Register another player</a>
+        {#if is_partner}
+          <a href="/dashboard/partner" class="rv-btn rv-btn--ghost felt">Partner dashboard →</a>
+        {:else}
+          <button class="rv-btn rv-btn--ghost felt" onclick={() => (show_modal = true)}>Become a partner</button>
+        {/if}
+        <a href="https://e4.bproject.com" class="rv-btn rv-btn--ghost felt" target="_blank" rel="noopener">e4™ Chess Coach →</a>
+      </div>
     </div>
   </div>
 </div>
@@ -110,14 +113,14 @@
 {#if show_modal}
   <div class="modal-backdrop" role="dialog" aria-modal="true" onclick={() => (show_modal = false)}>
     <div class="modal" onclick={(e) => e.stopPropagation()}>
-      <h2 class="modal-title">Become a BEEE partner?</h2>
-      <p class="modal-body">
+      <h2 class="rv-title modal-title">Become a BEEE partner?</h2>
+      <p class="rv-body modal-body">
         Share your partner link to earn rewards on every player you refer. Ready to join the
         partner programme?
       </p>
       <div class="modal-actions">
-        <button class="dash-btn dash-btn--outline" onclick={() => (show_modal = false)}>Not now</button>
-        <button class="dash-btn" disabled={is_upgrading} onclick={become_partner}>
+        <button class="rv-btn rv-btn--ghost felt" onclick={() => (show_modal = false)}>Not now</button>
+        <button class="rv-btn rv-btn--beam felt" disabled={is_upgrading} onclick={become_partner}>
           {is_upgrading ? 'Setting up…' : 'Yes, become a partner'}
         </button>
       </div>
@@ -128,15 +131,15 @@
 <style>
   .dash-shell {
     min-height: 100vh;
-    padding: 120px 2rem 4rem;
-    max-width: 720px;
-    margin: 0 auto;
+    padding: calc(var(--section-pad) + 72px) 0 var(--space-7);
   }
   .dash-card {
-    background: var(--surface);
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--cloud-dim);
     border: 1px solid var(--hairline);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
   }
   .dash-head {
     display: flex;
@@ -144,16 +147,14 @@
     justify-content: space-between;
     gap: 16px;
   }
+  .dash-eyebrow {
+    color: var(--beam);
+    margin-bottom: 8px;
+  }
   .dash-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 500;
     margin: 0 0 4px;
-    color: var(--ink);
   }
   .dash-sub {
-    font-family: var(--font-registration);
-    font-size: 14px;
     color: var(--muted);
     margin: 0;
   }
@@ -171,19 +172,16 @@
     margin: 16px 0 8px;
   }
   .dash-chip {
-    font-family: var(--font-registration);
-    font-size: 12px;
     color: var(--muted);
-    background: var(--surface-soft);
+    background: var(--cloud);
     border: 1px solid var(--hairline);
-    border-radius: 20px;
+    border-radius: var(--radius-pill);
     padding: 4px 12px;
   }
   .dash-chip--accent {
-    color: var(--primary);
-    background: rgba(242, 120, 48, 0.1);
+    color: var(--beam);
+    background: color-mix(in srgb, var(--beam) 10%, transparent);
     border-color: transparent;
-    font-weight: 600;
   }
   .dash-actions {
     display: flex;
@@ -191,65 +189,24 @@
     margin-top: 28px;
     flex-wrap: wrap;
   }
-  .dash-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-family: var(--font-registration);
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    background: var(--ink);
-    color: white;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .dash-btn:hover { opacity: 0.85; }
-  .dash-btn--outline {
-    background: transparent;
-    border: 1px solid var(--hairline);
-    color: var(--body-strong);
-  }
-  .dash-btn--outline:hover { background: var(--surface-soft); }
   .reg-switch {
     margin: 20px 0 4px;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
-  .reg-switch-label {
-    font-family: var(--font-registration);
-    font-size: 12px;
-    color: var(--muted);
-  }
   .reg-select {
     appearance: none;
-    width: 100%;
-    min-height: 40px;
-    padding: 8px 14px;
-    border-radius: 10px;
-    background: var(--surface-soft);
-    color: var(--ink);
-    border: 1px solid var(--hairline);
-    font-family: var(--font-registration);
-    font-size: 14px;
     cursor: pointer;
-    outline: none;
   }
   .reg-detail {
     margin-top: 20px;
     padding: 18px 20px;
     border: 1px solid var(--hairline);
-    border-radius: 12px;
-    background: var(--surface-soft);
+    border-radius: var(--radius-card);
+    background: var(--cloud);
   }
   .reg-detail-name {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--ink);
     margin: 0 0 12px;
   }
   .reg-detail-grid {
@@ -259,56 +216,51 @@
     margin: 0;
   }
   .reg-detail-grid dt {
-    font-family: var(--font-registration);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: var(--muted);
     margin-bottom: 2px;
   }
   .reg-detail-grid dd {
     margin: 0;
-    font-family: var(--font-registration);
-    font-size: 14px;
-    color: var(--body-strong);
   }
   .reg-detail-grid code {
-    font-family: var(--font-code);
+    font-family: var(--font-mono);
     font-size: 12px;
     color: var(--muted);
   }
   .reg-detail-status {
+    display: inline-flex;
     color: var(--success);
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    border-radius: var(--radius-pill);
+    padding: 2px 10px;
     font-weight: 600;
+  }
+  .reg-detail-status.is-pending {
+    color: var(--warning);
+    background: color-mix(in srgb, var(--warning) 12%, transparent);
   }
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(20, 20, 19, 0.5);
+    background: rgba(10, 15, 26, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    z-index: 100;
+    z-index: var(--z-menu);
   }
   .modal {
-    background: var(--surface);
+    background: var(--cloud-dim);
     border: 1px solid var(--hairline);
-    border-radius: 16px;
-    padding: 2rem;
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
     max-width: 420px;
     width: 100%;
   }
   .modal-title {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--ink);
     margin: 0 0 12px;
   }
   .modal-body {
-    font-size: 14px;
-    line-height: 1.6;
     color: var(--body);
     margin: 0 0 24px;
   }

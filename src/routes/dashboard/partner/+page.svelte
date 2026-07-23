@@ -107,36 +107,37 @@
   }
 </script>
 
-<div class="settings-page">
-  <section class="container" style="padding: 140px 0 80px; max-width: 640px;">
-    <h1 class="settings-title">Partner Dashboard</h1>
+<div class="settings-page rv-field-cloud">
+  <section class="rv-wrap settings-inner">
+    <p class="rv-micro settings-eyebrow">PARTNER DASHBOARD</p>
+    <h1 class="rv-d3 settings-title">Partner Dashboard</h1>
 
     <div class="settings-card">
-      <h2 class="settings-card-title">Your Partner Code</h2>
+      <h2 class="rv-title settings-card-title">Your Partner Code</h2>
       <div class="code-row">
-        <span class="code-value" id="partner-code-text">{data.ac || ','}</span>
-        <button class="button-secondary code-copy-btn" onclick={copyCode} disabled={!data.ac}>
+        <span class="rv-title rv-num code-value" id="partner-code-text">{data.ac || ','}</span>
+        <button class="rv-btn rv-btn--ghost felt code-copy-btn" onclick={copyCode} disabled={!data.ac}>
           {copied ? 'Copied!' : 'Copy'}
         </button>
       </div>
-      <p class="code-label">Share this link to earn commissions:</p>
-      <code class="code-url">https://beeeproject.com/i/{data.ac || '{code}'}</code>
+      <p class="rv-micro code-label">Share this link to earn commissions:</p>
+      <code class="rv-body code-url">https://beeeproject.com/i/{data.ac || '{code}'}</code>
     </div>
 
     <div class="settings-card">
-      <h2 class="settings-card-title">Set a Custom Partner Code</h2>
-      <p class="settings-card-sub">Replace the random code above with one of your own. It must be unique and pass a quick check so it sounds right when shared.</p>
+      <h2 class="rv-title settings-card-title">Set a Custom Partner Code</h2>
+      <p class="rv-body settings-card-sub">Replace the random code above with one of your own. It must be unique and pass a quick check so it sounds right when shared.</p>
       <form onsubmit={saveCustomCode}>
         <div class="field">
-          <label for="customCode">Custom code</label>
-          <input id="customCode" class="text-input" type="text" bind:value={customCode}
+          <label for="customCode" class="rv-label">Custom code</label>
+          <input id="customCode" class="rv-input" type="text" bind:value={customCode}
             placeholder="e.g. chesskids" maxlength={24} autocapitalize="off" autocomplete="off" spellcheck={false}
             oninput={() => { customCodeError = ''; customCodeMsg = ''; }}
           />
-          {#if customCodeError}<p class="field-msg field-error">{customCodeError}</p>{/if}
+          {#if customCodeError}<p class="rv-error-text field-msg">{customCodeError}</p>{/if}
         </div>
         <div class="settings-save-row">
-          <button type="submit" class="button-primary" disabled={isSavingCode}>
+          <button type="submit" class="rv-btn rv-btn--beam felt" disabled={isSavingCode}>
             {#if isSavingCode}
               <span class="spinner" aria-hidden="true"></span> Saving...
             {:else}
@@ -149,24 +150,24 @@
     </div>
 
     <div class="settings-card">
-      <h2 class="settings-card-title">Bank Account Details</h2>
-      <p class="settings-card-sub">Where we'll send your referral earnings.</p>
+      <h2 class="rv-title settings-card-title">Bank Account Details</h2>
+      <p class="rv-body settings-card-sub">Where we'll send your referral earnings.</p>
       <form onsubmit={saveBank}>
         <div class="field">
-          <label for="ba">Account Number</label>
-          <input id="ba" class="text-input" type="text" inputmode="numeric"
+          <label for="ba" class="rv-label">Account Number</label>
+          <input id="ba" class="rv-input" type="text" inputmode="numeric"
             bind:value={ba} placeholder="0123456789" maxlength={10}
             oninput={() => { bae = ''; saveMsg = ''; }}
           />
-          {#if bae}<p class="field-msg field-error">{bae}</p>{/if}
+          {#if bae}<p class="rv-error-text field-msg">{bae}</p>{/if}
         </div>
         <div class="field">
-          <label for="bn">Bank</label>
+          <label for="bn" class="rv-label">Bank</label>
           <BankSelect value={bn} onChange={onBankSelect} />
-          {#if bke}<p class="field-msg field-error">{bke}</p>{/if}
+          {#if bke}<p class="rv-error-text field-msg">{bke}</p>{/if}
         </div>
         <div class="settings-save-row">
-          <button type="submit" class="button-primary" disabled={isSaving || (!ba && !bk)}>
+          <button type="submit" class="rv-btn rv-btn--beam felt" disabled={isSaving || (!ba && !bk)}>
             {#if isSaving}
               <span class="spinner" aria-hidden="true"></span> Saving...
             {:else}
@@ -183,16 +184,16 @@
     </div>
 
     <div class="settings-card">
-      <h2 class="settings-card-title">Registered Users</h2>
-      <p class="settings-card-sub">Players who registered using your partner code.</p>
+      <h2 class="rv-title settings-card-title">Registered Users</h2>
+      <p class="rv-body settings-card-sub">Players who registered using your partner code.</p>
       {#if data.registrations.length}
         <div class="reg-list">
           {#each data.registrations as reg}
             <div class="reg-row">
-              <div class="reg-name">{reg.fn || ''} {reg.ln || ''}{#if reg.sn} <span class="reg-school">{reg.sn}</span>{/if}</div>
+              <div class="rv-body reg-name">{reg.fn || ''} {reg.ln || ''}{#if reg.sn} <span class="reg-school">{reg.sn}</span>{/if}</div>
               <div class="reg-meta">
-                <span class="reg-email">{reg.e}</span>
-                <span class="reg-badge" class:reg-badge--paid={reg.st === 'i'}>
+                <span class="rv-micro reg-email">{reg.e}</span>
+                <span class="rv-micro reg-badge" class:reg-badge--paid={reg.st === 'i'}>
                   {reg.st === 'i' ? 'Paid' : 'Pending'}
                 </span>
               </div>
@@ -200,7 +201,7 @@
           {/each}
         </div>
       {:else}
-        <p class="stats-placeholder">No users have registered with your code yet.</p>
+        <p class="rv-body stats-placeholder">No users have registered with your code yet.</p>
       {/if}
     </div>
   </section>
@@ -208,30 +209,30 @@
 
 <style>
   .settings-page {
-    background: var(--canvas);
     min-height: 100vh;
   }
+  .settings-inner {
+    padding: calc(var(--section-pad) + 72px) 0 var(--space-7);
+    max-width: 640px;
+  }
+  .settings-eyebrow {
+    color: var(--beam);
+    margin-bottom: 8px;
+  }
   .settings-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 500;
-    color: var(--ink);
     margin: 0 0 32px;
   }
   .settings-card {
-    background: var(--surface-soft);
-    border-radius: 16px;
-    padding: 28px;
+    background: var(--cloud-dim);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
     margin-bottom: 20px;
   }
   .settings-card-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--ink);
     margin: 0 0 4px;
   }
   .settings-card-sub {
-    font-size: 14px;
     color: var(--muted);
     margin: 0 0 20px;
   }
@@ -242,11 +243,8 @@
     margin: 16px 0 12px;
   }
   .code-value {
-    font-size: 28px;
-    font-weight: 600;
     letter-spacing: 0.06em;
-    color: var(--primary);
-    font-family: var(--font-display);
+    color: var(--beam);
   }
   .code-copy-btn {
     flex-shrink: 0;
@@ -255,34 +253,19 @@
     font-size: 13px;
   }
   .code-label {
-    font-size: 13px;
     color: var(--muted);
     margin: 0 0 6px;
   }
   .code-url {
     display: block;
     padding: 10px 14px;
-    background: var(--canvas);
+    background: var(--cloud);
     border-radius: 8px;
-    font-size: 13px;
     word-break: break-all;
-    color: var(--body);
     line-height: 1.5;
   }
   .field {
     margin-bottom: 14px;
-  }
-  .field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--body-strong);
-    margin-bottom: 6px;
-  }
-  .field-error {
-    font-size: 12px;
-    color: var(--error);
-    margin: 4px 0 0;
   }
   .settings-save-row {
     display: flex;
@@ -301,7 +284,6 @@
   }
   .stats-placeholder {
     color: var(--muted);
-    font-size: 14px;
     margin: 12px 0 0;
   }
   .reg-list {
@@ -317,16 +299,13 @@
     gap: 12px;
     padding: 12px 16px;
     border-radius: 10px;
-    background: var(--canvas);
+    background: var(--cloud);
   }
   .reg-name {
     font-weight: 600;
-    font-size: 14px;
-    color: var(--ink);
   }
   .reg-school {
     font-weight: 400;
-    font-size: 12px;
     color: var(--muted);
     margin-left: 6px;
   }
@@ -337,27 +316,20 @@
     flex-shrink: 0;
   }
   .reg-email {
-    font-size: 13px;
     color: var(--muted);
   }
   .reg-badge {
-    font-size: 12px;
-    font-weight: 600;
     padding: 3px 10px;
-    border-radius: 20px;
-    background: rgba(242, 120, 48, 0.1);
-    color: var(--primary);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--beam) 10%, transparent);
+    color: var(--beam);
     white-space: nowrap;
   }
   .reg-badge--paid {
-    background: rgba(93, 184, 114, 0.12);
-    color: #5db872;
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    color: var(--success);
   }
   @media (max-width: 560px) {
     .reg-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-  }
-  @media (--sm-down) {
-    .settings-card { padding: 20px; }
-    .code-value { font-size: 22px; }
   }
 </style>
