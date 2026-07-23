@@ -405,7 +405,7 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 ## 12. Design System
 
 ### 12.1 Brand Identity
-- **Logo:** Custom SVG geometric mark (a faceted gem/hexagon shape with the BEEE wordmark)
+- **Logo:** Custom geometric bee mark built from four honeycomb hexagons — two outlined wing hexagons, a solid head hexagon, and a striped body hexagon — used with the BEEE wordmark
 - **Tagline:** Aspire to BEEE · Be Everything Excellent Every Day
 - **Registered mark:** BEEE®
 
