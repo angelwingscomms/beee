@@ -1,9 +1,10 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { dev } from '$app/environment';
-  import { motionFadeUp } from '$lib/actions/motion';
   import { MIN_TRANSFER_AMNT, DEV_REG_FEE, REG_AMOUNT, DISCOUNT_PCT, COMMISSION_PCT } from '$lib/constants';
   import TextInput from '$lib/components/TextInput.svelte';
+  import PageHero from '$lib/components/system/PageHero.svelte';
+  import { revealFade } from '$lib/motion/reveal';
 
   const payout_naira = (MIN_TRANSFER_AMNT / 100).toLocaleString();
   const fee_naira = (DEV_REG_FEE / 100).toLocaleString();
@@ -61,252 +62,201 @@
   }
 </script>
 
-<div class="partner-page">
-  <section class="partner-hero" use:motionFadeUp>
-    <div class="partner-grid">
-      <div class="partner-info">
-        <p class="partner-badge">BEEE PARTNER PROGRAMME</p>
-        <h1 class="partner-title">Share the Experience.<br>Earn Rewards.</h1>
-        <p class="partner-intro">
-          Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.
-          {#if dev}
-            In test mode you receive a ₦{payout_naira} payout for every referral , players pay the ₦{fee_naira} test fee.
-          {:else}
-            You earn ₦{commission_naira} per registration you refer.
-          {/if}
-        </p>
-        <div class="partner-steps">
-          <div class="step">
-            <span class="step-num">1</span>
-            <div>
-              <strong>Share Your Link</strong>
-              <p>Get your unique partner code after signing up. Share it with parents, schools, and community.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">2</span>
-            <div>
-              <strong>They Register</strong>
-              <p>{#if dev}When someone registers using your code, they pay the ₦{fee_naira} test fee.{:else}When someone registers using your code, they get a 10% discount automatically applied.{/if}</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-num">3</span>
-            <div>
-              <strong>You Get Paid</strong>
-              <p>{#if dev}After payment is confirmed, ₦{payout_naira} is sent directly to your bank account.{:else}After payment is confirmed, ₦{commission_naira} is sent directly to your bank account.{/if}</p>
-            </div>
+<PageHero eyebrow="BEEE PARTNER PROGRAMME" title="Share the Experience.<br>Earn Rewards." />
+
+<section class="rv-section rv-section--flush">
+  <div class="rv-wrap">
+    <p class="rv-body-lg partner-intro" use:revealFade>
+      Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.
+      {#if dev}
+        In test mode you receive a ₦{payout_naira} payout for every referral , players pay the ₦{fee_naira} test fee.
+      {:else}
+        You earn ₦{commission_naira} per registration you refer.
+      {/if}
+    </p>
+  </div>
+</section>
+
+<section id="partner-signup" class="rv-section">
+  <div class="rv-wrap rv-grid partner-grid">
+    <div class="partner-steps-col">
+      <div class="partner-steps" use:revealFade>
+        <div class="rv-row partner-step">
+          <span class="rv-micro partner-step-num">01</span>
+          <div>
+            <p class="rv-title">Share Your Link</p>
+            <p class="rv-body">Get your unique partner code after signing up. Share it with parents, schools, and community.</p>
           </div>
         </div>
-      </div>
-      <div class="partner-form-wrap">
-        <div class="partner-card">
-          <h2 class="partner-form-title">Become a Partner</h2>
-          <p class="partner-form-sub">Set up your account in under a minute.</p>
-          <form novalidate onsubmit={handleSubmit}>
-            <div class="partner-fields">
-              <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
-                oninput={() => eme = ''}
-                wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-white"
-                inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
-              <TextInput id="af-pw" label="Password" type="password" bind:value={password} required error={pwe}
-                oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle
-                wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-white"
-                inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
-              <TextInput id="af-cpw" label="Confirm Password" type="password" bind:value={confirmPassword} required error={cpe}
-                oninput={() => cpe = ''} showToggle
-                wrapperClass="!bg-white !border-[var(--hairline)]"
-                labelClass="!text-white"
-                inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
-            </div>
-            {#if apiError}
-              <div class="partner-error" role="alert">{apiError}</div>
-            {/if}
-            <button type="submit" class="button-primary partner-submit" disabled={!allValid || isProcessing}>
-              {#if isProcessing}
-                <span class="spinner" aria-hidden="true"></span> Creating account...
-              {:else}
-                Become a Partner
-              {/if}
-            </button>
-          </form>
-          <div class="partner-divider"><span>or</span></div>
-          <a href="/login/google?next=/dashboard/partner" class="button-secondary partner-google">
-            Continue with Google
-          </a>
-          <p class="partner-signin">
-            Already a partner? <a href="/login/google?next=/dashboard/partner">Sign in</a>
-          </p>
+        <div class="rv-row partner-step">
+          <span class="rv-micro partner-step-num">02</span>
+          <div>
+            <p class="rv-title">They Register</p>
+            <p class="rv-body">{#if dev}When someone registers using your code, they pay the ₦{fee_naira} test fee.{:else}When someone registers using your code, they get a 10% discount automatically applied.{/if}</p>
+          </div>
+        </div>
+        <div class="rv-row partner-step">
+          <span class="rv-micro partner-step-num">03</span>
+          <div>
+            <p class="rv-title">You Get Paid</p>
+            <p class="rv-body">{#if dev}After payment is confirmed, ₦{payout_naira} is sent directly to your bank account.{:else}After payment is confirmed, ₦{commission_naira} is sent directly to your bank account.{/if}</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+
+    <div class="partner-form-col">
+      <div class="partner-card">
+        <p class="rv-title">Become a Partner</p>
+        <p class="rv-body partner-form-sub">Set up your account in under a minute.</p>
+        <form novalidate onsubmit={handleSubmit}>
+          <div class="partner-fields">
+            <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
+              oninput={() => eme = ''}
+              wrapperClass="!bg-white !border-[var(--hairline)]"
+              labelClass="!text-white"
+              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+            <TextInput id="af-pw" label="Password" type="password" bind:value={password} required error={pwe}
+              oninput={() => pwe = ''} placeholder="Min 8 characters" showToggle
+              wrapperClass="!bg-white !border-[var(--hairline)]"
+              labelClass="!text-white"
+              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+            <TextInput id="af-cpw" label="Confirm Password" type="password" bind:value={confirmPassword} required error={cpe}
+              oninput={() => cpe = ''} showToggle
+              wrapperClass="!bg-white !border-[var(--hairline)]"
+              labelClass="!text-white"
+              inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+          </div>
+          {#if apiError}
+            <div class="rv-error-text partner-error" role="alert">{apiError}</div>
+          {/if}
+          <button type="submit" class="rv-btn rv-btn--beam felt partner-submit" disabled={!allValid || isProcessing}>
+            {#if isProcessing}
+              <span class="spinner" aria-hidden="true"></span> Creating account...
+            {:else}
+              Become a Partner
+            {/if}
+          </button>
+        </form>
+        <div class="partner-divider"><span>or</span></div>
+        <a href="/login/google?next=/dashboard/partner" class="rv-btn rv-btn--ghost felt partner-google">
+          Continue with Google
+        </a>
+        <p class="rv-micro partner-signin">
+          Already a partner? <a href="/login/google?next=/dashboard/partner" class="rv-link">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rv-field-night rv-section partner-cta">
+  <div class="rv-wrap partner-cta-inner">
+    <a href="#partner-signup" class="rv-btn rv-btn--beam rv-btn--big felt">Become a partner</a>
+    <p class="rv-micro partner-cta-sub">Payouts go to the bank account you choose.</p>
+  </div>
+</section>
 
 <style>
-  .partner-page {
-    background: var(--canvas);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  .partner-hero {
-    padding: 140px 0 80px;
-  }
-  .partner-grid {
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 64px;
-    align-items: start;
-    width: min(1200px, calc(100% - 48px));
-    margin: 0 auto;
-  }
-  .partner-info {
-    min-width: 0;
-  }
-  .partner-form-wrap {
-    min-width: 0;
-  }
-  .partner-badge {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary);
-    margin: 0 0 16px;
-  }
-  .partner-title {
-    font-family: var(--font-hero);
-    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin: 0 0 20px;
-  }
   .partner-intro {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--body);
-    margin: 0 0 40px;
+    max-width: 60ch;
+  }
+
+  .partner-grid {
+    align-items: start;
+  }
+
+  .partner-steps-col {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-6);
+  }
+
+  .partner-steps { display: flex; flex-direction: column; }
+  .partner-step { grid-template-columns: 48px 1fr; }
+  .partner-step-num { color: var(--beam); }
+
+  .partner-form-col {
+    grid-column: 1 / -1;
+  }
+
+  .partner-card {
+    background: var(--cloud-dim);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
     max-width: 480px;
   }
-  .partner-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-  .step-num {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--primary);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .step strong {
-    display: block;
-    font-size: 15px;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .step p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--muted);
-    margin: 0;
-  }
-  .partner-card {
-    background: var(--surface-soft);
-    border-radius: 16px;
-    padding: 36px;
-    position: sticky;
-    top: 100px;
-    max-width: 100%;
-  }
-  .partner-form-title {
-    font-family: var(--font-hero);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 4px;
-  }
+
   .partner-form-sub {
-    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: var(--space-4);
     color: var(--muted);
-    margin: 0 0 24px;
   }
+
   .partner-fields {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
+
   .partner-error {
-    margin: 16px 0 0;
-    padding: 12px 16px;
-    border-radius: 8px;
-    background: rgba(255, 55, 45, 0.08);
-    color: var(--error);
-    font-size: 13px;
-    line-height: 1.4;
+    margin-top: var(--space-2);
   }
+
   .partner-submit {
     width: 100%;
-    margin-top: 20px;
-    padding: 14px 24px;
-    font-size: 15px;
+    margin-top: var(--space-3);
   }
+
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .partner-divider {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 20px 0;
-    font-size: 13px;
+    margin: var(--space-3) 0;
     color: var(--muted);
+    font-size: 13px;
   }
-  .partner-divider::before,
-  .partner-divider::after {
+  .partner-divider::before, .partner-divider::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--hairline);
   }
+
   .partner-google {
     width: 100%;
-    justify-content: center;
-    text-decoration: none;
   }
+
   .partner-signin {
-    margin: 20px 0 0;
+    margin-top: var(--space-3);
     text-align: center;
-    font-size: 13px;
     color: var(--muted);
   }
-  .partner-signin a {
-    color: var(--primary);
-    text-decoration: underline;
+
+  .partner-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    text-align: center;
   }
-  @media (max-width: 860px) {
-    .partner-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .partner-card {
-      position: static;
-    }
-    .partner-hero {
-      padding: 120px 0 60px;
-    }
+
+  .partner-cta-sub {
+    color: var(--dusk-body);
+  }
+
+  @media (--md-up) {
+    .partner-steps-col { grid-column: 1 / span 7; margin-bottom: 0; }
+    .partner-form-col { grid-column: 8 / span 5; }
   }
 </style>

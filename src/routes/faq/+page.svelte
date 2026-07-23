@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cs as all_cs, filterBySearch, filterByCategory } from '$lib/data/faq';
-	import FaqHero from '$lib/components/faq/FaqHero.svelte';
+	import PageHero from '$lib/components/system/PageHero.svelte';
 	import FaqSearch from '$lib/components/faq/FaqSearch.svelte';
 	import FaqCategories from '$lib/components/faq/FaqCategories.svelte';
 	import FaqAccordion from '$lib/components/faq/FaqAccordion.svelte';
@@ -34,15 +34,19 @@
 </svelte:head>
 
 <div class="faq-page">
-	<FaqHero />
+	<PageHero
+		eyebrow="FAQ"
+		title="Frequently Asked Questions"
+		sub="Everything you need to know about the BEEE Spectacular Chess Championship Abuja 2026 and the TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) Development Programme."
+	/>
 
-	<div class="faq-toolbar container">
+	<div class="faq-toolbar rv-wrap">
 		<FaqSearch bind:value={search_q} />
 		<FaqCategories cs={all_cs} bind:active={active_cat} />
-		<p class="faq-count">{result_count} {result_count === 1 ? 'question' : 'questions'}</p>
+		<p class="rv-micro faq-count">{result_count} {result_count === 1 ? 'question' : 'questions'}</p>
 	</div>
 
-	<section class="faq-list container">
+	<section class="faq-list rv-wrap">
 		{#each filtered as c}
 			<div class="faq-category">
 				<h2 class="faq-cat-title" id="cat-{c.i}">
@@ -78,17 +82,11 @@
 <style>
 	.faq-page {
 		min-height: 100vh;
-		background: var(--canvas);
+		background: var(--cloud);
 		display: flex;
 		flex-direction: column;
-		gap: 64px;
-		padding-top: 36px;
-		padding-bottom: 144px;
-	}
-
-	.container {
-		width: min(1200px, calc(100% - 48px));
-		margin: 0 auto;
+		gap: var(--space-6);
+		padding-bottom: var(--space-9);
 	}
 
 	.faq-toolbar {
@@ -114,7 +112,6 @@
 	.faq-count {
 		margin: 0;
 		color: var(--muted);
-		font-size: 13px;
 	}
 
 	.faq-cat-title {
@@ -126,12 +123,12 @@
 		z-index: 2;
 		margin: 0 0 4px;
 		padding: 8px 0;
-		background: var(--canvas);
+		background: var(--cloud);
 		color: var(--muted);
-		font-family: var(--font-hero);
-		font-size: 13px;
-		font-weight: 600;
-		letter-spacing: 0.12em;
+		font-family: var(--font-mono);
+		font-size: var(--fs-micro);
+		font-weight: 500;
+		letter-spacing: var(--ls-mono);
 		text-transform: uppercase;
 		line-height: 1.3;
 	}
@@ -141,7 +138,7 @@
 		width: 6px;
 		height: 6px;
 		border-radius: 50%;
-		background: var(--primary);
+		background: var(--beam);
 	}
 
 	.faq-cat-rule {
@@ -152,12 +149,8 @@
 
 	@media (--sm-down) {
 		.faq-page {
-			gap: 48px;
-			padding-bottom: 96px;
-		}
-
-		.faq-cat-title {
-			font-size: 12px;
+			gap: var(--space-5);
+			padding-bottom: var(--space-7);
 		}
 	}
 
@@ -179,17 +172,17 @@
 	.faq-empty-clear {
 		padding: 10px 20px;
 		border: 1px solid var(--hairline);
-		border-radius: 8px;
+		border-radius: var(--radius-pill);
 		background: transparent;
 		color: var(--ink);
 		font-size: 14px;
 		font-weight: 500;
 		cursor: pointer;
-		transition: border-color 160ms ease, color 160ms ease;
+		transition: border-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
 	}
 
 	.faq-empty-clear:hover {
-		border-color: var(--primary);
-		color: var(--primary);
+		border-color: var(--beam);
+		color: var(--beam);
 	}
 </style>

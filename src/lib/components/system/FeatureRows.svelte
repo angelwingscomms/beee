@@ -20,7 +20,4 @@
   .feature-index {
     color: var(--beam);
   }
-  .rv-field-night .feature-index {
-    color: var(--honey);
-  }
 </style>

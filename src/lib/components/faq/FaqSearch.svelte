@@ -54,15 +54,15 @@
 		width: 100%;
 		max-width: 480px;
 		height: 52px;
-		border-radius: 10px;
+		border-radius: 12px;
 		border: 1px solid var(--hairline);
-		background: var(--surface-card);
-		transition: border-color 160ms ease, box-shadow 160ms ease;
+		background: var(--cloud-dim);
+		transition: border-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
 	}
 
 	.faq-search:focus-within {
-		border-color: var(--primary);
-		box-shadow: 0 0 0 3px rgba(242, 120, 48, 0.12);
+		border-color: var(--beam);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--beam) 20%, transparent);
 	}
 
 	.search-icon {
@@ -80,8 +80,8 @@
 		border: none;
 		background: transparent;
 		color: var(--ink);
-		font-size: 15px;
-		font-family: inherit;
+		font-size: var(--fs-body-std);
+		font-family: var(--font-sans);
 		padding: 0 12px 0 0;
 		outline: none;
 	}
