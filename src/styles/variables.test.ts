@@ -4,13 +4,21 @@ import { describe, expect, it } from 'vitest';
 
 const css = readFileSync(resolve(process.cwd(), 'src/styles/variables.css'), 'utf8');
 
-describe('variables.css design tokens', () => {
-  it('defines the fluid display type scale', () => {
-    expect(css).toContain('--fs-display-2xl: clamp(3rem, 1.4rem + 7vw, 7.5rem);');
-    expect(css).toContain('--fs-display-xl: clamp(2.5rem, 1.4rem + 5vw, 5.75rem);');
-    expect(css).toContain('--fs-display-lg: clamp(2.125rem, 1.4rem + 3.2vw, 4rem);');
-    expect(css).toContain('--fs-display-md: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);');
-    expect(css).toContain('--fs-display-sm: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);');
+describe('variables.css SPEC-TRUM tokens', () => {
+  it('defines the SPEC-TRUM palette', () => {
+    expect(css).toContain('--cloud: #F1EEE7;');
+    expect(css).toContain('--nightfall: #0A0F1A;');
+    expect(css).toContain('--beam: #F27830;');
+    expect(css).toContain('--honey: #FFB200;');
+  });
+
+  it('defines the SPEC-TRUM type scale', () => {
+    expect(css).toContain('--fs-d1: clamp(44px, 10.14vw + 6px, 152px);');
+  });
+
+  it('defines the house easing and section padding', () => {
+    expect(css).toContain('--ease-out: cubic-bezier(0.16, 1, 0.3, 1);');
+    expect(css).toContain('--section-pad: clamp(96px, 9.77vw + 59.4px, 200px);');
   });
 
   it('extends the spacing scale', () => {

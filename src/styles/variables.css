@@ -61,11 +61,9 @@
   --font-display: var(--font-grotesk);
   --font-body: var(--font-sans);
   --font-code: var(--font-mono);
-  --font-registration: 'SN Pro', var(--font-sans);
+  --font-registration: var(--font-sans);
   --font-championship: var(--font-grotesk);
   --font-welcome: var(--font-sans);
-  --font-display-hero: var(--font-serif-note);
-  --font-body-hero: var(--font-sans);
 
   /* ————— SPEC-TRUM type scale (ratio 1.414 display / 1.25 UI) ————— */
   --fs-d1: clamp(44px, 10.14vw + 6px, 152px);      /* hero display */
@@ -80,17 +78,6 @@
   --lh-body: 1.6;
   --ls-display: -0.03em;
   --ls-mono: 0.12em;
-
-  /* legacy fluid scale — still consumed by old pages; deleted in P6 */
-  --fs-eyebrow: 0.8125rem;
-  --fs-h1: clamp(2.25rem, 3.4vw + 1rem, 3.75rem);
-  --fs-quote: clamp(1.5rem, 1.6vw + 1rem, 2.125rem);
-  --fs-body: 1.0625rem;
-  --fs-display-2xl: clamp(3rem, 1.4rem + 7vw, 7.5rem);
-  --fs-display-xl: clamp(2.5rem, 1.4rem + 5vw, 5.75rem);
-  --fs-display-lg: clamp(2.125rem, 1.4rem + 3.2vw, 4rem);
-  --fs-display-md: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);
-  --fs-display-sm: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
 
   /* ————— space ————— */
   --space-0: 4px;

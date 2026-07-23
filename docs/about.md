@@ -355,7 +355,7 @@ Schools are encouraged to ensure communication channels remain active throughout
 | **Payments** | Paystack (Nigerian payment processor) |
 | **AI Coach** | @google/genai (Gemini) |
 | **Email** | Cloudflare Email Service |
-| **Animations** | GSAP (ScrollTrigger, SplitText) + Motion library (WAAPI-based) |
+| **Animations** | GSAP (ScrollTrigger, SplitText) + Lenis smooth scroll + Three.js (light/dust canvas) + Motion (WAAPI) |
 
 ### 11.2 Data Model (Qdrant)
 
@@ -413,44 +413,40 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 | Category | Colors |
 |---|---|
-| **Brand** | Primary `#F27830` (orange/coral), Active `#BD5E25`, Light `#F69A64`, Disabled `#e6dfd8` |
-| **Accent** | Amber `#ffb200`, Teal `#5db8a6` |
-| **Canvas** | `#faf9f5` (warm off-white), Surface Soft `#f5f0e8`, Surface Card `#efe9de` |
-| **Dark** | Navy `#0A0F1A`, Surface Dark `#181715`, Dark Elevated `#252320` |
-| **Text** | Ink `#141413`, Body `#3d3d3a`, Muted `#6c6a64` |
-| **Semantic** | Success `#5db872`, Warning `#d4a017`, Error `#ff372d`, Info `#4a8ecf` |
+| **Brand** | Beam `#F27830` (locked orange, used as light) — Active `#BD5E25`; Honey `#FFB200` |
+| **Canvas** | Cloud `#F1EEE7` (grey-warm sky before rain), Cloud Dim `#E9E5DB` |
+| **Dark** | Nightfall `#0A0F1A` (deep navy interruption), Nightfall Soft `#101624` |
+| **Text** | Ink `#141413` / Body `#3D3D3A` on cloud; Dusk Ink `#F2EFE8` / Dusk Body `#B8B3A8` on nightfall |
+| **Semantic** | Success `#5DB872`, Warning `#D4A017`, Error `#FF372D`, Info `#4A8ECF` |
+| **Spectrum (TEAMUP-only)** | Technology `#4A8ECF`, Enterprise `#FFB200`, Art `#F27830`, Mentorship `#5DB8A6`, Upskill `#5DB872` — appears only at the homepage prism-split moment, never as decoration |
 
 ### 12.3 Typography
 
 | Usage | Font |
 |---|---|
-| **Hero/Headings** | Space Grotesk (700, 800) |
-| **Display** | Cormorant Garamond (500) |
-| **Body** | Inter (400, 500, 600) |
-| **Registration forms** | SN Pro (400, 500, 600, 700) |
-| **Hero display** | Fraunces (variable weight, italic) |
-| **Championship** | Poppins (700) |
-| **Brand** | GC Bumble (400, 500, 700) |
-| **Code** | JetBrains Mono (400, 500) |
-| **Welcome** | Open Sans (400) |
+| **Display / Headings** | Bricolage Grotesque (variable) |
+| **Body** | General Sans (200–700) |
+| **Micro-labels / code** | JetBrains Mono (400, 500) |
+| **Serif accent (≤2 per page)** | Fraunces (roman only — no italics anywhere in the repo) |
 
 ### 12.4 Visual Patterns
-- **Frosted glass** , nav bar with backdrop-blur and animated sheen
-- **Noise texture** , SVG fractal noise overlay on dark/soft sections
+- **Grain overlay** , SVG fractal noise, subtly animated, above all content
+- **WebGL beam/dust layer** , Three.js canvas (lazy-loaded) rendering golden-hour beams and a whisper-intensity dust swarm; forms a knight silhouette once; splits into the five spectrum threads at the TEAMUP moment; falls back to a static CSS beam gradient with WebGL off or `prefers-reduced-motion`
+- **Felted press physics** , every interactive element presses `translateY(1px) scale(0.985)` on press, settling with `expo.out`
+- **Journey rail** , fixed right-hand map-of-the-page nav on the homepage (desktop only), tracks the active section
+- **Lit-square finale** , a single glowing tilted square on the homepage's closing section
+- **Dot cursor** , a single `mix-blend-mode: difference` dot (no ring), hides the native cursor
+- **Light-default theme** , cloud canvas by default with a persisted nightfall dark toggle (`beee_theme` in localStorage)
 - **Custom scrollbar** , thin orange `#F27830` scrollbar
-- **Custom cursor** , orange circle with hover expansion (hides native cursor)
-- **Spike mark** , cross-shaped decorative element used on feature cards
-- **Dark mode** , full `.dark` class palette toggle
-- **Animations** , GSAP ScrollTrigger, SplitText word reveals, staggered entrances, magnetic button hover, floating drift animations
-- **Responsive** , breakpoints at 768px (sm), 1024px (md), 1440px (lg)
+- **Responsive** , custom media at 768px (sm), 1024px (md), 1440px (lg)
+- Honeycomb-pattern wallpaper and 3D chess-piece objects are banned — the hexagon appears only as the intro prism and the logo itself
 
 ### 12.5 Component Patterns
-- **Buttons:** Pill-shaped, gradient orange primary, frosted-glass secondary, dark variant
-- **Cards:** Feature cards with hover lift, bento grid cards with image overlays, benefit cards with scroll-triggered fade-in
-- **Forms:** Frosted-glass dark inputs with label, animated sheen, password visibility toggle
-- **Modal:** Centered dialog with backdrop, close via Escape key or backdrop click
+- **Buttons:** `.rv-btn` — pill-shaped, `.rv-btn--beam` gradient primary, `.rv-btn--ghost` outline, `.rv-btn--big` large variant
+- **Rows:** `.rv-row` — mono index, title, body, hairline-separated editorial lists (journey stages, awards, features)
+- **Forms:** `.rv-input` / `.rv-label` / `.rv-error-text` / `.rv-callout-ok` — light-first inputs with beam focus rings
+- **Modal:** Centered dialog with backdrop; the registration confirmation modal uses a nightfall surface
 - **Accordion:** CSS `grid-template-rows` animation for smooth open/close
-- **Marquee:** Infinite-scrolling chip strip with CSS animation
 - **Search:** Debounced FAQ search with clear button
 
 ---
