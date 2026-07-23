@@ -12,7 +12,7 @@
     </div>
     <div class="why-text" use:revealFade>
       <p class="rv-body-lg why-intro">Every child holds extraordinary potential. We build strategic thinkers, confident leaders, and lifelong learners , one move at a time.</p>
-      <blockquote class="rv-note why-quote">Chess is not the destination. It is the platform.</blockquote>
+      <blockquote class="rv-d3 why-quote">Chess is not the destination. It is the platform.</blockquote>
       <div class="why-vision">
         <span class="rv-micro why-vision-eyebrow">OUR VISION</span>
         <p class="rv-body">A generation of confident thinkers who carry chess-forged skills into academics, leadership, and life.</p>
@@ -65,9 +65,7 @@
 
   .why-quote {
     margin: var(--space-5) 0;
-    font-size: var(--fs-d3);
     color: var(--beam);
-    line-height: 1.25;
   }
 
   .why-vision {
