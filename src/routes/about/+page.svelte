@@ -8,8 +8,8 @@
     <div class="page-hero-bg"></div>
     <div class="page-hero-inner">
       <div class="page-hero-content" use:motionFadeUp>
-        <h1 class="page-hero-title">BEEE®</h1>
-        <p class="page-hero-sub">A Vision and Mission Beyond Chess</p>
+        <h1 class="page-hero-title">BEEE™</h1>
+        <p class="page-hero-sub">A Vision and Mission Beyond a Championship</p>
         <p class="page-hero-body">BEEE (Be Everything Excellent Every Day) is a learning and development platform for young people. We combine structured programmes, digital tools, and mentorship so students grow in education, leadership, and life.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
@@ -33,7 +33,7 @@
       <div class="features-grid">
         <div class="feature-card">
           <h3>Structured Learning</h3>
-          <p>A 10-week guided programme with weekly goals, not a drop-in activity.</p>
+          <p>A guided programme with weekly goals.</p>
         </div>
         <div class="feature-card">
           <h3>Achievement Tracking</h3>
@@ -177,7 +177,7 @@
   }
 
   .feature-card {
-    padding: 22px 24px 14px;
+    padding: 20px 24px;
     border-radius: 16px;
     background: var(--surface-card);
     border: 1px solid var(--hairline);

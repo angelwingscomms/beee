@@ -10,8 +10,8 @@ const discounted_amount = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100));
 export const cs: FaqC[] = [
 	{
 		i: 'general', n: 'General', qs: [
-			{ q: 'What is the BEEE Spectacular Chess Championship?', a: 'The BEEE Spectacular Chess Championship is a unique championship experience that combines competitive chess with the TEAMUP Development Programme, providing participants with opportunities to develop strategic thinking, leadership, creativity, innovation, and personal growth.' },
-			{ q: 'Is this only a chess tournament?', a: 'No. The championship includes a structured development programme that extends beyond competition and focuses on building well-rounded young thinkers, leaders, and problem-solvers.' },
+			{ q: 'What is the BEEE Spectacular Chess Championship?', a: 'The BEEE Spectacular Chess Championship is a unique championship experience that combines competitive chess with the TEAMUP Development Programme, providing participants with opportunities to develop strategic thinking, leadership, creativity, innovation, and personal growth' },
+			{ q: 'Is this only a chess tournament?', a: 'It is a transformative championship experience that combines AI-powered coaching, creativity, mentorship and a purposeful self development programme' },
 			{ q: 'Who can participate?', a: 'Children aged 10–14 years.' },
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
 			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
@@ -71,9 +71,9 @@ export const cs: FaqC[] = [
 	{
 		i: 'parents', n: 'Parents & Schools', qs: [
 			{ q: 'How can parents support participants?', a: 'Parents can monitor progress through the Development Passport, encourage participation, and support learning activities throughout the programme.' },
-			{ q: 'How will parents benefit?', a: 'Children gain access to a platform that promotes strategic thinking, leadership development, innovation, healthy competition, and other meaningful achievements.' },
+			{ q: 'How will parents benefit?', a: 'You see the growth, not just hear about it. Parents get full access to their child\'s Development Passport, a live record of every skill, badge, and certificate earned from the first coaching session to the Grand Finale. Meanwhile your child builds confidence, discipline, and leadership through structured coaching and mentorship, all covered by one registration fee.' },
 			{ q: 'How will progress be tracked?', a: 'Progress is tracked through the participant\'s Taskify Development Passport, which records attendance, milestones, badges, assessment results, and other achievements.' },
-			{ q: 'Why should my school partner with BEEE?', a: 'In addition to enhancing your school\'s summer holiday programme with a unique blend of learning, leadership development, and competitive chess, participating schools enjoy partnership benefits, recognition opportunities, and dedicated support throughout the championship. Schools interested in becoming participating institutions are encouraged to contact the Championship Coordination Team for full partnership details.' },
+			{ q: 'Why should my school partner with BEEE?', a: 'In addition to enhancing your school\'s summer holiday programme with a unique blend of learning, leadership development, and competitive chess, participating schools enjoy partnership benefits, recognition opportunities, and dedicated support throughout the championship.' },
 			{ q: 'What is expected of participating schools?', a: 'Participating schools are expected to support student registration, encourage engagement with the TEAMUP programme, facilitate participation in competition stages, and celebrate student achievements throughout the championship.' },
 		]
 	},
