@@ -2,72 +2,127 @@
   --glass-blur: 16px;
   --noise-opacity: 0.03;
 
+  /* ————— SPEC-TRUM palette ————— */
+  --cloud: #F1EEE7;            /* canvas: grey-warm sky before rain */
+  --cloud-dim: #E9E5DB;        /* soft surface on cloud */
+  --nightfall: #0A0F1A;        /* deep navy interruption */
+  --nightfall-soft: #101624;   /* elevated surface on nightfall */
+  --beam: #F27830;             /* locked orange, used as light */
+  --beam-active: #BD5E25;
+  --honey: #FFB200;            /* the sun's edge; rarer than beam */
+  --dusk-ink: #F2EFE8;         /* text on nightfall */
+  --dusk-body: #B8B3A8;        /* secondary text on nightfall */
+
+  /* Spectrum — ONLY for TEAMUP split moments */
+  --spec-t: #4A8ECF;
+  --spec-e: #FFB200;
+  --spec-a: #F27830;
+  --spec-m: #5DB8A6;
+  --spec-u: #5DB872;
+
+  /* ————— legacy names, re-pointed (old pages keep working) ————— */
   --primary: #F27830;
   --primary-active: #BD5E25;
   --primary-light: #F69A64;
-  --primary-disabled: #e6dfd8;
+  --primary-disabled: #E1DCD1;
   --ink: #141413;
-  --body: #3d3d3a;
+  --body: #3D3D3A;
   --body-strong: #252523;
-  --muted: #6c6a64;
-  --muted-soft: #8e8b82;
-  --hairline: #e6dfd8;
-  --hairline-soft: #ebe6df;
-  --canvas: #faf9f5;
-  --surface-soft: #f5f0e8;
-  --surface-card: #efe9de;
-  --surface-cream-strong: #e8e0d2;
-  --surface-dark: #181715;
-  --surface-dark-elevated: #252320;
-  --surface-dark-soft: #1f1e1b;
+  --muted: #6E6A61;
+  --muted-soft: #8E8B82;
+  --hairline: #E1DCD1;
+  --hairline-soft: #E7E3D9;
+  --canvas: #F1EEE7;
+  --surface-soft: #ECE8DF;
+  --surface-card: #E7E2D6;
+  --surface-cream-strong: #E0DACB;
+  --surface-dark: #101624;
+  --surface-dark-elevated: #171E30;
+  --surface-dark-soft: #0D1320;
   --navy: #0A0F1A;
   --navy-blob: #1A2B4C;
   --on-primary: #ffffff;
-  --on-dark: #faf9f5;
-  --on-dark-soft: #a09d96;
-  --accent-teal: #5db8a6;
-  --accent-amber: #ffb200;
-  --info: #4a8ecf;
-  --success: #5db872;
-  --warning: #d4a017;
-  --error: #ff372d;
-  --font-display: 'Cormorant Garamond', 'EB Garamond', Garamond, 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-code: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-registration: 'SN Pro', sans-serif;
-  --font-championship: 'Poppins', sans-serif;
-  --font-welcome: 'Open Sans', sans-serif;
+  --on-dark: #F2EFE8;
+  --on-dark-soft: #B8B3A8;
+  --accent-teal: #5DB8A6;
+  --accent-amber: #FFB200;
+  --info: #4A8ECF;
+  --success: #5DB872;
+  --warning: #D4A017;
+  --error: #FF372D;
   --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
 
-  --color-brand: #F27830;
-  --color-brand-dark: #C25F12;
-  --color-ink-warm: #1E140D;
-  --color-ink-soft-warm: #3A2A1E;
-  --color-on-photo: #FFFFFF;
-  --color-on-photo-muted: rgba(255, 255, 255, 0.84);
-  --font-display-hero: 'Fraunces', Georgia, serif;
-  --font-body-hero: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ————— type ————— */
+  --font-grotesk: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif-note: 'Fraunces', Georgia, serif;
+  /* legacy aliases */
+  --font-display: var(--font-grotesk);
+  --font-body: var(--font-sans);
+  --font-code: var(--font-mono);
+  --font-registration: 'SN Pro', var(--font-sans);
+  --font-championship: var(--font-grotesk);
+  --font-welcome: var(--font-sans);
+  --font-display-hero: var(--font-serif-note);
+  --font-body-hero: var(--font-sans);
+
+  /* ————— SPEC-TRUM type scale (ratio 1.414 display / 1.25 UI) ————— */
+  --fs-d1: clamp(44px, 10.14vw + 6px, 152px);      /* hero display */
+  --fs-d2: clamp(36px, 5.63vw + 14.9px, 96px);     /* section display */
+  --fs-d3: clamp(28px, 3.38vw + 15.3px, 64px);     /* sub display */
+  --fs-title: clamp(22px, 1.31vw + 17.1px, 36px);  /* row titles */
+  --fs-body-lg: clamp(18px, 0.19vw + 17.3px, 20px);
+  --fs-body-std: 17px;
+  --fs-micro: 11px;
+  --fs-micro-lg: 12px;
+  --lh-display: 0.92;
+  --lh-body: 1.6;
+  --ls-display: -0.03em;
+  --ls-mono: 0.12em;
+
+  /* legacy fluid scale — still consumed by old pages; deleted in P6 */
   --fs-eyebrow: 0.8125rem;
   --fs-h1: clamp(2.25rem, 3.4vw + 1rem, 3.75rem);
   --fs-quote: clamp(1.5rem, 1.6vw + 1rem, 2.125rem);
   --fs-body: 1.0625rem;
-  --lh-body: 1.6;
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 48px;
-  --space-6: 72px;
-  --radius-pill: 999px;
-
-  /* Fluid editorial display scale , headline sizes that scale with viewport */
   --fs-display-2xl: clamp(3rem, 1.4rem + 7vw, 7.5rem);
   --fs-display-xl: clamp(2.5rem, 1.4rem + 5vw, 5.75rem);
   --fs-display-lg: clamp(2.125rem, 1.4rem + 3.2vw, 4rem);
   --fs-display-md: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);
   --fs-display-sm: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
 
+  /* ————— space ————— */
   --space-0: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 72px;
   --space-7: 96px;
   --space-8: 128px;
+  --space-9: 160px;
+  --space-10: 200px;
+  --space-11: 240px;
+  --section-pad: clamp(96px, 9.77vw + 59.4px, 200px);
+  --gutter: 32px;
+  --margin-x: 6vw;
+  --radius-pill: 999px;
+  --radius-card: 16px;
+
+  /* ————— motion ————— */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.83, 0, 0.17, 1);
+  --dur-micro: 300ms;
+  --dur-reveal: 1000ms;
+  --dur-page: 1300ms;
+
+  /* ————— z scale ————— */
+  --z-gl: 3;
+  --z-content: 10;
+  --z-nav: 50;
+  --z-menu: 70;
+  --z-intro: 80;
+  --z-grain: 90;
 }

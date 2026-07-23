@@ -78,16 +78,14 @@ html {
   background: var(--canvas);
   color: var(--ink);
   font-family: var(--font-body);
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   text-rendering: optimizeLegibility;
 }
 
 body {
   min-width: 320px;
   margin: 0;
-  background:
-    linear-gradient(180deg, rgba(245, 240, 232, 0.72), rgba(250, 249, 245, 0) 34rem),
-    var(--canvas);
+  background: var(--canvas);
   color: var(--body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -165,3 +163,7 @@ img {
 .field-grid-spaced {
   margin-top: 16px;
 }
+
+::selection { background: color-mix(in srgb, var(--beam) 30%, transparent); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }

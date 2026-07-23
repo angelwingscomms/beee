@@ -16,6 +16,7 @@
 @import 'styles/footer.css';
 @import 'styles/animations.css';
 @import 'styles/responsive.css';
+@import 'styles/system.css';
 
 :root {
   scrollbar-color: #F27830 transparent;

@@ -1,9 +1,19 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { page } from '$app/stores';
   import { goto, invalidateAll } from '$app/navigation';
+  import gsap from 'gsap';
+  import { stopScroll, startScroll } from '$lib/motion/smooth-scroll';
+  import { REDUCED } from '$lib/motion/constants';
 
-  import Button from '$lib/components/Button.svelte';
+  const NAV_LINKS = [
+    { index: '01', label: 'About', href: '/about' },
+    { index: '02', label: 'e4', href: '/e4' },
+    { index: '03', label: 'TEAMUP', href: '/teamup' },
+    { index: '04', label: 'Taskify', href: '/taskify' },
+    { index: '05', label: 'Partners', href: '/partner' },
+    { index: '06', label: 'FAQ', href: '/faq' }
+  ];
 
   let open = $state(false);
   let scrolled = $state(false);
@@ -11,11 +21,37 @@
   let user = $derived($page.data.user);
   let logging_out = $state(false);
 
+  let navVisible = $state(true);
+  let navEl: HTMLElement;
+  let menuEl: HTMLElement | undefined = $state();
+  let burgerEl: HTMLButtonElement;
+
   onMount(() => {
     const on_scroll = () => { scrolled = window.scrollY > 24; };
     on_scroll();
     window.addEventListener('scroll', on_scroll, { passive: true });
-    return () => window.removeEventListener('scroll', on_scroll);
+
+    let cleanupIntro = () => {};
+    if ($page.url.pathname === '/') {
+      if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('beee_intro') === '1') {
+        navVisible = true;
+      } else {
+        navVisible = false;
+        const onIntroDone = () => {
+          navVisible = true;
+          if (!REDUCED() && navEl) {
+            gsap.fromTo(navEl, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'expo.out' });
+          }
+        };
+        window.addEventListener('intro:done', onIntroDone, { once: true });
+        cleanupIntro = () => window.removeEventListener('intro:done', onIntroDone);
+      }
+    }
+
+    return () => {
+      window.removeEventListener('scroll', on_scroll);
+      cleanupIntro();
+    };
   });
 
   async function logout() {
@@ -28,447 +64,340 @@
       logging_out = false;
     }
   }
+
+  function focusableIn(el: HTMLElement): HTMLElement[] {
+    return Array.from(
+      el.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+  }
+
+  function onMenuKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (e.key !== 'Tab' || !menuEl) return;
+    const focusable = focusableIn(menuEl);
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  async function openMenu() {
+    open = true;
+    stopScroll();
+    document.body.style.overflow = 'hidden';
+    await tick();
+    if (menuEl) {
+      const links = menuEl.querySelectorAll<HTMLElement>('.menu-link-mask > *');
+      if (REDUCED()) {
+        gsap.set(menuEl, { opacity: 1 });
+        gsap.set(links, { yPercent: 0 });
+      } else {
+        gsap.fromTo(menuEl, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'expo.out' });
+        gsap.fromTo(
+          links,
+          { yPercent: 110 },
+          { yPercent: 0, duration: 0.6, stagger: 0.07, ease: 'expo.out', delay: 0.1 }
+        );
+      }
+      const focusable = focusableIn(menuEl);
+      focusable[0]?.focus();
+    }
+  }
+
+  function closeMenu() {
+    open = false;
+    startScroll();
+    document.body.style.overflow = '';
+    burgerEl?.focus();
+  }
+
+  function toggleMenu() {
+    if (open) closeMenu();
+    else openMenu();
+  }
 </script>
 
-<nav class="champ-nav" class:open class:scrolled>
-  <div class="champ-nav-bar">
-    <div class="champ-nav-bg"></div>
-    <div class="champ-nav-inner container">
-      <a href="/" class="champ-nav-brand">
-        <img src="/logo.svg" alt="BEEE , Be Everything Excellent Every Day" class="champ-nav-logo" />
-        <span class="champ-nav-name">BEEE</span>
-      </a>
-      <div class="champ-nav-links">
-        <a href="/about" class:active={path === '/about'}>About</a>
-        <a href="/e4" class:active={path === '/e4'}>e4</a>
-        <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
-        <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
-        <a href="/partner" class:active={path === '/partner'}>Partners</a>
-        <a href="/faq" class:active={path === '/faq'}>FAQ</a>
-      </div>
-      {#if !user}
-        <Button href="/register" class="champ-nav-cta">Register</Button>
-      {/if}
-      {#if user}
-        <a href="/dashboard" class="champ-nav-dash">Dashboard</a>
-        <button class="champ-nav-logout" onclick={logout} disabled={logging_out}>
-          {logging_out ? 'Signing out…' : 'Log out'}
-        </button>
-      {/if}
-      <button class="champ-mobile-btn" onclick={() => open = !open} aria-label="Menu" aria-expanded={open}>
-        <span></span>
-      </button>
-    </div>
+<nav
+  bind:this={navEl}
+  class="rv-nav"
+  class:scrolled
+  style:opacity={navVisible ? 1 : 0}
+>
+  <a href="/" class="rv-nav-brand">
+    <img src="/logo.svg" alt="BEEE — Be Everything Excellent Every Day" class="rv-nav-logo" />
+    <span class="rv-nav-name">BEEE</span>
+  </a>
+
+  <div class="rv-nav-links">
+    {#each NAV_LINKS as link (link.href)}
+      <a
+        href={link.href}
+        class="rv-micro rv-link"
+        class:active={path === link.href}
+      >{link.label}</a>
+    {/each}
   </div>
-  {#if open}
-    <div class="champ-mobile-menu">
-      <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
-      <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>e4</a>
-      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
-      <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
-      <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
-      <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
-      {#if user}
-        <a href="/dashboard" onclick={() => open = false}>Dashboard</a>
-        <button class="champ-mobile-logout" onclick={() => { open = false; logout(); }}>Log out</button>
-      {/if}
-    </div>
-  {/if}
+
+  <div class="rv-nav-right">
+    {#if !user}
+      <a href="/register" class="rv-btn rv-btn--beam felt" style="min-height:44px;padding:12px 24px">Register</a>
+    {:else}
+      <a href="/dashboard" class="rv-micro rv-link">Dashboard</a>
+      <button class="rv-micro rv-nav-logout" onclick={logout} disabled={logging_out}>
+        {logging_out ? 'Signing out…' : 'Log out'}
+      </button>
+    {/if}
+  </div>
+
+  <button
+    bind:this={burgerEl}
+    class="rv-burger"
+    class:burger-open={open}
+    onclick={toggleMenu}
+    aria-label={open ? 'Close menu' : 'Open menu'}
+    aria-expanded={open}
+  >
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
+{#if open}
+  <div
+    bind:this={menuEl}
+    class="rv-menu noise"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Site navigation"
+    tabindex="-1"
+    onkeydown={onMenuKeydown}
+  >
+    <div class="rv-menu-links">
+      {#each NAV_LINKS as link (link.href)}
+        <div class="menu-link-mask">
+          <a href={link.href} class="menu-link" class:active={path === link.href} onclick={closeMenu}>
+            <span class="menu-index rv-micro">{link.index}</span>{link.label}
+          </a>
+        </div>
+      {/each}
+    </div>
+    <div class="rv-menu-foot">
+      <a href="mailto:info@beeeproject.com" class="rv-micro rv-link">info@beeeproject.com</a>
+      <a href="tel:+2348020920872" class="rv-micro rv-link">+234 802 092 0872</a>
+      <a href="/register" class="rv-btn rv-btn--beam felt rv-menu-cta" onclick={closeMenu}>Register</a>
+    </div>
+  </div>
+{/if}
+
 <style>
-  .champ-nav {
+  .rv-nav {
     position: fixed;
-    top: 24px;
-    left: 50%;
-    translate: -50% 0;
-    z-index: 50;
-    width: min(1200px, calc(100% - 32px));
-    transition: top 240ms ease, width 240ms ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    gap: var(--gutter);
+    padding-inline: var(--margin-x);
+    background: transparent;
+    transition: height var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out);
   }
 
-  .champ-nav-bar {
-    position: relative;
-    border-radius: 999px;
-    isolation: isolate;
-  }
-
-  .champ-nav.scrolled {
-    top: 12px;
-    width: min(1080px, calc(100% - 32px));
-  }
-
-  .champ-nav.scrolled .champ-nav-inner {
-    height: 48px;
+  .rv-nav.scrolled {
+    height: 56px;
+    background: color-mix(in srgb, var(--canvas) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .champ-nav {
-      transition: none;
-    }
-
-    .champ-nav-links a::after {
-      transition: none;
-    }
-
-    .champ-nav-inner {
-      transition: none;
-    }
+    .rv-nav { transition: none; }
   }
 
-  .champ-nav-bg {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
-    z-index: -1;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,247,242,0.85) 50%, rgba(255,255,255,0.92) 100%);
-    backdrop-filter: blur(32px) saturate(1.5);
-    -webkit-backdrop-filter: blur(32px) saturate(1.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.04),
-      0 2px 12px rgba(255, 255, 255, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.85),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
-      inset 1px 0 0 rgba(255, 255, 255, 0.15),
-      inset -1px 0 0 rgba(255, 255, 255, 0.15),
-      0 0 60px rgba(255, 255, 255, 0.15);
-  }
-
-  .champ-nav-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      105deg,
-      transparent 15%,
-      rgba(255, 255, 255, 0.35) 32%,
-      rgba(255, 255, 255, 0.6) 38%,
-      rgba(255, 255, 255, 0.35) 44%,
-      transparent 60%
-    );
-    background-size: 220% 100%;
-    animation: sheen 5s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  .champ-nav-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  @keyframes sheen {
-    0% { background-position: 170% 0; }
-    50% { background-position: -70% 0; }
-    100% { background-position: 170% 0; }
-  }
-
-  :global(.dark) .champ-nav-bg {
-    background: linear-gradient(135deg, rgba(30, 29, 26, 0.6) 0%, rgba(24, 23, 21, 0.45) 50%, rgba(30, 29, 26, 0.55) 100%);
-    border-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(36px) saturate(1.3);
-    box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.35),
-      0 0 40px rgba(255, 255, 255, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-      inset 1px 0 0 rgba(255, 255, 255, 0.05),
-      inset -1px 0 0 rgba(255, 255, 255, 0.05);
-  }
-
-  :global(.dark) .champ-nav-bg::before {
-    background: linear-gradient(
-      105deg,
-      transparent 15%,
-      rgba(255, 255, 255, 0.04) 32%,
-      rgba(255, 255, 255, 0.08) 38%,
-      rgba(255, 255, 255, 0.04) 44%,
-      transparent 60%
-    );
-  }
-
-  :global(.dark) .champ-nav-bg::after {
-    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
-  }
-
-  .champ-nav-inner {
+  .rv-nav-brand {
     display: flex;
     align-items: center;
-    height: 54px;
-    gap: 32px;
-    width: 100%;
-    padding: 0 24px;
-    transition: height 240ms ease;
-  }
-
-  .champ-nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
     color: var(--ink);
-    font-weight: 600;
-    font-size: 18px;
-  }
-
-  .champ-nav-logo {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-  }
-
-  .champ-nav-name {
-    letter-spacing: -0.02em;
-    color: var(--ink);
-  }
-
-  :global(.dark) .champ-nav-name {
-    color: var(--on-dark);
-  }
-
-  .champ-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-left: auto;
-  }
-
-  .champ-nav-links a {
-    position: relative;
-    padding: 10px 22px;
-    border-radius: 999px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    text-decoration: none;
-    transition: background 160ms ease, color 160ms ease;
-  }
-
-  .champ-nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 6px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 220ms ease;
-  }
-
-  .champ-nav-links a.active::after {
-    transform: scaleX(1);
-  }
-
-  @media (hover: hover) {
-    .champ-nav-links a:hover::after {
-      transform: scaleX(1);
-    }
-  }
-
-  :global(.dark) .champ-nav-links a {
-    color: var(--on-dark);
-  }
-
-  :global(.champ-nav-cta) {
-    min-height: 44px;
-    padding: 10px 24px;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .champ-nav-dash {
-    min-height: 44px;
-    padding: 10px 18px;
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-    border-radius: 999px;
-    background: var(--ink);
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .champ-nav-dash:hover { opacity: 0.85; }
-
-  .champ-nav-logout {
-    min-height: 44px;
-    padding: 10px 18px;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    border-radius: 999px;
-    border: 1px solid var(--hairline);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    transition: background 160ms ease, color 160ms ease;
-  }
-
-  .champ-nav-logout:hover {
-    background: var(--surface-card);
-  }
-
-  .champ-nav-logout:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
-
-  :global(.dark) .champ-nav-logout {
-    color: var(--on-dark);
-  }
-
-  .champ-mobile-logout {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
-    border: none;
-    background: transparent;
-    color: var(--body);
-    cursor: pointer;
-  }
-
-  .champ-mobile-logout:hover {
-    background: var(--surface-card);
-    color: var(--ink);
-  }
-  .champ-nav-links a:hover {
-    color: var(--ink);
-    background: var(--surface-card);
-  }
-  :global(.dark) .champ-nav-links a:hover {
-    color: #141413;
-  }
-  .champ-nav-links a.active {
-    color: var(--primary);
-    background: transparent;
-  }
-
-  .champ-mobile-btn {
-    display: none;
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    background: var(--canvas);
-    color: var(--ink);
-    margin-left: auto;
     flex-shrink: 0;
   }
 
-  .champ-mobile-btn span,
-  .champ-mobile-btn span::before,
-  .champ-mobile-btn span::after {
+  .rv-nav-logo {
+    height: 26px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .rv-nav-name {
+    font-family: var(--font-grotesk);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+
+  .rv-nav-links {
+    display: none;
+    align-items: center;
+    gap: 32px;
+    margin-inline: auto;
+  }
+
+  .rv-nav-links .rv-link {
+    position: relative;
+    color: var(--ink);
+    padding-left: 12px;
+  }
+
+  .rv-nav-links .rv-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    translate: 0 -50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--beam);
+    opacity: 0;
+    transition: opacity var(--dur-micro) var(--ease-out);
+  }
+
+  .rv-nav-links .rv-link.active::before {
+    opacity: 1;
+  }
+
+  .rv-nav-right {
+    display: none;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  .rv-nav-logout {
+    background: none;
+    border: none;
+    color: var(--ink);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity var(--dur-micro) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .rv-nav-logout:hover { opacity: 1; }
+  }
+  .rv-nav-logout:disabled { cursor: default; }
+
+  .rv-burger {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .rv-burger span {
     display: block;
     width: 18px;
     height: 2px;
-    border-radius: 999px;
     background: currentColor;
-    transition: transform 200ms ease;
+    transition: transform 300ms var(--ease-out), opacity 300ms var(--ease-out);
+  }
+  .rv-burger.burger-open span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .rv-burger.burger-open span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 
-  .champ-mobile-btn span {
-    position: relative;
+  @media (--md-up) {
+    .rv-nav-links { display: flex; }
+    .rv-nav-right { display: flex; }
+    .rv-burger { display: none; }
   }
 
-  .champ-mobile-btn span::before,
-  .champ-mobile-btn span::after {
-    position: absolute;
-    content: '';
+  .rv-menu {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-menu);
+    background: var(--nightfall);
+    color: var(--dusk-ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-7) var(--margin-x);
+    overflow-y: auto;
   }
 
-  .champ-mobile-btn span::before { top: -6px; }
-  .champ-mobile-btn span::after { top: 6px; }
-
-  .champ-mobile-menu {
-    display: grid;
-    gap: 8px;
-    margin-top: 12px;
-    padding: 20px 24px;
-    border-radius: 24px;
-    background: rgba(250, 249, 245, 0.96);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  .rv-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .champ-mobile-menu a {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--body);
+  .menu-link-mask {
+    overflow: hidden;
+  }
+
+  .menu-link {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    font-family: var(--font-grotesk);
+    font-weight: 600;
+    font-size: clamp(36px, 9vw, 64px);
+    line-height: 1.1;
+    color: var(--dusk-ink);
     text-decoration: none;
   }
 
-  .champ-mobile-menu a:hover,
-  .champ-mobile-menu a.active {
-    background: var(--surface-card);
-    color: var(--ink);
+  .menu-index {
+    color: var(--honey);
+    font-size: var(--fs-micro);
   }
 
-  @media (--md-down) {
-    .champ-nav-links {
-      display: none;
-    }
-    .champ-mobile-btn {
-      display: inline-flex;
-    }
-    .champ-nav-inner {
-      height: 52px;
-      padding: 0 20px;
-      gap: 16px;
-    }
-    :global(.champ-nav-cta),
-    .champ-nav-dash,
-    .champ-nav-logout {
-      margin-left: auto;
-    }
-    .champ-nav-logo {
-      width: 30px;
-      height: 30px;
-    }
-    .champ-nav.open .champ-nav-bg::before {
-      animation: none;
-    }
+  .menu-link.active {
+    color: var(--beam);
   }
-  @media (--sm-down) {
-    .champ-nav-logout {
-      display: none;
-    }
+
+  .rv-menu-foot {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: var(--space-6);
   }
-  @media (max-width: 400px) {
-    .champ-nav-inner {
-      padding: 0 12px;
-      gap: 8px;
-    }
-    .champ-nav-brand {
-      gap: 6px;
-    }
-    .champ-nav-logo {
-      width: 28px;
-      height: 28px;
-    }
-    .champ-nav-name {
-      font-size: 14px;
-    }
-    :global(.champ-nav-cta) {
-      padding: 8px 14px !important;
-      font-size: 13px !important;
-      min-height: 36px !important;
-      margin-left: auto;
-    }
+
+  .rv-menu-foot .rv-link {
+    color: var(--dusk-body);
+  }
+
+  .rv-menu-cta {
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  @media (--md-up) {
+    .rv-menu { display: none; }
   }
 </style>

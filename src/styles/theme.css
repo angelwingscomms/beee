@@ -1,31 +1,31 @@
 @theme {
-  --color-canvas: #faf9f5;
+  --color-canvas: #F1EEE7;
   --color-ink: #141413;
   --color-body: #3d3d3a;
   --color-primary: #F27830;
-  --color-secondary: #efe9de;
+  --color-secondary: #E7E2D6;
   --color-primary-active: #BD5E25;
-  --color-hairline: #e6dfd8;
-  --color-surface-soft: #f5f0e8;
-  --color-surface-card: #efe9de;
+  --color-hairline: #E1DCD1;
+  --color-surface-soft: #ECE8DF;
+  --color-surface-card: #E7E2D6;
   --color-surface-dark: #181715;
   --color-surface-dark-elevated: #252320;
   --color-surface-dark-soft: #1f1e1b;
   --color-navy: #0A0F1A;
   --color-navy-blob: #1A2B4C;
-  --color-on-dark: #faf9f5;
-  --color-muted: #6c6a64;
+  --color-on-dark: #F2EFE8;
+  --color-muted: #6E6A61;
   --color-teal: #5db8a6;
   --color-amber: #ffb200;
   --color-amber-400: #ffb200;   /* remap Tailwind amber-400 → brand amber */
   --color-amber-500: #e6a000;   /* hover/darker step for amber surfaces */
 
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', sans-serif;
-  --font-hero: 'Space Grotesk', sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', sans-serif;
+  --font-body: 'General Sans', sans-serif;
+  --font-hero: 'Bricolage Grotesque Variable', sans-serif;
   --font-registration: 'SN Pro', sans-serif;
-  --font-championship: 'Poppins', sans-serif;
-  --font-welcome: 'Open Sans', sans-serif;
+  --font-championship: 'Bricolage Grotesque Variable', sans-serif;
+  --font-welcome: 'General Sans', sans-serif;
 
   --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
   --animate-button-pulse: button-pulse 3.8s ease-in-out infinite;

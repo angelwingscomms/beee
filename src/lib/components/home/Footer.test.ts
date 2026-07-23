@@ -4,25 +4,25 @@ import { describe, expect, it } from 'vitest';
 
 const footer = readFileSync(resolve(process.cwd(), 'src/lib/components/home/Footer.svelte'), 'utf8');
 
-describe('Footer editorial rework', () => {
-  it('layers a navy-blob gradient mesh behind the flat navy background', () => {
-    expect(footer).toContain('radial-gradient(1100px 460px at 12% -15%, color-mix(in srgb, var(--navy-blob) 55%, transparent), transparent 70%),');
+describe('Footer SPEC-TRUM rework', () => {
+  it('uses the nightfall field with grain', () => {
+    expect(footer).toContain('rv-field-night noise footer');
   });
 
-  it('uses the fluid display token for the event headline', () => {
-    expect(footer).toContain('font-size: var(--fs-display-md);');
+  it('renders the headline with the honey-highlighted word', () => {
+    expect(footer).toContain('Be Everything <span style="color: var(--honey)">Excellent</span> Every Day.');
   });
 
-  it('splits footer-top into an asymmetric grid on desktop and stacks it on mobile', () => {
-    expect(footer).toContain('grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);');
-    expect(footer).toContain('.footer-top {\n      grid-template-columns: 1fr;\n      gap: 20px;\n    }');
+  it('splits footer content into a 3-column grid on desktop and stacks it on mobile', () => {
+    expect(footer).toContain('grid-template-columns: repeat(3, 1fr);');
+    expect(footer).toContain('.footer-grid {\n      grid-template-columns: 1fr;');
   });
 
-  it('gates the footer nav hover shift behind (hover: hover)', () => {
-    expect(footer).toContain('@media (hover: hover) {\n    .footer-nav a:hover {');
+  it('filters the current path out of the map links', () => {
+    expect(footer).toContain(".filter((l) => l.href !== p);");
   });
 
-  it('disables the hover transform transition under prefers-reduced-motion', () => {
-    expect(footer).toContain('@media (prefers-reduced-motion: reduce) {\n    .footer-nav a {\n      transition: color 160ms ease;\n    }\n  }');
+  it('renders the theme toggle in the bottom row', () => {
+    expect(footer).toContain('<ThemeToggle />');
   });
 });

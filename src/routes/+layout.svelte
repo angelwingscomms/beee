@@ -1,13 +1,18 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
   import { page } from '$app/stores';
+  import { onMount } from 'svelte';
   import '../app.css';
   import Cursor from '../components/Cursor.svelte';
+  import Grain from '$lib/components/system/Grain.svelte';
   import ChampNav from '$lib/components/championship/ChampNav.svelte';
   import Footer from '$lib/components/home/Footer.svelte';
   import DevBash from '../components/DevBash.svelte';
   import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, seo_for, is_indexable } from '$lib/seo';
+  import { initSmoothScroll } from '$lib/motion/smooth-scroll';
   let { children } = $props();
+
+  onMount(() => initSmoothScroll());
 
   let url = $derived($page.url);
   let og_img = $derived($page.data.ogImage ?? DEFAULT_OG_IMAGE);
@@ -89,6 +94,7 @@
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <Cursor />
+<Grain />
 <ChampNav />
 <main id="main-content" tabindex="-1">
   {@render children()}

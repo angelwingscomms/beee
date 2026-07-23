@@ -11,33 +11,52 @@ describe('ChampNav scroll-aware condense', () => {
   });
 
   it('applies the scrolled class to the nav root', () => {
-    expect(nav).toContain('<nav class="champ-nav" class:open class:scrolled>');
+    expect(nav).toContain('class="rv-nav"');
+    expect(nav).toContain('class:scrolled');
   });
 
-  it('condenses top offset and width when scrolled', () => {
-    expect(nav).toContain('.champ-nav.scrolled {\n    top: 12px;\n    width: min(1080px, calc(100% - 32px));\n  }');
+  it('condenses height when scrolled', () => {
+    expect(nav).toContain('.rv-nav.scrolled {\n    height: 56px;');
   });
 
-  it('animates the nav inner height alongside the scroll-condense', () => {
-    expect(nav).toContain('transition: height 240ms ease;');
-  });
-
-  it('gates the nav inner height transition behind prefers-reduced-motion', () => {
-    expect(nav).toContain('.champ-nav-inner {\n      transition: none;\n    }');
+  it('gates the nav height/background transition behind prefers-reduced-motion', () => {
+    expect(nav).toContain('@media (prefers-reduced-motion: reduce) {\n    .rv-nav { transition: none; }\n  }');
   });
 });
 
 describe('ChampNav active link indicator', () => {
-  it('uses an animated underline instead of a static border-bottom', () => {
-    expect(nav).toContain('.champ-nav-links a::after {');
-    expect(nav).toContain('.champ-nav-links a.active::after {\n    transform: scaleX(1);\n  }');
+  it('uses a dot indicator instead of a static border-bottom', () => {
+    expect(nav).toContain('.rv-nav-links .rv-link::before {');
+    expect(nav).toContain('.rv-nav-links .rv-link.active::before {\n    opacity: 1;\n  }');
+  });
+});
+
+describe('ChampNav links and auth state', () => {
+  it('lists all primary navigation links', () => {
+    for (const href of ['/about', '/e4', '/teamup', '/taskify', '/partner', '/faq']) {
+      expect(nav).toContain(`href: '${href}'`);
+    }
   });
 
-  it('gates the hover underline behind (hover: hover)', () => {
-    expect(nav).toContain('@media (hover: hover) {\n    .champ-nav-links a:hover::after {');
+  it('shows a Register CTA when logged out', () => {
+    expect(nav).toContain('{#if !user}');
+    expect(nav).toContain('<a href="/register" class="rv-btn rv-btn--beam felt"');
   });
 
-  it('gates the underline transition behind prefers-reduced-motion', () => {
-    expect(nav).toContain('.champ-nav-links a::after {\n      transition: none;\n    }');
+  it('shows Dashboard and Log out when logged in', () => {
+    expect(nav).toContain('<a href="/dashboard" class="rv-micro rv-link">Dashboard</a>');
+    expect(nav).toContain('onclick={logout}');
+  });
+});
+
+describe('ChampNav mobile menu', () => {
+  it('locks scroll and traps focus while open', () => {
+    expect(nav).toContain("document.body.style.overflow = 'hidden';");
+    expect(nav).toContain('function onMenuKeydown');
+    expect(nav).toContain("e.key === 'Escape'");
+  });
+
+  it('returns focus to the burger button on close', () => {
+    expect(nav).toContain('burgerEl?.focus();');
   });
 });

@@ -17,8 +17,8 @@
     document.head.appendChild(style);
 
     const onMove = (e: MouseEvent) => {
-      mx = e.clientX - 12;
-      my = e.clientY - 12;
+      mx = e.clientX - 5;
+      my = e.clientY - 5;
       if (x < 0) { x = mx; y = my; }
     };
     const onOver = (e: MouseEvent) => {
@@ -55,23 +55,11 @@
 
 <style>
   .cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99999;
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(242, 120, 48, 0.5);
-    border-radius: 999px;
-    background: rgba(242, 120, 48, 0.06);
+    position: fixed; top: 0; left: 0; z-index: 99999;
+    width: 10px; height: 10px; border-radius: 999px;
+    background: #F2EFE8; mix-blend-mode: difference;
     pointer-events: none;
-    transition: width 240ms ease, height 240ms ease, border-color 240ms ease, background 240ms ease;
+    transition: transform 0s, scale var(--dur-micro) var(--ease-out);
   }
-
-  .cursor-hover {
-    width: 40px;
-    height: 40px;
-    border-color: var(--primary);
-    background: rgba(242, 120, 48, 0.1);
-  }
+  .cursor-hover { scale: 2.6; }
 </style>
