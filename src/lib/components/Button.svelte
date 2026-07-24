@@ -43,7 +43,7 @@
     justify-content: center;
     border-radius: 999px;
     border: none;
-    background: linear-gradient(rgb(255, 138, 58) 0%, rgb(255, 107, 0) 50%, rgb(229, 92, 0) 100%);
+    background: rgb(255, 107, 0);
     color: #fff;
     font-size: 15px;
     font-weight: 600;

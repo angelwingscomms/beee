@@ -109,12 +109,7 @@
   .hero-scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(10, 15, 26, 0.15) 0%,
-      rgba(10, 15, 26, 0.05) 45%,
-      rgba(10, 15, 26, 0.78) 100%
-    );
+    background: rgba(10, 15, 26, 0.5);
   }
 
   .hero-content {

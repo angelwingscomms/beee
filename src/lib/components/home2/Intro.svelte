@@ -170,7 +170,7 @@
     width: 0;
     height: 2px;
     transform-origin: right center;
-    background: linear-gradient(90deg, var(--honey), var(--beam));
+    background: var(--beam);
   }
 
   .intro-thread {

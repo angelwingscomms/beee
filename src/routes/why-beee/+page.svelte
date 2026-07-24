@@ -34,7 +34,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(100deg, rgba(10, 15, 26, 0.2) 0%, rgba(10, 15, 26, 0.72) 46%, rgba(10, 15, 26, 0.92) 100%);
+    background: rgba(10, 15, 26, 0.72);
   }
 
   .why-grid {
