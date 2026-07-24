@@ -10,13 +10,13 @@
   {/if}
 
   <div class="finale-content">
-    <p class="rv-micro finale-eyebrow">SLOTS ARE LIMITED · FIRST COMPLETED, FIRST CONFIRMED</p>
-    <h2 class="rv-d1" use:revealLines>Make your move.</h2>
-    <p class="rv-body-lg finale-sub">₦15,000 covers everything: e4, TEAMUP, Taskify, the live rounds and the Grand Finale. Through a partner link it is ₦13,500.</p>
+    <p class="rv-micro finale-eyebrow">REGISTRATION CLOSES 29 AUGUST 2026</p>
+    <h2 class="rv-d1" use:revealLines>Make Your Move.</h2>
+    <p class="rv-body-lg finale-sub">₦15,000, all-inclusive. Registration unlocks e4™, TEAMUP™ and the Taskify™ passport, the live rounds and the Grand Finale.</p>
     <div use:revealFade>
-      <a href="/register" class="rv-btn rv-btn--beam rv-btn--big felt">Register your child</a>
+      <a href="/register" class="rv-btn rv-btn--beam rv-btn--big felt">Start Your Child's Journey</a>
     </div>
-    <p class="rv-micro finale-note">NO PRIOR CHESS EXPERIENCE REQUIRED</p>
+    <p class="rv-micro finale-note">REGISTER EARLY FOR A RICHER CHAMPIONSHIP EXPERIENCE</p>
   </div>
 </section>
 

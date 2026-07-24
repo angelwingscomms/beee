@@ -40,3 +40,39 @@ https://svelte.dev/e/state_referenced_locally
 https://svelte.dev/e/state_referenced_locally
 6:43:08 AM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:10:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
 https://svelte.dev/e/state_referenced_locally
+7:18:06 AM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte, /src/app.css
+7:18:06 AM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
+7:18:07 AM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte, /src/app.css
+7:18:07 AM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
+7:18:09 AM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte, /src/app.css
+7:18:09 AM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
+7:18:12 AM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte, /src/app.css
+7:18:12 AM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
+7:18:15 AM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte, /src/app.css
+7:18:15 AM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
+7:18:23 AM [vite] (client) hmr update /src/lib/components/home2/Manifesto.svelte, /src/app.css
+7:18:23 AM [vite] (ssr) page reload src/lib/components/home2/Manifesto.svelte
+7:18:25 AM [vite] (client) hmr update /src/lib/components/home2/KnightInterlude.svelte, /src/app.css
+7:18:25 AM [vite] (ssr) page reload src/lib/components/home2/KnightInterlude.svelte
+7:18:27 AM [vite] (client) hmr update /src/lib/components/home2/PrismSplit.svelte, /src/app.css
+7:18:27 AM [vite] (ssr) page reload src/lib/components/home2/PrismSplit.svelte
+7:18:33 AM [vite] (client) hmr update /src/lib/components/home2/Platforms.svelte, /src/app.css
+7:18:33 AM [vite] (ssr) page reload src/lib/components/home2/Platforms.svelte
+7:18:35 AM [vite] (client) hmr update /src/lib/components/home2/Platforms.svelte, /src/app.css
+7:18:35 AM [vite] (ssr) page reload src/lib/components/home2/Platforms.svelte
+7:18:50 AM [vite] (client) hmr update /src/lib/components/home2/JourneyMap.svelte, /src/app.css
+7:18:50 AM [vite] (ssr) page reload src/lib/components/home2/JourneyMap.svelte
+7:18:52 AM [vite] (client) hmr update /src/lib/components/home2/JourneyMap.svelte, /src/app.css
+7:18:52 AM [vite] (ssr) page reload src/lib/components/home2/JourneyMap.svelte
+7:19:02 AM [vite] (client) hmr update /src/lib/components/home2/Awards.svelte, /src/app.css
+7:19:02 AM [vite] (ssr) page reload src/lib/components/home2/Awards.svelte
+7:19:04 AM [vite] (client) hmr update /src/lib/components/home2/Awards.svelte, /src/app.css
+7:19:04 AM [vite] (ssr) page reload src/lib/components/home2/Awards.svelte
+7:19:16 AM [vite] (client) hmr update /src/lib/components/home2/Finale.svelte, /src/app.css
+7:19:16 AM [vite] (ssr) page reload src/lib/components/home2/Finale.svelte
+7:20:00 AM [vite] (client) hmr update /src/lib/components/home2/Platforms.svelte, /src/app.css
+7:20:00 AM [vite] (ssr) page reload src/lib/components/home2/Platforms.svelte
+7:45:46 AM [vite] (client) hmr update /src/components/Cursor.svelte, /src/app.css
+7:45:46 AM [vite] (ssr) page reload src/components/Cursor.svelte
+7:45:47 AM [vite] (client) hmr update /src/components/Cursor.svelte?svelte&type=style&lang.css, /src/app.css
+7:45:47 AM [vite] (ssr) page reload src/components/Cursor.svelte

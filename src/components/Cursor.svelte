@@ -49,7 +49,7 @@
   <div
     class="cursor"
     class:cursor-hover={hovered}
-    style="transform: translate({x}px, {y}px)"
+    style="translate: {x}px {y}px"
   ></div>
 {/if}
 
@@ -59,7 +59,7 @@
     width: 10px; height: 10px; border-radius: 999px;
     background: #F2EFE8; mix-blend-mode: difference;
     pointer-events: none;
-    transition: transform 0s, scale var(--dur-micro) var(--ease-out);
+    transition: translate 0s, scale var(--dur-micro) var(--ease-out);
   }
   .cursor-hover { scale: 2.6; }
 </style>

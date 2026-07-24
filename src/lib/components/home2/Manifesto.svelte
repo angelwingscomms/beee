@@ -5,9 +5,9 @@
 
 <section id="manifesto" class="rv-field-night manifesto" use:glSection={'manifesto'}>
   <div class="manifesto-inner">
-    <h2 class="rv-d2 manifesto-line" use:revealLines>Most championships end with a trophy.</h2>
-    <h2 class="rv-d2 manifesto-line" use:revealLines={{ delay: 0.15 }}>This one begins with a journey.</h2>
-    <p class="rv-micro manifesto-caption" use:revealFade={{ delay: 0.4 }}>MORE THAN A CHESS CHAMPIONSHIP</p>
+    <h2 class="rv-d2 manifesto-line" use:revealLines>More than a</h2>
+    <h2 class="rv-d2 manifesto-line" use:revealLines={{ delay: 0.15 }}>chess championship.</h2>
+    <p class="rv-micro manifesto-caption" use:revealFade={{ delay: 0.4 }}>COMPETE · DEVELOP · EXCEL</p>
   </div>
 </section>
 

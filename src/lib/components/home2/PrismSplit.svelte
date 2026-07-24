@@ -17,7 +17,7 @@
       <span class="split-eyebrow-full">TEAMUP™ · TECHNOLOGY · ENTERPRISE · ART · MENTORSHIP · UPSKILL</span>
       <span class="split-eyebrow-short">TEAMUP™</span>
     </p>
-    <h2 class="rv-d2 split-title" use:revealLines>One game in.<br />Five directions out.</h2>
+    <h2 class="rv-d2 split-title" use:revealLines>Developing <span class="rv-note">young thinkers</span><br />beyond the chessboard.</h2>
 
     <div class="split-rows" use:revealChildren>
       {#each PILLARS as pillar (pillar.letter)}

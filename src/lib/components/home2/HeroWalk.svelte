@@ -58,32 +58,32 @@
 
   <div class="rv-wrap hero-content">
     <p class="rv-micro hero-eyebrow">
-      <span class="hero-eyebrow-full">BEEE SPECTACULAR CHESS CHAMPIONSHIP · ABUJA · OCTOBER 2026</span>
-      <span class="hero-eyebrow-short">ABUJA · OCTOBER 2026</span>
+      <span class="hero-eyebrow-full">BEEE SPECTACULAR CHESS CHAMPIONSHIP · ABUJA 2026</span>
+      <span class="hero-eyebrow-short">ABUJA 2026</span>
     </p>
     <h1
       bind:this={h1}
       class="rv-d1 hero-title"
       use:revealLines={{ delay: introRan ? 0 : 0.2 }}
     >
-      The stadium<br />is <span class="rv-note">waiting</span><br />for your child.
+      Chess is where they learn.<br />Life is where they <span class="rv-note">lead</span>.
     </h1>
     <p class="rv-body-lg hero-sub" use:revealFade={{ delay: 0.5 }}>
-      Chess, AI coaching, mentorship and a grand finale on the floor of the National Stadium. For ages 10 to 14. No experience needed.
+      A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
     </p>
     <div class="hero-cta" use:revealFade={{ delay: 0.65 }}>
-      <a href="/register" class="rv-btn rv-btn--beam rv-btn--big felt">Take your seat</a>
+      <a href="/register" class="rv-btn rv-btn--beam rv-btn--big felt">Register Your Child</a>
       <button class="rv-btn rv-btn--ghost felt" aria-label="Scroll to the next section" onclick={scrollToManifesto}>
-        Walk in ↓
+        More Than A Championship ↓
       </button>
     </div>
   </div>
 
   <div class="hero-stats" use:revealChildren>
     <div class="rv-micro hero-stat">AGES 10–14</div>
-    <div class="rv-micro hero-stat">₦15,000 ALL-IN</div>
-    <div class="rv-micro hero-stat">COACHING FROM JUL 28</div>
-    <div class="rv-micro hero-stat">FINALE · NATIONAL STADIUM · OCT 2026</div>
+    <div class="rv-micro hero-stat">₦15,000 ALL-INCLUSIVE</div>
+    <div class="rv-micro hero-stat">COACHING · JUL 28–AUG 29</div>
+    <div class="rv-micro hero-stat">FINALE · NATIONAL STADIUM · OCT</div>
   </div>
 </section>
 

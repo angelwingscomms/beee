@@ -28,7 +28,7 @@
         {/each}
       </svg>
     {/if}
-    <p bind:this={caption} class="rv-micro interlude-caption">THE GAME IS THE VEHICLE.</p>
+    <p bind:this={caption} class="rv-micro interlude-caption">THE CHAMPIONSHIP GOES BEYOND CHESS.</p>
   </div>
 </section>
 

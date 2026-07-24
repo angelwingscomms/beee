@@ -3,16 +3,16 @@
   import { glSection } from '$lib/gl/store';
 
   const PLATFORMS = [
-    { index: '01', name: 'e4', name_role: 'THE AI CHESS COACH', body: "Live analysis of every move, answers in voice or text, and puzzles built from your child's own mistakes.", link_label: 'Meet e4 →', href: '/e4' },
-    { index: '02', name: 'TEAMUP', name_role: 'THE DEVELOPMENT PROGRAMME', body: 'Technology, Enterprise, Art, Mentorship, Upskill. The journey beyond the board.', link_label: 'Explore TEAMUP →', href: '/teamup' },
-    { index: '03', name: 'Taskify', name_role: 'THE DEVELOPMENT PASSPORT', body: 'Every badge, milestone and certificate, recorded where parents can see it.', link_label: 'Open the passport →', href: '/taskify' }
+    { index: '01', name: 'e4', name_role: 'THE AI CHESS COACH', body: "Your child's AI chess coach: live analysis, training, and practice.", link_label: 'Meet e4 →', href: '/e4' },
+    { index: '02', name: 'TEAMUP', name_role: 'THE DEVELOPMENT PROGRAMME', body: 'The development programme: Technology, Enterprise, Art, Mentorship, Upskill.', link_label: 'Explore TEAMUP →', href: '/teamup' },
+    { index: '03', name: 'Taskify', name_role: 'THE DEVELOPMENT PASSPORT', body: 'The digital passport recording every badge, milestone, and certificate won.', link_label: 'Open the passport →', href: '/taskify' }
   ];
 </script>
 
 <section id="platforms" class="rv-field-cloud rv-section" use:glSection={'ambient'}>
   <div class="rv-wrap">
-    <p class="rv-micro platforms-eyebrow">THE THREE PLATFORMS</p>
-    <h2 class="rv-d2" use:revealLines>Registered on day one.<br />Equipped from day one.</h2>
+    <p class="rv-micro platforms-eyebrow">THREE PROPRIETARY PLATFORMS</p>
+    <h2 class="rv-d2" use:revealLines>What makes the BEEE<br />Championship <span class="rv-note">different?</span></h2>
 
     <div class="platforms-rows" use:revealChildren>
       {#each PLATFORMS as p (p.index)}
