@@ -2,65 +2,41 @@
 > beee-teamup-chess-tournament@0.1.0 dev /home/ed/i/beee
 > vite --host --port 5400
 
-Port 5400 is in use, trying another one...
-10:06:27 PM [vite] (client) Re-optimizing dependencies because vite config has changed
-10:06:27 PM [vite] (ssr) Re-optimizing dependencies because vite config has changed
 
-  VITE v8.0.14  ready in 3335 ms
+  VITE v8.0.14  ready in 2736 ms
 
-  ➜  Local:   http://localhost:5401/
-  ➜  Network: http://192.168.1.4:5401/
-  ➜  Network: http://172.19.0.1:5401/
-  ➜  Network: http://169.254.142.40:5401/
-  ➜  Network: http://169.254.103.131:5401/
-  ➜  Network: http://169.254.105.192:5401/
-  ➜  Network: http://169.254.87.152:5401/
+  ➜  Local:   http://localhost:5400/
+  ➜  Network: http://192.168.1.4:5400/
+  ➜  Network: http://172.19.0.1:5400/
+  ➜  Network: http://169.254.103.171:5400/
+  ➜  Network: http://169.254.155.190:5400/
+  ➜  Network: http://169.254.59.32:5400/
+  ➜  Network: http://169.254.184.70:5400/
   ➜  press h + enter to show help
 Using secrets defined in .dev.vars
 Using secrets defined in .dev.vars
-10:15:03 PM [vite] (client) [optimizer] bundling dependencies...
-10:15:03 PM [vite] (client) ✨ new dependencies optimized: @paystack/inline-js
-10:15:41 PM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+6:32:07 AM [vite] (client) hmr update /src/app.css, /src/lib/components/home2/HomeCanvas.svelte
+6:32:07 AM [vite] (ssr) page reload src/lib/gl/knight.ts
+6:32:49 AM [vite] (client) hmr update /src/app.css, /src/lib/components/home2/HomeCanvas.svelte
+6:32:49 AM [vite] (ssr) page reload src/lib/gl/knight.ts
+6:32:54 AM [vite] (client) hmr update /src/lib/components/home2/KnightInterlude.svelte, /src/app.css
+6:32:54 AM [vite] (ssr) page reload src/lib/components/home2/KnightInterlude.svelte
+6:32:58 AM [vite] (client) hmr update /src/lib/components/home2/KnightInterlude.svelte, /src/app.css
+6:32:58 AM [vite] (ssr) page reload src/lib/components/home2/KnightInterlude.svelte
+6:33:02 AM [vite] (client) hmr update /src/lib/components/home2/KnightInterlude.svelte?svelte&type=style&lang.css, /src/app.css
+6:33:02 AM [vite] (ssr) page reload src/lib/components/home2/KnightInterlude.svelte
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+6:33:28 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+6:33:28 AM [vite] (client) page reload .svelte-kit/generated/root.js
+6:33:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+6:33:28 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+6:43:08 AM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:8:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
 https://svelte.dev/e/state_referenced_locally
-10:15:41 PM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+6:43:08 AM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:9:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
 https://svelte.dev/e/state_referenced_locally
-10:15:41 PM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:10:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
+6:43:08 AM [vite-plugin-svelte] src/routes/dashboard/partner/+page.svelte:10:18 This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?
 https://svelte.dev/e/state_referenced_locally
-10:26:17 PM [vite] (client) hmr update /src/lib/components/home2/HeroWalk.svelte?svelte&type=style&lang.css, /src/app.css
-10:26:17 PM [vite] (ssr) page reload src/lib/components/home2/HeroWalk.svelte
-10:28:21 PM [vite] (client) hmr update /src/lib/components/home2/Intro.svelte?svelte&type=style&lang.css, /src/app.css
-10:28:21 PM [vite] (ssr) page reload src/lib/components/home2/Intro.svelte
-10:31:02 PM [vite] (client) hmr update /src/lib/components/home2/PrismSplit.svelte, /src/lib/components/home2/PrismSplit.svelte?svelte&type=style&lang.css, /src/app.css
-10:31:02 PM [vite] (ssr) page reload src/lib/components/home2/PrismSplit.svelte
-10:33:20 PM [vite] (client) hmr update /src/lib/components/home2/Manifesto.svelte, /src/lib/components/home2/Manifesto.svelte?svelte&type=style&lang.css, /src/app.css
-10:33:20 PM [vite] (ssr) page reload src/lib/components/home2/Manifesto.svelte
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/19.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/20.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/21.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-10:34:08 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-10:34:08 PM [vite] (client) page reload .svelte-kit/generated/root.js
-10:34:08 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
-10:34:08 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/6.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/9.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/15.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/19.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/20.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/21.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
-10:34:28 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
-10:34:28 PM [vite] (client) page reload .svelte-kit/generated/root.js
-10:34:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
-10:34:28 PM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
