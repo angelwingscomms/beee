@@ -6,6 +6,7 @@ import type { User } from '$lib/types';
 
 // A custom partner code must be short, URL-safe, and easy to type/share.
 const CODE_RE = /^[a-z0-9_-]+$/;
+const RESERVED = new Set(['edmund', 'angel', 'pearl', 'i', 'beeeproject', 'thebeeeproject']);
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!locals.user) {
@@ -22,8 +23,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!CODE_RE.test(code)) {
 		return json(
 			{
-				error:
-					'Use 3–24 characters: lowercase letters, numbers, hyphens, or underscores only.'
+		error:
+				'Use lowercase letters, numbers, hyphens, or underscores only.'
 			},
 			{ status: 400 }
 		);

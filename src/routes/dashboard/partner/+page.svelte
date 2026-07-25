@@ -131,7 +131,7 @@
     <div class="settings-card">
       <h2 class="settings-card-title">Set a Custom Partner Code</h2>
       <p class="settings-card-sub">Replace the random code above with one of your own. It must be unique and pass a quick check so it sounds right when shared.</p>
-      <p class="warning-note">Warning: your old affiliate code will stop working. Anyone you've already shared your link with before will no longer be able to use it. Make sure you update your shared links afterward.</p>
+      <p class="warning-note">Warning: your old partner code will stop working. Anyone you've already shared your link with before will no longer be able to use it. Make sure you update your shared links afterward.</p>
       <form onsubmit={saveCustomCode}>
         <div class="field">
           <label for="customCode">Custom code</label>
