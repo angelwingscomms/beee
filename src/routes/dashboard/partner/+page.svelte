@@ -120,17 +120,23 @@
         </button>
       </div>
       <p class="code-label">Share this link to earn commissions:</p>
-      <code class="code-url">https://beeeproject.com/i/{data.ac || '{code}'}</code>
+      <div class="code-url-row">
+        <code class="code-url">https://beeeproject.com/i/{data.ac || '{code}'}</code>
+        <button class="button-secondary code-copy-btn" onclick={copyCode} disabled={!data.ac}>
+          {copied ? 'Copied!' : 'Copy Link'}
+        </button>
+      </div>
     </div>
 
     <div class="settings-card">
       <h2 class="settings-card-title">Set a Custom Partner Code</h2>
       <p class="settings-card-sub">Replace the random code above with one of your own. It must be unique and pass a quick check so it sounds right when shared.</p>
+      <p class="warning-note">Warning: your old affiliate code will stop working. Anyone you've already shared your link with before will no longer be able to use it. Make sure you update your shared links afterward.</p>
       <form onsubmit={saveCustomCode}>
         <div class="field">
           <label for="customCode">Custom code</label>
           <input id="customCode" class="text-input" type="text" bind:value={customCode}
-            placeholder="e.g. chesskids" maxlength={24} autocapitalize="off" autocomplete="off" spellcheck={false}
+            placeholder="e.g. chesskids" autocapitalize="off" autocomplete="off" spellcheck={false}
             oninput={() => { customCodeError = ''; customCodeMsg = ''; }}
           />
           {#if customCodeError}<p class="field-msg field-error">{customCodeError}</p>{/if}
@@ -259,6 +265,11 @@
     color: var(--muted);
     margin: 0 0 6px;
   }
+  .code-url-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   .code-url {
     display: block;
     padding: 10px 14px;
@@ -294,6 +305,12 @@
     font-size: 14px;
     color: var(--success);
     font-weight: 500;
+  }
+  .warning-note {
+    font-size: 13px;
+    color: var(--warning);
+    margin: -4px 0 12px;
+    line-height: 1.4;
   }
   .save-error {
     font-size: 14px;

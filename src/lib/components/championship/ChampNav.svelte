@@ -15,7 +15,14 @@
     const on_scroll = () => { scrolled = window.scrollY > 24; };
     on_scroll();
     window.addEventListener('scroll', on_scroll, { passive: true });
-    return () => window.removeEventListener('scroll', on_scroll);
+    const on_click = (e: MouseEvent) => {
+      if (open && e.target instanceof Element && !e.target.closest('.champ-nav')) open = false;
+    };
+    document.addEventListener('click', on_click);
+    return () => {
+      window.removeEventListener('scroll', on_scroll);
+      document.removeEventListener('click', on_click);
+    };
   });
 
   async function logout() {

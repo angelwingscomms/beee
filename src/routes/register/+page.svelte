@@ -392,7 +392,7 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Online coaching begins 1 August 2026, players get access immediately on registration.</p>
+          <p>Online coaching begins 1 August 2026, players get access on registration.</p>
         </div>
       </form>
 
@@ -403,7 +403,7 @@
         </div>
         <div class="reg-summary-note-wrap">
           <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 29 August 2026.</p>
-          <p class="reg-summary-note">However, early registration is encouraged to give your child a richer and more rewarding learning experience and the opportunity to benefit from the complete coaching and training programme.</p>
+          <p class="reg-summary-note">However, early registration is encouraged to give your child the advantage of a richer learning experience.</p>
         </div>
         <div class="reg-age-callout">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9.5" stroke="currentColor"/><path d="M10 6V10M10 13.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>

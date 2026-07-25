@@ -26,10 +26,13 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
  try {
     console.log(`[register-init-payment] === NEW REQUEST ===`);
     console.log(`[register-init-payment] dev=${dev}`);
+    console.log(`[register-init-payment] locals.user:`, locals?.user ? JSON.stringify({ id: locals.user.id, email: locals.user.email }) : 'null');
     const data = await request.json();
+    console.log(`[register-init-payment] raw data keys:`, Object.keys(data));
     // ponytail: a logged-in parent registers under their own session email; password not required.
     const sessionEmail = locals?.user?.email;
     const email = data.email || sessionEmail;
+    console.log(`[register-init-payment] resolved email: "${email}" (from session: ${!!sessionEmail})`);
     // The parent phone lives on the User (string[] of full dialed numbers, no '+').
     // When logged in the field is hidden, so reuse the first stored number; otherwise
     // take the form value and strip the leading '+'.
@@ -92,9 +95,14 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
         const m = raw.match(/\/i\/([^/?#\s]+)/);
         const code = m ? m[1] : raw;
         console.log(`[register-init-payment] partner code supplied: ${data.partnerCode} (normalized: ${code}) , looking up affiliate`);
+        console.log(`[register-init-payment] searching for user with ac="${code}"`);
         const affs = await search_by_payload<User>({ s: 'u', ac: code });
+        console.log(`[register-init-payment] affiliate candidates found: ${affs.length}`);
+        if (affs.length > 0) {
+            affs.forEach((a, i) => console.log(`[register-init-payment]  candidate ${i}: id=${(a as any).i} c=${a.c} ac=${a.ac}`));
+        }
         const valid = affs.some(u => u.c?.includes('fab'));
-        console.log(`[register-init-payment] affiliate candidates found: ${affs.length}, valid(fab): ${valid}`);
+        console.log(`[register-init-payment] valid(fab): ${valid}`);
         if (!valid) {
             console.warn(`[register-init-payment] Rejected: invalid partner code ${data.partnerCode}`);
             return json({ error: 'Invalid partner code' }, { status: 400 });
@@ -155,6 +163,8 @@ export const POST: RequestHandler = async ({ request, url, locals }) => {
     });
  } catch (err) {
     console.error('[register-init-payment] UNCAUGHT ERROR:', err);
+    console.error('[register-init-payment] error name:', (err as Error)?.name);
+    console.error('[register-init-payment] error message:', (err as Error)?.message);
     console.error('[register-init-payment] stack:', (err as Error)?.stack);
     return json(
         { error: 'Server error', detail: (err as Error)?.message || String(err) },

@@ -42,7 +42,7 @@ export const set = async (
 export async function edit_point<
   T extends Record<string, unknown>
 >(i: string, data: T): Promise<T & { i: string }> {
-  const vector = new Array(3072).fill(0);
+  const vector = new Array(4096).fill(0);
   const q = await get_qdrant();
 
   await q.setPayload(collection, {
@@ -70,7 +70,7 @@ export async function create<T extends { s: string }>(
   if (string_to_embed) {
     vector = await embed(string_to_embed, false);
   } else {
-    vector = new Array(3072).fill(0);
+    vector = new Array(4096).fill(0);
   }
 
   const q = await get_qdrant();
@@ -165,7 +165,7 @@ export async function search_by_payload<T>(
     // Otherwise, use scroll for better performance
     if (order_by) {
       // Create a dummy vector for payload-only search
-      const dummyVector = new Array(3072).fill(0);
+      const dummyVector = new Array(4096).fill(0);
       const orderByObj =
         typeof order_by === 'string'
           ? { key: order_by }

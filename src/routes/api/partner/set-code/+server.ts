@@ -5,7 +5,7 @@ import { check_partner_code_sounds_ok } from '$lib/groq';
 import type { User } from '$lib/types';
 
 // A custom partner code must be short, URL-safe, and easy to type/share.
-const CODE_RE = /^[a-z0-9_-]{3,24}$/;
+const CODE_RE = /^[a-z0-9_-]+$/;
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!locals.user) {
