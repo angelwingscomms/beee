@@ -2160,3 +2160,375 @@ https://svelte.dev/e/state_referenced_locally
 6:43:06 PM [vite] (ssr) page reload src/routes/api/partner/set-code/+server.ts
 6:43:21 PM [vite] (client) hmr update /src/app.css
 6:43:21 PM [vite] (ssr) page reload src/routes/api/partner/set-code/+server.ts
+[POST /api/verify-payment] Received payment verification request
+[POST /api/verify-payment] Request body: {"reference":"a327d6d7-739b-48d1-9740-d5ac29e2ec30","registrationId":"a327d6d7-739b-48d1-9740-d5ac29e2ec30"}
+[confirm] ═══ confirm START ═══ reference=a327d6d7-739b-48d1-9740-d5ac29e2ec30
+[confirm] Verifying with Paystack reference=a327d6d7-739b-48d1-9740-d5ac29e2ec30...
+[secrets] get_secret called for: PAYSTACK_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:52:66)
+    at paystack_verify (/home/ed/i/beee/src/lib/paystack.ts:130:27)
+    at confirm (/home/ed/i/beee/src/lib/confirm.ts:35:66)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async POST (/home/ed/i/beee/src/routes/api/verify-payment/+server.ts:40:13)
+    at async render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=58f8ff0d:54:20)
+    at async resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:537:17)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:377:20) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_TEST present (0...)
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:55:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_verify (/home/ed/i/beee/src/lib/paystack.ts:130:21)
+    at async confirm (/home/ed/i/beee/src/lib/confirm.ts:35:19)
+    at async POST (/home/ed/i/beee/src/routes/api/verify-payment/+server.ts:40:13)
+    at async render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=58f8ff0d:54:20)
+    at async resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:537:17)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:377:20) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_TEST present (***)
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_LIVE
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_LIVE" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:56:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_verify (/home/ed/i/beee/src/lib/paystack.ts:130:21)
+    at async confirm (/home/ed/i/beee/src/lib/confirm.ts:35:19)
+    at async POST (/home/ed/i/beee/src/routes/api/verify-payment/+server.ts:40:13)
+    at async render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=58f8ff0d:54:20)
+    at async resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:537:17)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:377:20) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_LIVE present (***)
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_verify] Starting transaction verification {
+  reference: 'a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  secret_key_preview: 'sk_live_25...'
+}
+[paystack_verify] Response status: 200 OK
+[paystack_verify] Success response body: {"status":true,"message":"Verification successful","data":{"id":6391488533,"domain":"live","status":"success","reference":"a327d6d7-739b-48d1-9740-d5ac29e2ec30","receipt_number":"GIPS  MO3XOU","amount":9000,"message":null,"gateway_response":"Approved","gateway_response_code":"approved","response_code":"00","paid_at":"2026-07-25T17:47:38.000Z","created_at":"2026-07-25T17:39:08.000Z","channel":"card","currency":"NGN","ip_address":"197.157.218.206","metadata":{"registration_id":"a327d6d7-739b-48d1-9740-d5ac29e2ec30","p_name":"gold edemhogan","custom_fields":[{"display_name":"Participant Name","variable_name":"p_name","value":"gold edemhogan"},{"display_name":"Registration ID","variable_name":"registration_id","value":"a327d6d7-739b-48d1-9740-d5ac29e2ec30"}],"reg_data":{"a":"beee","regId":"a327d6d7-739b-48d1-9740-d5ac29e2ec30","phone":"2349017743168"}},"log":{"start_time":1785001153,"time_spent":505,"attempts":4,"errors":1,"success":true,"mobile":false,"input":[],"history":[{"type":"input","message":"Filled this field: card number","time":16},{"type":"action","message":"User switched transaction currency to NGN","time":17},{"type":"input","message":"Filled this field: card expiry","time":22},{"type":"input","message":"Filled this field: card cvv","time":34},{"type":"action","message":"Attempted to pay with card","time":34},{"type":"auth","message":"Authentication Required: pin","time":35},{"type":"action","message":"Attempted to pay with card","time":48},{"type":"error","message":"Error: Insufficient Funds","time":52},{"type":"action","message":"User switched transaction currency to NGN","time":346},{"type":"input","message":"Changed this field: card number","time":346},{"type":"input","message":"Changed this field: card expiry","time":352},{"type":"input","message":"Changed this field: card cvv","time":367},{"type":"action","message":"Attempted to pay with card","time":478},{"type":"auth","message":"Authentication Required: pin","time":479},{"type":"action","message":"Attempted to pay with card","time":484},{"type":"auth","message":"Authentication Required: otp","time":488},{"type":"success","message":"Successfully paid with card","time":505}]},"fees":135,"fees_split":null,"authorization":{"authorization_code":"AUTH_7299cjiu8x","bin":"539983","last4":"8167","exp_month":"09","exp_year":"2029","channel":"card","card_type":"mastercard debit","bank":"Guaranty Trust Bank","country_code":"NG","brand":"mastercard","reusable":true,"signature":"SIG_RNPa4Gn8tsDVTUW7yE33","account_name":"EDEM HOGAN EDWARDGOLD","receiver_bank_account_number":null,"receiver_bank":null},"customer":{"id":383663968,"first_name":null,"last_name":null,"email":"i@i.com","customer_code":"CUS_l6h3w7vbmgl01wt","phone":null,"metadata":null,"risk_action":"default","international_format_phone":null},"plan":null,"split":{},"order_id":null,"paidAt":"2026-07-25T17:47:38.000Z","createdAt":"2026-07-25T17:39:08.000Z","requested_amount":9000,"pos_transaction_data":null,"source":null,"fees_breakdown":[{"amount":135,"formula":null,"type":"paystack"}],"connect":null,"transaction_date":"2026-07-25T17:39:08.000Z","plan_object":{},"subaccount":{}}}
+[confirm] Payment verified. Flipping reg a327d6d7-739b-48d1-9740-d5ac29e2ec30 to paid (in-place).
+[confirm] phone resolution: sessionPhones=null metaPhone=2349017743168 -> resolvedPhones=2349017743168
+[find_or_create_player_user] START email=i@i.com name="gold edemhogan" has_password_hash=true
+[find_or_create_player_user] Existing user found id=a1dabb9a-a079-4df4-8714-18873b4ee1d6 classifications=["rpb","fab"]
+[find_or_create_player_user] END (reused) id=a1dabb9a-a079-4df4-8714-18873b4ee1d6
+[confirm] Player user ensured: a1dabb9a-a079-4df4-8714-18873b4ee1d6
+[confirm] Firing partner payout (fire-and-forget) for a327d6d7-739b-48d1-9740-d5ac29e2ec30
+[payout] ═══ process_partner_payout START ═══ reg_id=a327d6d7-739b-48d1-9740-d5ac29e2ec30
+[payout] reg summary: {
+  reg_id: 'a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  email: 'i@i.com',
+  name: 'gold edemhogan',
+  amt_kobo: 9000,
+  status: 'r',
+  partner_code: 'ed',
+  is_dev: true
+}
+[payout] Looking up partner user by code ac=ed (s:'u')...
+[payout] await START: search_by_payload({s:'u',ac:ed)
+[confirm] Firing registration confirmation email (fire-and-forget) for a327d6d7-739b-48d1-9740-d5ac29e2ec30
+[email] SEND_EMAIL binding not available (dev). Would send: {
+  to: 'i@i.com',
+  subject: "You're in , gold edemhogan is registered for BEEE Abuja 2026"
+}
+[email] HTML body: <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #3d3d3a; background: #faf9f5; margin: 0; padding: 0; }
+    ....
+[confirm] ═══ confirm END ═══ reference=a327d6d7-739b-48d1-9740-d5ac29e2ec30 ok=true
+[secrets] get_secret called for: SECRET
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "SECRET" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_key (/home/ed/i/beee/src/lib/server/session.ts:16:84)
+    at encode_session (/home/ed/i/beee/src/lib/server/session.ts:32:18)
+    at POST (/home/ed/i/beee/src/routes/api/verify-payment/+server.ts:53:65)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async render_endpoint (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js?v=58f8ff0d:54:20)
+    at async resolve (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:537:17)
+    at async fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:395:12)
+    at async handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:377:20)
+    at async Object.before_handle (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:574:14) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: SECRET present (***)
+[session] encode: id=a1dabb9a-a079-4df4-8714-18873b4ee1d6 email=i@i.com token.length=203
+[payout] Found 1 user(s) with ac=ed; filtering for 'fab' classification
+[payout] Partner resolved: {
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  email: '1440fl@gmail.com',
+  name: 'gold',
+  has_bank_account: true,
+  bank_name: 'Guaranty Trust Bank',
+  bank_code: '058'
+}
+[payout] Deterministic payout record id: fe6acc56-bb67-5d7a-89be-8b4b9d891abd (transfer ref will be po-a327d6d7-739b-48d1-9740-d5ac29e2ec30)
+[payout] Self-referral check passed (reg=i@i.com != partner=1440fl@gmail.com).
+[payout] Bank details present: { ba: '1013463544', bn: 'Guaranty Trust Bank', bk: '058' } , proceeding to idempotency check.
+[payout] await START: get(payout fe6acc56-bb67-5d7a-89be-8b4b9d891abd)
+[payout] Idempotency check passed (no existing record fe6acc56-bb67-5d7a-89be-8b4b9d891abd). Invoking run_payout attempt=1.
+[payout] ── run_payout START ── reg=a327d6d7-739b-48d1-9740-d5ac29e2ec30 partner=4c59cae9-2b01-4f69-b894-6d50fab00fdd ac=ed attempt=1 pid=fe6acc56-bb67-5d7a-89be-8b4b9d891abd
+[payout] Step 1/6: marking record fe6acc56-bb67-5d7a-89be-8b4b9d891abd as 'p' (ref=po-a327d6d7-739b-48d1-9740-d5ac29e2ec30)
+[payout] store_payout: writing record fe6acc56-bb67-5d7a-89be-8b4b9d891abd {
+  reg_id: 'a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  ac: 'ed',
+  amt: 0,
+  st: 'p',
+  ref: 'po-a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  tr: null,
+  err: null,
+  at: 1
+}
+[payout] await START: store_payout('p') fe6acc56-bb67-5d7a-89be-8b4b9d891abd
+[payout] store_payout: record fe6acc56-bb67-5d7a-89be-8b4b9d891abd written OK
+[payout] Step 2/6: resolving bank code , partner.bk=058 partner.bn=Guaranty Trust Bank
+[payout] Bank code resolved to 058
+[payout] Step 3/6: resolving bank account ba=1013463544 bn=Guaranty Trust Bank code=058 via Paystack
+[secrets] get_secret called for: PAYSTACK_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:52:66)
+    at paystack_resolve_bank (/home/ed/i/beee/src/lib/paystack.ts:173:27)
+    at run_payout (/home/ed/i/beee/src/lib/partner.ts:279:130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_TEST present (0...)
+[payout] await START: paystack_resolve_bank(058)
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:55:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_resolve_bank (/home/ed/i/beee/src/lib/paystack.ts:173:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:279:20)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_TEST present (***)
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_LIVE
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_LIVE" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:56:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_resolve_bank (/home/ed/i/beee/src/lib/paystack.ts:173:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:279:20)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_LIVE present (***)
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_resolve_bank] resolving account 1013... bank_code=058
+[paystack_resolve_bank] response status: 200 OK
+[paystack_resolve_bank] resolved account_name=EDEM HOGAN EDWARDGOLD
+[payout] Account resolved: account_name="EDEM HOGAN EDWARDGOLD"
+[payout] Step 4/6: commission computed , total=9000 kobo, is_dev=true, commission_pct=10% -> payout=5400 kobo
+[payout] Step 5/6: creating Paystack transfer recipient for "EDEM HOGAN EDWARDGOLD"
+[secrets] get_secret called for: PAYSTACK_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:52:66)
+    at paystack_create_recipient (/home/ed/i/beee/src/lib/paystack.ts:195:27)
+    at run_payout (/home/ed/i/beee/src/lib/partner.ts:298:121)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_TEST present (0...)
+[payout] await START: paystack_create_recipient()
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:55:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_create_recipient (/home/ed/i/beee/src/lib/paystack.ts:195:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:298:15)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_TEST present (***)
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_LIVE
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_LIVE" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:56:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_create_recipient (/home/ed/i/beee/src/lib/paystack.ts:195:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:298:15)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_LIVE present (***)
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_create_recipient] creating for EDEM HOGAN EDWARDGOLD account 1013... bank_code=058
+[paystack_create_recipient] response status: 201 Created
+[paystack_create_recipient] recipient_code=RCP_jokxuoubk3ktmkg active=true
+[payout] Recipient created: recipient_code=RCP_jokxuoubk3ktmkg active=true
+[payout] Step 6/6: initiating transfer of 5400 kobo to RCP_jokxuoubk3ktmkg (ref=po-a327d6d7-739b-48d1-9740-d5ac29e2ec30)
+[secrets] get_secret called for: PAYSTACK_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:52:66)
+    at paystack_transfer (/home/ed/i/beee/src/lib/paystack.ts:226:27)
+    at run_payout (/home/ed/i/beee/src/lib/partner.ts:308:115)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_TEST present (0...)
+[payout] await START: paystack_transfer(5400)
+[paystack] get_secret_key: PAYSTACK_TEST=0, dev=true, is_test=false
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_TEST
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_TEST" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:55:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_transfer (/home/ed/i/beee/src/lib/paystack.ts:226:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:308:14)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_TEST present (***)
+[secrets] get_secret called for: PAYSTACK_SECRET_KEY_LIVE
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "PAYSTACK_SECRET_KEY_LIVE" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_secret_key (/home/ed/i/beee/src/lib/paystack.ts:56:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async paystack_transfer (/home/ed/i/beee/src/lib/paystack.ts:226:21)
+    at async with_timeout (/home/ed/i/beee/src/lib/partner.ts:28:10)
+    at async run_payout (/home/ed/i/beee/src/lib/partner.ts:308:14)
+    at async process_partner_payout (/home/ed/i/beee/src/lib/partner.ts:145:3) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: PAYSTACK_SECRET_KEY_LIVE present (***)
+[paystack] get_secret_key: all available keys { test: 'sk_tes...dfac', live: 'sk_liv...d213' }
+[paystack] get_secret_key: resolved key sk_liv...d213
+[paystack_transfer] initiating transfer {
+  recipient_code: 'RCP_jokxuoubk3ktmkg',
+  amount_kobo: 5400,
+  reason: 'Commission: a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  reference: 'po-a327d6d7-739b-48d1-9740-d5ac29e2ec30'
+}
+[paystack_transfer] response status: 200 OK
+[paystack_transfer] OK transfer_code=TRF_pqfxjc6lub95w7ox status=otp
+[payout] Transfer initiated: transfer_code=TRF_pqfxjc6lub95w7ox status=otp
+[payout] Storing final record fe6acc56-bb67-5d7a-89be-8b4b9d891abd st=r (transfer status was 'otp')
+[payout] store_payout: writing record fe6acc56-bb67-5d7a-89be-8b4b9d891abd {
+  reg_id: 'a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  partner_id: '4c59cae9-2b01-4f69-b894-6d50fab00fdd',
+  ac: 'ed',
+  amt: 5400,
+  st: 'r',
+  ref: 'po-a327d6d7-739b-48d1-9740-d5ac29e2ec30',
+  tr: 'TRF_pqfxjc6lub95w7ox',
+  err: null,
+  at: 1
+}
+[payout] await START: store_payout(final r) fe6acc56-bb67-5d7a-89be-8b4b9d891abd
+[payout] store_payout: record fe6acc56-bb67-5d7a-89be-8b4b9d891abd written OK
+[payout] ⏳ PAYOUT PENDING: Paystack accepted transfer but status='otp' (not yet 'success'); record fe6acc56-bb67-5d7a-89be-8b4b9d891abd st='r' awaiting webhook reconcile
+[payout] Sending partner notification email to 1440fl@gmail.com (player="gold edemhogan" commission=5400 total=9000)
+[email] SEND_EMAIL binding not available (dev). Would send: {
+  to: '1440fl@gmail.com',
+  subject: 'You received a commission payout , BEEE Partner Programme'
+}
+[email] HTML body: <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #3d3d3a; background: #faf9f5; margin: 0; padding: 0; }
+    ....
+[payout] await START: send_partner_notification()
+[payout] Partner notification email dispatched to 1440fl@gmail.com
+[payout] ── run_payout END ── reg=a327d6d7-739b-48d1-9740-d5ac29e2ec30 final_st=r
+[payout] ═══ process_partner_payout END ═══ reg_id=a327d6d7-739b-48d1-9740-d5ac29e2ec30
+[secrets] get_secret called for: SECRET
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "SECRET" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_key (/home/ed/i/beee/src/lib/server/session.ts:16:84)
+    at decode_session (/home/ed/i/beee/src/lib/server/session.ts:49:19)
+    at Object.handle (/home/ed/i/beee/src/hooks.server.ts:14:60)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:398:28)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:395:62)
+    at record_span (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js?v=58f8ff0d:15:10)
+    at handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=58f8ff0d:377:64) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: SECRET present (***)
+[session] decode: valid session for id=a1dabb9a-a079-4df4-8714-18873b4ee1d6 email=i@i.com
+6:47:45 PM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:111:2 Elements with the 'dialog' interactive role must have a tabindex value
+https://svelte.dev/e/a11y_interactive_supports_focus
+6:47:45 PM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:111:2 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+6:47:45 PM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:112:4 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+6:47:45 PM [vite-plugin-svelte] src/routes/dashboard/+page.svelte:112:4 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+6:56:34 PM [vite] (client) hmr update /src/app.css
+6:56:34 PM [vite] (ssr) page reload src/lib/paystack.ts
+6:56:38 PM [vite] (client) hmr update /src/app.css
+6:56:38 PM [vite] (ssr) page reload src/lib/paystack.ts
+6:56:43 PM [vite] (client) hmr update /src/app.css
+6:56:43 PM [vite] (ssr) page reload src/lib/paystack.ts
+6:56:48 PM [vite] (client) hmr update /src/app.css
+6:56:48 PM [vite] (ssr) page reload src/lib/partner.ts
+6:56:53 PM [vite] (client) hmr update /src/app.css
+6:56:53 PM [vite] (ssr) page reload src/lib/partner.ts
+6:56:58 PM [vite] (client) hmr update /src/app.css
+6:56:58 PM [vite] (ssr) page reload src/lib/partner.ts
+6:57:02 PM [vite] (client) hmr update /src/app.css
+6:57:02 PM [vite] (ssr) page reload src/lib/partner.ts

@@ -127,11 +127,13 @@ export async function process_partner_payout(
       await store_failed_payout(reg_id, partner_id, ac, 'Missing bank details (ba/bn)', 1, pid);
       return;
     }
-    console.log(`[payout] Bank details present:`, {
-      ba: partner.ba ?? '(none)',
-      bn: partner.bn ?? '(none)',
-      bk: partner.bk ?? '(none)'
-    }, ', proceeding to idempotency check.');
+    console.log(`[payout] === BANK ACCOUNT FULL DETAILS ===`);
+    console.log(`[payout] account_number: "${partner.ba}"`);
+    console.log(`[payout] bank_name: "${partner.bn}"`);
+    console.log(`[payout] bank_code: "${partner.bk}"`);
+    console.log(`[payout] partner_email: "${partner.e}"`);
+    console.log(`[payout] partner_name: "${partner.n}"`);
+    console.log(`[payout] proceeding to idempotency check.`);
 
     // Idempotency: skip if a record already exists for this registration.
     let existing: Payout | null = null;
@@ -275,7 +277,8 @@ async function run_payout(
 
   let account_name: string;
   try {
-    console.log(`[payout] Step 3/6: resolving bank account ba=${partner.ba ?? 'EMPTY'} bn=${partner.bn ?? 'EMPTY'} code=${bank_code} via Paystack`);
+    console.log(`[payout] Step 3/6: resolving bank account ba=${partner.ba ?? 'EMPTY'} bn=${partner.bn ?? 'EMPTY'} bank_code=${bank_code} via Paystack`);
+  console.log(`[payout] BANK RESOLVE INPUT: account_number="${partner.ba}" bank_code="${bank_code}" partner_name="${partner.n}"`);
     const resolved = await with_timeout(`paystack_resolve_bank(${bank_code})`, 20000, paystack_resolve_bank(partner.ba as string, bank_code));
     account_name = resolved.account_name;
     console.log(`[payout] Account resolved: account_name="${account_name}"`);
@@ -296,7 +299,8 @@ async function run_payout(
 
   let recipient: { recipient_code: string; active: boolean };
   try {
-    console.log(`[payout] Step 5/6: creating Paystack transfer recipient for "${account_name}"`);
+    console.log(`[payout] Step 5/6: creating Paystack transfer recipient`);
+    console.log(`[payout] RECIPIENT INPUT: name="${account_name}" account_number="${partner.ba}" bank_code="${bank_code}"`);
     recipient = await with_timeout(`paystack_create_recipient()`, 20000, paystack_create_recipient(account_name, partner.ba as string, bank_code));
     console.log(`[payout] Recipient created: recipient_code=${recipient.recipient_code} active=${recipient.active}`);
   } catch (e) {
@@ -307,7 +311,8 @@ async function run_payout(
 
   let transfer: { transfer_code: string; status: string };
   try {
-    console.log(`[payout] Step 6/6: initiating transfer of ${amt_kobo} kobo to ${recipient.recipient_code} (ref=po-${reg_id})`);
+    console.log(`[payout] Step 6/6: initiating transfer`);
+    console.log(`[payout] TRANSFER INPUT: recipient_code="${recipient.recipient_code}" amount_kobo=${amt_kobo} reason="Commission: ${reg_id}" ref="po-${reg_id}"`);
     transfer = await with_timeout(`paystack_transfer(${amt_kobo})`, 20000, paystack_transfer(recipient.recipient_code, amt_kobo, `Commission: ${reg_id}`, `po-${reg_id}`));
     console.log(`[payout] Transfer initiated: transfer_code=${transfer.transfer_code} status=${transfer.status}`);
   } catch (e) {

@@ -219,19 +219,24 @@ export function get_bank_code(bn: string): string | null {
 
 export async function paystack_resolve_bank(account_number: string, bank_code: string): Promise<{ account_name: string }> {
   const secret_key = await get_secret_key();
-  console.log(`[paystack_resolve_bank] resolving account ${account_number ? account_number.slice(0, 4) + '...' : 'EMPTY'} bank_code=${bank_code}`);
-  const url = `${await resolve_base()}/bank/resolve?account_number=${encodeURIComponent(account_number)}&bank_code=${encodeURIComponent(bank_code)}`;
+  const base = await resolve_base();
+  const url = `${base}/bank/resolve?account_number=${encodeURIComponent(account_number)}&bank_code=${encodeURIComponent(bank_code)}`;
+  console.log(`[paystack_resolve_bank] >>> RAW REQUEST >>> GET ${url}`);
+  console.log(`[paystack_resolve_bank] >>> account_number=${account_number} bank_code=${bank_code}`);
   const res = await fetch(url, {
     method: 'GET',
     headers: { Authorization: `Bearer ${secret_key}` }
   });
-  console.log(`[paystack_resolve_bank] response status: ${res.status} ${res.statusText}`);
+  console.log(`[paystack_resolve_bank] <<< RAW RESPONSE <<< status=${res.status} ${res.statusText}`);
+  const raw = await res.text();
+  console.log(`[paystack_resolve_bank] <<< RAW RESPONSE BODY <<< ${raw}`);
   if (!res.ok) {
-    const err = await res.text();
-    console.error(`[paystack_resolve_bank] error body:`, err);
-    throw new Error(`Bank resolve failed (${res.status}): ${err}`);
+    console.error(`[paystack_resolve_bank] error body:`, raw);
+    throw new Error(`Bank resolve failed (${res.status}): ${raw}`);
   }
-  const body = await res.json();
+  let body: any;
+  try { body = JSON.parse(raw); } catch { throw new Error(`Bank resolve: failed to parse response: ${raw}`); }
+  console.log(`[paystack_resolve_bank] <<< PARSED RESPONSE <<<`, JSON.stringify(body, null, 2));
   if (!body.status) {
     console.error(`[paystack_resolve_bank] status false:`, body.message);
     throw new Error(`Bank resolve error: ${body.message}`);
@@ -242,19 +247,25 @@ export async function paystack_resolve_bank(account_number: string, bank_code: s
 
 export async function paystack_create_recipient(name: string, account_number: string, bank_code: string): Promise<{ recipient_code: string; active: boolean }> {
   const secret_key = await get_secret_key();
-  console.log(`[paystack_create_recipient] creating for ${name} account ${account_number ? account_number.slice(0, 4) + '...' : 'EMPTY'} bank_code=${bank_code}`);
-  const res = await fetch(`${await resolve_base()}/transferrecipient`, {
+  const base = await resolve_base();
+  const req_body = JSON.stringify({ type: 'nuban', name, account_number, bank_code, currency: 'NGN' });
+  console.log(`[paystack_create_recipient] >>> RAW REQUEST >>> POST ${base}/transferrecipient`);
+  console.log(`[paystack_create_recipient] >>> RAW REQUEST BODY >>> ${req_body}`);
+  const res = await fetch(`${base}/transferrecipient`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'nuban', name, account_number, bank_code, currency: 'NGN' })
+    body: req_body
   });
-  console.log(`[paystack_create_recipient] response status: ${res.status} ${res.statusText}`);
+  console.log(`[paystack_create_recipient] <<< RAW RESPONSE <<< status=${res.status} ${res.statusText}`);
+  const raw = await res.text();
+  console.log(`[paystack_create_recipient] <<< RAW RESPONSE BODY <<< ${raw}`);
   if (!res.ok) {
-    const err = await res.text();
-    console.error(`[paystack_create_recipient] error body:`, err);
-    throw new Error(`Create recipient failed: ${err}`);
+    console.error(`[paystack_create_recipient] error body:`, raw);
+    throw new Error(`Create recipient failed: ${raw}`);
   }
-  const body = await res.json();
+  let body: any;
+  try { body = JSON.parse(raw); } catch { throw new Error(`Create recipient: failed to parse response: ${raw}`); }
+  console.log(`[paystack_create_recipient] <<< PARSED RESPONSE <<<`, JSON.stringify(body, null, 2));
   if (!body.status) {
     console.error(`[paystack_create_recipient] status false:`, body.message);
     throw new Error(`Create recipient error: ${body.message}`);
@@ -270,12 +281,7 @@ export async function paystack_transfer(
   reference?: string
 ): Promise<{ transfer_code: string; status: string }> {
   const secret_key = await get_secret_key();
-  console.log(`[paystack_transfer] initiating transfer`, {
-    recipient_code,
-    amount_kobo,
-    reason,
-    reference: reference || '(none)'
-  });
+  const base = await resolve_base();
   const body_json: Record<string, unknown> = {
     source: 'balance',
     amount: amount_kobo,
@@ -283,25 +289,32 @@ export async function paystack_transfer(
     reason
   };
   if (reference) body_json.reference = reference;
-  const res = await fetch(`${await resolve_base()}/transfer`, {
+  const req_body = JSON.stringify(body_json);
+  console.log(`[paystack_transfer] >>> RAW REQUEST >>> POST ${base}/transfer`);
+  console.log(`[paystack_transfer] >>> RAW REQUEST BODY >>> ${req_body}`);
+  console.log(`[paystack_transfer] >>> recipient_code=${recipient_code} amount_kobo=${amount_kobo} reason=${reason} reference=${reference || '(none)'}`);
+  const res = await fetch(`${base}/transfer`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${secret_key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body_json)
+    body: req_body
   });
-  console.log(`[paystack_transfer] response status: ${res.status} ${res.statusText}`);
+  console.log(`[paystack_transfer] <<< RAW RESPONSE <<< status=${res.status} ${res.statusText}`);
+  const raw = await res.text();
+  console.log(`[paystack_transfer] <<< RAW RESPONSE BODY <<< ${raw}`);
   if (!res.ok) {
-    const err = await res.text();
     // Paystack enforces unique transfer references. A duplicate means a prior
     // attempt already created the disbursement , treat as idempotent success
     // so concurrent verify-payment + webhook paths never double-pay.
-    if (reference && /reference.*(already|exist|used)|transfer.*(already|exist)/i.test(err)) {
+    if (reference && /reference.*(already|exist|used)|transfer.*(already|exist)/i.test(raw)) {
       console.log(`[paystack_transfer] Duplicate reference ${reference}, treating as already paid`);
       return { transfer_code: reference, status: 'success' };
     }
-    console.error(`[paystack_transfer] error body:`, err);
-    throw new Error(`Transfer failed: ${err}`);
+    console.error(`[paystack_transfer] error body:`, raw);
+    throw new Error(`Transfer failed: ${raw}`);
   }
-  const body = await res.json();
+  let body: any;
+  try { body = JSON.parse(raw); } catch { throw new Error(`Transfer: failed to parse response: ${raw}`); }
+  console.log(`[paystack_transfer] <<< PARSED RESPONSE <<<`, JSON.stringify(body, null, 2));
   if (!body.status) {
     console.error(`[paystack_transfer] status false:`, body.message);
     throw new Error(`Transfer error: ${body.message}`);
