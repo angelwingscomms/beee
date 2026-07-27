@@ -52,6 +52,7 @@
         <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
         <a href="/partner" class:active={path === '/partner'}>Partners</a>
         <a href="/faq" class:active={path === '/faq'}>FAQ</a>
+        <a href="/quotes" class:active={path === '/quotes'}>Quotes</a>
       </div>
       {#if !user}
         <Button href="/register" class="champ-nav-cta">Register</Button>
@@ -68,14 +69,15 @@
     </div>
   </div>
   {#if open}
-    <div class="champ-mobile-menu">
-      <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
-      <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>e4</a>
-      <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
-      <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
-      <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
-      <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
-      {#if user}
+<div class="champ-mobile-menu">
+       <a href="/about" class:active={path === '/about'} onclick={() => open = false}>About</a>
+       <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>e4</a>
+       <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
+       <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
+       <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
+       <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
+       <a href="/quotes" class:active={path === '/quotes'} onclick={() => open = false}>Quotes</a>
+       {#if user}
         <a href="/dashboard" onclick={() => open = false}>Dashboard</a>
         <button class="champ-mobile-logout" onclick={() => { open = false; logout(); }}>Log out</button>
       {/if}
