@@ -7,11 +7,11 @@
   let activeCategory = $state('all');
   let selectedQuote = $state<string | null>(null);
 
-  $: allCategories = ['all', ...new Set(quotesData.map((q) => q.category))];
+  const allCategories = $derived.by(() => ['all', ...new Set(quotesData.map((q) => q.category))]);
 
-  $: filteredQuotes = activeCategory === 'all'
+  const filteredQuotes = $derived.by(() => activeCategory === 'all'
     ? quotesData
-    : quotesData.filter((q) => q.category === activeCategory);
+    : quotesData.filter((q) => q.category === activeCategory));
 
   function handleFilter(category: string) {
     activeCategory = category;
@@ -112,11 +112,11 @@
               <p class="story-title" data-testid="story-title-{story.id}">
                 {story.storyTitle}
               </p>
-              <p class="story-description" data-testid="story-description-{story.id}>
+              <p class="story-description" data-testid="story-description-{story.id}">
                 {story.description}
               </p>
               {#if story.impact}
-                <div class="story-impact" data-testid="story-impact-{story.id}>
+                <div class="story-impact" data-testid="story-impact-{story.id}">
                   <span class="impact-label">Chess Impact:</span>
                   <span class="impact-value">{story.impact} aspects of life positively</span>
                 </div>
