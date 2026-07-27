@@ -7,6 +7,7 @@
     bg = 'o',
     children,
     class: className = '',
+    style: extraStyle = '',
     onclick
   }: {
     href?: string;
@@ -14,15 +15,16 @@
     bg?: 'o' | '0' | string;
     children?: import('svelte').Snippet;
     class?: string;
+    style?: string;
     onclick?: (e: Event) => void;
   } = $props();
 
   const bg_style = $derived(
-    bg === '0'
+    (bg === '0'
       ? 'background: transparent; border: 1px solid rgba(255,255,255,0.6);'
       : bg !== 'o' && bg.startsWith('#')
         ? `background: ${bg};`
-        : ''
+        : '') + extraStyle
   );
 </script>
 

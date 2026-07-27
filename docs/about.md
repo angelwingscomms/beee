@@ -481,6 +481,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 | `/teamup` | TEAMUP Development Programme page |
 | `/taskify` | Taskify Digital Passport page |
 | `/faq` | FAQ with categories, search, accordion |
+| `/quotes` | Motivational chess quotes, stories of transformation |
 | `/partner` | Partner programme signup |
 | `/register` | Registration form with payment |
 | `/login` | Login |
@@ -526,6 +527,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 | `/teamup` | `https://beeeproject.com/images/championship/technology.png` |
 | `/taskify` | `https://beeeproject.com/images/championship/bento_passport.png` |
 | `/why-beee` | `https://beeeproject.com/images/championship/about-new.png` |
+| `/quotes` | `https://beeeproject.com/og.png` |
 | `/partner` | `https://beeeproject.com/images/championship/mentorship.png` |
 | `/faq` | `https://beeeproject.com/og.png` |
 | `/privacy` | `https://beeeproject.com/og.png` |

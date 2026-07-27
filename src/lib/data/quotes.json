@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "text": "Chess is not a game, it is a philosophy.",
+    "author": "Emanuel Lasker",
+    "category": "wisdom"
+  },
+  {
+    "id": "2",
+    "text": "Every great achievement was once considered impossible.",
+    "author": "Unknown",
+    "category": "inspirational"
+  },
+  {
+    "id": "3",
+    "text": "Chess teaches patience and the rewards of strategic thinking.",
+    "author": "Garry Kasparov",
+    "category": "wisdom"
+  },
+  {
+    "id": "4",
+    "text": "The beauty of chess is in its simplicity and depth.",
+    "author": "Magnus Carlsen",
+    "category": "wisdom"
+  },
+  {
+    "id": "5",
+    "text": "Chess builds character, sharpens the mind, and opens doors.",
+    "author": "José Raúl Capablanca",
+    "category": "life"
+  },
+  {
+    "id": "6",
+    "text": "In chess, as in life, preparation and discipline determine success.",
+    "author": "Bobby Fischer",
+    "category": "life"
+  },
+  {
+    "id": "7",
+    "text": "Chess is the gymnasium of the mind, a beautiful mental workout.",
+    "author": "Blaise Pascal",
+    "category": "inspirational"
+  },
+  {
+    "id": "8",
+    "text": "The chessboard is a world of infinite possibilities.",
+    "author": "Napoleon Bonaparte",
+    "category": "wisdom"
+  },
+  {
+    "id": "9",
+    "text": "Chess strengthens the mind and enriches the soul.",
+    "author": "Wilhelm Steinitz",
+    "category": "life"
+  },
+  {
+    "id": "10",
+    "text": "True mastery of chess begins with knowing yourself.",
+    "author": "Mikhail Tal",
+    "category": "wisdom"
+  },
+  {
+    "id": "11",
+    "text": "Chess is the purest form of strategy, a celebration of the mind.",
+    "author": "Viswanathan Anand",
+    "category": "inspirational"
+  },
+  {
+    "id": "12",
+    "text": "Wherever we go, whatever we do, chess stays with us forever.",
+    "author": "Judit Polgar",
+    "category": "life"
+  }
+]

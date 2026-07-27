@@ -47,18 +47,24 @@ export const SEO: Record<string, SeoEntry> = {
 			'Taskify™ is a digital development passport tracking each participant’s progress, milestones, badges and growth through the championship.',
 		sitemap: { priority: 0.8, changefreq: 'monthly' }
 	},
-	'/why-beee': {
-		title: 'Why BEEE? | Our Mission & Vision',
-		description:
-			'Every young person holds extraordinary potential. Our mission: cultivate strategic thinking, leadership and lifelong learning through chess.',
-		sitemap: { priority: 0.7, changefreq: 'monthly' }
-	},
-	'/faq': {
-		title: 'FAQ | BEEE Spectacular Chess Championship Abuja 2026',
-		description:
-			'Answers on registration, fees, eligibility, participation, awards and the TEAMUP™ programme for the BEEE Chess Championship Abuja 2026.',
-		sitemap: { priority: 0.7, changefreq: 'monthly' }
-	},
+  	'/why-beee': {
+ 		title: 'Why BEEE? | Our Mission & Vision',
+ 		description:
+ 			'Every young person holds extraordinary potential. Our mission: cultivate strategic thinking, leadership and lifelong learning through chess.',
+ 		sitemap: { priority: 0.7, changefreq: 'monthly' }
+ 	},
+ 	'/quotes': {
+ 		title: 'Chess Quotes | Be Everything Excellent Every Day',
+ 		description:
+ 			'Inspirational chess quotes that motivate personal growth, strategic thinking, and excellence in life and competition. Discover wisdom from chess masters.',
+ 		sitemap: { priority: 0.6, changefreq: 'weekly' }
+ 	},
+ 	'/faq': {
+ 		title: 'FAQ | BEEE Spectacular Chess Championship Abuja 2026',
+ 		description:
+ 			'Answers on registration, fees, eligibility, participation, awards and the TEAMUP™ programme for the BEEE Chess Championship Abuja 2026.',
+ 		sitemap: { priority: 0.7, changefreq: 'monthly' }
+ 	},
 	'/partner': {
 		title: 'Partner Programme | BEEE Chess Championship Abuja 2026',
 		description:

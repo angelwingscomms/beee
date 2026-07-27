@@ -28,6 +28,8 @@
 	}
 </script>
 
+
+
 <div class="modal-backdrop" role="presentation">
 	<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
 		<div class="modal-header">
@@ -59,11 +61,11 @@
 			</div>
 		</div>
 
-		<div class="modal-actions">
-			<button type="button" onclick={onCancel} disabled={isProcessing} class="button-secondary">
+		<div class="modal-actions" style="grid-template-columns: 1fr;">
+			<button type="button" onclick={onCancel} disabled={isProcessing} class="button-secondary" style="min-height: 52px; padding: 14px 24px; font-size: 15px; width: 100%;">
 				Cancel
 			</button>
-			<Button onclick={onConfirm} disabled={isProcessing}>
+			<Button onclick={onConfirm} disabled={isProcessing} style="border: 2px solid rgba(229, 92, 0, 0.5); min-height: 52px; padding: 14px 24px; font-size: 15px; width: 100%;">
 				{#if isProcessing}
 					<span class="spinner" aria-hidden="true"></span>
 					Processing
