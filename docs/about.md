@@ -467,9 +467,13 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 6. **Awards** , School awards, what participants can win
 7. **Parents & Schools** , Parent support, school benefits, progress tracking, partnership, school expectations
 
+## 14. Quotes Page (`/quotes`)
+
+A motivational page featuring curated chess quotes and transformation stories about how chess positively impacts lives. Includes 12 chess quotes from verified masters with pastel-colored cards per quote, 5 transformation stories, category filtering, quote detail modal, and fully responsive design.
+
 ---
 
-## 14. Site Map (All Routes)
+## 15. Site Map (All Routes)
 
 ### Public Pages
 | Route | Purpose |
@@ -516,7 +520,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 
 ---
 
-## 15. OG Images (per route)
+## 16. OG Images (per route)
 
 | Route | OG Image URL |
 |---|---|
@@ -535,7 +539,7 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 
 ---
 
-## 16. Glossary
+## 17. Glossary
 
 | Term | Meaning |
 |---|---|
@@ -552,7 +556,13 @@ The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 
 ---
 
-## 17. Related Documents
+## 18. Related Documents
+
+- `docs/data-model.md` , Detailed Qdrant data model, entity diagram, lifecycle
+- `docs/champ.md` , Original championship prospectus document
+- `src/lib/data/faq.ts` , All FAQ questions and answers (single source of truth)
+
+---
 
 - `docs/data-model.md` , Detailed Qdrant data model, entity diagram, lifecycle
 - `docs/champ.md` , Original championship prospectus document

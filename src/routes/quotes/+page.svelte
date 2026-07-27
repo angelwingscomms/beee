@@ -69,6 +69,7 @@
           {#each filteredQuotes as quote (quote.id)}
             <article
               class="quote-card"
+              style="background-color: {quote.color}"
               onclick={() => openQuoteModal(quote.id)}
               use:motionFadeUp
               data-testid="quote-card-{quote.id}"
@@ -95,7 +96,7 @@
       </p>
       <div class="stories-grid">
         {#each storiesData as story (story.id)}
-          <article class="story-card" use:motionFadeUp data-testid="story-card-{story.id}">
+          <article class="story-card" style="background-color: {story.color}" use:motionFadeUp data-testid="story-card-{story.id}">
             <div class="story-image-wrapper">
               <img
                 src={story.image}
@@ -267,19 +268,19 @@
   }
 
   .quote-card {
-    background: var(--surface-card);
     border-radius: 20px;
     border: 1px solid var(--hairline);
     border-left: 4px solid var(--primary);
     padding: 28px;
     cursor: pointer;
     transition: transform 300ms ease, box-shadow 300ms ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   }
 
   @media (hover: hover) {
     .quote-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(242, 120, 48, 0.12);
+      box-shadow: 0 12px 32px rgba(242, 120, 48, 0.15);
     }
   }
 
@@ -337,7 +338,6 @@
   }
 
   .story-card {
-    background: white;
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);

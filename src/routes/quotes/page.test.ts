@@ -38,4 +38,18 @@ describe('Quotes Page', () => {
     const page = readFileSync(resolve(process.cwd(), 'src/routes/quotes/+page.svelte'), 'utf8');
     expect(page).toContain('data-testid="modal-overlay"');
   });
+
+  it('quote cards have pastel background colors', () => {
+    const page = readFileSync(resolve(process.cwd(), 'src/routes/quotes/+page.svelte'), 'utf8');
+    expect(page).toContain('style="background-color: {quote.color}"');
+  });
+
+  it('quotes data has color field for each quote', () => {
+    const quotes = JSON.parse(readFileSync(resolve(process.cwd(), 'src/lib/data/quotes.json'), 'utf8'));
+    expect(quotes.length).toBeGreaterThan(0);
+    quotes.forEach((q) => {
+      expect(q).toHaveProperty('color');
+      expect(q.color).toMatch(/^#[0-9A-Fa-f]{6}$/);
+    });
+  });
 });

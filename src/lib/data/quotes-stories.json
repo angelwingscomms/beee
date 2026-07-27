@@ -6,7 +6,8 @@
     "description":
       "When I was 8 years old, my grandfather introduced me to chess on a worn wooden set in our village square. He told me chess is not about winning—it is about thinking deeply before you act. Over the years, I practiced every single day, and today I am a national chess champion helping coach other young girls who dream bigger than their circumstances.",
     "image": "/images/amina-hassan.jpg",
-    "impact": 4
+    "impact": 4,
+    "color": "#FDE8E8"
   },
   {
     "id": "2",
@@ -15,7 +16,8 @@
     "description":
       "I was a troubled teenager with no direction, struggling with anger and failing at school. I stumbled into a chess club at 15, and slowly the game taught me discipline, patience, and the power of thinking before reacting. I went from failing grades to honor roll, from being expelled to becoming valedictorian. Chess became my anchor, and now I coach at-risk youth to find the same calm I discovered.",
     "image": "/images/david-rodriguez.jpg",
-    "impact": 5
+    "impact": 5,
+    "color": "#E8F0FD"
   },
   {
     "id": "3",
@@ -24,7 +26,8 @@
     "description":
       "As a woman in tech, I often felt like an imposter in rooms where I was the only woman. Chess became my secret weapon. Every opponent is just a puzzle, and every mistake is a lesson. My chess journey gave me confidence that translated directly to my engineering career. I now lead teams at a major tech company and mentor young women, encouraging them to embrace challenges the way chess taught me to.",
     "image": "/images/sarah-chen.jpg",
-    "impact": 3
+    "impact": 3,
+    "color": "#E8FDE8"
   },
   {
     "id": "4",
@@ -33,7 +36,8 @@
     "description":
       "I was a high school dropout with limited prospects. Chess was my escape and my hope. I joined the local chess club and discovered a passion I never knew I had. Through sheer determination, I rose through the ranks to become a nationally recognized chess master. My chess career opened doors to scholarships and connections that led me to education. Now I teach chess in schools, showing students that discipline and practice can transform any life.",
     "image": "/images/marcus-johnson.jpg",
-    "impact": 4
+    "impact": 4,
+    "color": "#FDF3E8"
   },
   {
     "id": "5",
@@ -42,6 +46,7 @@
     "description":
       "In my village, chess was a luxury few could afford. I discovered it in college and fell in love instantly. After graduating, I returned home and started a community chess club. We turned idle, restless youths into a competitive team that now participates in regional tournaments. Beyond chess, we became a support network—helping each other with education, careers, and growth. We have grown into a chess academy serving over 200 children from neighboring villages.",
     "image": "/images/priya-sharma.jpg",
-    "impact": 5
+    "impact": 5,
+    "color": "#F0E8FD"
   }
 ]

@@ -1,74 +1,86 @@
 [
   {
     "id": "1",
-    "text": "Chess is not a game, it is a philosophy.",
+    "text": "Chess is, above all, a fight.",
     "author": "Emanuel Lasker",
-    "category": "wisdom"
+    "category": "wisdom",
+    "color": "#FDE8E8"
   },
   {
     "id": "2",
-    "text": "Every great achievement was once considered impossible.",
-    "author": "Unknown",
-    "category": "inspirational"
+    "text": "Chess is something more than a game. It is an intellectual diversion with artistic qualities and scientific elements.",
+    "author": "José Raúl Capablanca",
+    "category": "wisdom",
+    "color": "#E8F0FD"
   },
   {
     "id": "3",
-    "text": "Chess teaches patience and the rewards of strategic thinking.",
-    "author": "Garry Kasparov",
-    "category": "wisdom"
+    "text": "Chess is a very logical game and it is the man who can reason most logically and profoundly in it that ought to win.",
+    "author": "José Raúl Capablanca",
+    "category": "wisdom",
+    "color": "#E8FDE8"
   },
   {
     "id": "4",
-    "text": "The beauty of chess is in its simplicity and depth.",
-    "author": "Magnus Carlsen",
-    "category": "wisdom"
+    "text": "Chess can open up a kid's brain, and develop it in a playful creative way. They can learn playfully about creative, strategic, and logical thinking, and quick problem-solving.",
+    "author": "Judit Polgar",
+    "category": "life",
+    "color": "#FDF3E8"
   },
   {
     "id": "5",
-    "text": "Chess builds character, sharpens the mind, and opens doors.",
-    "author": "José Raúl Capablanca",
-    "category": "life"
+    "text": "Chess is a beautiful game because it combines logic and creativity.",
+    "author": "Viswanathan Anand",
+    "category": "inspirational",
+    "color": "#F0E8FD"
   },
   {
     "id": "6",
-    "text": "In chess, as in life, preparation and discipline determine success.",
-    "author": "Bobby Fischer",
-    "category": "life"
+    "text": "Chess is a game of constant growth and self-improvement.",
+    "author": "Judit Polgar",
+    "category": "life",
+    "color": "#E8FFE8"
   },
   {
     "id": "7",
-    "text": "Chess is the gymnasium of the mind, a beautiful mental workout.",
-    "author": "Blaise Pascal",
-    "category": "inspirational"
+    "text": "In chess, as in life, the value of persistence cannot be overstated.",
+    "author": "Judit Polgar",
+    "category": "wisdom",
+    "color": "#FFE8E8"
   },
   {
     "id": "8",
-    "text": "The chessboard is a world of infinite possibilities.",
-    "author": "Napoleon Bonaparte",
-    "category": "wisdom"
+    "text": "Chess is a game of strategy, and it teaches you to think ahead and plan your moves.",
+    "author": "Viswanathan Anand",
+    "category": "wisdom",
+    "color": "#E8F8FF"
   },
   {
     "id": "9",
-    "text": "Chess strengthens the mind and enriches the soul.",
-    "author": "Wilhelm Steinitz",
-    "category": "life"
+    "text": "One must change one's tactics every ten years if one wishes to maintain one's superiority.",
+    "author": "Napoleon Bonaparte",
+    "category": "inspirational",
+    "color": "#FFF3E0"
   },
   {
     "id": "10",
-    "text": "True mastery of chess begins with knowing yourself.",
-    "author": "Mikhail Tal",
-    "category": "wisdom"
+    "text": "Chess demands total concentration.",
+    "author": "Bobby Fischer",
+    "category": "inspirational",
+    "color": "#F0FFF0"
   },
   {
     "id": "11",
-    "text": "Chess is the purest form of strategy, a celebration of the mind.",
-    "author": "Viswanathan Anand",
-    "category": "inspirational"
+    "text": "Chess helps you to concentrate, improve your logic, teaches you to play by the rules and take responsibility for your actions.",
+    "author": "Garry Kasparov",
+    "category": "life",
+    "color": "#FDF0FF"
   },
   {
     "id": "12",
-    "text": "Wherever we go, whatever we do, chess stays with us forever.",
-    "author": "Judit Polgar",
-    "category": "life"
+    "text": "Chess is the gymnasium of the mind — a beautiful mental workout that strengthens the soul.",
+    "author": "Peter Pratt",
+    "category": "wisdom",
+    "color": "#FFFFE8"
   }
 ]
