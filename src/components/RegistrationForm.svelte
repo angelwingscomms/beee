@@ -194,7 +194,7 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">Aug&ndash;Sep 2026</span>
+									<span class="journey-date">August&ndash;September, 2026</span>
 									<span class="journey-name">TEAMUP Development</span>
 								</div>
 							</div>

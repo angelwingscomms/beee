@@ -99,7 +99,7 @@ export async function send_registration_confirmation(
       <p style="margin-top:20px;"><strong>What happens next</strong></p>
       <ol class="steps">
         <li>Log in at beeeproject.com/dashboard to view ${player_name}'s registration.</li>
-        <li>Online coaching runs 1st August–19th September.</li>
+        <li>Online coaching runs August 1 – September 19.</li>
         <li>September , live preliminary rounds in Abuja. Fixtures come by email and WhatsApp.</li>
         <li>October 2026 , Grand Finale.</li>
       </ol>

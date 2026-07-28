@@ -392,7 +392,7 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Online coaching begins 1 August 2026, players get access on registration.</p>
+          <p>Online coaching begins August 1, 2026, players get access on registration.</p>
         </div>
       </form>
 
@@ -402,7 +402,7 @@
           <span class="reg-per">per participant</span>
         </div>
         <div class="reg-summary-note-wrap">
-          <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 19 September 2026.</p>
+          <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on September 19, 2026.</p>
            <p class="reg-summary-note">However, early registration is highly recommended to give your child an earlier start in their championship journey and a more rewarding learning experience.</p>
         </div>
         <div class="reg-age-callout">

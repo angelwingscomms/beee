@@ -73,7 +73,7 @@ The championship follows a structured **5-stage pathway**:
 - Participants compete in exciting live events
 - Advancement based on performance
 
-### Stage 4: Elite Qualification Stage (Sep – Oct 2026)
+### Stage 4: Elite Qualification Stage (September – October, 2026)
 - Top qualifiers advance through elimination tournaments
 - Advanced coaching and preparation for finalists
 - Participants develop collaboration, coordination, strategic communication, and teamwork

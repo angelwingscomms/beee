@@ -5,7 +5,7 @@
 <div class="legal">
   <div class="container legal-inner">
     <h1 class="legal-title">Terms of Service</h1>
-    <p class="legal-updated">Last updated: 13 July 2026</p>
+    <p class="legal-updated">Last updated: July 13, 2026</p>
 
     <section class="legal-section">
       <h2>1. Acceptance</h2>
