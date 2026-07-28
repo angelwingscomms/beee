@@ -58,15 +58,15 @@
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
           <div>
-            <p class="schedule-title">Coaching and Training</p>
-            <p class="schedule-sub">Online &middot; August 1 to September 19, 2026</p>
+            <p class="schedule-title">Online Coaching and Training</p>
+            <p class="schedule-sub">August 1 to September 19, 2026</p>
           </div>
         </div>
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
           <div>
-            <p class="schedule-title">Preliminaries and Grand Finale</p>
-            <p class="schedule-sub">Live &middot; September to October, 2026</p>
+            <p class="schedule-title">Live Preliminaries and Grand Finale</p>
+            <p class="schedule-sub">September to October, 2026</p>
             <p class="schedule-sub">National Stadium, Abuja</p>
           </div>
         </div>
