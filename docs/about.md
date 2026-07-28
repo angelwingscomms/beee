@@ -25,7 +25,7 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Age range** | 10–14 years (grouped: 10–11 and 12–14) |
 | **Venue** | National Stadium, Abuja |
 | **Grand Finale date** | October 2026 |
-| **Online coaching begins** | July 28, 2026 |
+| **Online coaching begins** | August 1, 2026 |
 | **Live preliminaries** | September 2026 |
 | **Registration fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
 | **Registration** | Online at beeeproject.com/register |
@@ -61,7 +61,7 @@ The championship follows a structured **5-stage pathway**:
 - Immediate access to e4™ AI Chess Coach, TEAMUP™ programme, and Taskify™ Development Passport
 - Slots are **limited** and allocated on a first-completed-registration basis
 
-### Stage 2: Online Training & Coaching (Jul 28 – Aug 29, 2026)
+### Stage 2: Online Training & Coaching (Aug 1 – Sep 19, 2026)
 - AI-powered chess coaching via e4™
 - TEAMUP™ leadership workshops and life-skills activities
 - Taskify™ Development Passport begins recording milestones

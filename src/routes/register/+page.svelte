@@ -402,7 +402,7 @@
           <span class="reg-per">per participant</span>
         </div>
         <div class="reg-summary-note-wrap">
-          <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 29 August 2026.</p>
+          <p class="reg-summary-note">Participants may join the championship journey at any time before the online training phase concludes on 19 September 2026.</p>
            <p class="reg-summary-note">However, early registration is highly recommended to give your child an earlier start in their championship journey and a more rewarding learning experience.</p>
         </div>
         <div class="reg-age-callout">

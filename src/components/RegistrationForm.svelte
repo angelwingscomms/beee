@@ -187,7 +187,7 @@
 						<div class="journey-steps">
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">July 28, 2026</span>
+									<span class="journey-date">August 1, 2026</span>
 									<span class="journey-name">Online Coaching Begins</span>
 								</div>
 							</div>

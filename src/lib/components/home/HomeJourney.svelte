@@ -9,7 +9,7 @@
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
   const steps = [
-    { num: 1, title: 'Online Training & Coaching', sub: 'Jul 28 – Aug 29, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport , all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
+    { num: 1, title: 'Online Training & Coaching', sub: 'Aug 1 – Sep 19, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport , all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
     { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
     { num: 3, title: 'Elite Stage', sub: 'Sep \u2013 Oct 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
     { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
@@ -142,11 +142,11 @@
           </p>
         </div>
         <p class="mt-1 text-amber-400 font-hero font-bold text-lg md:text-xl">
-          28 July 2026 &ndash; 29 Aug. 2026
+          1 Aug 2026 &ndash; 19 Sep. 2026
         </p>
         <div class="mt-5 pt-5 border-t border-white/10 space-y-3 text-left">
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
-            Registration closes <span class="text-amber-400 font-semibold">29 Aug. 2026</span>.
+            Registration closes <span class="text-amber-400 font-semibold">19 Sep. 2026</span>.
           </p>
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
             Participants may join the championship at any time during the period of Online Training.

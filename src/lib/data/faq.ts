@@ -16,7 +16,7 @@ export const cs: FaqC[] = [
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
 			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
 			{ q: 'Where is the championship held?', a: 'National Stadium Abuja.' },
-			{ q: 'What are the championship dates?', a: 'Online coaching runs from 1st to 29th August, with live preliminary competitions in September and the Championship Grand Finale in October 2026.' },
+			{ q: 'What are the championship dates?', a: 'Online coaching runs from 1st August to 19th September, with live preliminary competitions in September and the Championship Grand Finale in October 2026.' },
 			{ q: 'What should participants bring to the championship?', a: 'Nothing. All equipment is provided.' },
 		]
 	},
@@ -25,7 +25,7 @@ export const cs: FaqC[] = [
 			{ q: 'How do I register?', a: 'Complete registration through the official championship registration portal at /register.' },
 			{ q: 'Can a school register multiple participants?', a: 'Yes. Schools can register multiple eligible students.' },
 			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register , you don’t need to go through a school.' },
-			{ q: 'Is there a registration deadline?', a: 'Registration closes 29 Aug. 2026. Participants may join the championship at any time during the period of Online Training. The earlier you register, the more time your child has to learn and improve.' },
+			{ q: 'Is there a registration deadline?', a: 'Registration closes 19 Sep. 2026. Participants may join the championship at any time during the period of Online Training. The earlier you register, the more time your child has to learn and improve.' },
 			{ q: 'Is there a registration fee?', a: `Yes. The registration fee is ₦${REG_AMOUNT.toLocaleString()}. Participants with a partner code pay ₦${discounted_amount.toLocaleString()}.` },
 			{ q: 'What is the refund policy?', a: 'Fees are non-refundable, except if BEEE cancels the event. See our Terms for details.' },
 		]
