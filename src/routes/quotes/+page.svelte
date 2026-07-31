@@ -235,7 +235,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 200ms ease;
+    transition: background 200ms var(--ease-out), color 200ms var(--ease-out);
     font-family: inherit;
   }
 
@@ -273,7 +273,7 @@
     border-left: 4px solid var(--primary);
     padding: 28px;
     cursor: pointer;
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   }
 
@@ -342,7 +342,7 @@
     overflow: hidden;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(242, 120, 48, 0.08);
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
   }
 
   @media (hover: hover) {
@@ -416,7 +416,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    animation: fadeInOverlay 250ms ease;
+    animation: fadeInOverlay 250ms var(--ease-out);
   }
 
   .modal-content {
@@ -426,7 +426,7 @@
     max-width: 560px;
     width: 100%;
     position: relative;
-    animation: scaleInModal 300ms ease;
+    animation: scaleInModal 300ms var(--ease-spring);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   }
 
@@ -444,7 +444,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 200ms ease, transform 200ms ease;
+    transition: background 200ms var(--ease-out), transform 200ms var(--ease-out);
     color: var(--body);
   }
 

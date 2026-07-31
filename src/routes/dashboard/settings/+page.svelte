@@ -145,7 +145,7 @@
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 160ms var(--ease-out);
   }
   .btn:disabled {
     background: var(--surface-card);

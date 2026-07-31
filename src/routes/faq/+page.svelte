@@ -185,7 +185,7 @@
 		font-size: 14px;
 		font-weight: 500;
 		cursor: pointer;
-		transition: border-color 160ms ease, color 160ms ease;
+		transition: border-color 160ms var(--ease-out), color 160ms var(--ease-out);
 	}
 
 	.faq-empty-clear:hover {

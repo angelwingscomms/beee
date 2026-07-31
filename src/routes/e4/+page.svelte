@@ -192,7 +192,7 @@
     background: var(--surface-card);
     border: 1px solid var(--hairline);
     border-top: 3px solid var(--primary);
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
   }
 
   @media (prefers-reduced-motion: no-preference) {

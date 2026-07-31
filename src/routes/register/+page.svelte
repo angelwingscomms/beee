@@ -560,7 +560,7 @@
     pointer-events: none;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.3);
-    transition: opacity 300ms ease;
+    transition: opacity 300ms var(--ease-out);
   }
   .reg-partner-ph.fading {
     opacity: 0;
@@ -772,7 +772,7 @@
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 160ms var(--ease-out);
   }
   .reg-google-btn:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.12);

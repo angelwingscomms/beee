@@ -219,7 +219,7 @@
         color: var(--muted);
         cursor: pointer;
         padding: 0;
-        transition: color 150ms ease, border-color 150ms ease;
+        transition: color 150ms var(--ease-out), border-color 150ms var(--ease-out);
     }
 
     .modal-close:hover {

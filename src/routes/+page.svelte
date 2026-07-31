@@ -556,7 +556,7 @@
     position: relative;
     z-index: 2;
     overflow: hidden;
-    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), border-color 400ms ease, box-shadow 400ms ease;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), border-color 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
   }
 
   .card::after {
@@ -571,7 +571,7 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 400ms ease;
+    transition: opacity 400ms var(--ease-out);
     pointer-events: none;
   }
 
@@ -584,7 +584,7 @@
     font-weight: 700;
     letter-spacing: 0.05em;
     color: rgba(255, 255, 255, 0.2);
-    transition: color 400ms ease;
+    transition: color 400ms var(--ease-out);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -610,7 +610,7 @@
     height: 72px;
     border-radius: 18px;
     background: rgba(255, 178, 0, 0.09);
-    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), background 400ms ease;
+    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), background 400ms var(--ease-out);
   }
 
   .card-title {
@@ -773,7 +773,7 @@
   }
   .gain-list > li {
     width: 100%;
-    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease;
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms var(--ease-out);
   }
   .gain-list > li:nth-child(odd) { transform: rotate(-0.6deg); }
   .gain-list > li:nth-child(even) { transform: rotate(0.6deg); }
@@ -794,7 +794,7 @@
     }
   }
 
-  .mym-link h1 { transition: color 300ms ease; }
+  .mym-link h1 { transition: color 300ms var(--ease-out); }
   .mym-link:hover h1 { color: #F27830; }
   @media (prefers-reduced-motion: reduce) { .mym-link h1 { transition: none; } }
 </style>

@@ -142,7 +142,7 @@
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 160ms var(--ease-out);
   }
   .login-btn:disabled {
     background: var(--surface-card);
@@ -186,7 +186,7 @@
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 160ms var(--ease-out);
   }
   .login-google:hover {
     background: var(--surface-soft);

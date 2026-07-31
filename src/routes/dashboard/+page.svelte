@@ -204,7 +204,7 @@
     color: white;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 160ms var(--ease-out);
   }
   .dash-btn:hover { opacity: 0.85; }
   .dash-btn--outline {
