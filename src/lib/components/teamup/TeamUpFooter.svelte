@@ -92,7 +92,7 @@
     line-height: 1.4;
     color: var(--on-dark-soft);
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms var(--ease-out);
     white-space: nowrap;
   }
 
@@ -125,7 +125,7 @@
   .tu-footer-contact a {
     color: var(--on-dark-soft);
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms var(--ease-out);
   }
 
   .tu-footer-contact a:hover {

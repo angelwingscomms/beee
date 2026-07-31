@@ -99,7 +99,7 @@
     min-width: 180px;
     flex: 1 1 180px;
     max-width: 300px;
-    transition: transform 240ms ease, background 240ms ease;
+    transition: transform 240ms var(--ease-out), background 240ms var(--ease-out);
   }
 
   .pillar-card:hover {

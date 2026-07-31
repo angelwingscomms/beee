@@ -102,7 +102,7 @@
     padding: 20px 24px;
     border-radius: 12px;
     background: var(--surface-card);
-    transition: transform 300ms ease, background 300ms ease;
+    transition: transform 300ms var(--ease-out), background 300ms var(--ease-out);
     cursor: default;
   }
 
@@ -148,7 +148,7 @@
     background-size: cover;
     background-position: center;
     filter: grayscale(0.3) contrast(1.1);
-    transition: transform 800ms ease;
+    transition: transform 800ms var(--ease-out);
   }
 
   .passport-img-frame:hover .passport-img {

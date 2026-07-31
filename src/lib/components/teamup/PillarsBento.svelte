@@ -97,7 +97,7 @@
     border-radius: 14px;
     overflow: hidden;
     isolation: isolate;
-    transition: transform 400ms ease, box-shadow 400ms ease;
+    transition: transform 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
     cursor: default;
   }
 
@@ -121,7 +121,7 @@
     background-position: center;
     opacity: 0.1;
     filter: grayscale(0.6) contrast(1.2);
-    transition: opacity 500ms ease, transform 700ms ease;
+    transition: opacity 500ms var(--ease-out), transform 700ms var(--ease-out);
   }
 
   .pillar-card:hover .pillar-card-img {
@@ -147,7 +147,7 @@
     letter-spacing: -0.03em;
     color: var(--primary);
     display: block;
-    transition: transform 300ms ease;
+    transition: transform 300ms var(--ease-out);
   }
 
   .pillar-card:hover .pillar-let {

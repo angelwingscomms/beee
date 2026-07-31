@@ -41,7 +41,7 @@
     border-radius: 12px;
     background: var(--surface-card);
     padding: 32px;
-    transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease;
+    transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), background 240ms var(--ease-out);
   }
 
   .pillar-card:hover {

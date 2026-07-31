@@ -26,7 +26,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: box-shadow 400ms ease;
+    transition: box-shadow 400ms var(--ease-out);
   }
 
   .tu-cta-inner:hover {

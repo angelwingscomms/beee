@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: box-shadow 240ms ease;
+    transition: box-shadow 240ms var(--ease-out);
   }
 
   .cta-card:hover {

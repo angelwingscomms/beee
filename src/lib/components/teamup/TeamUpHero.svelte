@@ -129,7 +129,7 @@
     background-size: cover;
     background-position: center;
     filter: grayscale(0.25) contrast(1.1);
-    transition: transform 800ms ease;
+    transition: transform 800ms var(--ease-out);
   }
 
   .tu-hero-img-frame:hover .tu-hero-img {

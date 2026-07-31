@@ -247,7 +247,7 @@
     padding: 26px 22px 28px;
     border: 1px solid rgba(255, 255, 255, 0.09);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%);
-    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), border-color 400ms ease, background 400ms ease;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), border-color 400ms var(--ease-out), background 400ms var(--ease-out);
   }
 
   .award-card::after {
@@ -262,7 +262,7 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 400ms ease;
+    transition: opacity 400ms var(--ease-out);
     pointer-events: none;
   }
 
@@ -289,7 +289,7 @@
     font-weight: 700;
     letter-spacing: 0.05em;
     color: rgba(255, 255, 255, 0.18);
-    transition: color 400ms ease;
+    transition: color 400ms var(--ease-out);
   }
 
   .card-icon {
@@ -302,7 +302,7 @@
     background: rgba(255, 178, 0, 0.12);
     color: #ffb200;
     margin-bottom: 20px;
-    transition: background 400ms ease, color 400ms ease, transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: background 400ms var(--ease-out), color 400ms var(--ease-out), transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .card-title {
