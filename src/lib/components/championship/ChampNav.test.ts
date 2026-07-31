@@ -19,7 +19,7 @@ describe('ChampNav scroll-aware condense', () => {
   });
 
   it('animates the nav inner height alongside the scroll-condense', () => {
-    expect(nav).toContain('transition: height 240ms ease;');
+    expect(nav).toContain('transition: height 240ms var(--ease-out);');
   });
 
   it('gates the nav inner height transition behind prefers-reduced-motion', () => {

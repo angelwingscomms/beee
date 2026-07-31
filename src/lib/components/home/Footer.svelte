@@ -121,7 +121,7 @@
     line-height: 1.4;
     color: var(--on-dark-soft);
     text-decoration: none;
-    transition: color 160ms ease, transform 160ms ease;
+    transition: color 160ms var(--ease-out), transform 160ms var(--ease-out);
     white-space: nowrap;
   }
 
@@ -134,7 +134,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .footer-nav a {
-      transition: color 160ms ease;
+      transition: color 160ms var(--ease-out);
     }
   }
 
@@ -164,7 +164,7 @@
     color: var(--on-dark-soft);
     text-decoration: none;
     font-size: 18px;
-    transition: color 160ms ease;
+    transition: color 160ms var(--ease-out);
   }
 
   .footer-contact a:hover {
@@ -180,7 +180,7 @@
     font-weight: 600;
     color: var(--accent-amber);
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms var(--ease-out);
   }
 
   .footer-partner:hover {

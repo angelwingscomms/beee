@@ -64,7 +64,7 @@
 }
 
 .cta-entrance {
-  animation: cta-entrance 600ms ease-out 1;
+  animation: cta-entrance 600ms var(--ease-spring) 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

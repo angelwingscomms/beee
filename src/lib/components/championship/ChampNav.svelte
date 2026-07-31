@@ -93,7 +93,7 @@
     translate: -50% 0;
     z-index: 50;
     width: min(1200px, calc(100% - 32px));
-    transition: top 240ms ease, width 240ms ease;
+    transition: top 240ms var(--ease-out), width 240ms var(--ease-out);
   }
 
   .champ-nav-bar {
@@ -212,7 +212,7 @@
     gap: 32px;
     width: 100%;
     padding: 0 24px;
-    transition: height 240ms ease;
+    transition: height 240ms var(--ease-out);
   }
 
   .champ-nav-brand {
@@ -255,7 +255,7 @@
     font-weight: 500;
     color: var(--ink);
     text-decoration: none;
-    transition: background 160ms ease, color 160ms ease;
+    transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
   }
 
   .champ-nav-links a::after {
@@ -269,7 +269,7 @@
     background: var(--primary);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 220ms ease;
+    transition: transform 220ms var(--ease-out);
   }
 
   .champ-nav-links a.active::after {
@@ -303,7 +303,7 @@
     background: var(--ink);
     color: white;
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: opacity 160ms var(--ease-out);
   }
   .champ-nav-dash:hover { opacity: 0.85; }
 
@@ -318,7 +318,7 @@
     background: transparent;
     color: var(--ink);
     cursor: pointer;
-    transition: background 160ms ease, color 160ms ease;
+    transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
   }
 
   .champ-nav-logout:hover {
@@ -385,7 +385,7 @@
     height: 2px;
     border-radius: 999px;
     background: currentColor;
-    transition: transform 200ms ease;
+    transition: transform 200ms var(--ease-spring);
   }
 
   .champ-mobile-btn span {

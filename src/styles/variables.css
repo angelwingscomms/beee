@@ -1,6 +1,8 @@
 :root {
   --glass-blur: 16px;
   --noise-opacity: 0.03;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   --primary: #F27830;
   --primary-active: #BD5E25;

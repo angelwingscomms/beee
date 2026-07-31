@@ -23,6 +23,6 @@ describe('Footer editorial rework', () => {
   });
 
   it('disables the hover transform transition under prefers-reduced-motion', () => {
-    expect(footer).toContain('@media (prefers-reduced-motion: reduce) {\n    .footer-nav a {\n      transition: color 160ms ease;\n    }\n  }');
+    expect(footer).toContain('@media (prefers-reduced-motion: reduce) {\n    .footer-nav a {\n      transition: color 160ms var(--ease-out);\n    }\n  }');
   });
 });

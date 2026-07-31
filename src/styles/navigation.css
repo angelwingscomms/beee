@@ -44,7 +44,7 @@
   place-items: center;
   border-radius: 20px;
   line-height: 0;
-  transition: width 200ms ease, height 200ms ease, border-radius 200ms ease;
+  transition: width 200ms var(--ease-out), height 200ms var(--ease-out), border-radius 200ms var(--ease-out);
 }
 
 .logo-tm {
@@ -60,7 +60,7 @@
   width: 128px;
   height: 128px;
   object-fit: contain;
-  transition: width 200ms ease, height 200ms ease;
+  transition: width 200ms var(--ease-out), height 200ms var(--ease-out);
 }
 
 .spike-mark {

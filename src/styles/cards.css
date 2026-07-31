@@ -13,7 +13,7 @@
   padding: 32px;
   color: var(--ink);
   box-shadow: 0 1px 2px rgba(20, 20, 19, 0.04);
-  transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease, border-color 240ms ease;
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), background 240ms var(--ease-out), border-color 240ms var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -32,7 +32,7 @@
 .feature-card .spike-mark {
   margin-bottom: 28px;
   color: var(--primary);
-  transition: transform 240ms ease;
+  transition: transform 240ms var(--ease-out);
 }
 
 .feature-card h3,
@@ -61,7 +61,7 @@
   color: var(--ink);
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 240ms ease, background 240ms ease, border-color 240ms ease;
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), box-shadow 240ms var(--ease-out), background 240ms var(--ease-out), border-color 240ms var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -170,7 +170,7 @@
   background: var(--primary);
   color: var(--on-primary);
   padding: 64px;
-  transition: box-shadow 240ms ease;
+  transition: box-shadow 240ms var(--ease-out);
 }
 
 .cta-card:hover {
