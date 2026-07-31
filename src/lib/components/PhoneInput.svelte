@@ -277,7 +277,7 @@
 			inset 1px 0 0 rgba(255, 255, 255, 0.05),
 			inset -1px 0 0 rgba(255, 255, 255, 0.05);
 		overflow: hidden;
-		transition: border-color 150ms ease;
+		transition: border-color 150ms var(--ease-out);
 	}
 
 	.pi-bg::before {
@@ -362,7 +362,7 @@
 
 	.chevron {
 		color: var(--muted);
-		transition: transform 180ms ease;
+		transition: transform 180ms var(--ease-out);
 		flex-shrink: 0;
 	}
 

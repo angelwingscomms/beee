@@ -65,7 +65,7 @@
     border-radius: 999px;
     background: rgba(242, 120, 48, 0.06);
     pointer-events: none;
-    transition: width 240ms ease, height 240ms ease, border-color 240ms ease, background 240ms ease;
+    transition: width 240ms var(--ease-out), height 240ms var(--ease-out), border-color 240ms var(--ease-out), background 240ms var(--ease-out);
   }
 
   .cursor-hover {

@@ -85,7 +85,7 @@
 			inset 1px 0 0 rgba(255, 255, 255, 0.05),
 			inset -1px 0 0 rgba(255, 255, 255, 0.05);
 		overflow: hidden;
-		transition: border-color 150ms ease;
+		transition: border-color 150ms var(--ease-out);
 	}
 
 	.ti-bg::before {
@@ -151,7 +151,7 @@
 		color: var(--muted);
 		flex-shrink: 0;
 		border-radius: 6px;
-		transition: background 0.15s, color 0.15s;
+		transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
 	}
 	.eye-btn:hover {
 		background: var(--surface-soft);

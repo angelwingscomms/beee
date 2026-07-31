@@ -249,7 +249,7 @@
     font-weight: 600;
     color: var(--accent-amber);
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms var(--ease-out);
   }
 
   .footer-partner:hover {
@@ -381,7 +381,7 @@
     font-size: 0.95rem;
     text-decoration: none;
     margin: 1.5rem auto 0;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    transition: background 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 150ms var(--ease-out);
   }
 
   .partner-btn-primary {

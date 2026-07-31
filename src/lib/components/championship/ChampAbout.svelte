@@ -72,7 +72,7 @@
   .champ-about-text {
     max-width: 60ch;
     line-height: var(--lh-body);
-    animation: hero-fade-in 500ms ease-out;
+    animation: hero-fade-in 500ms var(--ease-out);
   }
 
   @keyframes hero-fade-in {

@@ -53,7 +53,7 @@
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
     white-space: nowrap;
     opacity: 1;
     box-shadow: 0 1px 2px rgba(20, 20, 19, 0.12);

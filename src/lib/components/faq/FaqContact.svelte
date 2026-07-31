@@ -70,7 +70,7 @@
 		font-size: 14px;
 		font-weight: 500;
 		text-decoration: none;
-		transition: background 160ms ease, color 160ms ease;
+		transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
 	}
 
 	.contact-link:hover {

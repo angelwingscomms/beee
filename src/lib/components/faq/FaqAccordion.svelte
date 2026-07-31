@@ -55,7 +55,7 @@
 		border: 1px solid var(--hairline-soft);
 		border-radius: 12px;
 		padding: 0 20px;
-		transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+		transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), transform 160ms var(--ease-out), background 160ms var(--ease-out);
 	}
 
 	.accordion-item::before {
@@ -69,7 +69,7 @@
 		background: var(--primary);
 		transform: scaleY(0);
 		transform-origin: center;
-		transition: transform 200ms ease;
+		transition: transform 200ms var(--ease-out);
 	}
 
 	.accordion-item:hover {
@@ -102,7 +102,7 @@
 		font-weight: 600;
 		line-height: 1.45;
 		cursor: pointer;
-		transition: color 160ms ease;
+		transition: color 160ms var(--ease-out);
 	}
 
 	.accordion-trigger:hover {
@@ -120,7 +120,7 @@
 	.accordion-chevron {
 		flex-shrink: 0;
 		color: var(--muted);
-		transition: transform 240ms ease, color 160ms ease;
+		transition: transform 240ms var(--ease-out), color 160ms var(--ease-out);
 	}
 
 	.accordion-open .accordion-chevron {

@@ -57,7 +57,7 @@
 		border-radius: 10px;
 		border: 1px solid var(--hairline);
 		background: var(--surface-card);
-		transition: border-color 160ms ease, box-shadow 160ms ease;
+		transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 	}
 
 	.faq-search:focus-within {
@@ -103,7 +103,7 @@
 		color: var(--muted);
 		cursor: pointer;
 		flex-shrink: 0;
-		transition: background 160ms ease, color 160ms ease;
+		transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
 	}
 
 	.search-clear:hover {

@@ -132,7 +132,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(10, 15, 26, 0.94) 0%, rgba(10, 15, 26, 0.40) 50%, transparent 72%);
-    transition: background 400ms ease;
+    transition: background 400ms var(--ease-out);
   }
 
   .champ-bento-card:hover .champ-bento-overlay {

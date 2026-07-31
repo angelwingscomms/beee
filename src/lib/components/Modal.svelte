@@ -100,7 +100,7 @@
     border-radius: 50%;
     color: #94a3b8;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
   }
 
   .modal-close:hover {

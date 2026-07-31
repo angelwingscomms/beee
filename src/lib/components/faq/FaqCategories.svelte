@@ -43,7 +43,7 @@
 		line-height: 1.4;
 		white-space: nowrap;
 		cursor: pointer;
-		transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+		transition: background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 	}
 
 	.tab:hover {

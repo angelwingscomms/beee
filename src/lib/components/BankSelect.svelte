@@ -189,7 +189,7 @@
 
 	.chevron {
 		color: var(--muted);
-		transition: transform 180ms ease;
+		transition: transform 180ms var(--ease-out);
 		flex-shrink: 0;
 	}
 
