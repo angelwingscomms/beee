@@ -71,7 +71,7 @@
         <p class="partner-intro">
           Help families discover the BEEE TEAMUP™ (Technology, Enterprise, Art, Mentorship, Upskill) programme and chess championship.
           {#if dev}
-            In test mode you receive a ₦{payout_naira} payout for every referral , players pay the ₦{fee_naira} test fee.
+            In test mode you receive a ₦{payout_naira} payout for every referral, players pay the ₦{fee_naira} test fee.
           {:else}
             You earn ₦{commission_naira} per registration you refer.
           {/if}

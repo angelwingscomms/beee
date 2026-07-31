@@ -38,7 +38,7 @@
   <div class="container" style="padding: 64px 0;">
     <div class="champ-features-header">
       <h2 class="champ-features-title">The TEAMUP™ Development Programme</h2>
-      <p class="champ-features-sub">A holistic approach to developing every child , building skills that last.</p>
+      <p class="champ-features-sub">A holistic approach to developing every child, building skills that last.</p>
     </div>
     <div class="champ-bento">
       {#each features as feat, i}
@@ -46,7 +46,7 @@
         <div class="champ-bento-card {feat.span}">
           <img
             src={feat.img}
-            alt="{feat.title} , {feat.body}"
+            alt="{feat.title}, {feat.body}"
             class="champ-bento-img"
             loading="lazy"
             decoding="async"

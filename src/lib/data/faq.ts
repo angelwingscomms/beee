@@ -24,7 +24,7 @@ export const cs: FaqC[] = [
 		i: 'registration', n: 'Registration', qs: [
 			{ q: 'How do I register?', a: 'Complete registration through the official championship registration portal at /register.' },
 			{ q: 'Can a school register multiple participants?', a: 'Yes. Schools can register multiple eligible students.' },
-			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register , you don’t need to go through a school.' },
+			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register, you don’t need to go through a school.' },
 			{ q: 'Is there a registration deadline?', a: 'Registration closes September 19, 2026. Participants may join the championship at any time during the period of Online Training. The earlier you register, the more time your child has to learn and improve.' },
 			{ q: 'Is there a registration fee?', a: `Yes. The registration fee is ₦${REG_AMOUNT.toLocaleString()}. Participants with a partner code pay ₦${discounted_amount.toLocaleString()}.` },
 			{ q: 'What is the refund policy?', a: 'Fees are non-refundable, except if BEEE cancels the event. See our Terms for details.' },
@@ -50,14 +50,14 @@ export const cs: FaqC[] = [
 	{
 		i: 'e4', n: 'e4', qs: [
 			{ q: 'What is e4™?', a: 'e4™ is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice for every participant.' },
-			{ q: 'How does e4 help my child improve?', a: 'e4 analyses every move as your child plays , flagging mistakes, suggesting better plans, and answering questions by voice or text.' },
+			{ q: 'How does e4 help my child improve?', a: 'e4 analyses every move as your child plays, flagging mistakes, suggesting better plans, and answering questions by voice or text.' },
 			{ q: 'What are the benefits of e4?', a: 'e4 offers guided AI instruction, step-by-step strategy coaching, engine-backed game analysis, virtual and real opponents, and custom puzzles generated from your child\'s own games.' },
 			{ q: 'When do participants get access to e4?', a: 'Registration unlocks e4 AI chess coaching immediately, alongside the TEAMUP programme and the Taskify Development Passport.' },
 		]
 	},
 	{
 		i: 'competition', n: 'Competition', qs: [
-			{ q: 'How does the championship work?', a: 'The championship follows six stages: (1) Registration , participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn , participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete , live preliminary chess championship rounds held in September 2026. (4) Evolve , qualifying participants advance through elimination tournaments. (5) Qualify , elite qualifiers train for finalist positions. (6) Grand Finale , finalists participate in the immersive championship experience.' },
+			{ q: 'How does the championship work?', a: 'The championship follows six stages: (1) Registration, participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn, participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete, live preliminary chess championship rounds held in September 2026. (4) Evolve, qualifying participants advance through elimination tournaments. (5) Qualify, elite qualifiers train for finalist positions. (6) Grand Finale, finalists participate in the immersive championship experience.' },
 			{ q: 'What happens after registration?', a: 'Participants begin the TEAMUP Development Programme and prepare for championship activities and competition stages.' },
 			{ q: 'Are certificates issued?', a: 'Yes. Participants receive certificates of participation, achievement, and other forms of recognition.' },
 		]

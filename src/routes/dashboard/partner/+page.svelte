@@ -45,7 +45,7 @@
         customCodeError = d.error || 'Could not save that code';
       }
     } catch {
-      customCodeError = 'Network error , please try again';
+      customCodeError = 'Network error, please try again';
     } finally {
       isSavingCode = false;
     }

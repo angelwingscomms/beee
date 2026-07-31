@@ -178,7 +178,7 @@
   <span class="text-[20px] font-championship" style="color:white">Abuja 2026</span>
 </h1>
 
-			<p class="welcome-text">Register your player for the 2026 Championship. Coaching is underway , your child gets access the day you register.</p>
+			<p class="welcome-text">Register your player for the 2026 Championship. Coaching is underway, your child gets access the day you register.</p>
 
 			<div class="cards-row">
 				<div class="flex flex-col gap-4">
@@ -241,7 +241,7 @@
 
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
-				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled , places are limited.</li>
+				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled, places are limited.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>

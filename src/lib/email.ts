@@ -12,7 +12,7 @@ export async function send_partner_notification(
   total_kobo: number,
   player_name: string
 ): Promise<void> {
-  const subject = 'You received a commission payout , BEEE Partner Programme';
+  const subject = 'You received a commission payout, BEEE Partner Programme';
   const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@ export async function send_partner_notification(
       <div class="detail">${fmt_kobo(total_kobo)}</div>
       <p style="margin-top:24px;font-size:13px;color:#6c6a64;">The commission has been sent to your registered bank account. It may take 1–2 business days to reflect.</p>
     </div>
-    <div class="footer">BEEE , Be Everything Excellent Every Day</div>
+    <div class="footer">BEEE, Be Everything Excellent Every Day</div>
   </div>
 </body>
 </html>`;
@@ -73,7 +73,7 @@ export async function send_registration_confirmation(
   amount_kobo: number,
   reference: string
 ): Promise<void> {
-  const subject = `You're in , ${player_name} is registered for BEEE Abuja 2026`;
+  const subject = `You're in, ${player_name} is registered for BEEE Abuja 2026`;
   const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -100,14 +100,14 @@ export async function send_registration_confirmation(
       <ol class="steps">
         <li>Log in at beeeproject.com/dashboard to view ${player_name}'s registration.</li>
         <li>Online coaching runs August 1 – September 19.</li>
-        <li>September , live preliminary rounds in Abuja. Fixtures come by email and WhatsApp.</li>
-        <li>October 2026 , Grand Finale.</li>
+        <li>September, live preliminary rounds in Abuja. Fixtures come by email and WhatsApp.</li>
+        <li>October 2026, Grand Finale.</li>
       </ol>
       <div class="label">Receipt</div>
       <div class="detail">${fmt_kobo(amount_kobo)} &middot; Ref ${reference}</div>
       <p style="margin-top:24px;font-size:13px;color:#6c6a64;">Questions? Reply to this email or call +234 802 092 0872.</p>
     </div>
-    <div class="footer">Aspire to BEEE , Be Everything Excellent Every Day</div>
+    <div class="footer">Aspire to BEEE, Be Everything Excellent Every Day</div>
   </div>
 </body>
 </html>`;

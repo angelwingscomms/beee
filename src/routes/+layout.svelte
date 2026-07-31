@@ -77,13 +77,13 @@
   <meta property="og:image" content={og_img} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="BEEE , Be Everything Excellent Every Day" />
+  <meta property="og:image:alt" content="BEEE, Be Everything Excellent Every Day" />
   <meta property="og:locale" content="en_NG" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={meta.title} />
   <meta name="twitter:description" content={meta.description} />
   <meta name="twitter:image" content={og_img} />
-  <meta name="twitter:image:alt" content="BEEE , Be Everything Excellent Every Day" />
+  <meta name="twitter:image:alt" content="BEEE, Be Everything Excellent Every Day" />
   {@html '<script type="application/ld+json">' + org_schema + '</script>'}
 </svelte:head>
 

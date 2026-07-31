@@ -9,7 +9,7 @@
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
   const steps = [
-    { num: 1, title: 'Online Coaching and Training', sub: 'August 1 – September 19, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport , all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
+    { num: 1, title: 'Online Coaching and Training', sub: 'August 1 – September 19, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport, all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
     { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
     { num: 3, title: 'Elite Stage', sub: 'September – October, 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
     { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
@@ -82,7 +82,7 @@
                 <div class="flex items-center gap-3">
                   <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
                   <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
-                    <span class="sr-only">Step {step.num} , </span>{step.sub}
+                    <span class="sr-only">Step {step.num}. </span>{step.sub}
                   </p>
                 </div>
                 <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>
@@ -114,7 +114,7 @@
                 <div class="flex items-center gap-3">
                   <span class="flex items-center justify-center w-9 h-9 rounded-full border border-amber-400/40 text-amber-500 font-hero font-bold text-base shrink-0">{step.num}</span>
                   <p class="font-hero text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[#141413]/80">
-                    <span class="sr-only">Step {step.num} , </span>{step.sub}
+                    <span class="sr-only">Step {step.num}. </span>{step.sub}
                   </p>
                 </div>
                 <h3 class="font-hero text-[#141413] font-bold text-xl lg:text-2xl leading-snug">{step.title}</h3>

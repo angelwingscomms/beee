@@ -304,7 +304,7 @@
     {#if loggedInUser}
       <div class="container">
         <div class="reg-loggedin-note">
-          Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong> , you're registering another player.
+          Signed in as <strong>{loggedInUser.email ?? 'your account'}</strong>, you're registering another player.
           <button type="button" class="reg-not-you" onclick={logoutGoogle}>Not you?</button>
         </div>
         <div class="reg-different-email">
@@ -372,7 +372,7 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1L10 5.5L14.5 6L11 9.5L12 14L8 11.5L4 14L5 9.5L1.5 6L6 5.5L8 1Z" fill="currentColor"/>
               </svg>
-              <span>10% discount applied , ₦{(baseAmount - AMOUNT).toLocaleString()} off</span>
+              <span>10% discount applied, ₦{(baseAmount - AMOUNT).toLocaleString()} off</span>
             </div>
           {:else if acValid === false}
             <div class="reg-discount-callout invalid">

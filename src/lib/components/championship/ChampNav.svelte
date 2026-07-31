@@ -42,7 +42,7 @@
     <div class="champ-nav-bg"></div>
     <div class="champ-nav-inner container">
       <a href="/" class="champ-nav-brand">
-        <img src="/logo.svg" alt="BEEE , Be Everything Excellent Every Day" class="champ-nav-logo" />
+        <img src="/logo.svg" alt="BEEE, Be Everything Excellent Every Day" class="champ-nav-logo" />
         <span class="champ-nav-name">BEEE</span>
       </a>
       <div class="champ-nav-links">

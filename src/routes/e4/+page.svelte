@@ -11,7 +11,7 @@
         <h1 class="page-hero-title">e4™</h1>
         <p class="page-hero-sub">AI Chess Coach</p>
         <p class="page-hero-body">An AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice.</p>
-        <p class="page-hero-body">e4 analyses every move as your child plays , flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
+        <p class="page-hero-body">e4 analyses every move as your child plays, flagging mistakes, suggesting better plans, and answering questions by voice or text.</p>
         <div class="page-hero-actions">
           <Button href="/register" class="page-hero-btn">Register your child →</Button>
         </div>
