@@ -259,6 +259,7 @@ Partners get access to:
 ### 6.4 Partner Signup
 - Can sign up with **email/password** or **Google OAuth**
 - Separate partner signup flow at `/partner`
+- Optional school name field available during signup
 - Existing users can upgrade to partner from their dashboard
 
 ---
@@ -367,7 +368,7 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 **User Point** (`s: 'u'`):
 - Stores a signed-in account
-- Fields: email (link key), bcrypt password hash, display name, classifications (`['rpb']`=player / `['fab']`=partner), partner code, bank account details, joined timestamp
+- Fields: email (link key), bcrypt password hash, display name, school name (partner), classifications (`['rpb']`=player / `['fab']`=partner), partner code, bank account details, joined timestamp
 
 **Link key** between reg and user points is **email**. Partner code links regs to partner users.
 

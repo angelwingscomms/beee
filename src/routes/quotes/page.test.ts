@@ -47,7 +47,7 @@ describe('Quotes Page', () => {
   it('quotes data has color field for each quote', () => {
     const quotes = JSON.parse(readFileSync(resolve(process.cwd(), 'src/lib/data/quotes.json'), 'utf8'));
     expect(quotes.length).toBeGreaterThan(0);
-    quotes.forEach((q) => {
+    quotes.forEach((q: { color: string }) => {
       expect(q).toHaveProperty('color');
       expect(q.color).toMatch(/^#[0-9A-Fa-f]{6}$/);
     });

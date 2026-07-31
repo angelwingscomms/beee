@@ -9,7 +9,7 @@ import type { User } from '$lib/types';
 export const POST: RequestHandler = async ({ request, cookies }) => {
   console.log('[partner signup] === NEW SIGNUP REQUEST ===');
   const raw = await request.json();
-  const { email, password, name } = raw;
+  const { email, password, name, sc } = raw;
   console.log('[partner signup] email:', email, 'password length:', password?.length ?? 0, 'name:', name);
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -48,6 +48,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
     e: email,
     p: hash,
     n: name || email.split('@')[0],
+    sc: sc || undefined,
     c: ['fab'],
     ac,
     d: Date.now()

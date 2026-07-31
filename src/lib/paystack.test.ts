@@ -23,7 +23,7 @@ describe('paystack_transfer', () => {
     const { paystack_transfer } = await import('./paystack');
     vi.stubGlobal('fetch', vi.fn(async () => ({
       ok: true,
-      json: async () => ({ status: true, data: { transfer_code: 'TRF_1', status: 'success' } })
+      text: async () => '{"status":true,"data":{"transfer_code":"TRF_1","status":"success"}}'
     })));
     const r = await paystack_transfer('RCP_1', 10000, 'Commission', 'po-reg1');
     expect(r).toEqual({ transfer_code: 'TRF_1', status: 'success' });

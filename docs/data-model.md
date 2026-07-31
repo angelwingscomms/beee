@@ -28,6 +28,7 @@ erDiagram
         string e "email (link key)"
         string p "bcrypt password hash"
         string n "display name"
+        string sc "school name (partner)"
         string c "['rpb'] player | ['fab'] partner"
         string ac "partner code (sqids)"
         string ba "bank account"
@@ -39,6 +40,7 @@ erDiagram
         string s "always 'u'"
         string c "['fab']"
         string ac "partner code"
+        string sc "school name"
     }
 
     REG_POINT ||--o| USER_POINT : "linked by email e"

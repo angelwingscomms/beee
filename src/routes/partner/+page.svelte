@@ -12,6 +12,7 @@
   const commission_naira = Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100) * COMMISSION_PCT / 100).toLocaleString();
 
   let email = $state('');
+  let school = $state('');
   let password = $state('');
   let confirmPassword = $state('');
   let eme = $state('');
@@ -45,7 +46,7 @@
       const r = await fetch('/api/partner/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), password, name: email.trim().split('@')[0] })
+        body: JSON.stringify({ email: email.trim(), password, name: email.trim().split('@')[0], sc: school.trim() || undefined })
       });
       const d = await r.json();
       if (!r.ok) {
@@ -107,6 +108,10 @@
             <div class="partner-fields">
               <TextInput id="af-email" label="Email" type="email" bind:value={email} required error={eme}
                 oninput={() => eme = ''}
+                wrapperClass="!bg-white !border-[var(--hairline)]"
+                labelClass="!text-white"
+                inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />
+              <TextInput id="af-sc" label="School Name (optional)" type="text" bind:value={school}
                 wrapperClass="!bg-white !border-[var(--hairline)]"
                 labelClass="!text-white"
                 inputClass="!text-[var(--ink)] placeholder:!text-[var(--muted-soft)]" />

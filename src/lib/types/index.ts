@@ -10,5 +10,6 @@ export interface User {
   ba?: string;  // bank account number
   bn?: string;  // bank name
   bk?: string;  // bank code
+  sc?: string;  // school name
   d: number;    // date joined (Date.now())
 }

@@ -189,6 +189,14 @@
     </div>
 
     <div class="settings-card">
+      <h2 class="settings-card-title">School Affiliation</h2>
+      <p class="settings-card-sub">The school you represent (optional).</p>
+      <p class="code-value" style="font-size: 18px; margin: 16px 0 0;">
+        {data.sc || 'Not set'}
+      </p>
+    </div>
+
+    <div class="settings-card">
       <h2 class="settings-card-title">Registered Users</h2>
       <p class="settings-card-sub">Players who registered using your partner code.</p>
       {#if data.registrations.length}
