@@ -271,7 +271,7 @@
                                 <line x1="18" y1="8" x2="22" y2="8"></line>
                                 <line x1="18" y1="12" x2="22" y2="12"></line>
                                 <line x1="18" y1="16" x2="22" y2="16"></line>
-                                <text x="12" y="14" font-family="'Montserrat', sans-serif" font-weight="700" font-size="5.5" fill="#ffb200" stroke="none" text-anchor="middle">AI</text>
+                                <text x="12" y="14" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="5.5" fill="#ffb200" stroke="none" text-anchor="middle">AI</text>
                             </svg>
                         </div>
                         <div class="card-title">e4</div>

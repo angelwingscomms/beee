@@ -20,12 +20,9 @@
   --color-amber-400: #ffb200;   /* remap Tailwind amber-400 → brand amber */
   --color-amber-500: #e6a000;   /* hover/darker step for amber surfaces */
 
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', sans-serif;
   --font-hero: 'Space Grotesk', sans-serif;
   --font-registration: 'SN Pro', sans-serif;
   --font-championship: 'Poppins', sans-serif;
-  --font-welcome: 'Open Sans', sans-serif;
 
   --animate-deadline-pulse: deadline-pulse 3.2s ease-in-out infinite;
   --animate-button-pulse: button-pulse 3.8s ease-in-out infinite;
