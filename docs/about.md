@@ -29,7 +29,7 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Live preliminaries** | September 2026 |
 | **Registration fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
 | **Registration** | Online at beeeproject.com/register |
-| **Contact** | info@beeeproject.com · +234 802 092 0872 |
+| **Contact** | info@beeeproject.com · +234 902 682 4439 |
 | **Social** | @thebeeeproject (Instagram, Facebook, YouTube) · beeeproject (X/Twitter) |
 
 ### 1.2 What Makes BEEE Different
@@ -63,6 +63,7 @@ The championship follows a structured **5-stage pathway**:
 
 ### Stage 2: Online Training & Coaching (Aug 1 – Sep 19, 2026)
 - AI-powered chess coaching via e4™
+- Portal access is FREE for everyone Aug 1–10, 2026; from Aug 11 the ₦15,000 registration fee applies
 - TEAMUP™ leadership workshops and life-skills activities
 - Taskify™ Development Passport begins recording milestones
 - Participants complete activities, assessments, and challenges
@@ -200,6 +201,7 @@ Every participant plays for more than the championship title. A full spectrum of
 
 ### 5.3 Registration Fee
 - **Standard:** ₦15,000 per participant
+- 10 days of free portal access (Aug 1–10); the fee applies from Aug 11
 - **With partner discount (10% off):** ~₦13,500 per participant
 - Payment is processed securely by **Paystack**
 - Fees are non-refundable except if BEEE cancels the event
@@ -332,7 +334,8 @@ These outcomes come from:
 
 Official communication channels:
 - **Email** , info@beeeproject.com
-- **Phone** , +234 802 092 0872
+- **Phone** , +234 902 682 4439
+- **Coordinator** , Gold Edward E. H. (Championship Coordinator)
 - **WhatsApp** , via the championship coordination team
 - **SMS**
 - **Online participant portals**
