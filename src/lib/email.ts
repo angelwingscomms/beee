@@ -105,7 +105,7 @@ export async function send_registration_confirmation(
       </ol>
       <div class="label">Receipt</div>
       <div class="detail">${fmt_kobo(amount_kobo)} &middot; Ref ${reference}</div>
-      <p style="margin-top:24px;font-size:13px;color:#6c6a64;">Questions? Reply to this email or call +234 802 092 0872.</p>
+      <p style="margin-top:24px;font-size:13px;color:#6c6a64;">Questions? Reply to this email or call +234 902 682 4439.</p>
     </div>
     <div class="footer">Aspire to BEEE, Be Everything Excellent Every Day</div>
   </div>

@@ -56,7 +56,7 @@
 
     <section class="legal-section">
       <h2>9. Contact</h2>
-      <p>Questions about this policy? Email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> or call +234 802 092 0872.</p>
+      <p>Questions about this policy? Email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> or call +234 902 682 4439.</p>
     </section>
 
     <div class="legal-cta">

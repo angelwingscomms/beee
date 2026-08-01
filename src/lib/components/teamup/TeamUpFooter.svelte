@@ -21,7 +21,7 @@
       <div class="tu-footer-contact">
         <a href="mailto:info@beeeproject.com">info@beeeproject.com</a>
         <span class="tu-contact-sep">|</span>
-        <span>+234 802 092 0872</span>
+        <span>+234 902 682 4439</span>
       </div>
       <p class="tu-footer-copy">&copy; 2026 BEEE Spectacular Chess Championship</p>
     </div>

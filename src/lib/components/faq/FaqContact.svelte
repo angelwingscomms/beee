@@ -14,11 +14,11 @@
 					</svg>
 					info@beeeproject.com
 				</a>
-				<a href="tel:+2348020920872" class="contact-link">
+				<a href="tel:+2349026824439" class="contact-link">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
 						<path d="M14.5 11.5v2a1.33 1.33 0 01-1.46 1.33 13.2 13.2 0 01-5.75-2.04 13 13 0 01-4-4A13.2 13.2 0 011.17 3 1.33 1.33 0 012.5 1.5h2a1.33 1.33 0 011.33 1.15 8.54 8.54 0 00.47 1.9 1.33 1.33 0 01-.3 1.4L5.3 7a10.67 10.67 0 004 4l1.05-1.05a1.33 1.33 0 011.4-.3 8.54 8.54 0 001.9.47A1.33 1.33 0 0114.5 11.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					+234 802 092 0872
+					+234 902 682 4439
 				</a>
 			</div>
 		</div>

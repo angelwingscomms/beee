@@ -49,7 +49,7 @@
 
     <section class="legal-section">
       <h2>9. Contact</h2>
-      <p>Questions about these terms? Email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> or call +234 802 092 0872.</p>
+      <p>Questions about these terms? Email <a href="mailto:info@beeeproject.com">info@beeeproject.com</a> or call +234 902 682 4439.</p>
     </section>
 
     <div class="legal-cta">
