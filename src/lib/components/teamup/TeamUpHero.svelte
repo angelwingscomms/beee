@@ -2,7 +2,7 @@
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
 
-  const hero_img = 'https://picsum.photos/seed/chess-education/1200/1400';
+  const hero_img = '/images/championship/learn.webp';
 </script>
 
 <section class="tu-hero">

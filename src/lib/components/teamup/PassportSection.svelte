@@ -11,7 +11,7 @@
     { icon: Check, label: 'Certificates Obtained' },
   ];
 
-  let passport_img = 'https://picsum.photos/seed/passport/800/600';
+  let passport_img = '/placeholder-user.jpg';
 </script>
 
 <section class="passport-sec">

@@ -2,11 +2,11 @@
   import { motionStaggered, motionFadeUp } from '$lib/actions/motion';
 
   let pillars = [
-    { l: 'T', n: 'Technology', d: 'Exploring digital tools, innovation, and emerging technologies that shape the future.', img: 'https://picsum.photos/seed/tech/600/400', g: 'from-indigo-500/10 to-transparent' },
-    { l: 'E', n: 'Enterprise', d: 'Developing initiative, creativity, resourcefulness, and entrepreneurial thinking.', img: 'https://picsum.photos/seed/enterprise/600/400', g: 'from-amber-500/10 to-transparent' },
-    { l: 'A', n: 'Art', d: 'Encouraging imagination, expression, creativity, and design thinking.', img: 'https://picsum.photos/seed/art/600/400', g: 'from-rose-500/10 to-transparent' },
-    { l: 'M', n: 'Mentorship', d: 'Learning from mentors and role models who support personal and developmental growth.', img: 'https://picsum.photos/seed/mentor/600/400', g: 'from-teal-500/10 to-transparent' },
-    { l: 'U', n: 'Upskill', d: 'Acquiring practical skills, competencies, and habits that contribute to future success.', img: 'https://picsum.photos/seed/skills/600/400', g: 'from-primary/10 to-transparent' },
+    { l: 'T', n: 'Technology', d: 'Exploring digital tools, innovation, and emerging technologies that shape the future.', img: '/images/technology-card.webp', g: 'from-indigo-500/10 to-transparent' },
+    { l: 'E', n: 'Enterprise', d: 'Developing initiative, creativity, resourcefulness, and entrepreneurial thinking.', img: '/images/enterprise.webp', g: 'from-amber-500/10 to-transparent' },
+    { l: 'A', n: 'Art', d: 'Encouraging imagination, expression, creativity, and design thinking.', img: '/flower-gear.webp', g: 'from-rose-500/10 to-transparent' },
+    { l: 'M', n: 'Mentorship', d: 'Learning from mentors and role models who support personal and developmental growth.', img: '/images/bento-mentorship-candid.webp', g: 'from-teal-500/10 to-transparent' },
+    { l: 'U', n: 'Upskill', d: 'Acquiring practical skills, competencies, and habits that contribute to future success.', img: '/images/championship/develop.webp', g: 'from-primary/10 to-transparent' },
   ];
 </script>
 
