@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="contact-card">
 			<h2 class="display-sm">Still have questions?</h2>
-			<p class="contact-text">We are happy to help. Reach out to the championship organisers.</p>
+			<p class="contact-text">We are happy to help. Reach out to our team coordinator, Gold Edward E. H.</p>
 			<div class="contact-links">
 				<a href="mailto:info@beeeproject.com" class="contact-link">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -19,6 +19,14 @@
 						<path d="M14.5 11.5v2a1.33 1.33 0 01-1.46 1.33 13.2 13.2 0 01-5.75-2.04 13 13 0 01-4-4A13.2 13.2 0 011.17 3 1.33 1.33 0 012.5 1.5h2a1.33 1.33 0 011.33 1.15 8.54 8.54 0 00.47 1.9 1.33 1.33 0 01-.3 1.4L5.3 7a10.67 10.67 0 004 4l1.05-1.05a1.33 1.33 0 011.4-.3 8.54 8.54 0 001.9.47A1.33 1.33 0 0114.5 11.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
 					+234 902 682 4439
+				</a>
+				<a href="https://www.instagram.com/thebeeeproject" class="contact-link">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+						<rect x="2" y="2" width="12" height="12" rx="3.5" stroke="currentColor" stroke-width="1.3"/>
+						<circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.3"/>
+						<circle cx="11.4" cy="4.6" r="0.9" fill="currentColor"/>
+					</svg>
+					@thebeeeproject
 				</a>
 			</div>
 		</div>
