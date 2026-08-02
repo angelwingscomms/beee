@@ -1,6 +1,6 @@
 import { decodeIdToken } from 'arctic';
 import { google_client as get_google } from '$lib/server/oauth';
-import { encode_session } from '$lib/server/session';
+import { encode_session, SESSION_COOKIE } from '$lib/server/session';
 import { create, find_user_by_email } from '$lib/db';
 import { get_secret } from '$lib/server/secrets';
 import type { User } from '$lib/types';
@@ -85,8 +85,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
     console.log('[google callback] encoding session...');
     const session = await encode_session({ id: user_id, name, picture, email, ph: existing?.ph });
     console.log('[google callback] session encoded, setting cookie');
-    const cookieOpts = { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' as const };
-    event.cookies.set('session', session, cookieOpts);
+    event.cookies.set('session', session, SESSION_COOKIE);
     event.cookies.delete('oauth_state', { path: '/' });
     event.cookies.delete('oauth_verifier', { path: '/' });
     const next = event.cookies.get('oauth_next') || '/';

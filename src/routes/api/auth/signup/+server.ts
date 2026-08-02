@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
 import { create, find_user_by_email, new_id } from '$lib/db';
-import { encode_session } from '$lib/server/session';
+import { encode_session, SESSION_COOKIE } from '$lib/server/session';
 import type { User } from '$lib/types';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
@@ -22,7 +22,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
   await create(u, undefined, user_id);
 
   const session = await encode_session({ id: user_id, name: u.n, email });
-  cookies.set('session', session, { path: '/', httpOnly: true, maxAge: 604800, sameSite: 'lax' });
+  cookies.set('session', session, SESSION_COOKIE);
 
   return json({ success: true, user: { id: user_id, email, name: u.n } });
 };

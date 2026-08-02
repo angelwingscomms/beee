@@ -1,5 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
-import { decode_session } from '$lib/server/session';
+import { decode_session, SESSION_COOKIE_DELETE } from '$lib/server/session';
 import { set_platform } from '$lib/server/secrets';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -13,10 +13,10 @@ export const handle: Handle = async ({ event, resolve }) => {
       if (s) {
         event.locals.user = s.user;
       } else {
-        event.cookies.delete('session', { path: '/' });
+        event.cookies.delete('session', SESSION_COOKIE_DELETE);
       }
     } catch {
-      event.cookies.delete('session', { path: '/' });
+      event.cookies.delete('session', SESSION_COOKIE_DELETE);
     }
   }
   return resolve(event);

@@ -68,6 +68,7 @@ crons = ["*/15 * * * *"]
 
 [vars]
 APP_URL = "https://beeeproject.com"
+COOKIE_DOMAIN = ".beeeproject.com"
 
 [assets]
 binding = "ASSETS"
