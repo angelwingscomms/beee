@@ -52,12 +52,14 @@ erDiagram
 
 ```mermaid
 flowchart TD
-    A[Register form submit] --> B[register-init-payment]
+    A[Register form submit] --> B[api/register]
     B -->|creates| C["REG POINT\n s:'reg' st:'pending'\npw = bcrypt(password)"]
-    C -->|Paystack checkout| D[User pays]
+    B -->|find_or_create_user| U["USER POINT\n s:'u' (no rpb)\npw reused as password"]
+    C -->|dashboard unlock button| I[api/register-init-payment]
+    I -->|Paystack checkout| D[User pays]
     D -->|webhook charge.success| E[Verify amount + status]
     E -->|creates| F["REG POINT\n s:'reg' st:'paid'\n(pw dropped)"]
-    E -->|find_or_create_player_user| G["USER POINT\n s:'u' c:['rpb']\npw reused as password"]
+    E -->|find_or_create_player_user| G["USER POINT\n s:'u' c:['rpb']\n(reuses account from registration)"]
     F -->|ac matches| H["PARTNER USER\n s:'u' c:['fab'] ac"]
     G -->|ac matches| H
     H -->|dashboard lists| F
@@ -66,9 +68,10 @@ flowchart TD
 ## Key rules
 
 - **Link key is email `e`**, not the Qdrant point id.
-- A `pending` reg point holds the password hash in `pw`; once payment is
-  confirmed a `paid` reg point is written **without** `pw`, and the hash is
-  moved onto the user point.
+- A `pending` reg point holds the password hash in `pw`; at registration the
+  same hash provisions the login account (find_or_create_user, no `rpb`).
+  Once payment is confirmed a `paid` reg point is written **without** `pw`,
+  and the hash stays on the user point.
 - A partner is just a user point with `c` containing `'fab'` and its own `ac`.
   A registration references its partner via `ac`; the partner dashboard queries
   `reg` points where `ac` equals the partner's code.

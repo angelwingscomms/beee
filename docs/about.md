@@ -27,7 +27,7 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Grand Finale date** | October 2026 |
 | **Online coaching begins** | August 1, 2026 |
 | **Live preliminaries** | September 2026 |
-| **Registration fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
+| **Full access fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
 | **Registration** | Online at beeeproject.com/register |
 | **Contact** | info@beeeproject.com · +234 902 682 4439 |
 | **Social** | @thebeeeproject (Instagram, Facebook, YouTube) · beeeproject (X/Twitter) |
@@ -63,7 +63,7 @@ The championship follows a structured **5-stage pathway**:
 
 ### Stage 2: Online Training & Coaching (Aug 1 – Sep 19, 2026)
 - AI-powered chess coaching via e4™
-- Portal access is FREE for everyone Aug 1–10, 2026; from Aug 11 the ₦15,000 registration fee applies
+- Registration is free for everyone; the ₦15,000 fee unlocks full access to e4, TEAMUP and the Taskify Development Passport, payable anytime from the dashboard
 - TEAMUP™ leadership workshops and life-skills activities
 - Taskify™ Development Passport begins recording milestones
 - Participants complete activities, assessments, and challenges
@@ -187,8 +187,8 @@ Every participant plays for more than the championship title. A full spectrum of
 ### 5.1 How to Register
 - Visit **beeeproject.com/register**
 - Complete the form with parent/guardian details
-- Pay the registration fee via **Paystack** (Nigerian payment processor)
-- Confirmation is immediate upon successful payment
+- Register free of charge; full access is unlocked with the optional ₦15,000 fee via **Paystack**
+- Full access is granted immediately upon successful payment
 
 ### 5.2 Registration Form Fields
 - **First name** (parent/guardian)
@@ -199,9 +199,9 @@ Every participant plays for more than the championship title. A full spectrum of
 - **Password** , minimum 8 characters
 - **Partner code** (optional) , enter a partner's referral code for 10% discount
 
-### 5.3 Registration Fee
-- **Standard:** ₦15,000 per participant
-- 10 days of free portal access (Aug 1–10); the fee applies from Aug 11
+### 5.3 Full Access Fee
+- Registration is **FREE** for everyone
+- **Full access:** ₦15,000 per participant, payable anytime from the dashboard
 - **With partner discount (10% off):** ~₦13,500 per participant
 - Payment is processed securely by **Paystack**
 - Fees are non-refundable except if BEEE cancels the event
@@ -215,13 +215,13 @@ Every participant plays for more than the championship title. A full spectrum of
 
 ### 5.5 Registration Confirmation Flow
 1. User fills form → clicks Register
-2. **Confirmation modal** appears with participant summary, school, email, phone, and amount
-3. User clicks "Confirm & Pay"
-4. **Paystack inline popup** opens for payment
-5. On success → redirects to `/payment/callback?reference=XXX`
-6. The callback page verifies payment via `/api/verify-payment`
-7. Registration is confirmed, account is provisioned
-8. Confirmation email sent
+2. **Confirmation modal** appears with participant summary
+3. Registration is created instantly, free of charge; user lands on /dashboard
+4. Dashboard shows an unlock full access button while the registration is pending
+5. Clicking it opens the Paystack inline popup for the ₦15,000 fee (or ₦13,500 with a partner code)
+6. On success → redirects to `/payment/callback?reference=XXX`
+7. The callback page verifies payment via `/api/verify-payment`
+8. Full access is granted, account provisioned, confirmation email sent
 
 ### 5.6 Requirements
 - Participants must be **between 10 and 14 years old**
@@ -376,13 +376,14 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 **Link key** between reg and user points is **email**. Partner code links regs to partner users.
 
 ### 11.3 Payment Flow
-1. User submits registration → `POST /api/register-init-payment`
-2. Creates pending reg point with bcrypt-hashed password
-3. Returns Paystack access code → inline popup opens
-4. User pays via Paystack
-5. On success → redirect to `/payment/callback?reference=XXX`
-6. Callback verifies via `POST /api/verify-payment`
-7. Webhook (`charge.success`) confirms → flips reg to paid, creates/updates user point, fires partner payout, sends confirmation email
+1. User submits registration → `POST /api/register` (free, no payment)
+2. Creates pending reg point (`st: 'r'`) with bcrypt-hashed password and provisions the login account
+3. User lands on `/dashboard`; the unlock full access button calls `POST /api/register-init-payment` with the registration id
+4. Returns Paystack access code → inline popup opens
+5. User pays via Paystack
+6. On success → redirect to `/payment/callback?reference=XXX`
+7. Callback verifies via `POST /api/verify-payment`
+8. Webhook (`charge.success`) confirms → flips reg to paid, adds `'rpb'` to the user point, fires partner payout, sends confirmation email
 
 ### 11.4 Key API Routes
 
@@ -391,7 +392,8 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 | `/api/auth/login` | Email/password login |
 | `/api/auth/logout` | Session logout |
 | `/api/auth/signup` | Account creation |
-| `/api/register-init-payment` | Initiate registration + payment |
+| `/api/register` | Free registration (creates pending registration + login account) |
+| `/api/register-init-payment` | Initiate Paystack payment for an existing pending registration (unlock full access) |
 | `/api/verify-payment` | Verify payment after callback |
 | `/api/webhooks/paystack` | Paystack webhook handler |
 | `/api/validate-partner` | Validate partner code (real-time) |
