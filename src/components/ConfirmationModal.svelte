@@ -17,7 +17,7 @@
 		school: string;
 		email: string;
 		phone: string;
-		AMOUNT: number;
+		AMOUNT: number | null;
 		onConfirm: () => void;
 		onCancel: () => void;
 		isProcessing?: boolean;
@@ -34,7 +34,7 @@
 	<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
 		<div class="modal-header">
 			<h2 id="confirm-title">Confirm Registration</h2>
-			<p>Review your details before payment.</p>
+			<p>Review your details before registering.</p>
 		</div>
 
 		<div class="modal-body">
@@ -52,13 +52,15 @@
 				</div>
 			</section>
 
-			<div class="modal-total">
-				<div>
-					<p>Register now</p>
-					<p class="summary-item-desc">{formatCurrency(AMOUNT)} per participant</p>
+			{#if AMOUNT}
+				<div class="modal-total">
+					<div>
+						<p>Register now</p>
+						<p class="summary-item-desc">{formatCurrency(AMOUNT)} per participant</p>
+					</div>
+					<strong>{formatCurrency(AMOUNT)}</strong>
 				</div>
-				<strong>{formatCurrency(AMOUNT)}</strong>
-			</div>
+			{/if}
 		</div>
 
 		<div class="modal-actions" style="grid-template-columns: 1fr;">
@@ -70,10 +72,12 @@
 					<span class="spinner" aria-hidden="true"></span>
 					Processing
 				{:else}
-					Confirm &amp; Pay {formatCurrency(AMOUNT)}
+					Confirm registration
 				{/if}
 			</Button>
 		</div>
-		<p class="modal-secure-note">Payments processed securely by Paystack.</p>
+		{#if AMOUNT}
+			<p class="modal-secure-note">Payments processed securely by Paystack.</p>
+		{/if}
 	</div>
 </div>
