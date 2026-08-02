@@ -25,8 +25,8 @@ export const cs: FaqC[] = [
 			{ q: 'How do I register?', a: 'Complete registration through the official championship registration portal at /register.' },
 			{ q: 'Can a school register multiple participants?', a: 'Yes. Schools can register multiple eligible students.' },
 			{ q: 'Can parents register their children directly?', a: 'Yes. Register directly at beeeproject.com/register, you don’t need to go through a school.' },
-			{ q: 'Is there a registration deadline?', a: 'Registration closes September 10, 2026. Portal access is free for everyone from August 1 to August 10; from August 11, continued participation requires the ₦15,000 registration fee. Participants may join the championship at any time between August 1 and September 10. The earlier you register, the more time your child has to learn and improve.' },
-			{ q: 'Is there a registration fee?', a: `Yes. The registration fee is ₦${REG_AMOUNT.toLocaleString()}, required from August 11 after 10 days of free portal access (August 1–10). Participants with a partner code pay ₦${discounted_amount.toLocaleString()}.` },
+			{ q: 'Is there a registration deadline?', a: 'Registration closes September 10, 2026. Registration is free for everyone, and full access is unlocked with the ₦15,000 fee, payable anytime from your dashboard. Participants may join the championship at any time between August 1 and September 10. The earlier you register, the more time your child has to learn and improve.' },
+			{ q: 'Is there a registration fee?', a: `Registration is free for everyone. The ₦${REG_AMOUNT.toLocaleString()} fee unlocks full access to e4 Chess Coach, TEAMUP and the Taskify Development Passport. Participants with a partner code unlock full access for ₦${discounted_amount.toLocaleString()}.` },
 			{ q: 'What is the refund policy?', a: 'Fees are non-refundable, except if BEEE cancels the event. See our Terms for details.' },
 		]
 	},

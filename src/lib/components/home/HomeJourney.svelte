@@ -149,7 +149,7 @@
             Registration closes <span class="text-amber-400 font-semibold">September 10, 2026</span>.
           </p>
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
-            Portal access is free for everyone from August 1 to August 10; the ₦15,000 registration fee applies from August 11.
+            Registration is free for everyone; the ₦15,000 fee unlocks full access to the complete championship experience.
           </p>
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
             The earlier you register, the more time your child has to learn and improve.
