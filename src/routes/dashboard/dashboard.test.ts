@@ -1,4 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { derive_badges } from './load';
 import type { Registration } from '$lib/types/registration';
 
@@ -83,5 +85,26 @@ describe('load_dashboard multi-kid (same parent email)', () => {
     expect(out.registrations.filter((r) => r.st === 'i').length).toBe(2);
     expect(out.registrations.map((r) => r.i).sort()).toEqual(['reg_a', 'reg_b', 'reg_c']);
     vi.restoreAllMocks();
+  });
+});
+
+describe('dashboard page unlock flow', () => {
+  const page = readFileSync(resolve(process.cwd(), 'src/routes/dashboard/+page.svelte'), 'utf8');
+
+  it('offers an unlock full access button for pending registrations', () => {
+    expect(page).toContain("active_reg.st === 'r'");
+    expect(page).toContain('unlock full access');
+  });
+
+  it('runs the payment flow through /api/register-init-payment', () => {
+    expect(page).toContain("fetch('/api/register-init-payment'");
+    expect(page).toContain('registrationId: active_reg.i');
+    expect(page).toContain('resumeTransaction(d.access_code');
+    expect(page).toContain('payment/callback?reference=');
+  });
+
+  it('labels paid vs free registrations without "Pending"', () => {
+    expect(page).toContain("active_reg.st === 'i' ? 'Full access' : 'Registered'");
+    expect(page).not.toContain("'Paid' : 'Pending'");
   });
 });

@@ -9,6 +9,8 @@
 
   let show_modal = $state(false);
   let is_upgrading = $state(false);
+  let is_paying = $state(false);
+  let pay_error = $state('');
 
   const is_partner = $derived(data.profile?.c?.includes('fab') ?? false);
 
@@ -47,6 +49,43 @@
       }
     } finally {
       is_upgrading = false;
+    }
+  }
+
+  async function unlock_full_access() {
+    if (!active_reg?.i) return;
+    is_paying = true;
+    pay_error = '';
+    let auth_url = '';
+    try {
+      const r = await fetch('/api/register-init-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ registrationId: active_reg.i })
+      });
+      if (!r.ok) {
+        const e = await r.json().catch(() => ({}));
+        throw new Error(e.error || 'Payment initialization failed');
+      }
+      const d = await r.json();
+      if (!d.access_code) throw new Error('Invalid response from payment gateway');
+      auth_url = d.authorization_url;
+      const PaystackPop = (await import('@paystack/inline-js')).default;
+      const popup = new PaystackPop();
+      const fb = setTimeout(() => { window.location.href = auth_url; }, 15000);
+      popup.resumeTransaction(d.access_code, {
+        onLoad: () => clearTimeout(fb),
+        onSuccess: (tx) => { clearTimeout(fb); window.location.href = `/payment/callback?reference=${tx.reference}`; },
+        onCancel: () => { clearTimeout(fb); is_paying = false; },
+        onError: () => { clearTimeout(fb); window.location.href = auth_url; }
+      });
+    } catch (error) {
+      if (auth_url) {
+        window.location.href = auth_url;
+      } else {
+        pay_error = error instanceof Error ? error.message : 'Unknown error';
+        is_paying = false;
+      }
     }
   }
 </script>
@@ -88,9 +127,16 @@
         <dl class="reg-detail-grid">
           {#if active_reg.sn}<div><dt>School</dt><dd>{active_reg.sn}</dd></div>{/if}
           {#if data.user?.ph?.length}<div><dt>Phone</dt><dd>{data.user.ph.join(', ')}</dd></div>{/if}
-          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'i' ? 'Paid' : 'Pending'}</dd></div>
+          <div><dt>Status</dt><dd class="reg-detail-status">{active_reg.st === 'i' ? 'Full access' : 'Registered'}</dd></div>
           {#if active_reg.ref}<div><dt>Reference</dt><dd><code>{active_reg.ref}</code></dd></div>{/if}
         </dl>
+        {#if active_reg.st === 'r'}
+          <div class="unlock-box">
+            <p class="unlock-text">Your player is registered. Full access to the complete championship experience unlocks with the one-time fee.</p>
+            <button class="dash-btn" onclick={unlock_full_access} disabled={is_paying}>{is_paying ? 'Opening payment…' : 'unlock full access'}</button>
+            {#if pay_error}<p class="unlock-error" role="alert">{pay_error}</p>{/if}
+          </div>
+        {/if}
       </div>
     {/if}
 
@@ -280,6 +326,28 @@
   .reg-detail-status {
     color: var(--success);
     font-weight: 600;
+  }
+  .unlock-box {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .unlock-text {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  .unlock-error {
+    font-family: var(--font-registration);
+    font-size: 13px;
+    color: var(--error);
+    margin: 0;
   }
   .modal-backdrop {
     position: fixed;
