@@ -9,7 +9,7 @@ function sign(body: string): string {
 }
 
 async function new_reg(req: any): Promise<string> {
-  const res = await req.post('/api/register-init-payment', {
+  const res = await req.post('/api/register', {
     data: {
       firstName: 'E2E', lastName: 'Player', email: `e2e_${Date.now()}@example.com`,
       phone: '+234801234567', school: 'S', password: 'password123'

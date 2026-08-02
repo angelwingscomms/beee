@@ -85,6 +85,11 @@ describe('integration: register → payment → immediate partner payout', () =>
         const init = await register('AFF123');
         expect(init.discounted).toBe(true);
         const amt = init.amount;
+        // Free registration provisions a login account WITHOUT rpb — full
+        // access (and the class) only lands with payment.
+        const before = [...db.store.values()].find(u => u.s === 'u' && u.e === 'player@example.com');
+        expect(before).toBeTruthy();
+        expect(before.c).toBeUndefined();
         ps.controls.verify.mockImplementation(async (r: string) => ({ status: 'success', reference: r, amount: amt, customer: { email: '' }, metadata: {} }));
         await verify(init.registrationId);
         await flush();
