@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import bcrypt from 'bcryptjs';
 import { MIN_PMNT_AMNT, MIN_TRANSFER_AMNT } from '$lib/constants';
 
 let mock_dev = false;
@@ -9,29 +8,36 @@ vi.mock('$app/environment', () => ({
     get browser() { return false; },
 }));
 
-const mockUsers: Array<{ s: string; ac: string; c?: string[] }> = [];
-let lastCreate: any = null;
-const createdRecords: any[] = [];
+const store = new Map<string, any>();
+let lastInit: { email: string; amount: number; registrationId: string; p_name: string; callback_url: string; reg_data: Record<string, unknown> } | null = null;
 
 vi.mock('$lib/db', () => ({
-    new_id: vi.fn(() => 'mock-reg-id-123'),
-    search_by_payload: vi.fn(async (filter: Record<string, unknown>) => {
-        if (filter.s === 'u' && filter.ac) {
-            return mockUsers.filter(u => u.ac === filter.ac);
-        }
-        return [];
-    }),
-    create: vi.fn(async (payload: any) => { lastCreate = payload; createdRecords.push(payload); return 'mock-reg-id-123'; }),
-    get: vi.fn(async () => null),
+    get: vi.fn(async (id: string) => store.get(id) ?? null),
+    new_id: vi.fn(() => 'x'),
+    search_by_payload: vi.fn(async () => []),
+    create: vi.fn(async () => 'x'),
 }));
 
 vi.mock('$lib/paystack', () => ({
-    paystack_init: vi.fn(async () => ({
-        authorization_url: 'https://paystack.com/authorize',
-        access_code: 'mock_access_code',
-        reference: 'mock_ref',
-    })),
+    paystack_init: vi.fn(async (email: string, amount: number, registrationId: string, p_name: string, callback_url: string, reg_data?: Record<string, unknown>) => {
+        lastInit = { email, amount, registrationId, p_name, callback_url, reg_data: reg_data ?? {} };
+        return {
+            authorization_url: 'https://paystack.com/authorize',
+            access_code: 'mock_access_code',
+            reference: registrationId,
+        };
+    }),
 }));
+
+function seed_reg(overrides: Record<string, unknown> = {}) {
+    const reg: any = {
+        s: 'reg', i: 'reg_1', fn: 'John', ln: 'Doe', e: 'john@example.com',
+        sn: 'School', st: 'r', v: 0, d: Date.now(), amt: 1_500_000,
+        ...overrides
+    };
+    store.set('reg_1', reg);
+    return reg;
+}
 
 function mock_handler(body: Record<string, unknown>, locals?: { user?: { email?: string; ph?: string[] } }) {
     const req = new Request('http://localhost/api/register-init-payment', {
@@ -42,200 +48,90 @@ function mock_handler(body: Record<string, unknown>, locals?: { user?: { email?:
     return { request: req, url: new URL('http://localhost/api/register-init-payment'), locals };
 }
 
-describe('register-init-payment partner code validation', () => {
+describe('register-init-payment (unlock existing registration)', () => {
     beforeEach(() => {
         mock_dev = false;
-        mockUsers.length = 0;
-        lastCreate = null;
-        createdRecords.length = 0;
+        store.clear();
+        lastInit = null;
     });
 
-    it('accepts registration without partner code', async () => {
+    it('rejects a missing registrationId with 400', async () => {
         const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123'
-        }) as any);
-        const d = await res.json();
-        expect(d.success).toBe(true);
-    });
-
-    it('rejects invalid partner code with 400 error', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123',
-            partnerCode: 'INVALID_CODE'
-        }) as any);
+        const res = await POST(mock_handler({}) as any);
         expect(res.status).toBe(400);
-        const d = await res.json();
-        expect(d.error).toBe('Invalid partner code');
+        expect((await res.json()).error).toBe('Missing registrationId');
     });
 
-    it('rejects non-partner code that exists in DB', async () => {
-        mockUsers.push({ s: 'u', ac: 'PLAYER1', c: ['rpb'] });
+    it('rejects an unknown registration with 404', async () => {
         const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123',
-            partnerCode: 'PLAYER1'
-        }) as any);
+        const res = await POST(mock_handler({ registrationId: 'nope' }, { user: { email: 'john@example.com' } }) as any);
+        expect(res.status).toBe(404);
+        expect((await res.json()).error).toBe('Registration not found');
+    });
+
+    it('rejects a registration owned by someone else with 403', async () => {
+        seed_reg();
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }, { user: { email: 'other@example.com' } }) as any);
+        expect(res.status).toBe(403);
+        expect((await res.json()).error).toBe('Not your registration');
+    });
+
+    it('rejects with no session at all with 403', async () => {
+        seed_reg();
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }) as any);
+        expect(res.status).toBe(403);
+        expect((await res.json()).error).toBe('Not your registration');
+    });
+
+    it('rejects an already-unlocked registration with 400', async () => {
+        seed_reg({ st: 'i' });
+        const { POST } = await import('./+server');
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }, { user: { email: 'john@example.com' } }) as any);
         expect(res.status).toBe(400);
-        const d = await res.json();
-        expect(d.error).toBe('Invalid partner code');
+        expect((await res.json()).error).toBe('Already unlocked');
     });
 
-    it('accepts valid partner code and returns discounted amount', async () => {
-        mockUsers.push({ s: 'u', ac: 'AFF123', c: ['fab'] });
+    it('inits paystack for a pending discounted reg with the session phone', async () => {
+        seed_reg({ amt: 1_350_000 });
         const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123',
-            partnerCode: 'AFF123'
-        }) as any);
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }, { user: { email: 'john@example.com', ph: ['2348011112222'] } }) as any);
         expect(res.status).toBe(200);
         const d = await res.json();
         expect(d.success).toBe(true);
-        expect(d.discounted).toBe(true);
         expect(d.amount).toBe(1_350_000);
+        expect(d.discounted).toBe(true);
+        expect(d.access_code).toBe('mock_access_code');
+        expect(d.authorization_url).toBe('https://paystack.com/authorize');
+        expect(d.reference).toBe('reg_1');
+        expect(d.registrationId).toBe('reg_1');
+        expect(lastInit).toEqual({
+            email: 'john@example.com',
+            amount: 1_350_000,
+            registrationId: 'reg_1',
+            p_name: 'John Doe',
+            callback_url: 'http://localhost/payment/callback',
+            reg_data: { a: 'beee', regId: 'reg_1', phone: '2348011112222' }
+        });
     });
 
-    it('returns full amount without partner code', async () => {
+    it('full-price reg reports discounted false', async () => {
+        seed_reg({ amt: 1_500_000 });
         const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'Jane', lastName: 'Doe', email: 'jane@example.com',
-            phone: '+234801234568', school: 'Test School', password: 'password123'
-        }) as any);
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }, { user: { email: 'john@example.com' } }) as any);
         const d = await res.json();
         expect(d.amount).toBe(1_500_000);
         expect(d.discounted).toBe(false);
     });
 
-    it('uses dev pricing = min payment + min transfer in dev mode', async () => {
+    it('dev mode: a dev-priced reg is not reported discounted', async () => {
         mock_dev = true;
+        seed_reg({ amt: MIN_PMNT_AMNT + MIN_TRANSFER_AMNT });
         const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'Dev', lastName: 'User', email: 'dev@example.com',
-            phone: '+234801234569', school: 'Dev School', password: 'password123'
-        }) as any);
+        const res = await POST(mock_handler({ registrationId: 'reg_1' }, { user: { email: 'john@example.com' } }) as any);
         const d = await res.json();
         expect(d.amount).toBe(MIN_PMNT_AMNT + MIN_TRANSFER_AMNT);
-    });
-
-    it('applies same dev fee on valid partner code in dev mode', async () => {
-        mock_dev = true;
-        mockUsers.push({ s: 'u', ac: 'DEV_AFF', c: ['fab'] });
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'Dev', lastName: 'User', email: 'dev@example.com',
-            phone: '+234801234569', school: 'Dev School', password: 'password123',
-            partnerCode: 'DEV_AFF'
-        }) as any);
-        const d = await res.json();
-        expect(d.amount).toBe(MIN_PMNT_AMNT + MIN_TRANSFER_AMNT);
-        expect(d.discounted).toBe(true);
-    });
-
-    it('B5: never stores the password as plaintext , it is bcrypt-hashed', async () => {
-        const { POST } = await import('./+server');
-        await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123'
-        }) as any);
-        expect(lastCreate).not.toBeNull();
-        expect(lastCreate.pw).toBeDefined();
-        expect(lastCreate.pw).not.toBe('password123');
-        expect(lastCreate.pw.startsWith('$2')).toBe(true);
-        expect(await bcrypt.compare('password123', lastCreate.pw)).toBe(true);
-    });
-
-    it('B8: rejects an invalid email with 400', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'not-an-email',
-            phone: '+234801234567', school: 'Test School', password: 'password123'
-        }) as any);
-        expect(res.status).toBe(400);
-    });
-
-    it('B8: rejects an invalid phone with 400', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '123', school: 'Test School', password: 'password123'
-        }) as any);
-        expect(res.status).toBe(400);
-    });
-
-    it('B8: rejects a too-short password with 400', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: '123'
-        }) as any);
-        expect(res.status).toBe(400);
-    });
-
-    it('B13: schoolEmail in the request is not persisted (dead field stays inert)', async () => {
-        const { POST } = await import('./+server');
-        await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123',
-            schoolEmail: 'teacher@example.com'
-        }) as any);
-        expect(lastCreate.schoolEmail).toBeUndefined();
-    });
-
-    it('B14: client-supplied `v` is ignored , server owns the field (dead field is not an input vector)', async () => {
-        const { POST } = await import('./+server');
-        await POST(mock_handler({
-            firstName: 'John', lastName: 'Doe', email: 'john@example.com',
-            phone: '+234801234567', school: 'Test School', password: 'password123',
-            v: 99
-        }) as any);
-        expect(lastCreate.v).toBe(0);
-    });
-
-    it('allows a parent to register a second kid with the same email (two distinct reg records)', async () => {
-        const { POST } = await import('./+server');
-        const body = {
-            firstName: 'Kid', lastName: 'One', email: 'mom@example.com',
-            phone: '+234801234567', school: 'School A', password: 'password123'
-        };
-        const a = await POST(mock_handler({ ...body, school: 'School A' }) as any);
-        const b = await POST(mock_handler({ ...body, school: 'School B' }) as any);
-        expect((await a.json()).success).toBe(true);
-        expect((await b.json()).success).toBe(true);
-        const regs = createdRecords.filter((r) => r.s === 'reg' && r.e === 'mom@example.com');
-        expect(regs.length).toBe(2);
-        expect(regs[0].sn).toBe('School A');
-        expect(regs[1].sn).toBe('School B');
-        expect(regs[0]).not.toBe(regs[1]);
-    });
-
-    it('logged-in user: falls back to stored phone when the form phone is the empty placeholder', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'Kid', lastName: 'Two', school: 'School C',
-            // no email, no phone , both should come from the session user
-        }, { user: { email: 'mom@example.com', ph: ['2348011112222'] } }) as any);
-        expect(res.status).toBe(200);
-        const d = await res.json();
-        expect(d.success).toBe(true);
-        // Phone is no longer stored on the Registration , it lives on the User.
-        expect(lastCreate.p).toBeUndefined();
-        expect(lastCreate.e).toBe('mom@example.com');
-    });
-
-    it('logged-in user: proceeds without a form/session phone (resolved at confirmation)', async () => {
-        const { POST } = await import('./+server');
-        const res = await POST(mock_handler({
-            firstName: 'Kid', lastName: 'Two', school: 'School C'
-        }, { user: { email: 'nophone@example.com' } }) as any);
-        expect(res.status).toBe(200);
-        const d = await res.json();
-        expect(d.success).toBe(true);
-        // No phone stored on the Registration , it lives on the User, set at confirm.
-        expect(lastCreate.p).toBeUndefined();
+        expect(d.discounted).toBe(false);
     });
 });

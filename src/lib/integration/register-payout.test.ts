@@ -16,6 +16,7 @@ let payout_point_id!: typeof payout_point_id_t;
 vi.mock('$app/environment', () => ({ get dev() { return false; }, get browser() { return false; } }));
 vi.mock('$lib/db', () => ({
     create: db.create, get: db.get, find_or_create_player_user: db.find_or_create_player_user,
+    find_or_create_user: db.find_or_create_user,
     search_by_payload: db.search_by_payload, new_id: db.new_id, edit_point: db.edit_point
 }));
 vi.mock('$lib/paystack', () => ({
@@ -41,12 +42,12 @@ function seedPartner(withBank = true) {
 }
 
 async function register(ac?: string) {
-    const { POST } = await import('../../routes/api/register-init-payment/+server');
-    const req = new Request('http://localhost/api/register-init-payment', {
+    const { POST } = await import('../../routes/api/register/+server');
+    const req = new Request('http://localhost/api/register', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName: 'Play', lastName: 'Er', email: 'player@example.com', phone: '+234801234567', school: 'S', password: 'password123', partnerCode: ac })
     });
-    const res = await POST({ request: req, url: new URL('http://localhost/api/register-init-payment') } as any);
+    const res = await POST({ request: req, url: new URL('http://localhost/api/register'), cookies: { set: vi.fn() } } as any);
     return res.json();
 }
 

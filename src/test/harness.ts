@@ -14,6 +14,7 @@ export interface QdrantStore {
 	create: (payload: any, _embed?: string, i?: string) => Promise<string>;
 	edit_point: (id: string, data: any) => Promise<any>;
 	find_or_create_player_user: (email: string, name: string, ph?: string) => Promise<string>;
+	find_or_create_user: (email: string, password_hash?: string, phones?: string[]) => Promise<string>;
 	new_id: () => string;
 }
 
@@ -49,6 +50,19 @@ export function createQdrantStore(): QdrantStore {
 			}
 			const key = id();
 			store.set(key, { s: 'u', e: email, n: name, d: Date.now(), c: ['rpb'], p: ph, i: key });
+			return key;
+		},
+		find_or_create_user: async (email, password_hash, phones) => {
+			const existing = [...store.values()].find((u) => u.s === 'u' && u.e === email);
+			if (existing) {
+				if (phones?.length && !existing.ph?.length) existing.ph = phones;
+				return existing.i;
+			}
+			const key = id();
+			const u: any = { s: 'u', e: email, d: Date.now(), i: key };
+			if (password_hash) u.p = password_hash;
+			if (phones?.length) u.ph = phones;
+			store.set(key, u);
 			return key;
 		},
 		new_id: () => id()
