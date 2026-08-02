@@ -47,7 +47,7 @@ BEEE® Spectacular Chess Championship Abuja 2026
 
 The Championship Journey 
 
-August 1 to September 19, 2026
+August 1 to September 10, 2026
 
 Commencing August 1, 2026 with online engagement, participants complete activities, assessments, and challenges in advanced chess training, mentored learning and project-based, personal development evaluations - while advancing to the preliminary live chess series and an immersive championship experience scheduled for October, 2026. 
 

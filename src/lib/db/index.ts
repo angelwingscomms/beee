@@ -404,6 +404,22 @@ export async function find_or_create_player_user(email: string, name: string, pa
   return user_id;
 }
 
+export async function find_or_create_user(email: string, password_hash?: string, phones?: string[]): Promise<string> {
+  const existing = await find_user_by_email(email) as (User & { i: string }) | undefined;
+  if (existing) {
+    const patch: Partial<User> = { e: existing.e, s: 'u' };
+    if (phones?.length && !existing.ph?.length) patch.ph = phones;
+    await edit_point(existing.i, patch);
+    return existing.i;
+  }
+  const user_id = new_id();
+  const u: User = { s: 'u', e: email, d: Date.now() };
+  if (password_hash) u.p = password_hash;
+  if (phones?.length) u.ph = phones;
+  await create(u, undefined, user_id);
+  return user_id;
+}
+
 export const delete_ = async (
   id: string
 ): Promise<void> => {
