@@ -65,7 +65,6 @@
   let showConfirmation = $state(false);
   let isProcessing = $state(false);
   let apiError = $state('');
-  let registrationId = $state('');
 
   let acValid = $state<boolean | null>(null);
   let acLoading = $state(false);
@@ -212,61 +211,30 @@
     showConfirmation = true;
   }
 
-  async function confirmPayment() {
+  async function submitRegistration() {
     isProcessing = true;
     apiError = '';
-    let auth_url = '';
     // A logged-in parent has no editable phone field; the '+' dial code alone
     // is a placeholder, not a real number , send it empty so the server leaves
-    // the phone to be resolved at confirmation time (not a bogus '+234').
+    // the phone to be resolved from the session (not a bogus '+234').
     const phoneToSend = (parentPhone.trim() === '+234' || parentPhone.trim() === '') ? '' : parentPhone.trim();
     const payload = { firstName: gf.trim(), lastName: gl.trim(), email: em.trim(), phone: phoneToSend, school: sc.trim(), password: pw, partnerCode: ac.trim() || undefined };
-    // ponytail: verbose diagnostics so a 400 "Invalid phone" is debuggable from the browser.
-    console.log('[register] confirmPayment payload:', payload);
-    console.log('[register] loggedInUser:', loggedInUser);
-    console.log('[register] loggedInUser.ph:', loggedInUser?.ph);
-    console.log('[register] resolved parentPhone:', parentPhone, '| ph field:', ph, '| ph_valid:', ph_valid);
     try {
-      const r = await fetch('/api/register-init-payment', {
+      const r = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       if (!r.ok) {
         const e = await r.json().catch(() => ({}));
-        console.warn('[register] register-init-payment rejected:', r.status, e);
-        throw new Error(e.error || 'Payment initialization failed');
+        throw new Error(e.error || 'Registration failed');
       }
       const d = await r.json();
-      if (!d.access_code) throw new Error('Invalid response from payment gateway');
-      registrationId = d.registrationId;
-      auth_url = d.authorization_url;
-
-      const PaystackPop = (await import('@paystack/inline-js')).default;
-      const popup = new PaystackPop();
-      const fb = setTimeout(() => { window.location.href = auth_url; }, 15000);
-      popup.resumeTransaction(d.access_code, {
-        onLoad: () => clearTimeout(fb),
-        onSuccess: (tx) => {
-          clearTimeout(fb);
-          window.location.href = `/payment/callback?reference=${tx.reference}`;
-        },
-        onCancel: () => {
-          clearTimeout(fb);
-          isProcessing = false;
-        },
-        onError: () => {
-          clearTimeout(fb);
-          window.location.href = auth_url;
-        }
-      });
+      try { localStorage.setItem('active_reg', d.registrationId); } catch {}
+      await goto('/dashboard');
     } catch (error) {
-      if (auth_url) {
-        window.location.href = auth_url;
-      } else {
-        apiError = error instanceof Error ? error.message : 'Unknown error';
-        isProcessing = false;
-      }
+      apiError = error instanceof Error ? error.message : 'Unknown error';
+      isProcessing = false;
     }
   }
 
@@ -399,10 +367,10 @@
       <aside class="reg-summary" use:motionFadeUp>
         <div class="reg-summary-price">
           <span class="reg-amount">₦{baseAmount.toLocaleString()}</span>
-          <span class="reg-per">per participant</span>
+          <span class="reg-per">full access, optional</span>
         </div>
         <div class="reg-summary-note-wrap">
-          <p class="reg-summary-note">Portal access is free for everyone from August 1 to August 10; from August 11, continued participation requires the ₦15,000 registration fee. Participants may join the championship journey at any time before the online training phase concludes on September 10, 2026.</p>
+          <p class="reg-summary-note">Registration is free for everyone. The ₦15,000 fee unlocks full access to e4 Chess Coach, TEAMUP and the Taskify Development Passport, payable anytime from the dashboard. With a partner code, full access is ₦13,500. Participants may join the championship journey at any time before the online training phase concludes on September 10, 2026.</p>
            <p class="reg-summary-note">However, early registration is highly recommended to give your child an earlier start in their championship journey and a more rewarding learning experience.</p>
         </div>
         <div class="reg-age-callout">
@@ -425,8 +393,8 @@
     school={sc}
     email={em}
     phone={parentPhone}
-    {AMOUNT}
-    onConfirm={confirmPayment}
+    AMOUNT={0}
+    onConfirm={submitRegistration}
     onCancel={closeConfirmation}
     {isProcessing}
   />
