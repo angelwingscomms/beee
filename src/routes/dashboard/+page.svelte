@@ -148,7 +148,7 @@
       {:else}
         <button class="dash-btn dash-btn--outline" onclick={() => (show_modal = true)}>Become a partner</button>
       {/if}
-      <a href="https://e4.bproject.com" class="dash-btn dash-btn--outline" target="_blank" rel="noopener">e4™ Chess Coach →</a>
+      <a href="https://e4.beeeproject.com" class="dash-btn dash-btn--outline" target="_blank" rel="noopener">e4™ Chess Coach →</a>
     </div>
   </div>
 </div>
