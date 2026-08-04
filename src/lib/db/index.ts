@@ -377,8 +377,9 @@ export const find_user_by_email = async (
   e: string
 ) => {
   return (
-    await search_by_payload<User>({ s: 'u', e })
-  )[0];
+    (await search_by_payload<User>({ s: 'u', e }))[0] ??
+    (await search_by_payload<User>({ s: 'u', m: e }))[0]
+  );
 };
 
 export async function find_or_create_player_user(email: string, name: string, password_hash?: string, phones?: string[]): Promise<string> {
