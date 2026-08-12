@@ -8,6 +8,7 @@ export const REG_AMOUNT = 15000;
 export const D_FREE_OPEN = 'August 12, 2026';
 export const D_PAY_REQUIRED = 'August 22, 2026';
 export const D_ENTRY_CLOSE = 'September 26, 2026';
+export const D_FREE_WINDOW = 'August 12 to August 22, 2026';
 export const D_TRAINING_WINDOW = 'August 12 – September 26, 2026';
 export const D_LIVE_STAGE = 'October 2026';
 export const D_FINALE = 'November 2026';

@@ -6,7 +6,7 @@
   import { pushState } from '$app/navigation';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT, D_FREE_OPEN, D_PAY_REQUIRED } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT, D_FREE_WINDOW, D_PAY_REQUIRED } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
   // Commissions are only paid on referred (discounted) registrations , see partner/+page.svelte.
@@ -59,7 +59,7 @@
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
           <div>
             <p class="schedule-title">FREE Online Coaching and Training</p>
-            <p class="schedule-sub">{D_FREE_OPEN} to {D_PAY_REQUIRED}</p>
+            <p class="schedule-sub">{D_FREE_WINDOW}</p>
           </div>
         </div>
         <p class="hero-anim-elem venue-line">
