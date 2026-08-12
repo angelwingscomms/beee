@@ -4,6 +4,7 @@
   import type { PageProps } from './$types';
   import type { Registration } from '$lib/types/registration';
   import { resolve_active_reg } from '$lib/active_reg';
+  import { D_PAY_REQUIRED } from '$lib/constants';
 
   let { data }: PageProps = $props();
 
@@ -132,7 +133,7 @@
         </dl>
         {#if active_reg.st === 'r'}
           <div class="unlock-box">
-            <p class="unlock-text">Your player is registered. Full access to the complete championship experience unlocks with the one-time fee.</p>
+            <p class="unlock-text">Your player is registered. Full access to the complete championship experience unlocks with the one-time fee. From {D_PAY_REQUIRED}, continued access to e4 Chess Coach requires it.</p>
             <button class="dash-btn" onclick={unlock_full_access} disabled={is_paying}>{is_paying ? 'Opening payment…' : 'unlock full access'}</button>
             {#if pay_error}<p class="unlock-error" role="alert">{pay_error}</p>{/if}
           </div>

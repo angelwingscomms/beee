@@ -3,7 +3,7 @@
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 	import { dev } from '$app/environment';
-	import { REG_AMOUNT, DEV_REG_FEE_NAIRA } from '$lib/constants';
+	import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_FREE_OPEN, D_ENTRY_CLOSE, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
 
 	let firstName = $state('');
 	let lastName = $state('');
@@ -187,7 +187,7 @@
 						<div class="journey-steps">
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">August 1, 2026</span>
+									<span class="journey-date">{D_FREE_OPEN}</span>
 									<span class="journey-name">Online Coaching Begins</span>
 								</div>
 							</div>
@@ -201,14 +201,21 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">September 2026</span>
-									<span class="journey-name">Live Preliminaries</span>
+									<span class="journey-date">{D_ENTRY_CLOSE}</span>
+									<span class="journey-name">Entry Closes</span>
 								</div>
 							</div>
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">October 2026</span>
+									<span class="journey-date">{D_LIVE_STAGE}</span>
+									<span class="journey-name">Live Preliminaries &amp; Elite Qualifiers</span>
+								</div>
+							</div>
+							<div class="journey-arrow"></div>
+							<div class="journey-step">
+								<div class="journey-body">
+									<span class="journey-date">{D_FINALE}</span>
 									<span class="journey-name">Championship Grand Finale</span>
 								</div>
 							</div>
@@ -242,6 +249,7 @@
 			<ul class="space-y-1 text-[14px] leading-snug text-black font-registration">
 				<li class="border-l-2 border-primary pl-3">Qualification slots are limited and will be allocated on a first-completed-registration basis.</li>
 				<li class="border-l-2 border-primary pl-3">Registration closes once available slots are filled, places are limited.</li>
+				<li class="border-l-2 border-primary pl-3">Entry into the championship officially closes {D_ENTRY_CLOSE}.</li>
 				<li class="border-l-2 border-primary pl-3">Participants must be between 10 and 14 years of age.</li>
 				<li class="border-l-2 border-primary pl-3">Sponsorship of participants is by parents or other interested sponsor.</li>
 			</ul>

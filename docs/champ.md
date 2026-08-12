@@ -45,6 +45,9 @@ Championship Coordinator
 BEEE® Spectacular Chess Championship Abuja 2026
 
 
+> **Superseded.** This is the 2026 pre-season letter. The current timeline lives in
+> `parents-letter-2026-08-08.md`; the dates below are historical.
+
 The Championship Journey 
 
 August 1 to September 10, 2026

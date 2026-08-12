@@ -6,7 +6,7 @@
   import { pushState } from '$app/navigation';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT, D_FREE_OPEN, D_PAY_REQUIRED } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
   // Commissions are only paid on referred (discounted) registrations , see partner/+page.svelte.
@@ -59,19 +59,19 @@
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
           <div>
             <p class="schedule-title">FREE Online Coaching and Training</p>
-            <p class="schedule-sub">August 1 to August 10, 2026</p>
+            <p class="schedule-sub">{D_FREE_OPEN} to {D_PAY_REQUIRED}</p>
           </div>
         </div>
         <p class="hero-anim-elem venue-line">
           <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
-          <span><span class="font-bold">₦{HERO_AMOUNT.toLocaleString()}</span> registration required to continue after August 10</span>
+          <span><span class="font-bold">₦{HERO_AMOUNT.toLocaleString()}</span> registration required to continue after {D_PAY_REQUIRED}</span>
         </p>
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
           <div>
             <p class="schedule-title">Live Preliminaries and Grand Finale</p>
-            <p class="schedule-sub">September to October, 2026</p>
-            <p class="schedule-sub">National Stadium, Abuja</p>
+            <p class="schedule-sub">October to November, 2026</p>
+            <p class="schedule-sub">Centres across Abuja, finale at the National Stadium</p>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export const SEO: Record<string, SeoEntry> = {
 	'/': {
 		title: 'BEEE Chess Championship Abuja 2026 | More Than a Chess Championship',
 		description:
-			'Chess, leadership and life skills for Abuja kids aged 10–14. AI coaching, mentorship and the TEAMUP™ programme. Register for Summer 2026.',
+			'Chess, leadership and life skills for Abuja kids aged 10–14. AI coaching, mentorship and the TEAMUP™ programme. Entry closes 26 September 2026.',
 		sitemap: { priority: 1.0, changefreq: 'weekly' }
 	},
 	'/register': {

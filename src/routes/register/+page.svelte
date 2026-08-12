@@ -8,7 +8,7 @@
   import { motionFadeUp } from '$lib/actions/motion';
   import Button from '$lib/components/Button.svelte';
   import { page } from '$app/stores';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, D_FREE_OPEN, D_PAY_REQUIRED, D_ENTRY_CLOSE } from '$lib/constants';
   import { gen_partner_code } from '$lib/partner_code';
 
   let gf = $state('');
@@ -159,12 +159,24 @@
       const fromUrl = $page.url.searchParams.get('c');
       const stored = localStorage.getItem('partner_c');
       const code = (fromUrl || stored || '').trim();
-      if (code && !ac) {
+      if (code) {
         ac = code;
         validatePartnerCode(ac);
       }
     }
   });
+
+  // The partner code the visitor arrived with (?c= param or the /i/CODE
+  // redirect). If they then type a *different* valid code, warn them that the
+  // referral credit goes to the typed code's partner instead.
+  const urlCode = $derived(($page.url.searchParams.get('c') || '').trim());
+  const codeMismatch = $derived(
+    !!urlCode &&
+    !acLoading &&
+    !!ac.trim() &&
+    acValid === true &&
+    ac.trim().toLowerCase() !== urlCode.toLowerCase()
+  );
 
   function handlePartnerInput(e: Event) {
     const input = e.target as HTMLInputElement;
@@ -330,6 +342,16 @@
               <span class="reg-partner-ph" class:fading={ac_fading} style="left: {ac_label_w}px">{ac_placeholder}</span>
             {/if}
           </div>
+          {#if codeMismatch}
+            <p class="reg-partner-warning" role="note">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1L15 14H1L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M8 6.5V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <circle cx="8" cy="11.6" r="0.8" fill="currentColor"/>
+              </svg>
+              <span>This is not the partner code you came with ({urlCode}). The partner "{ac.trim()}" will be credited instead.</span>
+            </p>
+          {/if}
           <p class="reg-partner-help">Register through a Partner Registration Link and enjoy a 10% discount.</p>
           {#if acLoading}
             <div class="reg-discount-callout">
@@ -360,7 +382,7 @@
           Register
         </Button>
         <div class="reg-fine">
-          <p>Online coaching begins August 1, 2026, players get access on registration.</p>
+          <p>Free online coaching opens {D_FREE_OPEN}, players get access on registration.</p>
         </div>
       </form>
 
@@ -370,7 +392,7 @@
           <span class="reg-per">full access, optional</span>
         </div>
         <div class="reg-summary-note-wrap">
-          <p class="reg-summary-note">Registration is free for everyone. The ₦15,000 fee unlocks full access to e4 Chess Coach, TEAMUP and the Taskify Development Passport, payable anytime from the dashboard. With a partner code, full access is ₦13,500. Participants may join the championship journey at any time before the online training phase concludes on September 10, 2026.</p>
+          <p class="reg-summary-note">Registration is free for everyone. The ₦{REG_AMOUNT.toLocaleString()} fee unlocks full access to e4 Chess Coach, TEAMUP and the Taskify Development Passport, payable anytime from the dashboard. With a partner code, full access is ₦{Math.round(REG_AMOUNT * (1 - DISCOUNT_PCT / 100)).toLocaleString()}. e4 Chess Coach is free for all participants from {D_FREE_OPEN}; from {D_PAY_REQUIRED} continued access requires the fee. Entry into the championship officially closes {D_ENTRY_CLOSE}.</p>
            <p class="reg-summary-note">However, early registration is highly recommended to give your child an earlier start in their championship journey and a more rewarding learning experience.</p>
         </div>
         <div class="reg-age-callout">
@@ -532,6 +554,32 @@
   }
   .reg-partner-ph.fading {
     opacity: 0;
+  }
+  /* Bold the partner-code label. Must live in the same @layer as Tailwind's
+     utilities and out-specificity the component's !font-normal for it to win. */
+  @layer utilities {
+    :global(.reg-partner-field label) {
+      font-weight: 700 !important;
+    }
+  }
+  .reg-partner-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(242, 120, 48, 0.12);
+    color: #ffb577;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .reg-partner-warning svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    color: #ffa655;
   }
   .reg-discount-callout {
     display: flex;

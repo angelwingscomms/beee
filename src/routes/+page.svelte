@@ -123,7 +123,7 @@
 <section id="platform" class="py-20 px-6">
     <h2 class="font-hero text-4xl md:text-5xl text-[rgb(255,107,0)] text-center mb-4 tracking-tight font-bold">Everything Your Child Needs</h2>
     <div class="w-16 h-1 bg-[rgb(255,107,0)] rounded-full mx-auto mb-6" aria-hidden="true"></div>
-    <p class="font-['Inter'] font-bold text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">Enrich their summer holiday with a structured blend of online learning, mentorship, and competitive chess.</p>
+    <p class="font-['Inter'] font-bold text-gray-800 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed">A structured blend of online learning, mentorship, and competitive chess, from the first coaching session to the Grand Finale.</p>
   <div class="grid grid-cols-12 gap-6 auto-rows-[minmax(400px,auto)]">
     <!-- Card 1: e4 -->
     <div
@@ -170,7 +170,7 @@
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
             </span>
-            <span>Leaves the summer with badges, certificates, and proof of growth</span>
+            <span>Leaves the championship with badges, certificates, and proof of growth</span>
           </li>
           <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-[#f5e6c8] rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">

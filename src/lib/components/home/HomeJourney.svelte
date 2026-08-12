@@ -4,15 +4,15 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import Button from '$lib/components/Button.svelte';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_TRAINING_WINDOW, D_ENTRY_CLOSE, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
   const steps = [
-    { num: 1, title: 'Online Coaching and Training', sub: 'August 1 – September 10, 2026', body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport, all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
-    { num: 2, title: 'Qualifying Rounds', sub: 'September 2026', body: 'Participants compete in live qualifying rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
-    { num: 3, title: 'Elite Stage', sub: 'September – October, 2026 \u00B7 Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
-    { num: 4, title: 'Grand Finale', sub: 'October 2026', body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
+    { num: 1, title: 'Online Coaching and Training', sub: D_TRAINING_WINDOW, body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport, all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
+    { num: 2, title: 'Live Preliminary Rounds', sub: `${D_LIVE_STAGE} · Centres across Abuja`, body: 'Participants compete in the live preliminary rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
+    { num: 3, title: 'Elite Qualifiers Stage', sub: `${D_LIVE_STAGE} · Top qualifiers`, body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
+    { num: 4, title: 'Spectacular Grand Finale', sub: `${D_FINALE} · National Stadium, Abuja`, body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
   ];
 
   let sectionEl: HTMLElement;
@@ -142,14 +142,14 @@
           </p>
         </div>
         <p class="mt-1 text-amber-400 font-hero font-bold text-lg md:text-xl">
-          August 1 &ndash; September 10, 2026
+          {D_TRAINING_WINDOW}
         </p>
         <div class="mt-5 pt-5 border-t border-white/10 space-y-3 text-left">
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
-            Registration closes <span class="text-amber-400 font-semibold">September 10, 2026</span>.
+            Entry into the championship closes <span class="text-amber-400 font-semibold">{D_ENTRY_CLOSE}</span>.
           </p>
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
-            Registration is free for everyone; the ₦15,000 fee unlocks full access to the complete championship experience.
+            Registration is free for everyone; the ₦{HERO_AMOUNT.toLocaleString()} fee unlocks full access to the complete championship experience.
           </p>
           <p class="text-white/70 text-sm md:text-base leading-relaxed">
             The earlier you register, the more time your child has to learn and improve.

@@ -23,10 +23,12 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Full name** | BEEE Spectacular Chess Championship Abuja 2026 |
 | **Organiser** | BEEE (Be Everything Excellent Every Day) |
 | **Age range** | 10–14 years (grouped: 10–11 and 12–14) |
-| **Venue** | National Stadium, Abuja |
-| **Grand Finale date** | October 2026 |
-| **Online coaching begins** | August 1, 2026 |
-| **Live preliminaries** | September 2026 |
+| **Venue** | Preliminaries at centres across Abuja · Grand Finale at the National Stadium, Abuja |
+| **Grand Finale date** | November 2026 |
+| **Free e4 access opens** | August 12, 2026 |
+| **Paid registration required from** | August 22, 2026 |
+| **Entry closes** | September 26, 2026 |
+| **Live preliminaries & elite qualifiers** | October 2026 |
 | **Full access fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
 | **Registration** | Online at beeeproject.com/register |
 | **Contact** | info@beeeproject.com · +234 902 682 4439 |
@@ -61,7 +63,7 @@ The championship follows a structured **5-stage pathway**:
 - Immediate access to e4™ AI Chess Coach, TEAMUP™ programme, and Taskify™ Development Passport
 - Slots are **limited** and allocated on a first-completed-registration basis
 
-### Stage 2: Online Training & Coaching (Aug 1 – Sep 19, 2026)
+### Stage 2: Online Training & Coaching (Aug 12 – Sep 26, 2026)
 - AI-powered chess coaching via e4™
 - Registration is free for everyone; the ₦15,000 fee unlocks full access to e4, TEAMUP and the Taskify Development Passport, payable anytime from the dashboard
 - TEAMUP™ leadership workshops and life-skills activities
@@ -69,18 +71,18 @@ The championship follows a structured **5-stage pathway**:
 - Participants complete activities, assessments, and challenges
 - All online, all included in the registration fee
 
-### Stage 3: Qualifying Rounds (September 2026)
-- Live chess preliminaries at venues in Abuja
+### Stage 3: Live Preliminary Rounds (October 2026)
+- Live chess preliminaries at centres across Abuja
 - Participants compete in exciting live events
 - Advancement based on performance
 
-### Stage 4: Elite Qualification Stage (September – October, 2026)
+### Stage 4: Elite Qualifiers Stage (October 2026)
 - Top qualifiers advance through elimination tournaments
 - Advanced coaching and preparation for finalists
 - Participants develop collaboration, coordination, strategic communication, and teamwork
 - Finalists compete for championship positions
 
-### Stage 5: Grand Finale (October 2026)
+### Stage 5: Spectacular Grand Finale (November 2026)
 - Immersive live championship experience at National Stadium, Abuja
 - Staged, filmed, and celebrated unlike conventional chess competitions
 - Finalists compete for championship honours
@@ -558,7 +560,7 @@ A motivational page featuring curated chess quotes and transformation stories ab
 | **Partner** | Referral affiliate earning commissions on registrations |
 | **Reg Point** | A registration record in the database |
 | **User Point** | A user account record in the database |
-| **Grand Finale** | The championship's culminating live event in October 2026 |
+| **Grand Finale** | The championship's culminating live event in November 2026 |
 
 ---
 
