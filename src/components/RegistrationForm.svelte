@@ -3,7 +3,7 @@
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 	import { dev } from '$app/environment';
-	import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_FREE_OPEN, D_ENTRY_CLOSE, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
+	import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_FREE_OPEN, D_ENTRY_CLOSE, D_FINALE } from '$lib/constants';
 
 	let firstName = $state('');
 	let lastName = $state('');
@@ -208,7 +208,7 @@
 							<div class="journey-arrow"></div>
 							<div class="journey-step">
 								<div class="journey-body">
-									<span class="journey-date">{D_LIVE_STAGE}</span>
+									<span class="journey-date">October 2026</span>
 									<span class="journey-name">Live Preliminaries &amp; Elite Qualifiers</span>
 								</div>
 							</div>

@@ -1,4 +1,4 @@
-import { REG_AMOUNT, DISCOUNT_PCT, D_FREE_OPEN, D_PAY_REQUIRED, D_ENTRY_CLOSE, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
+import { REG_AMOUNT, DISCOUNT_PCT, D_FREE_OPEN, D_PAY_REQUIRED, D_ENTRY_CLOSE, D_FINALE } from '$lib/constants';
 
 export type FaqQ = { q: string; a: string };
 export type FaqC = { i: string; n: string; qs: FaqQ[] };
@@ -16,7 +16,7 @@ export const cs: FaqC[] = [
 			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
 			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
 			{ q: 'Where is the championship held?', a: 'The Live Preliminary Rounds and Elite Qualifiers Stage take place at centres across Abuja. The Spectacular Championship Grand Finale is held at the National Stadium, Abuja.' },
-			{ q: 'What are the championship dates?', a: `Free access to e4 Chess Coach opens ${D_FREE_OPEN}. From ${D_PAY_REQUIRED} continued access requires paid registration. Entry closes ${D_ENTRY_CLOSE}. The Live Preliminary Rounds and Elite Qualifiers Stage run in ${D_LIVE_STAGE}, and the Spectacular Championship Grand Finale is in ${D_FINALE} at the National Stadium, Abuja.` },
+			{ q: 'What are the championship dates?', a: `Free access to e4 Chess Coach opens ${D_FREE_OPEN}. From ${D_PAY_REQUIRED} continued access requires paid registration. Entry closes ${D_ENTRY_CLOSE}. The Live Preliminary Rounds and Elite Qualifiers Stage run in October 2026, and the Spectacular Championship Grand Finale is in ${D_FINALE} at the National Stadium, Abuja.` },
 			{ q: 'What should participants bring to the championship?', a: 'Nothing. All equipment is provided.' },
 		]
 	},
@@ -57,7 +57,7 @@ export const cs: FaqC[] = [
 	},
 	{
 		i: 'competition', n: 'Competition', qs: [
-			{ q: 'How does the championship work?', a: `The championship follows six stages: (1) Registration, participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn, participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete, Live Preliminary Rounds held at centres across Abuja in ${D_LIVE_STAGE}. (4) Evolve, qualifying participants advance through elimination tournaments. (5) Qualify, the Elite Qualifiers Stage trains players for finalist positions. (6) Grand Finale, finalists participate in the immersive championship experience in ${D_FINALE} at the National Stadium, Abuja.` },
+			{ q: 'How does the championship work?', a: `The championship follows six stages: (1) Registration, participants gain access to e4 Chess Coach, TEAMUP, and the Taskify Development Passport. (2) Learn, participants train with AI-powered chess coaching, leadership and life-skills development, interactive challenges, and creativity workshops. (3) Compete, Live Preliminary Rounds held at centres across Abuja in October 2026. (4) Evolve, qualifying participants advance through elimination tournaments. (5) Qualify, the Elite Qualifiers Stage trains players for finalist positions. (6) Grand Finale, finalists participate in the immersive championship experience in ${D_FINALE} at the National Stadium, Abuja.` },
 			{ q: 'What happens after registration?', a: 'Participants begin the TEAMUP Development Programme and prepare for championship activities and competition stages.' },
 			{ q: 'Are certificates issued?', a: 'Yes. Participants receive certificates of participation, achievement, and other forms of recognition.' },
 		]

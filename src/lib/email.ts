@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { D_TRAINING_WINDOW, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
+import { D_TRAINING_WINDOW, D_FINALE } from '$lib/constants';
 
 function fmt_kobo(k: number): string {
   return '₦' + (k / 100).toLocaleString('en-NG', { minimumFractionDigits: 2 });
@@ -101,7 +101,7 @@ export async function send_registration_confirmation(
       <ol class="steps">
         <li>Log in at beeeproject.com/dashboard to view ${player_name}'s registration.</li>
         <li>Online coaching runs ${D_TRAINING_WINDOW}.</li>
-        <li>${D_LIVE_STAGE}, live preliminary rounds and the Elite Qualifiers Stage at centres across Abuja. Fixtures come by email and WhatsApp.</li>
+        <li>October 2026, live preliminary rounds and the Elite Qualifiers Stage at centres across Abuja. Fixtures come by email and WhatsApp.</li>
         <li>${D_FINALE}, Grand Finale at the National Stadium, Abuja.</li>
       </ol>
       <div class="label">Receipt</div>

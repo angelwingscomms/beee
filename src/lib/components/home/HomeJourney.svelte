@@ -4,14 +4,14 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import Button from '$lib/components/Button.svelte';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_TRAINING_WINDOW, D_ENTRY_CLOSE, D_LIVE_STAGE, D_FINALE } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, D_TRAINING_WINDOW, D_ENTRY_CLOSE, D_FINALE } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
 
   const steps = [
     { num: 1, title: 'Online Coaching and Training', sub: D_TRAINING_WINDOW, body: 'Registration unlocks e4\u2122 AI chess coaching, TEAMUP\u2122 leadership workshops, and the Taskify\u2122 Development Passport, all online, all included.', img: '/images/championship/learn.webp', alt: 'Child using the e4 AI chess coach on a tablet' },
-    { num: 2, title: 'Live Preliminary Rounds', sub: `${D_LIVE_STAGE} · Centres across Abuja`, body: 'Participants compete in the live preliminary rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
-    { num: 3, title: 'Elite Qualifiers Stage', sub: `${D_LIVE_STAGE} · Top qualifiers`, body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
+    { num: 2, title: 'Live Preliminary Rounds', sub: 'October 2026 · Centres across Abuja', body: 'Participants compete in the live preliminary rounds of the championship.', img: '/images/championship/compete.webp', alt: 'Students competing at qualifying-round chess boards' },
+    { num: 3, title: 'Elite Qualifiers Stage', sub: 'October 2026 · Top qualifiers', body: 'Live elimination tournaments and advanced coaching \u2014 the top performers face off for the finalist spots.', img: '/images/championship/develop.webp', alt: 'Coaches and players reviewing a game in the elite stage' },
     { num: 4, title: 'Spectacular Grand Finale', sub: `${D_FINALE} · National Stadium, Abuja`, body: 'Finalists take part in an immersive live championship experience experienced like nothing in conventional chess.', img: '/images/championship/grandfinale.webp', alt: 'The championship grand finale stage' },
   ];
 
