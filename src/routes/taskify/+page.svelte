@@ -49,7 +49,7 @@
         </div>
         <div class="feature-card">
           <h3>Attendance Records</h3>
-          <p>Rewards earned for reliability and consistent participation.</p>
+          <p>Earn rewards for reliability and consistent participation.</p>
         </div>
         <div class="feature-card">
           <h3>Personal Growth</h3>
