@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Medal, BadgeCheck, FileText, Award, Sparkles, Users, Lightbulb, Star, School } from '@lucide/svelte';
+  import { Medal, Trophy, FileText, Award, Sparkles, Users, Lightbulb, Star, School } from '@lucide/svelte';
   import { motionStaggered, motionFadeUp } from '$lib/actions/motion';
   import Logo from '$lib/components/Logo.svelte';
 
@@ -11,8 +11,8 @@
   };
 
   const awards = [
+    { icon: Trophy, title: 'Championship Trophy', body: 'The ultimate honour for the champion.' },
     { icon: Medal, title: 'Medals & Awards', body: 'Top performers honoured across competitive categories.' },
-    { icon: BadgeCheck, title: 'Badges of Competence', body: 'Verified skills, milestones, and proficiencies.' },
     { icon: FileText, title: 'Certificates of Participation', body: 'Recognition for every child who joins the journey.' },
     { icon: Award, title: 'Certificates of Achievement', body: 'For measurable growth and accomplishment.' },
     { icon: Users, title: 'Leadership Recognition', body: 'For those who step up and lead by example.' },

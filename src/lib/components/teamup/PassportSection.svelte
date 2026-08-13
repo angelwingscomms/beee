@@ -4,7 +4,7 @@
 
   let passport_items = [
     { icon: Award, label: 'Milestones Achieved' },
-    { icon: BadgeCheck, label: 'Badges Earned' },
+    { icon: BadgeCheck, label: 'Achievement Badges' },
     { icon: BookOpen, label: 'Skills Acquired' },
     { icon: FileText, label: 'Projects Completed' },
     { icon: Star, label: 'Leadership Activities' },
