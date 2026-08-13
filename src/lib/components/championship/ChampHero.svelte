@@ -50,7 +50,7 @@
         Chess is where they learn.<br />Life is where they lead.
       </h2>
 
-      <p class="hero-anim-elem font-['Inter'] text-[1.05rem] text-gray-300 leading-relaxed mb-8 max-w-lg">
+      <p class="hero-anim-elem font-['Inter'] text-[0.95rem] text-gray-300 leading-relaxed mb-8 max-w-lg">
         A transformative, high-level competitive chess experience that combines advanced AI-powered chess coaching with mentorship and a purposeful self-leadership development programme.
       </p>
 
