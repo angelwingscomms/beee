@@ -52,12 +52,12 @@
           <p>Earn rewards for reliability and consistent participation.</p>
         </div>
         <div class="feature-card">
-          <h3>Personal Growth</h3>
-          <p>Develop self-awareness and a growth mindset through reflection.</p>
+          <h3>Reflection Exercises</h3>
+          <p>Look back after each stage to record what improved and what comes next.</p>
         </div>
         <div class="feature-card">
-          <h3>Badges & Awards</h3>
-          <p>Celebrate every achievement with badges and recognition.</p>
+          <h3>Championship Results</h3>
+          <p>Record every stage reached, every placing, and every award won.</p>
         </div>
       </div>
       <p class="page-hero-body" style="margin-top: 48px;">This system provides participants and parents with a visible track record of achievement throughout the championship cycle.</p>

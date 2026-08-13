@@ -277,3 +277,5 @@ Error: Bad Request
 }
 [secrets] dyn env value for: SECRET present (***)
 [session] decode: valid session for id=e7bb811d-4c81-4a23-8870-63d4ba299573 email=1440fl@gmail.com
+7:58:57 PM [vite] (client) hmr update /src/routes/taskify/+page.svelte, /src/app.css
+7:58:57 PM [vite] (ssr) page reload src/routes/taskify/+page.svelte
