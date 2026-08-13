@@ -51,7 +51,7 @@
       </h2>
 
       <p class="hero-anim-elem font-['Inter'] text-[1.05rem] text-gray-300 leading-relaxed mb-8 max-w-lg">
-        A transformative championship journey that combines competitive chess, AI-powered coaching, leadership development, mentorship, and a purposeful self development programme.
+        A transformative, high-level competitive chess experience that combines advanced AI-powered chess coaching with mentorship and a purposeful self-leadership development programme.
       </p>
 
       <div class="hero-anim-elem schedule-card">
