@@ -319,3 +319,57 @@ Error: Bad Request
 8:17:34 PM [vite] (ssr) page reload src/lib/components/home/HomeAwards.svelte
 8:17:39 PM [vite] (client) hmr update /src/lib/components/home/HomeAwards.svelte, /src/app.css
 8:17:39 PM [vite] (ssr) page reload src/lib/components/home/HomeAwards.svelte
+[secrets] get_secret called for: SECRET
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "SECRET" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_key (/home/ed/i/beee/src/lib/server/session.ts:32:84)
+    at decode_session (/home/ed/i/beee/src/lib/server/session.ts:65:19)
+    at Object.handle (/home/ed/i/beee/src/hooks.server.ts:14:60)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:398:28)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:395:62)
+    at record_span (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js?v=fef232b3:15:10)
+    at handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:377:64) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: SECRET present (***)
+[session] decode: valid session for id=e7bb811d-4c81-4a23-8870-63d4ba299573 email=1440fl@gmail.com
+[secrets] get_secret called for: SECRET
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "SECRET" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_key (/home/ed/i/beee/src/lib/server/session.ts:32:84)
+    at decode_session (/home/ed/i/beee/src/lib/server/session.ts:65:19)
+    at Object.handle (/home/ed/i/beee/src/hooks.server.ts:14:60)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:398:28)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:395:62)
+    at record_span (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js?v=fef232b3:15:10)
+    at handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:377:64) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: SECRET present (***)
+[session] decode: valid session for id=e7bb811d-4c81-4a23-8870-63d4ba299573 email=1440fl@gmail.com
+[secrets] get_secret called for: SECRET
+[secrets] platform present: true | platform.env present: true
+[secrets] binding present: true | binding has .get: true
+[secrets] secrets store binding .get() threw: Error: Secret "SECRET" not found
+    at get_secret (/home/ed/i/beee/src/lib/server/secrets.ts:18:22)
+    at get_key (/home/ed/i/beee/src/lib/server/session.ts:32:84)
+    at decode_session (/home/ed/i/beee/src/lib/server/session.ts:65:19)
+    at Object.handle (/home/ed/i/beee/src/hooks.server.ts:14:60)
+    at eval (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:398:28)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at with_request_store (file:///home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at fn (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:395:62)
+    at record_span (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js?v=fef232b3:15:10)
+    at handle (/home/ed/i/beee/node_modules/.pnpm/@sveltejs+kit@2.61.1_@sveltejs+vite-plugin-svelte@7.1.2_svelte@5.55.10_vite@8.0.14_@typ_b3b50fc7a74e452ef196ec0f27a5ed94/node_modules/@sveltejs/kit/src/runtime/server/respond.js?v=fef232b3:377:64) {
+  [cause]: undefined
+}
+[secrets] dyn env value for: SECRET present (***)
+[session] decode: valid session for id=e7bb811d-4c81-4a23-8870-63d4ba299573 email=1440fl@gmail.com
