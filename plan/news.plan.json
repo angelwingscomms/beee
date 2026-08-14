@@ -1,0 +1,109 @@
+{
+	"_": "BEEE Spectacular Chess Championship Abuja 2026 site. SvelteKit 2 + Svelte 5 runes + Tailwind v4 + Cloudflare Workers. Import alias is `$lib`. Never start the dev server; if one is running its output is in `.log`, and you read that before you diagnose anything.\n\nCommands: `bash plan/suite.sh` runs the test suite (it is `pnpm test` minus `src/routes/dashboard/dashboard.test.ts`, whose two tests call a live Qdrant and were already red before this plan). `pnpm check` is svelte-check, currently 0 errors and 31 warnings. `pnpm build` is a real Cloudflare build and passes today.\n\nRepo rules, and they beat any global rule you carry:\n1. snake_case for variables and functions. Data payloads and type definitions use single-letter keys.\n2. Never use italics anywhere. No `font-style: italic`, no `<em>`, no `<i>`. This is in `AGENTS.md`.\n3. Editorial copy is sentence case, not lowercase. Match the pages that exist.\n4. No comments in code.\n5. All CSS lives in `src/styles/*.css` and is imported by `src/app.css`. Write no `<style>` block in a news component. Hardcode no colour, size, or easing; use the tokens in `src/styles/variables.css`.\n6. Motion respects `prefers-reduced-motion`, and hover transforms sit inside `@media (hover: hover)`.\n7. Anything structural about what the championship is or does also goes in `docs/about.md`.\n\nWhat this plan builds: a news section. `/news` index, `/news/[slug]` post, a homepage strip, and one first post about the FIDE World Amateur Rapid and Blitz Chess Championships held in Abuja in August 2026.\n\nDesign concept, settled, do not redesign it. THE SCORESHEET: the section reads like a filled-in tournament scoresheet. `--canvas` cream paper ruled with `--hairline`. Headlines in `--font-display-hero` (Fraunces). Body in `--font-body` (Inter). Every piece of scoresheet furniture, meaning kickers, dates, place numbers, country codes, and scores, in `--font-code` (JetBrains Mono) with `font-variant-numeric: tabular-nums`. `--accent-amber` is the highlight pen and appears exactly twice on a page: the winner's ledger row and the fraction bar of the monumental numeral. The signature is the results ledger writing itself in one row at a time on scroll, next to the score 9/11 set as a monumental numeral.\n\nFacts: `plan/facts/fide-abuja-2026.md` is the only source for names, scores, dates, and titles. It also lists what press coverage claims that this post must not repeat.",
+	"news_data": {
+		"s": "the content layer: types, the first post, the registry every page imports",
+		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check",
+		"c": {
+			"news_types": {
+				"s": "Create `src/lib/types/news.ts`. It holds the shape every later step reads.\n\n1. `LedgerRow = { p: string; n: string; c: string; v: string; w?: boolean }` — left column, player name, three-letter country code, score, and `w` marks the one highlighted row.\n2. `NewsBlock`, a union discriminated on `k`: `{k:'p';t}` paragraph, `{k:'h';t}` heading, `{k:'q';t;a}` quote and attribution, `{k:'l';t;r:LedgerRow[]}` captioned ledger, `{k:'n';n;d;t}` numerator, denominator and caption, `{k:'f';r:{l:string;v:string}[]}` label and value strip.\n3. `NewsSource = { t: string; u: string }`.\n4. `NewsPost = { s; t; k; x; m; d; a; r: number; b: NewsBlock[]; o: NewsSource[]; u?: string }` — slug, headline, kicker, dek, meta description, ISO date, byline, read minutes, body, sources, optional hero image path.\n\nSingle-letter keys are the house style here. Do not rename them, later steps and two staged tests read them.",
+				"d": 0,
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'NewsPost' src/lib/types/news.ts && grep -q 'LedgerRow' src/lib/types/news.ts"
+			},
+			"news_post": {
+				"s": "Write the first post at `src/lib/data/news/fide-world-amateur-abuja-2026.ts`, exporting one `NewsPost`.\n\n1. Read `plan/facts/fide-abuja-2026.md` end to end before you write a word. It is the only source, and searching the web for more is out of scope.\n2. Its `Post brief` section fixes `s`, `t`, `k`, `x`, `m`, `d`, `a`, `r`, the voice, and the exact order of the 16 blocks. Copy those bytes.\n3. Copy every name and score from its tables character for character, including `½` and the en dash.\n4. You write the paragraph and heading text yourself, from that file. Add no fact it does not carry.\n5. `o` lists all four sources, title and URL.\n6. Leave `u` off. There is no photo, by decision.",
+				"d": 0,
+				"v": "test -f src/lib/types/news.ts",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'Ekunke Odey Goodness' src/lib/data/news/fide-world-amateur-abuja-2026.ts && grep -q 'Bolton White' src/lib/data/news/fide-world-amateur-abuja-2026.ts"
+			},
+			"news_registry": {
+				"s": "Create `src/lib/data/news/index.ts`. Every page imports news from here and from nowhere else.\n\n1. Export `NEWS: NewsPost[]`, holding the FIDE post, sorted by `d` descending.\n2. Export `get_post(slug: string): NewsPost | undefined`.\n3. Export `latest_posts(n: number): NewsPost[]`, the first `n` of `NEWS`.\n4. Place the staged test and do not edit it:\n   `cp plan/tests/src/lib/data/news/news.test.ts.txt src/lib/data/news/news.test.ts`\n5. That test asserts the post's facts and its block order. A failure means the post from the previous step is wrong. Fix the post, never the test.",
+				"d": 0,
+				"v": "test -f src/lib/data/news/fide-world-amateur-abuja-2026.ts",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && test -f src/lib/data/news/news.test.ts && grep -q 'latest_posts' src/lib/data/news/index.ts"
+			}
+		}
+	},
+	"news_look": {
+		"s": "the scoresheet look: two stylesheets and one block renderer",
+		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'styles/news.css' src/app.css",
+		"c": {
+			"news_css_article": {
+				"s": "Create `src/styles/news.css` and import it from `src/app.css` on the line after `styles/cards.css`. This file owns every news class, so no news component gets a `<style>` block.\n\nSet the local properties on `.news`: `--news-rule: var(--hairline)`, `--news-pen: var(--accent-amber)`, `--news-measure: 68ch`, `--news-row-h: 3.25rem`.\n\nArticle classes, all of them: `.news`, `.news-sheet`, `.news-kicker`, `.news-title`, `.news-dek`, `.news-meta`, `.news-facts`, `.news-fact`, `.news-fact-l`, `.news-fact-v`, `.news-h`, `.news-p`, `.news-quote`, `.news-quote-a`, `.news-ledger`, `.news-ledger-cap`, `.news-rows`, `.news-row`, `.news-row.is-win`, `.news-row-p`, `.news-row-n`, `.news-row-c`, `.news-row-v`, `.news-numeral`, `.news-numeral-n`, `.news-numeral-d`, `.news-numeral-cap`, `.news-sources`, `.news-source`.\n\nThe look: `--canvas` paper, a `--news-rule` hairline under every ledger row and fact, `.news-title` and `.news-h` in `--font-display-hero`, `.news-p` in `--font-body` at `--fs-body` and `--lh-body` capped at `--news-measure`, and all furniture in `--font-code` with `font-variant-numeric: tabular-nums`. `--news-pen` is used twice per page and no more: `.news-row.is-win` and the fraction bar inside `.news-numeral`. `.news-numeral-n` sits at `--fs-display-2xl`.",
+				"d": 0,
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'styles/news.css' src/app.css && grep -q 'news-numeral-n' src/styles/news.css && grep -q 'tabular-nums' src/styles/news.css && ! grep -q 'italic' src/styles/news.css"
+			},
+			"news_css_index": {
+				"s": "Append the index and strip classes to `src/styles/news.css`. Same rules: tokens only, no raw values.\n\nClasses: `.news-index`, `.news-lead`, `.news-list`, `.news-entry`, `.news-entry-i`, `.news-entry-d`, `.news-entry-t`, `.news-entry-r`, `.news-strip`.\n\nThe index is the same sheet, read as a game record. `.news-entry` is one ruled row across the full sheet width: a mono index number, a mono date, the headline in `--font-display-hero`, and a mono read time, separated by `--news-rule` hairlines. `.news-lead` is the newest post given the top of the sheet with its dek. `.news-strip` is the homepage block and reuses `.news-entry` rows unchanged.\n\nOn hover, inside `@media (hover: hover)`, an entry's bottom rule becomes `--news-pen` and its headline shifts 8px to the right, both on `--ease-out`. Use `transform` for the shift, never a margin or a padding.",
+				"d": 0,
+				"v": "test -f src/styles/news.css",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'news-entry-t' src/styles/news.css && grep -q 'hover: hover' src/styles/news.css && ! grep -q 'italic' src/styles/news.css"
+			},
+			"news_blocks": {
+				"s": "Create `src/lib/components/news/NewsBody.svelte`, the one renderer for a post body.\n\n1. Props, runes only: `let { b }: { b: NewsBlock[] } = $props();`\n2. Loop `b` and branch on `k`, rendering the classes that `src/styles/news.css` already defines. Semantic elements: `h` is `<h2>`, `q` is `<blockquote>` with a `<cite>`, `l` is a `<table>` with a `<caption>`, `f` is a `<dl>`.\n3. Row reveal, the signature: put `use:motionStaggered={{ stagger: 0.07, y: 12 }}` from `$lib/actions/motion` on the `<tbody>`. That action already bails out on `prefers-reduced-motion` and on touch, and it leaves rows visible when JavaScript never runs. Add no CSS keyframes and no `observe`.\n4. A `LedgerRow` with `w` true gets `class=\"news-row is-win\"`.\n5. The `n` block renders `.news-numeral-n`, then the fraction bar, then `.news-numeral-d`, then `.news-numeral-cap`.",
+				"d": 0,
+				"v": "grep -q 'news-numeral' src/styles/news.css",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'motionStaggered' src/lib/components/news/NewsBody.svelte && grep -q 'is-win' src/lib/components/news/NewsBody.svelte && ! grep -q '<style' src/lib/components/news/NewsBody.svelte"
+			}
+		}
+	},
+	"news_pages": {
+		"s": "the two routes",
+		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
+		"c": {
+			"news_post_page": {
+				"s": "Build the post route.\n\n1. `src/routes/news/[slug]/+page.ts` exports `load`, calls `get_post(params.slug)` from `$lib/data/news`, throws `error(404, 'Post not found')` from `@sveltejs/kit` when it misses, and returns `{ p }`.\n2. `src/routes/news/[slug]/+page.svelte` renders, in order: `.news-kicker` from `k`, `.news-title` from `t`, `.news-dek` from `x`, a `.news-meta` line of byline, date and read time, then `<NewsBody b={data.p.b} />`, then `.news-sources` as an ordered list of links with `rel=\"noopener\"` and `target=\"_blank\"`.\n3. Add `data-testid=\"news-post\"` on the wrapper and give it both `news` and `news-sheet` classes.\n4. In `<svelte:head>`, emit a `NewsArticle` JSON-LD block with `headline`, `description`, `datePublished`, `author`, `publisher` pointing at `${SITE_URL}/#organization`, and `mainEntityOfPage`. Follow the pattern already in `src/routes/+layout.svelte`.\n5. Open the page and look at it. The head metadata is wired in the next group, so a plain title here is expected.",
+				"d": 0,
+				"v": "test -f src/lib/components/news/NewsBody.svelte",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && test -f 'src/routes/news/[slug]/+page.ts' && grep -q 'NewsArticle' 'src/routes/news/[slug]/+page.svelte' && grep -q 'news-post' 'src/routes/news/[slug]/+page.svelte'"
+			},
+			"news_index_page": {
+				"s": "Build `src/routes/news/+page.svelte`. Import `NEWS` from `$lib/data/news` directly, the way `src/routes/quotes/+page.svelte` imports its JSON. No `+page.ts`.\n\n1. A masthead: kicker `NEWS`, an `h1` reading `Reports from the board`, and a one-line standfirst.\n2. `NEWS[0]` renders as `.news-lead`, headline and dek and date, linking to `/news/{s}`.\n3. Every post, newest first, renders as a `.news-entry` row inside `.news-list`: a two-digit index number, the date, the headline, the read time. The whole row is one `<a>`.\n4. Wrapper carries `data-testid=\"news-index\"` plus the `news` and `news-index` classes.\n5. With one post the lead and the single row are the whole page. That is intended, so do not invent filler, an empty state, or a placeholder second post.\n6. Open `/news` and look at it.",
+				"d": 0,
+				"v": "test -d src/routes/news",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'news-index' src/routes/news/+page.svelte && grep -q 'news-entry' src/routes/news/+page.svelte"
+			}
+		}
+	},
+	"news_wiring": {
+		"s": "search, navigation, and the homepage",
+		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
+		"c": {
+			"news_seo": {
+				"s": "Teach `src/lib/seo.ts` about news. It is exact-match today, so a post path falls through to the generic title.\n\n1. Add a static `'/news'` entry: title `News | BEEE Spectacular Chess Championship Abuja 2026`, a description over 50 characters, `sitemap: { priority: 0.7, changefreq: 'weekly' }`.\n2. In `seo_for`, when the stripped key starts with `/news/`, look the slug up with `get_post`. On a hit return `{ title: `${p.t} | BEEE News`, description: p.m, sitemap: { priority: 0.6, changefreq: 'monthly' } }`. On a miss fall through to `FALLBACK`.\n3. `is_indexable` must follow the same lookup, so an unknown slug stays noindex.\n4. `sitemap_entries()` concatenates the post paths before it sorts, not after.\n5. Place the staged test, unedited:\n   `cp plan/tests/src/lib/seo-news.test.ts.txt src/lib/seo-news.test.ts`",
+				"d": 0,
+				"v": "grep -q 'sitemap_entries' src/lib/seo.ts",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && test -f src/lib/seo-news.test.ts"
+			},
+			"news_links": {
+				"s": "Link the section from the two places every page shows.\n\n1. `src/lib/components/championship/ChampNav.svelte` has two link lists, desktop and mobile. Add `News` to both, pointing at `/news`, placed after `Taskify` and before `Partners`, and carry the same `class:active` and `onclick` pattern the neighbours use.\n2. `src/lib/components/home/Footer.svelte` builds its list from an array near line 8. Add `{ href: '/news', label: 'News' }` after the TEAMUP entry.\n3. The desktop nav now carries eight links. Check it at 1024px and 1280px. If the row wraps or overflows, shrink the nav link gap in `src/styles/navigation.css`. Do not solve it by dropping a link.\n4. `src/lib/components/championship/ChampNav.test.ts` and `Footer.test.ts` exist. Extend them rather than writing new files.",
+				"d": 0,
+				"v": "grep -q 'Taskify' src/lib/components/championship/ChampNav.svelte",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q '/news' src/lib/components/championship/ChampNav.svelte && grep -q '/news' src/lib/components/home/Footer.svelte"
+			},
+			"news_home": {
+				"s": "Put the latest report on the homepage.\n\n1. Create `src/lib/components/home/HomeNews.svelte`. It calls `latest_posts(3)` and renders a `.news .news-strip` block: a small `NEWS` kicker, then those posts as `.news-entry` rows, then one link to `/news` reading `All reports`.\n2. Mount it in `src/routes/+page.svelte` directly after `<HomeAwards />` and before the `Section 4: Philosophy` comment. `HomeAwards` ends navy and the philosophy section is amber, so the cream strip lands between them on purpose.\n3. Give the wrapper `data-testid=\"home-news\"`.\n4. Reuse the `.news-entry` classes as they are. Add no new class and no `<style>` block.\n5. Open the homepage and check the seam above and below the strip.",
+				"d": 0,
+				"v": "grep -q 'HomeAwards' src/routes/+page.svelte",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'HomeNews' src/routes/+page.svelte && grep -q 'home-news' src/lib/components/home/HomeNews.svelte"
+			}
+		}
+	},
+	"news_finish": {
+		"s": "the record and the detail pass",
+		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
+		"c": {
+			"news_docs": {
+				"s": "`docs/about.md` is this repo's authoritative reference, and `AGENTS.md` requires it to carry any structural change. A whole news section is one.\n\n1. Insert a new `## 15. News (/news)` section directly after `## 14. Quotes Page`. Renumber the four sections that follow it, 15 through 18 becoming 16 through 19, and fix any cross-reference to them.\n2. The new section states: what the section is, that posts live as one TypeScript file per post under `src/lib/data/news/`, the `NewsPost` and `NewsBlock` shapes, the two routes, the homepage strip, and how a new post is added.\n3. In the site map section, add `/news` and `/news/[slug]`.\n4. Note the editorial rule: every fact in a post has to come from a cited source, and the sources ship with the post in `o`.",
+				"d": 0,
+				"v": "grep -q '## 14. Quotes Page' docs/about.md",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q '## 15. News' docs/about.md && grep -q '/news/\\[slug\\]' docs/about.md"
+			},
+			"news_polish": {
+				"s": "The detail pass. Walk `/news`, `/news/fide-world-amateur-abuja-2026`, and the homepage strip, and fix what you find.\n\n1. Responsive to 360px. The ledger must not push the page sideways; let the table scroll inside its own `overflow-x: auto` wrapper instead.\n2. Keyboard focus is visible on every entry row and every source link, styled to match, never `outline: none`.\n3. Run with `prefers-reduced-motion: reduce`. Every row must be visible and still.\n4. Check the amber count. Two per page, no more.\n5. Body text stays at least 16px, and the country code column never drops below the contrast of `--muted`.\n6. Every heading level runs in order, and the ledger tables carry real `<th scope>` headers.\n7. Search the new files for italic markup and for a space before a comma. Both are repo rules.",
+				"d": 0,
+				"v": "test -f src/routes/news/+page.svelte",
+				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'overflow-x' src/styles/news.css && grep -q ':focus-visible' src/styles/news.css && ! grep -rq 'outline: none' src/styles/news.css"
+			}
+		}
+	}
+}
