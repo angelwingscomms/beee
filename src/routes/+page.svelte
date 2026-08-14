@@ -165,7 +165,7 @@
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
             </span>
-            <span>Builds leadership and public speaking skills, every week</span>
+            <span>Builds future ready skills every week</span>
           </li>
           <li class="font-['Inter'] text-[#141413] text-sm md:text-base lg:text-sm font-semibold leading-snug bg-amber-400 rounded-full pl-2 pr-4 py-1.5 w-fit flex items-center gap-2.5">
             <span class="w-7 h-7 rounded-full bg-[#141413]/10 flex items-center justify-center shrink-0" aria-hidden="true">

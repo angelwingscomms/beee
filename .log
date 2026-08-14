@@ -451,3 +451,25 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 2:51:51 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:309:2 Unused CSS selector ".partner-title-sub"
 https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:694:2 Unused CSS selector ".bottom-card-subtitle"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:773:4 Unused CSS selector ".bottom-card-subtitle"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:800:2 Unused CSS selector ".mym-link h1"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:801:2 Unused CSS selector ".mym-link:hover h1"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:802:44 Unused CSS selector ".mym-link h1"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+2:55:16 PM [vite] (ssr) page reload src/routes/+page.svelte
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:694:2 Unused CSS selector ".bottom-card-subtitle"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:773:4 Unused CSS selector ".bottom-card-subtitle"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:800:2 Unused CSS selector ".mym-link h1"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:801:2 Unused CSS selector ".mym-link:hover h1"
+https://svelte.dev/e/css_unused_selector
+2:55:16 PM [vite-plugin-svelte] src/routes/+page.svelte:802:44 Unused CSS selector ".mym-link h1"
+https://svelte.dev/e/css_unused_selector
