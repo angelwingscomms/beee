@@ -2,22 +2,23 @@
 	"_": "BEEE Spectacular Chess Championship Abuja 2026 site. SvelteKit 2 + Svelte 5 runes + Tailwind v4 + Cloudflare Workers. Import alias is `$lib`. Never start the dev server; if one is running its output is in `.log`, and you read that before you diagnose anything.\n\nCommands: `bash plan/suite.sh` runs the test suite (it is `pnpm test` minus `src/routes/dashboard/dashboard.test.ts`, whose two tests call a live Qdrant and were already red before this plan). `pnpm check` is svelte-check, currently 0 errors and 31 warnings. `pnpm build` is a real Cloudflare build and passes today.\n\nRepo rules, and they beat any global rule you carry:\n1. snake_case for variables and functions. Data payloads and type definitions use single-letter keys.\n2. Never use italics anywhere. No `font-style: italic`, no `<em>`, no `<i>`. This is in `AGENTS.md`.\n3. Editorial copy is sentence case, not lowercase. Match the pages that exist.\n4. No comments in code.\n5. All CSS lives in `src/styles/*.css` and is imported by `src/app.css`. Write no `<style>` block in a news component. Hardcode no colour, size, or easing; use the tokens in `src/styles/variables.css`.\n6. Motion respects `prefers-reduced-motion`, and hover transforms sit inside `@media (hover: hover)`.\n7. Anything structural about what the championship is or does also goes in `docs/about.md`.\n\nWhat this plan builds: a news section. `/news` index, `/news/[slug]` post, a homepage strip, and one first post about the FIDE World Amateur Rapid and Blitz Chess Championships held in Abuja in August 2026.\n\nDesign concept, settled, do not redesign it. THE SCORESHEET: the section reads like a filled-in tournament scoresheet. `--canvas` cream paper ruled with `--hairline`. Headlines in `--font-display-hero` (Fraunces). Body in `--font-body` (Inter). Every piece of scoresheet furniture, meaning kickers, dates, place numbers, country codes, and scores, in `--font-code` (JetBrains Mono) with `font-variant-numeric: tabular-nums`. `--accent-amber` is the highlight pen and appears exactly twice on a page: the winner's ledger row and the fraction bar of the monumental numeral. The signature is the results ledger writing itself in one row at a time on scroll, next to the score 9/11 set as a monumental numeral.\n\nFacts: `plan/facts/fide-abuja-2026.md` is the only source for names, scores, dates, and titles. It also lists what press coverage claims that this post must not repeat.",
 	"news_data": {
 		"s": "the content layer: types, the first post, the registry every page imports",
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check",
 		"c": {
 			"news_types": {
 				"s": "Create `src/lib/types/news.ts`. It holds the shape every later step reads.\n\n1. `LedgerRow = { p: string; n: string; c: string; v: string; w?: boolean }` — left column, player name, three-letter country code, score, and `w` marks the one highlighted row.\n2. `NewsBlock`, a union discriminated on `k`: `{k:'p';t}` paragraph, `{k:'h';t}` heading, `{k:'q';t;a}` quote and attribution, `{k:'l';t;r:LedgerRow[]}` captioned ledger, `{k:'n';n;d;t}` numerator, denominator and caption, `{k:'f';r:{l:string;v:string}[]}` label and value strip.\n3. `NewsSource = { t: string; u: string }`.\n4. `NewsPost = { s; t; k; x; m; d; a; r: number; b: NewsBlock[]; o: NewsSource[]; u?: string }` — slug, headline, kicker, dek, meta description, ISO date, byline, read minutes, body, sources, optional hero image path.\n\nSingle-letter keys are the house style here. Do not rename them, later steps and two staged tests read them.",
-				"d": 0,
+				"d": 1,
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'NewsPost' src/lib/types/news.ts && grep -q 'LedgerRow' src/lib/types/news.ts"
 			},
 			"news_post": {
 				"s": "Write the first post at `src/lib/data/news/fide-world-amateur-abuja-2026.ts`, exporting one `NewsPost`.\n\n1. Read `plan/facts/fide-abuja-2026.md` end to end before you write a word. It is the only source, and searching the web for more is out of scope.\n2. Its `Post brief` section fixes `s`, `t`, `k`, `x`, `m`, `d`, `a`, `r`, the voice, and the exact order of the 16 blocks. Copy those bytes.\n3. Copy every name and score from its tables character for character, including `½` and the en dash.\n4. You write the paragraph and heading text yourself, from that file. Add no fact it does not carry.\n5. `o` lists all four sources, title and URL.\n6. Leave `u` off. There is no photo, by decision.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/lib/types/news.ts",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'Ekunke Odey Goodness' src/lib/data/news/fide-world-amateur-abuja-2026.ts && grep -q 'Bolton White' src/lib/data/news/fide-world-amateur-abuja-2026.ts"
 			},
 			"news_registry": {
 				"s": "Create `src/lib/data/news/index.ts`. Every page imports news from here and from nowhere else.\n\n1. Export `NEWS: NewsPost[]`, holding the FIDE post, sorted by `d` descending.\n2. Export `get_post(slug: string): NewsPost | undefined`.\n3. Export `latest_posts(n: number): NewsPost[]`, the first `n` of `NEWS`.\n4. Place the staged test and do not edit it:\n   `cp plan/tests/src/lib/data/news/news.test.ts.txt src/lib/data/news/news.test.ts`\n5. That test asserts the post's facts and its block order. A failure means the post from the previous step is wrong. Fix the post, never the test.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/lib/data/news/fide-world-amateur-abuja-2026.ts",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && test -f src/lib/data/news/news.test.ts && grep -q 'latest_posts' src/lib/data/news/index.ts"
 			}
@@ -25,6 +26,7 @@
 	},
 	"news_look": {
 		"s": "the scoresheet look: two stylesheets and one block renderer",
+		"d": 0,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'styles/news.css' src/app.css",
 		"c": {
 			"news_css_article": {
@@ -48,6 +50,7 @@
 	},
 	"news_pages": {
 		"s": "the two routes",
+		"d": 0,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_post_page": {
@@ -66,6 +69,7 @@
 	},
 	"news_wiring": {
 		"s": "search, navigation, and the homepage",
+		"d": 0,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_seo": {
@@ -90,6 +94,7 @@
 	},
 	"news_finish": {
 		"s": "the record and the detail pass",
+		"d": 0,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_docs": {
