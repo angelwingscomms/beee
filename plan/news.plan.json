@@ -26,23 +26,23 @@
 	},
 	"news_look": {
 		"s": "the scoresheet look: two stylesheets and one block renderer",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'styles/news.css' src/app.css",
 		"c": {
 			"news_css_article": {
 				"s": "Create `src/styles/news.css` and import it from `src/app.css` on the line after `styles/cards.css`. This file owns every news class, so no news component gets a `<style>` block.\n\nSet the local properties on `.news`: `--news-rule: var(--hairline)`, `--news-pen: var(--accent-amber)`, `--news-measure: 68ch`, `--news-row-h: 3.25rem`.\n\nArticle classes, all of them: `.news`, `.news-sheet`, `.news-kicker`, `.news-title`, `.news-dek`, `.news-meta`, `.news-facts`, `.news-fact`, `.news-fact-l`, `.news-fact-v`, `.news-h`, `.news-p`, `.news-quote`, `.news-quote-a`, `.news-ledger`, `.news-ledger-cap`, `.news-rows`, `.news-row`, `.news-row.is-win`, `.news-row-p`, `.news-row-n`, `.news-row-c`, `.news-row-v`, `.news-numeral`, `.news-numeral-n`, `.news-numeral-d`, `.news-numeral-cap`, `.news-sources`, `.news-source`.\n\nThe look: `--canvas` paper, a `--news-rule` hairline under every ledger row and fact, `.news-title` and `.news-h` in `--font-display-hero`, `.news-p` in `--font-body` at `--fs-body` and `--lh-body` capped at `--news-measure`, and all furniture in `--font-code` with `font-variant-numeric: tabular-nums`. `--news-pen` is used twice per page and no more: `.news-row.is-win` and the fraction bar inside `.news-numeral`. `.news-numeral-n` sits at `--fs-display-2xl`.",
-				"d": 0,
+				"d": 1,
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'styles/news.css' src/app.css && grep -q 'news-numeral-n' src/styles/news.css && grep -q 'tabular-nums' src/styles/news.css && ! grep -q 'italic' src/styles/news.css"
 			},
 			"news_css_index": {
 				"s": "Append the index and strip classes to `src/styles/news.css`. Same rules: tokens only, no raw values.\n\nClasses: `.news-index`, `.news-lead`, `.news-list`, `.news-entry`, `.news-entry-i`, `.news-entry-d`, `.news-entry-t`, `.news-entry-r`, `.news-strip`.\n\nThe index is the same sheet, read as a game record. `.news-entry` is one ruled row across the full sheet width: a mono index number, a mono date, the headline in `--font-display-hero`, and a mono read time, separated by `--news-rule` hairlines. `.news-lead` is the newest post given the top of the sheet with its dek. `.news-strip` is the homepage block and reuses `.news-entry` rows unchanged.\n\nOn hover, inside `@media (hover: hover)`, an entry's bottom rule becomes `--news-pen` and its headline shifts 8px to the right, both on `--ease-out`. Use `transform` for the shift, never a margin or a padding.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/styles/news.css",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'news-entry-t' src/styles/news.css && grep -q 'hover: hover' src/styles/news.css && ! grep -q 'italic' src/styles/news.css"
 			},
 			"news_blocks": {
 				"s": "Create `src/lib/components/news/NewsBody.svelte`, the one renderer for a post body.\n\n1. Props, runes only: `let { b }: { b: NewsBlock[] } = $props();`\n2. Loop `b` and branch on `k`, rendering the classes that `src/styles/news.css` already defines. Semantic elements: `h` is `<h2>`, `q` is `<blockquote>` with a `<cite>`, `l` is a `<table>` with a `<caption>`, `f` is a `<dl>`.\n3. Row reveal, the signature: put `use:motionStaggered={{ stagger: 0.07, y: 12 }}` from `$lib/actions/motion` on the `<tbody>`. That action already bails out on `prefers-reduced-motion` and on touch, and it leaves rows visible when JavaScript never runs. Add no CSS keyframes and no `observe`.\n4. A `LedgerRow` with `w` true gets `class=\"news-row is-win\"`.\n5. The `n` block renders `.news-numeral-n`, then the fraction bar, then `.news-numeral-d`, then `.news-numeral-cap`.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -q 'news-numeral' src/styles/news.css",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q 'motionStaggered' src/lib/components/news/NewsBody.svelte && grep -q 'is-win' src/lib/components/news/NewsBody.svelte && ! grep -q '<style' src/lib/components/news/NewsBody.svelte"
 			}
