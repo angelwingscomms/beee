@@ -1,3 +1,5 @@
+import { NEWS, get_post } from '$lib/data/news';
+
 export const SITE_URL = 'https://beeeproject.com';
 export const SITE_NAME = 'BEEE';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og.png`;
@@ -53,6 +55,12 @@ export const SEO: Record<string, SeoEntry> = {
  			'Every young person holds extraordinary potential. Our mission: cultivate strategic thinking, leadership and lifelong learning through chess.',
  		sitemap: { priority: 0.7, changefreq: 'monthly' }
  	},
+	'/news': {
+		title: 'News | BEEE Spectacular Chess Championship Abuja 2026',
+		description:
+			'Reports and results from the chess that matters to Abuja, written by the BEEE Spectacular Chess Championship team.',
+		sitemap: { priority: 0.7, changefreq: 'weekly' }
+	},
  	'/quotes': {
  		title: 'Chess Quotes | Be Everything Excellent Every Day',
  		description:
@@ -113,19 +121,34 @@ const FALLBACK: SeoEntry = {
 };
 
 /** Strips a trailing slash so `/faq/` and `/faq` resolve to the same entry. */
+const strip = (pathname: string) =>
+	pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+
+const NEWS_SITEMAP = { priority: 0.6, changefreq: 'monthly' };
+
+/** News posts are data, not routes, so they carry their own entry instead of a `SEO` key. */
+function news_entry(key: string): SeoEntry | undefined {
+	if (!key.startsWith('/news/')) return undefined;
+	const p = get_post(key.slice('/news/'.length));
+	if (!p) return undefined;
+	return { title: `${p.t} | BEEE News`, description: p.m, sitemap: NEWS_SITEMAP };
+}
+
 export function seo_for(pathname: string): SeoEntry {
-	const key = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-	return SEO[key] ?? FALLBACK;
+	const key = strip(pathname);
+	return SEO[key] ?? news_entry(key) ?? FALLBACK;
 }
 
 /** Everything without a `sitemap` block is private, plus anything unmapped (404s, deep app routes). */
 export function is_indexable(pathname: string): boolean {
-	const key = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-	return SEO[key]?.sitemap !== undefined;
+	const key = strip(pathname);
+	return (SEO[key] ?? news_entry(key))?.sitemap !== undefined;
 }
 
 export const sitemap_entries = () =>
-	Object.entries(SEO)
-		.filter(([, v]) => v.sitemap)
-		.map(([path, v]) => ({ path, ...v.sitemap! }))
-		.sort((a, b) => b.priority - a.priority);
+	[
+		...Object.entries(SEO)
+			.filter(([, v]) => v.sitemap)
+			.map(([path, v]) => ({ path, ...v.sitemap! })),
+		...NEWS.map((p) => ({ path: `/news/${p.s}`, ...NEWS_SITEMAP }))
+	].sort((a, b) => b.priority - a.priority);

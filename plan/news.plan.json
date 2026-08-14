@@ -50,18 +50,18 @@
 	},
 	"news_pages": {
 		"s": "the two routes",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_post_page": {
 				"s": "Build the post route.\n\n1. `src/routes/news/[slug]/+page.ts` exports `load`, calls `get_post(params.slug)` from `$lib/data/news`, throws `error(404, 'Post not found')` from `@sveltejs/kit` when it misses, and returns `{ p }`.\n2. `src/routes/news/[slug]/+page.svelte` renders, in order: `.news-kicker` from `k`, `.news-title` from `t`, `.news-dek` from `x`, a `.news-meta` line of byline, date and read time, then `<NewsBody b={data.p.b} />`, then `.news-sources` as an ordered list of links with `rel=\"noopener\"` and `target=\"_blank\"`.\n3. Add `data-testid=\"news-post\"` on the wrapper and give it both `news` and `news-sheet` classes.\n4. In `<svelte:head>`, emit a `NewsArticle` JSON-LD block with `headline`, `description`, `datePublished`, `author`, `publisher` pointing at `${SITE_URL}/#organization`, and `mainEntityOfPage`. Follow the pattern already in `src/routes/+layout.svelte`.\n5. Open the page and look at it. The head metadata is wired in the next group, so a plain title here is expected.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/lib/components/news/NewsBody.svelte",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && test -f 'src/routes/news/[slug]/+page.ts' && grep -q 'NewsArticle' 'src/routes/news/[slug]/+page.svelte' && grep -q 'news-post' 'src/routes/news/[slug]/+page.svelte'"
 			},
 			"news_index_page": {
-				"s": "Build `src/routes/news/+page.svelte`. Import `NEWS` from `$lib/data/news` directly, the way `src/routes/quotes/+page.svelte` imports its JSON. No `+page.ts`.\n\n1. A masthead: kicker `NEWS`, an `h1` reading `Reports from the board`, and a one-line standfirst.\n2. `NEWS[0]` renders as `.news-lead`, headline and dek and date, linking to `/news/{s}`.\n3. Every post, newest first, renders as a `.news-entry` row inside `.news-list`: a two-digit index number, the date, the headline, the read time. The whole row is one `<a>`.\n4. Wrapper carries `data-testid=\"news-index\"` plus the `news` and `news-index` classes.\n5. With one post the lead and the single row are the whole page. That is intended, so do not invent filler, an empty state, or a placeholder second post.\n6. Open `/news` and look at it.",
-				"d": 0,
+				"s": "Build `src/routes/news/+page.svelte`. Import `NEWS` from `$lib/data/news` directly, the way `src/routes/quotes/+page.svelte` imports its JSON. No `+page.ts`.\n\n1. A masthead: kicker `NEWS`, an `h1` reading `Reports from the board`, and a one-line standfirst.\n2. `NEWS[0]` renders as `.news-lead`, headline and dek and date, linking to `/news/{s}`.\n3. Every post after the lead renders as a `.news-entry` row inside `.news-list`, under an `Archive` label: a two-digit index number starting at 02, the date, the headline, the read time. The whole row is one `<a>`. The lead is not repeated as a row, and the whole block is hidden when there is nothing after the lead.\n4. Wrapper carries `data-testid=\"news-index\"` plus the `news` and `news-index` classes.\n5. With one post the lead and the single row are the whole page. That is intended, so do not invent filler, an empty state, or a placeholder second post.\n6. Open `/news` and look at it.",
+				"d": 1,
 				"v": "test -d src/routes/news",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'news-index' src/routes/news/+page.svelte && grep -q 'news-entry' src/routes/news/+page.svelte"
 			}
@@ -74,7 +74,7 @@
 		"c": {
 			"news_seo": {
 				"s": "Teach `src/lib/seo.ts` about news. It is exact-match today, so a post path falls through to the generic title.\n\n1. Add a static `'/news'` entry: title `News | BEEE Spectacular Chess Championship Abuja 2026`, a description over 50 characters, `sitemap: { priority: 0.7, changefreq: 'weekly' }`.\n2. In `seo_for`, when the stripped key starts with `/news/`, look the slug up with `get_post`. On a hit return `{ title: `${p.t} | BEEE News`, description: p.m, sitemap: { priority: 0.6, changefreq: 'monthly' } }`. On a miss fall through to `FALLBACK`.\n3. `is_indexable` must follow the same lookup, so an unknown slug stays noindex.\n4. `sitemap_entries()` concatenates the post paths before it sorts, not after.\n5. Place the staged test, unedited:\n   `cp plan/tests/src/lib/seo-news.test.ts.txt src/lib/seo-news.test.ts`",
-				"d": 0,
+				"d": 1,
 				"v": "grep -q 'sitemap_entries' src/lib/seo.ts",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && test -f src/lib/seo-news.test.ts"
 			},

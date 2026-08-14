@@ -28,7 +28,7 @@
 .news-sheet {
   max-width: 72rem;
   margin-inline: auto;
-  padding: var(--space-6) var(--space-3) var(--space-8);
+  padding: var(--space-8) var(--space-3);
 }
 
 .news-kicker {
@@ -227,6 +227,7 @@
 }
 
 .news-row-n {
+  text-align: left;
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 500;
@@ -274,12 +275,15 @@
 
 .news-numeral-d {
   font-family: var(--font-code);
-  font-size: var(--fs-display-sm);
+  font-size: var(--fs-display-md);
   font-weight: 500;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
-  padding-top: var(--space-1);
-  border-top: 3px solid var(--news-pen);
+  min-width: 3ch;
+  text-align: center;
+  padding-top: var(--space-2);
+  border-top: 4px solid var(--news-pen);
 }
 
 .news-numeral-cap {
@@ -302,6 +306,12 @@
   margin: var(--space-7) 0 0;
   padding: var(--space-2) 0 0;
   border-top: 1px solid var(--ink);
+}
+
+.news-h + .news-sources {
+  border-top: 0;
+  margin-top: var(--space-3);
+  padding-top: 0;
 }
 
 .news-source {
@@ -346,7 +356,7 @@
 
 @media (max-width: 640px) {
   .news-sheet {
-    padding: var(--space-5) var(--space-2) var(--space-6);
+    padding: var(--space-7) var(--space-2) var(--space-6);
   }
 
   .news {
@@ -397,6 +407,15 @@
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--news-rule);
+}
+
+.news-lead + .news-kicker {
+  display: block;
+  margin-top: var(--space-7);
+}
+
+.news-kicker + .news-list {
+  border-top: 0;
 }
 
 .news-entry {
