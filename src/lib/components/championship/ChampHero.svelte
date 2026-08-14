@@ -59,7 +59,7 @@
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
           <div>
             <p class="schedule-title">Free Online Coaching and Training</p>
-            <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_FREE_OPEN}</span>: 10 days FREE access to e4 Chess Coach training platform begins.</p>
+            <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_FREE_OPEN}</span>: 10 days FREE access to e4 Chess Coach platform begins.</p>
           </div>
         </div>
         <p class="venue-line">
@@ -69,21 +69,21 @@
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
           <div>
-            <p class="schedule-title">FREE access closes</p>
+            <p class="schedule-title">FREE access ends</p>
             <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_PAY_REQUIRED}</span>: Participants must pay the required registration fee to secure their slot and continue training after this date.</p>
           </div>
         </div>
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
           <div>
-            <p class="schedule-title">Registration closes</p>
+            <p class="schedule-title">Registration ends</p>
             <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_ENTRY_CLOSE}</span>: Entry into the championship officially closes.</p>
           </div>
         </div>
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
           <div>
-            <p class="schedule-title">Live Championship begins</p>
+            <p class="schedule-title">Live tournaments begin</p>
             <p class="schedule-sub"><span class="text-amber-400 font-semibold">October 2026</span>: Preliminary Rounds and Elite Qualifiers Stage at centres across Abuja.</p>
             <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_FINALE}</span>: Spectacular Championship Grand Finale at the National Stadium, Abuja.</p>
           </div>
