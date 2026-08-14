@@ -5,11 +5,10 @@ export const REG_AMOUNT = 15000;
 
 // Championship timeline. Single source of truth for every date shown on the
 // site, so the copy can never drift from the official schedule.
-export const D_FREE_OPEN = 'August 12, 2026';
-export const D_PAY_REQUIRED = 'August 22, 2026';
+export const D_FREE_OPEN = 'August 15, 2026';
+export const D_PAY_REQUIRED = 'August 25, 2026';
 export const D_ENTRY_CLOSE = 'September 26, 2026';
-export const D_FREE_WINDOW = 'August 12 to August 22, 2026';
-export const D_TRAINING_WINDOW = 'August 12 – September 26, 2026';
+export const D_TRAINING_WINDOW = 'August 15 – September 26, 2026';
 export const D_FINALE = 'November 2026';
 export const DISCOUNT_PCT = 10;
 export const COMMISSION_PCT = 10;

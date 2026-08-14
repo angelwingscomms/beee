@@ -347,3 +347,17 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 2:38:01 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:295:2 Unused CSS selector ".partner-title-sub"
 https://svelte.dev/e/css_unused_selector
+2:40:28 PM [vite] (client) hmr update /src/app.css, /src/lib/components/championship/ChampHero.svelte, /src/lib/components/home/HomeJourney.svelte, /src/routes/partner/+page.svelte
+2:40:28 PM [vite] (ssr) page reload src/lib/constants.ts
+2:40:55 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:309:2 Unused CSS selector ".partner-title-sub"
+https://svelte.dev/e/css_unused_selector
+2:40:55 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/lib/components/championship/ChampHero.svelte?svelte&type=style&lang.css, /src/app.css
+2:40:55 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+2:40:55 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:309:2 Unused CSS selector ".partner-title-sub"
+https://svelte.dev/e/css_unused_selector
+2:41:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:309:2 Unused CSS selector ".partner-title-sub"
+https://svelte.dev/e/css_unused_selector
+2:41:00 PM [vite] (client) hmr update /src/lib/components/championship/ChampHero.svelte, /src/app.css
+2:41:00 PM [vite] (ssr) page reload src/lib/components/championship/ChampHero.svelte
+2:41:00 PM [vite-plugin-svelte] src/lib/components/championship/ChampHero.svelte:309:2 Unused CSS selector ".partner-title-sub"
+https://svelte.dev/e/css_unused_selector
