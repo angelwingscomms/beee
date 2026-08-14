@@ -481,7 +481,59 @@ A motivational page featuring curated chess quotes and transformation stories ab
 
 ---
 
-## 15. Site Map (All Routes)
+## 15. News (`/news`)
+
+The news section carries reports on chess that matters to Abuja: championships, results, players, and what they mean for the next generation. It is editorial, not marketing.
+
+### 15.1 Where posts live
+
+One TypeScript file per post under `src/lib/data/news/`, named after its slug. There is no database and no content management system. A post ships with a commit.
+
+- `src/lib/types/news.ts` , the `NewsPost`, `NewsBlock` and `LedgerRow` types.
+- `src/lib/data/news/<slug>.ts` , one post, exporting `post`.
+- `src/lib/data/news/index.ts` , exports `NEWS` sorted newest first, `get_post(slug)`, and `latest_posts(n)`. Every page reads news from here and nowhere else.
+
+### 15.2 Post shape
+
+`NewsPost` uses the single-letter key convention: `s` slug, `t` headline, `k` kicker, `x` dek, `m` meta description, `d` published date as `yyyy-mm-dd`, `a` byline, `r` read minutes, `b` body blocks, `o` sources, `u` optional hero image.
+
+`b` is an ordered list of blocks, each discriminated on `k`:
+
+| `k` | Block | Fields |
+|---|---|---|
+| `p` | Paragraph | `t` |
+| `h` | Section heading | `t` |
+| `q` | Pull quote | `t`, `a` attribution |
+| `l` | Results ledger | `t` caption, `r` rows of `p`, `n`, `c`, `v`, optional `w` to highlight |
+| `n` | Monumental numeral | `n` numerator, `d` denominator, `t` caption |
+| `f` | Fact strip | `r` rows of `l` label and `v` value |
+
+`src/lib/components/news/NewsBody.svelte` renders every block kind. It is the only renderer.
+
+### 15.3 Routes
+
+- `/news` , the index. The newest post is the lead. Older posts sit below it as ruled archive rows.
+- `/news/[slug]` , the post. An unknown slug returns 404. The page emits `NewsArticle` JSON-LD.
+- The homepage carries a strip of the three newest posts, between the awards block and the philosophy section.
+- `src/lib/seo.ts` resolves `/news/<slug>` through `get_post`, so each post carries its own title and description and reaches `sitemap.xml`.
+
+### 15.4 How to add a post
+
+1. Write `src/lib/data/news/<slug>.ts`, exporting `post`.
+2. Import it in `src/lib/data/news/index.ts` and add it to `NEWS`.
+3. Nothing else. The index, the post route, the homepage strip, the sitemap, and the head metadata all follow from the registry.
+
+### 15.5 Editorial rule
+
+Every fact in a post comes from a cited source, and the sources ship with the post in `o` and render at the foot of the page. A claim that no source carries does not go in. Where press coverage conflicts, the post leaves the claim out rather than picking a side.
+
+### 15.6 Design
+
+The section is set as a filled-in tournament scoresheet, styled in `src/styles/news.css`. Cream paper ruled with hairlines, Fraunces headlines, and JetBrains Mono with tabular figures for every date, place number, country code, and score. Amber is the highlight pen and appears twice on a page: the winner's ledger row and the fraction bar of the monumental numeral.
+
+---
+
+## 16. Site Map (All Routes)
 
 ### Public Pages
 | Route | Purpose |
@@ -494,6 +546,8 @@ A motivational page featuring curated chess quotes and transformation stories ab
 | `/taskify` | Taskify Digital Passport page |
 | `/faq` | FAQ with categories, search, accordion |
 | `/quotes` | Motivational chess quotes, stories of transformation |
+| `/news` | News index , the newest report as the lead, older ones as archive rows |
+| `/news/[slug]` | One news report, with results ledgers and cited sources |
 | `/partner` | Partner programme signup |
 | `/register` | Registration form with payment |
 | `/login` | Login |
@@ -528,7 +582,7 @@ A motivational page featuring curated chess quotes and transformation stories ab
 
 ---
 
-## 16. OG Images (per route)
+## 17. OG Images (per route)
 
 | Route | OG Image URL |
 |---|---|
@@ -547,7 +601,7 @@ A motivational page featuring curated chess quotes and transformation stories ab
 
 ---
 
-## 17. Glossary
+## 18. Glossary
 
 | Term | Meaning |
 |---|---|
@@ -564,7 +618,7 @@ A motivational page featuring curated chess quotes and transformation stories ab
 
 ---
 
-## 18. Related Documents
+## 19. Related Documents
 
 - `docs/data-model.md` , Detailed Qdrant data model, entity diagram, lifecycle
 - `docs/champ.md` , Original championship prospectus document

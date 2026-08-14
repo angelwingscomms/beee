@@ -99,7 +99,7 @@
 		"c": {
 			"news_docs": {
 				"s": "`docs/about.md` is this repo's authoritative reference, and `AGENTS.md` requires it to carry any structural change. A whole news section is one.\n\n1. Insert a new `## 15. News (/news)` section directly after `## 14. Quotes Page`. Renumber the four sections that follow it, 15 through 18 becoming 16 through 19, and fix any cross-reference to them.\n2. The new section states: what the section is, that posts live as one TypeScript file per post under `src/lib/data/news/`, the `NewsPost` and `NewsBlock` shapes, the two routes, the homepage strip, and how a new post is added.\n3. In the site map section, add `/news` and `/news/[slug]`.\n4. Note the editorial rule: every fact in a post has to come from a cited source, and the sources ship with the post in `o`.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -q '## 14. Quotes Page' docs/about.md",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && grep -q '## 15. News' docs/about.md && grep -q '/news/\\[slug\\]' docs/about.md"
 			},
