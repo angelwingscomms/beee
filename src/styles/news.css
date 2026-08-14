@@ -105,7 +105,7 @@
   display: block;
   margin: 0;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.35;
   color: var(--ink);
@@ -229,7 +229,7 @@
 .news-row-n {
   text-align: left;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--body-strong);
 }
@@ -342,8 +342,6 @@
 }
 
 .news-source a:focus-visible {
-  outline: 2px solid var(--news-pen);
-  outline-offset: 3px;
   border-radius: var(--space-0);
 }
 
@@ -361,6 +359,10 @@
 
   .news {
     --news-row-h: 2.75rem;
+  }
+
+  .news-ledger {
+    min-width: 32rem;
   }
 
   .news-numeral-cap {
@@ -464,9 +466,7 @@
 
 .news-entry:focus-visible,
 .news-lead:focus-visible {
-  outline: 2px solid var(--news-pen);
-  outline-offset: 4px;
-  border-radius: var(--space-0);
+  border-radius: var(--space-1);
 }
 
 .news-strip {
@@ -493,8 +493,7 @@
 }
 
 .news-strip-more:focus-visible {
-  outline: 2px solid var(--news-pen);
-  outline-offset: 4px;
+  border-radius: var(--space-0);
 }
 
 @media (hover: hover) {

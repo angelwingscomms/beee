@@ -1,2 +1,3 @@
 - 2026-08-14 index page: the lead is post 01 and is not repeated in the list; the Archive list holds NEWS.slice(1) numbered from 02 and is hidden when empty. plan step amended to match.
 - 2026-08-14 ChampNav styles live in the component's <style> block, not src/styles/navigation.css. Eight desktop links overflowed at 1024px; fixed with clamp() on .champ-nav-links gap and link padding. Desktop nav starts at 1024px (--md-up).
+- 2026-08-14 base.css has 'a:focus-visible { outline: 2px solid var(--primary) !important }' sitewide, so no per-section focus outline can win. news.css only adds a border-radius on focus.

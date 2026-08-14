@@ -94,7 +94,7 @@
 	},
 	"news_finish": {
 		"s": "the record and the detail pass",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_docs": {
@@ -105,7 +105,7 @@
 			},
 			"news_polish": {
 				"s": "The detail pass. Walk `/news`, `/news/fide-world-amateur-abuja-2026`, and the homepage strip, and fix what you find.\n\n1. Responsive to 360px. The ledger must not push the page sideways; let the table scroll inside its own `overflow-x: auto` wrapper instead.\n2. Keyboard focus is visible on every entry row and every source link, styled to match, never `outline: none`.\n3. Run with `prefers-reduced-motion: reduce`. Every row must be visible and still.\n4. Check the amber count. Two per page, no more.\n5. Body text stays at least 16px, and the country code column never drops below the contrast of `--muted`.\n6. Every heading level runs in order, and the ledger tables carry real `<th scope>` headers.\n7. Search the new files for italic markup and for a space before a comma. Both are repo rules.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/routes/news/+page.svelte",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'overflow-x' src/styles/news.css && grep -q ':focus-visible' src/styles/news.css && ! grep -rq 'outline: none' src/styles/news.css"
 			}
