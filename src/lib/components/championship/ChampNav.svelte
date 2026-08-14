@@ -50,6 +50,7 @@
         <a href="/e4" class:active={path === '/e4'}>e4</a>
         <a href="/teamup" class:active={path === '/teamup'}>TEAMUP</a>
         <a href="/taskify" class:active={path === '/taskify'}>Taskify</a>
+        <a href="/news" class:active={path.startsWith('/news')}>News</a>
         <a href="/partner" class:active={path === '/partner'}>Partners</a>
         <a href="/faq" class:active={path === '/faq'}>FAQ</a>
         <a href="/quotes" class:active={path === '/quotes'}>Quotes</a>
@@ -74,6 +75,7 @@
        <a href="/e4" class:active={path === '/e4'} onclick={() => open = false}>e4</a>
        <a href="/teamup" class:active={path === '/teamup'} onclick={() => open = false}>TEAMUP</a>
        <a href="/taskify" class:active={path === '/taskify'} onclick={() => open = false}>Taskify</a>
+       <a href="/news" class:active={path.startsWith('/news')} onclick={() => open = false}>News</a>
        <a href="/partner" class:active={path === '/partner'} onclick={() => open = false}>Partners</a>
        <a href="/faq" class:active={path === '/faq'} onclick={() => open = false}>FAQ</a>
        <a href="/quotes" class:active={path === '/quotes'} onclick={() => open = false}>Quotes</a>
@@ -243,13 +245,13 @@
   .champ-nav-links {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(4px, 0.9vw, 12px);
     margin-left: auto;
   }
 
   .champ-nav-links a {
     position: relative;
-    padding: 10px 22px;
+    padding: 10px clamp(12px, 1.5vw, 22px);
     border-radius: 999px;
     font-size: 15px;
     font-weight: 500;

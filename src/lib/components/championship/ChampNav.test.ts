@@ -27,6 +27,21 @@ describe('ChampNav scroll-aware condense', () => {
   });
 });
 
+describe('ChampNav news link', () => {
+  it('links to the news section from the desktop and the mobile list', () => {
+    expect(nav.match(/href="\/news"/g)).toHaveLength(2);
+  });
+
+  it('marks news active on a post page, not only on the index', () => {
+    expect(nav.match(/path\.startsWith\('\/news'\)/g)).toHaveLength(2);
+  });
+
+  it('places news after taskify and before partners', () => {
+    expect(nav.indexOf('href="/news"')).toBeGreaterThan(nav.indexOf('href="/taskify"'));
+    expect(nav.indexOf('href="/news"')).toBeLessThan(nav.indexOf('href="/partner"'));
+  });
+});
+
 describe('ChampNav active link indicator', () => {
   it('uses an animated underline instead of a static border-bottom', () => {
     expect(nav).toContain('.champ-nav-links a::after {');

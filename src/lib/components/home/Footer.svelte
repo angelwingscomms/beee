@@ -8,6 +8,7 @@
       { href: '/', label: 'Home' },
       { href: '/register', label: 'Register' },
       { href: '/teamup', label: 'TEAMUP' },
+      { href: '/news', label: 'News' },
       { href: '/quotes', label: 'Quotes' },
       { href: '/faq', label: 'FAQ' },
       { href: '/privacy', label: 'Privacy' },

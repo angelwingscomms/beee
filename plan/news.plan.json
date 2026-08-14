@@ -69,7 +69,7 @@
 	},
 	"news_wiring": {
 		"s": "search, navigation, and the homepage",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build",
 		"c": {
 			"news_seo": {
@@ -79,14 +79,14 @@
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && test -f src/lib/seo-news.test.ts"
 			},
 			"news_links": {
-				"s": "Link the section from the two places every page shows.\n\n1. `src/lib/components/championship/ChampNav.svelte` has two link lists, desktop and mobile. Add `News` to both, pointing at `/news`, placed after `Taskify` and before `Partners`, and carry the same `class:active` and `onclick` pattern the neighbours use.\n2. `src/lib/components/home/Footer.svelte` builds its list from an array near line 8. Add `{ href: '/news', label: 'News' }` after the TEAMUP entry.\n3. The desktop nav now carries eight links. Check it at 1024px and 1280px. If the row wraps or overflows, shrink the nav link gap in `src/styles/navigation.css`. Do not solve it by dropping a link.\n4. `src/lib/components/championship/ChampNav.test.ts` and `Footer.test.ts` exist. Extend them rather than writing new files.",
-				"d": 0,
+				"s": "Link the section from the two places every page shows.\n\n1. `src/lib/components/championship/ChampNav.svelte` has two link lists, desktop and mobile. Add `News` to both, pointing at `/news`, placed after `Taskify` and before `Partners`, and carry the same `class:active` and `onclick` pattern the neighbours use.\n2. `src/lib/components/home/Footer.svelte` builds its list from an array near line 8. Add `{ href: '/news', label: 'News' }` after the TEAMUP entry.\n3. The desktop nav now carries eight links. Check it at 1024px and 1280px. If the row wraps or overflows, shrink the nav link gap and padding in the `<style>` block inside `ChampNav.svelte`, where `.champ-nav-links` actually lives. `src/styles/navigation.css` does not hold it. Do not solve it by dropping a link.\n4. `src/lib/components/championship/ChampNav.test.ts` and `Footer.test.ts` exist. Extend them rather than writing new files.",
+				"d": 1,
 				"v": "grep -q 'Taskify' src/lib/components/championship/ChampNav.svelte",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q '/news' src/lib/components/championship/ChampNav.svelte && grep -q '/news' src/lib/components/home/Footer.svelte"
 			},
 			"news_home": {
 				"s": "Put the latest report on the homepage.\n\n1. Create `src/lib/components/home/HomeNews.svelte`. It calls `latest_posts(3)` and renders a `.news .news-strip` block: a small `NEWS` kicker, then those posts as `.news-entry` rows, then one link to `/news` reading `All reports`.\n2. Mount it in `src/routes/+page.svelte` directly after `<HomeAwards />` and before the `Section 4: Philosophy` comment. `HomeAwards` ends navy and the philosophy section is amber, so the cream strip lands between them on purpose.\n3. Give the wrapper `data-testid=\"home-news\"`.\n4. Reuse the `.news-entry` classes as they are. Add no new class and no `<style>` block.\n5. Open the homepage and check the seam above and below the strip.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -q 'HomeAwards' src/routes/+page.svelte",
 				"t": "bash plan/verify_tests.sh && bash plan/suite.sh && pnpm check && pnpm build && grep -q 'HomeNews' src/routes/+page.svelte && grep -q 'home-news' src/lib/components/home/HomeNews.svelte"
 			}

@@ -7,6 +7,7 @@
   import HomeJourney from '$lib/components/home/HomeJourney.svelte';
   import PlatformCard from '$lib/components/home/PlatformCard.svelte';
   import HomeAwards from '$lib/components/home/HomeAwards.svelte';
+  import HomeNews from '$lib/components/home/HomeNews.svelte';
   import Logo from '$lib/components/Logo.svelte';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -296,6 +297,8 @@
 </section>
 
 <HomeAwards />
+
+<HomeNews />
 
 <!-- Section 4: Philosophy -->
 <section id="philosophy" class="min-h-screen flex items-center justify-center bg-amber-400 px-6">

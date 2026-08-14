@@ -4,6 +4,14 @@ import { describe, expect, it } from 'vitest';
 
 const footer = readFileSync(resolve(process.cwd(), 'src/lib/components/home/Footer.svelte'), 'utf8');
 
+describe('Footer news link', () => {
+  it('lists news between teamup and quotes', () => {
+    expect(footer).toContain("{ href: '/news', label: 'News' },");
+    expect(footer.indexOf("href: '/news'")).toBeGreaterThan(footer.indexOf("href: '/teamup'"));
+    expect(footer.indexOf("href: '/news'")).toBeLessThan(footer.indexOf("href: '/quotes'"));
+  });
+});
+
 describe('Footer editorial rework', () => {
   it('layers a navy-blob gradient mesh behind the flat navy background', () => {
     expect(footer).toContain('radial-gradient(1100px 460px at 12% -15%, color-mix(in srgb, var(--navy-blob) 55%, transparent), transparent 70%),');
