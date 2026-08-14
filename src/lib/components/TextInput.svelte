@@ -12,6 +12,9 @@
 			inputClass = 'placeholder:!text-white/60',
 		error = '',
 		showToggle = false,
+		autocapitalize,
+		autocorrect,
+		spellcheck,
 	}: {
 		id: string;
 		label: string;
@@ -25,6 +28,9 @@
 		inputClass?: string;
 		error?: string;
 		showToggle?: boolean;
+		autocapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+		autocorrect?: 'on' | 'off';
+		spellcheck?: boolean;
 	} = $props();
 
 	let invalid = $derived(!!error);
@@ -46,6 +52,9 @@
 		{required}
 		bind:value
 		{oninput}
+		{autocapitalize}
+		{autocorrect}
+		{spellcheck}
 		aria-invalid={invalid}
 	/>
 	{#if showToggle && type === 'password'}

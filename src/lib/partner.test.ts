@@ -28,7 +28,7 @@ vi.mock('$lib/db', () => ({
     }
     return [];
   }),
-  get: vi.fn(async (id: string) => store.get(id) ?? null),
+  get: vi.fn(async (id: string) => store.get(id) ?? mockUsers.find(u => u.i === id) ?? null),
   create: vi.fn(async (payload: any, _embed?: string, i?: string) => {
     const id = i ?? `rand_${Math.random()}`;
     store.set(id, { ...payload, i });

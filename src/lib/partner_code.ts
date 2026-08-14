@@ -14,3 +14,15 @@ const sqids = new Sqids({ minLength: 6 });
 export function gen_partner_code(): string {
   return sqids.encode([Math.floor(Date.now() / 1000), Math.floor(Math.random() * 9000) + 1000]);
 }
+
+/**
+ * Pulls the code out of whatever a parent pastes: a bare code, the share link
+ * (/i/CODE), or a register link (?c=CODE). Anything else keeps its last path
+ * segment, so a link shape we have not thought of still resolves.
+ */
+export function extract_partner_code(input: string): string {
+  const s = input.trim();
+  const q = s.match(/[?&]c=([^&#\s]+)/);
+  if (q) return decodeURIComponent(q[1]).trim();
+  return s.split(/[?#]/)[0].replace(/\/+$/, '').split('/').pop() ?? '';
+}

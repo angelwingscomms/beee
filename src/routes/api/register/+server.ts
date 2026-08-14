@@ -1,11 +1,11 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
-import { new_id, create, search_by_payload, find_or_create_user } from '$lib/db';
+import { new_id, create, find_or_create_user } from '$lib/db';
+import { find_partner_by_code } from '$lib/partner_lookup';
 import { encode_session } from '$lib/server/session';
 import { dev } from '$app/environment';
 import { DEV_REG_FEE, REG_AMOUNT, DISCOUNT_PCT } from '$lib/constants';
-import type { User } from '$lib/types';
 import type { Registration } from '$lib/types/registration';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,17 +59,13 @@ export const POST: RequestHandler = async ({ request, cookies, locals }) => {
     let ac: string | undefined;
 
     if (data.partnerCode) {
-        const raw = String(data.partnerCode).trim();
-        const m = raw.match(/\/i\/([^/?#\s]+)/);
-        const code = m ? m[1] : raw;
-        const affs = await search_by_payload<User>({ s: 'u', ac: code });
-        const valid = affs.some(u => u.c?.includes('fab'));
-        if (!valid) {
+        const partner = await find_partner_by_code(String(data.partnerCode));
+        if (!partner) {
             return json({ error: 'Invalid partner code' }, { status: 400 });
         }
         amount_kobo = get_discounted_amount();
         discounted = true;
-        ac = code;
+        ac = partner.ac;
     }
 
     const i = new_id();

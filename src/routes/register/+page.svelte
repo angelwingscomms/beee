@@ -9,7 +9,7 @@
   import Button from '$lib/components/Button.svelte';
   import { page } from '$app/stores';
   import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, D_FREE_OPEN, D_PAY_REQUIRED, D_ENTRY_CLOSE } from '$lib/constants';
-  import { gen_partner_code } from '$lib/partner_code';
+  import { gen_partner_code, extract_partner_code } from '$lib/partner_code';
 
   let gf = $state('');
   let gl = $state('');
@@ -23,7 +23,7 @@
   let gfe = $state('');
 
   const dummy_ac = gen_partner_code();
-  const ac_examples = [`beeeproject.com/partner/${dummy_ac}`, dummy_ac];
+  const ac_examples = [`beeeproject.com/i/${dummy_ac}`, dummy_ac];
   let ac_placeholder = $state(ac_examples[0]);
   let ac_fading = $state(false);
   let ac_field_el = $state<HTMLDivElement | null>(null);
@@ -60,7 +60,6 @@
   let phe = $state('');
   let ph_valid = $state(false);
   let pwe = $state('');
-  let ace = $state('');
 
   let showConfirmation = $state(false);
   let isProcessing = $state(false);
@@ -116,11 +115,18 @@
   );
 
   let valTimer: ReturnType<typeof setTimeout> | undefined;
+  // Only the newest check may write the result. Without this a slow reply for
+  // a half-typed code lands after the full code and marks a good code invalid.
+  let valSeq = 0;
+  // A code the visitor never typed (prefilled from the link or from storage)
+  // must never accuse them of typing an invalid one.
+  let acPrefilled = $state(false);
   async function validatePartnerCode(code: string) {
+    const seq = ++valSeq;
     if (!code.trim()) {
       acValid = null;
-      ace = '';
       AMOUNT = baseAmount;
+      acLoading = false;
       return;
     }
     acLoading = true;
@@ -130,46 +136,60 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code.trim() })
       });
+      if (seq !== valSeq) return;
+      // A failed check is not an invalid code.
+      if (!r.ok) {
+        acValid = null;
+        AMOUNT = baseAmount;
+        return;
+      }
       const d = await r.json();
+      if (seq !== valSeq) return;
       if (d.valid) {
         acValid = true;
         // The green discount callout already shows the applied discount , no
         // need for a duplicate helper line here (and error styling would turn
         // the input border red on success).
-        ace = '';
         AMOUNT = d.amount;
+        if (d.code) ac = d.code;
+      } else if (acPrefilled) {
+        // A stale stored code would otherwise block the whole registration.
+        try { localStorage.removeItem('partner_c'); } catch {}
+        ac = '';
+        acValid = null;
+        AMOUNT = baseAmount;
       } else {
         acValid = false;
-        ace = 'Invalid partner code';
         AMOUNT = baseAmount;
       }
     } catch {
+      if (seq !== valSeq) return;
       acValid = null;
-      ace = '';
       AMOUNT = baseAmount;
     } finally {
-      acLoading = false;
+      if (seq === valSeq) acLoading = false;
     }
   }
 
   $effect(() => {
-    if (browser) {
-      // Prefill from the ?c= query param (e.g. /register?c=CODE or the
-      // /i/CODE redirect) directly, falling back to a previously stored code.
-      const fromUrl = $page.url.searchParams.get('c');
-      const stored = localStorage.getItem('partner_c');
-      const code = (fromUrl || stored || '').trim();
-      if (code) {
-        ac = code;
-        validatePartnerCode(ac);
-      }
-    }
+    // Prefill from the ?c= query param (e.g. /register?c=CODE or the
+    // /i/CODE redirect) directly, falling back to a previously stored code.
+    // `ac` is written but never read here: reading it would make every
+    // keystroke re-run this effect and overwrite what the visitor typed.
+    const fromUrl = $page.url.searchParams.get('c');
+    if (!browser) return;
+    const code = (fromUrl || localStorage.getItem('partner_c') || '').trim();
+    if (!code) return;
+    const clean = extract_partner_code(code);
+    acPrefilled = true;
+    ac = clean;
+    validatePartnerCode(clean);
   });
 
   // The partner code the visitor arrived with (?c= param or the /i/CODE
   // redirect). If they then type a *different* valid code, warn them that the
   // referral credit goes to the typed code's partner instead.
-  const urlCode = $derived(($page.url.searchParams.get('c') || '').trim());
+  const urlCode = $derived(extract_partner_code($page.url.searchParams.get('c') || ''));
   const codeMismatch = $derived(
     !!urlCode &&
     !acLoading &&
@@ -179,19 +199,18 @@
   );
 
   function handlePartnerInput(e: Event) {
-    const input = e.target as HTMLInputElement;
-    let val = input.value.trim();
-    const match = val.match(/(?:[?&]c=|[/]i[/])([^&\/?#\s]+)/);
-    if (match) val = match[1];
+    const val = extract_partner_code((e.target as HTMLInputElement).value);
     ac = val;
+    acPrefilled = false;
     clearTimeout(valTimer);
     if (!val) {
+      valSeq++;
       acValid = null;
-      ace = '';
+      acLoading = false;
       AMOUNT = baseAmount;
       return;
     }
-    ace = 'Checking…';
+    acLoading = true;
     valTimer = setTimeout(() => validatePartnerCode(val), 400);
   }
 
@@ -332,10 +351,12 @@
               label="Partner code (optional)"
               placeholder=""
               bind:value={ac}
-              error={ace}
               wrapperClass="!bg-white/10 !border-white/20"
               labelClass="!text-white/60"
               inputClass="!text-white placeholder:!text-white/30"
+              autocapitalize="none"
+              autocorrect="off"
+              spellcheck={false}
               oninput={handlePartnerInput}
             />
             {#if !ac.trim()}

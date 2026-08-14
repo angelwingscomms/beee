@@ -15,8 +15,8 @@ Early registration is highly recommended to maximise your child's training time,
 
 ## Timeline & Fees
 
-- **August 12, 2026** — FREE access to e4 Chess Coach opens to all participants for the duration of the championship.
-- **August 22, 2026** — Continued access to e4 Chess Coach will require registration into the championship through payment of the registration fee.
+- **August 15, 2026** — 10 days of FREE access to e4 Chess Coach opens to all participants.
+- **August 25, 2026** — FREE access ends. Continued access to e4 Chess Coach will require registration into the championship through payment of the registration fee.
 - **September 26, 2026** — Entry into the championship officially closes.
 - **October 2026** — Live Preliminary Rounds and Elite Qualifiers Stage at centres across Abuja.
 - **November 2026** — Spectacular Championship Grand Finale at the National Stadium, Abuja.

@@ -11,7 +11,7 @@ describe('register page partner-code warning', () => {
   });
 
   it('warns under the input when the typed valid code differs from the ?c= URL code', () => {
-    expect(page).toContain("const urlCode = $derived(($page.url.searchParams.get('c') || '').trim());");
+    expect(page).toContain("const urlCode = $derived(extract_partner_code($page.url.searchParams.get('c') || ''));");
     expect(page).toContain('acValid === true');
     expect(page).toContain('ac.trim().toLowerCase() !== urlCode.toLowerCase()');
     expect(page).toContain('class="reg-partner-warning"');

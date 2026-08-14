@@ -1,32 +1,33 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { search_by_payload } from '$lib/db';
+import { find_partner_by_code } from '$lib/partner_lookup';
 import { dev } from '$app/environment';
 import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT } from '$lib/constants';
-import type { User } from '$lib/types';
 
 export const POST: RequestHandler = async ({ request }) => {
     const data = await request.json();
-    if (!data.code || typeof data.code !== 'string') {
-        return json({ valid: false });
-    }
-
-    // A partner may paste the whole share link (/i/<code> or ?c=<code>)
-    // instead of just the code , extract the trailing segment so it still resolves.
-    const raw = data.code.trim();
-    const m = raw.match(/\/i\/([^/?#\s]+)/);
-    const code = m ? m[1] : raw;
-
     const base = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
     // In dev there is no discount , the registration fee is fixed at DEV_REG_FEE.
     const discounted = dev ? base : Math.round(base * (100 - DISCOUNT_PCT) / 100);
 
-    const affs = await search_by_payload<User>({ s: 'u', ac: code });
-    const valid = affs.some(u => u.c?.includes('fab'));
+    if (!data.code || typeof data.code !== 'string') {
+        return json({ valid: false, amount: base, full_amount: base });
+    }
+
+    // A lookup that never ran is not a wrong code. Say so, so the page can stay
+    // quiet instead of calling a good code invalid.
+    let partner;
+    try {
+        partner = await find_partner_by_code(data.code);
+    } catch (err) {
+        console.error('[validate-partner] lookup failed:', err);
+        return json({ error: 'Could not check the code' }, { status: 503 });
+    }
 
     return json({
-        valid,
-        amount: valid ? discounted : base,
+        valid: !!partner,
+        code: partner?.ac ?? null,
+        amount: partner ? discounted : base,
         full_amount: base
     });
 };

@@ -105,4 +105,32 @@ describe('validate-partner endpoint', () => {
         expect(d.amount).toBe(DEV_REG_FEE_NAIRA);
         expect(d.full_amount).toBe(DEV_REG_FEE_NAIRA);
     });
+
+    it('accepts the share link a partner actually copies (/i/CODE)', async () => {
+        mockUsers.push({ s: 'u', ac: 'AFF789', c: ['fab'] });
+        const { POST } = await import('./+server');
+        const req = new Request('http://localhost/api/validate-partner', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: 'https://beeeproject.com/i/AFF789' })
+        });
+        const res = await POST({ request: req } as any);
+        const d = await res.json();
+        expect(d.valid).toBe(true);
+        expect(d.code).toBe('AFF789');
+    });
+
+    it('accepts a custom code typed with a capital (stored lowercase)', async () => {
+        mockUsers.push({ s: 'u', ac: 'edchess', c: ['fab'] });
+        const { POST } = await import('./+server');
+        const req = new Request('http://localhost/api/validate-partner', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: 'Edchess' })
+        });
+        const res = await POST({ request: req } as any);
+        const d = await res.json();
+        expect(d.valid).toBe(true);
+        expect(d.code).toBe('edchess');
+    });
 });

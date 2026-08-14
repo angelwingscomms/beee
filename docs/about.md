@@ -25,8 +25,8 @@ The **BEEE Spectacular Chess Championship Abuja 2026** is a transformative youth
 | **Age range** | 10–14 years (grouped: 10–11 and 12–14) |
 | **Venue** | Preliminaries at centres across Abuja · Grand Finale at the National Stadium, Abuja |
 | **Grand Finale date** | November 2026 |
-| **Free e4 access opens** | August 12, 2026 |
-| **Paid registration required from** | August 22, 2026 |
+| **Free e4 access opens** | August 15, 2026 |
+| **Paid registration required from** | August 25, 2026 |
 | **Entry closes** | September 26, 2026 |
 | **Live preliminaries & elite qualifiers** | October 2026 |
 | **Full access fee** | ₦15,000 (standard) / ~₦13,500 with partner discount |
@@ -227,7 +227,7 @@ Every participant plays for more than the championship title. A full spectrum of
 
 ### 5.6 Requirements
 - Participants must be **between 10 and 14 years old**
-- No prior chess experience required , categories support different skill levels
+- No prior chess experience required , the competition and the activities support different skill levels
 - Nothing to bring , all equipment is provided
 - Registration closes once slots are filled
 
@@ -377,6 +377,12 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 **Link key** between reg and user points is **email**. Partner code links regs to partner users.
 
+**Required payload indexes.** The cluster runs in strict mode, so a filter on a
+field without a keyword index fails the whole request. Every field the app
+filters on needs an index: `s`, `e`, `m`, `ac`, `st`, `ref`, `u`, `t`, `k`, `g`.
+Create a missing one with `PUT /collections/i/index` and
+`{"field_name":"<field>","field_schema":"keyword"}`.
+
 ### 11.3 Payment Flow
 1. User submits registration → `POST /api/register` (free, no payment)
 2. Creates pending reg point (`st: 'r'`) with bcrypt-hashed password and provisions the login account
@@ -467,7 +473,7 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 The FAQ covers 7 categories with structured FAQPage schema.org JSON-LD:
 
-1. **General** , What is the championship, who can participate, age categories, venue, dates, equipment
+1. **General** , What is the championship, who can participate, ages, venue, dates, equipment
 2. **Registration** , How to register, school registration, direct parent registration, deadline, fees, refund policy
 3. **TEAMUP** , What it is, when it begins, activities, compulsory or optional
 4. **Passport** , What is Taskify, what's recorded, parent access, importance, access for registered players

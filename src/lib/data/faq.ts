@@ -13,10 +13,10 @@ export const cs: FaqC[] = [
 			{ q: 'What is the BEEE Spectacular Chess Championship?', a: 'The BEEE Spectacular Chess Championship is a unique championship experience that combines competitive chess with the TEAMUP Development Programme, providing participants with opportunities to develop strategic thinking, leadership, creativity, innovation, and personal growth' },
 			{ q: 'Is this only a chess tournament?', a: 'It is a transformative championship experience that combines AI-powered coaching, creativity, mentorship and a purposeful self development programme' },
 			{ q: 'Who can participate?', a: 'Children aged 10–14 years.' },
-			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. Competition categories and developmental activities are designed to support different skill levels.' },
-			{ q: 'What are the age categories?', a: 'The championship is open to chess players aged 10–14, grouped into two categories: ages 10–11 and ages 12–14.' },
+			{ q: 'Is prior chess experience required?', a: 'No. Participants with varying levels of chess experience may register. The competition and the developmental activities are designed to support different skill levels.' },
+			{ q: 'Are there age categories?', a: 'No. The championship has no age categories. Every participant is aged 10–14 and plays in the same championship.' },
 			{ q: 'Where is the championship held?', a: 'The Live Preliminary Rounds and Elite Qualifiers Stage take place at centres across Abuja. The Spectacular Championship Grand Finale is held at the National Stadium, Abuja.' },
-			{ q: 'What are the championship dates?', a: `Free access to e4 Chess Coach opens ${D_FREE_OPEN}. From ${D_PAY_REQUIRED} continued access requires paid registration. Entry closes ${D_ENTRY_CLOSE}. The Live Preliminary Rounds and Elite Qualifiers Stage run in October 2026, and the Spectacular Championship Grand Finale is in ${D_FINALE} at the National Stadium, Abuja.` },
+			{ q: 'What are the championship dates?', a: `${D_FREE_OPEN}: 10 days of free access to the e4 Chess Coach platform begins. ${D_PAY_REQUIRED}: free access ends, and participants pay the registration fee to keep their slot and continue training. ${D_ENTRY_CLOSE}: registration ends and entry into the championship officially closes. October 2026: live tournaments begin, with the Preliminary Rounds and the Elite Qualifiers Stage at centres across Abuja. ${D_FINALE}: the Spectacular Championship Grand Finale at the National Stadium, Abuja.` },
 			{ q: 'What should participants bring to the championship?', a: 'Nothing. All equipment is provided.' },
 		]
 	},
@@ -52,7 +52,7 @@ export const cs: FaqC[] = [
 			{ q: 'What is e4™?', a: 'e4™ is an AI-assisted chess learning platform providing guided instruction, game analysis, and personalised practice for every participant.' },
 			{ q: 'How does e4 help my child improve?', a: 'e4 analyses every move as your child plays, flagging mistakes, suggesting better plans, and answering questions by voice or text.' },
 			{ q: 'What are the benefits of e4?', a: 'e4 offers guided AI instruction, step-by-step strategy coaching, engine-backed game analysis, virtual and real opponents, and custom puzzles generated from your child\'s own games.' },
-			{ q: 'When do participants get access to e4?', a: `Free access to e4 opens to all participants on ${D_FREE_OPEN}. From ${D_PAY_REQUIRED}, continued access requires registration through payment of the fee, which also unlocks the TEAMUP programme and the Taskify Development Passport.` },
+			{ q: 'When do participants get access to e4?', a: `Free access to e4 opens to all participants on ${D_FREE_OPEN} and runs for 10 days. It ends on ${D_PAY_REQUIRED}. From that date, continued access requires registration through payment of the fee, which also unlocks the TEAMUP programme and the Taskify Development Passport. Registered participants keep their access until the championship ends.` },
 		]
 	},
 	{

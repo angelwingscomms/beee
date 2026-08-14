@@ -199,13 +199,14 @@ export async function retry_failed_payouts(
     }
     if (!reg) { console.error(`[payout] Retry: no registration ${p.reg_id} , skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded registration ${p.reg_id} (amt=${reg.amt} email=${reg.e})`);
-    let affs: User[] = [];
+    // partner_id is the point id, not a payload field , load it directly.
+    let partner: (User & { i: string }) | undefined;
     try {
-      affs = await with_timeout(`search_by_payload({s:'u',i:${p.partner_id})`, 20000, search_by_payload<User>({ s: 'u', i: p.partner_id }));
+      const u = await with_timeout(`get(partner ${p.partner_id})`, 20000, get<User>(p.partner_id));
+      if (u) partner = { ...u, i: p.partner_id };
     } catch (e) {
       console.error(`[payout] Retry: DB ERROR loading partner ${p.partner_id}:`, e);
     }
-    const partner = affs[0] as (User & { i: string }) | undefined;
     if (!partner) { console.error(`[payout] Retry: no partner ${p.partner_id} , skipping`); failed++; continue; }
     console.log(`[payout] Retry: loaded partner ${p.partner_id} (${partner.e})`);
 
