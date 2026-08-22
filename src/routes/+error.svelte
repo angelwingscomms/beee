@@ -11,6 +11,19 @@
 <section class="err">
   <p class="err-code">{$page.status}</p>
   <h1 class="err-title">{$page.status === 404 ? 'This square is empty.' : 'Something went wrong.'}</h1>
+  {#if $page.status === 404}
+    <p class="err-help">The page you are looking for is not here. Try one of these instead, or ask for the site map and llms.txt to read the whole site as markdown.</p>
+    <nav class="err-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/register">Register</a>
+      <a href="/faq">FAQ</a>
+      <a href="/news">News</a>
+      <a href="/docs">Developer docs</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/sitemap.xml">Site map</a>
+    </nav>
+  {/if}
   <Button href="/" class="err-btn">Back to Home</Button>
 </section>
 
@@ -40,6 +53,25 @@
     font-weight: 600;
     color: #faf9f5;
     margin: 0 0 12px;
+  }
+  .err-help {
+    max-width: 480px;
+    color: color-mix(in srgb, #faf9f5 70%, transparent);
+    margin: 0 0 18px;
+    line-height: 1.6;
+  }
+  .err-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .err-links a {
+    color: var(--primary);
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   :global(.err-btn) { padding: 14px 32px; }
 </style>

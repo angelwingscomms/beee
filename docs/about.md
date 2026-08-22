@@ -416,6 +416,26 @@ Create a missing one with `PUT /collections/i/index` and
 
 ---
 
+### 11.5 Agent & Developer Resources
+
+BEEE is agent-ready. These machine-readable files and routes let AI agents read the site without scraping:
+
+| File / route | Purpose |
+|---|---|
+| `/llms.txt` | The site index for AI agents (llmstxt.org format). Lists the core pages, a "When to use this" section, and the developer resources. |
+| `/docs` | Developer documentation index |
+| `/docs/api` | Public REST API reference |
+| `/docs/auth` | Authentication documentation |
+| `/docs/webhooks` | Paystack webhook documentation |
+| `/docs/agents` | How AI agents should read and use the site |
+| `/docs/openapi.json` | OpenAPI 3.1 description of the public REST API |
+| `/sitemap.xml` | XML site map |
+| `/robots.txt` | Crawler policy. GPTBot, ClaudeBot, PerplexityBot and OAI-SearchBot are allowed; `/api`, `/dashboard`, `/account`, `/profile`, `/login`, `/payment`, `/i` are disallowed. |
+
+Markdown content negotiation (acceptmarkdown.com): any public page answers `Accept: text/markdown` with a markdown body and `Vary: Accept, Accept-Encoding`. Missing paths return a real HTTP 404 with a short markdown body that links the site map, docs and `/llms.txt`. This is wired in `src/hooks.server.ts`; bodies live in `src/lib/markdown.ts`.
+
+---
+
 ## 12. Design System
 
 ### 12.1 Brand Identity
@@ -558,7 +578,13 @@ The section is set as a filled-in tournament scoresheet, styled in `src/styles/n
 | `/register` | Registration form with payment |
 | `/login` | Login |
 | `/privacy` | Privacy Policy |
+| `/contact` | Contact BEEE , email, phone, social and response times |
 | `/terms` | Terms of Service |
+| `/docs` | Developer documentation index |
+| `/docs/api` | Public REST API reference |
+| `/docs/auth` | Authentication documentation |
+| `/docs/webhooks` | Paystack webhook documentation |
+| `/docs/agents` | How AI agents should use the site |
 | `/design` | Design system documentation |
 
 ### Auth Pages

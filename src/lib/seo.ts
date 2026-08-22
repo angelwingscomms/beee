@@ -91,6 +91,42 @@ export const SEO: Record<string, SeoEntry> = {
 			'The terms that apply when you register for or take part in the BEEE Spectacular Chess Championship Abuja 2026.',
 		sitemap: { priority: 0.3, changefreq: 'yearly' }
 	},
+	'/contact': {
+		title: 'Contact | BEEE',
+		description:
+			'Contact the BEEE team about the BEEE Spectacular Chess Championship Abuja 2026. Email, phone and social channels, and when we respond.',
+		sitemap: { priority: 0.5, changefreq: 'yearly' }
+	},
+	'/docs': {
+		title: 'BEEE Developer Documentation',
+		description:
+			'Developer and agent documentation for beeeproject.com: the REST API, OpenAPI spec, authentication, webhooks and AI agent access.',
+		sitemap: { priority: 0.4, changefreq: 'monthly' }
+	},
+	'/docs/api': {
+		title: 'BEEE API Reference',
+		description:
+			'The public BEEE REST API reference: endpoints, methods, request bodies and responses for beeeproject.com.',
+		sitemap: { priority: 0.4, changefreq: 'monthly' }
+	},
+	'/docs/auth': {
+		title: 'BEEE Authentication Docs',
+		description:
+			'How BEEE authentication works: the session cookie, email/password sign-up and login, and Google sign-in.',
+		sitemap: { priority: 0.3, changefreq: 'monthly' }
+	},
+	'/docs/webhooks': {
+		title: 'BEEE Webhooks',
+		description:
+			'Paystack payment webhooks for beeeproject.com: the endpoint, signature verification and idempotent handling.',
+		sitemap: { priority: 0.3, changefreq: 'monthly' }
+	},
+	'/docs/agents': {
+		title: 'BEEE for AI Agents',
+		description:
+			'How AI agents should read and use beeeproject.com: llms.txt, markdown content negotiation, the OpenAPI spec and the crawler policy.',
+		sitemap: { priority: 0.4, changefreq: 'monthly' }
+	},
 
 	// Private / utility — noindex, excluded from sitemap.
 	'/login': { title: 'Log in | BEEE', description: 'Log in to your BEEE account.' },

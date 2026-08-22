@@ -25,6 +25,12 @@
         alternateName: 'Be Everything Excellent Every Day',
         url: SITE_URL,
         logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+        sameAs: [
+          'https://www.instagram.com/thebeeeproject',
+          'https://www.facebook.com/thebeeeproject',
+          'https://www.youtube.com/@thebeeeproject',
+          'https://x.com/beeeproject'
+        ],
         description:
           'BEEE runs the TEAMUP™ youth development programme and the Spectacular Chess Championship in Abuja, Nigeria.',
         address: {
@@ -35,7 +41,7 @@
         contactPoint: {
           '@type': 'ContactPoint',
           email: 'info@beeeproject.com',
-          telephone: '+234-802-092-0872',
+          telephone: '+234-902-682-4439',
           contactType: 'customer service',
           areaServed: 'NG',
           availableLanguage: 'en'

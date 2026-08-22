@@ -10,6 +10,8 @@
       { href: '/teamup', label: 'TEAMUP' },
       { href: '/news', label: 'News' },
       { href: '/quotes', label: 'Quotes' },
+      { href: '/about', label: 'About' },
+      { href: '/contact', label: 'Contact' },
       { href: '/faq', label: 'FAQ' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/terms', label: 'Terms' },

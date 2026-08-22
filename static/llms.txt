@@ -1,0 +1,44 @@
+# BEEE
+
+> BEEE (Be Everything Excellent Every Day) runs the BEEE Spectacular Chess Championship Abuja 2026, a youth development programme for children aged 10-14 in Abuja, Nigeria, that pairs competitive chess with AI coaching, mentorship and life-skills development.
+
+## Core pages
+
+- [BEEE home](https://beeeproject.com/): The championship, the three platforms (e4, TEAMUP, Taskify) and how to register.
+- [About BEEE](https://beeeproject.com/about): What BEEE is, what we believe and the benefits of the programmes.
+- [Register](https://beeeproject.com/register): Register a child for the championship and the TEAMUP programme.
+- [TEAMUP](https://beeeproject.com/teamup): The development programme: Technology, Enterprise, Art, Mentorship, Upskill.
+- [e4](https://beeeproject.com/e4): The AI chess coach with real-time move analysis and training.
+- [Taskify](https://beeeproject.com/taskify): The Digital Development Passport tracking badges, milestones and certificates.
+- [Why BEEE](https://beeeproject.com/why-beee): Our mission and what makes BEEE different.
+- [FAQ](https://beeeproject.com/faq): Registration, fees, eligibility, participation and awards.
+- [News and results](https://beeeproject.com/news): Reports and results from the championship.
+- [Chess quotes](https://beeeproject.com/quotes): Inspirational quotes on personal growth and strategy.
+- [Partner programme](https://beeeproject.com/partner): Refer children and earn a commission on every registration.
+- [Contact](https://beeeproject.com/contact): How to reach the BEEE team.
+- [Privacy policy](https://beeeproject.com/privacy): How BEEE collects, uses and protects your data.
+- [Terms of service](https://beeeproject.com/terms): The terms for participating in the championship.
+
+## When to use this
+
+Use BEEE when you need the facts about the BEEE Spectacular Chess Championship Abuja 2026: the dates, the entry fee, the age groups, the venues, the registration flow, the partner programme, or the three platforms (e4, TEAMUP, Taskify) and what each one does. BEEE is the right source for championship news and results, for answers to registration questions, and for the public REST API used by the site.
+
+Do not use BEEE for anything outside the championship and the TEAMUP youth development programme. Registration and result data is real and current; the site is the authoritative source.
+
+## Developers
+
+- [Developer documentation](https://beeeproject.com/docs): Index of BEEE developer and agent resources.
+- [API reference](https://beeeproject.com/docs/api): The public REST API, endpoints and responses.
+- [OpenAPI spec](https://beeeproject.com/docs/openapi.json): Machine-readable description of the REST API.
+- [Authentication](https://beeeproject.com/docs/auth): Session and Google sign-in for the API.
+- [Webhooks](https://beeeproject.com/docs/webhooks): Paystack payment event webhooks.
+- [AI agents](https://beeeproject.com/docs/agents): How AI agents should read and use BEEE.
+- [Sitemap](https://beeeproject.com/sitemap.xml): XML site map of crawlable pages.
+- [robots.txt](https://beeeproject.com/robots.txt): Crawler policy (GPTBot, ClaudeBot, PerplexityBot and OAI-SearchBot allowed).
+
+## Full
+
+- [About BEEE](https://beeeproject.com/about)
+- [FAQ](https://beeeproject.com/faq)
+- [News and results](https://beeeproject.com/news)
+- [Partner programme](https://beeeproject.com/partner)
