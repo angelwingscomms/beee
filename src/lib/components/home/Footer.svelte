@@ -13,6 +13,7 @@
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },
       { href: '/faq', label: 'FAQ' },
+      { href: '/docs', label: 'API & Docs' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/terms', label: 'Terms' },
     ].filter(l => l.href !== p);

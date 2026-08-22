@@ -15,6 +15,7 @@ const spec = {
 	paths: {
 		'/banks': {
 			get: {
+				operationId: 'listBanks',
 				summary: 'List Nigerian banks',
 				description: 'Returns the Nigerian bank codes used by the registration form.',
 				responses: {
@@ -45,6 +46,7 @@ const spec = {
 		},
 		'/validate-partner': {
 			post: {
+				operationId: 'validatePartnerCode',
 				summary: 'Validate a partner code',
 				description: `Checks a partner referral code and, if valid, returns the discounted amount (${DISCOUNT_PCT}% off the NGN ${REG_AMOUNT} full fee).`,
 				requestBody: {
@@ -91,6 +93,7 @@ const spec = {
 		},
 		'/user/check': {
 			get: {
+				operationId: 'checkEmail',
 				summary: 'Check an email',
 				description: 'Returns whether an email is already registered.',
 				parameters: [
@@ -113,6 +116,7 @@ const spec = {
 		},
 		'/register': {
 			post: {
+				operationId: 'createRegistration',
 				summary: 'Create a registration',
 				description: 'Creates a registration record and returns the registration id and amount.',
 				requestBody: {
@@ -135,7 +139,21 @@ const spec = {
 					}
 				},
 				responses: {
-					'200': { description: 'Registration created' },
+					'200': {
+						description: 'Registration created',
+						content: {
+							'application/json': {
+								schema: {
+									type: 'object',
+									properties: {
+										success: { type: 'boolean', description: 'Whether the registration was created' },
+										registration_id: { type: 'string', description: 'Id of the new registration' },
+										amount: { type: 'integer', description: 'Amount due in Naira' }
+									}
+								}
+							}
+						}
+					},
 					'400': {
 						description: 'Missing or invalid fields',
 						content: {
@@ -152,6 +170,7 @@ const spec = {
 		},
 		'/register-init-payment': {
 			post: {
+				operationId: 'initRegistrationPayment',
 				summary: 'Start a payment',
 				description: 'Starts a Paystack payment for a registration and returns the authorization URL.',
 				requestBody: {
@@ -176,18 +195,29 @@ const spec = {
 										success: { type: 'boolean' },
 										authorization_url: { type: 'string' },
 										access_code: { type: 'string' },
-										reference: { type: 'string' }
+										reference: { type: 'string', description: 'Paystack reference' }
 									}
 								}
 							}
 						}
 					},
-					'404': { description: 'Registration not found' }
+					'404': {
+						description: 'Registration not found',
+						content: {
+							'application/json': {
+								schema: {
+									type: 'object',
+									properties: { error: { type: 'string', description: 'Error message' } }
+								}
+							}
+						}
+					}
 				}
 			}
 		},
 		'/verify-payment': {
 			post: {
+				operationId: 'verifyPayment',
 				summary: 'Verify a payment',
 				description: 'Verifies a Paystack payment and confirms a registration.',
 				requestBody: {
@@ -210,9 +240,9 @@ const spec = {
 									type: 'object',
 									properties: {
 										success: { type: 'boolean' },
-										status: { type: 'string' },
-										message: { type: 'string' },
-										redirect: { type: 'string' }
+										status: { type: 'string', description: 'Payment status' },
+										message: { type: 'string', description: 'Human-readable result' },
+										redirect: { type: 'string', description: 'Where to send the payer next' }
 									}
 								}
 							}

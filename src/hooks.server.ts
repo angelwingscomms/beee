@@ -44,6 +44,18 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	const response = await resolve(event);
 
+	// API paths never return HTML errors: agents need parseable JSON.
+	if (
+		path.startsWith('/api/') &&
+		response.status >= 400 &&
+		!(response.headers.get('content-type') || '').includes('application/json')
+	) {
+		return new Response(JSON.stringify({ error: `Request failed with status ${response.status}` }), {
+			status: response.status,
+			headers: { 'Content-Type': 'application/json' }
+		});
+	}
+
 	// Agent-friendly 404: for a missing path requested as markdown, send a short
 	// markdown body that points at the sitemap and site index.
 	if (wants_markdown(event.request) && response.status === 404) {

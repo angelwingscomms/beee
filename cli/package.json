@@ -1,0 +1,13 @@
+{
+  "name": "beee-cli",
+  "version": "1.0.0",
+  "description": "CLI for the BEEE public API (beeeproject.com): banks, partner codes, registration and payments.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "beee": "index.js" },
+  "files": ["index.js"],
+  "keywords": ["beee", "beeeproject", "chess", "api", "cli"],
+  "homepage": "https://beeeproject.com/docs",
+  "repository": { "type": "git", "url": "https://beeeproject.com" },
+  "engines": { "node": ">=18" }
+}
