@@ -70,10 +70,10 @@ export async function record_analytics_event(
 		};
 
 		const id = crypto.randomUUID();
-		const vector = new Array(4096).fill(0);
+		const vector = { i: new Array(4096).fill(0) };
 		const q = await get_qdrant();
 		await q.upsert(collection, {
-			points: [{ id, vector, payload: payload as unknown as Record<string, unknown> }],
+			points: [{ id, vector: vector as unknown as number[], payload: payload as unknown as Record<string, unknown> }],
 			wait: false
 		});
 	} catch (e) {
