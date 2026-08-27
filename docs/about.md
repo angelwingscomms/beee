@@ -355,8 +355,9 @@ Schools are encouraged to ensure communication channels remain active throughout
 |---|---|
 | **Framework** | SvelteKit (Svelte 5) |
 | **CSS** | Tailwind CSS v4 + custom CSS |
-| **Deployment** | Cloudflare Workers (`adapter-cloudflare`) |
+| **Deployment** | Cloudflare Workers (`adapter-cloudflare`) + Cloudflare Web Analytics + Zaraz |
 | **Database** | Qdrant (single collection `i`) |
+| **Analytics** | Custom first-party analytics (Qdrant `s='ae'` events) + Cloudflare Web Analytics beacon · private dashboard at `/369/analytics` (password protected, httpOnly HMAC cookie, rate limited) |
 | **Auth** | Arctic + Google OAuth, bcryptjs for passwords |
 | **Payments** | Paystack (Nigerian payment processor) |
 | **AI Coach** | @google/genai (Gemini) |
@@ -377,13 +378,25 @@ Two point types in a single collection `i`, separated by tenant field `s`:
 
 **Link key** between reg and user points is **email**. Partner code links regs to partner users.
 
+**Analytics Point** (`s: 'ae'`):
+- Stores every page view and click from `hooks.server` + client beacon (`/api/analytics/event`)
+- Fields: `k` (`pv`/`click`/`api`/`reg_start`/`reg_success`), `u` (url), `r` (referrer), `co`/`ci` (geo), `ua` (user-agent), `ip_hash` (SHA256 daily salt), `ip_trunc` (xxx masked), `c` (partner code), `d` (timestamp)
+- Private dashboard at `/369/analytics` (see 11.1) queries `s='ae'` for totals, top pages, referrers, partner funnel, trend, and live 30m.
+
 **Required payload indexes.** The cluster runs in strict mode, so a filter on a
 field without a keyword index fails the whole request. Every field the app
 filters on needs an index: `s`, `e`, `m`, `ac`, `st`, `ref`, `u`, `t`, `k`, `g`.
 Create a missing one with `PUT /collections/i/index` and
 `{"field_name":"<field>","field_schema":"keyword"}`.
 
-### 11.3 Payment Flow
+### 11.3 Analytics & Secure Dashboard
+- **Collection:** every GET (`hooks.server` server-side + `+layout.svelte` client-side `sendBeacon`/`fetch` to `POST /api/analytics/event`) creates an `s='ae'` point with zero vector. Skips `/369`, `/api/analytics`, and static assets.
+- **Data captured:** url, referrer, country/city from `cf-ipcountry`/`request.cf`, user-agent, accept-language, `c` partner code, truncated IP + salted IP hash (privacy, Nigeria NDPA), timestamp.
+- **Cloudflare layer:** Cloudflare Web Analytics beacon + Zaraz can be added via dashboard without code for complementary privacy-first stats; custom Qdrant gives full click/IP detail.
+- **Dashboard:** `GET /369/analytics` is `prerender false`, `no-store`, server-only gate. Login via `POST /api/analytics-auth` with bcrypt hash (`ANALYTICS_PASSWORD_HASH` Secrets Store or fallback hash for `love$$$bP`), 5 attempts/15 min lockout per IP, 500 ms delay on failure, generic error. Success sets `analytics_auth` httpOnly Secure SameSite Lax cookie at path `/369` (12 h HMAC-SHA256 with `SECRET`). Verified in `+page.server.ts`; unauthenticated shows password form, authenticated shows stats. Logout via `DELETE /api/analytics-auth`.
+- **Security hardening (9-angle review):** no plaintext password in code, constant-time bcrypt, HMAC cookie, httpOnly/Secure, POST-only, no URL logging, `Cache-Control no-store`, origin/CSRF check, XSS sanitization of event payloads, CSP, `X-Frame-Options DENY`.
+
+### 11.4 Payment Flow
 1. User submits registration → `POST /api/register` (free, no payment)
 2. Creates pending reg point (`st: 'r'`) with bcrypt-hashed password and provisions the login account
 3. User lands on `/dashboard`; the unlock full access button calls `POST /api/register-init-payment` with the registration id

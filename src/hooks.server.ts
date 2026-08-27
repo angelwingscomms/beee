@@ -2,6 +2,7 @@ import type { Handle } from '@sveltejs/kit';
 import { decode_session, SESSION_COOKIE_DELETE } from '$lib/server/session';
 import { set_platform } from '$lib/server/secrets';
 import { markdown_for, markdown_404 } from '$lib/markdown';
+import { record_analytics_event, should_skip_analytics } from '$lib/server/analytics';
 
 const wants_markdown = (req: Request) =>
 	(req.headers.get('accept') || '').toLowerCase().includes('text/markdown');
@@ -43,6 +44,17 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	const response = await resolve(event);
+
+	try {
+		if (!should_skip_analytics(path) && event.request.method === 'GET' && response.status < 400) {
+			const ctx = (event.platform as unknown as { ctx?: { waitUntil: (p: Promise<unknown>) => void } })?.ctx;
+			let search = '';
+			try { search = event.url.search; } catch {}
+			const url = event.url.pathname + search;
+			const p = record_analytics_event('pv', url, event.request, event.platform as App.Platform);
+			if (ctx?.waitUntil) ctx.waitUntil(p);
+		}
+	} catch {}
 
 	// API paths never return HTML errors: agents need parseable JSON.
 	if (

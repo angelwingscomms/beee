@@ -62,6 +62,19 @@
     if (browser) {
       const c = $page.url.searchParams.get('c');
       if (c) localStorage.setItem('partner_c', c);
+      const path = $page.url.pathname;
+      if (!path.startsWith('/369') && !path.startsWith('/api/')) {
+        const payload = JSON.stringify({ k: 'pv', u: $page.url.pathname + $page.url.search, r: document.referrer.slice(0, 500), c: c || localStorage.getItem('partner_c') || '' });
+        try { navigator.sendBeacon?.('/api/analytics/event', payload) || fetch('/api/analytics/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload, keepalive: true }); } catch {}
+        const click = (e: MouseEvent) => {
+          const el = (e.target as HTMLElement)?.closest('a,button,[data-analytics]') as HTMLElement | null;
+          if (!el) return;
+          const info = JSON.stringify({ k: 'click', u: $page.url.pathname + $page.url.search, el: (el.getAttribute('data-analytics') || el.textContent || el.tagName).slice(0, 80) });
+          try { navigator.sendBeacon?.('/api/analytics/event', info) || fetch('/api/analytics/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: info, keepalive: true }); } catch {}
+        };
+        document.addEventListener('click', click, { passive: true });
+        return () => document.removeEventListener('click', click);
+      }
     }
   });
 </script>
