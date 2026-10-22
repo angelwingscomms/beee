@@ -6,7 +6,7 @@
   import { pushState } from '$app/navigation';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
-  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT, D_FREE_OPEN, D_PAY_REQUIRED, D_ENTRY_CLOSE, D_FINALE } from '$lib/constants';
+  import { REG_AMOUNT, DEV_REG_FEE_NAIRA, DISCOUNT_PCT, COMMISSION_PCT, D_PAY_REQUIRED, D_ENTRY_CLOSE, D_FINALE } from '$lib/constants';
 
   const HERO_AMOUNT = dev ? DEV_REG_FEE_NAIRA : REG_AMOUNT;
   // Commissions are only paid on referred (discounted) registrations , see partner/+page.svelte.
@@ -55,16 +55,9 @@
       </p>
 
       <div class="hero-anim-elem schedule-card">
-        <div class="schedule-row">
-          <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-          <div>
-            <p class="schedule-title">Free Online Coaching and Training</p>
-            <p class="schedule-sub"><span class="text-amber-400 font-semibold">{D_FREE_OPEN}</span>: 10 days FREE access to e4 Chess Coach platform begins.</p>
-          </div>
-        </div>
         <p class="venue-line">
           <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg>
-          <span><span class="font-bold">₦{HERO_AMOUNT.toLocaleString()}</span> registration fee per player.</span>
+          <span><span class="font-bold">₦{HERO_AMOUNT.toLocaleString()}</span> registration fee per subscriber.</span>
         </p>
         <div class="schedule-row">
           <svg class="schedule-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
